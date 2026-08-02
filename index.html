@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Verifizierte Weiterbildungsangebote für Journalistinnen, Journalisten und Medienschaffende.">
+  <title>SFJ Weiterbildungsradar</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#angebote">Direkt zu den Angeboten</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <div class="brand" aria-label="SFJ Weiterbildungsradar">
+        <span class="brand-mark" aria-hidden="true">SFJ</span>
+        <span class="brand-text">Weiterbildungsradar</span>
+      </div>
+      <p class="header-note">Pilotstand · 1. August 2026</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">Weiterbildung für Medienschaffende</p>
+          <h1>Relevante Angebote schneller finden</h1>
+          <p class="lead">Eine redaktionell geprüfte Auswahl aus Journalismus, Medienführung, Recherche, KI, Daten und Ethik. Die Standardansicht enthält nur aktuell freigegebene Angebote.</p>
+        </div>
+        <aside class="trust-box" aria-label="Hinweis zur Datenqualität">
+          <strong>Geprüfte Quellen</strong>
+          <p>Jeder Eintrag verlinkt auf die offizielle Angebotsseite. Termine und Buchbarkeit können sich ändern.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="filters-section" aria-labelledby="filter-title">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Auswahl eingrenzen</p>
+            <h2 id="filter-title">Suche und Filter</h2>
+          </div>
+          <button class="reset-button" id="resetFilters" type="button">Filter zurücksetzen</button>
+        </div>
+
+        <div class="filter-grid">
+          <label class="field field-search"><span>Suchbegriff</span><input id="searchInput" type="search" placeholder="Titel, Anbieter oder Stichwort" autocomplete="off"></label>
+          <label class="field"><span>Sprache</span><select id="languageFilter"><option value="">Alle Sprachen</option></select></label>
+          <label class="field"><span>Land / Region</span><select id="countryFilter"><option value="">Alle Länder</option></select></label>
+          <label class="field"><span>Erfahrungsniveau</span><select id="levelFilter"><option value="">Alle Niveaus</option></select></label>
+          <label class="field"><span>Kennzeichnung</span><select id="categoryFilter"><option value="">Alle Kategorien</option></select></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="results-section" id="angebote" aria-labelledby="results-title">
+      <div class="shell">
+        <div class="results-header">
+          <div><p class="eyebrow">Aktuelle Auswahl</p><h2 id="results-title">Weiterbildungsangebote</h2></div>
+          <p class="result-count" id="resultCount" aria-live="polite"></p>
+        </div>
+        <div class="cards" id="cards"></div>
+        <div class="empty-state" id="emptyState" hidden><h3>Keine passenden Angebote</h3><p>Ändern Sie den Suchbegriff oder setzen Sie einzelne Filter zurück.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div><strong>SFJ Weiterbildungsradar</strong><p>Redaktionell geprüfter Pilotbestand. Keine automatische Veröffentlichung aus internen Arbeitsdaten.</p></div>
+      <p>Datenstand: 1. August 2026</p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
