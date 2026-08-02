@@ -1,37 +1,46 @@
-# Weiterbildungsradar Journalismus – Web-MVP V2
+# Weiterbildungsradar Journalismus – Web-MVP V3
 
 **Können, was kommt.**
 
-Dieses Paket enthält eine statische Website mit 22 redaktionell freigegebenen Weiterbildungsangeboten für Journalistinnen, Journalisten und Medienschaffende. Die Auswahl wird aus der Schweiz kuratiert und umfasst auch internationale Angebote. Interne Google-Sheets-Arbeitsdaten werden nicht veröffentlicht.
+Diese Funktionsversion enthält 22 redaktionell freigegebene Weiterbildungsangebote für Journalistinnen, Journalisten und Medienschaffende.
 
-## Projekt
+## Neu in V3
 
-Der Weiterbildungsradar Journalismus ist ein eigenständiges redaktionelles Projekt von George Sarpong. Jedes veröffentlichte Angebot verweist auf eine offizielle Quelle und trägt ein Prüfdatum. Termine, Preise und Buchbarkeit sind vor der Anmeldung nochmals auf der Angebotsseite zu kontrollieren.
+- klare Hierarchie mit **Fort- und Weiterbildung für Journalismus und Medien** als Haupttitel
+- Claim **Können, was kommt.** als sekundäre Botschaft
+- Headerzeile **kuratiert.ausgewählt.**
+- getrennte Filter für **Berufsbezug** und **Angebotsart**
+- Berufsbezug: **Journalismus**, **Medienpraxis**, **Management**
+- Angebotsart: **Kurs**, **Programm**, **Event**, **Fellowship**, **Studium**
+- farbsehschwächen-taugliche Kennzeichnung: Farbe, Begriff und zusätzliche Formmarke
+- interne Fachbegriffe durch verständliche öffentliche Kategorien ersetzt
+- Informationskasten **Orientierung statt Angebotsflut** nach unten verschoben
+
+## Klassifikationslogik
+
+- **Journalismus**: journalistisches Handwerk, Recherche, Verifikation, Storytelling, Medienrecht und Medienethik
+- **Medienpraxis**: Produktion, Content, Technologie, Distribution und medienbezogene Arbeitsprozesse
+- **Management**: Führung, Strategie, Innovation, Projektmanagement, Change und Unternehmertum
+- **Studium**: formaler Hochschulabschluss oder geregelte Hochschulweiterbildung, etwa CAS, DAS, MAS, MBA oder EMBA
+- **Programm**: umfangreiche Weiterbildung ohne solchen Hochschulabschluss
+- **Kurs**: kompakteres einzelnes Lernangebot
+- **Event**: Tagung oder Veranstaltung mit Weiterbildungscharakter
 
 ## Dateien
 
-- `index.html` – Seitenstruktur, sichtbare Texte sowie SEO-/GEO-Metadaten
+- `index.html` – Seitenstruktur und sichtbare Texte
 - `styles.css` – Gestaltung und responsive Darstellung
 - `data.js` – freigegebener öffentlicher Datenbestand
-- `app.js` – Suche, Filter und Datumsanzeige
+- `app.js` – Suche, Filter, Karten und Datumsanzeige
 - `404.html` – Fehlerseite
 - `robots.txt` – Freigabe für Suchmaschinen
 
-## Lokal ansehen
+## Aktualisierung auf GitHub Pages
 
-Die Datei `index.html` kann direkt im Browser geöffnet werden.
+1. Alle sieben Dateien in die oberste Ebene des Repositorys hochladen.
+2. Gleichnamige Dateien ersetzen und die Änderung in `main` committen.
+3. Die Live-Seite nach dem automatischen GitHub-Pages-Deployment vollständig testen.
 
-## Auf GitHub Pages veröffentlichen
+## Noch nicht Teil dieser Funktionsversion
 
-1. Alle Dateien in die oberste Ebene des Repositorys `weiterbildungsradar-journalismus` laden.
-2. In **Settings → Pages** unter **Build and deployment** die Quelle **Deploy from a branch** wählen.
-3. Branch **main** und Ordner **/(root)** auswählen und speichern.
-4. Die veröffentlichte Website vollständig testen, bevor sie aktiv beworben wird.
-
-## Aktualisierung
-
-Nur nach menschlicher Freigabe: öffentlichen Export prüfen, `data.js` ersetzen, Änderung committen, Website kontrollieren und den Publikationsstatus im Produktionssystem nachführen.
-
-## Nicht enthalten
-
-Historische Angebote, Nutzerkonten, Tracking, eine Live-Verbindung zum internen Google Sheet und automatische Veröffentlichung.
+Impressum, Datenschutz, vollständige Methodikseite, SEO-/GEO-Ausbau, Sitemap, eigene Domain, Magazin und Werbeangebote folgen in der Publikationsschicht.

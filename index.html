@@ -5,17 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#17334f">
-  <meta name="description" content="Können, was kommt: redaktionell geprüfte Fort- und Weiterbildungen für Journalistinnen, Journalisten und Medienschaffende – aus der Schweiz kuratiert, international ausgewählt.">
+  <meta name="description" content="Redaktionell geprüfte Kurse, Programme, Events und Studienangebote für Journalistinnen, Journalisten und Medienschaffende.">
   <link rel="canonical" href="https://george-sarpong.github.io/weiterbildungsradar-journalismus/">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="de_CH">
   <meta property="og:site_name" content="Weiterbildungsradar Journalismus">
-  <meta property="og:title" content="Weiterbildungsradar Journalismus – Können, was kommt.">
-  <meta property="og:description" content="Redaktionell geprüfte Fort- und Weiterbildungen für Journalismus und Medien – aus der Schweiz kuratiert, international ausgewählt.">
+  <meta property="og:title" content="Fort- und Weiterbildung für Journalismus und Medien">
+  <meta property="og:description" content="Können, was kommt. Entdecke redaktionell geprüfte Weiterbildungsangebote für Journalistinnen, Journalisten und Medienschaffende.">
   <meta property="og:url" content="https://george-sarpong.github.io/weiterbildungsradar-journalismus/">
 
-  <title>Weiterbildungsradar Journalismus | Fort- und Weiterbildung für Medien</title>
+  <title>Fort- und Weiterbildung für Journalismus und Medien | Weiterbildungsradar</title>
   <link rel="stylesheet" href="styles.css">
 
   <script type="application/ld+json">
@@ -25,7 +25,7 @@
     "name": "Weiterbildungsradar Journalismus",
     "alternateName": "Können, was kommt.",
     "url": "https://george-sarpong.github.io/weiterbildungsradar-journalismus/",
-    "description": "Redaktionell geprüfte Fort- und Weiterbildungen für Journalistinnen, Journalisten und Medienschaffende – aus der Schweiz kuratiert, international ausgewählt.",
+    "description": "Redaktionell geprüfte Kurse, Programme, Events und Studienangebote für Journalistinnen, Journalisten und Medienschaffende.",
     "inLanguage": "de-CH",
     "publisher": {
       "@type": "Person",
@@ -43,22 +43,16 @@
         <span class="brand-mark" aria-hidden="true">WJ</span>
         <span class="brand-text">Weiterbildungsradar Journalismus</span>
       </div>
-      <p class="header-note">Aus der Schweiz kuratiert · international ausgewählt</p>
+      <p class="header-note">kuratiert.ausgewählt.</p>
     </div>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div>
-          <p class="eyebrow">Fort- und Weiterbildung für Journalismus und Medien</p>
-          <h1>Können, was kommt.</h1>
-          <p class="lead">Entdecke redaktionell geprüfte Kurse, Programme und Veranstaltungen für Journalistinnen, Journalisten und Medienschaffende. Suche nach Thema, Sprache, Region und Erfahrungsniveau.</p>
-        </div>
-        <aside class="trust-box" aria-label="Hinweis zur Datenqualität">
-          <strong>Orientierung statt Angebotsflut</strong>
-          <p>Jeder Eintrag wird anhand der offiziellen Angebotsseite geprüft. Termine, Preise und Buchbarkeit können sich dennoch ändern.</p>
-        </aside>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="shell hero-inner">
+        <h1 id="page-title">Fort- und Weiterbildung für Journalismus und Medien</h1>
+        <p class="hero-claim">Können, was kommt.</p>
+        <p class="lead">Entdecke redaktionell geprüfte Kurse, Programme, Events und Studienangebote für Journalistinnen, Journalisten und Medienschaffende. Suche nach Thema, Berufsbezug, Angebotsart, Sprache, Region und Erfahrungsniveau.</p>
       </div>
     </section>
 
@@ -78,6 +72,14 @@
             <input id="searchInput" type="search" placeholder="Titel, Anbieter oder Stichwort" autocomplete="off">
           </label>
           <label class="field">
+            <span>Berufsbezug</span>
+            <select id="focusFilter"><option value="">Alle Bereiche</option></select>
+          </label>
+          <label class="field">
+            <span>Angebotsart</span>
+            <select id="typeFilter"><option value="">Alle Arten</option></select>
+          </label>
+          <label class="field">
             <span>Sprache</span>
             <select id="languageFilter"><option value="">Alle Sprachen</option></select>
           </label>
@@ -89,11 +91,17 @@
             <span>Erfahrungsniveau</span>
             <select id="levelFilter"><option value="">Alle Niveaus</option></select>
           </label>
-          <label class="field">
-            <span>Kennzeichnung</span>
-            <select id="categoryFilter"><option value="">Alle Kategorien</option></select>
-          </label>
         </div>
+
+        <details class="classification-help">
+          <summary>Was bedeuten die Begriffe?</summary>
+          <div class="classification-grid">
+            <div><strong>Journalismus</strong><span>Journalistisches Handwerk, Recherche, Verifikation, Storytelling, Medienrecht und Medienethik.</span></div>
+            <div><strong>Medienpraxis</strong><span>Produktion, Content, Technologie, Distribution und medienbezogene Arbeitsprozesse.</span></div>
+            <div><strong>Management</strong><span>Führung, Strategie, Innovation, Projektmanagement, Change und Unternehmertum.</span></div>
+            <div><strong>Studium</strong><span>Formaler Hochschulabschluss oder geregelte Hochschulweiterbildung, etwa CAS, DAS, MAS, MBA oder EMBA.</span></div>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -125,7 +133,7 @@
           </article>
           <article class="method-card">
             <h3>Was wird erfasst?</h3>
-            <p>Konkrete Fort- und Weiterbildungen zu Journalismus, Recherche, KI, Daten, Medienführung, Produktion und Ethik.</p>
+            <p>Konkrete Angebote zu Journalismus, Medienpraxis und Management – vom kompakten Kurs bis zur geregelten Hochschulweiterbildung.</p>
           </article>
           <article class="method-card">
             <h3>Wie wird geprüft?</h3>
@@ -134,14 +142,21 @@
         </div>
       </div>
     </section>
+
+    <section class="orientation-section" aria-labelledby="orientation-title">
+      <div class="shell">
+        <div class="orientation-box">
+          <p class="eyebrow">Transparenz</p>
+          <h2 id="orientation-title">Orientierung statt Angebotsflut</h2>
+          <p>Jeder Eintrag wird anhand der offiziellen Angebotsseite geprüft. Termine, Preise und Buchbarkeit können sich dennoch ändern.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
     <div class="shell footer-grid">
-      <div>
-        <strong>Weiterbildungsradar Journalismus</strong>
-        <p>Eigenständiges redaktionelles Projekt von George Sarpong. Keine automatische Veröffentlichung aus internen Arbeitsdaten.</p>
-      </div>
+      <p><strong>Weiterbildungsradar Journalismus</strong> · Können, was kommt.</p>
       <p>Datenstand: 1. August 2026</p>
     </div>
   </footer>

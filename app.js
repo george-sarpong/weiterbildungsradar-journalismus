@@ -6,11 +6,17 @@
     : [];
 
   const labels = {
-    category: {
-      KERNMARKT: "Kernmarkt",
-      GRENZFALL: "Grenzfall",
-      MEDIENNAHER_MARKT: "Mediennaher Markt",
-      EVENT: "Event"
+    focus: {
+      JOURNALISMUS: "Journalismus",
+      MEDIENPRAXIS: "Medienpraxis",
+      MANAGEMENT: "Management"
+    },
+    offerType: {
+      KURS: "Kurs",
+      PROGRAMM: "Programm",
+      EVENT: "Event",
+      FELLOWSHIP: "Fellowship",
+      STUDIUM: "Studium"
     },
     level: {
       EINSTIEG: "Einstieg",
@@ -20,12 +26,18 @@
     }
   };
 
+  const preferredOrder = {
+    focus: ["JOURNALISMUS", "MEDIENPRAXIS", "MANAGEMENT"],
+    offerType: ["KURS", "PROGRAMM", "EVENT", "FELLOWSHIP", "STUDIUM"]
+  };
+
   const el = {
     search: document.querySelector("#searchInput"),
+    focus: document.querySelector("#focusFilter"),
+    type: document.querySelector("#typeFilter"),
     language: document.querySelector("#languageFilter"),
     country: document.querySelector("#countryFilter"),
     level: document.querySelector("#levelFilter"),
-    category: document.querySelector("#categoryFilter"),
     reset: document.querySelector("#resetFilters"),
     cards: document.querySelector("#cards"),
     count: document.querySelector("#resultCount"),
@@ -39,6 +51,11 @@
 
   const uniqueSorted = key => [...new Set(offers.map(offer => offer[key]).filter(Boolean))]
     .sort((a, b) => a.localeCompare(b, "de-CH"));
+
+  const orderedValues = (key, order) => {
+    const values = new Set(offers.map(offer => offer[key]).filter(Boolean));
+    return order.filter(value => values.has(value));
+  };
 
   const addOptions = (select, values, formatter = value => value) => {
     values.forEach(value => {
@@ -65,14 +82,19 @@
     <article class="card">
       <div class="card-topline">
         <p class="provider">${escapeHtml(offer.provider)}</p>
-        <span class="badge badge-category" data-category="${escapeHtml(offer.category)}">
-          ${escapeHtml(labels.category[offer.category] ?? offer.category)}
-        </span>
+        <div class="card-labels" aria-label="Berufsbezug und Angebotsart">
+          <span class="badge badge-focus" data-focus="${escapeHtml(offer.focus)}">
+            ${escapeHtml(labels.focus[offer.focus] ?? offer.focus)}
+          </span>
+          <span class="badge badge-type">
+            ${escapeHtml(labels.offerType[offer.offerType] ?? offer.offerType)}
+          </span>
+        </div>
       </div>
       <h3>${escapeHtml(offer.title)}</h3>
       <p class="card-description">${escapeHtml(offer.description)}</p>
       <p class="access"><strong>Zugang:</strong> ${escapeHtml(offer.access)}</p>
-      <div class="badges" aria-label="Eigenschaften">
+      <div class="badges" aria-label="Weitere Eigenschaften">
         <span class="badge">${escapeHtml(labels.level[offer.level] ?? offer.level)}</span>
         <span class="badge">${escapeHtml(offer.language)}</span>
         <span class="badge">${escapeHtml(offer.country)}</span>
@@ -87,10 +109,11 @@
 
   const filters = () => ({
     query: normalize(el.search.value.trim()),
+    focus: el.focus.value,
+    type: el.type.value,
     language: el.language.value,
     country: el.country.value,
-    level: el.level.value,
-    category: el.category.value
+    level: el.level.value
   });
 
   const matches = (offer, filter) => {
@@ -102,14 +125,16 @@
       offer.language,
       offer.country,
       labels.level[offer.level],
-      labels.category[offer.category]
+      labels.focus[offer.focus],
+      labels.offerType[offer.offerType]
     ].join(" "));
 
     return (!filter.query || haystack.includes(filter.query))
+      && (!filter.focus || offer.focus === filter.focus)
+      && (!filter.type || offer.offerType === filter.type)
       && (!filter.language || offer.language === filter.language)
       && (!filter.country || offer.country === filter.country)
-      && (!filter.level || offer.level === filter.level)
-      && (!filter.category || offer.category === filter.category);
+      && (!filter.level || offer.level === filter.level);
   };
 
   const render = () => {
@@ -121,20 +146,22 @@
 
   const reset = () => {
     el.search.value = "";
+    el.focus.value = "";
+    el.type.value = "";
     el.language.value = "";
     el.country.value = "";
     el.level.value = "";
-    el.category.value = "";
     render();
     el.search.focus();
   };
 
+  addOptions(el.focus, orderedValues("focus", preferredOrder.focus), value => labels.focus[value] ?? value);
+  addOptions(el.type, orderedValues("offerType", preferredOrder.offerType), value => labels.offerType[value] ?? value);
   addOptions(el.language, uniqueSorted("language"));
   addOptions(el.country, uniqueSorted("country"));
   addOptions(el.level, uniqueSorted("level"), value => labels.level[value] ?? value);
-  addOptions(el.category, uniqueSorted("category"), value => labels.category[value] ?? value);
 
-  [el.search, el.language, el.country, el.level, el.category]
+  [el.search, el.focus, el.type, el.language, el.country, el.level]
     .forEach(node => node.addEventListener("input", render));
 
   el.reset.addEventListener("click", reset);

@@ -5,12 +5,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "title": "Konstruktiver Journalismus: Erzählen, wie es weitergeht",
     "description": "Das zweitägige Präsenzseminar vermittelt Methoden des konstruktiven Journalismus, von Themenfindung bis Qualitätsstandards. Es findet am 10. und 11. September 2026 statt und bezieht auch den Einsatz von KI ein.",
     "access": "Öffentlich buchbares Präsenzseminar am 10. und 11. September 2026.",
-    "category": "KERNMARKT",
     "level": "BERUFSERFAHRUNG",
     "language": "Deutsch",
     "country": "Deutschland",
     "url": "https://www.ard-zdf-medienakademie.de/seminar/51162.html",
-    "approved": "2026-08-01"
+    "approved": "2026-08-01",
+    "focus": "JOURNALISMUS",
+    "offerType": "KURS"
   },
   {
     "id": "PUB-0017",
@@ -18,12 +19,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "title": "Datajournalisme: Faire parler les données – Daten zum Sprechen bringen",
     "description": "Der eintägige CFJM-Kurs vermittelt, wie Daten analysiert, interpretiert und für journalistische Geschichten genutzt werden. Die Durchführung ist für den 2. Oktober 2026 angekündigt.",
     "access": "Regulär buchbarer Kurs am 2. Oktober 2026.",
-    "category": "KERNMARKT",
     "level": "BERUFSERFAHRUNG",
     "language": "Französisch",
     "country": "Schweiz",
     "url": "https://www.cfjm.ch/model/formation-continue/fc-data-journalisme-faire-parler-les-donnees-44",
-    "approved": "2026-08-01"
+    "approved": "2026-08-01",
+    "focus": "JOURNALISMUS",
+    "offerType": "KURS"
   },
   {
     "id": "PUB-0015",
@@ -31,38 +33,41 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "title": "KI für Medienmanager: wirksam und verantwortungsvoll einsetzen",
     "description": "Der Live-Online-Kurs der EBU Academy richtet sich an Führungskräfte und Produzierende in Medienorganisationen. Er behandelt den verantwortungsvollen Einsatz von KI und findet am 14. September 2026 statt.",
     "access": "Mitglieder und Nichtmitglieder können teilnehmen; zur Anmeldung ist ein Login beziehungsweise Nutzerkonto erforderlich. Live-Online-Kurs am 14. September 2026.",
-    "category": "MEDIENNAHER_MARKT",
     "level": "FUEHRUNG_STRATEGIE",
     "language": "Englisch",
     "country": "International",
     "url": "https://academy.ebu.ch/ai-for-managers-how-to-use-it-with-impact-and-responsibly",
-    "approved": "2026-08-01"
+    "approved": "2026-08-01",
+    "focus": "MANAGEMENT",
+    "offerType": "KURS"
   },
   {
     "id": "PUB-0006",
     "provider": "HEC Lausanne",
     "title": "IA & marketing de contenu – KI und Content Marketing",
-    "description": "Die Weiterbildung der HEC Lausanne zeigt, wie KI für Content-Produktion und Marketing eingesetzt werden kann. Sie ist für redaktionell arbeitende Kommunikationsfachleute relevant, bleibt aber ein Grenzfall mit klarem Marketingfokus.",
+    "description": "Die Weiterbildung der HEC Lausanne zeigt, wie KI für Content-Produktion und Marketing eingesetzt werden kann. Sie richtet sich an Fachleute aus Kommunikation, Marketing und redaktionell geprägter Content-Arbeit.",
     "access": "Regulär buchbar; Durchführung vom 22. bis 24. April 2027.",
-    "category": "GRENZFALL",
     "level": "GEMISCHT",
     "language": "Französisch",
     "country": "Schweiz (Suisse romande)",
     "url": "https://execed.unil.ch/formation-continue/ia-marketing-de-contenu",
-    "approved": "2026-08-01"
+    "approved": "2026-08-01",
+    "focus": "MEDIENPRAXIS",
+    "offerType": "KURS"
   },
   {
     "id": "PUB-0002",
     "provider": "HWZ",
     "title": "CAS Storytelling, Brand Journalism und Personal Branding",
-    "description": "Der CAS verbindet Storytelling, Publishing, Brand Journalism und Personal Branding. Er ist vor allem für Corporate Communication und verwandte Content-Aufgaben relevant und wird deshalb als fachlicher Grenzfall geführt.",
+    "description": "Der CAS verbindet Storytelling, Publishing, Brand Journalism und Personal Branding. Er richtet sich an Fachleute aus Corporate Communication, Medien und Content.",
     "access": "Bewerbung erforderlich; Start jeweils im Frühjahr.",
-    "category": "GRENZFALL",
     "level": "GEMISCHT",
     "language": "Deutsch",
     "country": "Schweiz",
     "url": "https://fh-hwz.ch/de/weiterbildung/cas/cas-storytelling-and-brand-journalism-personal-branding",
-    "approved": "2026-08-01"
+    "approved": "2026-08-01",
+    "focus": "MEDIENPRAXIS",
+    "offerType": "STUDIUM"
   },
   {
     "id": "PUB-0001",
@@ -70,25 +75,27 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "title": "CAS Journalismus von HWZ und MAZ",
     "description": "Der CAS von HWZ und MAZ richtet sich an Personen, die journalistische Grundlagen systematisch erlernen oder vertiefen möchten. Der Lehrgang startet in der Regel im März; Zulassung und Anmeldung erfolgen über das MAZ.",
     "access": "Bewerbung und Zulassung erforderlich; jährlicher Start im März.",
-    "category": "KERNMARKT",
     "level": "EINSTIEG",
     "language": "Deutsch",
     "country": "Schweiz",
     "url": "https://fh-hwz.ch/de/weiterbildung/cas/cas-journalismus",
-    "approved": "2026-08-01"
+    "approved": "2026-08-01",
+    "focus": "JOURNALISMUS",
+    "offerType": "STUDIUM"
   },
   {
     "id": "PUB-0008",
     "provider": "IBB",
     "title": "Videoproduktion mit Premiere, After Effects und KI",
-    "description": "Die 11- oder 22-wöchige Weiterbildung verbindet Videoproduktion, Adobe Premiere, After Effects und KI-gestützte Workflows. Sie richtet sich an Medienproduktion, Marketing und Content Creation und wird mangels journalistischer Zielgruppe als Grenzfall geführt.",
+    "description": "Die 11- oder 22-wöchige Weiterbildung verbindet Videoproduktion, Adobe Premiere, After Effects und KI-gestützte Workflows. Sie richtet sich an Medienproduktion, Marketing und Content Creation.",
     "access": "Einstieg und Starttermin werden nach Beratung vereinbart.",
-    "category": "GRENZFALL",
     "level": "GEMISCHT",
     "language": "Deutsch",
     "country": "Deutschland",
     "url": "https://www.ibb.com/weiterbildung/adobe-premiere-und-after-effects-effiziente-workflows-und-videoproduktion-mit-ki",
-    "approved": "2026-08-01"
+    "approved": "2026-08-01",
+    "focus": "MEDIENPRAXIS",
+    "offerType": "PROGRAMM"
   },
   {
     "id": "PUB-0025",
@@ -96,12 +103,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "title": "Newsroom and AI Master Class",
     "description": "Die Online-Masterclass von INMA richtet sich an Führungskräfte und Verantwortliche, die KI im Newsroom strategisch einsetzen wollen. Sie läuft vom 8. bis 15. Oktober 2026.",
     "access": "Mitglieder und Nichtmitglieder können teilnehmen; unterschiedliche Tarife.",
-    "category": "KERNMARKT",
     "level": "FUEHRUNG_STRATEGIE",
     "language": "Englisch",
     "country": "International",
     "url": "https://www.inma.org/modules/event/2026NewsroomAndAI/",
-    "approved": "2026-08-01"
+    "approved": "2026-08-01",
+    "focus": "MANAGEMENT",
+    "offerType": "PROGRAMM"
   },
   {
     "id": "PUB-0022",
@@ -109,12 +117,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "title": "JournalismAI Discovery",
     "description": "Das kostenlose, selbstgesteuerte Discovery Lab führt Einsteigerinnen und Einsteiger in den Einsatz von KI im Journalismus ein. Die aktuelle Plattform ist auf Englisch und Spanisch verfügbar.",
     "access": "Kostenloses On-demand-Angebot; Nutzerkonto erforderlich.",
-    "category": "KERNMARKT",
     "level": "EINSTIEG",
     "language": "Englisch/Spanisch",
     "country": "International",
     "url": "https://www.journalismai.info/programmes/discovery",
-    "approved": "2026-08-01"
+    "approved": "2026-08-01",
+    "focus": "JOURNALISMUS",
+    "offerType": "KURS"
   },
   {
     "id": "PUB-0021",
@@ -122,12 +131,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "title": "Digital Content Creators and Journalists: How to Be a Trusted Voice Online – Als vertrauenswürdige Stimme online publizieren",
     "description": "Der kostenlose On-demand-Kurs richtet sich an Journalisten und digitale Content Creators. Im Zentrum stehen journalistische Standards, Glaubwürdigkeit und der Aufbau von Vertrauen beim Online-Publizieren.",
     "access": "Kostenloser On-demand-Kurs mit unmittelbarem Zugang.",
-    "category": "KERNMARKT",
     "level": "GEMISCHT",
     "language": "Englisch",
     "country": "International (USA)",
     "url": "https://journalismcourses.org/product/digital-content-creators-and-journalists-how-to-be-a-trusted-voice-online/",
-    "approved": "2026-08-01"
+    "approved": "2026-08-01",
+    "focus": "JOURNALISMUS",
+    "offerType": "KURS"
   },
   {
     "id": "PUB-0013",
@@ -135,12 +145,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "title": "How to use ChatGPT and other generative AI tools in your newsrooms",
     "description": "Der kostenlose On-demand-Kurs des Knight Center zeigt, wie Redaktionen ChatGPT und andere generative KI-Werkzeuge einsetzen können. Er richtet sich an Journalisten und Kommunikationsfachleute und ist unmittelbar zugänglich.",
     "access": "Kostenloser On-demand-Kurs mit sofortigem Zugang.",
-    "category": "KERNMARKT",
     "level": "EINSTIEG",
     "language": "Englisch",
     "country": "International",
     "url": "https://journalismcourses.org/product/how-to-use-chatgpt-and-other-generative-ai-tools-in-your-newsrooms/",
-    "approved": "2026-08-01"
+    "approved": "2026-08-01",
+    "focus": "JOURNALISMUS",
+    "offerType": "KURS"
   },
   {
     "id": "PUB-0009",
@@ -148,12 +159,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "title": "MAZ-Thementagung: KI im Journalismus – Was kommt 2027?",
     "description": "Die MAZ-Thementagung diskutiert kommende Entwicklungen und praktische Folgen von KI für Journalismus und Medienführung. Sie findet am 18. November 2026 statt und wird als Event separat ausgewiesen.",
     "access": "Öffentlich buchbare Tagung am 18. November 2026.",
-    "category": "EVENT",
     "level": "GEMISCHT",
     "language": "Deutsch",
     "country": "Schweiz",
     "url": "https://www.maz.ch/kurs/maz-thementagung-ki-im-journalismus",
-    "approved": "2026-08-01"
+    "approved": "2026-08-01",
+    "focus": "JOURNALISMUS",
+    "offerType": "EVENT"
   },
   {
     "id": "PUB-0005",
@@ -161,12 +173,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "title": "AI and Editing: Uses, Drawbacks and Ethics",
     "description": "Der asynchrone Poynter-Kurs behandelt Einsatzmöglichkeiten, Risiken und ethische Fragen von KI beim Editieren. Er richtet sich an erfahrene Redaktions- und Kommunikationsfachleute.",
     "access": "On-demand; jederzeit startbar und öffentlich buchbar.",
-    "category": "KERNMARKT",
     "level": "BERUFSERFAHRUNG",
     "language": "Englisch",
     "country": "International (USA)",
     "url": "https://www.poynter.org/shop/ethics/ai-and-editing/",
-    "approved": "2026-08-01"
+    "approved": "2026-08-01",
+    "focus": "JOURNALISMUS",
+    "offerType": "KURS"
   },
   {
     "id": "PUB-0004",
@@ -174,12 +187,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "title": "AI for Journalists and Content Creators: From Understanding to Application",
     "description": "Der selbstgesteuerte Poynter-Kurs vermittelt Grundlagen und praktische Anwendungsmöglichkeiten von KI für journalistische und redaktionelle Arbeit. Er kann jederzeit online begonnen werden.",
     "access": "On-demand; jederzeit startbar und öffentlich buchbar.",
-    "category": "KERNMARKT",
     "level": "GEMISCHT",
     "language": "Englisch",
     "country": "International (USA)",
     "url": "https://www.poynter.org/shop/fact-checking-media-literacy/ai-for-journalists-and-content-creators-from-understanding-to-application/",
-    "approved": "2026-08-01"
+    "approved": "2026-08-01",
+    "focus": "JOURNALISMUS",
+    "offerType": "KURS"
   },
   {
     "id": "PUB-0030",
@@ -187,12 +201,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "title": "Ethics for Editors – Medienethik für Redaktorinnen und Redaktoren",
     "description": "Der 90-minütige On-demand-Kurs behandelt, wie Editorinnen und Editoren ethische Fragen erkennen, beurteilen und in Redaktionen beraten. Er ist öffentlich buchbar und Teil eines weiterführenden Zertifikats.",
     "access": "On-demand; öffentlich und kostenpflichtig buchbar.",
-    "category": "KERNMARKT",
     "level": "BERUFSERFAHRUNG",
     "language": "Englisch",
     "country": "International (USA)",
     "url": "https://www.poynter.org/shop/ethics/ethics-for-editors/",
-    "approved": "2026-08-01"
+    "approved": "2026-08-01",
+    "focus": "JOURNALISMUS",
+    "offerType": "KURS"
   },
   {
     "id": "PUB-0019",
@@ -200,12 +215,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "title": "Ethics of Journalism",
     "description": "Der selbstgesteuerte Poynter-Kurs vermittelt Grundlagen für ethische Entscheidungen im journalistischen Alltag. Er kann jederzeit online begonnen werden und richtet sich an Medienschaffende und Newsroom-Leitungen.",
     "access": "On-demand; jederzeit startbar und öffentlich buchbar.",
-    "category": "KERNMARKT",
     "level": "GEMISCHT",
     "language": "Englisch",
     "country": "International (USA)",
     "url": "https://www.poynter.org/shop/ethics/ethics_of_journalism/",
-    "approved": "2026-08-01"
+    "approved": "2026-08-01",
+    "focus": "JOURNALISMUS",
+    "offerType": "KURS"
   },
   {
     "id": "PUB-0029",
@@ -213,12 +229,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "title": "Getting It Right – Sorgfalt und Verifikation im digitalen Zeitalter",
     "description": "Der selbstgesteuerte Poynter-Kurs behandelt Genauigkeit, Überprüfung und Verifikation in digitalen Arbeitsprozessen. Er ist öffentlich buchbar und richtet sich an Medienschaffende mit Berufserfahrung.",
     "access": "On-demand; öffentlich und kostenpflichtig buchbar.",
-    "category": "KERNMARKT",
     "level": "BERUFSERFAHRUNG",
     "language": "Englisch",
     "country": "International (USA)",
     "url": "https://www.poynter.org/shop/fact-checking-media-literacy/getting-it-right-accuracy-and-verification-in-the-digital-age/",
-    "approved": "2026-08-01"
+    "approved": "2026-08-01",
+    "focus": "JOURNALISMUS",
+    "offerType": "KURS"
   },
   {
     "id": "PUB-0028",
@@ -226,12 +243,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "title": "How Any Journalist Can Earn Trust – Vertrauen beim Publikum stärken",
     "description": "Der kostenlose On-demand-Kurs zeigt, wie Journalisten Glaubwürdigkeit und Vertrauen beim Publikum stärken können. Für den Zugang genügt ein kostenloses Nutzerkonto.",
     "access": "Kostenlos; Nutzerkonto erforderlich, keine Mitgliedschaft.",
-    "category": "KERNMARKT",
     "level": "BERUFSERFAHRUNG",
     "language": "Englisch",
     "country": "International (USA)",
     "url": "https://www.poynter.org/shop/ethics/how-any-journalist-can-earn-trust/",
-    "approved": "2026-08-01"
+    "approved": "2026-08-01",
+    "focus": "JOURNALISMUS",
+    "offerType": "KURS"
   },
   {
     "id": "PUB-0027",
@@ -239,12 +257,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "title": "Journalism Fundamentals: Craft & Values – Handwerk und Werte",
     "description": "Der selbstgesteuerte Poynter-Kurs vermittelt Grundlagen des journalistischen Handwerks und zentrale berufsethische Werte. Er ist öffentlich buchbar; Mitglieder erhalten kostenlosen Zugang.",
     "access": "On-demand; öffentlich buchbar, für Mitglieder kostenlos.",
-    "category": "KERNMARKT",
     "level": "EINSTIEG",
     "language": "Englisch",
     "country": "International (USA)",
     "url": "https://www.poynter.org/shop/reporting-editing/journalism-fundamentals-craft-values/",
-    "approved": "2026-08-01"
+    "approved": "2026-08-01",
+    "focus": "JOURNALISMUS",
+    "offerType": "KURS"
   },
   {
     "id": "PUB-0014",
@@ -252,12 +271,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "title": "Leading Newsroom Change",
     "description": "Das Reuters-Institute-Programm richtet sich an Senior Editors und Newsroom Managers, die Veränderungsprozesse in Redaktionen führen. Die Durchführung ist für den 18. bis 20. November 2026 angekündigt.",
     "access": "Teilnahme nach Bewerbung; Programm vom 18. bis 20. November 2026.",
-    "category": "KERNMARKT",
     "level": "FUEHRUNG_STRATEGIE",
     "language": "Englisch",
     "country": "International (UK)",
     "url": "https://reutersinstitute.politics.ox.ac.uk/about-newsroom-leadership-programmes",
-    "approved": "2026-08-01"
+    "approved": "2026-08-01",
+    "focus": "MANAGEMENT",
+    "offerType": "PROGRAMM"
   },
   {
     "id": "PUB-0023",
@@ -265,24 +285,26 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "title": "Masterclass: AI, journalism & society",
     "description": "Die Masterclass des Reuters Institute behandelt den Einfluss von KI auf den Journalismus und seine gesellschaftlichen Folgen. Sie findet vom 22. bis 25. September 2026 in Oxford statt.",
     "access": "Teilnahme nach Bewerbung; Durchführung vom 22. bis 25. September 2026.",
-    "category": "KERNMARKT",
     "level": "BERUFSERFAHRUNG",
     "language": "Englisch",
     "country": "International (UK)",
     "url": "https://reutersinstitute.politics.ox.ac.uk/reuters-institutes-masterclass-ai-journalism-society",
-    "approved": "2026-08-01"
+    "approved": "2026-08-01",
+    "focus": "JOURNALISMUS",
+    "offerType": "PROGRAMM"
   },
   {
     "id": "PUB-0007",
     "provider": "SAWI",
     "title": "Praticien en Intelligence Artificielle",
-    "description": "Der SAWI-Lehrgang vermittelt praxisorientierte KI-Kompetenzen für Marketing, Kommunikation und Verkauf. Für journalistische Tätigkeiten ist er nur indirekt relevant und wird als Grenzfall geführt.",
+    "description": "Der SAWI-Lehrgang vermittelt praxisorientierte KI-Kompetenzen für Marketing, Kommunikation und Verkauf. Er eignet sich für Fachleute, die KI in Content- und Kommunikationsprozessen einsetzen wollen.",
     "access": "Regulär buchbar; nächste Session vom 31. August bis 14. Oktober 2026.",
-    "category": "GRENZFALL",
     "level": "GEMISCHT",
     "language": "Französisch",
     "country": "Schweiz (Suisse romande)",
     "url": "https://sawi.com/formation-communication/praticien-en-intelligence-artificielle/",
-    "approved": "2026-08-01"
+    "approved": "2026-08-01",
+    "focus": "MEDIENPRAXIS",
+    "offerType": "PROGRAMM"
   }
 ];
