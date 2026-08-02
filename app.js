@@ -1,6 +1,6 @@
 (() => {
   "use strict";
-  const offers = Array.isArray(window.SFJ_OFFERS) ? window.SFJ_OFFERS : [];
+  const offers = Array.isArray(window.WEITERBILDUNGSRADAR_OFFERS) ? window.WEITERBILDUNGSRADAR_OFFERS : [];
   const labels = {
     category: {KERNMARKT:"Kernmarkt",GRENZFALL:"Grenzfall",MEDIENNAHER_MARKT:"Mediennaher Markt",EVENT:"Event"},
     level: {EINSTIEG:"Einstieg",BERUFSERFAHRUNG:"Berufserfahrung",FUEHRUNG_STRATEGIE:"Führung & Strategie",GEMISCHT:"Gemischt"}

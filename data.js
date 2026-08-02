@@ -1,4 +1,4 @@
-window.SFJ_OFFERS = [
+window.WEITERBILDUNGSRADAR_OFFERS = [
   {
     "id": "PUB-0024",
     "provider": "ARD.ZDF medienakademie",
