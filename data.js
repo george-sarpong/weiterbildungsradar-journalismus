@@ -10,7 +10,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "language": "Deutsch",
     "country": "Deutschland",
     "url": "https://www.ard-zdf-medienakademie.de/seminar/51162.html",
-    "approved": "2026-08-01 00:00:00"
+    "approved": "2026-08-01"
   },
   {
     "id": "PUB-0017",
@@ -23,7 +23,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "language": "Französisch",
     "country": "Schweiz",
     "url": "https://www.cfjm.ch/model/formation-continue/fc-data-journalisme-faire-parler-les-donnees-44",
-    "approved": "2026-08-01 00:00:00"
+    "approved": "2026-08-01"
   },
   {
     "id": "PUB-0015",
@@ -36,7 +36,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "language": "Englisch",
     "country": "International",
     "url": "https://academy.ebu.ch/ai-for-managers-how-to-use-it-with-impact-and-responsibly",
-    "approved": "2026-08-01 00:00:00"
+    "approved": "2026-08-01"
   },
   {
     "id": "PUB-0006",
@@ -49,7 +49,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "language": "Französisch",
     "country": "Schweiz (Suisse romande)",
     "url": "https://execed.unil.ch/formation-continue/ia-marketing-de-contenu",
-    "approved": "2026-08-01 00:00:00"
+    "approved": "2026-08-01"
   },
   {
     "id": "PUB-0002",
@@ -62,7 +62,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "language": "Deutsch",
     "country": "Schweiz",
     "url": "https://fh-hwz.ch/de/weiterbildung/cas/cas-storytelling-and-brand-journalism-personal-branding",
-    "approved": "2026-08-01 00:00:00"
+    "approved": "2026-08-01"
   },
   {
     "id": "PUB-0001",
@@ -75,7 +75,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "language": "Deutsch",
     "country": "Schweiz",
     "url": "https://fh-hwz.ch/de/weiterbildung/cas/cas-journalismus",
-    "approved": "2026-08-01 00:00:00"
+    "approved": "2026-08-01"
   },
   {
     "id": "PUB-0008",
@@ -88,7 +88,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "language": "Deutsch",
     "country": "Deutschland",
     "url": "https://www.ibb.com/weiterbildung/adobe-premiere-und-after-effects-effiziente-workflows-und-videoproduktion-mit-ki",
-    "approved": "2026-08-01 00:00:00"
+    "approved": "2026-08-01"
   },
   {
     "id": "PUB-0025",
@@ -101,7 +101,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "language": "Englisch",
     "country": "International",
     "url": "https://www.inma.org/modules/event/2026NewsroomAndAI/",
-    "approved": "2026-08-01 00:00:00"
+    "approved": "2026-08-01"
   },
   {
     "id": "PUB-0022",
@@ -114,7 +114,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "language": "Englisch/Spanisch",
     "country": "International",
     "url": "https://www.journalismai.info/programmes/discovery",
-    "approved": "2026-08-01 00:00:00"
+    "approved": "2026-08-01"
   },
   {
     "id": "PUB-0021",
@@ -127,7 +127,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "language": "Englisch",
     "country": "International (USA)",
     "url": "https://journalismcourses.org/product/digital-content-creators-and-journalists-how-to-be-a-trusted-voice-online/",
-    "approved": "2026-08-01 00:00:00"
+    "approved": "2026-08-01"
   },
   {
     "id": "PUB-0013",
@@ -140,7 +140,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "language": "Englisch",
     "country": "International",
     "url": "https://journalismcourses.org/product/how-to-use-chatgpt-and-other-generative-ai-tools-in-your-newsrooms/",
-    "approved": "2026-08-01 00:00:00"
+    "approved": "2026-08-01"
   },
   {
     "id": "PUB-0009",
@@ -153,7 +153,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "language": "Deutsch",
     "country": "Schweiz",
     "url": "https://www.maz.ch/kurs/maz-thementagung-ki-im-journalismus",
-    "approved": "2026-08-01 00:00:00"
+    "approved": "2026-08-01"
   },
   {
     "id": "PUB-0005",
@@ -166,7 +166,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "language": "Englisch",
     "country": "International (USA)",
     "url": "https://www.poynter.org/shop/ethics/ai-and-editing/",
-    "approved": "2026-08-01 00:00:00"
+    "approved": "2026-08-01"
   },
   {
     "id": "PUB-0004",
@@ -179,7 +179,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "language": "Englisch",
     "country": "International (USA)",
     "url": "https://www.poynter.org/shop/fact-checking-media-literacy/ai-for-journalists-and-content-creators-from-understanding-to-application/",
-    "approved": "2026-08-01 00:00:00"
+    "approved": "2026-08-01"
   },
   {
     "id": "PUB-0030",
@@ -192,7 +192,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "language": "Englisch",
     "country": "International (USA)",
     "url": "https://www.poynter.org/shop/ethics/ethics-for-editors/",
-    "approved": "2026-08-01 00:00:00"
+    "approved": "2026-08-01"
   },
   {
     "id": "PUB-0019",
@@ -205,7 +205,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "language": "Englisch",
     "country": "International (USA)",
     "url": "https://www.poynter.org/shop/ethics/ethics_of_journalism/",
-    "approved": "2026-08-01 00:00:00"
+    "approved": "2026-08-01"
   },
   {
     "id": "PUB-0029",
@@ -218,7 +218,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "language": "Englisch",
     "country": "International (USA)",
     "url": "https://www.poynter.org/shop/fact-checking-media-literacy/getting-it-right-accuracy-and-verification-in-the-digital-age/",
-    "approved": "2026-08-01 00:00:00"
+    "approved": "2026-08-01"
   },
   {
     "id": "PUB-0028",
@@ -231,7 +231,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "language": "Englisch",
     "country": "International (USA)",
     "url": "https://www.poynter.org/shop/ethics/how-any-journalist-can-earn-trust/",
-    "approved": "2026-08-01 00:00:00"
+    "approved": "2026-08-01"
   },
   {
     "id": "PUB-0027",
@@ -244,7 +244,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "language": "Englisch",
     "country": "International (USA)",
     "url": "https://www.poynter.org/shop/reporting-editing/journalism-fundamentals-craft-values/",
-    "approved": "2026-08-01 00:00:00"
+    "approved": "2026-08-01"
   },
   {
     "id": "PUB-0014",
@@ -257,7 +257,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "language": "Englisch",
     "country": "International (UK)",
     "url": "https://reutersinstitute.politics.ox.ac.uk/about-newsroom-leadership-programmes",
-    "approved": "2026-08-01 00:00:00"
+    "approved": "2026-08-01"
   },
   {
     "id": "PUB-0023",
@@ -270,7 +270,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "language": "Englisch",
     "country": "International (UK)",
     "url": "https://reutersinstitute.politics.ox.ac.uk/reuters-institutes-masterclass-ai-journalism-society",
-    "approved": "2026-08-01 00:00:00"
+    "approved": "2026-08-01"
   },
   {
     "id": "PUB-0007",
@@ -283,6 +283,6 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "language": "Französisch",
     "country": "Schweiz (Suisse romande)",
     "url": "https://sawi.com/formation-communication/praticien-en-intelligence-artificielle/",
-    "approved": "2026-08-01 00:00:00"
+    "approved": "2026-08-01"
   }
 ];

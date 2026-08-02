@@ -1,21 +1,49 @@
 <!doctype html>
-<html lang="de">
+<html lang="de-CH">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Verifizierte Weiterbildungsangebote für Journalistinnen, Journalisten und Medienschaffende.">
-  <title>Weiterbildungsradar Journalismus</title>
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#17334f">
+  <meta name="description" content="Können, was kommt: redaktionell geprüfte Fort- und Weiterbildungen für Journalistinnen, Journalisten und Medienschaffende – aus der Schweiz kuratiert, international ausgewählt.">
+  <link rel="canonical" href="https://george-sarpong.github.io/weiterbildungsradar-journalismus/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_CH">
+  <meta property="og:site_name" content="Weiterbildungsradar Journalismus">
+  <meta property="og:title" content="Weiterbildungsradar Journalismus – Können, was kommt.">
+  <meta property="og:description" content="Redaktionell geprüfte Fort- und Weiterbildungen für Journalismus und Medien – aus der Schweiz kuratiert, international ausgewählt.">
+  <meta property="og:url" content="https://george-sarpong.github.io/weiterbildungsradar-journalismus/">
+
+  <title>Weiterbildungsradar Journalismus | Fort- und Weiterbildung für Medien</title>
   <link rel="stylesheet" href="styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Weiterbildungsradar Journalismus",
+    "alternateName": "Können, was kommt.",
+    "url": "https://george-sarpong.github.io/weiterbildungsradar-journalismus/",
+    "description": "Redaktionell geprüfte Fort- und Weiterbildungen für Journalistinnen, Journalisten und Medienschaffende – aus der Schweiz kuratiert, international ausgewählt.",
+    "inLanguage": "de-CH",
+    "publisher": {
+      "@type": "Person",
+      "name": "George Sarpong"
+    }
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#angebote">Direkt zu den Angeboten</a>
+
   <header class="site-header">
     <div class="shell header-inner">
       <div class="brand" aria-label="Weiterbildungsradar Journalismus">
         <span class="brand-mark" aria-hidden="true">WJ</span>
-        <span class="brand-text">Weiterbildungsradar</span>
+        <span class="brand-text">Weiterbildungsradar Journalismus</span>
       </div>
-      <p class="header-note">Eigenständiges Projekt · Pilot 2026</p>
+      <p class="header-note">Aus der Schweiz kuratiert · international ausgewählt</p>
     </div>
   </header>
 
@@ -23,13 +51,13 @@
     <section class="hero">
       <div class="shell hero-grid">
         <div>
-          <p class="eyebrow">Weiterbildung für Medienschaffende</p>
-          <h1>Relevante Angebote schneller finden</h1>
-          <p class="lead">Eine redaktionell geprüfte Auswahl aus Journalismus, Medienführung, Recherche, KI, Daten und Ethik. Die Standardansicht enthält nur aktuell freigegebene Angebote.</p>
+          <p class="eyebrow">Fort- und Weiterbildung für Journalismus und Medien</p>
+          <h1>Können, was kommt.</h1>
+          <p class="lead">Entdecke redaktionell geprüfte Kurse, Programme und Veranstaltungen für Journalistinnen, Journalisten und Medienschaffende. Suche nach Thema, Sprache, Region und Erfahrungsniveau.</p>
         </div>
         <aside class="trust-box" aria-label="Hinweis zur Datenqualität">
-          <strong>Geprüfte Quellen</strong>
-          <p>Jeder Eintrag verlinkt auf die offizielle Angebotsseite. Termine und Buchbarkeit können sich ändern.</p>
+          <strong>Orientierung statt Angebotsflut</strong>
+          <p>Jeder Eintrag wird anhand der offiziellen Angebotsseite geprüft. Termine, Preise und Buchbarkeit können sich dennoch ändern.</p>
         </aside>
       </div>
     </section>
@@ -38,18 +66,33 @@
       <div class="shell">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">Auswahl eingrenzen</p>
+            <p class="eyebrow">Passende Weiterbildung finden</p>
             <h2 id="filter-title">Suche und Filter</h2>
           </div>
           <button class="reset-button" id="resetFilters" type="button">Filter zurücksetzen</button>
         </div>
 
         <div class="filter-grid">
-          <label class="field field-search"><span>Suchbegriff</span><input id="searchInput" type="search" placeholder="Titel, Anbieter oder Stichwort" autocomplete="off"></label>
-          <label class="field"><span>Sprache</span><select id="languageFilter"><option value="">Alle Sprachen</option></select></label>
-          <label class="field"><span>Land / Region</span><select id="countryFilter"><option value="">Alle Länder</option></select></label>
-          <label class="field"><span>Erfahrungsniveau</span><select id="levelFilter"><option value="">Alle Niveaus</option></select></label>
-          <label class="field"><span>Kennzeichnung</span><select id="categoryFilter"><option value="">Alle Kategorien</option></select></label>
+          <label class="field field-search">
+            <span>Suchbegriff</span>
+            <input id="searchInput" type="search" placeholder="Titel, Anbieter oder Stichwort" autocomplete="off">
+          </label>
+          <label class="field">
+            <span>Sprache</span>
+            <select id="languageFilter"><option value="">Alle Sprachen</option></select>
+          </label>
+          <label class="field">
+            <span>Land / Region</span>
+            <select id="countryFilter"><option value="">Alle Länder</option></select>
+          </label>
+          <label class="field">
+            <span>Erfahrungsniveau</span>
+            <select id="levelFilter"><option value="">Alle Niveaus</option></select>
+          </label>
+          <label class="field">
+            <span>Kennzeichnung</span>
+            <select id="categoryFilter"><option value="">Alle Kategorien</option></select>
+          </label>
         </div>
       </div>
     </section>
@@ -57,18 +100,48 @@
     <section class="results-section" id="angebote" aria-labelledby="results-title">
       <div class="shell">
         <div class="results-header">
-          <div><p class="eyebrow">Aktuelle Auswahl</p><h2 id="results-title">Weiterbildungsangebote</h2></div>
+          <div>
+            <p class="eyebrow">Aktuelle Auswahl</p>
+            <h2 id="results-title">Weiterbildungsangebote</h2>
+          </div>
           <p class="result-count" id="resultCount" aria-live="polite"></p>
         </div>
         <div class="cards" id="cards"></div>
-        <div class="empty-state" id="emptyState" hidden><h3>Keine passenden Angebote</h3><p>Ändern Sie den Suchbegriff oder setzen Sie einzelne Filter zurück.</p></div>
+        <div class="empty-state" id="emptyState" hidden>
+          <h3>Keine passenden Angebote</h3>
+          <p>Ändere den Suchbegriff oder setze einzelne Filter zurück.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="method-section" aria-labelledby="method-title">
+      <div class="shell">
+        <p class="eyebrow">So arbeitet der Radar</p>
+        <h2 id="method-title">Ausgewählt, geprüft, nachvollziehbar</h2>
+        <div class="method-grid">
+          <article class="method-card">
+            <h3>Für wen?</h3>
+            <p>Für Journalistinnen, Journalisten und Medienschaffende, die ihre Kompetenzen gezielt erweitern wollen.</p>
+          </article>
+          <article class="method-card">
+            <h3>Was wird erfasst?</h3>
+            <p>Konkrete Fort- und Weiterbildungen zu Journalismus, Recherche, KI, Daten, Medienführung, Produktion und Ethik.</p>
+          </article>
+          <article class="method-card">
+            <h3>Wie wird geprüft?</h3>
+            <p>Redaktionell anhand offizieller Quellen. Das Prüfdatum steht bei jedem Angebot; die Buchbarkeit ist vor der Anmeldung nochmals zu kontrollieren.</p>
+          </article>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="shell footer-grid">
-      <div><strong>Weiterbildungsradar Journalismus</strong><p>Eigenständiges redaktionelles Projekt von George Sarpong. Der Pilot 2026 entstand im Rahmen eines SFJ-Meetups. Keine automatische Veröffentlichung aus internen Arbeitsdaten.</p></div>
+      <div>
+        <strong>Weiterbildungsradar Journalismus</strong>
+        <p>Eigenständiges redaktionelles Projekt von George Sarpong. Keine automatische Veröffentlichung aus internen Arbeitsdaten.</p>
+      </div>
       <p>Datenstand: 1. August 2026</p>
     </div>
   </footer>

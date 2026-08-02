@@ -1,34 +1,37 @@
-# Weiterbildungsradar Journalismus – Web-MVP V1
+# Weiterbildungsradar Journalismus – Web-MVP V2
 
-Dieses Paket enthält eine statische Website mit 22 redaktionell freigegebenen Weiterbildungsangeboten. Die internen Google-Sheets-Daten werden nicht veröffentlicht.
+**Können, was kommt.**
 
-## Eigentum und Partnerhinweis
+Dieses Paket enthält eine statische Website mit 22 redaktionell freigegebenen Weiterbildungsangeboten für Journalistinnen, Journalisten und Medienschaffende. Die Auswahl wird aus der Schweiz kuratiert und umfasst auch internationale Angebote. Interne Google-Sheets-Arbeitsdaten werden nicht veröffentlicht.
 
-Das Weiterbildungsradar Journalismus ist ein eigenständiges Projekt von George Sarpong.
-Der SFJ ist Partner des Piloten 2026 und nicht Eigentümer des Produkts, des Repositorys,
-des Codes oder des Datenmodells.
+## Projekt
 
-Der Partnerhinweis kann später entfernt werden, ohne Repository oder Produktnamen zu ändern.
-SFJ-Name und -Logo dürfen nur im vereinbarten Umfang verwendet werden.
+Der Weiterbildungsradar Journalismus ist ein eigenständiges redaktionelles Projekt von George Sarpong. Jedes veröffentlichte Angebot verweist auf eine offizielle Quelle und trägt ein Prüfdatum. Termine, Preise und Buchbarkeit sind vor der Anmeldung nochmals auf der Angebotsseite zu kontrollieren.
 
 ## Dateien
-- `index.html` – Seitenstruktur
+
+- `index.html` – Seitenstruktur, sichtbare Texte sowie SEO-/GEO-Metadaten
 - `styles.css` – Gestaltung und responsive Darstellung
 - `data.js` – freigegebener öffentlicher Datenbestand
-- `app.js` – Suche und Filter
-- `404.html` – einfache Fehlerseite
+- `app.js` – Suche, Filter und Datumsanzeige
+- `404.html` – Fehlerseite
+- `robots.txt` – Freigabe für Suchmaschinen
 
 ## Lokal ansehen
+
 Die Datei `index.html` kann direkt im Browser geöffnet werden.
 
 ## Auf GitHub Pages veröffentlichen
-1. Neues öffentliches Repository anlegen, zum Beispiel `weiterbildungsradar-journalismus`.
-2. Alle Dateien aus diesem Ordner in die oberste Ebene des Repositorys laden.
-3. In **Settings → Pages** als Quelle den Branch `main` und den Ordner `/root` wählen.
-4. Nach dem ersten Test kann später eine eigene Subdomain verbunden werden.
+
+1. Alle Dateien in die oberste Ebene des Repositorys `weiterbildungsradar-journalismus` laden.
+2. In **Settings → Pages** unter **Build and deployment** die Quelle **Deploy from a branch** wählen.
+3. Branch **main** und Ordner **/(root)** auswählen und speichern.
+4. Die veröffentlichte Website vollständig testen, bevor sie aktiv beworben wird.
 
 ## Aktualisierung
-Nur nach menschlicher Freigabe: `PUBLIC_EXPORT_V1` prüfen, `data.js` ersetzen, Änderungen in GitHub speichern, Veröffentlichung kontrollieren und den öffentlichen Status im Produktionssheet nachführen.
+
+Nur nach menschlicher Freigabe: öffentlichen Export prüfen, `data.js` ersetzen, Änderung committen, Website kontrollieren und den Publikationsstatus im Produktionssystem nachführen.
 
 ## Nicht enthalten
-Historische Angebote, Nutzerkonten, Tracking, Live-Verbindung zum internen Google Sheet und automatische Veröffentlichung.
+
+Historische Angebote, Nutzerkonten, Tracking, eine Live-Verbindung zum internen Google Sheet und automatische Veröffentlichung.
