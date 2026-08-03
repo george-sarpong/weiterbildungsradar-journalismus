@@ -124,14 +124,10 @@ h2 { margin-bottom: 0; font-size: clamp(1.65rem, 3vw, 2.25rem); letter-spacing: 
 .access { margin: 0 0 20px; padding: 14px 16px; border-left: 4px solid var(--blue); background: var(--blue-soft); color: #24394c; }
 .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
 .badge { display: inline-flex; align-items: center; gap: 7px; min-height: 28px; border: 1px solid transparent; border-radius: 999px; padding: 5px 10px; background: #eef1f4; color: #3c4757; font-size: .76rem; font-weight: 800; }
-.badge-focus::before { content: ""; flex: 0 0 auto; width: 7px; height: 7px; background: currentColor; }
 .badge-focus[data-focus="JOURNALISMUS"] { background: var(--journalism-bg); color: var(--journalism-ink); }
-.badge-focus[data-focus="JOURNALISMUS"]::before { border-radius: 50%; }
 .badge-focus[data-focus="MEDIENPRAXIS"] { background: var(--media-bg); color: var(--media-ink); border-color: #9ebfca; }
-.badge-focus[data-focus="MEDIENPRAXIS"]::before { border-radius: 1px; }
 .badge-focus[data-focus="MANAGEMENT"] { background: var(--management-bg); color: var(--management-ink); border-color: #d6bd85; }
-.badge-focus[data-focus="MANAGEMENT"]::before { transform: rotate(45deg); border-radius: 1px; }
-.badge-type { background: #fff; color: var(--navy); border-color: #aebdca; }
+.badge-type { background: #f4f6f8; color: #465364; border-color: #d2d8df; font-weight: 750; }
 .card-footer { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: auto; padding-top: 18px; border-top: 1px solid var(--line); }
 .source-link { display: inline-flex; align-items: center; gap: 7px; color: var(--navy); font-weight: 800; text-decoration-thickness: 1px; text-underline-offset: 4px; }
 .source-link:hover { color: var(--accent); }

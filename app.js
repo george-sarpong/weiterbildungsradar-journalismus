@@ -82,19 +82,17 @@
     <article class="card">
       <div class="card-topline">
         <p class="provider">${escapeHtml(offer.provider)}</p>
-        <div class="card-labels" aria-label="Berufsbezug und Angebotsart">
+        <div class="card-labels" aria-label="Berufsbezug">
           <span class="badge badge-focus" data-focus="${escapeHtml(offer.focus)}">
             ${escapeHtml(labels.focus[offer.focus] ?? offer.focus)}
-          </span>
-          <span class="badge badge-type">
-            ${escapeHtml(labels.offerType[offer.offerType] ?? offer.offerType)}
           </span>
         </div>
       </div>
       <h3>${escapeHtml(offer.title)}</h3>
       <p class="card-description">${escapeHtml(offer.description)}</p>
       <p class="access"><strong>Zugang:</strong> ${escapeHtml(offer.access)}</p>
-      <div class="badges" aria-label="Weitere Eigenschaften">
+      <div class="badges" aria-label="Angebotsart und weitere Eigenschaften">
+        <span class="badge badge-type">${escapeHtml(labels.offerType[offer.offerType] ?? offer.offerType)}</span>
         <span class="badge">${escapeHtml(labels.level[offer.level] ?? offer.level)}</span>
         <span class="badge">${escapeHtml(offer.language)}</span>
         <span class="badge">${escapeHtml(offer.country)}</span>
