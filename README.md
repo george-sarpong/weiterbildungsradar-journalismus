@@ -1,65 +1,31 @@
-# Weiterbildungsradar Journalismus – Web-MVP V4
+# Weiterbildungsradar Journalismus – Web-MVP V5
 
-**Können, was kommt.**
+Statische Website für GitHub Pages.
 
-V4 ist die funktionale Klassifikations- und Filterversion mit 22 redaktionell freigegebenen Weiterbildungsangeboten.
+## Neu in V5
 
-## Öffentliche Klassifikation
+- Favoritenherz auf jeder Angebotskarte
+- lokale Speicherung der Favoriten im Browser (`localStorage`)
+- Anzeige der Favoritenzahl
+- Umschalter «Nur Favoriten»
+- passende Leerzustände für Favoriten und Filter
+- sichtbarer Filterstatus und deaktivierter Reset ohne aktive Filter
+- Tastatur- und Screenreader-taugliche Favoritenbuttons
+- mobile Anpassungen für die neuen Bedienelemente
 
-### Berufsbezug
+## Dateien
 
-- **Journalismus**: journalistisches Handwerk, Recherche, Verifikation, Storytelling, Medienrecht und Medienethik
-- **Medienpraxis**: Produktion, Content, Technologie, Distribution und medienbezogene Arbeitsprozesse
-- **Management**: Führung, Strategie, Innovation, Projektmanagement, Change und Unternehmertum
+- `index.html` – Seitenstruktur und Metadaten
+- `styles.css` – Gestaltung und Responsive Design
+- `data.js` – 22 redaktionell geprüfte Angebote
+- `app.js` – Suche, Filter, Favoriten und Darstellung
+- `404.html` – Fehlerseite für GitHub Pages
+- `robots.txt` – Suchmaschinenhinweis
 
-### Angebotsart
+## Veröffentlichung
 
-- **Kurs**: kompakteres einzelnes Lernangebot
-- **Programm**: umfangreiche Weiterbildung ohne formalen Hochschulabschluss
-- **Event**: Veranstaltung mit Weiterbildungscharakter
-- **Fellowship**: zeitlich begrenztes Förder- und Lernprogramm
-- **Studium**: formaler Hochschulabschluss oder geregelte Hochschulweiterbildung, etwa CAS, DAS, MAS, MBA oder EMBA
+Alle Dateien müssen direkt im Stammverzeichnis des GitHub-Repositorys liegen. GitHub Pages kann anschliessend wie bisher aus dem Branch `main` veröffentlicht werden.
 
-## Darstellung in V4
+## Datenschutz-Hinweis zu Favoriten
 
-- Der **Berufsbezug** ist das einzige farbige Kategoriensignal auf der Karte.
-- Die **Angebotsart** erscheint zurückhaltend bei Niveau, Sprache und Land.
-- Geometrische Zusatzsymbole werden nicht verwendet.
-- Farbe ist nie der einzige Informationsträger; jede Kategorie ist ausgeschrieben.
-- Die Farbpalette vermeidet einen Rot-Grün-Gegensatz.
-- Berufsbezug und Angebotsart bleiben getrennt filterbar.
-- Suche, Filterkombinationen, Trefferzahl, Zurücksetzen und Null-Treffer-Anzeige sind integriert.
-- Der Zugangshinweis bleibt als eigener Informationskasten auf jeder Karte sichtbar.
-- **Orientierung statt Angebotsflut** steht unterhalb der Angebotsliste.
-
-## Kopfbereich
-
-- Haupttitel: **Fort- und Weiterbildung für Journalismus und Medien**
-- Claim: **Können, was kommt.**
-- Kurzzeile: **kuratiert.ausgewählt.**
-
-Die umfassende gestalterische Überarbeitung des Headers und der Karten folgt später. V4 stabilisiert zuerst Funktionen und Datenlogik.
-
-## Dateien für GitHub Pages
-
-- `index.html`
-- `styles.css`
-- `app.js`
-- `data.js`
-- `404.html`
-- `robots.txt`
-- `README.md`
-
-Alle sieben Dateien müssen direkt in der obersten Ebene des Repositorys liegen.
-
-## Aktualisierung auf GitHub
-
-1. ZIP-Datei entpacken.
-2. Die sieben Dateien über **Upload files** hochladen.
-3. Gleichnamige Dateien ersetzen.
-4. Direkt in den Branch `main` committen.
-5. Die Live-Seite nach dem automatischen GitHub-Pages-Deployment testen.
-
-## Spätere Publikationsschicht
-
-Noch nicht Bestandteil von V4 sind die vollständige Designüberarbeitung, Impressum, Datenschutz, Methodikseite, SEO-/GEO-Ausbau, Sitemap, eigene Domain, Magazin und Werbemöglichkeiten.
+Favoriten werden ausschliesslich im Browser des jeweiligen Geräts gespeichert. Es werden keine Favoritendaten an einen Server übertragen. Beim Löschen der Browserdaten können die Favoriten verloren gehen.

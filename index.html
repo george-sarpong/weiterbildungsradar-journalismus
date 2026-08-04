@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Weiterbildungsradar Journalismus – Web-MVP V4 -->
+<!-- Weiterbildungsradar Journalismus – Web-MVP V5 -->
 <html lang="de-CH">
 <head>
   <meta charset="utf-8">
@@ -64,7 +64,10 @@
             <p class="eyebrow">Passende Weiterbildung finden</p>
             <h2 id="filter-title">Suche und Filter</h2>
           </div>
-          <button class="reset-button" id="resetFilters" type="button">Filter zurücksetzen</button>
+          <div class="filter-heading-actions">
+            <p class="filter-status" id="filterStatus" aria-live="polite">Keine Filter aktiv</p>
+            <button class="reset-button" id="resetFilters" type="button">Filter zurücksetzen</button>
+          </div>
         </div>
 
         <div class="filter-grid">
@@ -113,12 +116,21 @@
             <p class="eyebrow">Aktuelle Auswahl</p>
             <h2 id="results-title">Weiterbildungsangebote</h2>
           </div>
-          <p class="result-count" id="resultCount" aria-live="polite"></p>
+          <div class="results-actions">
+            <p class="result-count" id="resultCount" aria-live="polite"></p>
+            <button class="favorites-toggle" id="favoritesToggle" type="button" aria-pressed="false">
+              <svg class="heart-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 20.4 4.4 13A5.1 5.1 0 0 1 11.6 5.8L12 6.2l.4-.4A5.1 5.1 0 0 1 19.6 13Z"></path>
+              </svg>
+              <span>Nur Favoriten</span>
+              <span class="favorites-count" id="favoritesCount">0</span>
+            </button>
+          </div>
         </div>
         <div class="cards" id="cards"></div>
         <div class="empty-state" id="emptyState" hidden>
-          <h3>Keine passenden Angebote</h3>
-          <p>Ändere den Suchbegriff oder setze einzelne Filter zurück.</p>
+          <h3 id="emptyTitle">Keine passenden Angebote</h3>
+          <p id="emptyText">Ändere den Suchbegriff oder setze einzelne Filter zurück.</p>
         </div>
       </div>
     </section>

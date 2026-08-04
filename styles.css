@@ -174,3 +174,112 @@ h2 { margin-bottom: 0; font-size: clamp(1.65rem, 3vw, 2.25rem); letter-spacing: 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* V5: Favoriten und klarere Filterzustände */
+.filter-heading-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.filter-status {
+  margin: 0;
+  color: var(--muted);
+  font-size: .86rem;
+  font-weight: 700;
+}
+.reset-button:disabled {
+  cursor: default;
+  opacity: .48;
+  background: transparent;
+}
+.results-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.favorites-toggle,
+.favorite-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #b9c4ce;
+  background: #fff;
+  color: var(--navy);
+}
+.favorites-toggle {
+  min-height: 42px;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 800;
+}
+.favorites-toggle:hover,
+.favorites-toggle.is-active {
+  border-color: var(--navy);
+  background: var(--blue-soft);
+}
+.favorites-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 24px;
+  min-height: 24px;
+  border-radius: 999px;
+  padding-inline: 6px;
+  background: var(--navy);
+  color: #fff;
+  font-size: .76rem;
+}
+.heart-icon {
+  width: 21px;
+  height: 21px;
+}
+.heart-icon path {
+  fill: transparent;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.favorites-toggle.is-active .heart-icon path,
+.favorite-button.is-favorite .heart-icon path {
+  fill: currentColor;
+}
+.card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 9px;
+}
+.favorite-button {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  padding: 0;
+}
+.favorite-button:hover,
+.favorite-button.is-favorite {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: #fff8f6;
+}
+
+@media (max-width: 720px) {
+  .filter-heading-actions,
+  .results-actions {
+    width: 100%;
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .filter-heading-actions .reset-button,
+  .favorites-toggle {
+    width: 100%;
+  }
+  .card-topline {
+    width: 100%;
+  }
+  .card-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
