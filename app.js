@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const offers = Array.isArray(window.WEITERBILDUNGSRADAR_OFFERS)
+  const allOffers = Array.isArray(window.WEITERBILDUNGSRADAR_OFFERS)
     ? window.WEITERBILDUNGSRADAR_OFFERS
     : [];
 
@@ -23,20 +23,33 @@
     level: {
       EINSTIEG: "Einstieg",
       BERUFSERFAHRUNG: "Berufserfahrung",
-      FUEHRUNG_STRATEGIE: "Führung & Strategie",
-      GEMISCHT: "Gemischt"
+      VERSCHIEDENE_NIVEAUS: "Verschiedene Niveaus"
+    },
+    priceCategory: {
+      KOSTENLOS: "Kostenlos",
+      BIS_500: "Bis 500",
+      "501_2000": "501 bis 2'000",
+      UEBER_2000: "Über 2'000",
+      MEHRERE_TARIFE: "Mehrere Tarife",
+      PREIS_AUF_ANFRAGE: "Preis auf Anfrage"
     }
   };
 
   const preferredOrder = {
     focus: ["JOURNALISMUS", "MEDIENPRAXIS", "MANAGEMENT"],
-    offerType: ["KURS", "PROGRAMM", "EVENT", "FELLOWSHIP", "STUDIUM"]
+    offerType: ["KURS", "PROGRAMM", "EVENT", "FELLOWSHIP", "STUDIUM"],
+    priceCategory: ["KOSTENLOS", "BIS_500", "501_2000", "UEBER_2000", "MEHRERE_TARIFE", "PREIS_AUF_ANFRAGE"],
+    format: ["PRÄSENZ", "ONLINE LIVE", "ONLINE SELBSTLERNEN", "HYBRID"],
+    country: ["Schweiz", "Deutschland", "Österreich", "Frankreich", "Grossbritannien", "USA", "International"],
+    level: ["EINSTIEG", "BERUFSERFAHRUNG", "VERSCHIEDENE_NIVEAUS"]
   };
 
   const el = {
     search: document.querySelector("#searchInput"),
     focus: document.querySelector("#focusFilter"),
     type: document.querySelector("#typeFilter"),
+    price: document.querySelector("#priceFilter"),
+    format: document.querySelector("#formatFilter"),
     language: document.querySelector("#languageFilter"),
     country: document.querySelector("#countryFilter"),
     level: document.querySelector("#levelFilter"),
@@ -51,14 +64,25 @@
     emptyText: document.querySelector("#emptyText")
   };
 
-  const knownIds = new Set(offers.map(offer => offer.id));
+  const parseDate = value => value ? new Date(`${value}T23:59:59`) : null;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const isCurrent = offer => {
+    const end = parseDate(offer.endDate);
+    return !end || end >= today;
+  };
+
+  const offers = allOffers.filter(isCurrent);
+  const allKnownIds = new Set(allOffers.map(offer => offer.id));
+  const activeIds = new Set(offers.map(offer => offer.id));
   let favorites = loadFavorites();
   let favoritesOnly = false;
 
   function loadFavorites() {
     try {
       const stored = JSON.parse(window.localStorage.getItem(FAVORITES_KEY) || "[]");
-      return new Set(Array.isArray(stored) ? stored.filter(id => knownIds.has(id)) : []);
+      return new Set(Array.isArray(stored) ? stored.filter(id => allKnownIds.has(id)) : []);
     } catch {
       return new Set();
     }
@@ -82,7 +106,10 @@
 
   const orderedValues = (key, order) => {
     const values = new Set(offers.map(offer => offer[key]).filter(Boolean));
-    return order.filter(value => values.has(value));
+    return [
+      ...order.filter(value => values.has(value)),
+      ...[...values].filter(value => !order.includes(value)).sort((a, b) => a.localeCompare(b, "de-CH"))
+    ];
   };
 
   const addOptions = (select, values, formatter = value => value) => {
@@ -111,11 +138,19 @@
       <path d="M12 20.4 4.4 13A5.1 5.1 0 0 1 11.6 5.8L12 6.2l.4-.4A5.1 5.1 0 0 1 19.6 13Z"></path>
     </svg>`;
 
+  const fact = (label, value) => `
+    <div class="fact-item">
+      <dt>${escapeHtml(label)}</dt>
+      <dd>${escapeHtml(value)}</dd>
+    </div>`;
+
   const card = offer => {
     const isFavorite = favorites.has(offer.id);
     const favoriteLabel = isFavorite
       ? `${offer.title} aus den Favoriten entfernen`
       : `${offer.title} zu den Favoriten hinzufügen`;
+    const place = offer.region ? `${offer.country} · ${offer.region}` : offer.country;
+    const feedbackSubject = encodeURIComponent(`Hinweis zu ${offer.provider}: ${offer.title}`);
 
     return `
       <article class="card" data-offer-id="${escapeHtml(offer.id)}">
@@ -136,18 +171,27 @@
           </div>
         </div>
         <h3>${escapeHtml(offer.title)}</h3>
+        <dl class="facts" aria-label="Preis, Durchführungsform, Dauer und Start">
+          ${fact("Preis", offer.priceDisplay)}
+          ${fact("Durchführung", offer.format)}
+          ${fact("Dauer", offer.duration)}
+          ${fact("Start", offer.start)}
+        </dl>
         <p class="card-description">${escapeHtml(offer.description)}</p>
         <p class="access"><strong>Zugang:</strong> ${escapeHtml(offer.access)}</p>
         <div class="badges" aria-label="Angebotsart und weitere Eigenschaften">
           <span class="badge badge-type">${escapeHtml(labels.offerType[offer.offerType] ?? offer.offerType)}</span>
           <span class="badge">${escapeHtml(labels.level[offer.level] ?? offer.level)}</span>
           <span class="badge">${escapeHtml(offer.language)}</span>
-          <span class="badge">${escapeHtml(offer.country)}</span>
+          <span class="badge">${escapeHtml(place)}</span>
         </div>
         <div class="card-footer">
-          <a class="source-link" href="${escapeHtml(offer.url)}" target="_blank" rel="noopener noreferrer" aria-label="Offizielle Angebotsseite zu ${escapeHtml(offer.title)} öffnen">
-            Offizielle Angebotsseite <span aria-hidden="true">↗</span>
-          </a>
+          <div class="card-links">
+            <a class="source-link" href="${escapeHtml(offer.url)}" target="_blank" rel="noopener noreferrer" aria-label="Offizielle Angebotsseite zu ${escapeHtml(offer.title)} öffnen">
+              Offizielle Angebotsseite <span aria-hidden="true">↗</span>
+            </a>
+            <a class="feedback-link" href="mailto:kontakt@weiterbildungsradar.ch?subject=${feedbackSubject}">Fehler melden</a>
+          </div>
           <span class="checked">Geprüft: ${escapeHtml(formatDate(offer.approved))}</span>
         </div>
       </article>`;
@@ -157,6 +201,8 @@
     query: normalize(el.search.value.trim()),
     focus: el.focus.value,
     type: el.type.value,
+    price: el.price.value,
+    format: el.format.value,
     language: el.language.value,
     country: el.country.value,
     level: el.level.value
@@ -168,8 +214,13 @@
       offer.title,
       offer.description,
       offer.access,
+      offer.priceDisplay,
+      offer.format,
+      offer.duration,
+      offer.start,
       offer.language,
       offer.country,
+      offer.region,
       labels.level[offer.level],
       labels.focus[offer.focus],
       labels.offerType[offer.offerType]
@@ -179,6 +230,8 @@
       && (!filter.query || haystack.includes(filter.query))
       && (!filter.focus || offer.focus === filter.focus)
       && (!filter.type || offer.offerType === filter.type)
+      && (!filter.price || offer.priceCategory === filter.price)
+      && (!filter.format || offer.format === filter.format)
       && (!filter.language || offer.language === filter.language)
       && (!filter.country || offer.country === filter.country)
       && (!filter.level || offer.level === filter.level);
@@ -188,6 +241,8 @@
     filter.query,
     filter.focus,
     filter.type,
+    filter.price,
+    filter.format,
     filter.language,
     filter.country,
     filter.level
@@ -200,7 +255,7 @@
     }
 
     el.empty.hidden = false;
-    if (favoritesOnly && favorites.size === 0) {
+    if (favoritesOnly && [...favorites].filter(id => activeIds.has(id)).length === 0) {
       el.emptyTitle.textContent = "Noch keine Favoriten";
       el.emptyText.textContent = "Markiere interessante Angebote mit dem Herz. Sie bleiben auf diesem Gerät gespeichert.";
     } else if (favoritesOnly) {
@@ -219,36 +274,31 @@
     const currentFilters = filters();
     const activeCount = activeFilterCount(currentFilters);
     const filtered = offers.filter(offer => matches(offer, currentFilters));
+    const activeFavoriteCount = [...favorites].filter(id => activeIds.has(id)).length;
 
     el.cards.innerHTML = filtered.map(card).join("");
-    el.count.textContent = `${filtered.length} von ${offers.length} Angeboten${favoritesOnly ? " · Favoriten" : ""}`;
+    el.count.textContent = `${filtered.length} von ${offers.length} aktuellen Angeboten${favoritesOnly ? " · Favoriten" : ""}`;
     el.filterStatus.textContent = activeCount === 0
       ? "Keine Filter aktiv"
-      : `${activeCount} ${activeCount === 1 ? "Filter" : "Filter"} aktiv`;
+      : `${activeCount} Filter aktiv`;
     el.reset.disabled = activeCount === 0;
-    el.favoritesCount.textContent = String(favorites.size);
+    el.favoritesCount.textContent = String(activeFavoriteCount);
     el.favoritesToggle.setAttribute("aria-pressed", String(favoritesOnly));
     el.favoritesToggle.classList.toggle("is-active", favoritesOnly);
     updateEmptyState(filtered.length, activeCount);
   };
 
   const reset = () => {
-    el.search.value = "";
-    el.focus.value = "";
-    el.type.value = "";
-    el.language.value = "";
-    el.country.value = "";
-    el.level.value = "";
+    [el.search, el.focus, el.type, el.price, el.format, el.language, el.country, el.level]
+      .forEach(node => { node.value = ""; });
     render();
     el.search.focus();
   };
 
   const toggleFavorite = id => {
-    if (!knownIds.has(id)) return;
-
+    if (!allKnownIds.has(id)) return;
     if (favorites.has(id)) favorites.delete(id);
     else favorites.add(id);
-
     saveFavorites();
     render();
 
@@ -260,11 +310,13 @@
 
   addOptions(el.focus, orderedValues("focus", preferredOrder.focus), value => labels.focus[value] ?? value);
   addOptions(el.type, orderedValues("offerType", preferredOrder.offerType), value => labels.offerType[value] ?? value);
+  addOptions(el.price, orderedValues("priceCategory", preferredOrder.priceCategory), value => labels.priceCategory[value] ?? value);
+  addOptions(el.format, orderedValues("format", preferredOrder.format));
   addOptions(el.language, uniqueSorted("language"));
-  addOptions(el.country, uniqueSorted("country"));
-  addOptions(el.level, uniqueSorted("level"), value => labels.level[value] ?? value);
+  addOptions(el.country, orderedValues("country", preferredOrder.country));
+  addOptions(el.level, orderedValues("level", preferredOrder.level), value => labels.level[value] ?? value);
 
-  [el.search, el.focus, el.type, el.language, el.country, el.level]
+  [el.search, el.focus, el.type, el.price, el.format, el.language, el.country, el.level]
     .forEach(node => node.addEventListener("input", render));
 
   el.reset.addEventListener("click", reset);

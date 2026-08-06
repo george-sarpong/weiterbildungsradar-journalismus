@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Weiterbildungsradar Journalismus – Web-MVP V5 -->
+<!-- Weiterbildungsradar Journalismus – Web-MVP V6.2 -->
 <html lang="de-CH">
 <head>
   <meta charset="utf-8">
@@ -53,7 +53,7 @@
       <div class="shell hero-inner">
         <h1 id="page-title">Fort- und Weiterbildung für Journalismus und Medien</h1>
         <p class="hero-claim">Können, was kommt.</p>
-        <p class="lead">Entdecke redaktionell geprüfte Kurse, Programme, Events und Studienangebote für Journalistinnen, Journalisten und Medienschaffende. Suche nach Thema, Berufsbezug, Angebotsart, Sprache, Region und Erfahrungsniveau.</p>
+        <p class="lead">Entdecke redaktionell geprüfte Kurse, Programme, Events und Studienangebote für Journalistinnen, Journalisten und Medienschaffende. Vergleiche Thema, Preis, Durchführungsform, Dauer, Start, Sprache und Anbieterbasis.</p>
       </div>
     </section>
 
@@ -84,11 +84,19 @@
             <select id="typeFilter"><option value="">Alle Arten</option></select>
           </label>
           <label class="field">
+            <span>Preis</span>
+            <select id="priceFilter"><option value="">Alle Preise</option></select>
+          </label>
+          <label class="field">
+            <span>Durchführungsform</span>
+            <select id="formatFilter"><option value="">Alle Formen</option></select>
+          </label>
+          <label class="field">
             <span>Sprache</span>
             <select id="languageFilter"><option value="">Alle Sprachen</option></select>
           </label>
           <label class="field">
-            <span>Land / Region</span>
+            <span>Land / Anbieterbasis</span>
             <select id="countryFilter"><option value="">Alle Länder</option></select>
           </label>
           <label class="field">
@@ -132,6 +140,13 @@
           <h3 id="emptyTitle">Keine passenden Angebote</h3>
           <p id="emptyText">Ändere den Suchbegriff oder setze einzelne Filter zurück.</p>
         </div>
+        <div class="feedback-strip">
+          <div>
+            <strong>Fehler entdeckt oder Angebot vermisst?</strong>
+            <span>Hinweise helfen, den Radar aktuell und nützlich zu halten.</span>
+          </div>
+          <a class="reset-button feedback-button" href="mailto:kontakt@weiterbildungsradar.ch?subject=Hinweis%20zum%20Weiterbildungsradar">Hinweis senden</a>
+        </div>
       </div>
     </section>
 
@@ -150,9 +165,10 @@
           </article>
           <article class="method-card">
             <h3>Wie wird geprüft?</h3>
-            <p>Redaktionell anhand offizieller Quellen. Das Prüfdatum steht bei jedem Angebot; die Buchbarkeit ist vor der Anmeldung nochmals zu kontrollieren.</p>
+            <p>Redaktionell anhand offizieller Quellen. Geprüft werden unter anderem Preis, Format, Dauer, Start und Zugang; verbindlich bleibt die Angebotsseite.</p>
           </article>
         </div>
+        <p class="section-link"><a class="source-link" href="methodik.html">Auswahlkriterien und Prüfprozess lesen <span aria-hidden="true">→</span></a></p>
       </div>
     </section>
 
@@ -161,7 +177,7 @@
         <div class="orientation-box">
           <p class="eyebrow">Transparenz</p>
           <h2 id="orientation-title">Orientierung statt Angebotsflut</h2>
-          <p>Jeder Eintrag wird anhand der offiziellen Angebotsseite geprüft. Termine, Preise und Buchbarkeit können sich dennoch ändern.</p>
+          <p>Jeder Eintrag wird anhand der offiziellen Angebotsseite geprüft. Termine, Preise, Tarife und Buchbarkeit können sich dennoch ändern. Abgelaufene Einmalangebote werden ausgeblendet.</p>
         </div>
       </div>
     </section>
@@ -169,8 +185,15 @@
 
   <footer class="site-footer">
     <div class="shell footer-grid">
-      <p><strong>Weiterbildungsradar Journalismus</strong> · Können, was kommt.</p>
-      <p>Datenstand: 1. August 2026</p>
+      <div>
+        <p><strong>Weiterbildungsradar Journalismus</strong> · Können, was kommt.</p>
+        <p class="footer-meta">Datenstand: 6. August 2026</p>
+      </div>
+      <nav class="footer-nav" aria-label="Rechtliches und Methodik">
+        <a href="methodik.html">Methodik</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </nav>
     </div>
   </footer>
 
