@@ -1,0 +1,16 @@
+V6.3 – Upload auf GitHub
+
+Ersetze im Repository nur diese fünf Dateien:
+- index.html
+- styles.css
+- app.js
+- data.js
+- README.md
+
+Die übrigen Dateien im Paket sind unverändert aus V6.2 enthalten, damit das Paket vollständig bleibt.
+
+Nach dem Commit:
+1. Repository > Actions öffnen.
+2. Auf grünes Häkchen beim neuesten Pages-Deployment warten.
+3. Website neu laden (Mac/Chrome: Cmd + Shift + R).
+4. Prüfen: Sortierfeld sichtbar; Filter ändern URL; kopierter Link reproduziert die Auswahl; Favoriten funktionieren weiterhin.

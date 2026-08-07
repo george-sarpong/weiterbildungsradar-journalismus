@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Weiterbildungsradar Journalismus – Web-MVP V6.2 -->
+<!-- Weiterbildungsradar Journalismus – Web-MVP V6.3 -->
 <html lang="de-CH">
 <head>
   <meta charset="utf-8">
@@ -126,6 +126,15 @@
           </div>
           <div class="results-actions">
             <p class="result-count" id="resultCount" aria-live="polite"></p>
+            <label class="sort-control">
+              <span>Sortieren nach</span>
+              <select id="sortSelect">
+                <option value="EDITORIAL">Redaktionelle Auswahl</option>
+                <option value="START">Nächster Start</option>
+                <option value="APPROVED">Zuletzt geprüft</option>
+                <option value="PROVIDER">Anbieter A–Z</option>
+              </select>
+            </label>
             <button class="favorites-toggle" id="favoritesToggle" type="button" aria-pressed="false">
               <svg class="heart-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path d="M12 20.4 4.4 13A5.1 5.1 0 0 1 11.6 5.8L12 6.2l.4-.4A5.1 5.1 0 0 1 19.6 13Z"></path>

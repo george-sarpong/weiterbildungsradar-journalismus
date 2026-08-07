@@ -53,6 +53,7 @@
     language: document.querySelector("#languageFilter"),
     country: document.querySelector("#countryFilter"),
     level: document.querySelector("#levelFilter"),
+    sort: document.querySelector("#sortSelect"),
     reset: document.querySelector("#resetFilters"),
     filterStatus: document.querySelector("#filterStatus"),
     favoritesToggle: document.querySelector("#favoritesToggle"),
@@ -133,6 +134,75 @@
     return match ? `${match[3]}.${match[2]}.${match[1]}` : String(value ?? "");
   };
 
+
+  const sortOffers = list => {
+    const sorted = [...list];
+    switch (el.sort.value) {
+      case "START":
+        return sorted.sort((a, b) => {
+          const aDate = a.startDate || "9999-12-31";
+          const bDate = b.startDate || "9999-12-31";
+          return aDate.localeCompare(bDate)
+            || a.provider.localeCompare(b.provider, "de-CH")
+            || a.title.localeCompare(b.title, "de-CH");
+        });
+      case "APPROVED":
+        return sorted.sort((a, b) => b.approved.localeCompare(a.approved)
+          || a.provider.localeCompare(b.provider, "de-CH")
+          || a.title.localeCompare(b.title, "de-CH"));
+      case "PROVIDER":
+        return sorted.sort((a, b) => a.provider.localeCompare(b.provider, "de-CH")
+          || a.title.localeCompare(b.title, "de-CH"));
+      default:
+        return sorted;
+    }
+  };
+
+  const urlParamMap = {
+    q: el.search,
+    focus: el.focus,
+    type: el.type,
+    price: el.price,
+    format: el.format,
+    language: el.language,
+    country: el.country,
+    level: el.level
+  };
+
+  const hasOption = (select, value) => [...select.options].some(option => option.value === value);
+
+  const applyUrlState = () => {
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get("q");
+    if (query) el.search.value = query;
+
+    Object.entries(urlParamMap).forEach(([name, node]) => {
+      if (name === "q") return;
+      const value = params.get(name);
+      if (value && hasOption(node, value)) node.value = value;
+    });
+
+    const sort = params.get("sort");
+    if (sort && hasOption(el.sort, sort)) el.sort.value = sort;
+  };
+
+  const syncUrl = filter => {
+    const params = new URLSearchParams();
+    if (filter.queryRaw) params.set("q", filter.queryRaw);
+    if (filter.focus) params.set("focus", filter.focus);
+    if (filter.type) params.set("type", filter.type);
+    if (filter.price) params.set("price", filter.price);
+    if (filter.format) params.set("format", filter.format);
+    if (filter.language) params.set("language", filter.language);
+    if (filter.country) params.set("country", filter.country);
+    if (filter.level) params.set("level", filter.level);
+    if (el.sort.value !== "EDITORIAL") params.set("sort", el.sort.value);
+
+    const query = params.toString();
+    const next = `${window.location.pathname}${query ? `?${query}` : ""}${window.location.hash}`;
+    window.history.replaceState(null, "", next);
+  };
+
   const heartSvg = `
     <svg class="heart-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
       <path d="M12 20.4 4.4 13A5.1 5.1 0 0 1 11.6 5.8L12 6.2l.4-.4A5.1 5.1 0 0 1 19.6 13Z"></path>
@@ -198,6 +268,7 @@
   };
 
   const filters = () => ({
+    queryRaw: el.search.value.trim(),
     query: normalize(el.search.value.trim()),
     focus: el.focus.value,
     type: el.type.value,
@@ -274,9 +345,10 @@
     const currentFilters = filters();
     const activeCount = activeFilterCount(currentFilters);
     const filtered = offers.filter(offer => matches(offer, currentFilters));
+    const sorted = sortOffers(filtered);
     const activeFavoriteCount = [...favorites].filter(id => activeIds.has(id)).length;
 
-    el.cards.innerHTML = filtered.map(card).join("");
+    el.cards.innerHTML = sorted.map(card).join("");
     el.count.textContent = `${filtered.length} von ${offers.length} aktuellen Angeboten${favoritesOnly ? " · Favoriten" : ""}`;
     el.filterStatus.textContent = activeCount === 0
       ? "Keine Filter aktiv"
@@ -286,11 +358,13 @@
     el.favoritesToggle.setAttribute("aria-pressed", String(favoritesOnly));
     el.favoritesToggle.classList.toggle("is-active", favoritesOnly);
     updateEmptyState(filtered.length, activeCount);
+    syncUrl(currentFilters);
   };
 
   const reset = () => {
     [el.search, el.focus, el.type, el.price, el.format, el.language, el.country, el.level]
       .forEach(node => { node.value = ""; });
+    el.sort.value = "EDITORIAL";
     render();
     el.search.focus();
   };
@@ -318,6 +392,7 @@
 
   [el.search, el.focus, el.type, el.price, el.format, el.language, el.country, el.level]
     .forEach(node => node.addEventListener("input", render));
+  el.sort.addEventListener("change", render);
 
   el.reset.addEventListener("click", reset);
   el.favoritesToggle.addEventListener("click", () => {
@@ -329,5 +404,6 @@
     if (button) toggleFavorite(button.dataset.favoriteId);
   });
 
+  applyUrlState();
   render();
 })();
