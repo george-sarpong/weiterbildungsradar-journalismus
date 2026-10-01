@@ -11,7 +11,10 @@
     focus: {
       JOURNALISMUS: "Journalismus",
       MEDIENPRAXIS: "Medienpraxis",
-      MANAGEMENT: "Management"
+      MANAGEMENT: "Management",
+      MEDIENRECHT: "Medienrecht",
+      SICHERHEIT: "Sicherheit",
+      MODERATION: "Moderation"
     },
     offerType: {
       KURS: "Kurs",
@@ -23,7 +26,11 @@
     level: {
       EINSTIEG: "Einstieg",
       BERUFSERFAHRUNG: "Berufserfahrung",
-      VERSCHIEDENE_NIVEAUS: "Verschiedene Niveaus"
+      VERSCHIEDENE_NIVEAUS: "Verschiedene Niveaus",
+      FORTGESCHRITTEN: "Fortgeschritten",
+      VERTIEFUNG: "Vertiefung",
+      EXPERT: "Expert",
+      NICHT_PUBLIZIERT: "Nicht publiziert"
     },
     priceCategory: {
       KOSTENLOS: "Kostenlos",
@@ -31,17 +38,36 @@
       "501_2000": "501 bis 2'000",
       UEBER_2000: "Über 2'000",
       MEHRERE_TARIFE: "Mehrere Tarife",
-      PREIS_AUF_ANFRAGE: "Preis auf Anfrage"
+      PREIS_AUF_ANFRAGE: "Preis auf Anfrage",
+      PREIS_NICHT_PUBLIZIERT: "Preis nicht publiziert",
+      NOT_APPLICABLE: "Nicht anwendbar"
+    },
+    format: {
+      "PRÄSENZ": "Präsenz",
+      "ONLINE LIVE": "Online live",
+      "ONLINE SELBSTLERNEN": "Online Selbstlernen",
+      "ONLINE": "Online",
+      "HYBRID": "Hybrid",
+      "ON_DEMAND": "On-Demand",
+      "ON_REQUEST_FORMAT": "Format auf Anfrage",
+      "NICHT_PUBLIZIERT": "Nicht publiziert"
+    },
+    language: {
+      DE: "Deutsch",
+      EN: "Englisch",
+      FR: "Französisch",
+      IT: "Italienisch",
+      NOT_PUBLISHED: "Nicht publiziert"
     }
   };
 
   const preferredOrder = {
-    focus: ["JOURNALISMUS", "MEDIENPRAXIS", "MANAGEMENT"],
+    focus: ["JOURNALISMUS", "MEDIENPRAXIS", "MEDIENRECHT", "SICHERHEIT", "MODERATION", "MANAGEMENT"],
     offerType: ["KURS", "PROGRAMM", "EVENT", "FELLOWSHIP", "STUDIUM"],
-    priceCategory: ["KOSTENLOS", "BIS_500", "501_2000", "UEBER_2000", "MEHRERE_TARIFE", "PREIS_AUF_ANFRAGE"],
-    format: ["PRÄSENZ", "ONLINE LIVE", "ONLINE SELBSTLERNEN", "HYBRID"],
-    country: ["Schweiz", "Deutschland", "Österreich", "Frankreich", "Grossbritannien", "USA", "International"],
-    level: ["EINSTIEG", "BERUFSERFAHRUNG", "VERSCHIEDENE_NIVEAUS"]
+    priceCategory: ["KOSTENLOS", "BIS_500", "501_2000", "UEBER_2000", "MEHRERE_TARIFE", "PREIS_AUF_ANFRAGE", "PREIS_NICHT_PUBLIZIERT", "NOT_APPLICABLE"],
+    format: ["PRÄSENZ", "HYBRID", "ONLINE LIVE", "ONLINE", "ONLINE SELBSTLERNEN", "ON_DEMAND", "ON_REQUEST_FORMAT", "NICHT_PUBLIZIERT"],
+    country: ["Schweiz", "Österreich", "Liechtenstein", "Deutschland", "Frankreich", "Grossbritannien", "USA", "International"],
+    level: ["EINSTIEG", "BERUFSERFAHRUNG", "FORTGESCHRITTEN", "VERTIEFUNG", "EXPERT", "VERSCHIEDENE_NIVEAUS", "NICHT_PUBLIZIERT"]
   };
 
   const el = {
@@ -62,10 +88,19 @@
     count: document.querySelector("#resultCount"),
     empty: document.querySelector("#emptyState"),
     emptyTitle: document.querySelector("#emptyTitle"),
-    emptyText: document.querySelector("#emptyText")
+    emptyText: document.querySelector("#emptyText"),
+    smartForm: document.querySelector("#smartSearchForm"),
+    smartInput: document.querySelector("#smartInput"),
+    smartOutput: document.querySelector("#smartOutput"),
+    smartUnderstood: document.querySelector("#smartUnderstood"),
+    smartSummary: document.querySelector("#smartSummary"),
+    smartChangeButton: document.querySelector("#smartChangeButton")
   };
 
-  const parseDate = value => value ? new Date(`${value}T23:59:59`) : null;
+  const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+  const parseDate = value => ISO_DATE.test(String(value ?? "").trim())
+    ? new Date(`${String(value).trim()}T23:59:59`)
+    : null;
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
@@ -79,6 +114,8 @@
   const activeIds = new Set(offers.map(offer => offer.id));
   let favorites = loadFavorites();
   let favoritesOnly = false;
+  let smartRaw = "";
+  const smartManaged = { format: null, level: null, price: null };
 
   function loadFavorites() {
     try {
@@ -122,6 +159,32 @@
     });
   };
 
+  const splitTokens = (value, pattern = /\s*\|\s*/) =>
+    String(value ?? "").split(pattern).map(token => token.trim()).filter(Boolean);
+
+  const tokenValues = (key, order, pattern = /\s*\|\s*/) => {
+    const values = new Set(offers.flatMap(offer => splitTokens(offer[key], pattern)));
+    return [
+      ...order.filter(value => values.has(value)),
+      ...[...values].filter(value => !order.includes(value)).sort((a, b) => a.localeCompare(b, "de-CH"))
+    ];
+  };
+
+  const humanizeTokens = (value, labelMap, pattern = /\s*\|\s*/) =>
+    splitTokens(value, pattern).map(token => labelMap[token] ?? token).join(" · ");
+
+  const countryDisplay = value => value === "CH_ACCESS / operational presence Chiasso"
+    ? "Schweiz"
+    : String(value ?? "");
+
+  const countryValues = order => {
+    const values = new Set(offers.map(offer => countryDisplay(offer.country)).filter(Boolean));
+    return [
+      ...order.filter(value => values.has(value)),
+      ...[...values].filter(value => !order.includes(value)).sort((a, b) => a.localeCompare(b, "de-CH"))
+    ];
+  };
+
   const escapeHtml = value => String(value)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
@@ -132,6 +195,103 @@
   const formatDate = value => {
     const match = String(value ?? "").match(/^(\d{4})-(\d{2})-(\d{2})/);
     return match ? `${match[3]}.${match[2]}.${match[1]}` : String(value ?? "");
+  };
+
+  const compactAmount = value => String(value ?? "")
+    .replace(/’/g, "'")
+    .replace(/\.00\b/g, "");
+
+  const compactPrice = offer => {
+    const raw = String(offer.priceDisplay ?? "").trim();
+    const normalized = normalize(raw);
+
+    if (!raw || offer.priceCategory === "PREIS_NICHT_PUBLIZIERT"
+        || normalized.includes("nicht_publiziert")
+        || normalized.includes("nicht publiziert")) return "Nicht publiziert";
+    if (offer.priceCategory === "NOT_APPLICABLE") return "Nicht anwendbar";
+    if (offer.priceCategory === "KOSTENLOS" || /\b(kostenlos|gratis|free)\b/i.test(raw)) return "Kostenlos";
+    if (offer.priceCategory === "PREIS_AUF_ANFRAGE" || /preis\s+auf\s+anfrage/i.test(raw)) return "Auf Anfrage";
+
+    // Für die Zielgruppe ist ein explizit publizierter Journalist:innen-Tarif der relevanteste Kartenpreis.
+    const journalist = raw.match(/((?:CHF|EUR|USD|GBP)\s*[0-9][0-9'’.,]*)(?=[^()]{0,45}(?:Kurspreis\s+)?Journalist)/i);
+    if (journalist) return compactAmount(journalist[1]);
+
+    // Explizite Preisbereiche wie EUR 480–512 oder CHF 0–590 erhalten.
+    const range = raw.match(/\b(CHF|EUR|USD|GBP)\s*([0-9][0-9'’.,]*)\s*[–-]\s*([0-9][0-9'’.,]*)/i);
+    if (range) return `${range[1].toUpperCase()} ${compactAmount(range[2])}–${compactAmount(range[3])}`;
+
+    const moneyRegex = /\b(CHF|EUR|USD|GBP)\s*([0-9][0-9'’.,]*)/gi;
+    const matches = [...raw.matchAll(moneyRegex)].filter(match => {
+      const tail = raw.slice(match.index + match[0].length, match.index + match[0].length + 28);
+      return !/\boptional\b/i.test(tail);
+    });
+
+    if (matches.length) {
+      const first = `${matches[0][1].toUpperCase()} ${compactAmount(matches[0][2])}`;
+      if (/^\s*ab\b/i.test(raw)) return `ab ${first}`;
+
+      // Bei mehreren publizierten Tarifen bleibt die Karte knapp: niedrigster belastbarer Tarif.
+      if (matches.length > 1) {
+        const sameCurrency = matches.every(m => m[1].toUpperCase() === matches[0][1].toUpperCase());
+        if (sameCurrency) {
+          const values = matches.map(m => ({
+            display: compactAmount(m[2]),
+            numeric: Number(String(m[2]).replace(/[’']/g, "").replace(",", "."))
+          })).filter(x => Number.isFinite(x.numeric));
+          if (values.length) {
+            const min = values.reduce((a, b) => b.numeric < a.numeric ? b : a);
+            return `ab ${matches[0][1].toUpperCase()} ${min.display}`;
+          }
+        }
+      }
+      return first;
+    }
+
+    return labels.priceCategory[offer.priceCategory] ?? "Preis siehe Anbieter";
+  };
+
+  const compactAccess = offer => {
+    const raw = String(offer.access ?? "").trim();
+    if (!raw) return "Nicht publiziert";
+
+    const upper = raw.toUpperCase();
+    const normalized = normalize(raw);
+
+    if (upper.startsWith("MEMBERSHIP_RESTRICTED")) return "Mitgliedschaft erforderlich";
+    if (upper.startsWith("STUDENT_RESTRICTED_ACCESS")) return "Eingeschränkter Zugang";
+    if (upper.startsWith("V95_EXPLICIT_APPLICATION_PREREQUISITE")) return "Bewerbung / Zulassung erforderlich";
+    if (upper.startsWith("V95_EXPLICIT_PUBLIC_ACCESS")) return "Öffentlich zugänglich";
+
+    if (normalized.includes("zugangsvoraussetzungen nicht publiziert")
+        || normalized.includes("nicht publiziert")
+        || normalized.includes("not published")) return "Nicht publiziert";
+
+    if (/\b(bewerbung|zulassung|aufnahmeverfahren|application|admission|eligibility)\b/i.test(raw)
+        || /\b(bachelor|masterabschluss|hochschulabschluss)\b/i.test(raw)) {
+      return "Bewerbung / Zulassung erforderlich";
+    }
+
+    // Die folgenden Evidenzklassen belegen eine öffentliche Buchungs-/Anmeldemöglichkeit.
+    if (/^(V95_DOCUMENTED_BOOKING_CTA|OFFICIAL_PROVIDER_(ACCESS_RULE|AGB|BOOKING_FORM|RULE)|CURRENT_OFFICIAL_(PRODUCT_TEMPLATE|PRODUCT_PAGE|PROVIDER|SBVV|EBU|SFGZ|EJC|WEKA|SAWI))\b/i.test(raw)) {
+      return "Öffentlich buchbar";
+    }
+
+    if (/^(CURRENT_OFFICIAL_(ZHdK|DSA|UNIBE|SUPSI|UNIGE|MAZ))/i.test(raw)) {
+      return "Bewerbung / Zulassung erforderlich";
+    }
+
+    if (/\b(öffentlich|buchbar|anmeldung|anmelden|inscription|register|booking)\b/i.test(raw)) {
+      return "Öffentlich buchbar";
+    }
+
+    return "Details beim Anbieter";
+  };
+
+  const regionDisplay = value => {
+    const raw = String(value ?? "").trim();
+    return ["", "NOT_PUBLISHED", "NICHT_PUBLIZIERT", "NOT_APPLICABLE"].includes(raw.toUpperCase())
+      ? ""
+      : raw;
   };
 
 
@@ -214,12 +374,14 @@
       <dd>${escapeHtml(value)}</dd>
     </div>`;
 
-  const card = offer => {
+  const card = (offer, searchEvaluation = null) => {
     const isFavorite = favorites.has(offer.id);
     const favoriteLabel = isFavorite
       ? `${offer.title} aus den Favoriten entfernen`
       : `${offer.title} zu den Favoriten hinzufügen`;
-    const place = offer.region ? `${offer.country} · ${offer.region}` : offer.country;
+    const displayCountry = countryDisplay(offer.country);
+    const displayRegion = regionDisplay(offer.region);
+    const place = displayRegion ? `${displayCountry} · ${displayRegion}` : displayCountry;
     const feedbackSubject = encodeURIComponent(`Hinweis zu ${offer.provider}: ${offer.title}`);
 
     return `
@@ -242,29 +404,107 @@
         </div>
         <h3>${escapeHtml(offer.title)}</h3>
         <dl class="facts" aria-label="Preis, Durchführungsform, Dauer und Start">
-          ${fact("Preis", offer.priceDisplay)}
-          ${fact("Durchführung", offer.format)}
+          ${fact("Preis", compactPrice(offer))}
+          ${fact("Durchführung", humanizeTokens(offer.format, labels.format))}
           ${fact("Dauer", offer.duration)}
           ${fact("Start", offer.start)}
         </dl>
         <p class="card-description">${escapeHtml(offer.description)}</p>
-        <p class="access"><strong>Zugang:</strong> ${escapeHtml(offer.access)}</p>
+        <p class="access"><strong>Zugang:</strong> ${escapeHtml(compactAccess(offer))}</p>
         <div class="badges" aria-label="Angebotsart und weitere Eigenschaften">
           <span class="badge badge-type">${escapeHtml(labels.offerType[offer.offerType] ?? offer.offerType)}</span>
           <span class="badge">${escapeHtml(labels.level[offer.level] ?? offer.level)}</span>
-          <span class="badge">${escapeHtml(offer.language)}</span>
+          <span class="badge">${escapeHtml(humanizeTokens(offer.language, labels.language, /\s*[|/]\s*/))}</span>
           <span class="badge">${escapeHtml(place)}</span>
         </div>
+        ${searchEvaluation ? searchExplanation(searchEvaluation) : ""}
         <div class="card-footer">
           <div class="card-links">
             <a class="source-link" href="${escapeHtml(offer.url)}" target="_blank" rel="noopener noreferrer" aria-label="Offizielle Angebotsseite zu ${escapeHtml(offer.title)} öffnen">
               Offizielle Angebotsseite <span aria-hidden="true">↗</span>
             </a>
-            <a class="feedback-link" href="mailto:kontakt@weiterbildungsradar.ch?subject=${feedbackSubject}">Fehler melden</a>
+            <a class="feedback-link" href="mailto:contact@mediaskills.ch?subject=${feedbackSubject}">Fehler melden</a>
           </div>
           <span class="checked">Geprüft: ${escapeHtml(formatDate(offer.approved))}</span>
         </div>
       </article>`;
+  };
+
+
+  // Search V1.2: deterministischer, clientseitiger Parser gegen den Search-Sidecar.
+  // Der Originalsatz bleibt flüchtig im Browser und wird nicht in URL/localStorage geschrieben.
+  const searchIndex = window.SFJ_SEARCH_INDEX || { rows: [], taxonomy: [] };
+
+  const searchCriterionLabel = criterion => {
+    if (criterion.kind === "topic") return `${criterion.negative ? "ohne Thema" : "Thema"}: ${criterion.label ?? criterion.code}`;
+    if (criterion.kind === "budget") return `Budget: ${criterion.currency ?? "Währung offen"} ${Number(criterion.max).toLocaleString("de-CH")}`;
+    if (criterion.kind === "freeOnly") return "nur kostenlos";
+    if (criterion.kind === "durationMax") return `Dauer: bis ${criterion.max} ${criterion.unit === "DAYS" ? "Tage" : criterion.unit === "HOURS" ? "Stunden" : criterion.unit}`;
+    if (criterion.kind === "format") return `${criterion.negative ? "ohne" : "Format"}: ${criterion.value}${criterion.strength === "soft" ? " (Wunsch)" : ""}`;
+    if (criterion.kind === "level") return `${criterion.negative ? "ohne Niveau" : "Niveau"}: ${criterion.value}`;
+    if (criterion.kind === "fallbackText") return `Suchbegriff: ${(criterion.terms ?? []).join(" ")}`;
+    return criterion.kind;
+  };
+
+  const searchExplanation = evaluation => {
+    const rows = [
+      ...evaluation.checks.filter(item => ["MATCH", "UNCERTAIN"].includes(item.result.state)),
+      ...evaluation.soft.filter(item => ["MATCH", "UNCERTAIN"].includes(item.result.state))
+    ];
+    if (!rows.length) return "";
+    return `<div class="search-explanation" aria-label="Begründung der Suchzuordnung">
+      <strong>${evaluation.state === "UNCERTAIN" ? "Nicht eindeutig prüfbar" : "Das trifft zu"}</strong>
+      <ul>${rows.map(item => `<li><span class="search-state">${escapeHtml(item.result.state === "UNCERTAIN" ? "Nicht eindeutig prüfbar" : "Das trifft zu")}:</span> ${escapeHtml(item.result.reason ?? searchCriterionLabel(item.criterion))}</li>`).join("")}</ul>
+    </div>`;
+  };
+
+  const renderSmartSummary = (parsed, summaryText) => {
+    if (!el.smartOutput || !el.smartUnderstood || !el.smartSummary) return;
+    el.smartOutput.hidden = false;
+    const chips = parsed.criteria.length
+      ? parsed.criteria.map(item => `<span class="smart-chip">${escapeHtml(searchCriterionLabel(item))}</span>`).join("")
+      : '<span class="smart-chip">Keine belastbaren Kriterien erkannt</span>';
+    el.smartUnderstood.innerHTML = `<span class="smart-understood-label">Erkannt:</span>${chips}`;
+    const notes = parsed.notes.map(note => {
+      if (note === "VAGUE_PRICE_SORT_ASC") return "Preiswunsch ohne Schwellenwert: passende Ergebnisse werden preislich sortiert.";
+      if (note === "TRAVEL_NOT_INCLUDED") return "Reise- und Verpflegungskosten werden nicht berechnet.";
+      if (note === "ADVISORY_NOT_SUPPORTED") return "Voraussetzungen und Lernpfade werden nicht automatisch beraten.";
+      return note;
+    });
+    el.smartSummary.innerHTML = `<p>${escapeHtml(summaryText)}</p>${notes.length ? `<p class="muted">${notes.map(escapeHtml).join(" · ")}</p>` : ""}`;
+  };
+
+  const clearSmartManagedCriteria = () => {
+    [["format", el.format], ["level", el.level], ["price", el.price]].forEach(([key, node]) => {
+      if (smartManaged[key] && node.value === smartManaged[key]) node.value = "";
+      smartManaged[key] = null;
+    });
+  };
+
+  const applyRepresentableSmartCriteria = parsed => {
+    clearSmartManagedCriteria();
+    const hardPositiveFormat = parsed.criteria.find(c => c.kind === "format" && c.strength === "hard" && !c.negative);
+    const hardPositiveLevel = parsed.criteria.find(c => c.kind === "level" && c.strength === "hard" && !c.negative);
+    const freeOnly = parsed.criteria.some(c => c.kind === "freeOnly");
+    if (hardPositiveFormat?.value === "PRAESENZ" && hasOption(el.format, "PRÄSENZ")) {
+      el.format.value = "PRÄSENZ";
+      smartManaged.format = "PRÄSENZ";
+    }
+    if (hardPositiveLevel?.value === "EINSTIEG" && hasOption(el.level, "EINSTIEG")) {
+      el.level.value = "EINSTIEG";
+      smartManaged.level = "EINSTIEG";
+    }
+    if (freeOnly && hasOption(el.price, "KOSTENLOS")) {
+      el.price.value = "KOSTENLOS";
+      smartManaged.price = "KOSTENLOS";
+    }
+  };
+
+  const smartSorted = items => {
+    if (el.sort.value === "EDITORIAL") return items;
+    const sortedOffers = sortOffers(items.map(item => item.offer));
+    const rank = new Map(sortedOffers.map((offer, index) => [offer.id, index]));
+    return [...items].sort((a, b) => (rank.get(a.offer.id) ?? Number.MAX_SAFE_INTEGER) - (rank.get(b.offer.id) ?? Number.MAX_SAFE_INTEGER));
   };
 
   const filters = () => ({
@@ -302,9 +542,9 @@
       && (!filter.focus || offer.focus === filter.focus)
       && (!filter.type || offer.offerType === filter.type)
       && (!filter.price || offer.priceCategory === filter.price)
-      && (!filter.format || offer.format === filter.format)
-      && (!filter.language || offer.language === filter.language)
-      && (!filter.country || offer.country === filter.country)
+      && (!filter.format || splitTokens(offer.format).includes(filter.format))
+      && (!filter.language || splitTokens(offer.language, /\s*[|/]\s*/).includes(filter.language))
+      && (!filter.country || countryDisplay(offer.country) === filter.country)
       && (!filter.level || offer.level === filter.level);
   };
 
@@ -344,20 +584,54 @@
   const render = () => {
     const currentFilters = filters();
     const activeCount = activeFilterCount(currentFilters);
-    const filtered = offers.filter(offer => matches(offer, currentFilters));
-    const sorted = sortOffers(filtered);
+    const classicFiltered = offers.filter(offer => matches(offer, currentFilters));
+    const classicIds = new Set(classicFiltered.map(offer => offer.id));
     const activeFavoriteCount = [...favorites].filter(id => activeIds.has(id)).length;
 
-    el.cards.innerHTML = sorted.map(card).join("");
-    el.count.textContent = `${filtered.length} von ${offers.length} aktuellen Angeboten${favoritesOnly ? " · Favoriten" : ""}`;
-    el.filterStatus.textContent = activeCount === 0
-      ? "Keine Filter aktiv"
-      : `${activeCount} Filter aktiv`;
-    el.reset.disabled = activeCount === 0;
+    if (smartRaw) {
+      const smart = window.SFJSearchV1.search(allOffers, searchIndex, smartRaw);
+      if (smart.error === "SIDECAR_REFRESH_REQUIRED") {
+        el.cards.innerHTML = "";
+        el.count.textContent = "Suche gestoppt: Suchindex und Angebotsbestand sind nicht vollständig synchron.";
+        renderSmartSummary(smart.parsed, "Technischer Abdeckungsfehler. Es werden keine Teilresultate ausgegeben.");
+        updateEmptyState(0, activeCount + 1);
+      } else if (smart.error === "NOTHING_RECOGNIZED") {
+        smartRaw = "";
+        el.cards.innerHTML = sortOffers(classicFiltered).map(offer => card(offer)).join("");
+        el.count.textContent = `${classicFiltered.length} von ${offers.length} aktuellen Angeboten${favoritesOnly ? " · Favoriten" : ""}`;
+        renderSmartSummary(smart.parsed, "Keine belastbaren Kriterien erkannt. Nutze konkretere Begriffe oder die klassischen Filter.");
+        updateEmptyState(classicFiltered.length, activeCount);
+      } else {
+        const matchesSmart = smartSorted(smart.matches.filter(item => classicIds.has(item.offer.id)));
+        const uncertainSmart = smartSorted(smart.uncertain.filter(item => classicIds.has(item.offer.id)));
+        const excludedBySmart = smart.excluded.filter(item => classicIds.has(item.offer.id)).length;
+        el.cards.innerHTML = `
+          <section class="search-result-group" aria-labelledby="search-match-title">
+            <h3 id="search-match-title">Das trifft zu (${matchesSmart.length.toLocaleString("de-CH")})</h3>
+            <div class="search-result-list">${matchesSmart.map(item => card(item.offer, item.evaluation)).join("")}</div>
+          </section>
+          <section class="search-result-group" aria-labelledby="search-uncertain-title">
+            <h3 id="search-uncertain-title">Nicht eindeutig prüfbar (${uncertainSmart.length.toLocaleString("de-CH")})</h3>
+            <div class="search-result-list">${uncertainSmart.map(item => card(item.offer, item.evaluation)).join("")}</div>
+          </section>
+          <details class="search-excluded"><summary>${excludedBySmart.toLocaleString("de-CH")} durch Freitext-Kriterien ausgeschlossen</summary><p>Ausgeschlossene Angebote erfüllen mindestens ein hartes Suchkriterium nicht.</p></details>`;
+        const shown = matchesSmart.length + uncertainSmart.length;
+        el.count.textContent = `${shown.toLocaleString("de-CH")} Ergebnisse nach Freitext und Filtern · ${matchesSmart.length.toLocaleString("de-CH")} Treffer · ${uncertainSmart.length.toLocaleString("de-CH")} nicht eindeutig prüfbar`;
+        renderSmartSummary(smart.parsed, `${matchesSmart.length.toLocaleString("de-CH")} Treffer und ${uncertainSmart.length.toLocaleString("de-CH")} nicht eindeutig prüfbare Angebote nach den aktuell gesetzten Filtern.`);
+        updateEmptyState(shown, activeCount + 1);
+      }
+    } else {
+      const sorted = sortOffers(classicFiltered);
+      el.cards.innerHTML = sorted.map(offer => card(offer)).join("");
+      el.count.textContent = `${classicFiltered.length} von ${offers.length} aktuellen Angeboten${favoritesOnly ? " · Favoriten" : ""}`;
+      updateEmptyState(classicFiltered.length, activeCount);
+    }
+
+    el.filterStatus.textContent = activeCount === 0 ? (smartRaw ? "Freitext aktiv" : "Keine Filter aktiv") : `${activeCount} Filter aktiv${smartRaw ? " · Freitext aktiv" : ""}`;
+    el.reset.disabled = activeCount === 0 && !smartRaw;
     el.favoritesCount.textContent = String(activeFavoriteCount);
     el.favoritesToggle.setAttribute("aria-pressed", String(favoritesOnly));
     el.favoritesToggle.classList.toggle("is-active", favoritesOnly);
-    updateEmptyState(filtered.length, activeCount);
     syncUrl(currentFilters);
   };
 
@@ -365,6 +639,10 @@
     [el.search, el.focus, el.type, el.price, el.format, el.language, el.country, el.level]
       .forEach(node => { node.value = ""; });
     el.sort.value = "EDITORIAL";
+    smartRaw = "";
+    clearSmartManagedCriteria();
+    if (el.smartInput) el.smartInput.value = "";
+    if (el.smartOutput) el.smartOutput.hidden = true;
     render();
     el.search.focus();
   };
@@ -385,13 +663,18 @@
   addOptions(el.focus, orderedValues("focus", preferredOrder.focus), value => labels.focus[value] ?? value);
   addOptions(el.type, orderedValues("offerType", preferredOrder.offerType), value => labels.offerType[value] ?? value);
   addOptions(el.price, orderedValues("priceCategory", preferredOrder.priceCategory), value => labels.priceCategory[value] ?? value);
-  addOptions(el.format, orderedValues("format", preferredOrder.format));
-  addOptions(el.language, uniqueSorted("language"));
-  addOptions(el.country, orderedValues("country", preferredOrder.country));
+  addOptions(el.format, tokenValues("format", preferredOrder.format), value => labels.format[value] ?? value);
+  addOptions(el.language, tokenValues("language", ["DE", "FR", "IT", "EN", "NOT_PUBLISHED"], /\s*[|/]\s*/), value => labels.language[value] ?? value);
+  addOptions(el.country, countryValues(preferredOrder.country));
   addOptions(el.level, orderedValues("level", preferredOrder.level), value => labels.level[value] ?? value);
 
   [el.search, el.focus, el.type, el.price, el.format, el.language, el.country, el.level]
-    .forEach(node => node.addEventListener("input", render));
+    .forEach(node => node.addEventListener("input", () => {
+      if (node === el.format && smartManaged.format && node.value !== smartManaged.format) smartManaged.format = null;
+      if (node === el.level && smartManaged.level && node.value !== smartManaged.level) smartManaged.level = null;
+      if (node === el.price && smartManaged.price && node.value !== smartManaged.price) smartManaged.price = null;
+      render();
+    }));
   el.sort.addEventListener("change", render);
 
   el.reset.addEventListener("click", reset);
@@ -403,6 +686,36 @@
     const button = event.target.closest("[data-favorite-id]");
     if (button) toggleFavorite(button.dataset.favoriteId);
   });
+
+  if (el.smartForm && el.smartInput) {
+    const activateSmart = raw => {
+      const probe = window.SFJSearchV1.search(allOffers, searchIndex, raw);
+      if (probe.error === "NOTHING_RECOGNIZED") {
+        smartRaw = "";
+        clearSmartManagedCriteria();
+        renderSmartSummary(probe.parsed, "Keine belastbaren Kriterien erkannt. Nutze konkretere Begriffe oder die klassischen Filter.");
+        render();
+        return;
+      }
+      smartRaw = String(raw ?? "").trim();
+      applyRepresentableSmartCriteria(probe.parsed);
+      render();
+    };
+    el.smartForm.addEventListener("submit", event => {
+      event.preventDefault();
+      activateSmart(el.smartInput.value);
+    });
+    document.querySelectorAll("[data-smart-example]").forEach(button => {
+      button.addEventListener("click", () => {
+        el.smartInput.value = button.dataset.smartExample || "";
+        activateSmart(el.smartInput.value);
+      });
+    });
+    if (el.smartChangeButton) el.smartChangeButton.addEventListener("click", () => {
+      el.smartInput.focus();
+      el.smartInput.select();
+    });
+  }
 
   applyUrlState();
   render();
