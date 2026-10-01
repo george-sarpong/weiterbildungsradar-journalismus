@@ -166,3 +166,5 @@ jobs:
             echo "- no legacy top-3/bundle DOM PASS"
             echo "- no unexpected external runtime requests PASS"
           } >> "$GITHUB_STEP_SUMMARY"
+
+# trigger hosted QA after workflow registration
