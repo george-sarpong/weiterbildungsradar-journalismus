@@ -152,17 +152,26 @@ jobs:
           const osintExpected = await page.evaluate(() => {
             const today = new Date();
             today.setHours(0,0,0,0);
-            const activeIds = new Set((window.WEITERBILDUNGSRADAR_OFFERS || []).filter(o => {
+            const active = (window.WEITERBILDUNGSRADAR_OFFERS || []).filter(o => {
               if (!o.endDate) return true;
               const d = /^\d{4}-\d{2}-\d{2}$/.test(String(o.endDate)) ? new Date(o.endDate + "T23:59:59") : null;
               return !d || d >= today;
-            }).map(o => o.id));
-            return (window.SFJ_SEARCH_INDEX?.rows || []).filter(r =>
+            });
+            const activeIds = new Set(active.map(o => o.id));
+            const semanticIds = new Set((window.SFJ_SEARCH_INDEX?.rows || []).filter(r =>
               activeIds.has(r.id) && Array.isArray(r.tc) && r.tc.includes("RESEARCH_INVESTIGATION")
-            ).length;
+            ).map(r => r.id));
+            const literalIds = new Set(active.filter(o => {
+              const text = [
+                o.provider, o.title, o.description, o.access, o.priceDisplay, o.format,
+                o.duration, o.start, o.language, o.country, o.region
+              ].join(" ").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+              return text.includes("osint");
+            }).map(o => o.id));
+            return new Set([...semanticIds, ...literalIds]).size;
           });
-          assert(osintExpected > 0, "OSINT taxonomy has no active RESEARCH_INVESTIGATION rows");
-          assert(osintActual === osintExpected, "OSINT classic search mismatch: actual="+osintActual+" expected="+osintExpected);
+          assert(osintExpected > 0, "OSINT has no active literal or RESEARCH_INVESTIGATION rows");
+          assert(osintActual === osintExpected, "OSINT classic search union mismatch: actual="+osintActual+" expected="+osintExpected);
 
           await page.locator("#resetFilters").click();
           await page.locator("#searchInput").fill("MAZ");
@@ -205,7 +214,7 @@ jobs:
             echo "- NOTHING_RECOGNIZED safe fallback PASS"
             echo "- reset/focus/keyboard/reason rendering PASS"
             echo "- raw Smart text absent from URL PASS"
-            echo "- classic controlled-alias search OSINT -> RESEARCH_INVESTIGATION exact active-row parity PASS"
+            echo "- classic OSINT search = literal matches ∪ RESEARCH_INVESTIGATION alias matches PASS"
             echo "- real-origin History API state PASS"
             echo "- mobile 390px no horizontal overflow PASS"
             echo "- methodik/datenschutz relative paths PASS"
@@ -228,3 +237,5 @@ jobs:
 # correct reset-state hosted QA trigger
 
 # classic controlled-alias QA trigger
+
+# OSINT union semantics QA trigger
