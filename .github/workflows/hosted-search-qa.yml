@@ -13,6 +13,7 @@ jobs:
     env:
       BASE_URL: https://george-sarpong.github.io/weiterbildungsradar-journalismus
     steps:
+      - uses: actions/checkout@v4
       - name: HTTP MIME hash path and cache checks
         shell: bash
         run: |
@@ -20,10 +21,19 @@ jobs:
           mkdir -p /tmp/hosted-qa
           fetch() {
             local f="$1"
-            curl --fail --silent --show-error --location --retry 3 -D "/tmp/hosted-qa/$f.headers" "$BASE_URL/$f" -o "/tmp/hosted-qa/$f"
+            curl --fail --silent --show-error --location --retry 3 -H 'Cache-Control: no-cache' -D "/tmp/hosted-qa/$f.headers" -w '%{url_effective}\n' "$BASE_URL/$f?qa=$GITHUB_SHA" -o "/tmp/hosted-qa/$f" > "/tmp/hosted-qa/$f.effective"
           }
           for f in index.html styles.css data.js search-index-v1.2.js search-engine-v1.2.js app.js methodik.html datenschutz.html; do fetch "$f"; done
-          curl --fail --silent --show-error --location --retry 3 -D /tmp/hosted-qa/root.headers "$BASE_URL/" -o /tmp/hosted-qa/root.html
+          curl --fail --silent --show-error --location --retry 3 -H 'Cache-Control: no-cache' -D /tmp/hosted-qa/root.headers -w '%{url_effective}\n' "$BASE_URL/?qa=$GITHUB_SHA" -o /tmp/hosted-qa/root.html > /tmp/hosted-qa/root.effective
+          echo "Hosted effective URL: $(cat /tmp/hosted-qa/index.html.effective)"
+          case "$(cat /tmp/hosted-qa/index.html.effective)" in
+            "$BASE_URL"/index.html*) ;;
+            *) echo "Unexpected redirect/effective URL"; exit 1 ;;
+          esac
+          echo "Repo hashes:"
+          sha256sum index.html styles.css data.js search-index-v1.2.js search-engine-v1.2.js app.js methodik.html datenschutz.html
+          echo "Hosted hashes:"
+          sha256sum /tmp/hosted-qa/index.html /tmp/hosted-qa/styles.css /tmp/hosted-qa/data.js /tmp/hosted-qa/search-index-v1.2.js /tmp/hosted-qa/search-engine-v1.2.js /tmp/hosted-qa/app.js /tmp/hosted-qa/methodik.html /tmp/hosted-qa/datenschutz.html
 
           grep -qi '^content-type:.*text/html' /tmp/hosted-qa/index.html.headers
           grep -qi '^content-type:.*text/css' /tmp/hosted-qa/styles.css.headers
@@ -83,7 +93,7 @@ jobs:
             } catch {}
           });
 
-          await page.goto(base + "/", {waitUntil:"networkidle"});
+          await page.goto(base + "/?qa=" + process.env.GITHUB_SHA, {waitUntil:"networkidle"});
           await page.waitForFunction(() => document.querySelector("#resultCount")?.textContent?.includes("1321"));
           assert((await page.locator("[data-offer-id]").count()) === 1321, "initial card count != 1321");
           assert((await page.locator("#resultCount").textContent()).includes("1321 von 1321 aktuellen Angeboten"), "initial result text mismatch");
@@ -168,3 +178,5 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
 # trigger hosted QA after workflow registration
+
+# cache-busted hosted QA trigger
