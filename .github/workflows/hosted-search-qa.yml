@@ -180,3 +180,5 @@ jobs:
 # trigger hosted QA after workflow registration
 
 # cache-busted hosted QA trigger
+
+# final hosted QA trigger after synchronized Pages deploy
