@@ -135,6 +135,9 @@ jobs:
           await page.waitForFunction(() => document.querySelector("#smartSummary")?.textContent?.includes("Keine belastbaren Kriterien erkannt"));
           assert((await page.locator("#resultCount").textContent()).includes("1321 von 1321"), "NOTHING_RECOGNIZED did not safely restore classic list");
 
+          assert(await page.locator("#resetFilters").isDisabled(), "reset should be disabled when NOTHING_RECOGNIZED leaves no active state");
+          await page.locator("#searchInput").fill("MAZ");
+          await page.waitForFunction(() => !document.querySelector("#resetFilters")?.disabled);
           await page.locator("#resetFilters").click();
           assert((await page.evaluate(() => document.activeElement?.id))==="searchInput", "reset focus not on classic search");
           assert((await page.locator("#smartInput").inputValue())==="", "reset did not clear Smart input");
@@ -205,3 +208,5 @@ jobs:
 # module-resolution hosted QA trigger
 
 # explicit favicon-only 404 allowance trigger
+
+# correct reset-state hosted QA trigger
