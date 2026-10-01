@@ -1,1 +1,247 @@
-The requested file reference is not currently visible. Use files.search or files.list to rediscover the file, then retry with a returned ref_id or file_id.
+<!doctype html>
+<!-- Media Skills – Web-MVP V6.4 Freitext-Beta -->
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#17334f">
+  <meta name="description" content="Redaktionell geprüfte und laufend erweiterte Kurse, Programme und Studienangebote für Journalist:innen und Creator-Journalist:innen.">
+  <link rel="canonical" href="https://mediaskills.ch/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_CH">
+  <meta property="og:site_name" content="Media Skills">
+  <meta property="og:title" content="Media Skills – Weiterbildung für Journalismus und Medien">
+  <meta property="og:description" content="Können, was kommt. Entdecke redaktionell geprüfte Weiterbildungsangebote für Journalistinnen, Journalisten und Medienschaffende.">
+  <meta property="og:url" content="https://mediaskills.ch/">
+
+  <title>Media Skills | Weiterbildung für Journalismus und Medien</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Media Skills",
+    "alternateName": "Können, was kommt.",
+    "url": "https://mediaskills.ch/",
+    "description": "Redaktionell geprüfte und laufend erweiterte Kurse, Programme und Studienangebote für Journalist:innen und Creator-Journalist:innen.",
+    "inLanguage": "de-CH",
+    "publisher": {
+      "@type": "Person",
+      "name": "George Sarpong"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#angebote">Direkt zu den Angeboten</a>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <div class="brand" aria-label="Media Skills">
+        <span class="brand-mark" aria-hidden="true">MS</span>
+        <span class="brand-text">Media Skills</span>
+      </div>
+      <p class="header-note">redaktionell geprüft · laufend erweitert</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="shell hero-inner">
+        <h1 id="page-title">Fort- und Weiterbildung für Journalismus und Medien</h1>
+        <p class="hero-claim">Können, was kommt.</p>
+        <p class="lead">Entdecke eine redaktionell geprüfte und laufend erweiterte Marktübersicht mit Kursen, Programmen und Studienangeboten für Journalist:innen und Creator-Journalist:innen. Vergleiche Thema, Preis, Durchführungsform, Dauer, Start, Sprache und Anbieterbasis.</p>
+        <p><strong>Beta:</strong> Media Skills befindet sich im öffentlichen Testbetrieb. Die Datenbank wird laufend erweitert und verbessert.</p>
+      </div>
+    </section>
+
+    <section class="smart-section" aria-labelledby="smart-title">
+      <div class="shell">
+        <div class="smart-intro">
+          <p class="eyebrow">Freitext-Suche · Beta</p>
+          <h2 id="smart-title">Beschreib, was du suchst.</h2>
+          <p>Formuliere Thema, Budget, Dauer oder Durchführungsform in einem Satz. Die Freitext-Suche übersetzt deine Angaben in überprüfbare Kriterien und arbeitet mit denselben Ergebnislisten und Filtern wie die klassische Suche.</p>
+        </div>
+        <form class="smart-form" id="smartSearchForm">
+          <label for="smartInput">Deine Anfrage</label>
+          <div class="smart-input-row">
+            <input id="smartInput" type="search" autocomplete="off" placeholder="z. B. Ich habe CHF 800 und möchte Datenjournalismus lernen.">
+            <button class="smart-submit" type="submit">Suchen</button>
+          </div>
+        </form>
+        <div class="smart-examples" aria-label="Beispielanfragen">
+          <span>Beispiele:</span>
+          <button type="button" data-smart-example="Ich habe CHF 800 und möchte Datenjournalismus lernen.">CHF 800 · Datenjournalismus</button>
+          <button type="button" data-smart-example="Podcast online maximal zwei Tage">Podcast · online · 2 Tage</button>
+          <button type="button" data-smart-example="Kein Präsenzkurs, lieber online">ohne Präsenz · online bevorzugt</button>
+        </div>
+        <div class="smart-output" id="smartOutput" aria-live="polite" hidden>
+          <div class="smart-understood" id="smartUnderstood"></div>
+          <div class="smart-summary" id="smartSummary"></div>
+          <div class="smart-actions">
+            <button type="button" class="reset-button" id="smartChangeButton">Ändern</button>
+            <a class="source-link" href="#filter-title">Filter ergänzen oder ändern <span aria-hidden="true">↓</span></a>
+          </div>
+          <p class="smart-note">Unbekannte Preise, Dauern oder Formate werden nicht still ausgeschlossen. Fremdwährungen werden nicht umgerechnet. Der Originalsatz bleibt im Browser und wird nicht in die URL geschrieben.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="filters-section" aria-labelledby="filter-title">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Passende Weiterbildung finden</p>
+            <h2 id="filter-title">Suche und Filter</h2>
+          </div>
+          <div class="filter-heading-actions">
+            <p class="filter-status" id="filterStatus" aria-live="polite">Keine Filter aktiv</p>
+            <button class="reset-button" id="resetFilters" type="button">Filter zurücksetzen</button>
+          </div>
+        </div>
+
+        <div class="filter-grid">
+          <label class="field field-search">
+            <span>Suchbegriff</span>
+            <input id="searchInput" type="search" placeholder="Titel, Anbieter oder Stichwort" autocomplete="off">
+          </label>
+          <label class="field">
+            <span>Berufsbezug</span>
+            <select id="focusFilter"><option value="">Alle Bereiche</option></select>
+          </label>
+          <label class="field">
+            <span>Angebotsart</span>
+            <select id="typeFilter"><option value="">Alle Arten</option></select>
+          </label>
+          <label class="field">
+            <span>Preis</span>
+            <select id="priceFilter"><option value="">Alle Preise</option></select>
+          </label>
+          <label class="field">
+            <span>Durchführungsform</span>
+            <select id="formatFilter"><option value="">Alle Formen</option></select>
+          </label>
+          <label class="field">
+            <span>Sprache</span>
+            <select id="languageFilter"><option value="">Alle Sprachen</option></select>
+          </label>
+          <label class="field">
+            <span>Land / Anbieterbasis</span>
+            <select id="countryFilter"><option value="">Alle Länder</option></select>
+          </label>
+          <label class="field">
+            <span>Erfahrungsniveau</span>
+            <select id="levelFilter"><option value="">Alle Niveaus</option></select>
+          </label>
+        </div>
+
+        <details class="classification-help">
+          <summary>Was bedeuten die Begriffe?</summary>
+          <div class="classification-grid">
+            <div><strong>Journalismus</strong><span>Journalistisches Handwerk, Recherche, Verifikation, Storytelling, Medienrecht und Medienethik.</span></div>
+            <div><strong>Medienpraxis</strong><span>Produktion, Content, Technologie, Distribution und medienbezogene Arbeitsprozesse.</span></div>
+            <div><strong>Management</strong><span>Führung, Strategie, Innovation, Projektmanagement, Change und Unternehmertum.</span></div>
+            <div><strong>Studium</strong><span>Formaler Hochschulabschluss oder geregelte Hochschulweiterbildung, etwa CAS, DAS, MAS, MBA oder EMBA.</span></div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="results-section" id="angebote" aria-labelledby="results-title">
+      <div class="shell">
+        <div class="results-header">
+          <div>
+            <p class="eyebrow">Aktuelle Auswahl</p>
+            <h2 id="results-title">Weiterbildungsangebote</h2>
+          </div>
+          <div class="results-actions">
+            <p class="result-count" id="resultCount" aria-live="polite"></p>
+            <label class="sort-control">
+              <span>Sortieren nach</span>
+              <select id="sortSelect">
+                <option value="EDITORIAL">Redaktionelle Auswahl</option>
+                <option value="START">Nächster Start</option>
+                <option value="APPROVED">Zuletzt geprüft</option>
+                <option value="PROVIDER">Anbieter A–Z</option>
+              </select>
+            </label>
+            <button class="favorites-toggle" id="favoritesToggle" type="button" aria-pressed="false">
+              <svg class="heart-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 20.4 4.4 13A5.1 5.1 0 0 1 11.6 5.8L12 6.2l.4-.4A5.1 5.1 0 0 1 19.6 13Z"></path>
+              </svg>
+              <span>Nur Favoriten</span>
+              <span class="favorites-count" id="favoritesCount">0</span>
+            </button>
+          </div>
+        </div>
+        <div class="cards" id="cards"></div>
+        <div class="empty-state" id="emptyState" hidden>
+          <h3 id="emptyTitle">Keine passenden Angebote</h3>
+          <p id="emptyText">Ändere den Suchbegriff oder setze einzelne Filter zurück.</p>
+        </div>
+        <div class="feedback-strip">
+          <div>
+            <strong>Fehler entdeckt oder Angebot vermisst?</strong>
+            <span>Hinweise helfen, den Radar aktuell und nützlich zu halten.</span>
+          </div>
+          <a class="reset-button feedback-button" href="mailto:contact@mediaskills.ch?subject=Hinweis%20zum%20Media Skills">Hinweis senden</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="method-section" aria-labelledby="method-title">
+      <div class="shell">
+        <p class="eyebrow">So arbeitet der Radar</p>
+        <h2 id="method-title">Ausgewählt, geprüft, nachvollziehbar</h2>
+        <div class="method-grid">
+          <article class="method-card">
+            <h3>Für wen?</h3>
+            <p>Für Journalist:innen und Creator-Journalist:innen, die ihre Kompetenzen gezielt erweitern wollen – auch mit branchenneutral angebotenen Skills, die sich praktisch in Redaktion und Produktion einsetzen lassen.</p>
+          </article>
+          <article class="method-card">
+            <h3>Was wird erfasst?</h3>
+            <p>Konkrete Angebote zu Journalismus, Medienpraxis, Medienrecht, Sicherheit und Management – vom kompakten Skill-Kurs bis zu Ausbildung und Studium.</p>
+          </article>
+          <article class="method-card">
+            <h3>Wie wird geprüft?</h3>
+            <p>Redaktionell anhand offizieller Quellen. Geprüft werden unter anderem Preis, Format, Dauer, Start und Zugang; verbindlich bleibt die Angebotsseite.</p>
+          </article>
+        </div>
+        <p class="section-link"><a class="source-link" href="methodik.html">Auswahlkriterien und Prüfprozess lesen <span aria-hidden="true">→</span></a></p>
+      </div>
+    </section>
+
+    <section class="orientation-section" aria-labelledby="orientation-title">
+      <div class="shell">
+        <div class="orientation-box">
+          <p class="eyebrow">Transparenz</p>
+          <h2 id="orientation-title">Orientierung statt Angebotsflut</h2>
+          <p>Media Skills ist eine redaktionell ausgewählte und anhand offizieller Quellen geprüfte Marktübersicht für Journalist:innen und Creator-Journalist:innen. Die Beta-Version erhebt derzeit keinen Anspruch auf vollständige Marktabdeckung. Termine, Preise, Tarife und Buchbarkeit können sich ändern; abgelaufene Einmalangebote werden ausgeblendet.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div>
+        <p><strong>Media Skills</strong> · Können, was kommt.</p>
+        <p class="footer-meta">Datenstand: 30. September 2026 · Schweiz, Österreich und Liechtenstein</p>
+      </div>
+      <nav class="footer-nav" aria-label="Rechtliches und Methodik">
+        <a href="methodik.html">Methodik</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="search-index-v1.2.js"></script>
+  <script src="search-engine-v1.2.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
