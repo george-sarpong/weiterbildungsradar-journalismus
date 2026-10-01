@@ -1,0 +1,168 @@
+name: Hosted Search V1.2 QA
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/hosted-search-qa.yml
+permissions:
+  contents: read
+
+jobs:
+  hosted-qa:
+    runs-on: ubuntu-latest
+    env:
+      BASE_URL: https://george-sarpong.github.io/weiterbildungsradar-journalismus
+    steps:
+      - name: HTTP MIME hash path and cache checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/hosted-qa
+          fetch() {
+            local f="$1"
+            curl --fail --silent --show-error --location --retry 3 -D "/tmp/hosted-qa/$f.headers" "$BASE_URL/$f" -o "/tmp/hosted-qa/$f"
+          }
+          for f in index.html styles.css data.js search-index-v1.2.js search-engine-v1.2.js app.js methodik.html datenschutz.html; do fetch "$f"; done
+          curl --fail --silent --show-error --location --retry 3 -D /tmp/hosted-qa/root.headers "$BASE_URL/" -o /tmp/hosted-qa/root.html
+
+          grep -qi '^content-type:.*text/html' /tmp/hosted-qa/index.html.headers
+          grep -qi '^content-type:.*text/css' /tmp/hosted-qa/styles.css.headers
+          for f in data.js search-index-v1.2.js search-engine-v1.2.js app.js; do
+            grep -Eqi '^content-type:.*(javascript|ecmascript|text/plain)' "/tmp/hosted-qa/$f.headers"
+          done
+
+          echo "646bd9c086be44f38a50294974d868561064d0eefe6fd12ad4b1ebdfe8354334  /tmp/hosted-qa/index.html" | sha256sum --check -
+          echo "900c8b157409a2b300afc7367b7980378aa953bc3e7aa1b4e3deb2758301404f  /tmp/hosted-qa/styles.css" | sha256sum --check -
+          echo "92d4de7de0954cebd5b9a2d6d37b4a8f495c5f91d117ff192a748f5e0f63f7c7  /tmp/hosted-qa/data.js" | sha256sum --check -
+          echo "194e24439b651f9ea181244ed261f562ac567d4528cc2c2a7051992926452b37  /tmp/hosted-qa/search-index-v1.2.js" | sha256sum --check -
+          echo "a406f7e6d05009ad4e8607d67021fa49a2394f559408d186bc9ed94a5ba43acb  /tmp/hosted-qa/search-engine-v1.2.js" | sha256sum --check -
+          echo "5f56bfe96787461ed1b8e9fa91dd27c89e05a248acc445ce5bf8297d6964be7f  /tmp/hosted-qa/app.js" | sha256sum --check -
+          echo "d5745d3b07e0415978283c0bd63548a021c8c58a521837fa8ab795ff6774c803  /tmp/hosted-qa/methodik.html" | sha256sum --check -
+          echo "022911297925ea593b6c28be4c2e69d2daba2bfdce177f5f910748d18334246e  /tmp/hosted-qa/datenschutz.html" | sha256sum --check -
+          cmp /tmp/hosted-qa/index.html /tmp/hosted-qa/root.html
+
+          {
+            echo "## Hosted HTTP QA"
+            echo
+            echo "- Root path and index.html are byte-identical."
+            echo "- All eight hosted files match the frozen Search V1.2 SHA-256 values."
+            echo "- HTML/CSS/JS MIME families are valid."
+            echo
+            echo "### Cache headers"
+            for f in index.html styles.css data.js search-index-v1.2.js search-engine-v1.2.js app.js; do
+              printf -- "- %s: " "$f"
+              grep -i '^cache-control:' "/tmp/hosted-qa/$f.headers" | tr -d '\r' || echo "no Cache-Control header"
+            done
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Install Playwright
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install --silent playwright
+          npx playwright install --with-deps chromium
+
+      - name: Real-origin Chromium QA
+        shell: bash
+        run: |
+          cat > /tmp/qa.mjs <<'NODE'
+          import { chromium } from "playwright";
+          const base = process.env.BASE_URL;
+          const assert = (ok, msg) => { if (!ok) throw new Error(msg); };
+          const browser = await chromium.launch({headless:true});
+          const page = await browser.newPage({viewport:{width:1280,height:900}});
+          const pageErrors = [];
+          const consoleErrors = [];
+          const externalRequests = [];
+          page.on("pageerror", e => pageErrors.push(String(e)));
+          page.on("console", m => { if (m.type()==="error") consoleErrors.push(m.text()); });
+          page.on("request", r => {
+            try {
+              const u = new URL(r.url());
+              const b = new URL(base);
+              if (["http:","https:"].includes(u.protocol) && u.origin !== b.origin) externalRequests.push(r.url());
+            } catch {}
+          });
+
+          await page.goto(base + "/", {waitUntil:"networkidle"});
+          await page.waitForFunction(() => document.querySelector("#resultCount")?.textContent?.includes("1321"));
+          assert((await page.locator("[data-offer-id]").count()) === 1321, "initial card count != 1321");
+          assert((await page.locator("#resultCount").textContent()).includes("1321 von 1321 aktuellen Angeboten"), "initial result text mismatch");
+          assert(pageErrors.length===0, "page errors on initial load: "+pageErrors.join(" | "));
+          assert(consoleErrors.length===0, "console errors on initial load: "+consoleErrors.join(" | "));
+          assert(externalRequests.length===0, "unexpected external runtime requests: "+externalRequests.join(" | "));
+
+          await page.locator("#smartInput").fill("Ich habe CHF 800 und möchte Datenjournalismus lernen.");
+          await page.locator("#smartSearchForm").evaluate(form => form.requestSubmit());
+          await page.waitForFunction(() => document.querySelector("#resultCount")?.textContent?.includes("Treffer"));
+          const q1 = await page.locator("#resultCount").textContent();
+          assert(q1.includes("2 Treffer"), "Q1 expected 2 Treffer: "+q1);
+          assert(q1.includes("14 nicht eindeutig"), "Q1 expected 14 uncertain: "+q1);
+          assert((await page.locator(".search-result-list [data-offer-id]").count())===16, "Q1 shown results != 16");
+          assert(!decodeURIComponent(page.url()).includes("Ich habe CHF 800"), "raw Smart query leaked to URL");
+
+          await page.locator("#smartInput").fill("Recherche kostenlos");
+          await page.locator("#smartSearchForm").evaluate(form => form.requestSubmit());
+          await page.waitForFunction(() => document.querySelector("#priceFilter")?.value === "KOSTENLOS");
+          await page.locator("#smartInput").fill("Datenjournalismus");
+          await page.locator("#smartSearchForm").evaluate(form => form.requestSubmit());
+          await page.waitForFunction(() => document.querySelector("#priceFilter")?.value === "");
+          assert(await page.locator("#priceFilter").inputValue()==="", "Smart-owned price filter persisted");
+
+          await page.locator("#smartInput").fill("Ich möchte einen Kurs");
+          await page.locator("#smartSearchForm").evaluate(form => form.requestSubmit());
+          await page.waitForFunction(() => document.querySelector("#smartSummary")?.textContent?.includes("Keine belastbaren Kriterien erkannt"));
+          assert((await page.locator("#resultCount").textContent()).includes("1321 von 1321"), "NOTHING_RECOGNIZED did not safely restore classic list");
+
+          await page.locator("#resetFilters").click();
+          assert((await page.evaluate(() => document.activeElement?.id))==="searchInput", "reset focus not on classic search");
+          assert((await page.locator("#smartInput").inputValue())==="", "reset did not clear Smart input");
+
+          await page.locator("#smartInput").fill("Moderation");
+          await page.locator("#smartInput").press("Enter");
+          await page.waitForFunction(() => document.querySelectorAll(".search-explanation").length > 0);
+          assert((await page.locator(".search-explanation").count())>0, "criterion explanations missing");
+          await page.locator("#smartChangeButton").click();
+          assert((await page.evaluate(() => document.activeElement?.id))==="smartInput", "Ändern did not focus Smart input");
+
+          await page.locator("#resetFilters").click();
+          await page.locator("#searchInput").fill("MAZ");
+          await page.waitForFunction(() => location.search.includes("q=MAZ"));
+          assert(new URL(page.url()).searchParams.get("q")==="MAZ", "History API URL state failed on hosted origin");
+
+          assert((await page.locator(".smart-result-card").count())===0, "legacy top-3 DOM present");
+          assert((await page.locator(".smart-bundle").count())===0, "legacy bundle DOM present");
+
+          await page.setViewportSize({width:390,height:844});
+          await page.locator("#smartInput").fill("Moderation");
+          await page.locator("#smartInput").press("Enter");
+          await page.locator("#smartChangeButton").waitFor({state:"visible"});
+          const dims = await page.evaluate(() => ({sw:document.documentElement.scrollWidth,cw:document.documentElement.clientWidth}));
+          assert(dims.sw<=dims.cw, "mobile horizontal overflow: "+JSON.stringify(dims));
+
+          await page.goto(base + "/methodik.html", {waitUntil:"networkidle"});
+          assert((await page.locator("h1").textContent()).trim()==="Methodik", "methodik path failed");
+          await page.goto(base + "/datenschutz.html", {waitUntil:"networkidle"});
+          assert((await page.locator("h1").textContent()).trim()==="Datenschutz", "datenschutz path failed");
+
+          assert(pageErrors.length===0, "page errors: "+pageErrors.join(" | "));
+          assert(consoleErrors.length===0, "console errors: "+consoleErrors.join(" | "));
+          await browser.close();
+          console.log("HOSTED_CHROMIUM_QA_PASS");
+          NODE
+          node /tmp/qa.mjs
+          {
+            echo
+            echo "## Hosted Chromium QA"
+            echo
+            echo "- 1321/1321 initial runtime visibility PASS"
+            echo "- Smart Q1: 2 MATCH + 14 UNCERTAIN PASS"
+            echo "- shared Smart/classic state and Smart-owned filter cleanup PASS"
+            echo "- NOTHING_RECOGNIZED safe fallback PASS"
+            echo "- reset/focus/keyboard/reason rendering PASS"
+            echo "- raw Smart text absent from URL PASS"
+            echo "- real-origin History API state PASS"
+            echo "- mobile 390px no horizontal overflow PASS"
+            echo "- methodik/datenschutz relative paths PASS"
+            echo "- no legacy top-3/bundle DOM PASS"
+            echo "- no unexpected external runtime requests PASS"
+          } >> "$GITHUB_STEP_SUMMARY"
