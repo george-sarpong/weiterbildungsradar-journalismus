@@ -507,6 +507,31 @@
     return [...items].sort((a, b) => (rank.get(a.offer.id) ?? Number.MAX_SAFE_INTEGER) - (rank.get(b.offer.id) ?? Number.MAX_SAFE_INTEGER));
   };
 
+  const searchRowsById = new Map((searchIndex.rows || []).map(row => [row.id, row]));
+  const classicTopicAliasMap = new Map();
+
+  (searchIndex.taxonomy || []).forEach(topic => {
+    if (!topic?.userFacing) return;
+    [topic.label, ...(topic.aliases || [])].filter(Boolean).forEach(alias => {
+      const key = normalize(alias).trim();
+      if (!key) return;
+      const codes = classicTopicAliasMap.get(key) || new Set();
+      codes.add(topic.code);
+      classicTopicAliasMap.set(key, codes);
+    });
+  });
+
+  const classicTopicCodesForQuery = query => {
+    const key = normalize(query).trim();
+    return key ? (classicTopicAliasMap.get(key) || null) : null;
+  };
+
+  const offerMatchesClassicTopic = (offer, topicCodes) => {
+    if (!topicCodes?.size) return false;
+    const row = searchRowsById.get(offer.id);
+    return Array.isArray(row?.tc) && row.tc.some(code => topicCodes.has(code));
+  };
+
   const filters = () => ({
     queryRaw: el.search.value.trim(),
     query: normalize(el.search.value.trim()),
@@ -536,9 +561,13 @@
       labels.focus[offer.focus],
       labels.offerType[offer.offerType]
     ].join(" "));
+    const classicTopicCodes = classicTopicCodesForQuery(filter.queryRaw);
+    const queryMatches = !filter.query
+      || haystack.includes(filter.query)
+      || offerMatchesClassicTopic(offer, classicTopicCodes);
 
     return (!favoritesOnly || favorites.has(offer.id))
-      && (!filter.query || haystack.includes(filter.query))
+      && queryMatches
       && (!filter.focus || offer.focus === filter.focus)
       && (!filter.type || offer.offerType === filter.type)
       && (!filter.price || offer.priceCategory === filter.price)
