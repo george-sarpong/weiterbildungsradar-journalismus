@@ -65,20 +65,25 @@ jobs:
             done
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Install Playwright
+      - name: Prepare system Chrome QA
+        shell: bash
         run: |
+          set -euo pipefail
           npm init -y >/dev/null 2>&1
-          npm install --silent playwright
-          npx playwright install --with-deps chromium
+          npm install --silent playwright-core
+          CHROME_PATH="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          test -n "$CHROME_PATH"
+          echo "CHROME_PATH=$CHROME_PATH" >> "$GITHUB_ENV"
+          "$CHROME_PATH" --version
 
       - name: Real-origin Chromium QA
         shell: bash
         run: |
           cat > /tmp/qa.mjs <<'NODE'
-          import { chromium } from "playwright";
+          import { chromium } from "playwright-core";
           const base = process.env.BASE_URL;
           const assert = (ok, msg) => { if (!ok) throw new Error(msg); };
-          const browser = await chromium.launch({headless:true});
+          const browser = await chromium.launch({headless:true, executablePath:process.env.CHROME_PATH, args:["--no-sandbox"]});
           const page = await browser.newPage({viewport:{width:1280,height:900}});
           const pageErrors = [];
           const consoleErrors = [];
@@ -182,3 +187,5 @@ jobs:
 # cache-busted hosted QA trigger
 
 # final hosted QA trigger after synchronized Pages deploy
+
+# system Chrome hosted QA trigger
