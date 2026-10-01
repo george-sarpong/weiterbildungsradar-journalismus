@@ -79,7 +79,7 @@ jobs:
       - name: Real-origin Chromium QA
         shell: bash
         run: |
-          cat > /tmp/qa.mjs <<'NODE'
+          cat > hosted-qa.mjs <<'NODE'
           import { chromium } from "playwright-core";
           const base = process.env.BASE_URL;
           const assert = (ok, msg) => { if (!ok) throw new Error(msg); };
@@ -164,7 +164,7 @@ jobs:
           await browser.close();
           console.log("HOSTED_CHROMIUM_QA_PASS");
           NODE
-          node /tmp/qa.mjs
+          node hosted-qa.mjs
           {
             echo
             echo "## Hosted Chromium QA"
@@ -189,3 +189,5 @@ jobs:
 # final hosted QA trigger after synchronized Pages deploy
 
 # system Chrome hosted QA trigger
+
+# module-resolution hosted QA trigger
