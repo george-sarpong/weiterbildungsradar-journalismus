@@ -94,7 +94,12 @@
     smartOutput: document.querySelector("#smartOutput"),
     smartUnderstood: document.querySelector("#smartUnderstood"),
     smartSummary: document.querySelector("#smartSummary"),
-    smartChangeButton: document.querySelector("#smartChangeButton")
+    smartResults: document.querySelector("#smartResults"),
+    smartBundle: document.querySelector("#smartBundle"),
+    smartBudgetButton: document.querySelector("#smartBudgetButton"),
+    smartFreeButton: document.querySelector("#smartFreeButton"),
+    smartPriceBands: document.querySelector("#smartPriceBands"),
+    smartPriceNote: document.querySelector("#smartPriceNote")
   };
 
   const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
@@ -114,8 +119,6 @@
   const activeIds = new Set(offers.map(offer => offer.id));
   let favorites = loadFavorites();
   let favoritesOnly = false;
-  let smartRaw = "";
-  const smartManaged = { format: null, level: null, price: null };
 
   function loadFavorites() {
     try {
@@ -374,7 +377,7 @@
       <dd>${escapeHtml(value)}</dd>
     </div>`;
 
-  const card = (offer, searchEvaluation = null) => {
+  const card = offer => {
     const isFavorite = favorites.has(offer.id);
     const favoriteLabel = isFavorite
       ? `${offer.title} aus den Favoriten entfernen`
@@ -417,7 +420,6 @@
           <span class="badge">${escapeHtml(humanizeTokens(offer.language, labels.language, /\s*[|/]\s*/))}</span>
           <span class="badge">${escapeHtml(place)}</span>
         </div>
-        ${searchEvaluation ? searchExplanation(searchEvaluation) : ""}
         <div class="card-footer">
           <div class="card-links">
             <a class="source-link" href="${escapeHtml(offer.url)}" target="_blank" rel="noopener noreferrer" aria-label="Offizielle Angebotsseite zu ${escapeHtml(offer.title)} öffnen">
@@ -431,106 +433,574 @@
   };
 
 
-  // Search V1.2: deterministischer, clientseitiger Parser gegen den Search-Sidecar.
-  // Der Originalsatz bleibt flüchtig im Browser und wird nicht in URL/localStorage geschrieben.
-  const searchIndex = window.SFJ_SEARCH_INDEX || { rows: [], taxonomy: [] };
+  // Smart Search MS-12: deterministic BUG-01 implementation.
+  // Structured price/delivery truth comes from smart-search-data.js; data.js remains the display/topic roster.
+  const SMART_DATA = window.MEDIA_SKILLS_SMART_DATA && window.MEDIA_SKILLS_SMART_DATA.byId
+    ? window.MEDIA_SKILLS_SMART_DATA
+    : { meta: {}, byId: {} };
 
-  const searchCriterionLabel = criterion => {
-    if (criterion.kind === "topic") return `${criterion.negative ? "ohne Thema" : "Thema"}: ${criterion.label ?? criterion.code}`;
-    if (criterion.kind === "budget") return `Budget: ${criterion.currency ?? "Währung offen"} ${Number(criterion.max).toLocaleString("de-CH")}`;
-    if (criterion.kind === "freeOnly") return "nur kostenlos";
-    if (criterion.kind === "durationMax") return `Dauer: bis ${criterion.max} ${criterion.unit === "DAYS" ? "Tage" : criterion.unit === "HOURS" ? "Stunden" : criterion.unit}`;
-    if (criterion.kind === "format") return `${criterion.negative ? "ohne" : "Format"}: ${criterion.value}${criterion.strength === "soft" ? " (Wunsch)" : ""}`;
-    if (criterion.kind === "level") return `${criterion.negative ? "ohne Niveau" : "Niveau"}: ${criterion.value}`;
-    if (criterion.kind === "fallbackText") return `Suchbegriff: ${(criterion.terms ?? []).join(" ")}`;
-    return criterion.kind;
-  };
+  const SMART_FREE_TOKEN_RE = /^(?:gratis|kostenlos(?:e(?:n|r|s|m)?)?|kostenfrei(?:e(?:n|r|s|m)?)?)$/;
+  const SMART_FREE_INTENT_RE = /\b(?:gratis|kostenlos(?:e(?:n|r|s|m)?)?|kostenfrei(?:e(?:n|r|s|m)?)?)\b/;
 
-  const searchExplanation = evaluation => {
-    const rows = [
-      ...evaluation.checks.filter(item => ["MATCH", "UNCERTAIN"].includes(item.result.state)),
-      ...evaluation.soft.filter(item => ["MATCH", "UNCERTAIN"].includes(item.result.state))
-    ];
-    if (!rows.length) return "";
-    return `<div class="search-explanation" aria-label="Begründung der Suchzuordnung">
-      <strong>${evaluation.state === "UNCERTAIN" ? "Nicht eindeutig prüfbar" : "Das trifft zu"}</strong>
-      <ul>${rows.map(item => `<li><span class="search-state">${escapeHtml(item.result.state === "UNCERTAIN" ? "Nicht eindeutig prüfbar" : "Das trifft zu")}:</span> ${escapeHtml(item.result.reason ?? searchCriterionLabel(item.criterion))}</li>`).join("")}</ul>
-    </div>`;
-  };
-
-  const renderSmartSummary = (parsed, summaryText) => {
-    if (!el.smartOutput || !el.smartUnderstood || !el.smartSummary) return;
-    el.smartOutput.hidden = false;
-    const chips = parsed.criteria.length
-      ? parsed.criteria.map(item => `<span class="smart-chip">${escapeHtml(searchCriterionLabel(item))}</span>`).join("")
-      : '<span class="smart-chip">Keine belastbaren Kriterien erkannt</span>';
-    el.smartUnderstood.innerHTML = `<span class="smart-understood-label">Erkannt:</span>${chips}`;
-    const notes = parsed.notes.map(note => {
-      if (note === "VAGUE_PRICE_SORT_ASC") return "Preiswunsch ohne Schwellenwert: passende Ergebnisse werden preislich sortiert.";
-      if (note === "TRAVEL_NOT_INCLUDED") return "Reise- und Verpflegungskosten werden nicht berechnet.";
-      if (note === "ADVISORY_NOT_SUPPORTED") return "Voraussetzungen und Lernpfade werden nicht automatisch beraten.";
-      return note;
-    });
-    el.smartSummary.innerHTML = `<p>${escapeHtml(summaryText)}</p>${notes.length ? `<p class="muted">${notes.map(escapeHtml).join(" · ")}</p>` : ""}`;
-  };
-
-  const clearSmartManagedCriteria = () => {
-    [["format", el.format], ["level", el.level], ["price", el.price]].forEach(([key, node]) => {
-      if (smartManaged[key] && node.value === smartManaged[key]) node.value = "";
-      smartManaged[key] = null;
-    });
-  };
-
-  const applyRepresentableSmartCriteria = parsed => {
-    clearSmartManagedCriteria();
-    const hardPositiveFormat = parsed.criteria.find(c => c.kind === "format" && c.strength === "hard" && !c.negative);
-    const hardPositiveLevel = parsed.criteria.find(c => c.kind === "level" && c.strength === "hard" && !c.negative);
-    const freeOnly = parsed.criteria.some(c => c.kind === "freeOnly");
-    if (hardPositiveFormat?.value === "PRAESENZ" && hasOption(el.format, "PRÄSENZ")) {
-      el.format.value = "PRÄSENZ";
-      smartManaged.format = "PRÄSENZ";
-    }
-    if (hardPositiveLevel?.value === "EINSTIEG" && hasOption(el.level, "EINSTIEG")) {
-      el.level.value = "EINSTIEG";
-      smartManaged.level = "EINSTIEG";
-    }
-    if (freeOnly && hasOption(el.price, "KOSTENLOS")) {
-      el.price.value = "KOSTENLOS";
-      smartManaged.price = "KOSTENLOS";
-    }
-  };
-
-  const smartSorted = items => {
-    if (el.sort.value === "EDITORIAL") return items;
-    const sortedOffers = sortOffers(items.map(item => item.offer));
-    const rank = new Map(sortedOffers.map((offer, index) => [offer.id, index]));
-    return [...items].sort((a, b) => (rank.get(a.offer.id) ?? Number.MAX_SAFE_INTEGER) - (rank.get(b.offer.id) ?? Number.MAX_SAFE_INTEGER));
-  };
-
-  const searchRowsById = new Map((searchIndex.rows || []).map(row => [row.id, row]));
-  const classicTopicAliasMap = new Map();
-
-  (searchIndex.taxonomy || []).forEach(topic => {
-    if (!topic?.userFacing) return;
-    [topic.label, ...(topic.aliases || [])].filter(Boolean).forEach(alias => {
-      const key = normalize(alias).trim();
-      if (!key) return;
-      const codes = classicTopicAliasMap.get(key) || new Set();
-      codes.add(topic.code);
-      classicTopicAliasMap.set(key, codes);
-    });
+  const DELIVERY_INTENT_LABELS = Object.freeze({
+    ONLINE: "Online",
+    IN_PERSON: "Präsenz",
+    STRICT_REMOTE: "Nur online / ohne Präsenz",
+    STRICT_IN_PERSON: "Nur Präsenz / ohne Online-Anteil",
+    HYBRID: "Hybrid",
+    LIVE_ONLINE: "Online live",
+    ON_DEMAND: "On-Demand",
+    ASYNCHRONOUS: "Asynchron",
+    SELF_STUDY: "Selbststudium",
+    SELF_PACED: "Selbstbestimmtes Tempo",
+    WEBINAR: "Webinar",
+    HYFLEX: "Hyflex"
   });
 
-  const classicTopicCodesForQuery = query => {
-    const key = normalize(query).trim();
-    return key ? (classicTopicAliasMap.get(key) || null) : null;
+  const SMART_STOPWORDS = new Set([
+    "ich", "habe", "hatte", "mochte", "moechte", "will", "wurde", "wuerde", "mich", "mir",
+    "im", "in", "am", "an", "auf", "fur", "fuer", "zu", "zum", "zur", "von", "mit", "ohne",
+    "und", "oder", "der", "die", "das", "den", "dem", "einen", "eine", "ein", "einem", "einer",
+    "bereich", "lernen", "weiterbilden", "weiterbildung", "kurs", "kurse", "angebot", "angebote",
+    "suche", "brauche", "bitte", "etwas", "maximal", "hochstens", "hoechstens", "unter", "bis",
+    "budget", "franken", "chf", "zeit", "tage", "tag", "tagen", "stunden", "stunde", "std",
+    "online", "remote", "hybrid", "prasenz", "praesenz", "ort", "live", "demand", "selbststudium",
+    "selbstlernen", "self", "paced", "webinar", "hyflex", "asynchron", "asynchronous", "rein",
+    "vollstandig", "vollstaendig", "nur", "kein", "keine", "lieber",
+    "gratis", "kostenlos", "kostenfrei"
+  ]);
+
+  const smartNumber = raw => {
+    const cleaned = String(raw ?? "")
+      .replace(/[’'\s]/g, "")
+      .replace(/([.,]\d{2})$/, "")
+      .replace(/[.,]/g, "");
+    const value = Number(cleaned);
+    return Number.isFinite(value) ? value : null;
   };
 
-  const offerMatchesClassicTopic = (offer, topicCodes) => {
-    if (!topicCodes?.size) return false;
-    const row = searchRowsById.get(offer.id);
-    return Array.isArray(row?.tc) && row.tc.some(code => topicCodes.has(code));
+  const parseSmartBudget = raw => {
+    const text = String(raw ?? "");
+    const patterns = [
+      /\bCHF\s*([0-9][0-9'’.,]*)/i,
+      /\b([0-9][0-9'’.,]*)\s*CHF\b/i,
+      /\b(?:Fr\.?|Franken)\s*([0-9][0-9'’.,]*)/i,
+      /\b([0-9][0-9'’.,]*)\s*(?:Fr\.?|Franken)\b/i
+    ];
+    for (const pattern of patterns) {
+      const match = text.match(pattern);
+      if (!match) continue;
+      const amount = smartNumber(match[1]);
+      if (amount != null) return { amount, currency: "CHF" };
+    }
+    return null;
   };
+
+  const parseDeliveryIntent = input => {
+    const negatedInPerson = /\b(?:ohne\s+prae?senz|kein(?:e|en)?\s+prae?senz(?:kurs)?)\b/;
+    const negatedOnline = /\b(?:ohne|kein(?:e|en)?)\s+online(?:[- ]?anteil)?\b/;
+    const strictRemote = /\b(?:rein|100\s*%|vollstandig|vollstaendig)\s+online\b/.test(input) || negatedInPerson.test(input);
+    const strictInPerson = /\bnur\s+prae?senz\b|\b100\s*%\s+(?:vor\s+ort|prae?senz)\b/.test(input) || negatedOnline.test(input);
+    const positiveChannelInput = input
+      .replace(new RegExp(negatedInPerson.source, "g"), " ")
+      .replace(new RegExp(negatedOnline.source, "g"), " ");
+    const liveOnline = /\blive\s+online\b|\bonline\s+live\b/.test(positiveChannelInput);
+    const onDemand = /\bon[- ]?demand\b/.test(input);
+    const asynchronous = /\basynchron(?:ous)?\b/.test(input);
+    const selfStudy = /\bselbststudium\b|\bself[- ]?study\b|\bselbstlern/.test(input);
+    const selfPaced = /\bself[- ]?paced\b|\beigen(?:en|em)?\s+tempo\b|\bim\s+eigenen\s+tempo\b/.test(input);
+    const webinar = /\bwebinar\b/.test(input);
+    const hyflex = /\bhyflex\b/.test(input);
+    const hybrid = /\bhybrid\b/.test(input) && !hyflex;
+    // Search broad channels only after removing negated phrases. Independent,
+    // explicitly positive channel words remain visible and can expose a genuinely
+    // contradictory query instead of being silently discarded.
+    const broadOnline = !strictRemote && (liveOnline || /\bonline\b|\bremote\b/.test(positiveChannelInput));
+    const broadInPerson = !strictInPerson && /\bprae?senz\b|\bvor\s+ort\b/.test(positiveChannelInput);
+    const intents = [];
+    if (strictRemote) intents.push("STRICT_REMOTE");
+    else if (broadOnline) intents.push("ONLINE");
+    if (strictInPerson) intents.push("STRICT_IN_PERSON");
+    else if (broadInPerson) intents.push("IN_PERSON");
+    if (hybrid) intents.push("HYBRID");
+    if (liveOnline) intents.push("LIVE_ONLINE");
+    if (onDemand) intents.push("ON_DEMAND");
+    if (asynchronous) intents.push("ASYNCHRONOUS");
+    if (selfStudy) intents.push("SELF_STUDY");
+    if (selfPaced) intents.push("SELF_PACED");
+    if (webinar) intents.push("WEBINAR");
+    if (hyflex) intents.push("HYFLEX");
+    return [...new Set(intents)];
+  };
+
+  const parseSmartQuery = raw => {
+    const input = normalize(raw);
+    const budget = parseSmartBudget(raw);
+    const dayMatch = input.match(/\b(?:zwei|2)\s*(?:tag|tage|tagen)\b/);
+    const numericDayMatch = input.match(/\b(\d{1,2})\s*(?:tag|tage|tagen)\b/);
+    const deliveryIntents = parseDeliveryIntent(input);
+    const freeOnly = SMART_FREE_INTENT_RE.test(input);
+    let tokenSource = input
+      .replace(/\bchf\s*[0-9][0-9'’.,]*\b/g, " ")
+      .replace(/\b[0-9][0-9'’.,]*\s*chf\b/g, " ")
+      .replace(/\b(?:fr\.?|franken)\s*[0-9][0-9'’.,]*\b/g, " ")
+      .replace(/\b[0-9][0-9'’.,]*\s*(?:fr\.?|franken)\b/g, " ")
+      .replace(/\b(?:zwei|\d{1,2})\s*(?:tag|tage|tagen)\b/g, " ")
+      .replace(/\b(?:rein|vollstandig|vollstaendig|100\s*%)\s+online\b/g, " ")
+      .replace(/\bohne\s+prae?senz\b|\bkein(?:e|en)?\s+prae?senz(?:kurs)?\b/g, " ")
+      .replace(/\bnur\s+prae?senz\b|\b100\s*%\s+(?:vor\s+ort|prae?senz)\b|\b(?:ohne|kein(?:e|en)?)\s+online(?:[- ]?anteil)?\b/g, " ")
+      .replace(/\blive\s+online\b|\bonline\s+live\b|\bon[- ]?demand\b|\bself[- ]?paced\b|\bself[- ]?study\b|\bim\s+eigenen\s+tempo\b/g, " ");
+    const tokens = tokenSource.split(/[^a-z0-9äöüß]+/i)
+      .map(token => token.trim())
+      .filter(token => token.length >= 2
+        && !SMART_STOPWORDS.has(token)
+        && !SMART_FREE_TOKEN_RE.test(token)
+        && !/^\d+$/.test(token));
+    return {
+      raw: String(raw ?? "").trim(),
+      budget,
+      maxDays: dayMatch ? 2 : numericDayMatch ? Number(numericDayMatch[1]) : null,
+      deliveryIntents,
+      freeOnly,
+      tokens: [...new Set(tokens)]
+    };
+  };
+
+  const smartHaystack = offer => normalize([
+    offer.title, offer.description, offer.provider, offer.focus, offer.format, offer.duration, offer.start,
+    offer.region, offer.country, labels.focus[offer.focus], labels.level[offer.level], labels.offerType[offer.offerType]
+  ].join(" "));
+
+  const topicMatch = (offer, parsed) => {
+    if (!parsed.tokens.length) return { match: true, score: 0 };
+    const title = normalize(offer.title);
+    const haystack = smartHaystack(offer);
+    const allMatch = parsed.tokens.every(token => haystack.includes(token));
+    if (!allMatch) return { match: false, score: 0 };
+    const score = parsed.tokens.reduce((sum, token) => sum + (title.includes(token) ? 8 : 2), 0);
+    return { match: true, score };
+  };
+
+  const getSmartRecord = offer => SMART_DATA.byId[offer.id] || null;
+  const variantsOf = delivery => Array.isArray(delivery?.variants) ? delivery.variants : [];
+  const variantChannels = variant => Array.isArray(variant?.attendanceChannels) ? variant.attendanceChannels : [];
+  const variantFormats = variant => Array.isArray(variant?.instructionFormats) ? variant.instructionFormats : [];
+
+  const deliveryIntentMatches = (record, intents) => {
+    if (!intents.length) return { outcome: "MATCH", evidenceTier: "VERIFIED", matchedVariantIds: [] };
+    const delivery = record?.delivery || {};
+    const tier = delivery.evidenceTier || "UNKNOWN";
+    if (tier === "UNKNOWN") return { outcome: "UNKNOWN", evidenceTier: tier, matchedVariantIds: [] };
+    const variants = variantsOf(delivery);
+    const structure = delivery.structure || "UNKNOWN";
+    const offerChannels = Array.isArray(delivery.channels) ? delivery.channels : [];
+    const sourceText = normalize(delivery.sourceText || "");
+
+    const variantMatches = predicate => new Set(variants
+      .filter(predicate)
+      .map(variant => variant.deliveryVariantId)
+      .filter(Boolean));
+    const allVariantIds = new Set(variants.map(variant => variant.deliveryVariantId).filter(Boolean));
+    const scopedMatch = (matches, ids = null, scope = "OFFER") => ({
+      matches,
+      ids: ids?.size ? ids : null,
+      scope: ids?.size ? "VARIANT" : scope
+    });
+    const broadChannelMatch = channel => {
+      const ids = variantMatches(variant => variantChannels(variant).includes(channel));
+      if (ids.size) return scopedMatch(true, ids);
+      if (!offerChannels.includes(channel)) return scopedMatch(false);
+      if (structure === "SINGLE_CHANNEL" && offerChannels.length === 1) {
+        return scopedMatch(true, allVariantIds);
+      }
+      return scopedMatch(true, null, variants.length ? "UNRESOLVED_VARIANT" : "OFFER");
+    };
+    const strictRemote = () => {
+      const ids = variantMatches(variant => {
+        const channels = variantChannels(variant);
+        return channels.length === 1 && channels[0] === "REMOTE";
+      });
+      if (structure === "SINGLE_CHANNEL") {
+        const matches = offerChannels.length === 1 && offerChannels[0] === "REMOTE";
+        return scopedMatch(matches, ids.size ? ids : matches ? allVariantIds : null);
+      }
+      if (structure === "MODE_CHOICE" || structure === "HYFLEX") return scopedMatch(ids.size > 0, ids);
+      return scopedMatch(false);
+    };
+    const strictInPerson = () => {
+      const ids = variantMatches(variant => {
+        const channels = variantChannels(variant);
+        return channels.length === 1 && channels[0] === "IN_PERSON";
+      });
+      if (structure === "SINGLE_CHANNEL") {
+        const matches = offerChannels.length === 1 && offerChannels[0] === "IN_PERSON";
+        return scopedMatch(matches, ids.size ? ids : matches ? allVariantIds : null);
+      }
+      if (structure === "MODE_CHOICE" || structure === "HYFLEX") return scopedMatch(ids.size > 0, ids);
+      return scopedMatch(false);
+    };
+    const tests = {
+      ONLINE: () => broadChannelMatch("REMOTE"),
+      IN_PERSON: () => broadChannelMatch("IN_PERSON"),
+      STRICT_REMOTE: () => strictRemote(),
+      STRICT_IN_PERSON: () => strictInPerson(),
+      HYBRID: () => scopedMatch(structure === "HYBRID_COMBINED"),
+      HYFLEX: () => scopedMatch(structure === "HYFLEX"),
+      LIVE_ONLINE: () => {
+        const ids = variantMatches(v => variantChannels(v).includes("REMOTE") && v.temporalMode === "SYNCHRONOUS");
+        return scopedMatch(ids.size > 0, ids);
+      },
+      ON_DEMAND: () => {
+        const ids = variantMatches(v => v.scheduleMode === "ON_DEMAND");
+        return scopedMatch(ids.size > 0, ids);
+      },
+      ASYNCHRONOUS: () => {
+        const ids = variantMatches(v => v.temporalMode === "ASYNCHRONOUS");
+        return scopedMatch(ids.size > 0, ids);
+      },
+      SELF_STUDY: () => {
+        const ids = variantMatches(v => variantFormats(v).includes("SELF_STUDY"));
+        return scopedMatch(ids.size > 0, ids);
+      },
+      WEBINAR: () => {
+        const ids = variantMatches(v => variantFormats(v).includes("WEBINAR"));
+        return scopedMatch(ids.size > 0, ids);
+      },
+      SELF_PACED: () => {
+        const matches = /\bself[- ]?paced\b|\bown pace\b|\beigen(?:en|em)? tempo\b/.test(sourceText);
+        if (!matches) return scopedMatch(false);
+        if (variants.length === 1) return scopedMatch(true, allVariantIds);
+        return scopedMatch(true, null, variants.length ? "UNRESOLVED_VARIANT" : "OFFER");
+      }
+    };
+    const results = intents.map(intent => tests[intent] ? tests[intent]() : scopedMatch(false));
+    if (results.some(result => !result.matches)) {
+      return { outcome: "MISMATCH", evidenceTier: tier, matchedVariantIds: [] };
+    }
+    const variantResults = results.filter(result => result.scope !== "OFFER");
+    if (variantResults.length > 1 && variantResults.some(result => result.scope === "UNRESOLVED_VARIANT")) {
+      return { outcome: "MISMATCH", evidenceTier: tier, matchedVariantIds: [] };
+    }
+    const scopedIds = variantResults.filter(result => result.ids).map(result => result.ids);
+    if (!scopedIds.length) return { outcome: "MATCH", evidenceTier: tier, matchedVariantIds: [] };
+    const matchingIds = [...scopedIds[0]].filter(id => scopedIds.every(ids => ids.has(id)));
+    if (!matchingIds.length) return { outcome: "MISMATCH", evidenceTier: tier, matchedVariantIds: [] };
+    return { outcome: "MATCH", evidenceTier: tier, matchedVariantIds: matchingIds };
+  };
+
+  const isDateActive = option => {
+    const now = today.getTime();
+    const from = option.validFrom ? parseDate(option.validFrom) : null;
+    const through = option.validThrough ? parseDate(option.validThrough) : null;
+    if (from && from.getTime() > now) return false;
+    if (through && through.getTime() < now) return false;
+    return true;
+  };
+
+  const amountWithRequiredComponents = option => {
+    if (option.amountType === "FREE") return { kind: "EXACT", amount: 0 };
+    if (option.amountType === "FROM") return { kind: "FROM", amount: option.minAmount };
+    if (option.amountType === "RANGE") return { kind: "RANGE", amount: option.minAmount, maxAmount: option.maxAmount };
+    if (option.amountType !== "EXACT" || option.amount == null) return { kind: "UNKNOWN", amount: null };
+    let amount = Number(option.amount);
+    let uncertain = false;
+    for (const component of Array.isArray(option.components) ? option.components : []) {
+      if (component.includedInBase || component.requirementStatus === "OPTIONAL") continue;
+      if (component.requirementStatus !== "REQUIRED") { uncertain = true; continue; }
+      if (component.amountType === "EXACT" && component.amount != null) amount += Number(component.amount);
+      else { uncertain = true; }
+    }
+    if (option.billingBasis !== "TOTAL") {
+      if (option.billingCount && Number.isFinite(Number(option.billingCount))) amount *= Number(option.billingCount);
+      else uncertain = true;
+    }
+    if (option.taxMode === "EXCLUDED") {
+      if (option.taxRate != null && Number.isFinite(Number(option.taxRate))) amount *= 1 + Number(option.taxRate) / 100;
+      else uncertain = true;
+    }
+    return uncertain ? { kind: "POSSIBLE", amount } : { kind: "EXACT", amount };
+  };
+
+  const budgetStatusRank = {
+    TARGET_GROUP_FIT: 0,
+    DIRECT_FIT: 1,
+    CONDITIONAL_FIT: 2,
+    POSSIBLE_FIT: 3,
+    PRICE_UNKNOWN: 4,
+    OVER_BUDGET: 5,
+    NO_BUDGET: 6
+  };
+
+  const classifyEligibility = option => {
+    if (option.eligibilityType === "NONE") return "DIRECT_FIT";
+    if (option.eligibilityType === "PROFESSION" && option.eligibilityValue === "JOURNALIST") return "TARGET_GROUP_FIT";
+    if (option.eligibilityType === "UNKNOWN") return "POSSIBLE_FIT";
+    return "CONDITIONAL_FIT";
+  };
+
+  const optionAppliesToDelivery = (option, deliveryResult, hasDeliveryIntent) => {
+    if (!hasDeliveryIntent) return true;
+    const refs = Array.isArray(option.deliveryVariantRefs) ? option.deliveryVariantRefs : [];
+    if (refs.length) return refs.some(ref => deliveryResult.matchedVariantIds.includes(ref));
+    return option.priceScope === "FULL_OFFER";
+  };
+
+  const resolveBudget = (offer, record, parsed, deliveryResult) => {
+    if (!parsed.budget) return { status: "NO_BUDGET", option: null, amount: null };
+    if (!record || record.parserStatus !== "AUTO_ACCEPT" || record.priceEligible !== true) return { status: "PRICE_UNKNOWN", option: null, amount: null };
+    const options = Array.isArray(record.priceOptions) ? record.priceOptions : [];
+    const candidates = [];
+    for (const option of options) {
+      if (!isDateActive(option)) continue;
+      if (!optionAppliesToDelivery(option, deliveryResult, parsed.deliveryIntents.length > 0)) continue;
+      if (option.amountType === "NOT_PUBLISHED" || option.amountType === "ON_REQUEST" || option.amountType === "NOT_APPLICABLE") {
+        candidates.push({ status: "PRICE_UNKNOWN", option, amount: null });
+        continue;
+      }
+      if (option.currency && option.currency !== parsed.budget.currency) {
+        candidates.push({ status: "PRICE_UNKNOWN", option, amount: null });
+        continue;
+      }
+      const calc = amountWithRequiredComponents(option);
+      if (calc.kind === "UNKNOWN") {
+        candidates.push({ status: "PRICE_UNKNOWN", option, amount: null });
+        continue;
+      }
+      if (calc.kind === "FROM" || calc.kind === "RANGE" || calc.kind === "POSSIBLE") {
+        const min = calc.amount;
+        candidates.push({ status: min != null && min > parsed.budget.amount ? "OVER_BUDGET" : "POSSIBLE_FIT", option, amount: min });
+        continue;
+      }
+      const base = classifyEligibility(option);
+      candidates.push({ status: calc.amount > parsed.budget.amount ? "OVER_BUDGET" : base, option, amount: calc.amount });
+    }
+    if (!candidates.length) return { status: "PRICE_UNKNOWN", option: null, amount: null };
+    const withinOfferTier = status => {
+      if (status === "DIRECT_FIT" || status === "TARGET_GROUP_FIT") return 0;
+      if (status === "CONDITIONAL_FIT") return 1;
+      if (status === "POSSIBLE_FIT") return 2;
+      if (status === "PRICE_UNKNOWN") return 3;
+      if (status === "OVER_BUDGET") return 4;
+      return 99;
+    };
+    candidates.sort((a, b) => withinOfferTier(a.status) - withinOfferTier(b.status)
+      || (a.amount ?? Number.MAX_SAFE_INTEGER) - (b.amount ?? Number.MAX_SAFE_INTEGER)
+      || (a.status === "TARGET_GROUP_FIT" ? -1 : b.status === "TARGET_GROUP_FIT" ? 1 : 0));
+    return candidates[0];
+  };
+
+  const freeStatusRank = {
+    DIRECT_FIT: 0,
+    TARGET_GROUP_FIT: 1,
+    CONDITIONAL_FIT: 2,
+    POSSIBLE_FIT: 3
+  };
+
+  const freeOptionHasNoRequiredCosts = option =>
+    (Array.isArray(option.components) ? option.components : []).every(component => {
+      if (component.includedInBase || component.requirementStatus === "OPTIONAL") return true;
+      return component.requirementStatus === "REQUIRED"
+        && component.amountType === "EXACT"
+        && typeof component.amount === "number"
+        && Number.isFinite(component.amount)
+        && component.amount === 0;
+    });
+
+  const resolveFreeOption = (record, deliveryResult = { matchedVariantIds: [] }, hasDeliveryIntent = false) => {
+    if (!record || record.parserStatus !== "AUTO_ACCEPT" || record.priceEligible !== true) return null;
+    const candidates = (Array.isArray(record.priceOptions) ? record.priceOptions : [])
+      .filter(option => option.amountType === "FREE"
+        && isDateActive(option)
+        && freeOptionHasNoRequiredCosts(option)
+        && optionAppliesToDelivery(option, deliveryResult, hasDeliveryIntent))
+      .map(option => ({ option, status: classifyEligibility(option) }))
+      .filter(result => result.status !== "POSSIBLE_FIT")
+      .sort((a, b) => (freeStatusRank[a.status] ?? 99) - (freeStatusRank[b.status] ?? 99));
+    return candidates[0] || null;
+  };
+
+  const isSafelyFree = (record, deliveryResult, hasDeliveryIntent) =>
+    Boolean(resolveFreeOption(record, deliveryResult, hasDeliveryIntent));
+
+  const budgetLabel = result => ({
+    TARGET_GROUP_FIT: "Journalist:innen-Tarif im Budget",
+    DIRECT_FIT: "im Budget",
+    CONDITIONAL_FIT: "bedingter Tarif im Budget",
+    POSSIBLE_FIT: "könnte ins Budget passen",
+    PRICE_UNKNOWN: "Preis nicht sicher vergleichbar",
+    OVER_BUDGET: "über Budget",
+    NO_BUDGET: ""
+  }[result.status] || result.status);
+
+  const optionLabel = (offer, result) => {
+    if (!result.option) return compactPrice(offer);
+    const option = result.option;
+    const amount = result.amount;
+    if (option.amountType === "FREE") return option.tariffLabel
+      ? `Kostenlos · ${option.tariffLabel}`
+      : "Kostenlos";
+    if (amount != null && option.currency) {
+      const label = `${option.currency} ${amount.toLocaleString("de-CH")}`;
+      return option.tariffLabel ? `${label} · ${option.tariffLabel}` : label;
+    }
+    return compactPrice(offer);
+  };
+
+  const smartEvaluate = (offer, parsed) => {
+    const topic = topicMatch(offer, parsed);
+    if (!topic.match) return null;
+    const record = getSmartRecord(offer);
+    const delivery = deliveryIntentMatches(record, parsed.deliveryIntents);
+    if (parsed.deliveryIntents.length) {
+      if (delivery.outcome !== "MATCH" || delivery.evidenceTier !== "VERIFIED") return null;
+    }
+    const free = parsed.freeOnly
+      ? resolveFreeOption(record, delivery, parsed.deliveryIntents.length > 0)
+      : null;
+    if (parsed.freeOnly && !free) return null;
+    const budget = resolveBudget(offer, record, parsed, delivery);
+    let score = topic.score;
+    if (parsed.deliveryIntents.length) score += 6;
+    if (offer.startDate) score += 1;
+    return { offer, record, delivery, budget, free, score };
+  };
+
+  const smartWhy = (item, parsed) => {
+    const reasons = [];
+    if (parsed.tokens.length) reasons.push(parsed.tokens.join(" + "));
+    if (parsed.deliveryIntents.length) reasons.push("Durchführungsform verifiziert");
+    if (parsed.budget) reasons.push(budgetLabel(item.budget));
+    if (parsed.freeOnly && item.free) {
+      if (item.free.status === "DIRECT_FIT") reasons.push("sicher als kostenlos strukturiert");
+      else if (item.free.status === "TARGET_GROUP_FIT") reasons.push("kostenloser Journalist:innen-Tarif publiziert");
+      else if (item.free.status === "CONDITIONAL_FIT") reasons.push("kostenlose Option unter Bedingung publiziert");
+      else reasons.push("kostenlose Option publiziert; Berechtigung unklar");
+    }
+    return reasons.length ? reasons.join(" · ") : "passt zu den erkannten Suchbegriffen";
+  };
+
+  const freeOptionLabel = result => {
+    if (!result) return "";
+    const tariff = result.option?.tariffLabel;
+    if (result.status === "DIRECT_FIT") return "Kostenlos";
+    if (result.status === "TARGET_GROUP_FIT") return `Kostenlos · ${tariff || "Journalist:innen-Tarif"}`;
+    if (result.status === "CONDITIONAL_FIT") return `Kostenlos unter Bedingung${tariff ? ` · ${tariff}` : ""}`;
+    return "Kostenlos-Option · Berechtigung unklar";
+  };
+
+  const smartFreeText = (item, parsed) => {
+    if (!parsed.freeOnly || !item.free || item.free.status === "DIRECT_FIT") return "";
+    const published = item.offer.priceDisplay || "Bedingung beim Anbieter publiziert";
+    if (item.free.status === "TARGET_GROUP_FIT") {
+      return `Der kostenlose Tarif gilt für Journalist:innen; persönliche Berechtigung wurde nicht geprüft. Publizierte Preisangabe: ${published}`;
+    }
+    if (item.free.status === "CONDITIONAL_FIT") {
+      return `Die kostenlose Option gilt nur unter einer publizierten Bedingung; persönliche Berechtigung wurde nicht geprüft. Publizierte Preisangabe: ${published}`;
+    }
+    return `Eine kostenlose Option ist publiziert, die Berechtigung aber nicht sicher bestimmbar. Publizierte Preisangabe: ${published}`;
+  };
+
+  const smartBudgetText = (item, parsed) => {
+    if (!parsed.budget) return "";
+    const status = item.budget.status;
+    if (["TARGET_GROUP_FIT", "DIRECT_FIT"].includes(status) && item.budget.amount != null) {
+      const rest = Math.max(0, parsed.budget.amount - item.budget.amount);
+      const prefix = status === "TARGET_GROUP_FIT" ? "Beim publizierten Journalist:innen-Tarif" : "Bei diesem Preis";
+      return `${prefix} bleiben CHF ${rest.toLocaleString("de-CH")}.`;
+    }
+    if (status === "CONDITIONAL_FIT") return "Der passende Preis gilt nur unter einer veröffentlichten Bedingung; persönliche Berechtigung wurde nicht geprüft.";
+    if (status === "POSSIBLE_FIT") return "Der publizierte Preis könnte ins Budget passen, ist aber nicht sicher als Gesamtpreis nutzbar.";
+    if (status === "OVER_BUDGET") return "Der sicher vergleichbare Preis liegt über dem angegebenen Budget.";
+    return "Für dieses Angebot ist keine sichere Budgetaussage möglich.";
+  };
+
+  const smartCard = (item, parsed, index) => {
+    const offer = item.offer;
+    const place = [countryDisplay(offer.country), regionDisplay(offer.region)].filter(Boolean).join(" · ");
+    const price = parsed.freeOnly && item.free
+      ? freeOptionLabel(item.free)
+      : optionLabel(offer, item.budget);
+    const budgetText = smartBudgetText(item, parsed);
+    const freeText = smartFreeText(item, parsed);
+    return `
+      <article class="smart-result-card">
+        <p class="smart-result-rank">Option ${index + 1}</p>
+        <h3>${escapeHtml(offer.title)}</h3>
+        <p class="smart-result-provider">${escapeHtml(offer.provider)}</p>
+        <div class="smart-result-meta">
+          <span>${escapeHtml(price)}</span>
+          <span>${escapeHtml(humanizeTokens(offer.format, labels.format))}</span>
+          <span>${escapeHtml(offer.duration || "Dauer nicht publiziert")}</span>
+          ${place ? `<span>${escapeHtml(place)}</span>` : ""}
+        </div>
+        <p class="smart-fit"><strong>Passt, weil:</strong> ${escapeHtml(smartWhy(item, parsed))}.</p>
+        ${budgetText ? `<p class="smart-budget">${escapeHtml(budgetText)}</p>` : ""}
+        ${freeText ? `<p class="smart-budget">${escapeHtml(freeText)}</p>` : ""}
+        ${item.budget.status === "PRICE_UNKNOWN" ? `<p class="smart-budget">Originalpreis: ${escapeHtml(offer.priceDisplay || "Preis nicht publiziert")}</p>` : ""}
+        <a class="source-link" href="${escapeHtml(offer.url)}" target="_blank" rel="noopener noreferrer">Zum Angebot <span aria-hidden="true">↗</span></a>
+      </article>`;
+  };
+
+  const priceBandCounts = list => {
+    const counts = { free: 0, low: 0, mid: 0, high: 0, variable: 0 };
+    list.forEach(offer => {
+      if (offer.priceCategory === "KOSTENLOS") counts.free += 1;
+      else if (offer.priceCategory === "BIS_500") counts.low += 1;
+      else if (offer.priceCategory === "501_2000") counts.mid += 1;
+      else if (offer.priceCategory === "UEBER_2000") counts.high += 1;
+      else counts.variable += 1;
+    });
+    return counts;
+  };
+
+  const renderPriceBands = (list = offers, context = "aktuell sichtbaren Bestands") => {
+    if (!el.smartPriceBands) return;
+    const c = priceBandCounts(list);
+    const bands = [
+      [c.free, "Kostenlos"], [c.low, "Bis 500"], [c.mid, "501–2'000"], [c.high, "Über 2'000"], [c.variable, "Tarife / offen"]
+    ];
+    el.smartPriceBands.innerHTML = bands.map(([count, label]) => `<div class="price-band"><strong>${count.toLocaleString("de-CH")}</strong><span>${escapeHtml(label)}</span></div>`).join("");
+    if (el.smartPriceNote) el.smartPriceNote.textContent = `Preiskategorien des ${context}; Währungen werden nicht umgerechnet.`;
+  };
+
+  const renderSmart = raw => {
+    const parsed = parseSmartQuery(raw);
+    if (!parsed.raw) return;
+    const evaluated = offers.map(offer => smartEvaluate(offer, parsed)).filter(Boolean);
+    evaluated.sort((a, b) => {
+      if (parsed.budget) {
+        const rank = (budgetStatusRank[a.budget.status] ?? 99) - (budgetStatusRank[b.budget.status] ?? 99);
+        if (rank) return rank;
+      }
+      if (parsed.freeOnly) {
+        const rank = (freeStatusRank[a.free?.status] ?? 99) - (freeStatusRank[b.free?.status] ?? 99);
+        if (rank) return rank;
+      }
+      return b.score - a.score || a.offer.title.localeCompare(b.offer.title, "de-CH");
+    });
+
+    const chips = [];
+    if (parsed.tokens.length) chips.push(`Thema: ${parsed.tokens.join(" + ")}`);
+    if (parsed.budget) chips.push(`Budget: CHF ${parsed.budget.amount.toLocaleString("de-CH")}`);
+    if (parsed.maxDays) chips.push(`Zeit: ${parsed.maxDays} ${parsed.maxDays === 1 ? "Tag" : "Tage"} · erkannt, nicht angewendet`);
+    parsed.deliveryIntents.forEach(intent => chips.push(`Durchführung: ${DELIVERY_INTENT_LABELS[intent] || intent.replaceAll("_", " ")}`));
+    if (parsed.freeOnly) chips.push("Nur Angebote mit strukturierter Kostenlos-Option");
+
+    el.smartUnderstood.innerHTML = `<span class="smart-understood-label">Verstanden:</span>${chips.length ? chips.map(chip => `<span class="smart-chip">${escapeHtml(chip)}</span>`).join("") : '<span class="smart-chip">Suchbegriffe aus deinem Satz</span>'}`;
+    const shown = evaluated.slice(0, 3);
+    el.smartSummary.innerHTML = evaluated.length
+      ? `<p><strong>${evaluated.length.toLocaleString("de-CH")} passende Angebote</strong> im aktuellen Bestand. Hier sind ${shown.length} Optionen.</p>`
+      : `<p><strong>Keine bestätigten Treffer.</strong> Formuliere Thema oder harte Durchführungsbedingung etwas breiter oder nutze die klassischen Filter.</p>`;
+    el.smartResults.innerHTML = shown.map((item, index) => smartCard(item, parsed, index)).join("");
+    if (el.smartBundle) {
+      el.smartBundle.hidden = true;
+      el.smartBundle.innerHTML = "";
+    }
+    const topicPool = parsed.tokens.length ? offers.filter(offer => topicMatch(offer, parsed).match) : offers;
+    renderPriceBands(topicPool, parsed.tokens.length ? "Themas" : "aktuell sichtbaren Bestands");
+    el.smartOutput.hidden = false;
+  };
+
 
   const filters = () => ({
     queryRaw: el.search.value.trim(),
@@ -561,13 +1031,9 @@
       labels.focus[offer.focus],
       labels.offerType[offer.offerType]
     ].join(" "));
-    const classicTopicCodes = classicTopicCodesForQuery(filter.queryRaw);
-    const queryMatches = !filter.query
-      || haystack.includes(filter.query)
-      || offerMatchesClassicTopic(offer, classicTopicCodes);
 
     return (!favoritesOnly || favorites.has(offer.id))
-      && queryMatches
+      && (!filter.query || haystack.includes(filter.query))
       && (!filter.focus || offer.focus === filter.focus)
       && (!filter.type || offer.offerType === filter.type)
       && (!filter.price || offer.priceCategory === filter.price)
@@ -613,54 +1079,20 @@
   const render = () => {
     const currentFilters = filters();
     const activeCount = activeFilterCount(currentFilters);
-    const classicFiltered = offers.filter(offer => matches(offer, currentFilters));
-    const classicIds = new Set(classicFiltered.map(offer => offer.id));
+    const filtered = offers.filter(offer => matches(offer, currentFilters));
+    const sorted = sortOffers(filtered);
     const activeFavoriteCount = [...favorites].filter(id => activeIds.has(id)).length;
 
-    if (smartRaw) {
-      const smart = window.SFJSearchV1.search(allOffers, searchIndex, smartRaw);
-      if (smart.error === "SIDECAR_REFRESH_REQUIRED") {
-        el.cards.innerHTML = "";
-        el.count.textContent = "Suche gestoppt: Suchindex und Angebotsbestand sind nicht vollständig synchron.";
-        renderSmartSummary(smart.parsed, "Technischer Abdeckungsfehler. Es werden keine Teilresultate ausgegeben.");
-        updateEmptyState(0, activeCount + 1);
-      } else if (smart.error === "NOTHING_RECOGNIZED") {
-        smartRaw = "";
-        el.cards.innerHTML = sortOffers(classicFiltered).map(offer => card(offer)).join("");
-        el.count.textContent = `${classicFiltered.length} von ${offers.length} aktuellen Angeboten${favoritesOnly ? " · Favoriten" : ""}`;
-        renderSmartSummary(smart.parsed, "Keine belastbaren Kriterien erkannt. Nutze konkretere Begriffe oder die klassischen Filter.");
-        updateEmptyState(classicFiltered.length, activeCount);
-      } else {
-        const matchesSmart = smartSorted(smart.matches.filter(item => classicIds.has(item.offer.id)));
-        const uncertainSmart = smartSorted(smart.uncertain.filter(item => classicIds.has(item.offer.id)));
-        const excludedBySmart = smart.excluded.filter(item => classicIds.has(item.offer.id)).length;
-        el.cards.innerHTML = `
-          <section class="search-result-group" aria-labelledby="search-match-title">
-            <h3 id="search-match-title">Das trifft zu (${matchesSmart.length.toLocaleString("de-CH")})</h3>
-            <div class="search-result-list">${matchesSmart.map(item => card(item.offer, item.evaluation)).join("")}</div>
-          </section>
-          <section class="search-result-group" aria-labelledby="search-uncertain-title">
-            <h3 id="search-uncertain-title">Nicht eindeutig prüfbar (${uncertainSmart.length.toLocaleString("de-CH")})</h3>
-            <div class="search-result-list">${uncertainSmart.map(item => card(item.offer, item.evaluation)).join("")}</div>
-          </section>
-          <details class="search-excluded"><summary>${excludedBySmart.toLocaleString("de-CH")} durch Freitext-Kriterien ausgeschlossen</summary><p>Ausgeschlossene Angebote erfüllen mindestens ein hartes Suchkriterium nicht.</p></details>`;
-        const shown = matchesSmart.length + uncertainSmart.length;
-        el.count.textContent = `${shown.toLocaleString("de-CH")} Ergebnisse nach Freitext und Filtern · ${matchesSmart.length.toLocaleString("de-CH")} Treffer · ${uncertainSmart.length.toLocaleString("de-CH")} nicht eindeutig prüfbar`;
-        renderSmartSummary(smart.parsed, `${matchesSmart.length.toLocaleString("de-CH")} Treffer und ${uncertainSmart.length.toLocaleString("de-CH")} nicht eindeutig prüfbare Angebote nach den aktuell gesetzten Filtern.`);
-        updateEmptyState(shown, activeCount + 1);
-      }
-    } else {
-      const sorted = sortOffers(classicFiltered);
-      el.cards.innerHTML = sorted.map(offer => card(offer)).join("");
-      el.count.textContent = `${classicFiltered.length} von ${offers.length} aktuellen Angeboten${favoritesOnly ? " · Favoriten" : ""}`;
-      updateEmptyState(classicFiltered.length, activeCount);
-    }
-
-    el.filterStatus.textContent = activeCount === 0 ? (smartRaw ? "Freitext aktiv" : "Keine Filter aktiv") : `${activeCount} Filter aktiv${smartRaw ? " · Freitext aktiv" : ""}`;
-    el.reset.disabled = activeCount === 0 && !smartRaw;
+    el.cards.innerHTML = sorted.map(card).join("");
+    el.count.textContent = `${filtered.length} von ${offers.length} aktuellen Angeboten${favoritesOnly ? " · Favoriten" : ""}`;
+    el.filterStatus.textContent = activeCount === 0
+      ? "Keine Filter aktiv"
+      : `${activeCount} Filter aktiv`;
+    el.reset.disabled = activeCount === 0;
     el.favoritesCount.textContent = String(activeFavoriteCount);
     el.favoritesToggle.setAttribute("aria-pressed", String(favoritesOnly));
     el.favoritesToggle.classList.toggle("is-active", favoritesOnly);
+    updateEmptyState(filtered.length, activeCount);
     syncUrl(currentFilters);
   };
 
@@ -668,10 +1100,6 @@
     [el.search, el.focus, el.type, el.price, el.format, el.language, el.country, el.level]
       .forEach(node => { node.value = ""; });
     el.sort.value = "EDITORIAL";
-    smartRaw = "";
-    clearSmartManagedCriteria();
-    if (el.smartInput) el.smartInput.value = "";
-    if (el.smartOutput) el.smartOutput.hidden = true;
     render();
     el.search.focus();
   };
@@ -698,12 +1126,7 @@
   addOptions(el.level, orderedValues("level", preferredOrder.level), value => labels.level[value] ?? value);
 
   [el.search, el.focus, el.type, el.price, el.format, el.language, el.country, el.level]
-    .forEach(node => node.addEventListener("input", () => {
-      if (node === el.format && smartManaged.format && node.value !== smartManaged.format) smartManaged.format = null;
-      if (node === el.level && smartManaged.level && node.value !== smartManaged.level) smartManaged.level = null;
-      if (node === el.price && smartManaged.price && node.value !== smartManaged.price) smartManaged.price = null;
-      render();
-    }));
+    .forEach(node => node.addEventListener("input", render));
   el.sort.addEventListener("change", render);
 
   el.reset.addEventListener("click", reset);
@@ -717,33 +1140,28 @@
   });
 
   if (el.smartForm && el.smartInput) {
-    const activateSmart = raw => {
-      const probe = window.SFJSearchV1.search(allOffers, searchIndex, raw);
-      if (probe.error === "NOTHING_RECOGNIZED") {
-        smartRaw = "";
-        clearSmartManagedCriteria();
-        renderSmartSummary(probe.parsed, "Keine belastbaren Kriterien erkannt. Nutze konkretere Begriffe oder die klassischen Filter.");
-        render();
-        return;
-      }
-      smartRaw = String(raw ?? "").trim();
-      applyRepresentableSmartCriteria(probe.parsed);
-      render();
-    };
     el.smartForm.addEventListener("submit", event => {
       event.preventDefault();
-      activateSmart(el.smartInput.value);
+      renderSmart(el.smartInput.value);
     });
     document.querySelectorAll("[data-smart-example]").forEach(button => {
       button.addEventListener("click", () => {
         el.smartInput.value = button.dataset.smartExample || "";
-        activateSmart(el.smartInput.value);
+        renderSmart(el.smartInput.value);
       });
     });
-    if (el.smartChangeButton) el.smartChangeButton.addEventListener("click", () => {
+    if (el.smartBudgetButton) el.smartBudgetButton.addEventListener("click", () => {
       el.smartInput.focus();
       el.smartInput.select();
     });
+    if (el.smartFreeButton) el.smartFreeButton.addEventListener("click", () => {
+      const current = el.smartInput.value.trim();
+      el.smartInput.value = SMART_FREE_INTENT_RE.test(normalize(current))
+        ? current
+        : `${current} Nur kostenlos.`.trim();
+      renderSmart(el.smartInput.value);
+    });
+    renderPriceBands(offers);
   }
 
   applyUrlState();

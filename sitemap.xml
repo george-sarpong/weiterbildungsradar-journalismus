@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://george-sarpong.github.io/weiterbildungsradar-journalismus/</loc>
-    <lastmod>2026-08-04</lastmod>
-  </url>
-  <url>
-    <loc>https://george-sarpong.github.io/weiterbildungsradar-journalismus/methodik.html</loc>
-    <lastmod>2026-08-04</lastmod>
-  </url>
+  <url><loc>https://mediaskills.ch/</loc><lastmod>2026-09-30</lastmod></url>
+  <url><loc>https://mediaskills.ch/methodik.html</loc><lastmod>2026-09-30</lastmod></url>
+  <url><loc>https://mediaskills.ch/impressum.html</loc><lastmod>2026-09-30</lastmod></url>
+  <url><loc>https://mediaskills.ch/datenschutz.html</loc><lastmod>2026-09-30</lastmod></url>
 </urlset>

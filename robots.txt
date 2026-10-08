@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://george-sarpong.github.io/weiterbildungsradar-journalismus/sitemap.xml
+Sitemap: https://mediaskills.ch/sitemap.xml

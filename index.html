@@ -62,30 +62,45 @@
       <div class="shell">
         <div class="smart-intro">
           <p class="eyebrow">Freitext-Suche · Beta</p>
-          <h2 id="smart-title">Beschreib, was du suchst.</h2>
-          <p>Formuliere Thema, Budget, Dauer oder Durchführungsform in einem Satz. Die Freitext-Suche übersetzt deine Angaben in überprüfbare Kriterien und arbeitet mit denselben Ergebnislisten und Filtern wie die klassische Suche.</p>
+          <h2 id="smart-title">Beschreib einfach, was du suchst.</h2>
+          <p>Media Skills liest Budget, Thema und weitere Wünsche aus deinem Satz und sucht passende Angebote im aktuellen Bestand. Die klassischen Filter bleiben darunter vollständig erhalten.</p>
         </div>
+
         <form class="smart-form" id="smartSearchForm">
           <label for="smartInput">Deine Anfrage</label>
           <div class="smart-input-row">
-            <input id="smartInput" type="search" autocomplete="off" placeholder="z. B. Ich habe CHF 800 und möchte Datenjournalismus lernen.">
-            <button class="smart-submit" type="submit">Suchen</button>
+            <input id="smartInput" type="search" autocomplete="off" placeholder="z. B. Ich habe CHF 800 und möchte mich im Bereich Datenjournalismus weiterbilden.">
+            <button class="smart-submit" type="submit">Vorschläge finden</button>
           </div>
         </form>
+
         <div class="smart-examples" aria-label="Beispielanfragen">
           <span>Beispiele:</span>
-          <button type="button" data-smart-example="Ich habe CHF 800 und möchte Datenjournalismus lernen.">CHF 800 · Datenjournalismus</button>
-          <button type="button" data-smart-example="Podcast online maximal zwei Tage">Podcast · online · 2 Tage</button>
-          <button type="button" data-smart-example="Kein Präsenzkurs, lieber online">ohne Präsenz · online bevorzugt</button>
+          <button type="button" data-smart-example="Ich habe CHF 800 und möchte mich im Bereich Datenjournalismus weiterbilden.">CHF 800 · Datenjournalismus</button>
+          <button type="button" data-smart-example="Ich suche einen Online-Kurs zu KI für höchstens CHF 500.">Online · KI · bis CHF 500</button>
+          <button type="button" data-smart-example="Ich habe zwei Tage Zeit und möchte Videoproduktion lernen.">2 Tage · Video</button>
         </div>
+
         <div class="smart-output" id="smartOutput" aria-live="polite" hidden>
           <div class="smart-understood" id="smartUnderstood"></div>
           <div class="smart-summary" id="smartSummary"></div>
+          <div class="smart-results" id="smartResults"></div>
+          <div class="smart-bundle" id="smartBundle" hidden></div>
           <div class="smart-actions">
-            <button type="button" class="reset-button" id="smartChangeButton">Ändern</button>
-            <a class="source-link" href="#filter-title">Filter ergänzen oder ändern <span aria-hidden="true">↓</span></a>
+            <button type="button" class="reset-button" id="smartBudgetButton">Budget verändern</button>
+            <button type="button" class="reset-button" id="smartFreeButton">Nur Gratis-Angebote</button>
+            <a class="source-link" href="#filter-title">Klassische Filter verwenden <span aria-hidden="true">↓</span></a>
           </div>
-          <p class="smart-note">Unbekannte Preise, Dauern oder Formate werden nicht still ausgeschlossen. Fremdwährungen werden nicht umgerechnet. Der Originalsatz bleibt im Browser und wird nicht in die URL geschrieben.</p>
+          <p class="smart-note">Restbudgets werden nur bei eindeutigem Preis in derselben Währung berechnet. Reise- und Verpflegungskosten sind noch nicht eingerechnet.</p>
+        </div>
+
+        <div class="smart-price-panel" aria-labelledby="price-overview-title">
+          <div>
+            <p class="eyebrow">Preisübersicht</p>
+            <h3 id="price-overview-title">Angebote nach Preiskategorie</h3>
+          </div>
+          <div class="price-bands" id="smartPriceBands"></div>
+          <p class="price-band-note" id="smartPriceNote">Preiskategorien des aktuell sichtbaren Bestands; Währungen werden nicht umgerechnet.</p>
         </div>
       </div>
     </section>
@@ -187,7 +202,7 @@
             <strong>Fehler entdeckt oder Angebot vermisst?</strong>
             <span>Hinweise helfen, den Radar aktuell und nützlich zu halten.</span>
           </div>
-          <a class="reset-button feedback-button" href="mailto:contact@mediaskills.ch?subject=Hinweis%20zum%20Media Skills">Hinweis senden</a>
+          <a class="reset-button feedback-button" href="mailto:contact@mediaskills.ch?subject=Hinweis%20zu%20Media%20Skills">Hinweis senden</a>
         </div>
       </div>
     </section>
@@ -240,8 +255,7 @@
   </footer>
 
   <script src="data.js"></script>
-  <script src="search-index-v1.2.js"></script>
-  <script src="search-engine-v1.2.js"></script>
+  <script src="smart-search-data.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
