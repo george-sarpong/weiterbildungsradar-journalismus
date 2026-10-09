@@ -332,14 +332,29 @@
   const sortOffers = list => {
     const sorted = [...list];
     switch (el.sort.value) {
-      case "START":
+      case "START": {
+        const todayDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+        const startDate = offer => {
+          const value = String(offer.startDate ?? "").trim();
+          return ISO_DATE.test(value) ? value : "";
+        };
+        const startTier = date => !date ? 2 : date >= todayDate ? 0 : 1;
         return sorted.sort((a, b) => {
-          const aDate = a.startDate || "9999-12-31";
-          const bDate = b.startDate || "9999-12-31";
-          return aDate.localeCompare(bDate)
+          const aDate = startDate(a);
+          const bDate = startDate(b);
+          const aTier = startTier(aDate);
+          const bTier = startTier(bDate);
+          const dateOrder = aTier === 0
+            ? aDate.localeCompare(bDate)
+            : aTier === 1
+              ? bDate.localeCompare(aDate)
+              : 0;
+          return aTier - bTier
+            || dateOrder
             || a.provider.localeCompare(b.provider, "de-CH")
             || a.title.localeCompare(b.title, "de-CH");
         });
+      }
       case "APPROVED":
         return sorted.sort((a, b) => b.approved.localeCompare(a.approved)
           || a.provider.localeCompare(b.provider, "de-CH")
@@ -1093,7 +1108,9 @@
     filter.format,
     filter.language,
     filter.country,
-    filter.level
+    filter.level,
+    el.sort.value !== "EDITORIAL",
+    favoritesOnly
   ].filter(Boolean).length;
 
   const updateEmptyState = (filteredLength, activeCount) => {
@@ -1142,6 +1159,7 @@
     [el.search, el.focus, el.type, el.price, el.format, el.language, el.country, el.level]
       .forEach(node => { node.value = ""; });
     el.sort.value = "EDITORIAL";
+    favoritesOnly = false;
     render();
     el.search.focus();
   };
