@@ -204,6 +204,15 @@
     .replace(/’/g, "'")
     .replace(/\.00\b/g, "");
 
+  const compactMoneyNumber = value => {
+    const cleaned = String(value ?? "")
+      .replace(/[’'\s]/g, "")
+      .replace(/([.,]\d{2})$/, "")
+      .replace(/[.,]/g, "");
+    const amount = Number(cleaned);
+    return Number.isFinite(amount) ? amount : null;
+  };
+
   const compactPrice = offer => {
     const raw = String(offer.priceDisplay ?? "").trim();
     const normalized = normalize(raw);
@@ -215,19 +224,41 @@
     if (offer.priceCategory === "KOSTENLOS" || /\b(kostenlos|gratis|free)\b/i.test(raw)) return "Kostenlos";
     if (offer.priceCategory === "PREIS_AUF_ANFRAGE" || /preis\s+auf\s+anfrage/i.test(raw)) return "Auf Anfrage";
 
-    // Für die Zielgruppe ist ein explizit publizierter Journalist:innen-Tarif der relevanteste Kartenpreis.
+    const moneyRegex = /\b(CHF|EUR|USD|GBP)\s*([0-9][0-9'’.,]*)/gi;
+    const matches = [...raw.matchAll(moneyRegex)].filter(match => {
+      const tail = raw.slice(match.index + match[0].length, match.index + match[0].length + 28);
+      return !/\boptional\b/i.test(tail);
+    });
+
+    // Bei festen Preisfiltern muss der kompakte Kartenpreis dieselbe Preislage
+    // darstellen wie die redaktionell gesetzte Kategorie. Sonst erscheinen
+    // Anmeldegebühren, Rabatte oder Raten irreführend als Angebotspreis.
+    const categoryBounds = {
+      BIS_500: amount => amount <= 500,
+      "501_2000": amount => amount >= 501 && amount <= 2000,
+      UEBER_2000: amount => amount > 2000
+    };
+    const inCategory = categoryBounds[offer.priceCategory];
+    if (matches.length && inCategory) {
+      const categoryMatch = matches.find(match => {
+        const amount = compactMoneyNumber(match[2]);
+        return amount != null && inCategory(amount);
+      });
+      if (categoryMatch) {
+        const prefix = /^\s*ab\b/i.test(raw) ? "ab " : "";
+        return `${prefix}${categoryMatch[1].toUpperCase()} ${compactAmount(categoryMatch[2])}`;
+      }
+      return labels.priceCategory[offer.priceCategory];
+    }
+
+    // Für mehrere Tarife ist ein explizit publizierter Journalist:innen-Tarif
+    // weiterhin der relevanteste Kartenpreis.
     const journalist = raw.match(/((?:CHF|EUR|USD|GBP)\s*[0-9][0-9'’.,]*)(?=[^()]{0,45}(?:Kurspreis\s+)?Journalist)/i);
     if (journalist) return compactAmount(journalist[1]);
 
     // Explizite Preisbereiche wie EUR 480–512 oder CHF 0–590 erhalten.
     const range = raw.match(/\b(CHF|EUR|USD|GBP)\s*([0-9][0-9'’.,]*)\s*[–-]\s*([0-9][0-9'’.,]*)/i);
     if (range) return `${range[1].toUpperCase()} ${compactAmount(range[2])}–${compactAmount(range[3])}`;
-
-    const moneyRegex = /\b(CHF|EUR|USD|GBP)\s*([0-9][0-9'’.,]*)/gi;
-    const matches = [...raw.matchAll(moneyRegex)].filter(match => {
-      const tail = raw.slice(match.index + match[0].length, match.index + match[0].length + 28);
-      return !/\boptional\b/i.test(tail);
-    });
 
     if (matches.length) {
       const first = `${matches[0][1].toUpperCase()} ${compactAmount(matches[0][2])}`;
@@ -459,14 +490,14 @@
 
   const SMART_STOPWORDS = new Set([
     "ich", "habe", "hatte", "mochte", "moechte", "will", "wurde", "wuerde", "mich", "mir",
-    "im", "in", "am", "an", "auf", "fur", "fuer", "zu", "zum", "zur", "von", "mit", "ohne",
+    "im", "in", "am", "an", "auf", "fur", "fuer", "zu", "zum", "zur", "von", "mit", "ohne", "vor",
     "und", "oder", "der", "die", "das", "den", "dem", "einen", "eine", "ein", "einem", "einer",
     "bereich", "lernen", "weiterbilden", "weiterbildung", "kurs", "kurse", "angebot", "angebote",
     "suche", "brauche", "bitte", "etwas", "maximal", "hochstens", "hoechstens", "unter", "bis",
-    "budget", "franken", "chf", "zeit", "tage", "tag", "tagen", "stunden", "stunde", "std",
+    "budget", "franken", "chf", "eur", "euro", "usd", "gbp", "zeit", "tage", "tag", "tagen", "stunden", "stunde", "std",
     "online", "remote", "hybrid", "prasenz", "praesenz", "ort", "live", "demand", "selbststudium",
     "selbstlernen", "self", "paced", "webinar", "hyflex", "asynchron", "asynchronous", "rein",
-    "vollstandig", "vollstaendig", "nur", "kein", "keine", "lieber",
+    "vollstandig", "vollstaendig", "nur", "kein", "keine", "lieber", "aber", "prasenzkurs", "praesenzkurs",
     "gratis", "kostenlos", "kostenfrei"
   ]);
 
@@ -516,7 +547,7 @@
     // explicitly positive channel words remain visible and can expose a genuinely
     // contradictory query instead of being silently discarded.
     const broadOnline = !strictRemote && (liveOnline || /\bonline\b|\bremote\b/.test(positiveChannelInput));
-    const broadInPerson = !strictInPerson && /\bprae?senz\b|\bvor\s+ort\b/.test(positiveChannelInput);
+    const broadInPerson = !strictInPerson && /\bprae?senz(?:kurs)?\b|\bvor\s+ort\b/.test(positiveChannelInput);
     const intents = [];
     if (strictRemote) intents.push("STRICT_REMOTE");
     else if (broadOnline) intents.push("ONLINE");
@@ -965,7 +996,18 @@
 
   const renderSmart = raw => {
     const parsed = parseSmartQuery(raw);
-    if (!parsed.raw) return;
+    if (!parsed.raw) {
+      el.smartUnderstood.innerHTML = "";
+      el.smartSummary.innerHTML = "";
+      el.smartResults.innerHTML = "";
+      if (el.smartBundle) {
+        el.smartBundle.hidden = true;
+        el.smartBundle.innerHTML = "";
+      }
+      el.smartOutput.hidden = true;
+      renderPriceBands(offers);
+      return;
+    }
     const evaluated = offers.map(offer => smartEvaluate(offer, parsed)).filter(Boolean);
     evaluated.sort((a, b) => {
       if (parsed.budget) {
