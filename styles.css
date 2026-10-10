@@ -165,7 +165,7 @@ h2 { margin-bottom: 0; font-size: clamp(1.65rem, 3vw, 2.25rem); letter-spacing: 
   .header-inner, .section-heading, .results-header, .footer-grid { align-items: flex-start; flex-direction: column; }
   .header-inner { justify-content: center; padding-block: 16px; }
   .hero { padding: 48px 0 42px; }
-  .filter-grid, .cards { grid-template-columns: 1fr; }
+  .filter-grid, .cards { grid-template-columns: minmax(0, 1fr); }
   .field-search { grid-column: auto; }
   .card { padding: 21px; }
   .card-topline, .card-footer { align-items: flex-start; flex-direction: column; }
@@ -456,8 +456,18 @@ code { padding: 2px 5px; border-radius: 4px; background: #edf0f3; font-size: .92
 }
 
 @media (max-width: 720px) {
+  .card {
+    min-width: 0;
+  }
+  .card h3 {
+    overflow-wrap: anywhere;
+  }
+  .fact-item dd {
+    overflow-wrap: anywhere;
+  }
   .card-description {
     -webkit-line-clamp: 4;
+    overflow-wrap: anywhere;
   }
 }
 

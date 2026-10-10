@@ -1,46 +1,34 @@
-# REVIEW_SCOPE — mediaskills_fix_20261009_V12_MS20-MS22
+# REVIEW_SCOPE — mediaskills_fix_20261010_V15_MS23
 
 MODUS: BUGFIX-REVIEW
 
-Prüfe ausschliesslich diesen Versionsordner und die Bug-IDs MS-20 bis MS-22. V11 ist die unveränderte Baseline. Frühere Bugs nicht erneut öffnen.
+Prüfe ausschliesslich diesen Versionsordner und die Bug-ID MS-23. V14 ist die unveränderte direkte Baseline; V12 bleibt die letzte freigegebene Version. Frühere Bugs nicht erneut öffnen.
 
-## MS-20
+## MS-23
 
-Abnahmekriterium: Zwei Angebote favorisieren, «Nur Favoriten» aktivieren, Preis «501 bis 2'000» und Sortierung «Anbieter A–Z» setzen und danach «Filter zurücksetzen» klicken. Anschliessend gilt:
+Prüfe bei 390 × 844 und 320 × 568 jeweils diese drei Zustände:
 
-- `#favoritesToggle` hat `aria-pressed="false"` und nicht die Klasse `is-active`.
-- Die Trefferzahl zeigt den vollständigen aktuellen Bestand ohne «· Favoriten» und die Zahl der sichtbaren Karten entspricht diesem Gesamtbestand. Beim gemeldeten Teststand vom 9. Oktober 2026 waren das «1246 von 1246 aktuellen Angeboten» und 1246 Karten.
-- Die URL enthält keine Filter- oder Sortierparameter.
-- Der localStorage-Schlüssel `weiterbildungsradar:favorites:v1` enthält weiterhin beide Favoriten-IDs.
-- Das gilt bei 1440 × 900 und 390 × 844.
-
-## MS-21
+1. frisch geladene Startseite;
+2. klassische Filterung mit Angebotsart «Kurs»;
+3. Freitextanfrage «Datenjournalismus».
 
 Abnahmekriterien:
 
-- Ist ausschliesslich eine andere Sortierung als «Redaktionelle Auswahl» gesetzt, ist `#resetFilters.disabled === false` und `#filterStatus` meldet einen aktiven Zustand.
-- Ist ausschliesslich «Nur Favoriten» aktiv, ist `#resetFilters.disabled === false` und `#filterStatus` meldet einen aktiven Zustand.
-- Ein Klick auf «Filter zurücksetzen» stellt die Sortierung auf `EDITORIAL`, deaktiviert «Nur Favoriten» und entfernt `sort` aus der URL.
-- Gespeicherte Favoriten werden dadurch nicht gelöscht.
-- Das gilt bei 1440 × 900 und 390 × 844.
-
-## MS-22
-
-Abnahmekriterien:
-
-- Bei Sortierung «Nächster Start» stehen alle Angebote mit gültigem `startDate` ab dem heutigen Datum zuerst und sind nach `startDate` aufsteigend sortiert.
-- Danach folgen bereits begonnene Angebote und zuletzt Angebote ohne gültiges Startdatum.
-- Innerhalb der bereits begonnenen Angebote stehen die jüngsten Startdaten zuerst.
-- Die erste sichtbare Karte hat ein Startdatum ab heute.
-- Ergebnismenge und Trefferzahl bleiben gegenüber «Redaktionelle Auswahl» unverändert.
-- Das gilt bei 1440 × 900 und 390 × 844.
+- In allen drei Zuständen gilt `document.documentElement.scrollWidth <= document.documentElement.clientWidth`.
+- Jede sichtbare `#cards .card` liegt vollständig innerhalb des horizontalen Viewports: `left >= 0` und `right <= clientWidth`.
+- Jeder sichtbare `.favorite-button` in diesen Karten liegt vollständig innerhalb des horizontalen Viewports.
+- Das gilt insbesondere für `OFFER-SAEZH-013` mit der Beschreibung «Street-/People-/Documentary-/…».
+- Lange Kartentitel wie bei `AT-PROD-OFFER-022` und «Kompaktkurs Video in der Unternehmenskommunikation» umbrechen innerhalb der Karte und ragen bei 320 × 568 nicht über den Viewport hinaus.
+- Lange Werte in `.fact-item dd`, insbesondere «Diplomlehrgang Photojournalismus/Pressefotografie» bei `AT-PROD-OFFER-044`, umbrechen innerhalb der Karte und ragen bei 320 × 568 nicht über den Viewport hinaus.
+- Die Favoritenherzen und die Links «Offizielle Angebotsseite» bleiben ohne horizontales Seitenscrollen per Maus und Tastatur erreichbar.
+- Desktopdarstellung, Smart-Ergebniskarten und klassische Filterfunktion bleiben unverändert nutzbar.
 
 ## Geänderte Dateien
 
-- `app.js`: Reset deaktiviert die Favoritenansicht; nicht standardmässige Sortierung und Favoritenansicht werden als aktive zurücksetzbare Zustände gezählt; Startsortierung gruppiert zukünftige, bereits begonnene und undatierte Angebote.
+- `styles.css`: Zusätzlich zu den bisherigen Korrekturen dürfen jetzt auch lange Werte in `.fact-item dd` im mobilen Layout sicher umbrechen.
 - `REVIEW_SCOPE.md`: nur dieser Review-Auftrag.
 
-Alle anderen Dateien sind bytegleich mit V11. Insbesondere sind `data.js`, `smart-search-data.js`, alle HTML-Dateien und `styles.css` unverändert.
+Alle anderen Dateien sind bytegleich mit V14 und damit auch mit V12. Insbesondere sind `app.js`, `data.js`, `smart-search-data.js` und alle HTML-Dateien unverändert.
 
 ## Review-Regel
 
