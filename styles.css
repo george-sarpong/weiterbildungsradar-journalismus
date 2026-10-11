@@ -103,7 +103,7 @@ h2 { margin-bottom: 0; font-size: clamp(1.65rem, 3vw, 2.25rem); letter-spacing: 
 .field { display: grid; gap: 7px; }
 .field span { color: var(--muted); font-size: .86rem; font-weight: 700; }
 .field input, .field select { width: 100%; min-height: 48px; border: 1px solid #bcc6d0; border-radius: 10px; background: #fff; color: var(--ink); padding: 10px 12px; }
-.field input::placeholder { color: #8791a0; }
+.field input::placeholder { color: var(--muted); }
 
 .classification-help { margin-top: 18px; border-top: 1px solid var(--line); padding-top: 16px; }
 .classification-help summary { width: fit-content; color: var(--navy); font-weight: 800; cursor: pointer; }
@@ -507,7 +507,7 @@ code { padding: 2px 5px; border-radius: 4px; background: #edf0f3; font-size: .92
   font-size: 1rem;
   box-shadow: 0 7px 22px rgba(23,51,79,.05);
 }
-.smart-input-row input::placeholder { color: #7f8b99; }
+.smart-input-row input::placeholder { color: var(--muted); }
 .smart-submit {
   min-height: 58px;
   border: 1px solid var(--navy);
