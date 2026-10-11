@@ -8,7 +8,7 @@
   --card: #ffffff;
   --line: #d8dee5;
   --accent: #b74732;
-  --focus-ring: #f2b84b;
+  --focus-ring: #ac7824;
   --journalism-bg: #17334f;
   --journalism-ink: #ffffff;
   --media-bg: #dcecf2;
@@ -33,6 +33,7 @@ a { color: inherit; }
 button, input, select { font: inherit; }
 button, select { cursor: pointer; }
 :focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 3px; }
+#favoritesToggle:focus-visible { outline-color: var(--ink); }
 
 .skip-link {
   position: fixed;
