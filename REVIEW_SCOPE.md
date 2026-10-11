@@ -1,8 +1,8 @@
-# REVIEW_SCOPE — mediaskills_fix_20261011_V17_MS28-MS29
+# REVIEW_SCOPE — mediaskills_fix_20261011_V18_MS30-MS31
 
 MODUS: BUGFIX-REVIEW
 
-Prüfe ausschliesslich diesen Versionsordner und die Bug-IDs MS-28 und MS-29. V16 ist die unveränderte direkte Baseline und die letzte freigegebene Version. Frühere Bugs nicht erneut öffnen.
+Prüfe ausschliesslich diesen Versionsordner und die Bug-IDs MS-30 und MS-31. V17 ist die unveränderte direkte Baseline und die letzte freigegebene Version. Frühere Bugs nicht erneut öffnen.
 
 Prüfgrössen für beide Bugs:
 
@@ -14,49 +14,55 @@ Jeder Ablauf beginnt mit einer frisch geladenen `index.html`.
 
 ## Messmethode für beide Bugs
 
-- Ermittle Farbe und Opazität des Platzhaltertexts mit `getComputedStyle(input, "::placeholder")`.
-- Ermittle den tatsächlich hinter dem Platzhalter gerenderten Hintergrund; berücksichtige vorhandene Transparenz durch Alpha-Compositing.
-- Berechne den ungerundeten Kontrast nach der WCAG-Formel für relative Luminanz in sRGB.
-- Massgeblich ist mindestens 4,50 : 1, weil beide Platzhalter 16 CSS-Pixel gross und normal gewichtet sind.
-- Eine rein visuelle Schätzung oder ein gerundeter Wert genügt nicht.
+- Ermittle die tatsächlich berechnete Randfarbe mit `getComputedStyle(element).borderColor`.
+- Ermittle die unmittelbar angrenzenden Farben der Feldfläche und des ausserhalb liegenden Hintergrunds an einer geraden Randstelle; nicht an einem geglätteten, abgerundeten Eckpixel messen.
+- Berücksichtige vorhandene Transparenz mittels Alpha-Compositing.
+- Berechne das ungerundete Kontrastverhältnis nach der WCAG-Formel für relative Luminanz in sRGB.
+- Massgeblich sind mindestens 3,00 : 1 nach WCAG 2.2 AA, Erfolgskriterium 1.4.11.
+- Automatische Scanner oder eine rein visuelle Schätzung genügen nicht.
 
-## MS-28 — Kontrast des Platzhalters der klassischen Textsuche
+## MS-30 — Randkontrast der klassischen Textsuche
 
-Prüfe `#searchInput::placeholder` mit dem Text `Titel, Anbieter oder Stichwort` in beiden Viewports in diesen vier Zuständen:
+Prüfe `#searchInput` in beiden Viewports:
 
-1. frisch geladene Startseite;
-2. klassischer Filter `Sprache = DE` aktiv, während `#searchInput` leer bleibt;
-3. Smart-Suche nach `Datenjournalismus` ausgeführt, während `#searchInput` leer bleibt;
-4. auf frischer Seite die erste Karte favorisiert und danach `Nur Favoriten` aktiviert, während `#searchInput` leer bleibt.
-
-Abnahmekriterien:
-
-- Der berechnete Platzhalterfarbwert ist in jedem Zustand `rgb(93, 104, 122)` (`#5d687a`) bei Opazität 1.
-- Der tatsächliche Hintergrund ist `rgb(255, 255, 255)` (`#ffffff`).
-- Das ungerundete Kontrastverhältnis beträgt in jedem Zustand mindestens 4,50 : 1; für diese beiden Farben beträgt es rund 5,6352 : 1.
-- Text, Grösse, Gewicht, Position und Funktion des Felds bleiben gegenüber V16 unverändert.
-
-## MS-29 — Kontrast des Platzhalters der Freitextsuche
-
-Prüfe `#smartInput::placeholder` mit dem Text `z. B. Ich habe CHF 800 und möchte mich im Bereich Datenjournalismus weiterbilden.` in beiden Viewports in diesen drei Zuständen:
-
-1. frisch geladene Startseite;
-2. leere Smart-Suche über `Vorschläge finden` abgesendet;
-3. in der klassischen Textsuche `__kein_treffer_20261011__` eingegeben, sodass die Angebotsliste den Leerzustand zeigt, während `#smartInput` leer bleibt.
+1. Zustand A: frisch geladene Startseite;
+2. Zustand B: klassischer Filter `Sprache = DE` aktiv, während `#searchInput` leer bleibt.
 
 Abnahmekriterien:
 
-- Der berechnete Platzhalterfarbwert ist in jedem Zustand `rgb(93, 104, 122)` (`#5d687a`) bei Opazität 1.
-- Der tatsächliche Hintergrund ist `rgb(255, 255, 255)` (`#ffffff`).
-- Das ungerundete Kontrastverhältnis beträgt in jedem Zustand mindestens 4,50 : 1; für diese beiden Farben beträgt es rund 5,6352 : 1.
-- Text, Grösse, Gewicht, Position und Funktion des Felds bleiben gegenüber V16 unverändert.
+- Die berechnete Randfarbe von `#searchInput` ist in beiden Zuständen `rgb(113, 128, 143)` (`#71808f`) bei Opazität 1.
+- Feldfläche und angrenzender Hintergrund bleiben `rgb(255, 255, 255)`.
+- Der Rand erreicht gegen die weisse Feldfläche und den weissen Aussenhintergrund ungerundet mindestens 3,00 : 1; für `#71808f` gegen Weiss beträgt das Verhältnis rund 4,0490 : 1.
+- Breite, Höhe, Randstärke, Radius, Innenabstand, Text, Platzhalter und Funktion von `#searchInput` bleiben gegenüber V17 unverändert.
+
+## MS-31 — Randkontrast der Smart-Eingabe
+
+Prüfe `#smartInput` in beiden Viewports:
+
+1. Zustand A: frisch geladene Startseite;
+2. Zustand C: `Datenjournalismus` eingegeben und über `Vorschläge finden` abgesendet.
+
+Abnahmekriterien:
+
+- Die berechnete Randfarbe von `#smartInput` ist in beiden Zuständen `rgb(113, 128, 143)` (`#71808f`) bei Opazität 1.
+- Die Feldfläche bleibt `rgb(255, 255, 255)`.
+- Der Rand erreicht gegen die Feldfläche und an jeder unmittelbar angrenzenden Stelle des tatsächlichen Verlaufs von `.smart-section` ungerundet mindestens 3,00 : 1.
+- Gegen Weiss beträgt das Verhältnis rund 4,0490 : 1. Gegen die in V17 gemessenen Hintergrundwerte `rgb(239, 244, 245)` bis `rgb(244, 247, 248)` beträgt es rund 3,6497 : 1 bis 3,7610 : 1.
+- Breite, Höhe, Randstärke, Radius, Innenabstand, Text, Platzhalter und Funktion von `#smartInput` bleiben gegenüber V17 unverändert.
+
+## Unmittelbare Regressionskontrolle
+
+- Prüfe, dass die beiden Randänderungen keine Grössen-, Positions- oder Umbruchänderung verursachen.
+- Prüfe, dass Eingabe, Löschen und Absenden in beiden Feldern weiterhin funktionieren.
+- Prüfe, dass der vorhandene Fokusindikator unverändert erscheint; seine eigene WCAG-Bewertung gehört nicht zum Scope.
+- Keine anderen Bedienelemente oder Kontrastarten erneut prüfen.
 
 ## Geänderte Dateien
 
-- `styles.css`: ausschliesslich die beiden Platzhalterfarben wurden auf die bestehende Variable `var(--muted)` (`#5d687a`) gesetzt.
+- `styles.css`: ausschliesslich ein gezielter Randfarben-Override für `#searchInput` und die Randfarbe von `.smart-input-row input` wurden auf `#71808f` gesetzt. Die Select-Felder der gemeinsamen Basisregel bleiben unverändert.
 - `REVIEW_SCOPE.md`: nur dieser Review-Auftrag.
 
-Alle anderen Dateien sind bytegleich mit V16. Insbesondere sind `app.js`, `index.html`, `data.js` und `smart-search-data.js` unverändert.
+Alle anderen Dateien sind bytegleich mit V17. Insbesondere sind `app.js`, `index.html`, `data.js` und `smart-search-data.js` unverändert.
 
 ## Review-Regel
 
