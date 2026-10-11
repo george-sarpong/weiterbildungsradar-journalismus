@@ -92,6 +92,8 @@
     smartForm: document.querySelector("#smartSearchForm"),
     smartInput: document.querySelector("#smartInput"),
     smartOutput: document.querySelector("#smartOutput"),
+    smartStatus: document.querySelector("#smartStatus"),
+    smartValidation: document.querySelector("#smartValidation"),
     smartUnderstood: document.querySelector("#smartUnderstood"),
     smartSummary: document.querySelector("#smartSummary"),
     smartResults: document.querySelector("#smartResults"),
@@ -425,7 +427,8 @@
 
   const card = offer => {
     const isFavorite = favorites.has(offer.id);
-    const favoriteLabel = isFavorite
+    const favoriteLabel = `${offer.title} als Favorit merken`;
+    const favoriteTitle = isFavorite
       ? `${offer.title} aus den Favoriten entfernen`
       : `${offer.title} zu den Favoriten hinzufügen`;
     const displayCountry = countryDisplay(offer.country);
@@ -446,7 +449,7 @@
               data-favorite-id="${escapeHtml(offer.id)}"
               aria-pressed="${isFavorite}"
               aria-label="${escapeHtml(favoriteLabel)}"
-              title="${escapeHtml(favoriteLabel)}">
+              title="${escapeHtml(favoriteTitle)}">
               ${heartSvg}
             </button>
           </div>
@@ -983,7 +986,7 @@
         ${budgetText ? `<p class="smart-budget">${escapeHtml(budgetText)}</p>` : ""}
         ${freeText ? `<p class="smart-budget">${escapeHtml(freeText)}</p>` : ""}
         ${item.budget.status === "PRICE_UNKNOWN" ? `<p class="smart-budget">Originalpreis: ${escapeHtml(offer.priceDisplay || "Preis nicht publiziert")}</p>` : ""}
-        <a class="source-link" href="${escapeHtml(offer.url)}" target="_blank" rel="noopener noreferrer">Zum Angebot <span aria-hidden="true">↗</span></a>
+        <a class="source-link" href="${escapeHtml(offer.url)}" target="_blank" rel="noopener noreferrer" aria-label="Offizielle Angebotsseite zu ${escapeHtml(offer.title)} öffnen">Zum Angebot <span aria-hidden="true">↗</span></a>
       </article>`;
   };
 
@@ -1012,6 +1015,7 @@
   const renderSmart = raw => {
     const parsed = parseSmartQuery(raw);
     if (!parsed.raw) {
+      const message = "Bitte eine Anfrage eingeben.";
       el.smartUnderstood.innerHTML = "";
       el.smartSummary.innerHTML = "";
       el.smartResults.innerHTML = "";
@@ -1020,9 +1024,14 @@
         el.smartBundle.innerHTML = "";
       }
       el.smartOutput.hidden = true;
+      el.smartValidation.textContent = message;
+      el.smartValidation.hidden = false;
+      el.smartStatus.textContent = message;
       renderPriceBands(offers);
       return;
     }
+    el.smartValidation.hidden = true;
+    el.smartValidation.textContent = "";
     const evaluated = offers.map(offer => smartEvaluate(offer, parsed)).filter(Boolean);
     evaluated.sort((a, b) => {
       if (parsed.budget) {
@@ -1045,6 +1054,9 @@
 
     el.smartUnderstood.innerHTML = `<span class="smart-understood-label">Verstanden:</span>${chips.length ? chips.map(chip => `<span class="smart-chip">${escapeHtml(chip)}</span>`).join("") : '<span class="smart-chip">Suchbegriffe aus deinem Satz</span>'}`;
     const shown = evaluated.slice(0, 3);
+    const statusMessage = evaluated.length
+      ? `${evaluated.length.toLocaleString("de-CH")} passende Angebote im aktuellen Bestand. Hier sind ${shown.length} Optionen.`
+      : "Keine bestätigten Treffer. Formuliere Thema oder harte Durchführungsbedingung etwas breiter oder nutze die klassischen Filter.";
     el.smartSummary.innerHTML = evaluated.length
       ? `<p><strong>${evaluated.length.toLocaleString("de-CH")} passende Angebote</strong> im aktuellen Bestand. Hier sind ${shown.length} Optionen.</p>`
       : `<p><strong>Keine bestätigten Treffer.</strong> Formuliere Thema oder harte Durchführungsbedingung etwas breiter oder nutze die klassischen Filter.</p>`;
@@ -1056,6 +1068,7 @@
     const topicPool = parsed.tokens.length ? offers.filter(offer => topicMatch(offer, parsed).match) : offers;
     renderPriceBands(topicPool, parsed.tokens.length ? "Themas" : "aktuell sichtbaren Bestands");
     el.smartOutput.hidden = false;
+    el.smartStatus.textContent = statusMessage;
   };
 
 

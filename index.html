@@ -69,10 +69,13 @@
         <form class="smart-form" id="smartSearchForm">
           <label for="smartInput">Deine Anfrage</label>
           <div class="smart-input-row">
-            <input id="smartInput" type="search" autocomplete="off" placeholder="z. B. Ich habe CHF 800 und möchte mich im Bereich Datenjournalismus weiterbilden.">
+            <input id="smartInput" type="search" autocomplete="off" aria-describedby="smartValidation" placeholder="z. B. Ich habe CHF 800 und möchte mich im Bereich Datenjournalismus weiterbilden.">
             <button class="smart-submit" type="submit">Vorschläge finden</button>
           </div>
+          <p class="smart-validation" id="smartValidation" hidden></p>
         </form>
+
+        <p class="visually-hidden" id="smartStatus" role="status" aria-live="polite" aria-atomic="true"></p>
 
         <div class="smart-examples" aria-label="Beispielanfragen">
           <span>Beispiele:</span>
@@ -81,7 +84,7 @@
           <button type="button" data-smart-example="Ich habe zwei Tage Zeit und möchte Videoproduktion lernen.">2 Tage · Video</button>
         </div>
 
-        <div class="smart-output" id="smartOutput" aria-live="polite" hidden>
+        <div class="smart-output" id="smartOutput" hidden>
           <div class="smart-understood" id="smartUnderstood"></div>
           <div class="smart-summary" id="smartSummary"></div>
           <div class="smart-results" id="smartResults"></div>
