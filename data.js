@@ -13148,7 +13148,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Nächster Termin nicht publiziert (bisher 03.10.2026)",
     "startDate": "",
     "endDate": "2026-10-03",
-    "region": "Lumino",
+    "region": "Studio fotografico Residenza 3544, Via Bellinzona 71, 6533 Lumino",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -13169,10 +13169,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "BIS_500",
     "format": "PRÄSENZ",
     "duration": "2 lezioni",
-    "start": "Nächster Termin nicht publiziert (bisher 11.10.2026)",
+    "start": "Kurs am 11.10.2026 begonnen, zweite Lektion 12.11.2026; Kurs ausgebucht, neue Durchführung nicht publiziert",
     "startDate": "",
-    "endDate": "2026-10-11",
-    "region": "Lugano",
+    "endDate": "2026-11-12",
+    "region": "CSIA, Via G. Brentani 18, 6900 Lugano",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -13193,10 +13193,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "BIS_500",
     "format": "PRÄSENZ",
     "duration": "9 lezioni",
-    "start": "Nächster Termin nicht publiziert (bisher 07.10.2026)",
+    "start": "Kurs seit 07.10.2026 laufend (weitere Lektionen bis 09.12.2026); nächste Ausgabe nicht publiziert",
     "startDate": "",
-    "endDate": "",
-    "region": "Lugano",
+    "endDate": "2026-12-09",
+    "region": "CSIA, Via G. Brentani 18, 6900 Lugano",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -13217,10 +13217,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "BIS_500",
     "format": "PRÄSENZ",
     "duration": "7 lezioni",
-    "start": "Letzte belegte Durchführung 07.10.2026; Folgetermin nicht publiziert",
+    "start": "Kurs seit 07.10.2026 begonnen (7 Lektionen); nächste Ausgabe nicht publiziert",
     "startDate": "",
     "endDate": "",
-    "region": "Camorino",
+    "region": "IFC, Ala Munda 41, 6528 Camorino, Aula A104",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -13337,10 +13337,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "BIS_500",
     "format": "PRÄSENZ",
     "duration": "2 lezioni",
-    "start": "Nächster Termin nicht publiziert (bisher 11.10.2026)",
+    "start": "Kurs am 11.10.2026 begonnen; zweite Lektion 12.11.2026, nächste Ausgabe nicht publiziert",
     "startDate": "",
-    "endDate": "",
-    "region": "Magliaso",
+    "endDate": "2026-11-12",
+    "region": "Zoo al Maglio, Via ai Mulini 14, Magliaso (11.10.); CSIA, Via G. Brentani 18, Lugano (12.11.)",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
