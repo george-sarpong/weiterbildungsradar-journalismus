@@ -1384,7 +1384,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceDisplay": "CHF 1'980.00 (CHF 1'300.00 Kurspreis Journalist:innen) Weitere Infos finden Sie bei den Durchführungen mit Klick auf «Jetzt buchen».",
     "priceCategory": "MEHRERE_TARIFE",
     "format": "NICHT_PUBLIZIERT",
-    "duration": "Dauer widersprüchlich: 1 Tag im Kursfinder, 2 Tage in Beschreibung",
+    "duration": "2 Tage gemäss Ablaufbeschreibung (Kursfinder enthält widersprüchliche Angabe: 1 Tag)",
     "start": "27.10.2026",
     "startDate": "2026-10-27",
     "endDate": "2026-10-28",
