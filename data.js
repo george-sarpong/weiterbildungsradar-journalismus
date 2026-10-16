@@ -31191,12 +31191,12 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "offerType": "STUDIUM",
     "priceDisplay": "EUR 5'560",
     "priceCategory": "UEBER_2000",
-    "format": "HYBRID",
+    "format": "PRÄSENZ",
     "duration": "4 Semester / 82 ECTS",
     "start": "Lehrgang 2026–2028 (bereits begonnen am 13.10.2026)",
     "startDate": "2026-10-13",
     "endDate": "",
-    "region": "Salzburg-Rif",
+    "region": "Universitäts- und Landessportzentrum Rif, Hallein-Rif; Online-Unterricht für diesen Lehrgang nicht bestätigt",
     "release_origin": "AT_KLUGSCHEISSER_REDTEAM_R3_20260930 / AT_SCOPE_REMEDIATION_R1_20260930 / MEDIASKILLS_AT_OWNER_DATA_FREEZE_FINALIZED_2026-09-04"
   },
   {
