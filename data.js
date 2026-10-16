@@ -2851,7 +2851,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "duration": "2 Tage, 09:00–17:00",
     "start": "22.–23.10.2026 (Kursdetail); weitere Katalogedition 15.–16.04.2027 (beide als separate Durchführungen, nicht Verfügbarkeit)",
     "startDate": "2026-10-22",
-    "endDate": "2026-10-23",
+    "endDate": "2027-04-16",
     "region": "NOT_PUBLISHED",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
@@ -23875,7 +23875,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "duration": "3 Tage",
     "start": "02.11.2026–04.11.2026; further 2027 dates bookable",
     "startDate": "2026-11-02",
-    "endDate": "2026-11-04",
+    "endDate": "",
     "region": "Studio 1, Wallisellen",
     "release_origin": "V98_RESTORE_W1_39"
   },
@@ -23971,7 +23971,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "duration": "2 Tage je buchbarer Durchführung (Kursbeschreibung widersprüchlich: 3 Tage)",
     "start": "29.10.–30.10.2026 Lausanne / virtuell; weitere Durchführung 03.12.–04.12.2026 Genève / virtuell",
     "startDate": "2026-10-29",
-    "endDate": "2026-10-30",
+    "endDate": "2026-12-04",
     "region": "Lausanne, Avenue Mon-Repos 24 / Genève, Route des Jeunes 35 / Live-Online, je Durchführung",
     "release_origin": "V98_RESTORE_W1_39"
   },
@@ -24067,7 +24067,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "duration": "3 Tage",
     "start": "21.10.2026–23.10.2026 next future; further Nov/Dec sessions published",
     "startDate": "2026-10-21",
-    "endDate": "2026-10-23",
+    "endDate": "",
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
@@ -24115,7 +24115,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "duration": "3 Tage",
     "start": "21.10.2026–23.10.2026 next future; further Oct/Nov/Dec sessions published",
     "startDate": "2026-10-21",
-    "endDate": "2026-10-23",
+    "endDate": "",
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
@@ -24187,7 +24187,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "duration": "2 Tage",
     "start": "29.10.2026–30.10.2026 next future; further Dec session published",
     "startDate": "2026-10-29",
-    "endDate": "2026-10-30",
+    "endDate": "",
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
@@ -24475,7 +24475,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "duration": "2 Tage",
     "start": "29.10.2026–30.10.2026 next future; 21.12–22.12.2026 also published",
     "startDate": "2026-10-29",
-    "endDate": "2026-10-30",
+    "endDate": "2026-12-22",
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W3_PCC13"
   },
@@ -24763,7 +24763,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "duration": "2 Tage",
     "start": "22.10.2026–23.10.2026 next future; further Dec 2026 and 2027 sessions published",
     "startDate": "2026-10-22",
-    "endDate": "2026-10-23",
+    "endDate": "",
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W4_PCC9"
   },
@@ -25147,7 +25147,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "duration": "15 hours",
     "start": "26.–27.10.2026 (Lausanne, Präsenz); weitere Präsenzdurchführung 23.–24.11.2026; Selbstlernvariante ohne fixen Termin",
     "startDate": "2026-10-26",
-    "endDate": "2026-10-27",
+    "endDate": "",
     "region": "Lausanne (Präsenzdurchführungen) / selbstgesteuertes E-Learning",
     "release_origin": "V98_W6_CAD26_CONTROLLED_MATERIALISATION"
   },
