@@ -11295,12 +11295,12 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "offerType": "KURS",
     "priceDisplay": "CHF 2'580 H.T.",
     "priceCategory": "UEBER_2000",
-    "format": "PRÄSENZ|ONLINE LIVE",
+    "format": "ONLINE LIVE",
     "duration": "4 jours",
-    "start": "17.11.2026 (offizielle Kurs-/Formatvariante)",
+    "start": "17.–20.11.2026 – Live-Online / Classe à distance; Kursbeginn gemäss offizieller ORSYS-Durchführung (Buchbarkeit nicht geprüft)",
     "startDate": "2026-11-17",
-    "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "endDate": "2026-11-20",
+    "region": "Online – Classe à distance (17.–20.11.2026; kein physischer Kursort für diese Ausgabe)",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
