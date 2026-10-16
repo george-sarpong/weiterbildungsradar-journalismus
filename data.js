@@ -19861,14 +19861,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "reviewAfter": "2027-02-22",
     "focus": "JOURNALISMUS",
     "offerType": "STUDIUM",
-    "priceDisplay": "CHF 850 pro Semester; bei Aufenthalt zu Studienzwecken für ausländische Studierende CHF 2'550 pro Semester; Anmeldung/Eignungsabklärung CHF 250; zusätzlich Prüfungs- und Semesterbeiträge",
+    "priceDisplay": "Stand Gebührenordnung ab HS 2026/27: CHF 850 Studiengebühr je Semester; für Studierende mit ausländischer Staatsangehörigkeit und Aufenthaltszweck Studium bei BFH-Studienbeginn CHF 2'550/Semester (andere Aufenthaltszwecke CHF 850, Übergangsregel CHF 1'050). Anmeldung/Eignungsabklärung CHF 250; Immatrikulationsgebühr CHF 100 wird mit Anmeldegebühr verrechnet. Je Semester zusätzlich Prüfung CHF 80, Sozial/Kultur/Sport CHF 24, VSBFH-Beitrag CHF 15. Lehrmittel/Material/Exkursionen extra. Gesamtkosten abhängig von Vollzeit 3 oder Teilzeit 5–6 Semestern; kein belastbarer pauschaler Vollpreis.",
     "priceCategory": "MEHRERE_TARIFE",
     "format": "PRÄSENZ",
     "duration": "90 ECTS; Vollzeit 3 Semester / Teilzeit 5–6 Semester",
     "start": "Studienbeginn 20.09.2027; Anmeldefrist 15.03.2027",
     "startDate": "2027-09-20",
     "endDate": "",
-    "region": "HKB, Bern",
+    "region": "Studienort: Hochschule der Künste Bern HKB, Holzikofenweg 8, 3007 Bern (kein abweichender Kursraum bestätigt).",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
