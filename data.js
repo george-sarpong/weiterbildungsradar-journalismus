@@ -10885,14 +10885,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "reviewAfter": "2027-03-11",
     "focus": "MEDIENPRAXIS",
     "offerType": "KURS",
-    "priceDisplay": "CHF 1'640 H.T. (INTER; ORSYS-Schweiz-Kurskarte, Stand 16.10.2026). Abweichende frühere Angabe CHF 1'610 H.T. nicht bestätigt; konkreten Buchungspreis prüfen.",
+    "priceDisplay": "INTER (offener Kurs): CHF 1'640 H.T. / exkl. Steuer gemäss Schweizer Kurskarte vom 16.10.2026. INTRA (Firmenschulung): Preis auf Anfrage. SUR MESURE (individuelle Schulung): Preis auf Anfrage. Frühere abweichende CHF-1'610-Angabe nicht auf die drei Varianten übertragen.",
     "priceCategory": "PREIS_AUF_ANFRAGE",
     "format": "PRÄSENZ|ONLINE LIVE",
-    "duration": "2 Tage (14 Stunden)",
-    "start": "01.–02.04.2027 (Classe à distance); weitere Live-Online-Durchführungen 01.–02.07.2027, 06.–07.09.2027, 16.–17.12.2027",
+    "duration": "INTER und INTRA: 2 Tage / 14 Stunden; SUR MESURE: individuelle Dauer, nicht ausgewiesen.",
+    "start": "INTER (Classe à distance): 01.–02.04.2027; weitere Online-Termine 01.–02.07., 06.–07.09. und 16.–17.12.2027. INTRA / SUR MESURE: auf Anfrage, keine öffentlichen Fixtermine.",
     "startDate": "2027-04-01",
     "endDate": "2027-04-02",
-    "region": "Online – Classe à distance für die vier konkret ausgeschriebenen INTER-Durchführungen; Präsenz allgemein möglich, aber kein konkreter Präsenzort ausgewiesen",
+    "region": "INTER: vier veröffentlichte Termine als Classe à distance (online); kein Präsenzort für diese Termine. INTRA: beim Kunden, bei ORSYS oder online, konkreter Ort nach Offerte. SUR MESURE: Ort nach Offerte; kein Durchführungsort belegt.",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
