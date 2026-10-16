@@ -84,6 +84,52 @@ jobs:
           await page.setViewportSize({width:390,height:844});
           const layout=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,viewport:document.documentElement.clientWidth}));
           assert(layout.scroll<=layout.viewport,'Mobile horizontal overflow '+JSON.stringify(layout));
+
+          // Independent browser matrix: every one of the exact QA09 116 IDs
+          const qaIds=["V52-MEEL-INSTAGRAM","OFFER-CORSO-001","OFFER-FERNUNI-002","OFFER-HKB-001","OFFER-IFC-005","OFFER-IFC-006","OFFER-IFC-007","OFFER-IFC-008","OFFER-IFC-012","OFFER-IFC-014","OFFER-IFC-020","V79-02","OFFER-NOBLE-004","OFFER-NOBLE-006","OFFER-NOBLE-008","OFFER-NOBLE-013","OFFER-NOBLE-014","OFFER-NOBLE-016","OFFER-NOBLE-020","OFFER-NOBLE-021","OFFER-NOBLE-033","OFFER-NOBLE-035","OFFER-NOBLE-037","OFFER-NOBLE-044","OFFER-NOBLE-057","OFFER-NOBLE-064","OFFER-NOBLE-067","OFFER-ORSYS-006","OFFER-ORSYS-007","OFFER-ORSYS-008","OFFER-ORSYS-009","OFFER-ORSYS-012","OFFER-ORSYS-014","OFFER-ORSYS-020","OFFER-ORSYS-039","OFFER-ORSYS-041","OFFER-ORSYS-042","OFFER-ORSYS-051","OFFER-ORSYS-054","OFFER-ORSYS-057","OFFER-ORSYS-063","OFFER-ORSYS-069","OFFER-ORSYS-070","OFFER-ORSYS-075","OFFER-ORSYS-076","OFFER-ORSYS-078","OFFER-ORSYS-082","OFFER-ORSYS-083","OFFER-ORSYS-088","OFFER-ORSYS-094","OFFER-ORSYS-099","OFFER-ORSYS-103","OFFER-ORSYS-115","OFFER-ORSYS-118","OFFER-ORSYS-120","OFFER-ORSYS-122","OFFER-ORSYS-137","OFFER-ORSYS-138","OFFER-ORSYS-139","OFFER-ORSYS-141","OFFER-ORSYS-143","OFFER-ORSYS-144","OFFER-ORSYS-146","OFFER-ORSYS-151","AT-PROD-OFFER-168","AT-PROD-OFFER-154","OFFER-UZHDSI-001","CAD-002","CAD-018","CAD-025","OFFER-CFJM-007","OFFER-CFJM-008","OFFER-CFJM-013","OFFER-CFJM-014","OFFER-CFJM-015","OFFER-CFJM-016","V82-DAWAN-012","V82-DAWAN-017","V82-DAWAN-029","V82-DAWAN-037","V82-DAWAN-039","V82-DAWAN-094","OFFER-EBU-013","OFFER-EBU-014","OFFER-EBU-015","OFFER-EBU-019","AT-PROD-OFFER-003","AT-PROD-OFFER-209","AT-PROD-OFFER-211","IF-G04","IF-P03","IF-P08","IF-P10","IF-W03","V78-04","OFFER-MAZ-005","OFFER-MAZ-045","OFFER-MAZ-058","OFFER-MAZ-075","OFFER-MAZ-107","OFFER-MAZ-168","OFFER-MAZ-176","OFFER-MAZ-181","OFFER-MAZ-182","PCC-P02","PCC-P03","PCC-P05","PCC-P08","PCC-P16","PCC-P23","PCC-P28","PCC-P32","PCC-P33","PJ-V16-07","V58-S1-07","AT-PROD-OFFER-172"];
+          const qaMatrix=await page.evaluate((targetIds)=>{
+            const rec=Object.fromEntries(window.WEITERBILDUNGSRADAR_OFFERS.map(o=>[o.id,o]));
+            const smart=window.MEDIA_SKILLS_SMART_DATA.byId;
+            const date=new Date(); date.setHours(0,0,0,0);
+            const issues=[];
+            const dup=new Set();
+            for(const id of targetIds){
+              if(dup.has(id)){issues.push(id+':duplicate-target');continue;}
+              dup.add(id);
+              const o=rec[id],s=smart[id];
+              if(!o||!s){issues.push(id+':missing-record-or-sidecar');continue;}
+              const isOld=!!(o.endDate && /^\d{4}-\d{2}-\d{2}$/.test(o.endDate) && new Date(o.endDate+'T23:59:59')<date);
+              const matches=Array.from(document.querySelectorAll('#cards [data-offer-id]')).filter(el=>el.dataset.offerId===id);
+              if(matches.length!==(isOld?0:1))issues.push(id+':visible-card-count='+matches.length+' old='+isOld);
+              if(matches.length){
+                const card=matches[0],link=card.querySelector('a.source-link[href]');
+                if(!card.textContent.includes(o.title))issues.push(id+':title-missing-from-card');
+                if(!link||link.href!==o.url)issues.push(id+':direct-link-mismatch');
+                if(o.duration&&!card.textContent.includes(o.duration))issues.push(id+':duration-not-rendered');
+              }
+              if(!o.url.startsWith('https://'))issues.push(id+':invalid-source-url');
+              if(s.priceEligible===true&&s.parserStatus!=='AUTO_ACCEPT')issues.push(id+':unsafe-price-parser');
+              const variantIds=new Set((s.delivery?.variants||[]).map(v=>v.deliveryVariantId));
+              for(const opt of s.priceOptions||[])for(const ref of opt.deliveryVariantRefs||[])if(!variantIds.has(ref))issues.push(id+':orphan-variant-ref');
+              if(o.format==='NICHT_PUBLIZIERT' && (s.delivery?.channels||[]).length>0)issues.push(id+':unknown-format-with-confirmed-channels');
+              if(o.startDate&&o.endDate&&o.endDate<o.startDate)issues.push(id+':end-before-start');
+              if(id==='OFFER-ORSYS-041'&&s.priceEligible!==false)issues.push(id+':contradictory-price-budget-enabled');
+              if(id==='OFFER-IFC-008'&&o.startDate!=='')issues.push(id+':official-conflict-date-asserted');
+              if(id==='OFFER-MAZ-107'&&o.endDate!=='')issues.push(id+':unverified-duration-endDate');
+              if(id==='OFFER-MAZ-182'&&o.endDate!=='')issues.push(id+':old-unverified-three-day-endDate');
+              if(id==='OFFER-NOBLE-067'&&o.startDate!=='')issues.push(id+':unpublished-new-term-inserted');
+              if(id==='V78-04'&&!String(o.duration).includes('widersprüchlich'))issues.push(id+':primary-duration-discrepancy-hidden');
+              if(id==='OFFER-CFJM-013'&&(!o.start.includes('2027')||!o.start.includes('2026')))issues.push(id+':two-course-editions-collapsed');
+              if(id==='CAD-002'){
+                if(!s.delivery.variants.some(v=>v.deliveryVariantId==='B'&&v.attendanceChannels.includes('REMOTE')))issues.push(id+':asynchronous-remote-absent');
+                if(!s.priceOptions.some(v=>v.amount===250&&v.deliveryVariantRefs?.includes('B')))issues.push(id+':250-price-not-bound-to-B');
+              }
+            }
+            return {count:dup.size,issues};
+          },qaIds);
+          assert(qaMatrix.count===116,'116-browser-matrix denominator wrong');
+          assert(qaMatrix.issues.length===0,'116-browser-matrix failed '+JSON.stringify(qaMatrix.issues.slice(0,40)));
+          console.log('QA09_116_IN_BROWSER_PASS',qaMatrix.count);
           await browser.close();
           console.log('QA09_BROWSER_E2E_PASS',JSON.stringify({active:baseline.active,total:baseline.total,smart:baseline.smart,checked:['CAD-002 classical+smart online/self-paced+CHF250','MAZ-182 unconfirmed end','date/currentness','budget','conditional free','mobile']}));
           JS
