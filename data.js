@@ -19312,7 +19312,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceDisplay": "CHF 1'950.00 (Kurspreis Journalist:innen)",
     "priceCategory": "501_2000",
     "format": "NICHT_PUBLIZIERT",
-    "duration": "Nicht aktuell bestätigt",
+    "duration": "4 Tage (gemäss offiziellem MAZ-Kursfinder; einzelne Unterrichtstage je Durchführung prüfen)",
     "start": "12.–19.10.2026",
     "startDate": "2026-10-12",
     "endDate": "2026-10-19",
