@@ -130,6 +130,52 @@ jobs:
           assert(qaMatrix.count===116,'116-browser-matrix denominator wrong');
           assert(qaMatrix.issues.length===0,'116-browser-matrix failed '+JSON.stringify(qaMatrix.issues.slice(0,40)));
           console.log('QA09_116_IN_BROWSER_PASS',qaMatrix.count);
+
+          // Browser flows: URL state, sort, favorites, all classic filter dimensions
+          await page.setViewportSize({width:1280,height:900});
+          await page.locator('#searchInput').fill('MAZ');
+          await page.waitForFunction(()=>new URL(location.href).searchParams.get('q')==='MAZ');
+          await page.locator('#sortSelect').selectOption('START');
+          await page.waitForFunction(()=>new URL(location.href).searchParams.get('sort')==='START');
+          const sorted=await page.evaluate(()=>{
+            const ids=[...document.querySelectorAll('#cards [data-offer-id]')].slice(0,12).map(el=>el.dataset.offerId);
+            const byId=Object.fromEntries(window.WEITERBILDUNGSRADAR_OFFERS.map(x=>[x.id,x]));
+            const today=new Date();today.setHours(0,0,0,0);
+            return ids.map(id=>({id,date:byId[id]?.startDate||'',future:!!(byId[id]?.startDate && new Date(byId[id].startDate+'T23:59:59')>=today)}));
+          });
+          for(let i=1;i<sorted.length;i++)if(sorted[i-1].future&&sorted[i].future)assert(sorted[i-1].date<=sorted[i].date,'START sort chronology broken');
+          const shared=page.url();
+          await page.reload({waitUntil:'networkidle'});
+          assert((await page.locator('#searchInput').inputValue())==='MAZ','shared URL q not restored');
+          assert((await page.locator('#sortSelect').inputValue())==='START','shared sort not restored');
+          assert(page.url()===shared,'shared URL changed on reload');
+          const favId=await page.locator('#cards [data-offer-id]').first().getAttribute('data-offer-id');
+          await page.locator('[data-favorite-id="'+favId+'"]').first().click();
+          assert((await page.evaluate(id=>JSON.parse(localStorage.getItem('weiterbildungsradar:favorites:v1')||'[]').includes(id),favId)),'favorites localStorage persistence broken');
+          await page.locator('#searchInput').fill('');
+          await page.locator('#favoritesToggle').click();
+          assert(await page.locator('#cards [data-offer-id="'+favId+'"]').count()===1,'Favorites-only filter dropped saved item');
+          await page.locator('#resetFilters').click();
+          const listNow=await page.locator('#cards [data-offer-id]').count();
+          assert(listNow===baseline.active,'reset did not restore full current roster');
+          for(const selector of ['#focusFilter','#typeFilter','#priceFilter','#formatFilter','#languageFilter','#countryFilter','#levelFilter']){
+            const val=await page.locator(selector+' option:not([value=""])').first().getAttribute('value');
+            if(!val)continue;
+            await page.locator(selector).selectOption(val);
+            assert((await page.locator(selector).inputValue())===val,'classic filter not selectable '+selector);
+            assert((await page.locator('#filterStatus').innerText()).includes('Filter aktiv'),'filter status did not update '+selector);
+            await page.locator('#resetFilters').click();
+          }
+          await page.locator('#searchInput').fill('xxyyyzz-no-such-course-qa09');
+          await page.waitForFunction(()=>document.querySelector('#resultCount')?.textContent?.startsWith('0 von'));
+          assert(await page.locator('#emptyState').isVisible(),'empty results state missing');
+          await page.locator('#resetFilters').click();
+          await page.locator('#smartInput').fill('Photoshop Base online CHF 400');
+          await page.locator('#smartInput').press('Enter');
+          assert((await page.locator('#smartSummary').innerText()).length>10,'Smart keyboard submit broken');
+          assert(!decodeURIComponent(page.url()).includes('Photoshop Base online CHF 400'),'private Smart query was exposed in shared URL');
+          assert(errors.length===0,'Browser UX flows produced JS errors: '+errors.join('|'));
+          console.log('QA09_URL_FILTER_FAVORITES_SORT_PASS');
           await browser.close();
           console.log('QA09_BROWSER_E2E_PASS',JSON.stringify({active:baseline.active,total:baseline.total,smart:baseline.smart,checked:['CAD-002 classical+smart online/self-paced+CHF250','MAZ-182 unconfirmed end','date/currentness','budget','conditional free','mobile']}));
           JS
