@@ -18857,9 +18857,9 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "PRÄSENZ",
     "duration": "NICHT_PUBLIZIERT",
-    "start": "13.01.2027 (publizierte weitere Durchführung; Stunden/Ort nicht publiziert)",
-    "startDate": "2027-01-13",
-    "endDate": "2027-01-13",
+    "start": "Kursübersicht nennt 09.10.2026 und 13.01.2027; unklar, ob gemeinsamer mehrteiliger Kurs oder separate Durchführungen. 13.01. nicht als neuer Kursstart belegt; Buchbarkeit nicht bestätigt.",
+    "startDate": "",
+    "endDate": "",
     "region": "NOT_PUBLISHED",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
