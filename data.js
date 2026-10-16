@@ -13217,7 +13217,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "BIS_500",
     "format": "PRÄSENZ",
     "duration": "7 lezioni",
-    "start": "Kurs seit 07.10.2026 begonnen (7 Lektionen); nächste Ausgabe nicht publiziert",
+    "start": "Kursausgabe Oktober 2026: Offizielle IFC-URLs nennen 07.10. oder 14.10. als Beginn (widersprüchlich); keine neue Ausgabe publiziert.",
     "startDate": "",
     "endDate": "",
     "region": "IFC, Ala Munda 41, 6528 Camorino, Aula A104",
