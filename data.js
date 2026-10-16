@@ -2851,7 +2851,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "duration": "2 Tage, 09:00–17:00",
     "start": "22.–23.10.2026 (Kursdetail); weitere Katalogedition 15.–16.04.2027 (beide als separate Durchführungen, nicht Verfügbarkeit)",
     "startDate": "2026-10-22",
-    "endDate": "2027-04-16",
+    "endDate": "2026-10-23",
     "region": "NOT_PUBLISHED",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
@@ -23971,7 +23971,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "duration": "2 Tage je buchbarer Durchführung (Kursbeschreibung widersprüchlich: 3 Tage)",
     "start": "29.10.–30.10.2026 Lausanne / virtuell; weitere Durchführung 03.12.–04.12.2026 Genève / virtuell",
     "startDate": "2026-10-29",
-    "endDate": "2026-12-04",
+    "endDate": "2026-10-30",
     "region": "Lausanne, Avenue Mon-Repos 24 / Genève, Route des Jeunes 35 / Live-Online, je Durchführung",
     "release_origin": "V98_RESTORE_W1_39"
   },
