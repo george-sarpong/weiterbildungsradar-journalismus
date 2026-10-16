@@ -1,0 +1,91 @@
+name: QA09 116 PR browser E2E (isolated verification branch)
+on:
+  push:
+    branches: [qa09-pr1-e2e-check-20261016]
+permissions:
+  contents: read
+jobs:
+  qa09_browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser test library
+        run: npm install --no-save playwright-core
+      - name: Chromium E2E on local PR staging
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server --bind 127.0.0.1 8765 > /tmp/qa09-server.log 2>&1 &
+          for i in $(seq 1 30); do if curl -fsS http://127.0.0.1:8765/ -o /dev/null; then break; fi; sleep 1; done
+          CHROME_PATH="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          test -n "$CHROME_PATH"
+          export CHROME_PATH
+          cat > /tmp/qa09-browser.mjs <<'JS'
+          import {chromium} from "./node_modules/playwright-core/index.mjs";
+          const assert = (cond,msg) => {if(!cond) throw new Error(msg)};
+          const browser=await chromium.launch({headless:true, executablePath:process.env.CHROME_PATH,args:["--no-sandbox"]});
+          const page=await browser.newPage({viewport:{width:1280,height:900}});
+          const errors=[];
+          page.on('pageerror',e=>errors.push(String(e)));
+          const base='http://127.0.0.1:8765/';
+          await page.goto(base,{waitUntil:'networkidle'});
+          await page.waitForFunction(()=>document.querySelector('#resultCount')?.textContent?.includes('aktuellen Angeboten'),{timeout:30000});
+          const baseline=await page.evaluate(()=>{
+            const d=window.WEITERBILDUNGSRADAR_OFFERS,s=window.MEDIA_SKILLS_SMART_DATA?.byId;
+            const t=new Date();t.setHours(0,0,0,0);
+            const cur=d.filter(o=>!/^\d{4}-\d{2}-\d{2}$/.test(o.endDate||'') || new Date(o.endDate+'T23:59:59')>=t);
+            return {total:d.length,smart:Object.keys(s||{}).length,active:cur.length,
+              uniqueIds:new Set(d.map(o=>o.id)).size,
+              maz:d.find(o=>o.id==='OFFER-MAZ-182'),
+              cad:d.find(o=>o.id==='CAD-002'),
+              cadSmart:s?.['CAD-002'], oldIndexLoaded:typeof window.SFJ_SEARCH_INDEX!=='undefined',
+              fullUiCount:document.querySelectorAll('#cards [data-offer-id]').length
+            };
+          });
+          assert(baseline.total===1352 && baseline.smart===1352 && baseline.uniqueIds===1352,'roster, sidecar or ID mismatch '+JSON.stringify(baseline).slice(0,300));
+          assert(baseline.fullUiCount===baseline.active,'initial currentness/browser cards mismatch '+JSON.stringify({actual:baseline.fullUiCount,expected:baseline.active}));
+          assert(baseline.maz?.endDate==='' && baseline.maz?.duration==='Nicht aktuell bestätigt','MAZ-182 unconfirmed end date/display regression');
+          assert(baseline.cadSmart?.delivery?.structure==='MODE_CHOICE','CAD-002 mode choice absent');
+          assert(baseline.cadSmart.delivery.variants.some(v=>v.deliveryVariantId==='B'&&v.attendanceChannels.includes('REMOTE')),'CAD-002 async online variant absent');
+          assert(!baseline.oldIndexLoaded,'legacy index unexpectedly loaded');
+          assert(errors.length===0,'JS errors at startup '+errors.join('|'));
+          // Classic filters
+          await page.locator('#searchInput').fill('Photoshop - Base');
+          await page.waitForFunction(()=>document.querySelector('#resultCount')?.textContent && !document.querySelector('#resultCount').textContent.startsWith('0 von'));
+          assert(await page.locator('[data-offer-id="CAD-002"]').count()===1,'CAD-002 missing from classical text results');
+          await page.locator('#formatFilter').selectOption('ONLINE SELBSTLERNEN');
+          assert(await page.locator('[data-offer-id="CAD-002"]').count()===1,'CAD-002 online self-learning classic filter mismatch');
+          await page.locator('#resetFilters').click();
+          // Smart query must return eligible online route B at CHF250, and never substitute CHF150 optional certification fee
+          await page.locator('#smartInput').fill('Photoshop Base online selbstlernen CHF 300');
+          await page.locator('#smartSearchForm').evaluate(el=>el.requestSubmit());
+          await page.waitForTimeout(250);
+          const smartText=await page.locator('#smartResults').innerText();
+          assert(smartText.includes('Photoshop - Base'),'CAD-002 excluded from online+self-study Smart query: '+smartText.slice(0,400));
+          assert(smartText.includes('CHF 250'),'CAD-002 variant price not CHF250: '+smartText.slice(0,400));
+          assert(!smartText.includes('CHF 150'),'CAD optional certification erroneously shown as base tariff');
+          await page.locator('#smartInput').fill('Photoshop Base rein online CHF 300');
+          await page.locator('#smartSearchForm').evaluate(el=>el.requestSubmit());
+          await page.waitForTimeout(250);
+          const strictText=await page.locator('#smartResults').innerText();
+          assert(strictText.includes('Photoshop - Base'),'CAD-002 missing in strict online Smart query');
+          // Generic budget, conditional/free and price-unknown guards
+          await page.locator('#smartInput').fill('Ich habe CHF 800 und möchte Datenjournalismus lernen');
+          await page.locator('#smartSearchForm').evaluate(el=>el.requestSubmit());
+          assert((await page.locator('#smartSummary').innerText()).length>10,'budget query did not generate summary');
+          await page.locator('#smartInput').fill('Datenjournalismus kostenlos');
+          await page.locator('#smartSearchForm').evaluate(el=>el.requestSubmit());
+          const freeSummary=await page.locator('#smartSummary').innerText();
+          assert(freeSummary.length>10,'free intent query did not generate a summary');
+          assert(errors.length===0,'JavaScript page errors '+errors.join(' | '));
+          await page.setViewportSize({width:390,height:844});
+          const layout=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,viewport:document.documentElement.clientWidth}));
+          assert(layout.scroll<=layout.viewport,'Mobile horizontal overflow '+JSON.stringify(layout));
+          await browser.close();
+          console.log('QA09_BROWSER_E2E_PASS',JSON.stringify({active:baseline.active,total:baseline.total,smart:baseline.smart,checked:['CAD-002 classical+smart online/self-paced+CHF250','MAZ-182 unconfirmed end','date/currentness','budget','conditional free','mobile']}));
+          JS
+          mv /tmp/qa09-browser.mjs ./qa09-browser.mjs
+          node ./qa09-browser.mjs
