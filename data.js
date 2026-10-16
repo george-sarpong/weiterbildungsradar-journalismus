@@ -29380,7 +29380,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "provider": "fjum – forum journalismus und medien wien",
     "title": "AI-Media-Academy 2026",
     "description": "Mehrmonatiges KI-Programm für Journalist:innen und Medienschaffende mit Recherche, Content-Produktion, Ethik, Coding und Medieninnovation.",
-    "access": "Öffentliche Bewerbung erforderlich. Schweizer Zugang: grundsätzlich offen/positiv belegt.",
+    "access": "Bewerbung für Kurs 2026 war öffentlich möglich, Frist am 01.10.2026 um 23:59 Uhr abgelaufen; am 16.10.2026 keine neue Bewerbungsannahme oder Restplätze bestätigt. Schweizer:innen grundsätzlich zugangsberechtigt, individuelle Aufnahmeentscheidung.",
     "level": "NICHT_PUBLIZIERT",
     "language": "DE",
     "country": "Österreich",
@@ -29393,10 +29393,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "HYBRID",
     "duration": "04.11.2026–22.01.2027",
-    "start": "Kickoff 04.–06.11.; Coding-Tag 18.11.; Coaching/Deep Dives; Abschluss 21.–22.01.",
+    "start": "Durchführung 04.11.2026–22.01.2027: Wien-Präsenz-Kickoff 04.–06.11., Coding 18.11., Coaching Zoom 24.11./04.12./11.01., Hackathon 14.01., Abschluss 21.–22.01.; Bewerbungsfrist 01.10.2026 BEREITS ABGELAUFEN.",
     "startDate": "2026-11-04",
     "endDate": "2027-01-22",
-    "region": "Wien + Online",
+    "region": "Präsenz: fjum-Seminarraum, Otto-Bauer-Gasse 6/2, 1060 Wien (Kickoff 04.–06.11., Coding 18.11., Hackathon 14.01., Abschluss 21.–22.01.); Coaching: online per Zoom.",
     "release_origin": "AT_KLUGSCHEISSER_REDTEAM_R3_20260930 / AT_SCOPE_REMEDIATION_R1_20260930 / MEDIASKILLS_AT_OWNER_DATA_FREEZE_FINALIZED_2026-09-04"
   },
   {
