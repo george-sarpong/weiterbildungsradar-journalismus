@@ -2563,7 +2563,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "duration": "Nicht aktuell bestätigt",
     "start": "02.11.2026",
     "startDate": "2026-11-02",
-    "endDate": "2026-11-04",
+    "endDate": "",
     "region": "NOT_PUBLISHED",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
