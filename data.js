@@ -2851,7 +2851,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "duration": "2 Tage, 09:00–17:00",
     "start": "22.–23.10.2026 (Kursdetail); weitere Katalogedition 15.–16.04.2027 (beide als separate Durchführungen, nicht Verfügbarkeit)",
     "startDate": "2026-10-22",
-    "endDate": "2027-04-16",
+    "endDate": "2026-10-23",
     "region": "NOT_PUBLISHED",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
@@ -18857,9 +18857,9 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "PRÄSENZ",
     "duration": "NICHT_PUBLIZIERT",
-    "start": "13.01.2027 (publizierte weitere Durchführung; Stunden/Ort nicht publiziert)",
-    "startDate": "2027-01-13",
-    "endDate": "2027-01-13",
+    "start": "Kursübersicht nennt 09.10.2026 und 13.01.2027; unklar, ob gemeinsamer mehrteiliger Kurs oder separate Durchführungen. 13.01. nicht als neuer Kursstart belegt; Buchbarkeit nicht bestätigt.",
+    "startDate": "",
+    "endDate": "",
     "region": "NOT_PUBLISHED",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
@@ -23971,7 +23971,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "duration": "2 Tage je buchbarer Durchführung (Kursbeschreibung widersprüchlich: 3 Tage)",
     "start": "29.10.–30.10.2026 Lausanne / virtuell; weitere Durchführung 03.12.–04.12.2026 Genève / virtuell",
     "startDate": "2026-10-29",
-    "endDate": "2026-12-04",
+    "endDate": "2026-10-30",
     "region": "Lausanne, Avenue Mon-Repos 24 / Genève, Route des Jeunes 35 / Live-Online, je Durchführung",
     "release_origin": "V98_RESTORE_W1_39"
   },
@@ -24473,9 +24473,9 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "PREIS_AUF_ANFRAGE",
     "format": "PRÄSENZ | ONLINE LIVE",
     "duration": "2 Tage",
-    "start": "29.10.2026–30.10.2026 next future; 21.12–22.12.2026 also published",
+    "start": "29.–30.10.2026 (2 Tage); weitere getrennte Durchführung 21.–22.12.2026. Präsenz-/Live-Online-Variante bei Anmeldung wählen; Verfügbarkeit prüfen.",
     "startDate": "2026-10-29",
-    "endDate": "2026-12-22",
+    "endDate": "",
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W3_PCC13"
   },
@@ -31004,7 +31004,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Einstieg gemäss Bewerbungsweg; kein fester Kursbeginn publiziert",
     "startDate": "",
     "endDate": "",
-    "region": "Schwarzach / Vorarlberg",
+    "region": "Vorarlberg; Arbeitgebersitz Schwarzach. Tatsächliche Einsatzorte der Rotation durch mehrere Redaktionen nicht einzeln publiziert.",
     "release_origin": "AT_KLUGSCHEISSER_REDTEAM_R3_20260930 / AT_SCOPE_REMEDIATION_R1_20260930 / MEDIASKILLS_AT_OWNER_DATA_FREEZE_FINALIZED_2026-09-04"
   },
   {
