@@ -24473,9 +24473,9 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "PREIS_AUF_ANFRAGE",
     "format": "PRÄSENZ | ONLINE LIVE",
     "duration": "2 Tage",
-    "start": "29.10.2026–30.10.2026 next future; 21.12–22.12.2026 also published",
+    "start": "29.–30.10.2026 (2 Tage); weitere getrennte Durchführung 21.–22.12.2026. Präsenz-/Live-Online-Variante bei Anmeldung wählen; Verfügbarkeit prüfen.",
     "startDate": "2026-10-29",
-    "endDate": "2026-12-22",
+    "endDate": "",
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W3_PCC13"
   },
@@ -31004,7 +31004,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Einstieg gemäss Bewerbungsweg; kein fester Kursbeginn publiziert",
     "startDate": "",
     "endDate": "",
-    "region": "Schwarzach / Vorarlberg",
+    "region": "Vorarlberg; Arbeitgebersitz Schwarzach. Tatsächliche Einsatzorte der Rotation durch mehrere Redaktionen nicht einzeln publiziert.",
     "release_origin": "AT_KLUGSCHEISSER_REDTEAM_R3_20260930 / AT_SCOPE_REMEDIATION_R1_20260930 / MEDIASKILLS_AT_OWNER_DATA_FREEZE_FINALIZED_2026-09-04"
   },
   {
