@@ -18856,11 +18856,11 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceDisplay": "CHF 980",
     "priceCategory": "501_2000",
     "format": "PRÄSENZ",
-    "duration": "NICHT_PUBLIZIERT",
+    "duration": "2 Tage",
     "start": "Kursübersicht nennt 09.10.2026 und 13.01.2027; unklar, ob gemeinsamer mehrteiliger Kurs oder separate Durchführungen. 13.01. nicht als neuer Kursstart belegt; Buchbarkeit nicht bestätigt.",
     "startDate": "",
     "endDate": "",
-    "region": "NOT_PUBLISHED",
+    "region": "Gleis70, Hermetschloostrasse 70, 8048 Zürich",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
