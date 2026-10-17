@@ -70,7 +70,7 @@ jobs:
           const smart=await page.locator("#smartResults").innerText();
           assert(!smart.includes("Adobe Photoshop - Professionelle Porträt - Retusche"),"PCC_SMART_LEAK");
           console.log("QA09_PCC_SMART_SEARCH_EXCLUSION_PASS");
-          await page.locator("#resetFilters").click();
+          if (await page.locator("#resetFilters").isEnabled()) await page.locator("#resetFilters").click();
           await page.locator("#searchInput").fill("Journalismus");
           await page.waitForTimeout(200);
           assert(await page.locator('[data-offer-id="PCC-P32"]').count()===0,"PCC_FILTER_LEAK");
