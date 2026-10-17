@@ -3425,7 +3425,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "ONLINE LIVE",
     "duration": "6 Stunden in drei Sessions",
-    "start": "12.10.2026",
+    "start": "12., 15. und 22.10.2026 (Anmeldeschluss: 09.10.2026; Frist für diese Ausgabe abgelaufen)",
     "startDate": "2026-10-12",
     "endDate": "2026-10-22",
     "region": "Online",
@@ -15739,8 +15739,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "duration": "5 x 4 Stunden",
     "start": "OSINT-Wahlpflichtmodul HS 2026 – begonnen; nur zugelassene Doktorierende",
     "startDate": "2026-09-24",
-    "endDate": "",
-    "region": "Zürich / Raum tbd",
+    "endDate": "2026-12-03",
+    "region": "Universität Zürich, Raum KO2 (DSI-OSINT-Wahlpflichtmodul HS 2026; konkrete Gebäudeadresse nicht publiziert)",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -31195,7 +31195,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "UEBER_2000",
     "format": "PRÄSENZ",
     "duration": "4 Semester / 82 ECTS",
-    "start": "Lehrgang 2026–2028 (bereits begonnen am 13.10.2026)",
+    "start": "Lehrgang 2026–2028 (seit 13.10.2026 begonnen); nachträgliche Zulassung zu diesem Jahrgang nicht bestätigt. Studienbeginn gemäss Hochschule jeweils im Oktober.",
     "startDate": "2026-10-13",
     "endDate": "",
     "region": "Universitäts- und Landessportzentrum Rif, Hallein-Rif; Online-Unterricht für diesen Lehrgang nicht bestätigt",
