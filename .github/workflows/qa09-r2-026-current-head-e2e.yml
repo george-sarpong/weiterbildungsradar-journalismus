@@ -74,6 +74,20 @@ jobs:
           await page.locator("#searchInput").fill("Journalismus");
           await page.waitForTimeout(200);
           assert(await page.locator('[data-offer-id="PCC-P32"]').count()===0,"PCC_FILTER_LEAK");
+          for (const selector of ["#focusFilter","#formatFilter","#priceFilter"]) {
+            if (await page.locator("#resetFilters").isEnabled()) await page.locator("#resetFilters").click();
+            const opts=await page.locator(selector+" option").count();
+            assert(opts>1,"MISSING_FILTER_OPTIONS "+selector);
+            await page.locator(selector).selectOption({index:1});
+            await page.waitForTimeout(130);
+            assert(await page.locator('[data-offer-id="PCC-P32"]').count()===0,"PCC_FILTER_LEAK "+selector);
+            assert((await page.locator("[data-offer-id]").count())<=snap.vis,"INVALID_FILTER_COUNT "+selector);
+          }
+          if (await page.locator("#resetFilters").isEnabled()) await page.locator("#resetFilters").click();
+          await page.locator("#sortSelect").selectOption({index:1});
+          await page.waitForTimeout(130);
+          assert(await page.locator('[data-offer-id="PCC-P32"]').count()===0,"PCC_SORT_LEAK");
+          console.log("QA09_FOCUS_FORMAT_PRICE_SORT_PASS");
           await page.setViewportSize({width:390,height:844});
           const dims=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
           assert(dims.scroll<=dims.client,"MOBILE_HORIZONTAL_OVERFLOW "+JSON.stringify(dims));
