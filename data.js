@@ -15724,7 +15724,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "provider": "Universität Zürich / Digital Society Initiative",
     "title": "Open Source Intelligence (OSINT) – DSI Wahlpflichtmodul",
     "description": "Fünfteiliges OSINT-Wahlpflichtmodul im DSI Excellence Programme HS 2026.",
-    "access": "Voraussetzungen: DSI Excellence Programme / Doktorierende; weitere Doktorierende bei freien Plätzen. | STUDENT_RESTRICTED_ACCESS – nur berechtigter universitärer Personenkreis",
+    "access": "STUDENT_RESTRICTED_ACCESS – nur berechtigter universitärer Personenkreis | Voraussetzungen: DSI Excellence Programme / Doktorierende; weitere Doktorierende bei freien Plätzen.",
     "level": "BERUFSERFAHRUNG",
     "language": "DE|EN",
     "country": "Schweiz",
