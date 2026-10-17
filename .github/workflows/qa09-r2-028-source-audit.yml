@@ -1,0 +1,22 @@
+name: QA09 R2_028 116 official-source reachability screen
+on:
+  push:
+    branches: [qa09-r2-028-source-audit-20261017]
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Frozen 116 source-reachability and identity screening
+        run: node qa/qa09-r2-028-source-screen.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: qa09-r2-028-source-probe
+          path: qa09-reports/qa09-116-source-probe.json
+          retention-days: 30
