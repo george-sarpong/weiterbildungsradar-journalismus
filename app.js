@@ -116,7 +116,7 @@
     return !end || end >= today;
   };
 
-  const offers = allOffers.filter(isCurrent);
+  const offers = allOffers.filter(offer => isCurrent(offer) && offer.publicationStatus !== "HOLD");
   const allKnownIds = new Set(allOffers.map(offer => offer.id));
   const activeIds = new Set(offers.map(offer => offer.id));
   let favorites = loadFavorites();
