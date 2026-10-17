@@ -13,7 +13,7 @@ try{const c=new AbortController();const timer=setTimeout(()=>c.abort(),16000);le
 obj.http=String(resp.status);obj.final_url=resp.url;obj.content_type=resp.headers.get('content-type')||'';const body=await resp.text();obj.html_bytes=Buffer.byteLength(body,'utf8');obj.sha256=crypto.createHash('sha256').update(body).digest('hex');
 if(!resp.ok)obj.note='HTTP_NON_2XX_NOT_PROOF_OF_INVALID_OFFER';
 else if(!/html/i.test(obj.content_type))obj.note='NON_HTML_SOURCE_REQUIRES_MANUAL_INSPECTION';
-else {const contentText=body.toLocaleLowerCase();const words=o.title.toLocaleLowerCase().split(/[^\\p{L}\\p{N}]+/u).filter(w=>w.length>=5&&!['grundlagen','cours','formation','training','online','advanced','intermediaire'].includes(w));let hits=words.filter(w=>contentText.includes(w));obj.course_identity_signal=words.length?Math.round(hits.length*100/words.length)+'%_TITLE_TOKEN_COVERAGE':'UNUSABLE_TITLE';obj.note='AUTOMATIC_SCREENING_ONLY_NOT_SOURCE_COMPLETE';if(contentText.length<100)obj.note='HTML_HAS_LITTLE_VISIBLE_TEXT';}
+else {const contentText=body.toLocaleLowerCase();const words=o.title.toLocaleLowerCase().split(/[^a-z0-9]+/i).filter(w=>w.length>=5&&!['grundlagen','cours','formation','training','online','advanced','intermediaire'].includes(w));let hits=words.filter(w=>contentText.includes(w));obj.course_identity_signal=words.length?Math.round(hits.length*100/words.length)+'%_TITLE_TOKEN_COVERAGE':'UNUSABLE_TITLE';obj.note='AUTOMATIC_SCREENING_ONLY_NOT_SOURCE_COMPLETE';if(contentText.length<100)obj.note='HTML_HAS_LITTLE_VISIBLE_TEXT';}
 }catch(e){obj.http='FETCH_ERROR';obj.note=String(e.name||e.message||e).slice(0,150);}
 results[i]=obj;}}
 await Promise.all(Array.from({length:12},worker));
