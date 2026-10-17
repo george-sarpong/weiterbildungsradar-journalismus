@@ -98,3 +98,33 @@ jobs:
           export CHROME_PATH="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
           cp /tmp/qa09-e2e.mjs ./qa09-e2e.mjs
           node ./qa09-e2e.mjs
+
+      - name: Hosted published-site smoke and exact-blob guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="https://george-sarpong.github.io/weiterbildungsradar-journalismus"
+          mkdir -p /tmp/qa09-published
+          for f in index.html app.js data.js smart-search-data.js; do
+            curl --fail --location --silent --show-error --retry 5 --retry-all-errors --retry-delay 3 --max-time 45 "$BASE/$f?qa=f4202992dd524687add714168aab65654958be19" -o "/tmp/qa09-published/$f"
+          done
+          test "$(git hash-object /tmp/qa09-published/data.js)" = "2bb200fa8b5ca6505b2de7ecbe516082618edf44"
+          test "$(git hash-object /tmp/qa09-published/app.js)" = "712cf50adcb9d137c3aa0897f61b2ec50e5a4916"
+          test "$(git hash-object /tmp/qa09-published/smart-search-data.js)" = "76b20c1921a0d7210c861ade6ccfe2f5f957cbac"
+          cmp index.html /tmp/qa09-published/index.html
+          echo "QA09_PUBLISHED_EXACT_BLOBS_PASS"
+          cat > qa09-published.mjs <<'NODE'
+          import {chromium} from "playwright-core";
+          const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_PATH,args:["--no-sandbox"]});
+          const page=await browser.newPage({viewport:{width:390,height:844}});
+          const errors=[];
+          page.on("pageerror",e=>errors.push(String(e)));
+          await page.goto("https://george-sarpong.github.io/weiterbildungsradar-journalismus/?qa=f4202992dd524687add714168aab65654958be19",{waitUntil:"networkidle"});
+          await page.waitForSelector("#resultCount");
+          const s=await page.evaluate(()=>({num:window.WEITERBILDUNGSRADAR_OFFERS.length,hasPCC:!!document.querySelector('[data-offer-id="PCC-P32"]'),cors:document.querySelector("#resultCount")?.textContent,hasVWI:window.WEITERBILDUNGSRADAR_OFFERS.find(x=>x.id==="OFFER-ORSYS-115")?.start.includes("26.10.2026")}));
+          if(s.num!==1352 || s.hasPCC || !s.hasVWI || errors.length)throw Error("HOSTED_BROWSER_FAILURE "+JSON.stringify({s,errors}));
+          console.log("QA09_PUBLISHED_CHROMIUM_SMOKE_PASS",JSON.stringify(s));
+          await browser.close();
+          NODE
+          export CHROME_PATH="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          node ./qa09-published.mjs
