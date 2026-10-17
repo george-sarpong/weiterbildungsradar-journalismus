@@ -1,0 +1,589 @@
+{
+  "version": "R2_028",
+  "frozen_roster": "FALLREGISTER_116",
+  "count": 116,
+  "sha_data": "2bb200fa8b5ca6505b2de7ecbe516082618edf44",
+  "main_commit": "f4202992dd524687add714168aab65654958be19",
+  "offers": [
+    {
+      "offer_id": "V52-MEEL-INSTAGRAM",
+      "provider": "Association MEEL",
+      "title": "Les boîtes à outils du vendredi – Instagram"
+    },
+    {
+      "offer_id": "OFFER-CORSO-001",
+      "provider": "Corso di giornalismo della Svizzera italiana",
+      "title": "Corso per Giornalisti – Diploma cantonale di Giornalista"
+    },
+    {
+      "offer_id": "OFFER-FERNUNI-002",
+      "provider": "FernUni Schweiz / UniDistance Suisse",
+      "title": "Histoire des Fake News et des Médias"
+    },
+    {
+      "offer_id": "OFFER-HKB-001",
+      "provider": "Hochschule der Künste Bern HKB / Berner Fachhochschule BFH",
+      "title": "Master Multimedia Communication & Publishing"
+    },
+    {
+      "offer_id": "OFFER-IFC-005",
+      "provider": "Istituto della formazione continua (IFC Ticino)",
+      "title": "Fotografia con lo smartphone"
+    },
+    {
+      "offer_id": "OFFER-IFC-006",
+      "provider": "Istituto della formazione continua (IFC Ticino)",
+      "title": "Fotografia di ragni e serpenti"
+    },
+    {
+      "offer_id": "OFFER-IFC-007",
+      "provider": "Istituto della formazione continua (IFC Ticino)",
+      "title": "Fotografia: approfondimento e ricerca di uno stile personale"
+    },
+    {
+      "offer_id": "OFFER-IFC-008",
+      "provider": "Istituto della formazione continua (IFC Ticino)",
+      "title": "Fotografia: corso di base"
+    },
+    {
+      "offer_id": "OFFER-IFC-012",
+      "provider": "Istituto della formazione continua (IFC Ticino)",
+      "title": "Fotografia: musica e paesaggio"
+    },
+    {
+      "offer_id": "OFFER-IFC-014",
+      "provider": "Istituto della formazione continua (IFC Ticino)",
+      "title": "Fotografiamo gli animali"
+    },
+    {
+      "offer_id": "OFFER-IFC-020",
+      "provider": "Istituto della formazione continua (IFC Ticino)",
+      "title": "WordPress: crea il tuo sito web"
+    },
+    {
+      "offer_id": "V79-02",
+      "provider": "MiTech",
+      "title": "Adobe Premiere Pro CC avanzato"
+    },
+    {
+      "offer_id": "OFFER-NOBLE-004",
+      "provider": "NobleProg Schweiz",
+      "title": "Adobe Creative Cloud for Academic and Institutional Content Creation"
+    },
+    {
+      "offer_id": "OFFER-NOBLE-006",
+      "provider": "NobleProg Schweiz",
+      "title": "Adobe Firefly: Generative AI for Creatives"
+    },
+    {
+      "offer_id": "OFFER-NOBLE-008",
+      "provider": "NobleProg Schweiz",
+      "title": "Adobe InDesign"
+    },
+    {
+      "offer_id": "OFFER-NOBLE-013",
+      "provider": "NobleProg Schweiz",
+      "title": "Advanced Stable Diffusion: Deep Learning for Text-to-Image Generation"
+    },
+    {
+      "offer_id": "OFFER-NOBLE-014",
+      "provider": "NobleProg Schweiz",
+      "title": "AI-Powered Audio Enhancement and Noise Reduction"
+    },
+    {
+      "offer_id": "OFFER-NOBLE-016",
+      "provider": "NobleProg Schweiz",
+      "title": "Artificial Intelligence in the Production of Journalistic Content"
+    },
+    {
+      "offer_id": "OFFER-NOBLE-020",
+      "provider": "NobleProg Schweiz",
+      "title": "Blockchain and Cryptocurrency Investigation Masterclass: Forensic Tracing, AML, and Anti-Corruption Operations"
+    },
+    {
+      "offer_id": "OFFER-NOBLE-021",
+      "provider": "NobleProg Schweiz",
+      "title": "Canva and AI in practice"
+    },
+    {
+      "offer_id": "OFFER-NOBLE-033",
+      "provider": "NobleProg Schweiz",
+      "title": "Contentful Headless CMS"
+    },
+    {
+      "offer_id": "OFFER-NOBLE-035",
+      "provider": "NobleProg Schweiz",
+      "title": "DeepSeek for Automated Content Creation"
+    },
+    {
+      "offer_id": "OFFER-NOBLE-037",
+      "provider": "NobleProg Schweiz",
+      "title": "Designing Personal Knowledge Bases with Notion"
+    },
+    {
+      "offer_id": "OFFER-NOBLE-044",
+      "provider": "NobleProg Schweiz",
+      "title": "Google Gemini AI for Content Creation"
+    },
+    {
+      "offer_id": "OFFER-NOBLE-057",
+      "provider": "NobleProg Schweiz",
+      "title": "Multimodal AI for Content Creation"
+    },
+    {
+      "offer_id": "OFFER-NOBLE-064",
+      "provider": "NobleProg Schweiz",
+      "title": "Prompt Engineering for Visual Production"
+    },
+    {
+      "offer_id": "OFFER-NOBLE-067",
+      "provider": "NobleProg Schweiz",
+      "title": "Storytelling with Data"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-006",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Adobe Illustrator, perfectionnement"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-007",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Adobe Illustrator, prise en main"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-008",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Adobe InDesign, perfectionnement"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-009",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Adobe InDesign, prise en main"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-012",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Adobe Photoshop, prise en main"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-014",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Adobe Premiere Pro, techniques avancées de montage et postproduction"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-020",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Adobe® After Effects, perfectionnement"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-039",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Concevoir des contenus web et éditoriaux accessibles"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-041",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Construire des documents métier orientés contenu (DOCS)"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-042",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Créer des publications avec InDesign, PhotoShop et Illustrator"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-051",
+      "provider": "ORSYS Training Schweiz",
+      "title": "DaVinci Resolve, maîtrise de l’étalonnage couleur"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-054",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Digital analytics, stratégie et bonnes pratiques"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-057",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Drupal 7, gérer son CMS"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-063",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Développer un site web dynamique grâce à l'IA"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-069",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Fact-checking : analyser et authentifier l'information"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-070",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Figma, concevoir des interfaces d'applications web & mobiles"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-075",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Google Analytics (GA4), analyser les statistiques de vos sites"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-076",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Gérer sa visibilité et sa réputation numérique"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-078",
+      "provider": "ORSYS Training Schweiz",
+      "title": "HTML5 & CSS3, maîtriser la création de ses pages Web"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-082",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Intégrer l’IA et le GEO dans sa stratégie de contenu"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-083",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Joomla!, créer et administrer un site Web"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-088",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Les fondamentaux de l'écriture journalistique"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-094",
+      "provider": "ORSYS Training Schweiz",
+      "title": "L’IA pour créer des contenus percutants (textes, visuels, vidéos)"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-099",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Mettre en œuvre sa stratégie sur TikTok"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-103",
+      "provider": "ORSYS Training Schweiz",
+      "title": "OSINT (investigation en source ouverte), niveau 1"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-115",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Réaliser des vidéos pour le Web"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-118",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Réaliser un site Web, pour non-informaticiens"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-120",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Rédaction journalistique avec l'IA : techniques avancées"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-122",
+      "provider": "ORSYS Training Schweiz",
+      "title": "Rédiger pour le Web"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-137",
+      "provider": "ORSYS Training Schweiz",
+      "title": "User experience, état de l'art et tendances en ergonomie et IHM"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-138",
+      "provider": "ORSYS Training Schweiz",
+      "title": "UX Design : une démarche complète pour optimiser l’expérience mobile"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-139",
+      "provider": "ORSYS Training Schweiz",
+      "title": "UX design et ergonomie des sites web"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-141",
+      "provider": "ORSYS Training Schweiz",
+      "title": "UX design et ergonomie pour tablettes et smartphones"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-143",
+      "provider": "ORSYS Training Schweiz",
+      "title": "UX-PM, niveau 1 : adoption de l'UX, certification Devoteam"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-144",
+      "provider": "ORSYS Training Schweiz",
+      "title": "UX-PM, niveau 2 : exécution de l'UX, certification Devoteam"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-146",
+      "provider": "ORSYS Training Schweiz",
+      "title": "UX/UI à l’ère de l’IA : générer, structurer et piloter des interfaces intelligentes"
+    },
+    {
+      "offer_id": "OFFER-ORSYS-151",
+      "provider": "ORSYS Training Schweiz",
+      "title": "WordPress, perfectionnement"
+    },
+    {
+      "offer_id": "AT-PROD-OFFER-168",
+      "provider": "Paris Lodron Universität Salzburg (PLUS)",
+      "title": "Universitätslehrgang Sportjournalismus"
+    },
+    {
+      "offer_id": "AT-PROD-OFFER-154",
+      "provider": "Russmedia",
+      "title": "Traineeprogramm Redaktion"
+    },
+    {
+      "offer_id": "OFFER-UZHDSI-001",
+      "provider": "Universität Zürich / Digital Society Initiative",
+      "title": "Open Source Intelligence (OSINT) – DSI Wahlpflichtmodul"
+    },
+    {
+      "offer_id": "CAD-002",
+      "provider": "Cadschool",
+      "title": "Photoshop - Base"
+    },
+    {
+      "offer_id": "CAD-018",
+      "provider": "Cadschool",
+      "title": "After Effects - Motion Design"
+    },
+    {
+      "offer_id": "CAD-025",
+      "provider": "Cadschool",
+      "title": "WordPress"
+    },
+    {
+      "offer_id": "OFFER-CFJM-007",
+      "provider": "CFJM – Centre de formation au journalisme et aux médias",
+      "title": "Datajournalisme / Intermédiaire / Faire parler les données"
+    },
+    {
+      "offer_id": "OFFER-CFJM-008",
+      "provider": "CFJM – Centre de formation au journalisme et aux médias",
+      "title": "Fondamentaux / Le droit à l'image des journalistes"
+    },
+    {
+      "offer_id": "OFFER-CFJM-013",
+      "provider": "CFJM – Centre de formation au journalisme et aux médias",
+      "title": "Datajournalisme / Débutant / Mettre les données au service de l'information"
+    },
+    {
+      "offer_id": "OFFER-CFJM-014",
+      "provider": "CFJM – Centre de formation au journalisme et aux médias",
+      "title": "Ecriture / Débutant / Créer une newsletter pertinente et efficace qui trouve son audience"
+    },
+    {
+      "offer_id": "OFFER-CFJM-015",
+      "provider": "CFJM – Centre de formation au journalisme et aux médias",
+      "title": "Audio / Intermédiaire / Podcast: reportage et documentaire"
+    },
+    {
+      "offer_id": "OFFER-CFJM-016",
+      "provider": "CFJM – Centre de formation au journalisme et aux médias",
+      "title": "Fondamentaux / Le droit d'auteur des journalistes"
+    },
+    {
+      "offer_id": "V82-DAWAN-012",
+      "provider": "Dawan",
+      "title": "Premiere Pro : techniques de montage Avancé"
+    },
+    {
+      "offer_id": "V82-DAWAN-017",
+      "provider": "Dawan",
+      "title": "After Effects Avancé : Duik"
+    },
+    {
+      "offer_id": "V82-DAWAN-029",
+      "provider": "Dawan",
+      "title": "DaVinci Resolve : Multicam"
+    },
+    {
+      "offer_id": "V82-DAWAN-037",
+      "provider": "Dawan",
+      "title": "Graphiste Adobe Initiation"
+    },
+    {
+      "offer_id": "V82-DAWAN-039",
+      "provider": "Dawan",
+      "title": "IA : Premiers pas pour les Graphistes"
+    },
+    {
+      "offer_id": "V82-DAWAN-094",
+      "provider": "Dawan",
+      "title": "Accessibilité : Concevoir des contenus web et éditoriaux accessibles"
+    },
+    {
+      "offer_id": "OFFER-EBU-013",
+      "provider": "EBU Academy – European Broadcasting Union",
+      "title": "AI and Innovation Nordics Study Tour"
+    },
+    {
+      "offer_id": "OFFER-EBU-014",
+      "provider": "EBU Academy – European Broadcasting Union",
+      "title": "How to Create and Measure Public Value for Public Service Media"
+    },
+    {
+      "offer_id": "OFFER-EBU-015",
+      "provider": "EBU Academy – European Broadcasting Union",
+      "title": "HEST: Hostile Environment Safety Training"
+    },
+    {
+      "offer_id": "OFFER-EBU-019",
+      "provider": "EBU Academy – European Broadcasting Union",
+      "title": "Networked Media Open Specifications Hands-on Workshop"
+    },
+    {
+      "offer_id": "AT-PROD-OFFER-003",
+      "provider": "fjum – forum journalismus und medien wien",
+      "title": "AI-Media-Academy 2026"
+    },
+    {
+      "offer_id": "AT-PROD-OFFER-209",
+      "provider": "fjum – forum journalismus und medien wien",
+      "title": "Journalistische Formate entwickeln mit KI"
+    },
+    {
+      "offer_id": "AT-PROD-OFFER-211",
+      "provider": "fjum – forum journalismus und medien wien",
+      "title": "Notion für Fortgeschrittene"
+    },
+    {
+      "offer_id": "IF-G04",
+      "provider": "ifage – Fondation pour la formation des adultes",
+      "title": "Photoshop : les fondamentaux de la retouche d'image bitmap"
+    },
+    {
+      "offer_id": "IF-P03",
+      "provider": "ifage – Fondation pour la formation des adultes",
+      "title": "Ecriture et scénarisation de projets audiovisuels"
+    },
+    {
+      "offer_id": "IF-P08",
+      "provider": "ifage – Fondation pour la formation des adultes",
+      "title": "Les bases techniques de la photographie"
+    },
+    {
+      "offer_id": "IF-P10",
+      "provider": "ifage – Fondation pour la formation des adultes",
+      "title": "Le studio en photographie"
+    },
+    {
+      "offer_id": "IF-W03",
+      "provider": "ifage – Fondation pour la formation des adultes",
+      "title": "Wordpress: créer son site internet facilement"
+    },
+    {
+      "offer_id": "V78-04",
+      "provider": "ITTA",
+      "title": "Adobe After Effects – Avancé"
+    },
+    {
+      "offer_id": "OFFER-MAZ-005",
+      "provider": "MAZ – Institut für Journalismus und Kommunikation",
+      "title": "Audio-Moderation – Grundlagen"
+    },
+    {
+      "offer_id": "OFFER-MAZ-045",
+      "provider": "MAZ – Institut für Journalismus und Kommunikation",
+      "title": "Grundlagen der Recherche – Workshop"
+    },
+    {
+      "offer_id": "OFFER-MAZ-058",
+      "provider": "MAZ – Institut für Journalismus und Kommunikation",
+      "title": "Interview – Grundlagen"
+    },
+    {
+      "offer_id": "OFFER-MAZ-075",
+      "provider": "MAZ – Institut für Journalismus und Kommunikation",
+      "title": "Kompaktkurs Podcasting – In 10 Tagen zum Profi"
+    },
+    {
+      "offer_id": "OFFER-MAZ-107",
+      "provider": "MAZ – Institut für Journalismus und Kommunikation",
+      "title": "Medienlandschaft, Medienethik und Medienrecht – Grundlagen"
+    },
+    {
+      "offer_id": "OFFER-MAZ-168",
+      "provider": "MAZ – Institut für Journalismus und Kommunikation",
+      "title": "Verifikation von Fakten – Grundlagen"
+    },
+    {
+      "offer_id": "OFFER-MAZ-176",
+      "provider": "MAZ – Institut für Journalismus und Kommunikation",
+      "title": "Videos für digitale Kanäle – Vom Konzept zum Film"
+    },
+    {
+      "offer_id": "OFFER-MAZ-181",
+      "provider": "MAZ – Institut für Journalismus und Kommunikation",
+      "title": "Wirkungsvoll auftreten"
+    },
+    {
+      "offer_id": "OFFER-MAZ-182",
+      "provider": "MAZ – Institut für Journalismus und Kommunikation",
+      "title": "Wirtschaft – Grundlagen von Aktien bis Zinsen"
+    },
+    {
+      "offer_id": "PCC-P02",
+      "provider": "PC-COLLEGE Training GmbH",
+      "title": "Adobe FrameMaker - Grundkurs"
+    },
+    {
+      "offer_id": "PCC-P03",
+      "provider": "PC-COLLEGE Training GmbH",
+      "title": "Adobe Illustrator - Grundkurs"
+    },
+    {
+      "offer_id": "PCC-P05",
+      "provider": "PC-COLLEGE Training GmbH",
+      "title": "Adobe Photoshop - Grundkurs"
+    },
+    {
+      "offer_id": "PCC-P08",
+      "provider": "PC-COLLEGE Training GmbH",
+      "title": "Adobe FrameMaker - Aufbaukurs"
+    },
+    {
+      "offer_id": "PCC-P16",
+      "provider": "PC-COLLEGE Training GmbH",
+      "title": "Adobe Bridge - Kompaktkurs"
+    },
+    {
+      "offer_id": "PCC-P23",
+      "provider": "PC-COLLEGE Training GmbH",
+      "title": "Adobe InDesign - Auffrischungskurs"
+    },
+    {
+      "offer_id": "PCC-P28",
+      "provider": "PC-COLLEGE Training GmbH",
+      "title": "Adobe Lightroom - Kompaktkurs"
+    },
+    {
+      "offer_id": "PCC-P32",
+      "provider": "PC-COLLEGE Training GmbH",
+      "title": "Adobe Photoshop - Professionelle Porträt - Retusche"
+    },
+    {
+      "offer_id": "PCC-P33",
+      "provider": "PC-COLLEGE Training GmbH",
+      "title": "Adobe Premiere + Adobe After Effects - Umsteiger von Apple Final Cut Pro + Motion"
+    },
+    {
+      "offer_id": "PJ-V16-07",
+      "provider": "photojournalism.ch / Beyond Visual GmbH",
+      "title": "Konzerte und Events fotografieren – mit Praxisteil"
+    },
+    {
+      "offer_id": "V58-S1-07",
+      "provider": "Studio 1 GmbH",
+      "title": "Smartphone Videokurs"
+    },
+    {
+      "offer_id": "AT-PROD-OFFER-172",
+      "provider": "Österreichische Medienakademie",
+      "title": "Orientierung im PSY-Dschungel"
+    }
+  ]
+}
