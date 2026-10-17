@@ -1,0 +1,86 @@
+name: QA09 R2_026 exact-blob browser E2E
+on:
+  push:
+    branches: [qa09-r2-026-isolated-e2e-20261017]
+permissions:
+  contents: read
+jobs:
+  qa09:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify current PR exact source blobs
+        run: |
+          set -euo pipefail
+          test "$(git hash-object data.js)" = "2bb200fa8b5ca6505b2de7ecbe516082618edf44"
+          test "$(git hash-object smart-search-data.js)" = "76b20c1921a0d7210c861ade6ccfe2f5f957cbac"
+          test "$(git hash-object app.js)" = "712cf50adcb9d137c3aa0897f61b2ec50e5a4916"
+          echo "QA09_EXACT_PR_BLOBS_PASS"
+      - name: Install browser testing runtime
+        run: npm install --no-save --silent playwright-core
+      - name: Browser E2E without publication
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8777 --bind 127.0.0.1 >/tmp/qa09-http.log 2>&1 &
+          sleep 2
+          cat > /tmp/qa09-e2e.mjs <<'NODE'
+          import {chromium} from "playwright-core";
+          const assert=(v,m)=>{if(!v)throw Error(m)};
+          const executablePath=process.env.CHROME_PATH || "/usr/bin/google-chrome";
+          const browser=await chromium.launch({headless:true,executablePath,args:["--no-sandbox"]});
+          const page=await browser.newPage({viewport:{width:1280,height:900}});
+          const errors=[];
+          page.on("pageerror",e=>errors.push(String(e)));
+          await page.goto("http://127.0.0.1:8777/index.html",{waitUntil:"networkidle"});
+          await page.waitForSelector("#resultCount");
+          const snap=await page.evaluate(()=>{
+            const all=window.WEITERBILDUNGSRADAR_OFFERS||[];
+            const p=all.find(o=>o.id==="PCC-P32");
+            const orsys=all.find(o=>o.id==="OFFER-ORSYS-115");
+            const pj=all.find(o=>o.id==="PJ-V16-07");
+            const today=new Date();today.setHours(0,0,0,0);
+            const vis=all.filter(o=>(!/^\d{4}-\d{2}-\d{2}$/.test(o.endDate||"") || new Date(o.endDate+"T23:59:59")>=today) && o.publicationStatus!=="HOLD");
+            return {count:all.length,vis:vis.length,p,orsys,pj,cardIds:[...document.querySelectorAll("[data-offer-id]")].map(x=>x.getAttribute("data-offer-id"))};
+          });
+          assert(snap.count===1352,"DATASET_COUNT");
+          assert(snap.p?.publicationStatus==="HOLD","PCC_SOURCE_HOLD");
+          assert(!snap.cardIds.includes("PCC-P32"),"PCC_CARD_VISIBLE");
+          assert(snap.cardIds.length===snap.vis,"VISIBLE_COUNT_MISMATCH "+snap.cardIds.length+" vs "+snap.vis);
+          assert(snap.orsys?.start?.includes("26.10.2026") && !snap.orsys.startDate && !snap.orsys.endDate,"ORSYS_CATALOG_QUALIFICATION");
+          assert(snap.pj?.access?.includes("nicht bestätigt") && !snap.pj.startDate && !snap.pj.endDate,"PJ_EDITION_QUALIFICATION");
+          console.log("QA09_BASELINE_BROWSERCARDS_PASS",snap.vis);
+          await page.locator("#searchInput").fill("Professionelle Porträt Retusche");
+          await page.waitForTimeout(300);
+          assert(await page.locator('[data-offer-id="PCC-P32"]').count()===0,"PCC_CLASSIC_SEARCH_LEAK");
+          await page.locator("#resetFilters").click();
+          await page.evaluate(()=>localStorage.setItem("weiterbildungsradar:favorites:v1",JSON.stringify(["PCC-P32"])));
+          await page.reload({waitUntil:"networkidle"});
+          await page.locator("#favoritesToggle").click();
+          await page.waitForTimeout(250);
+          assert(await page.locator('[data-offer-id="PCC-P32"]').count()===0,"PCC_FAVORITES_LEAK");
+          console.log("QA09_PCC_FAVORITES_EXCLUSION_PASS");
+          await page.locator("#favoritesToggle").click();
+          await page.locator("#smartInput").fill("Professionelle Porträt Retusche");
+          await page.locator("#smartSearchForm").evaluate(x=>x.requestSubmit());
+          await page.waitForTimeout(450);
+          const smart=await page.locator("#smartResults").innerText();
+          assert(!smart.includes("Adobe Photoshop - Professionelle Porträt - Retusche"),"PCC_SMART_LEAK");
+          console.log("QA09_PCC_SMART_SEARCH_EXCLUSION_PASS");
+          await page.locator("#resetFilters").click();
+          await page.locator("#searchInput").fill("Journalismus");
+          await page.waitForTimeout(200);
+          assert(await page.locator('[data-offer-id="PCC-P32"]').count()===0,"PCC_FILTER_LEAK");
+          await page.setViewportSize({width:390,height:844});
+          const dims=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
+          assert(dims.scroll<=dims.client,"MOBILE_HORIZONTAL_OVERFLOW "+JSON.stringify(dims));
+          assert(errors.length===0,"PAGE_ERRORS "+errors.join(" | "));
+          console.log("QA09_CURRENT_HEAD_BROWSER_E2E_PASS");
+          await browser.close();
+          NODE
+          export CHROME_PATH="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          cp /tmp/qa09-e2e.mjs ./qa09-e2e.mjs
+          node ./qa09-e2e.mjs
