@@ -1,0 +1,69 @@
+name: QA09 R2_037 Targeted Public Primary Source Snapshots
+on:
+  push:
+    branches: [qa09-r2-037-targeted-primary-snapshots-20261018]
+permissions:
+  contents: read
+jobs:
+  source-snapshots:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Crawl only seven pre-registered public provider URLs; retain exact source bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/qa09r2037
+          cat >/tmp/qa09r2037/probe.py <<'PY'
+          import subprocess, pathlib, hashlib, json, re, html, datetime
+          from html.parser import HTMLParser
+          roots = [["IFC_0008_SLUG","https://www.ifc.ti.ch/corsi/tutti-i-corsi/dettaglio/2627acre0880008_fotografia-corso-di-base"],["IFC_0008_ID","https://www.ifc.ti.ch/corsi/tutti-i-corsi/dettaglio/id/2627ACRE0880008"],["PJ_COURSE","https://www.photojournalism.ch/konzerte-events-fotografieren"],["PJ_CATALOG","https://www.photojournalism.ch/kurse"],["PC_PSP","https://photoshop.pc-college.de/adobe-photoshop-professionelle-portraet-retusche-seminar-schulung-kurs-psp"],["ORSYS_VWI","https://www.orsys.fr/suisse/formation/formation-realiser-des-videos-pour-web"],["CFJM_007","https://www.cfjm.ch/model/formation-continue"]]
+          class Stripper(HTMLParser):
+              def __init__(self):
+                  super().__init__(); self.parts=[]; self.skip=0
+              def handle_starttag(self,tag,attrs):
+                  if tag in ('script','style','noscript'): self.skip+=1
+              def handle_endtag(self,tag):
+                  if tag in ('script','style','noscript') and self.skip: self.skip-=1
+              def handle_data(self,data):
+                  if not self.skip: self.parts.append(data)
+          out=[]
+          for slug,url in roots:
+              path=pathlib.Path('/tmp/qa09r2037')/(slug+'.html')
+              hdr=pathlib.Path('/tmp/qa09r2037')/(slug+'.headers')
+              cmd=['curl','--location','--compressed','--silent','--show-error','--max-time','28','--retry','1','--user-agent','Mozilla/5.0 (compatible; QA09ContentAudit/1.0)','--dump-header',str(hdr),'--output',str(path),'--write-out','%{http_code}\t%{url_effective}\t%{content_type}',url]
+              try:
+                  p=subprocess.run(cmd,capture_output=True,text=True,timeout=35)
+                  stat=p.stdout.strip().split('\t')
+                  code=stat[0] if len(stat)>0 else 'UNKNOWN'
+                  effective=stat[1] if len(stat)>1 else ''
+                  ctype=stat[2] if len(stat)>2 else ''
+                  if path.exists():
+                      data=path.read_bytes()
+                      size=len(data)
+                      digest=hashlib.sha256(data).hexdigest()
+                      decoded=data.decode('utf-8',errors='replace')
+                      parser=Stripper(); parser.feed(decoded)
+                      flat=' '.join(' '.join(parser.parts).split())
+                  else: size=0;digest='';flat=''
+                  patterns=['26/27A-CRE-088-0008','07.10.2026','14.10.2026','07/10/2026','14/10/2026','PSP','Basel','CH-Basel','2027','26/10/2026','Anmeldung','In den Warenkorb','980','26.10.2026','26.10']
+                  contexts=[]
+                  for q in patterns:
+                      i=flat.lower().find(q.lower())
+                      if i>=0: contexts.append({'term':q,'around':flat[max(0,i-90):i+180]})
+                  out.append({'label':slug,'url':url,'http_status':code,'effective_url':effective,'content_type':ctype,'bytes':size,'saved_file_sha256':digest,'retrieval_exit':p.returncode,'sample_contexts':contexts[:14],'body_head':flat[:170]})
+              except Exception as e:
+                  out.append({'label':slug,'url':url,'error':str(e)})
+          dest=pathlib.Path('/tmp/qa09r2037/manifest.json')
+          dest.write_text(json.dumps({'observed_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'case_count':len(roots),'results':out},ensure_ascii=False,indent=2))
+          for o in out:
+              print('QA09_SOURCE',json.dumps(o,ensure_ascii=False))
+          print('QA09_R2_037_SOURCE_PROBE_COMPLETED')
+          PY
+          python /tmp/qa09r2037/probe.py
+      - name: Archive original HTTP response bodies and raw headers for later independent verification
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa09-r2-037-targeted-provider-snapshots
+          path: /tmp/qa09r2037
+          retention-days: 7
