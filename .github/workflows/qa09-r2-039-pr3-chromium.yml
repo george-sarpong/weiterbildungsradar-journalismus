@@ -1,0 +1,102 @@
+name: QA09 R2_039 Isolated PR3 Browser Regression
+on:
+  push:
+    branches: [qa09-r2-039-isolated-chromium-20261018]
+permissions:
+  contents: read
+jobs:
+  chromium-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify immutable PR3 asset equivalence
+        run: |
+          set -euo pipefail
+          test "$(git hash-object data.js)" = d63314bbde293034fd8a3a0e444270e713afbdfe
+          test "$(git hash-object smart-search-data.js)" = 9dd483b70e07aed9240d1f0a98c6ef0fb3244943
+          test "$(git hash-object app.js)" = 712cf50adcb9d137c3aa0897f61b2ec50e5a4916
+          echo PR3_ASSETS_EXACT_GIT_BLOBS_PASS
+      - name: Start local server and prepare Chrome
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm init -y >/dev/null 2>&1
+          npm install --no-save --silent playwright-core
+          CHROME_PATH="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          test -n "$CHROME_PATH"
+          echo "CHROME_PATH=$CHROME_PATH" >> "$GITHUB_ENV"
+          "$CHROME_PATH" --version
+      - name: Chromium UI and budget regression
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8765 >/tmp/qa09-http.log 2>&1 &
+          PID=$!
+          trap 'kill $PID || true' EXIT
+          cat > qa09-r2-039-test.mjs <<'NODE'
+          import {chromium} from "playwright-core";
+          const assert=(v,m)=>{if(!v)throw Error(m)};
+          const browser=await chromium.launch({headless:true, executablePath:process.env.CHROME_PATH,args:["--no-sandbox"]});
+          const page=await browser.newPage({viewport:{width:1280,height:900}});
+          const errors=[];
+          page.on("pageerror",e=>errors.push(String(e)));
+          const res=await page.goto("http://127.0.0.1:8765/",{waitUntil:"networkidle",timeout:30000});
+          assert(res.status()===200,"index non-200");
+          await page.waitForFunction(()=>document.querySelector("#cards")?.children.length>0);
+          let facts=await page.evaluate(()=>{
+            const P=window.WEITERBILDUNGSRADAR_OFFERS,S=window.MEDIA_SKILLS_SMART_DATA?.byId;
+            const get=id=>P.find(x=>x.id===id);
+            return {count:P.length,unique:new Set(P.map(x=>x.id)).size,smartCount:Object.keys(S||{}).length,
+              ebu:get("OFFER-EBU-014"),uzh:get("OFFER-UZHDSI-001"),at:get("AT-PROD-OFFER-168"),maz:get("OFFER-MAZ-058"),pcc:get("PCC-P32"),
+              flags:Object.fromEntries(["OFFER-EBU-014","OFFER-MAZ-058","AT-PROD-OFFER-168","OFFER-UZHDSI-001"].map(id=>[id,S[id].priceEligible])),
+              cards:document.querySelectorAll("#cards [data-offer-id]").length,hiddenPcc:!document.querySelector("#cards [data-offer-id='PCC-P32']")
+            };
+          });
+          assert(facts.count===1352&&facts.unique===1352&&facts.smartCount===1352,"1352 identity/sidecar invariant");
+          assert(facts.cards>1000,"cards unexpectedly missing");
+          assert(facts.hiddenPcc&&facts.pcc.publicationStatus==="HOLD","PCC HOLD leaked");
+          assert(facts.ebu.start.includes("09.10.2026")&&facts.ebu.endDate==="2026-10-22","EBU session/deadline");
+          assert(facts.uzh.region.includes("KO2")&&facts.uzh.endDate==="2026-12-03"&&facts.uzh.access.includes("STUDENT_RESTRICTED_ACCESS"),"UZH room, end, access");
+          assert(facts.at.start.includes("nicht bestätigt")&&facts.at.startDate==="2026-10-13","PLUS annual intake qualifier");
+          assert(facts.maz.duration.startsWith("4 Tage"),"MAZ 4-day course duration");
+          const pjFacts=await page.evaluate(()=>window.WEITERBILDUNGSRADAR_OFFERS.find(x=>x.id==="PJ-V16-07"));
+          assert(pjFacts.url==="https://www.photojournalism.ch/konzerte-events-fotografieren","PJ direct official URL");
+          assert(pjFacts.duration.startsWith("2 Kurstage") && pjFacts.startDate==="2028-03-13" && pjFacts.endDate==="2028-06-09","PJ exact official 2028 two-day offering");
+          assert(pjFacts.region.includes("Gleis70")&&pjFacts.access.includes("freie")===false,"PJ venue/access preserved");
+          const ifcFacts=await page.evaluate(()=>window.WEITERBILDUNGSRADAR_OFFERS.find(x=>x.id==="OFFER-IFC-008"));
+          assert(ifcFacts.startDate==="2026-10-07"&&ifcFacts.start.includes("beiden offiziellen URL-Varianten"),"IFC simultaneous source date resolved");
+          await page.locator("#searchInput").fill("Konzerte und Events fotografieren");
+          await page.waitForFunction(()=>document.querySelector("#cards [data-offer-id='PJ-V16-07']")!==null);
+          const pjCard=await page.locator("#cards [data-offer-id='PJ-V16-07']").innerText();
+          assert(pjCard.includes("13.03.2028")&&pjCard.includes("09.06.2028")&&pjCard.includes("Gleis70"),"PJ corrected dates and venue not rendered");
+          await page.locator("#resetFilters").click();
+          for(const id of ["OFFER-EBU-014","OFFER-MAZ-058","AT-PROD-OFFER-168"])assert(facts.flags[id]===false,id+" hard budget guard");
+          assert(facts.flags["OFFER-UZHDSI-001"]===true,"UZH price parser unchanged");
+          await page.locator("#searchInput").fill("How to Create and Measure Public Value");
+          await page.waitForFunction(()=>document.querySelector("#resultCount")?.textContent?.startsWith("1 von"));
+          const ebuCard=page.locator("#cards [data-offer-id='OFFER-EBU-014']");
+          assert(await ebuCard.count()===1&&((await ebuCard.innerText()).includes("09.10.2026")),"EBU date not displayed on classic card");
+          await page.locator("#resetFilters").click();
+          await page.locator("#searchInput").fill("Open Source Intelligence");
+          await page.waitForFunction(()=>document.querySelector("#cards [data-offer-id='OFFER-UZHDSI-001']")!==null);
+          const osint=await page.locator("#cards [data-offer-id='OFFER-UZHDSI-001']").innerText();
+          assert(osint.includes("KO2")&&osint.includes("Eingeschränkter Zugang"),"UZH visible room or access missing");
+          await page.locator("#resetFilters").click();
+          await page.locator("#smartInput").fill("Ich habe EUR 800 und möchte Public Service Media verstehen.");
+          await page.locator("#smartSearchForm").evaluate(el=>el.requestSubmit());
+          await page.waitForFunction(()=>document.querySelector("#smartOutput")?.hidden===false);
+          const out=await page.locator("#smartOutput").innerText();
+          assert(out.length>10,"Smart output empty");
+          const budgetStatus=await page.evaluate(()=>{
+            const q=document.querySelector("#smartOutput");
+            return {text:q.innerText.slice(0,3500),visible:!q.hidden}
+          });
+          assert(budgetStatus.visible,"Smart not visible");
+          await page.setViewportSize({width:390,height:844});
+          const dims=await page.evaluate(()=>({s:document.documentElement.scrollWidth,c:document.documentElement.clientWidth}));
+          assert(dims.s<=dims.c,"mobile overflow: "+JSON.stringify(dims));
+          assert(errors.length===0,"JS PAGE ERRORS "+errors.join(" | "));
+          console.log("QA09_R2_039_EXACT_PR3_ASSET_CHROMIUM_PASS",JSON.stringify({count:facts.count,visible:facts.cards,guards:3,card:1,smartOutput:out.length,viewport:dims,errors}));
+          await browser.close();
+          NODE
+          node qa09-r2-039-test.mjs
