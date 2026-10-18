@@ -1,0 +1,63 @@
+name: QA09 R2_042 Fifteen Prioritized Original Primary Source Reads
+on:
+  push:
+    branches: [qa09-r2-042-priority15-evidence-20261018]
+permissions:
+  contents: read
+jobs:
+  source-priority:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fifteen exact known-course URLs concurrent limited evidence capture
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/qa09r2042
+          cat >/tmp/qa09r2042/probe.py <<'PY'
+          import pathlib,subprocess,datetime,hashlib,json,re
+          from concurrent.futures import ThreadPoolExecutor
+          from html.parser import HTMLParser
+          ROOT=pathlib.Path('/tmp/qa09r2042')
+          targets=[["V52-MEEL-INSTAGRAM","Les boîtes à outils du vendredi – Instagram","https://www.meel.ch/activite/les-boites-a-outils-du-vendredi-instagram/"],["OFFER-NOBLE-067","Storytelling with Data","https://www.nobleprog.ch/en/cc/stdata"],["OFFER-ORSYS-008","Adobe InDesign, perfectionnement","https://www.orsys.fr/suisse/formation/formation-adobe-indesign-perfectionnement"],["OFFER-ORSYS-020","Adobe® After Effects, perfectionnement","https://www.orsys.fr/suisse/formation/formation-after-effects-perfectionnement"],["OFFER-ORSYS-041","Construire des documents métier orientés contenu (DOCS)","https://www.orsys.fr/suisse/formation/formation-construire-des-documents-metier-orientes-contenu-DOCS"],["AT-PROD-OFFER-154","Traineeprogramm Redaktion","https://karriere.russmedia.com/karriereweg"],["V82-DAWAN-037","Graphiste Adobe Initiation","https://www.dawan.ch/formations/pao/premiers-pas-en-creation-graphique/graphiste-adobe-initiation.pdf"],["OFFER-EBU-013","AI and Innovation Nordics Study Tour","https://academy.ebu.ch/courses/ai-and-innovation-nordics-study-tour"],["OFFER-EBU-014","How to Create and Measure Public Value for Public Service Media","https://academy.ebu.ch/courses/how-to-create-and-measure-value-for-public-service-media"],["OFFER-EBU-015","HEST: Hostile Environment Safety Training","https://academy.ebu.ch/courses/hest-hostile-environment-safety-training"],["OFFER-EBU-019","Networked Media Open Specifications Hands-on Workshop","https://academy.ebu.ch/courses/networked-media-open-specifications-handson-workshop"],["AT-PROD-OFFER-209","Journalistische Formate entwickeln mit KI","https://www.fjum-wien.at/workshops/smarter-schneller-kreativer-2"],["AT-PROD-OFFER-211","Notion für Fortgeschrittene","https://www.fjum-wien.at/workshops/notion-2024-2-2"],["V78-04","Adobe After Effects – Avancé","https://www.itta.net/formations/multimedia/video-et-son/adobe-after-effects-avance/"],["AT-PROD-OFFER-172","Orientierung im PSY-Dschungel","https://oema.at/seminare/orientierung-im-psy-dschungel/"]]
+          class Strip(HTMLParser):
+            def __init__(self):super().__init__();self.parts=[];self.skip=0
+            def handle_starttag(self,t,a):
+              if t in ('script','style','noscript'):self.skip+=1
+            def handle_endtag(self,t):
+              if t in ('script','style','noscript') and self.skip:self.skip-=1
+            def handle_data(self,x):
+              if not self.skip:self.parts.append(x)
+          def check(t):
+            id,title,url=t
+            out=ROOT/(id+'.raw')
+            headers=ROOT/(id+'.headers')
+            cmd=['curl','-L','--compressed','-sS','--max-time','28','--retry','1','--max-filesize','8000000','-A','Mozilla/5.0','-D',str(headers),'-o',str(out),'-w','%{http_code}\t%{url_effective}\t%{content_type}',url]
+            try:
+              p=subprocess.run(cmd,text=True,capture_output=True,timeout=35)
+              fields=p.stdout.strip().split('\t')
+              data=out.read_bytes() if out.exists() else b''
+              digest=hashlib.sha256(data).hexdigest() if data else ''
+              decoder=data.decode('utf-8','replace') if 'pdf' not in (fields[2].lower() if len(fields)>2 else '') else ''
+              st=Strip();st.feed(decoder);flat=' '.join(' '.join(st.parts).split())
+              terms=['2026','2027','2028','Preis','CHF','EUR','prix','durée','dauer','date','tarif','lieu','online','Ort','start','inscription','Anmeldung','PSP','VWI']
+              signals=[]
+              for term in terms:
+                m=re.search(re.escape(term),flat,re.I)
+                if m: signals.append({'t':term,'around':flat[max(0,m.start()-80):m.end()+145]})
+              return {'offer_id':id,'title':title,'requested_url':url,'status':fields[0] if fields else 'NO_RESPONSE','effective_url':fields[1] if len(fields)>1 else '','mime':fields[2] if len(fields)>2 else '', 'bytes':len(data),'sha256_saved_bytes':digest,'exitcode':p.returncode,'error':p.stderr[:200],'title_in_page':title.lower() in flat.lower(),'content_head':flat[:250],'signals':signals[:8]}
+            except Exception as e:return {'offer_id':id,'requested_url':url,'error':str(e)}
+          with ThreadPoolExecutor(max_workers=5) as pool:results=list(pool.map(check,targets))
+          observed=datetime.datetime.now(datetime.timezone.utc).isoformat()
+          (ROOT/'manifest.json').write_text(json.dumps({'observed_at_utc':observed,'count':len(targets),'results':results},ensure_ascii=False,indent=2))
+          for r in results:print('QA09_R2_042_SOURCE',json.dumps(r,ensure_ascii=False))
+          if len(results)!=15 or len({r['offer_id'] for r in results})!=15:raise RuntimeError('target identity guard')
+          print('QA09_R2_042_EVIDENCE_SNAPSHOTS_DONE')
+          PY
+          python /tmp/qa09r2042/probe.py
+      - name: Store original raw downloaded bytes, headers and manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa09-r2-042-priority15-source-originals
+          path: /tmp/qa09r2042
+          retention-days: 7
