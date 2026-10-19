@@ -1389,7 +1389,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-27",
     "endDate": "2026-10-28",
     "region": "NOT_PUBLISHED",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-MAZ-108",
@@ -2541,7 +2542,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-21",
     "endDate": "2026-10-21",
     "region": "NOT_PUBLISHED",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-MAZ-182",
@@ -2565,7 +2567,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-02",
     "endDate": "2026-11-04",
     "region": "NOT_PUBLISHED",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-MAZ-183",
@@ -3525,7 +3528,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-22",
     "endDate": "2026-10-23",
     "region": "Porto, Portugal",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-EBU-020",
@@ -8901,7 +8905,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-30",
     "endDate": "",
     "region": "Lausanne (Präsenzoption); Online-Durchführung je Termin",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-NOBLE-005",
@@ -9093,7 +9098,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-30",
     "endDate": "",
     "region": "Basel (Präsenzoption); Online-Durchführung je Termin",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-NOBLE-014",
@@ -9117,7 +9123,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-30",
     "endDate": "",
     "region": "Basel (Präsenzoption); Online-Durchführung je Termin",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-NOBLE-015",
@@ -9189,7 +9196,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-30",
     "endDate": "",
     "region": "Geneva (Präsenzoption); Online-Durchführung je Termin",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-NOBLE-021",
@@ -9405,7 +9413,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-27",
     "endDate": "",
     "region": "Basel (Präsenzoption); Online-Durchführung je Termin",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-NOBLE-034",
@@ -9453,7 +9462,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-30",
     "endDate": "",
     "region": "Geneva (Präsenzoption); Online-Durchführung je Termin",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-NOBLE-036",
@@ -9501,7 +9511,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-24",
     "endDate": "",
     "region": "Lausanne (Präsenzoption); Online-Durchführung je Termin",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-NOBLE-038",
@@ -9645,7 +9656,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-30",
     "endDate": "",
     "region": "Lausanne (Präsenzoption); Online-Durchführung je Termin",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-NOBLE-045",
@@ -9933,7 +9945,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-30",
     "endDate": "",
     "region": "Bern (Präsenzoption); Online-Durchführung je Termin",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-NOBLE-058",
@@ -10605,7 +10618,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "",
     "endDate": "",
     "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-021",
@@ -11205,7 +11219,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-12-03",
     "endDate": "",
     "region": "Online – Classe à distance (Ausgabe 03.12.2026; kein physischer Kursort)",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-055",
@@ -11253,7 +11268,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-12-09",
     "endDate": "",
     "region": "Online",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-058",
@@ -11301,7 +11317,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-17",
     "endDate": "2026-11-20",
     "region": "Online – Classe à distance (17.–20.11.2026; kein physischer Kursort für diese Ausgabe)",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-064",
@@ -11613,7 +11630,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-12-03",
     "endDate": "",
     "region": "Online – Classe à distance (Ausgabe 03.12.2026; kein physischer Kursort)",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-078",
@@ -11637,7 +11655,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-18",
     "endDate": "",
     "region": "Online – Classe à distance (Ausgabe 18.11.2026; kein physischer Kursort)",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-079",
@@ -11733,7 +11752,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-12-10",
     "endDate": "",
     "region": "Online",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-083",
@@ -11757,7 +11777,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-12-02",
     "endDate": "",
     "region": "Online",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-084",
@@ -11949,7 +11970,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-12-10",
     "endDate": "",
     "region": "Online",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-100",
@@ -12261,7 +12283,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2027-05-10",
     "endDate": "",
     "region": "Online",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-119",
@@ -12621,7 +12644,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2027-03-22",
     "endDate": "",
     "region": "Online",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-140",
@@ -12669,7 +12693,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2027-03-15",
     "endDate": "",
     "region": "Online",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-142",
@@ -12717,7 +12742,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2027-02-15",
     "endDate": "",
     "region": "Online",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-144",
@@ -12741,7 +12767,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-12-03",
     "endDate": "",
     "region": "Online",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-146",
@@ -12861,7 +12888,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-25",
     "endDate": "",
     "region": "Online",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-152",
@@ -13293,7 +13321,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "",
     "endDate": "",
     "region": "Anzonico",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-IFC-013",
@@ -13437,7 +13466,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "",
     "endDate": "",
     "region": "Online",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ATED-001",
@@ -15741,7 +15771,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-09-24",
     "endDate": "2026-12-03",
     "region": "Universität Zürich, Raum KO2 (DSI-OSINT-Wahlpflichtmodul HS 2026; konkrete Gebäudeadresse nicht publiziert)",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-MEDIENCAMPUS-002",
@@ -18861,7 +18892,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2028-03-13",
     "endDate": "2028-06-09",
     "region": "Gleis70, Hermetschloostrasse 70, 8048 Zürich (offizielle Kursdetailseite).",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "PJ-V16-09",
@@ -23973,7 +24005,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-29",
     "endDate": "2026-10-30",
     "region": "Lausanne, Avenue Mon-Repos 24 / Genève, Route des Jeunes 35 / Live-Online, je Durchführung",
-    "release_origin": "V98_RESTORE_W1_39"
+    "release_origin": "V98_RESTORE_W1_39",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "V78-05",
@@ -24189,7 +24222,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-29",
     "endDate": "",
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
-    "release_origin": "V98_RESTORE_W2_PCC10"
+    "release_origin": "V98_RESTORE_W2_PCC10",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "PCC-P09",
@@ -24791,7 +24825,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "",
     "endDate": "2026-10-09",
     "region": "MEEL, Rue du Château 7, 1870 Monthey (VS)",
-    "release_origin": "V98_RESTORE_W5_REMAINING17"
+    "release_origin": "V98_RESTORE_W5_REMAINING17",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "V59-SZ01",
@@ -26735,7 +26770,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-02",
     "endDate": "2026-11-04",
     "region": "ONLINE / Distance",
-    "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
+    "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "V82-DAWAN-013",
@@ -26855,7 +26891,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-26",
     "endDate": "2026-10-30",
     "region": "ONLINE / Distance",
-    "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
+    "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "V82-DAWAN-018",
@@ -28199,7 +28236,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-28",
     "endDate": "2026-10-28",
     "region": "ONLINE / Distance",
-    "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
+    "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "V82-DAWAN-100",
@@ -31007,7 +31045,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "",
     "endDate": "",
     "region": "Vorarlberg; Arbeitgebersitz Schwarzach. Tatsächliche Einsatzorte der Rotation durch mehrere Redaktionen nicht einzeln publiziert.",
-    "release_origin": "AT_KLUGSCHEISSER_REDTEAM_R3_20260930 / AT_SCOPE_REMEDIATION_R1_20260930 / MEDIASKILLS_AT_OWNER_DATA_FREEZE_FINALIZED_2026-09-04"
+    "release_origin": "AT_KLUGSCHEISSER_REDTEAM_R3_20260930 / AT_SCOPE_REMEDIATION_R1_20260930 / MEDIASKILLS_AT_OWNER_DATA_FREEZE_FINALIZED_2026-09-04",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "AT-PROD-OFFER-156",
@@ -31199,7 +31238,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-13",
     "endDate": "",
     "region": "Universitäts- und Landessportzentrum Rif, Hallein-Rif; Online-Unterricht für diesen Lehrgang nicht bestätigt",
-    "release_origin": "AT_KLUGSCHEISSER_REDTEAM_R3_20260930 / AT_SCOPE_REMEDIATION_R1_20260930 / MEDIASKILLS_AT_OWNER_DATA_FREEZE_FINALIZED_2026-09-04"
+    "release_origin": "AT_KLUGSCHEISSER_REDTEAM_R3_20260930 / AT_SCOPE_REMEDIATION_R1_20260930 / MEDIASKILLS_AT_OWNER_DATA_FREEZE_FINALIZED_2026-09-04",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "AT-PROD-OFFER-169",
