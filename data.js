@@ -23987,7 +23987,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "V78-04",
     "provider": "ITTA",
     "title": "Adobe After Effects – Avancé",
-    "description": "Vertiefungskurs zu fortgeschrittenen Workflows für visuelle Effekte und dynamische Inhalte mit Adobe After Effects, darunter Chroma Keying, Motion Tracking, Stabilisierung, 3D-Kameratracking und Rotoskopie.",
+    "description": "Zweitägiger Vertiefungskurs zu fortgeschrittenen Workflows für visuelle Effekte und dynamische Inhalte mit Adobe After Effects, darunter Chroma Keying, Motion Tracking, Stabilisierung, 3D-Kameratracking und Rotoskopie.",
     "access": "Öffentlich buchbar.",
     "level": "BERUFSERFAHRUNG",
     "language": "FR",
@@ -24005,8 +24005,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-29",
     "endDate": "2026-10-30",
     "region": "Lausanne, Avenue Mon-Repos 24 / Genève, Route des Jeunes 35 / Live-Online, je Durchführung",
-    "release_origin": "V98_RESTORE_W1_39",
-    "publicationStatus": "HOLD"
+    "release_origin": "V98_RESTORE_W1_39"
   },
   {
     "id": "V78-05",
