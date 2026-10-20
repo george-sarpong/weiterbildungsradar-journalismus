@@ -10137,6 +10137,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Nächster auf der offiziellen Schweizer Kursseite gelisteter Start: 26.11.2026, 09:30 Uhr, Basel (Online- oder Classroom-Tarif). Weitere gelistete Termine: 10.12.2026 Genf, 24.12.2026 Lausanne und 07.01.2027 Zürich; konkrete Plätze und Unterrichtsadresse beim Anbieter bestätigen.",
     "startDate": "2026-11-26",
     "endDate": "",
+    "sessions": [{"startDate":"2026-11-26","endDate":"","label":"26.11.2026, 09:30 · Basel oder Live-Online","region":"Basel (angeboten) / Live-Online; genaue Präsenzadresse prüfen"},{"startDate":"2026-12-10","endDate":"","label":"10.12.2026, 09:30 · Genf oder Live-Online","region":"Genf (angeboten) / Live-Online; genaue Präsenzadresse prüfen"},{"startDate":"2026-12-24","endDate":"","label":"24.12.2026, 09:30 · Lausanne oder Live-Online","region":"Lausanne (angeboten) / Live-Online; genaue Präsenzadresse prüfen"},{"startDate":"2027-01-07","endDate":"","label":"07.01.2027, 09:30 · Zürich oder Live-Online","region":"Zürich (angeboten) / Live-Online; genaue Präsenzadresse prüfen"}],
     "region": "Kursliste 26.11.2026: Basel (angebotener Standort) oder Live-Online; genaue Präsenzadresse dieser Durchführung nicht publiziert.",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
@@ -10905,6 +10906,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "INTER (Classe à distance): 01.–02.04.2027; weitere Online-Termine 01.–02.07., 06.–07.09. und 16.–17.12.2027. INTRA / SUR MESURE: auf Anfrage, keine öffentlichen Fixtermine.",
     "startDate": "2027-04-01",
     "endDate": "2027-04-02",
+    "sessions": [{"startDate":"2027-04-01","endDate":"2027-04-02","label":"01.–02.04.2027 · Live-Online","region":"Live-Online; kein Präsenzort für INTER-Ausgabe"},{"startDate":"2027-07-01","endDate":"2027-07-02","label":"01.–02.07.2027 · Live-Online","region":"Live-Online; kein Präsenzort für INTER-Ausgabe"},{"startDate":"2027-09-06","endDate":"2027-09-07","label":"06.–07.09.2027 · Live-Online","region":"Live-Online; kein Präsenzort für INTER-Ausgabe"},{"startDate":"2027-12-16","endDate":"2027-12-17","label":"16.–17.12.2027 · Live-Online","region":"Live-Online; kein Präsenzort für INTER-Ausgabe"}],
     "region": "INTER: vier veröffentlichte Termine als Classe à distance (online); kein Präsenzort für diese Termine. INTRA: beim Kunden, bei ORSYS oder online, konkreter Ort nach Offerte. SUR MESURE: Ort nach Offerte; kein Durchführungsort belegt.",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
