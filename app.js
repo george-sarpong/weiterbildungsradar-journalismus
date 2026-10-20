@@ -113,7 +113,10 @@
 
   const isCurrent = offer => {
     const end = parseDate(offer.endDate);
-    return !end || end >= today;
+    const start = parseDate(offer.startDate);
+    // Bei eintägigen Ausgaben fehlt teils ein endDate. Ihr vergangener Start
+    // darf nicht als weiterhin aktueller Kurs auf der Website erscheinen.
+    return (!end || end >= today) && (end || !start || start >= today);
   };
 
   const offers = allOffers.filter(offer => isCurrent(offer) && offer.publicationStatus !== "HOLD");
@@ -200,6 +203,30 @@
   const formatDate = value => {
     const match = String(value ?? "").match(/^(\d{4})-(\d{2})-(\d{2})/);
     return match ? `${match[3]}.${match[2]}.${match[1]}` : String(value ?? "");
+  };
+
+
+  const publicStart = offer => {
+    const raw = String(offer.start ?? "").trim();
+    const start = parseDate(offer.startDate);
+    const end = parseDate(offer.endDate);
+    const datedText = [...raw.matchAll(/\b(\d{1,2})\.(\d{1,2})\.(20\d{2})\b|\b(20\d{2})-(\d{2})-(\d{2})\b/g)]
+      .map(match => match[4]
+        ? `${match[4]}-${match[5]}-${match[6]}`
+        : `${match[3]}-${match[2].padStart(2, "0")}-${match[1].padStart(2, "0")}`);
+    const todayIso = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+    const hasPastDate = datedText.some(date => date < todayIso);
+
+    if (!hasPastDate && !(start && start < today)) {
+      return /abgeschlossen/i.test(raw) && !start && !end
+        ? "Nächste Ausgabe nicht publiziert"
+        : raw;
+    }
+    // Im Datensatz bleiben die historischen Angaben vollständig erhalten.
+    // Die Angebotskarte zeigt bei laufenden oder undatierten Ausgaben keine alten Termine.
+    if (start && start >= today) return formatDate(offer.startDate);
+    if (end && end >= today) return "Bereits begonnen; nächster Start nicht publiziert";
+    return "Nächster Termin nicht publiziert";
   };
 
   const compactAmount = value => String(value ?? "")
@@ -459,7 +486,7 @@
           ${fact("Preis", compactPrice(offer))}
           ${fact("Durchführung", humanizeTokens(offer.format, labels.format))}
           ${fact("Dauer", offer.duration)}
-          ${fact("Start", offer.start)}
+          ${fact("Start", publicStart(offer))}
         </dl>
         <p class="card-description">${escapeHtml(offer.description)}</p>
         <p class="access"><strong>Zugang:</strong> ${escapeHtml(compactAccess(offer))}</p>
