@@ -118,6 +118,8 @@
       .sort((a, b) => a.startDate.localeCompare(b.startDate))[0] || null;
   };
 
+  const currentRegion = offer => nextSession(offer)?.region || offer.region;
+
   const isCurrent = offer => {
     if (Array.isArray(offer.sessions)) return Boolean(nextSession(offer));
     const end = parseDate(offer.endDate);
@@ -469,7 +471,7 @@
       ? `${offer.title} aus den Favoriten entfernen`
       : `${offer.title} zu den Favoriten hinzufügen`;
     const displayCountry = countryDisplay(offer.country);
-    const displayRegion = regionDisplay(offer.region);
+    const displayRegion = regionDisplay(currentRegion(offer));
     const place = displayRegion ? `${displayCountry} · ${displayRegion}` : displayCountry;
     const feedbackSubject = encodeURIComponent(`Hinweis zu ${offer.provider}: ${offer.title}`);
 
@@ -1005,7 +1007,7 @@
 
   const smartCard = (item, parsed, index) => {
     const offer = item.offer;
-    const place = [countryDisplay(offer.country), regionDisplay(offer.region)].filter(Boolean).join(" · ");
+    const place = [countryDisplay(offer.country), regionDisplay(currentRegion(offer))].filter(Boolean).join(" · ");
     const price = parsed.freeOnly && item.free
       ? freeOptionLabel(item.free)
       : optionLabel(offer, item.budget);
@@ -1136,7 +1138,7 @@
       offer.start,
       offer.language,
       offer.country,
-      offer.region,
+      currentRegion(offer),
       labels.level[offer.level],
       labels.focus[offer.focus],
       labels.offerType[offer.offerType]
