@@ -3433,6 +3433,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-12",
     "endDate": "2026-10-22",
     "region": "Online",
+    "publicationStatus": "HOLD",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -13202,6 +13203,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "",
     "endDate": "2026-11-12",
     "region": "CSIA, Via G. Brentani 18, 6900 Lugano",
+    "publicationStatus": "HOLD",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -13226,6 +13228,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "",
     "endDate": "2026-12-09",
     "region": "CSIA, Via G. Brentani 18, 6900 Lugano",
+    "publicationStatus": "HOLD",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -13371,6 +13374,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "",
     "endDate": "2026-11-12",
     "region": "Zoo al Maglio, Via ai Mulini 14, Magliaso (11.10.); CSIA, Via G. Brentani 18, Lugano (12.11.)",
+    "publicationStatus": "HOLD",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
