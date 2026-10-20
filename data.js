@@ -10600,7 +10600,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "provider": "ORSYS Training Schweiz",
     "title": "Adobe® After Effects, perfectionnement",
     "description": "Fortgeschrittene Adobe-After-Effects-Praxis für Medien- und Videoproduktion: komplexe 3D-Animationen und Kompositionen gestalten, Expressions und Partikeleffekte nutzen, Plug-ins einsetzen und Rendering optimieren.",
-    "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
+    "access": "Anmeldung beim Anbieter; spätestens 24 Stunden vor Kursbeginn abzuschliessen. Nächste Schweizer Ausgabe und Plätze auf Anfrage.",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
     "country": "Schweiz",
@@ -10611,14 +10611,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "offerType": "KURS",
     "priceDisplay": "CHF 2'360 H.T. (exkl. MWST)",
     "priceCategory": "UEBER_2000",
-    "format": "PRÄSENZ|ONLINE LIVE",
+    "format": "PRÄSENZ",
     "duration": "5j - 35h00",
-    "start": "Nächster Termin nicht publiziert (bisher 28.09.2026)",
+    "start": "Nächster Schweizer Durchführungstermin nicht publiziert",
     "startDate": "",
     "endDate": "",
-    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
-    "release_origin": "V98_R2_EXISTING_PRODUCT",
-    "publicationStatus": "HOLD"
+    "region": "Lausanne und Genf (mögliche ORSYS-Präsenzstandorte; genaue Ausgabe und Ort bei Anmeldung)",
+    "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-021",
