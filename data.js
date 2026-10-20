@@ -10281,7 +10281,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10305,7 +10305,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "19.11.2026",
     "startDate": "2026-11-19",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10401,7 +10401,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Nächster Termin nicht publiziert (bisher 05.10.2026)",
     "startDate": "",
     "endDate": "",
-    "region": "Präsenzkurs; konkreter Unterrichtsort nicht publiziert. Distanz-/Inhouse-Variante nur auf Anfrage, keine bestätigte Online-Session.",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung)",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10449,7 +10449,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "01.07.2027",
     "startDate": "2027-07-01",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10473,7 +10473,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "10.12.2026",
     "startDate": "2026-12-10",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10521,7 +10521,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10569,7 +10569,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "13.01.2027",
     "startDate": "2027-01-13",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10593,7 +10593,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "23.11.2026",
     "startDate": "2026-11-23",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10617,7 +10617,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Nächster Termin nicht publiziert (bisher 28.09.2026)",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT",
     "publicationStatus": "HOLD"
   },
@@ -10642,7 +10642,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10690,7 +10690,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10714,7 +10714,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "04.11.2027",
     "startDate": "2027-11-04",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10738,7 +10738,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "21.10.2026",
     "startDate": "2026-10-21",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10762,7 +10762,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10786,7 +10786,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "30.11.2026",
     "startDate": "2026-11-30",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10810,7 +10810,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10834,7 +10834,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10858,7 +10858,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10954,7 +10954,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10978,7 +10978,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11002,7 +11002,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "29.10.2026",
     "startDate": "2026-10-29",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11026,7 +11026,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11050,7 +11050,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11074,7 +11074,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "19.10.2026",
     "startDate": "2026-10-19",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11098,7 +11098,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11170,7 +11170,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "14.06.2027",
     "startDate": "2027-06-14",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11194,7 +11194,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11243,7 +11243,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "16.09.2027",
     "startDate": "2027-09-16",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11341,7 +11341,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "03.11.2026",
     "startDate": "2026-11-03",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11365,7 +11365,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11413,7 +11413,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11437,7 +11437,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11509,7 +11509,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11533,7 +11533,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11557,7 +11557,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11581,7 +11581,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11679,7 +11679,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "07.10.2026",
     "startDate": "2026-10-07",
     "endDate": "2026-10-07",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11727,7 +11727,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11801,7 +11801,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11873,7 +11873,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11897,7 +11897,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "25.11.2027",
     "startDate": "2027-11-25",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11945,7 +11945,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11994,7 +11994,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12018,7 +12018,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12114,7 +12114,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "14.10.2026",
     "startDate": "2026-10-14",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12138,7 +12138,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12210,7 +12210,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "ORSYS-Schweiz-Katalog nennt 26.10.2026 als nächsten Start (Ref. VWI); konkrete Ausgabe, Kursort, Buchbarkeit und Enddatum nicht sessionscharf bestätigt.",
     "startDate": "",
     "endDate": "",
-    "region": "Präsenzkurs; konkreter Unterrichtsort nicht publiziert. Distanz-/Inhouse-Variante nur auf Anfrage, keine bestätigte Online-Session.",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung)",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12234,7 +12234,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "26.10.2026",
     "startDate": "2026-10-26",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12258,7 +12258,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "09.12.2026",
     "startDate": "2026-12-09",
     "endDate": "2026-12-09",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12307,7 +12307,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "06.10.2026",
     "startDate": "2026-10-06",
     "endDate": "2026-10-06",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12403,7 +12403,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "01.12.2026",
     "startDate": "2026-12-01",
     "endDate": "2026-12-01",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12427,7 +12427,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "01.10.2026",
     "startDate": "2026-10-01",
     "endDate": "2026-10-01",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12451,7 +12451,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12475,7 +12475,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12499,7 +12499,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "21.06.2027",
     "startDate": "2027-06-21",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12523,7 +12523,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12571,7 +12571,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12668,7 +12668,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12717,7 +12717,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12863,7 +12863,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12912,7 +12912,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12936,7 +12936,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
