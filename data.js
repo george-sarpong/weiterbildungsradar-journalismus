@@ -23308,6 +23308,18 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "28.09.2026–02.10.2026 / inscriptions ouvertes; additional future session published",
     "startDate": "2026-09-28",
     "endDate": "2026-10-02",
+    "sessions": [
+      {
+        "startDate": "2026-10-30",
+        "endDate": "2026-11-27",
+        "label": "30.10.2026–27.11.2026 · ifage Montbrillant"
+      },
+      {
+        "startDate": "2026-11-17",
+        "endDate": "2026-12-01",
+        "label": "17.11.2026–01.12.2026 · ifage Montbrillant"
+      }
+    ],
     "region": "ifage Montbrillant, Genève",
     "release_origin": "V98_RESTORE_W1_39"
   },
@@ -24054,6 +24066,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "28.09.2026–30.09.2026 next future; additional Oct/Nov/Dec sessions published",
     "startDate": "2026-09-28",
     "endDate": "2026-09-30",
+    "sessions": [
+      {
+        "startDate": "2026-11-23",
+        "endDate": "2026-11-24",
+        "label": "23.–24.11.2026"
+      },
+      {
+        "startDate": "2026-12-14",
+        "endDate": "2026-12-15",
+        "label": "14.–15.12.2026"
+      },
+      {
+        "startDate": "2027-01-04",
+        "endDate": "2027-01-05",
+        "label": "04.–05.01.2027"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
@@ -24127,6 +24156,28 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "28.09.2026–30.09.2026 next future; further Oct/Nov/Dec sessions published",
     "startDate": "2026-09-28",
     "endDate": "2026-09-30",
+    "sessions": [
+      {
+        "startDate": "2026-10-21",
+        "endDate": "2026-10-23",
+        "label": "21.–23.10.2026"
+      },
+      {
+        "startDate": "2026-10-28",
+        "endDate": "2026-10-30",
+        "label": "28.–30.10.2026"
+      },
+      {
+        "startDate": "2026-11-23",
+        "endDate": "2026-11-25",
+        "label": "23.–25.11.2026"
+      },
+      {
+        "startDate": "2026-12-21",
+        "endDate": "2026-12-23",
+        "label": "21.–23.12.2026"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
@@ -24176,6 +24227,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "05.10.2026–07.10.2026 next future; further Nov/Dec sessions published",
     "startDate": "2026-10-05",
     "endDate": "2026-10-07",
+    "sessions": [
+      {
+        "startDate": "2026-11-09",
+        "endDate": "2026-11-11",
+        "label": "09.–11.11.2026"
+      },
+      {
+        "startDate": "2026-11-30",
+        "endDate": "2026-12-02",
+        "label": "30.11.2026–02.12.2026"
+      },
+      {
+        "startDate": "2027-01-25",
+        "endDate": "2027-01-27",
+        "label": "25.–27.01.2027"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
@@ -24200,6 +24268,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "05.10.2026–06.10.2026 next future; additional Oct/Nov sessions published",
     "startDate": "2026-10-05",
     "endDate": "2026-10-06",
+    "sessions": [
+      {
+        "startDate": "2026-10-27",
+        "endDate": "2026-10-28",
+        "label": "27.–28.10.2026"
+      },
+      {
+        "startDate": "2026-11-30",
+        "endDate": "2026-12-01",
+        "label": "30.11.2026–01.12.2026"
+      },
+      {
+        "startDate": "2027-01-11",
+        "endDate": "2027-01-12",
+        "label": "11.–12.01.2027"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
@@ -24249,6 +24334,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "01.10.2026–02.10.2026 next future; further Oct/Nov sessions published",
     "startDate": "2026-10-01",
     "endDate": "2026-10-02",
+    "sessions": [
+      {
+        "startDate": "2026-10-29",
+        "endDate": "2026-10-30",
+        "label": "29.–30.10.2026"
+      },
+      {
+        "startDate": "2026-11-26",
+        "endDate": "2026-11-27",
+        "label": "26.–27.11.2026"
+      },
+      {
+        "startDate": "2027-01-14",
+        "endDate": "2027-01-15",
+        "label": "14.–15.01.2027"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
@@ -24273,6 +24375,28 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "05.10.2026–06.10.2026 next future; further Nov sessions published",
     "startDate": "2026-10-05",
     "endDate": "2026-10-06",
+    "sessions": [
+      {
+        "startDate": "2026-11-05",
+        "endDate": "2026-11-06",
+        "label": "05.–06.11.2026"
+      },
+      {
+        "startDate": "2026-11-11",
+        "endDate": "2026-11-12",
+        "label": "11.–12.11.2026"
+      },
+      {
+        "startDate": "2026-11-26",
+        "endDate": "2026-11-27",
+        "label": "26.–27.11.2026"
+      },
+      {
+        "startDate": "2026-11-30",
+        "endDate": "2026-12-01",
+        "label": "30.11.2026–01.12.2026"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
@@ -24297,6 +24421,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "01.10.2026–02.10.2026 next future; further Oct/Nov sessions published",
     "startDate": "2026-10-01",
     "endDate": "2026-10-02",
+    "sessions": [
+      {
+        "startDate": "2026-10-26",
+        "endDate": "2026-10-27",
+        "label": "26.–27.10.2026"
+      },
+      {
+        "startDate": "2026-10-29",
+        "endDate": "2026-10-30",
+        "label": "29.–30.10.2026"
+      },
+      {
+        "startDate": "2026-11-26",
+        "endDate": "2026-11-27",
+        "label": "26.–27.11.2026"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W3_PCC13"
   },
@@ -24321,6 +24462,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "12.10.2026–13.10.2026 next future; additional Dec sessions published",
     "startDate": "2026-10-12",
     "endDate": "2026-10-13",
+    "sessions": [
+      {
+        "startDate": "2026-12-07",
+        "endDate": "2026-12-08",
+        "label": "07.–08.12.2026"
+      },
+      {
+        "startDate": "2026-12-09",
+        "endDate": "2026-12-10",
+        "label": "09.–10.12.2026"
+      },
+      {
+        "startDate": "2027-02-01",
+        "endDate": "2027-02-02",
+        "label": "01.–02.02.2027"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W3_PCC13"
   },
@@ -25070,6 +25228,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "15.10.2026–16.10.2026 next future; additional Dec 2026 and 2027 sessions published",
     "startDate": "2026-10-15",
     "endDate": "2026-10-16",
+    "sessions": [
+      {
+        "startDate": "2026-12-15",
+        "endDate": "2026-12-16",
+        "label": "15.–16.12.2026 · Wallisellen oder LiveStream"
+      },
+      {
+        "startDate": "2027-02-16",
+        "endDate": "2027-02-17",
+        "label": "16.–17.02.2027 · Wallisellen oder LiveStream"
+      },
+      {
+        "startDate": "2027-04-15",
+        "endDate": "2027-04-16",
+        "label": "15.–16.04.2027 · Wallisellen oder LiveStream"
+      }
+    ],
     "region": "Wallisellen / LiveStream",
     "release_origin": "V98_RESTORE_W5_REMAINING17"
   },
@@ -25094,6 +25269,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "06.10.2026–07.10.2026 next future; further 2027 sessions published",
     "startDate": "2026-10-06",
     "endDate": "2026-10-07",
+    "sessions": [
+      {
+        "startDate": "2027-01-12",
+        "endDate": "2027-01-13",
+        "label": "12.–13.01.2027 · Wallisellen oder LiveStream"
+      },
+      {
+        "startDate": "2027-04-01",
+        "endDate": "2027-04-02",
+        "label": "01.–02.04.2027 · Wallisellen oder LiveStream"
+      },
+      {
+        "startDate": "2027-07-05",
+        "endDate": "2027-07-06",
+        "label": "05.–06.07.2027 · Wallisellen oder LiveStream"
+      }
+    ],
     "region": "Wallisellen / LiveStream",
     "release_origin": "V98_RESTORE_W5_REMAINING17"
   },
