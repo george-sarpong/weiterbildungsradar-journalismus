@@ -2855,6 +2855,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "22.–23.10.2026 (Kursdetail); weitere Katalogedition 15.–16.04.2027 (beide als separate Durchführungen, nicht Verfügbarkeit)",
     "startDate": "2026-10-22",
     "endDate": "2026-10-23",
+    "sessions": [{"startDate":"2026-10-22","endDate":"2026-10-23","label":"22.–23.10.2026 (Kursdetail)"},{"startDate":"2027-04-15","endDate":"2027-04-16","label":"15.–16.04.2027 (Katalogtermin; Verfügbarkeit prüfen)"}],
     "region": "NOT_PUBLISHED",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
@@ -24097,6 +24098,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "21.10.2026–23.10.2026 next future; further Nov/Dec sessions published",
     "startDate": "2026-10-21",
     "endDate": "",
+    "sessions": [{"startDate":"2026-10-21","endDate":"2026-10-23","label":"21.–23.10.2026"},{"startDate":"2026-11-18","endDate":"2026-11-20","label":"18.–20.11.2026"},{"startDate":"2026-12-16","endDate":"2026-12-18","label":"16.–18.12.2026"},{"startDate":"2027-01-06","endDate":"2027-01-08","label":"06.–08.01.2027"}],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
@@ -24145,6 +24147,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "21.10.2026–23.10.2026 next future; further Oct/Nov/Dec sessions published",
     "startDate": "2026-10-21",
     "endDate": "",
+    "sessions": [{"startDate":"2026-10-21","endDate":"2026-10-23","label":"21.–23.10.2026"},{"startDate":"2026-10-26","endDate":"2026-10-28","label":"26.–28.10.2026 · Live-Online"},{"startDate":"2026-11-18","endDate":"2026-11-20","label":"18.–20.11.2026"},{"startDate":"2026-12-01","endDate":"2026-12-03","label":"01.–03.12.2026 · Live-Online"},{"startDate":"2026-12-16","endDate":"2026-12-18","label":"16.–18.12.2026"},{"startDate":"2027-01-06","endDate":"2027-01-08","label":"06.–08.01.2027"}],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
@@ -24796,6 +24799,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "22.10.2026–23.10.2026 next future; further Dec 2026 and 2027 sessions published",
     "startDate": "2026-10-22",
     "endDate": "",
+    "sessions": [{"startDate":"2026-10-22","endDate":"2026-10-23","label":"22.–23.10.2026"},{"startDate":"2026-12-14","endDate":"2026-12-15","label":"14.–15.12.2026"},{"startDate":"2027-01-04","endDate":"2027-01-05","label":"04.–05.01.2027"}],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W4_PCC9"
   },
@@ -25157,6 +25161,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "2026-09-24–2026-10-09 / CURRENT_OCCURRENCE_CONFIRMED; further 2026-10-26–11-10",
     "startDate": "2026-09-24",
     "endDate": "2026-10-09",
+    "sessions": [{"startDate":"2026-09-24","endDate":"2026-10-09","label":"24.09.–09.10.2026 · Lausanne"},{"startDate":"2026-10-26","endDate":"2026-11-10","label":"26.10.–10.11.2026 · Lausanne"}],
     "region": "Lausanne",
     "release_origin": "V98_W6_CAD26_CONTROLLED_MATERIALISATION"
   },
@@ -25205,6 +25210,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "2026-09-28–2026-09-29 / FUTURE/CURRENT_BOOKABLE; further 2026-10-28–29",
     "startDate": "2026-09-28",
     "endDate": "2026-09-29",
+    "sessions": [{"startDate":"2026-09-28","endDate":"2026-09-29","label":"28.–29.09.2026 · Lausanne"},{"startDate":"2026-10-28","endDate":"2026-10-29","label":"28.–29.10.2026 · Lausanne"},{"startDate":"2026-11-25","endDate":"2026-11-26","label":"25.–26.11.2026 · Lausanne"}],
     "region": "Lausanne for fixed present sessions",
     "release_origin": "V98_W6_CAD26_CONTROLLED_MATERIALISATION"
   },
@@ -25253,6 +25259,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "2026-10-02–2026-10-05 / FUTURE_BOOKABLE; further 2026-11-03–04",
     "startDate": "2026-10-02",
     "endDate": "2026-10-05",
+    "sessions": [{"startDate":"2026-10-02","endDate":"2026-10-05","label":"02.–05.10.2026 · Lausanne"},{"startDate":"2026-11-03","endDate":"2026-11-04","label":"03.–04.11.2026 · Lausanne"},{"startDate":"2026-12-01","endDate":"2026-12-02","label":"01.–02.12.2026 · Lausanne"}],
     "region": "Lausanne for fixed present sessions",
     "release_origin": "V98_W6_CAD26_CONTROLLED_MATERIALISATION"
   },
@@ -29000,6 +29007,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "08.10.2026; weitere Durchführung 18.03.2027",
     "startDate": "2026-10-08",
     "endDate": "2026-10-08",
+    "sessions": [{"startDate":"2026-10-08","endDate":"2026-10-08","label":"08.10.2026 · Genf"},{"startDate":"2027-03-18","endDate":"2027-03-18","label":"18.03.2027 · Genf"}],
     "region": "Genève",
     "release_origin": "V106_DECADREE_REMEDIATION_R1"
   },
