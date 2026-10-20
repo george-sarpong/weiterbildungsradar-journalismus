@@ -111,7 +111,15 @@
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
+  const nextSession = offer => {
+    if (!Array.isArray(offer.sessions)) return null;
+    return offer.sessions
+      .filter(session => parseDate(session.startDate) >= today)
+      .sort((a, b) => a.startDate.localeCompare(b.startDate))[0] || null;
+  };
+
   const isCurrent = offer => {
+    if (Array.isArray(offer.sessions)) return Boolean(nextSession(offer));
     const end = parseDate(offer.endDate);
     const start = parseDate(offer.startDate);
     // Bei eintägigen Ausgaben fehlt teils ein endDate. Ihr vergangener Start
@@ -207,6 +215,8 @@
 
 
   const publicStart = offer => {
+    const session = nextSession(offer);
+    if (session) return session.label || formatDate(session.startDate);
     const raw = String(offer.start ?? "").trim();
     const start = parseDate(offer.startDate);
     const end = parseDate(offer.endDate);
@@ -364,7 +374,7 @@
       case "START": {
         const todayDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
         const startDate = offer => {
-          const value = String(offer.startDate ?? "").trim();
+          const value = String(nextSession(offer)?.startDate ?? offer.startDate ?? "").trim();
           return ISO_DATE.test(value) ? value : "";
         };
         const startTier = date => !date ? 2 : date >= todayDate ? 0 : 1;
