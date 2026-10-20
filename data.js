@@ -18872,8 +18872,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "PJ-V16-07",
     "provider": "photojournalism.ch / Beyond Visual GmbH",
     "title": "Konzerte und Events fotografieren – mit Praxisteil",
-    "description": "Weiterbildungsangebot «Konzerte und Events fotografieren – mit Praxisteil» von photojournalism.ch / Beyond Visual GmbH.",
-    "access": "Kurse laut Anbieter für externe Teilnehmende offen; 2028-Kurskarte mit Warenkorb-Einstieg vorhanden, Restplätze und tatsächlicher Buchungsabschluss nicht geprüft.",
+    "description": "Zweitägiger Kurs zur Konzert- und Eventfotografie mit eigenständiger Praxisarbeit zwischen den Unterrichtstagen und Feedback auf die Bilder.",
+    "access": "Für externe Teilnehmende offen. Ausgabe 2028 angekündigt; Auswahl dieser Ausgabe im Anmeldeformular und freie Plätze noch nicht bestätigt.",
     "level": "NICHT_PUBLIZIERT",
     "language": "DE",
     "country": "Schweiz",
@@ -18886,12 +18886,11 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "PRÄSENZ",
     "duration": "2 Kurstage (offizielle aktuelle Kurskarte 2028 und kursgenaue Detailseite: 2 Tage).",
-    "start": "Anbieter-Kurskarte vom 18.10.2026 nennt für den zweitägigen Kurs 13.03.2028 und 09.06.2028. Externe Teilnahme grundsätzlich offen; tatsächlich freie Plätze beim Anbieter prüfen.",
+    "start": "Angekündigte Unterrichtstage: 13.03.2028 und 09.06.2028; Verfügbarkeit beim Anbieter prüfen.",
     "startDate": "2028-03-13",
     "endDate": "2028-06-09",
     "region": "Gleis70, Hermetschloostrasse 70, 8048 Zürich (offizielle Kursdetailseite).",
-    "release_origin": "V98_R2_EXISTING_PRODUCT",
-    "publicationStatus": "HOLD"
+    "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "PJ-V16-09",
