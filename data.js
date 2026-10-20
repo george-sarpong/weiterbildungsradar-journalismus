@@ -19977,6 +19977,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "",
     "endDate": "",
     "region": "Online",
+    "publicationStatus": "HOLD",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -26795,6 +26796,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "",
     "endDate": "",
     "region": "Luganese / Tessin",
+    "publicationStatus": "HOLD",
     "release_origin": "V98_R22_BAKOM_CORE_RESTORATION"
   },
   {
@@ -29709,7 +29711,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "AT-PROD-OFFER-003",
     "provider": "fjum – forum journalismus und medien wien",
     "title": "AI-Media-Academy 2026",
-    "description": "Mehrmonatiges KI-Programm für Journalist:innen und Medienschaffende mit Recherche, Content-Produktion, Ethik, Coding und Medieninnovation.",
+    "description": "Mehrmonatiges KI-Programm für Journalist:innen und Medienschaffende mit Recherche, Content-Produktion, Ethik, Coding und Medieninnovation. Die reguläre Bewerbungsfrist vom 01.10.2026 ist abgelaufen. Nachmeldung beim Veranstalter anfragen; nicht zugesichert.",
     "access": "Bewerbung für Kurs 2026 war öffentlich möglich, Frist am 01.10.2026 um 23:59 Uhr abgelaufen; am 16.10.2026 keine neue Bewerbungsannahme oder Restplätze bestätigt. Schweizer:innen grundsätzlich zugangsberechtigt, individuelle Aufnahmeentscheidung.",
     "level": "NICHT_PUBLIZIERT",
     "language": "DE",
