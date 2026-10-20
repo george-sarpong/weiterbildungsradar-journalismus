@@ -23945,6 +23945,20 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "28.09.2026–29.09.2026 Lausanne + virtuel; 02.11.2026–03.11.2026 Genève + virtuel",
     "startDate": "2026-09-28",
     "endDate": "2026-09-29",
+    "sessions": [
+      {
+        "startDate": "2026-11-02",
+        "endDate": "2026-11-03",
+        "label": "02.–03.11.2026 · Genève / virtuell",
+        "region": "Genève, Route des Jeunes 35 / virtuell"
+      },
+      {
+        "startDate": "2026-12-07",
+        "endDate": "2026-12-08",
+        "label": "07.–08.12.2026 · Lausanne / virtuell",
+        "region": "Lausanne, Av. Mon-Repos 24 / virtuell"
+      }
+    ],
     "region": "Lausanne, Av. Mon-Repos 24 / Genève, Route des Jeunes 35 / classe virtuelle",
     "release_origin": "V98_RESTORE_W1_39"
   },
@@ -23969,6 +23983,20 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "08.10.2026–09.10.2026 Genève + virtuel; 12.11.2026–13.11.2026 Lausanne + virtuel",
     "startDate": "2026-10-08",
     "endDate": "2026-10-09",
+    "sessions": [
+      {
+        "startDate": "2026-11-12",
+        "endDate": "2026-11-13",
+        "label": "12.–13.11.2026 · Lausanne / virtuell",
+        "region": "Lausanne, Av. Mon-Repos 24 / virtuell"
+      },
+      {
+        "startDate": "2026-12-17",
+        "endDate": "2026-12-18",
+        "label": "17.–18.12.2026 · Genève / virtuell",
+        "region": "Genève, Route des Jeunes 35 / virtuell"
+      }
+    ],
     "region": "Genève, Route des Jeunes 35 / Lausanne, Av. Mon-Repos 24 / classe virtuelle",
     "release_origin": "V98_RESTORE_W1_39"
   },
@@ -24042,6 +24070,20 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "14.10.2026–16.10.2026 Lausanne + virtuel; 18.11.2026–20.11.2026 Genève + virtuel",
     "startDate": "2026-10-14",
     "endDate": "2026-10-16",
+    "sessions": [
+      {
+        "startDate": "2026-11-18",
+        "endDate": "2026-11-20",
+        "label": "18.–20.11.2026 · Genève / virtuell",
+        "region": "Genève, Route des Jeunes 35 / virtuell"
+      },
+      {
+        "startDate": "2027-01-04",
+        "endDate": "2027-01-06",
+        "label": "04.–06.01.2027 · Lausanne / virtuell",
+        "region": "Lausanne, Av. Mon-Repos 24 / virtuell"
+      }
+    ],
     "region": "Lausanne, Av. Mon-Repos 24 / Genève, Route des Jeunes 35 / classe virtuelle",
     "release_origin": "V98_RESTORE_W1_39"
   },
@@ -24527,6 +24569,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "28.09.2026–29.09.2026 next future; 26.11.2026–27.11.2026 also published",
     "startDate": "2026-09-28",
     "endDate": "2026-09-29",
+    "sessions": [
+      {
+        "startDate": "2026-11-26",
+        "endDate": "2026-11-27",
+        "label": "26.–27.11.2026"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W3_PCC13"
   },
@@ -24575,6 +24624,20 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "15.10.2026–16.10.2026 next future; 07.12–08.12 and 09.12–10.12.2026 also published",
     "startDate": "2026-10-15",
     "endDate": "2026-10-16",
+    "sessions": [
+      {
+        "startDate": "2026-12-07",
+        "endDate": "2026-12-08",
+        "label": "07.–08.12.2026 · Live-Online",
+        "region": "Live-Online"
+      },
+      {
+        "startDate": "2026-12-09",
+        "endDate": "2026-12-10",
+        "label": "09.–10.12.2026 · CH-Basel / CH-Bern / CH-Zürich",
+        "region": "CH-Basel / CH-Bern / CH-Zürich"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W3_PCC13"
   },
@@ -24623,6 +24686,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "05.10.2026–06.10.2026 next future; 03.12–04.12.2026 also published",
     "startDate": "2026-10-05",
     "endDate": "2026-10-06",
+    "sessions": [
+      {
+        "startDate": "2026-12-03",
+        "endDate": "2026-12-04",
+        "label": "03.–04.12.2026"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W3_PCC13"
   },
@@ -24698,6 +24768,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "01.10.2026–02.10.2026 next future; 23.11–24.11.2026 also published",
     "startDate": "2026-10-01",
     "endDate": "2026-10-02",
+    "publicationStatus": "HOLD",
     "region": "Live-Online current fixed sessions; in-person seminar available by booking",
     "release_origin": "V98_RESTORE_W3_PCC13"
   },
@@ -24722,6 +24793,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "28.09.2026–29.09.2026 next future; 26.11–27.11.2026 also published",
     "startDate": "2026-09-28",
     "endDate": "2026-09-29",
+    "sessions": [
+      {
+        "startDate": "2026-11-26",
+        "endDate": "2026-11-27",
+        "label": "26.–27.11.2026"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W3_PCC13"
   },
@@ -24746,6 +24824,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "01.10.2026–02.10.2026 next future; 23.11–24.11.2026 also published",
     "startDate": "2026-10-01",
     "endDate": "2026-10-02",
+    "sessions": [
+      {
+        "startDate": "2026-11-23",
+        "endDate": "2026-11-24",
+        "label": "23.–24.11.2026"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W3_PCC13"
   },
