@@ -23908,6 +23908,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "02.11.2026–04.11.2026; further 2027 dates bookable",
     "startDate": "2026-11-02",
     "endDate": "",
+    "sessions": [{"startDate":"2026-11-02","endDate":"2026-11-04","label":"02.–04.11.2026 · Wallisellen"},{"startDate":"2027-02-08","endDate":"2027-02-10","label":"08.–10.02.2027 · Wallisellen"},{"startDate":"2027-06-21","endDate":"2027-06-23","label":"21.–23.06.2027 · Wallisellen"},{"startDate":"2027-10-04","endDate":"2027-10-06","label":"04.–06.10.2027 · Wallisellen"}],
     "region": "Studio 1, Wallisellen",
     "release_origin": "V98_RESTORE_W1_39"
   },
