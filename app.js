@@ -890,7 +890,10 @@
       : "Kostenlos";
     if (amount != null && option.currency) {
       const label = `${option.currency} ${amount.toLocaleString("de-CH")}`;
-      return option.tariffLabel ? `${label} · ${option.tariffLabel}` : label;
+      const taxQualifiedLabel = option.taxMode === "EXCLUDED" && option.taxRate == null
+        ? `${label} · exkl. MWST`
+        : label;
+      return option.tariffLabel ? `${taxQualifiedLabel} · ${option.tariffLabel}` : taxQualifiedLabel;
     }
     return compactPrice(offer);
   };
