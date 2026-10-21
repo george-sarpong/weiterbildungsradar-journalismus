@@ -24555,6 +24555,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Veröffentlichte Live-Online-Ausgaben: 23.10.2026, 20.11.2026 und 18.12.2026 (je 1 Tag, 09:00–16:00). Präsenz in Basel/Bern/Zürich als Kursoption; tatsächlicher Präsenztermin/-ort separat bei Anmeldung wählen. Keine bestätigte Platzverfügbarkeit.",
     "startDate": "2026-10-23",
     "endDate": "",
+    "sessions": [{"startDate":"2026-10-23","endDate":"2026-10-23","label":"23.10.2026 · BRI261023 · Live-Online","region":"Live-Online (kein Präsenzort)"},{"startDate":"2026-11-20","endDate":"2026-11-20","label":"20.11.2026 · BRI261120 · Live-Online","region":"Live-Online (kein Präsenzort)"},{"startDate":"2026-12-18","endDate":"2026-12-18","label":"18.12.2026 · BRI261218 · Live-Online","region":"Live-Online (kein Präsenzort)"}],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W3_PCC13"
   },
@@ -26068,7 +26069,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "level": "NICHT_PUBLIZIERT",
     "language": "DE",
     "country": "Schweiz",
-    "url": "https://www.pc-college.ch/seminar/indesign-cc/index.php",
+    "url": "https://www.pc-college.ch/seminar/adobe-design-suite/adobe-indesign-seminar-schulung-inf.php",
     "approved": "2026-09-28",
     "reviewAfter": "2026-10-22",
     "focus": "MEDIENPRAXIS",
@@ -26077,9 +26078,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "PREIS_AUF_ANFRAGE",
     "format": "ONLINE LIVE",
     "duration": "1 Tag",
-    "start": "30.10.2026 – Live-Online-Garantietermin (PC-COLLEGE Kurscode INF261030). Andere Präsenz-/Online-Ausgaben nur nach konkreter Buchungswahl; Platzverfügbarkeit nicht bestätigt.",
+    "start": "Öffentliche Live-Online-Editionen separat: 30.10.2026, 23.12.2026, 15.01., 12.02., 12.03., 09.04. und 07.05.2027; je 1 Tag (09:00–16:00); Standorte für Präsenzvarianten separat bestätigen.",
     "startDate": "2026-10-30",
     "endDate": "2026-10-30",
+    "sessions": [{"startDate":"2026-10-30","endDate":"2026-10-30","label":"30.10.2026 · INF261030 · Live-Online","region":"Live-Online (kein Präsenzort)"},{"startDate":"2026-12-23","endDate":"2026-12-23","label":"23.12.2026 · INF261223 · Live-Online","region":"Live-Online (kein Präsenzort)"},{"startDate":"2027-01-15","endDate":"2027-01-15","label":"15.01.2027 · INF270115 · Live-Online","region":"Live-Online (kein Präsenzort)"},{"startDate":"2027-02-12","endDate":"2027-02-12","label":"12.02.2027 · INF270212 · Live-Online","region":"Live-Online (kein Präsenzort)"},{"startDate":"2027-03-12","endDate":"2027-03-12","label":"12.03.2027 · INF270312 · Live-Online","region":"Live-Online (kein Präsenzort)"},{"startDate":"2027-04-09","endDate":"2027-04-09","label":"09.04.2027 · INF270409 · Live-Online","region":"Live-Online (kein Präsenzort)"},{"startDate":"2027-05-07","endDate":"2027-05-07","label":"07.05.2027 · INF270507 · Live-Online","region":"Live-Online (kein Präsenzort)"}],
     "region": "ONLINE – Live-Online-Training (30.10.2026; kein Präsenzort dieser Edition)",
     "release_origin": "V98_W7_TAIL6_CONTROLLED_MATERIALISATION"
   },
