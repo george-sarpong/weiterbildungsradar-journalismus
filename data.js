@@ -24156,9 +24156,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "PREIS_AUF_ANFRAGE",
     "format": "PRÄSENZ|ONLINE LIVE",
     "duration": "2 Tage",
-    "start": "22.10.2026–23.10.2026 next future",
+    "start": "Live-Online-Durchführungen 22.–23.10.2026 (FRG261022) und 14.–15.12.2026 (FRG261214); Präsenzstandort und Plätze erst bei Auswahl bestätigen.",
     "startDate": "2026-10-22",
     "endDate": "2026-10-23",
+    "sessions": [{"startDate":"2026-10-22","endDate":"2026-10-23","label":"22.–23.10.2026 · FRG261022 · Live-Online","region":"Live-Online (kein Präsenzort)"},{"startDate":"2026-12-14","endDate":"2026-12-15","label":"14.–15.12.2026 · FRG261214 · Live-Online","region":"Live-Online (kein Präsenzort)"}],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
