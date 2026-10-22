@@ -15,7 +15,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git rev-parse HEAD^
+          git rev-parse HEAD
           echo "Data SHA $(git hash-object data.js)"
           echo "Smart SHA $(git hash-object smart-search-data.js)"
           echo "App SHA $(git hash-object app.js)"
