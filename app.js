@@ -1011,21 +1011,23 @@
   const smartBudgetText = (item, parsed) => {
     if (!parsed.budget) return "";
     const status = item.budget.status;
+    const actualCurrency = item.budget.option?.currency;
+    const currencyNote = actualCurrency && actualCurrency !== parsed.budget.currency
+      && ["CHF", "EUR", "USD"].includes(actualCurrency)
+      && ["CHF", "EUR", "USD"].includes(parsed.budget.currency)
+      ? "Währungen EUR/CHF/USD werden für diese Suche vereinfacht 1:1 verglichen; tatsächliche Wechselkurse und Steuern können abweichen."
+      : "";
+    const withCurrencyNote = message => currencyNote ? `${message} ${currencyNote}` : message;
     if (["TARGET_GROUP_FIT", "DIRECT_FIT"].includes(status) && item.budget.amount != null) {
       const rest = Math.max(0, parsed.budget.amount - item.budget.amount);
       const prefix = status === "TARGET_GROUP_FIT" ? "Beim publizierten Journalist:innen-Tarif" : "Bei diesem Preis";
-      const actualCurrency = item.budget.option?.currency;
-      const note = actualCurrency && actualCurrency !== parsed.budget.currency
-        ? " (EUR/CHF/USD für diese Suche vereinfacht 1:1 verglichen; keine Wechselkurszusage)"
-        : "";
-      return `${prefix} bleiben ${parsed.budget.currency} ${rest.toLocaleString("de-CH")}${note}.`;
+      return withCurrencyNote(`${prefix} bleiben ${parsed.budget.currency} ${rest.toLocaleString("de-CH")}.`);
     }
-    if (status === "CONDITIONAL_FIT") return "Der passende Preis gilt nur unter einer veröffentlichten Bedingung; persönliche Berechtigung wurde nicht geprüft.";
-    if (status === "POSSIBLE_FIT") return "Der publizierte Preis könnte ins Budget passen, ist aber nicht sicher als Gesamtpreis nutzbar.";
-    if (status === "OVER_BUDGET") return "Der sicher vergleichbare Preis liegt über dem angegebenen Budget.";
-    return "Für dieses Angebot ist keine sichere Budgetaussage möglich.";
+    if (status === "CONDITIONAL_FIT") return withCurrencyNote("Der passende Preis gilt nur unter einer veröffentlichten Bedingung; persönliche Berechtigung wurde nicht geprüft.");
+    if (status === "POSSIBLE_FIT") return withCurrencyNote("Der publizierte Preis könnte ins Budget passen, ist aber nicht sicher als Gesamtpreis nutzbar.");
+    if (status === "OVER_BUDGET") return withCurrencyNote("Der sicher vergleichbare Preis liegt über dem angegebenen Budget.");
+    return withCurrencyNote("Für dieses Angebot ist keine sichere Budgetaussage möglich.");
   };
-
   const smartCard = (item, parsed, index) => {
     const offer = item.offer;
     const place = [countryDisplay(offer.country), regionDisplay(currentRegion(offer))].filter(Boolean).join(" · ");
