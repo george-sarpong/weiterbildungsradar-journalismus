@@ -96,6 +96,16 @@ jobs:
           console.log('QA09_SEARCH_URL_STATE_PASS');
           await page.locator('#resetFilters').click();
           assert((await page.locator('#searchInput').inputValue())==='','reset failed');
+          const seven=[['focusFilter','focus'],['typeFilter','type'],['priceFilter','price'],['formatFilter','format'],['languageFilter','language'],['countryFilter','country'],['levelFilter','level']];
+          for(const [selector,param] of seven){
+            const values=await page.locator('#'+selector+' option').evaluateAll(nodes=>nodes.map(n=>n.value).filter(Boolean));
+            assert(values.length>0,'no available values '+selector);
+            await page.locator('#'+selector).selectOption(values[0]);
+            assert(new URL(page.url()).searchParams.get(param)===values[0],param+' URL sync failed');
+            assert((await page.locator('#cards article').count())>0,param+' options select no cards');
+            await page.locator('#resetFilters').click();
+          }
+          console.log('QA09_ALL_SEVEN_CLASSIC_FILTERS_PASS');
           await page.locator('#searchInput').fill('Interview');
           const first=page.locator('#cards .favorite-button').first();
           await first.click();
