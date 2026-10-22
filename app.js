@@ -1072,7 +1072,7 @@
       [c.free, "Kostenlos"], [c.low, "Bis 500"], [c.mid, "501–2'000"], [c.high, "Über 2'000"], [c.variable, "Tarife / offen"]
     ];
     el.smartPriceBands.innerHTML = bands.map(([count, label]) => `<div class="price-band"><strong>${count.toLocaleString("de-CH")}</strong><span>${escapeHtml(label)}</span></div>`).join("");
-    if (el.smartPriceNote) el.smartPriceNote.textContent = `Preiskategorien des ${context}; Währungen werden nicht umgerechnet.`;
+    if (el.smartPriceNote) el.smartPriceNote.textContent = `Preiskategorien des ${context}; Budgets in CHF/EUR/USD werden zur Suche vereinfacht 1:1 verglichen. Anbieterpreise bleiben in Originalwährung.`;
   };
 
   const renderSmart = raw => {
@@ -1110,7 +1110,7 @@
 
     const chips = [];
     if (parsed.tokens.length) chips.push(`Thema: ${parsed.tokens.join(" + ")}`);
-    if (parsed.budget) chips.push(`Budget: CHF ${parsed.budget.amount.toLocaleString("de-CH")}`);
+    if (parsed.budget) chips.push(`Budget: ${parsed.budget.currency} ${parsed.budget.amount.toLocaleString("de-CH")}`);
     if (parsed.maxDays) chips.push(`Zeit: ${parsed.maxDays} ${parsed.maxDays === 1 ? "Tag" : "Tage"} · erkannt, nicht angewendet`);
     parsed.deliveryIntents.forEach(intent => chips.push(`Durchführung: ${DELIVERY_INTENT_LABELS[intent] || intent.replaceAll("_", " ")}`));
     if (parsed.freeOnly) chips.push("Nur Angebote mit strukturierter Kostenlos-Option");
