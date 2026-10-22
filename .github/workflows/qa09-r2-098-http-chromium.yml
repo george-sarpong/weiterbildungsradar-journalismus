@@ -1,0 +1,138 @@
+name: QA09 R2_098 PR3 real HTTP Chromium release rehearsal
+on:
+  push:
+    branches:
+      - qa09-r2-098-pr3-http-e2e-20261022
+permissions:
+  contents: read
+jobs:
+  qa09:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ensure copied PR3 blobs and run freeze validator
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rev-parse HEAD^
+          echo "Data SHA $(git hash-object data.js)"
+          echo "Smart SHA $(git hash-object smart-search-data.js)"
+          echo "App SHA $(git hash-object app.js)"
+          test "$(git hash-object data.js)" = "4947fb362c0b62a4b892a68a347f7eff273bbb45"
+          test "$(git hash-object smart-search-data.js)" = "7e8d910a3fb1acac108bd09531aaefa4042d3cbf"
+          test "$(git hash-object app.js)" = "fe04a3ad2646b19f4f29942ec2cba68db4e96c52"
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/qa09-http.log 2>&1 &
+          for x in {1..20}; do curl -fsS http://127.0.0.1:8765/index.html >/dev/null && break || sleep 1; done
+          for f in data.js smart-search-data.js app.js styles.css index.html; do curl -fsS "http://127.0.0.1:8765/$f" -o "/tmp/qa09-$f"; cmp "$f" "/tmp/qa09-$f"; done
+          echo "PR3_BLOBS_AND_REAL_HTTP_BYTE_EQUAL_PASS"
+      - name: Install chromium test harness
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --silent --no-save playwright-core
+          CHROME_PATH="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          echo "CHROME_PATH=$CHROME_PATH" >> "$GITHUB_ENV"
+      - name: Run HTTP origin browser and 116-frozen-roster tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > qa09-116-frozen.json <<'ROSTER'
+          ["V52-MEEL-INSTAGRAM","OFFER-CORSO-001","OFFER-FERNUNI-002","OFFER-HKB-001","OFFER-IFC-005","OFFER-IFC-006","OFFER-IFC-007","OFFER-IFC-008","OFFER-IFC-012","OFFER-IFC-014","OFFER-IFC-020","V79-02","OFFER-NOBLE-004","OFFER-NOBLE-006","OFFER-NOBLE-008","OFFER-NOBLE-013","OFFER-NOBLE-014","OFFER-NOBLE-016","OFFER-NOBLE-020","OFFER-NOBLE-021","OFFER-NOBLE-033","OFFER-NOBLE-035","OFFER-NOBLE-037","OFFER-NOBLE-044","OFFER-NOBLE-057","OFFER-NOBLE-064","OFFER-NOBLE-067","OFFER-ORSYS-006","OFFER-ORSYS-007","OFFER-ORSYS-008","OFFER-ORSYS-009","OFFER-ORSYS-012","OFFER-ORSYS-014","OFFER-ORSYS-020","OFFER-ORSYS-039","OFFER-ORSYS-041","OFFER-ORSYS-042","OFFER-ORSYS-051","OFFER-ORSYS-054","OFFER-ORSYS-057","OFFER-ORSYS-063","OFFER-ORSYS-069","OFFER-ORSYS-070","OFFER-ORSYS-075","OFFER-ORSYS-076","OFFER-ORSYS-078","OFFER-ORSYS-082","OFFER-ORSYS-083","OFFER-ORSYS-088","OFFER-ORSYS-094","OFFER-ORSYS-099","OFFER-ORSYS-103","OFFER-ORSYS-115","OFFER-ORSYS-118","OFFER-ORSYS-120","OFFER-ORSYS-122","OFFER-ORSYS-137","OFFER-ORSYS-138","OFFER-ORSYS-139","OFFER-ORSYS-141","OFFER-ORSYS-143","OFFER-ORSYS-144","OFFER-ORSYS-146","OFFER-ORSYS-151","AT-PROD-OFFER-168","AT-PROD-OFFER-154","OFFER-UZHDSI-001","CAD-002","CAD-018","CAD-025","OFFER-CFJM-007","OFFER-CFJM-008","OFFER-CFJM-013","OFFER-CFJM-014","OFFER-CFJM-015","OFFER-CFJM-016","V82-DAWAN-012","V82-DAWAN-017","V82-DAWAN-029","V82-DAWAN-037","V82-DAWAN-039","V82-DAWAN-094","OFFER-EBU-013","OFFER-EBU-014","OFFER-EBU-015","OFFER-EBU-019","AT-PROD-OFFER-003","AT-PROD-OFFER-209","AT-PROD-OFFER-211","IF-G04","IF-P03","IF-P08","IF-P10","IF-W03","V78-04","OFFER-MAZ-005","OFFER-MAZ-045","OFFER-MAZ-058","OFFER-MAZ-075","OFFER-MAZ-107","OFFER-MAZ-168","OFFER-MAZ-176","OFFER-MAZ-181","OFFER-MAZ-182","PCC-P02","PCC-P03","PCC-P05","PCC-P08","PCC-P16","PCC-P23","PCC-P28","PCC-P32","PCC-P33","PJ-V16-07","V58-S1-07","AT-PROD-OFFER-172"]
+          ROSTER
+          cat > qa09-release-e2e.mjs <<'JS'
+          import assert from 'node:assert/strict';
+          import fs from 'node:fs';
+          import vm from 'node:vm';
+          import { chromium } from 'playwright-core';
+          const frozen = JSON.parse(fs.readFileSync('qa09-116-frozen.json','utf-8'));
+          const scope = { window:{} };
+          vm.runInNewContext(fs.readFileSync('data.js','utf-8'), scope, {filename:'data.js'});
+          vm.runInNewContext(fs.readFileSync('smart-search-data.js','utf-8'), scope, {filename:'smart-search-data.js'});
+          const offers=scope.window.WEITERBILDUNGSRADAR_OFFERS;
+          const sidecar=scope.window.MEDIA_SKILLS_SMART_DATA;
+          assert.equal(frozen.length,116);
+          assert.equal(new Set(frozen).size,116);
+          assert.equal(offers.length,1352);
+          assert.equal(Object.keys(sidecar.byId).length,1352);
+          const ids=new Set(offers.map(x=>x.id));
+          assert.equal(ids.size,1352);
+          frozen.forEach(id=>{assert(ids.has(id),id);assert(sidecar.byId[id],id);});
+          for(const offer of offers){
+            if(offer.startDate && offer.endDate) assert(offer.endDate>=offer.startDate,'negative date '+offer.id);
+            for(const s of offer.sessions||[]){
+              if(s.startDate&&s.endDate) assert(s.endDate>=s.startDate,'negative session '+offer.id);
+            }
+          }
+          const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_PATH,args:['--no-sandbox']});
+          const errors=[];
+          const page=await browser.newPage({viewport:{width:1320,height:850}});
+          page.on('pageerror',e=>errors.push(e.message));
+          await page.goto('http://127.0.0.1:8765/',{waitUntil:'domcontentloaded',timeout:60000});
+          await page.waitForSelector('#cards article[data-offer-id]',{timeout:30000});
+          let shown=await page.locator('#cards article[data-offer-id]').evaluateAll(nodes=>nodes.map(n=>n.dataset.offerId));
+          const map=new Map(offers.map(o=>[o.id,o]));
+          assert(shown.length>600,'unexpected few cards '+shown.length);
+          assert(shown.every(id=>map.get(id)?.publicationStatus!=='HOLD'),'HOLD displayed in classic cards');
+          assert(!shown.includes('PCC-P32'),'PCC-P32 HOLD displayed');
+          assert(!shown.includes('OFFER-CORSO-001'),'archived CORSO shown');
+          assert(!shown.includes('OFFER-FERNUNI-002'),'archived FernUni shown');
+          const now=new Date();now.setHours(0,0,0,0);
+          for(const id of shown){
+            const o=map.get(id);
+            if(Array.isArray(o.sessions)){
+              assert(o.sessions.some(s=>s.startDate&&new Date(s.startDate+'T23:59:59')>=now),'expired sessions visible '+id);
+            }else{
+              const end=o.endDate&&new Date(o.endDate+'T23:59:59');
+              const start=o.startDate&&new Date(o.startDate+'T23:59:59');
+              assert(!end||end>=now,'expired end shown '+id);
+              assert(end||!start||start>=now,'past single-day start shown '+id);
+            }
+          }
+          console.log('QA09_CLASSIC_ACTIVE_HOLD_DATE_PASS',shown.length);
+          await page.locator('#searchInput').fill('Interview');
+          assert((await page.locator('#cards article').count())>0,'search empty unexpectedly');
+          assert(new URL(page.url()).searchParams.get('q')==='Interview','query not reflected in url');
+          console.log('QA09_SEARCH_URL_STATE_PASS');
+          await page.locator('#resetFilters').click();
+          assert((await page.locator('#searchInput').inputValue())==='','reset failed');
+          await page.locator('#searchInput').fill('Interview');
+          const first=page.locator('#cards .favorite-button').first();
+          await first.click();
+          await page.locator('#favoritesToggle').click();
+          assert((await page.locator('#cards article').count())>=1,'favorites not visible');
+          console.log('QA09_FAVORITES_PASS');
+          await page.locator('#favoritesToggle').click();
+          await page.locator('#resetFilters').click();
+          await page.locator('#smartInput').fill('Ich habe CHF 800 und möchte Datenjournalismus lernen');
+          await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+          assert((await page.locator('#smartUnderstood').innerText()).includes('CHF 800'),'smart CHF budget not parsed');
+          assert((await page.locator('#smartResults .smart-result-card').count())<=3,'too many results');
+          assert(!((await page.locator('#smartResults').innerText()).includes('Adobe Photoshop - Professionelle Porträt - Retusche')),'HOLD in smart');
+          console.log('QA09_SMART_CHF_800_PASS');
+          await page.locator('#smartInput').fill('EUR 800 Datenjournalismus');
+          await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+          assert((await page.locator('#smartUnderstood').innerText()).includes('EUR 800'),'EUR budget not parsed');
+          await page.locator('#smartInput').fill('USD 800 Datenjournalismus');
+          await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+          assert((await page.locator('#smartUnderstood').innerText()).includes('USD 800'),'USD budget not parsed');
+          console.log('QA09_CROSS_CURRENCY_PARSE_PASS');
+          await page.goto('http://127.0.0.1:8765/?q=Interview&sort=PROVIDER',{waitUntil:'domcontentloaded'});
+          assert((await page.locator('#searchInput').inputValue())==='Interview','real HTTP deep-link search mismatch');
+          assert((await page.locator('#sortSelect').inputValue())==='PROVIDER','real HTTP deep-link sort mismatch');
+          console.log('QA09_DEEPLINK_PASS');
+          await page.setViewportSize({width:390,height:844});
+          await page.locator('#resetFilters').click();
+          const sw=await page.evaluate(()=>document.documentElement.scrollWidth);
+          assert(sw<=395,'mobile overflow '+sw);
+          assert.equal(errors.length,0,'JS runtime errors '+JSON.stringify(errors));
+          console.log('QA09_MOBILE_BROWSER_ERROR_FREE_PASS');
+          await browser.close();
+          console.log('QA09_R2_098_ALL_ASSERTIONS_PASS');
+          JS
+          node qa09-release-e2e.mjs
+          echo "## QA09 R2_098 HTTP Chromium / frozen PR3" >> "$GITHUB_STEP_SUMMARY"
+          echo "- 116 IDs read from independently frozen Drive 116-sheet" >> "$GITHUB_STEP_SUMMARY"
+          echo "- 1,352 offer + 1,352 Smart records, 0 missing IDs" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Tested real HTTP origin, deep links, filters, favourites, HOLD, dates, budget CHF/EUR/USD, mobile" >> "$GITHUB_STEP_SUMMARY"
+          echo "- This is not a Pages-deployed public-origin E2E and not Strict Source Gate C" >> "$GITHUB_STEP_SUMMARY"
