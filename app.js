@@ -568,18 +568,30 @@
   };
 
   const parseSmartBudget = raw => {
-    const text = String(raw ?? "");
+    const input = String(raw ?? "");
     const patterns = [
-      /\bCHF\s*([0-9][0-9'’.,]*)/i,
-      /\b([0-9][0-9'’.,]*)\s*CHF\b/i,
-      /\b(?:Fr\.?|Franken)\s*([0-9][0-9'’.,]*)/i,
-      /\b([0-9][0-9'’.,]*)\s*(?:Fr\.?|Franken)\b/i
+      { currency: "CHF", match: /\bCHF\s*([0-9][0-9'’.,]*)/i },
+      { currency: "CHF", match: /\b([0-9][0-9'’.,]*)\s*CHF\b/i },
+      { currency: "CHF", match: /\b(?:Fr\.?|Franken)\s*([0-9][0-9'’.,]*)/i },
+      { currency: "CHF", match: /\b([0-9][0-9'’.,]*)\s*(?:Fr\.?|Franken)\b/i },
+      { currency: "EUR", match: /\bEUR\s*([0-9][0-9'’.,]*)/i },
+      { currency: "EUR", match: /\b([0-9][0-9'’.,]*)\s*EUR\b/i },
+      { currency: "EUR", match: /\b(?:Euro|Euros)\s*([0-9][0-9'’.,]*)/i },
+      { currency: "EUR", match: /\b([0-9][0-9'’.,]*)\s*(?:Euro|Euros)\b/i },
+      { currency: "EUR", match: /€\s*([0-9][0-9'’.,]*)/i },
+      { currency: "EUR", match: /([0-9][0-9'’.,]*)\s*€/i },
+      { currency: "USD", match: /\bUSD\s*([0-9][0-9'’.,]*)/i },
+      { currency: "USD", match: /\b([0-9][0-9'’.,]*)\s*USD\b/i },
+      { currency: "USD", match: /\b(?:Dollar|Dollars)\s*([0-9][0-9'’.,]*)/i },
+      { currency: "USD", match: /\b([0-9][0-9'’.,]*)\s*(?:Dollar|Dollars)\b/i },
+      { currency: "USD", match: /\$\s*([0-9][0-9'’.,]*)/i },
+      { currency: "USD", match: /([0-9][0-9'’.,]*)\s*\$/i }
     ];
-    for (const pattern of patterns) {
-      const match = text.match(pattern);
+    for (const { currency, match: pattern } of patterns) {
+      const match = input.match(pattern);
       if (!match) continue;
       const amount = smartNumber(match[1]);
-      if (amount != null) return { amount, currency: "CHF" };
+      if (amount != null) return { amount, currency };
     }
     return null;
   };
@@ -629,10 +641,12 @@
     const deliveryIntents = parseDeliveryIntent(input);
     const freeOnly = SMART_FREE_INTENT_RE.test(input);
     let tokenSource = input
-      .replace(/\bchf\s*[0-9][0-9'’.,]*\b/g, " ")
-      .replace(/\b[0-9][0-9'’.,]*\s*chf\b/g, " ")
-      .replace(/\b(?:fr\.?|franken)\s*[0-9][0-9'’.,]*\b/g, " ")
-      .replace(/\b[0-9][0-9'’.,]*\s*(?:fr\.?|franken)\b/g, " ")
+      .replace(/\b(?:chf|eur|usd)\s*[0-9][0-9'’.,]*\b/g, " ")
+      .replace(/\b[0-9][0-9'’.,]*\s*(?:chf|eur|usd)\b/g, " ")
+      .replace(/\b(?:fr\.?|franken|euro|euros|dollar|dollars)\s*[0-9][0-9'’.,]*\b/g, " ")
+      .replace(/\b[0-9][0-9'’.,]*\s*(?:fr\.?|franken|euro|euros|dollar|dollars)\b/g, " ")
+      .replace(/[€$]\s*[0-9][0-9'’.,]*/g, " ")
+      .replace(/[0-9][0-9'’.,]*\s*[€$]/g, " ")
       .replace(/\b(?:zwei|\d{1,2})\s*(?:tag|tage|tagen)\b/g, " ")
       .replace(/\b(?:rein|vollstandig|vollstaendig|100\s*%)\s+online\b/g, " ")
       .replace(/\bohne\s+prae?senz\b|\bkein(?:e|en)?\s+prae?senz(?:kurs)?\b/g, " ")
@@ -845,7 +859,10 @@
         candidates.push({ status: "PRICE_UNKNOWN", option, amount: null });
         continue;
       }
-      if (option.currency && option.currency !== parsed.budget.currency) {
+      const currencies1to1 = ["CHF", "EUR", "USD"];
+      const comparableCurrency = !option.currency || option.currency === parsed.budget.currency
+        || (currencies1to1.includes(option.currency) && currencies1to1.includes(parsed.budget.currency));
+      if (!comparableCurrency) {
         candidates.push({ status: "PRICE_UNKNOWN", option, amount: null });
         continue;
       }
@@ -997,7 +1014,11 @@
     if (["TARGET_GROUP_FIT", "DIRECT_FIT"].includes(status) && item.budget.amount != null) {
       const rest = Math.max(0, parsed.budget.amount - item.budget.amount);
       const prefix = status === "TARGET_GROUP_FIT" ? "Beim publizierten Journalist:innen-Tarif" : "Bei diesem Preis";
-      return `${prefix} bleiben CHF ${rest.toLocaleString("de-CH")}.`;
+      const actualCurrency = item.budget.option?.currency;
+      const note = actualCurrency && actualCurrency !== parsed.budget.currency
+        ? " (EUR/CHF/USD für diese Suche vereinfacht 1:1 verglichen; keine Wechselkurszusage)"
+        : "";
+      return `${prefix} bleiben ${parsed.budget.currency} ${rest.toLocaleString("de-CH")}${note}.`;
     }
     if (status === "CONDITIONAL_FIT") return "Der passende Preis gilt nur unter einer veröffentlichten Bedingung; persönliche Berechtigung wurde nicht geprüft.";
     if (status === "POSSIBLE_FIT") return "Der publizierte Preis könnte ins Budget passen, ist aber nicht sicher als Gesamtpreis nutzbar.";
