@@ -19,8 +19,8 @@ jobs:
           echo "Data SHA $(git hash-object data.js)"
           echo "Smart SHA $(git hash-object smart-search-data.js)"
           echo "App SHA $(git hash-object app.js)"
-          test "$(git hash-object data.js)" = "4947fb362c0b62a4b892a68a347f7eff273bbb45"
-          test "$(git hash-object smart-search-data.js)" = "7e8d910a3fb1acac108bd09531aaefa4042d3cbf"
+          test "$(git hash-object data.js)" = "31c2732f4e4ad1871ffc4edb37e2d4b282cf6de3"
+          test "$(git hash-object smart-search-data.js)" = "46fef683980967b27c190997a54fdb558bea08ff"
           test "$(git hash-object app.js)" = "fe04a3ad2646b19f4f29942ec2cba68db4e96c52"
           python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/qa09-http.log 2>&1 &
           for x in {1..20}; do curl -fsS http://127.0.0.1:8765/index.html >/dev/null && break || sleep 1; done
@@ -58,6 +58,11 @@ jobs:
           const ids=new Set(offers.map(x=>x.id));
           assert.equal(ids.size,1352);
           frozen.forEach(id=>{assert(ids.has(id),id);assert(sidecar.byId[id],id);});
+          const noble=offers.find(o=>o.id==='OFFER-NOBLE-067');
+          assert(noble.priceDisplay.includes('Teilnehmerzahl'),'NobleProg display not qualified');
+          assert.equal(sidecar.byId['OFFER-NOBLE-067'].priceEligible,false);
+          assert.equal(sidecar.byId['OFFER-NOBLE-067'].priceOptions[0].amountType,'NOT_PUBLISHED');
+          console.log('QA09_NOBLEPROG_VARIABLE_PRICE_GUARD_PASS');
           for(const offer of offers){
             if(offer.startDate && offer.endDate) assert(offer.endDate>=offer.startDate,'negative date '+offer.id);
             for(const s of offer.sessions||[]){

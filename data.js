@@ -10134,7 +10134,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "reviewAfter": "2026-11-25",
     "focus": "MEDIENPRAXIS",
     "offerType": "KURS",
-    "priceDisplay": "CHF 3'472 (Online); CHF 3'972 (Classroom)",
+    "priceDisplay": "Preise abhängig von Teilnehmerzahl und Format; kein allgemein gültiger Einzelpreis. Anbieter-Buchungsmaske am 18.10.2026: Beispiel bei 4 Teilnehmenden Online CHF 1’519 oder Präsenz Basel CHF 1’794 pro Person, jeweils exkl. MWST; für 5 Teilnehmende Offertanfrage. Aktuellen Variantenpreis beim Anbieter bestätigen.",
     "priceCategory": "MEHRERE_TARIFE",
     "format": "PRÄSENZ | ONLINE LIVE",
     "duration": "14 Hours",
