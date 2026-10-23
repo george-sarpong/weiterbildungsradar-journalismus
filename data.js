@@ -1389,7 +1389,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-27",
     "endDate": "2026-10-28",
     "region": "NOT_PUBLISHED",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-MAZ-108",
@@ -2541,7 +2542,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-21",
     "endDate": "2026-10-21",
     "region": "NOT_PUBLISHED",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-MAZ-182",
@@ -2565,7 +2567,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-02",
     "endDate": "2026-11-04",
     "region": "NOT_PUBLISHED",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-MAZ-183",
@@ -2733,6 +2736,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "",
     "endDate": "",
     "region": "NOT_PUBLISHED",
+    "publicationStatus": "HOLD",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -2852,6 +2856,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "22.–23.10.2026 (Kursdetail); weitere Katalogedition 15.–16.04.2027 (beide als separate Durchführungen, nicht Verfügbarkeit)",
     "startDate": "2026-10-22",
     "endDate": "2026-10-23",
+    "sessions": [{"startDate":"2026-10-22","endDate":"2026-10-23","label":"22.–23.10.2026 (Kursdetail)"},{"startDate":"2027-04-15","endDate":"2027-04-16","label":"15.–16.04.2027 (Katalogtermin; Verfügbarkeit prüfen)"}],
     "region": "NOT_PUBLISHED",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
@@ -2873,9 +2878,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "NICHT_PUBLIZIERT",
     "duration": "1 Tag, 09:00–17:00",
-    "start": "22.10.2026",
+    "start": "22.10.2026 (Kursdetail); weitere Katalogausgabe 26.05.2027 (Plätze/Format/Ort nicht gesondert bestätigt)",
     "startDate": "2026-10-22",
     "endDate": "2026-10-22",
+    "sessions": [{"startDate":"2026-10-22","endDate":"2026-10-22","label":"22.10.2026 (Kursdetail)"},{"startDate":"2027-05-26","endDate":"2027-05-26","label":"26.05.2027 (CFJM-Katalog; Plätze nicht bestätigt)"}],
     "region": "NOT_PUBLISHED",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
@@ -2897,9 +2903,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "NICHT_PUBLIZIERT",
     "duration": "5 Tage, 09:00–17:00",
-    "start": "26.10.2026–30.10.2026",
+    "start": "26.–30.10.2026 (Kursdetail); weitere Katalogausgabe 24.–28.05.2027 (Plätze/Format/Ort nicht gesondert bestätigt)",
     "startDate": "2026-10-26",
     "endDate": "2026-10-30",
+    "sessions": [{"startDate":"2026-10-26","endDate":"2026-10-30","label":"26.–30.10.2026 (Kursdetail)"},{"startDate":"2027-05-24","endDate":"2027-05-28","label":"24.–28.05.2027 (CFJM-Katalog; Plätze nicht bestätigt)"}],
     "region": "NOT_PUBLISHED",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
@@ -3425,10 +3432,11 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "ONLINE LIVE",
     "duration": "6 Stunden in drei Sessions",
-    "start": "12.10.2026",
+    "start": "12., 15. und 22.10.2026 (Anmeldeschluss: 09.10.2026; Frist für diese Ausgabe abgelaufen)",
     "startDate": "2026-10-12",
     "endDate": "2026-10-22",
     "region": "Online",
+    "publicationStatus": "HOLD",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -3525,7 +3533,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-22",
     "endDate": "2026-10-23",
     "region": "Porto, Portugal",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-EBU-020",
@@ -8901,7 +8910,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-30",
     "endDate": "",
     "region": "Lausanne (Präsenzoption); Online-Durchführung je Termin",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-NOBLE-005",
@@ -9093,7 +9103,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-30",
     "endDate": "",
     "region": "Basel (Präsenzoption); Online-Durchführung je Termin",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-NOBLE-014",
@@ -9117,7 +9128,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-30",
     "endDate": "",
     "region": "Basel (Präsenzoption); Online-Durchführung je Termin",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-NOBLE-015",
@@ -9189,7 +9201,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-30",
     "endDate": "",
     "region": "Geneva (Präsenzoption); Online-Durchführung je Termin",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-NOBLE-021",
@@ -9405,7 +9418,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-27",
     "endDate": "",
     "region": "Basel (Präsenzoption); Online-Durchführung je Termin",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-NOBLE-034",
@@ -9453,7 +9467,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-30",
     "endDate": "",
     "region": "Geneva (Präsenzoption); Online-Durchführung je Termin",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-NOBLE-036",
@@ -9501,7 +9516,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-24",
     "endDate": "",
     "region": "Lausanne (Präsenzoption); Online-Durchführung je Termin",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-NOBLE-038",
@@ -9645,7 +9661,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-30",
     "endDate": "",
     "region": "Lausanne (Präsenzoption); Online-Durchführung je Termin",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-NOBLE-045",
@@ -9915,24 +9932,24 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-NOBLE-057",
     "provider": "NobleProg Schweiz",
     "title": "Multimodal AI for Content Creation",
-    "description": "(1 Testimonials) Multimodal AI opens up new possibilities for content creation across various media.",
-    "access": "OFFICIAL_PROVIDER_BOOKING_FORM_2026-09-23: NobleProg Switzerland course pages expose participant/client booking form and payment; https://www.nobleprog.ch/",
+    "description": "Praxisorientiertes Live-Training zu multimodaler KI für Text, Bild, Audio und Video. Behandelt kreative Werkzeuge, Storytelling, Musik- und Videoproduktion sowie Authentizität und Urheberrecht.",
+    "access": "Buchung/Anfrage direkt bei NobleProg; offene Schulungen ab 5 Teilnehmenden, Termine und Plätze vorbehaltlich Verfügbarkeit.",
     "level": "BERUFSERFAHRUNG",
     "language": "EN",
     "country": "Schweiz",
-    "url": "https://www.nobleprog.ch/en/cc/multimodalaicc",
+    "url": "https://www.nobleprog.ch/cc/multimodalaicc",
     "approved": "2026-08-14",
     "reviewAfter": "2026-11-09",
     "focus": "MEDIENPRAXIS",
     "offerType": "KURS",
-    "priceDisplay": "CHF 5'208 (Online); CHF 5'958 (Classroom)",
+    "priceDisplay": "CHF 5'208 (Online) oder CHF 5'958 (Schulungsraum) pro Person, exkl. MWST",
     "priceCategory": "MEHRERE_TARIFE",
     "format": "PRÄSENZ | ONLINE LIVE",
     "duration": "21 Hours",
     "start": "30.11.2026 (offizielle Kurs-/Formatvariante)",
     "startDate": "2026-11-30",
     "endDate": "",
-    "region": "Bern (Präsenzoption); Online-Durchführung je Termin",
+    "region": "Bern (30.11.2026), Basel (14.12.2026), Genf (28.12.2026), Lausanne (11.01.2027) als Präsenzoption; Online je Termin",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10114,17 +10131,18 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "country": "Schweiz",
     "url": "https://www.nobleprog.ch/en/cc/stdata",
     "approved": "2026-08-14",
-    "reviewAfter": "2027-02-14",
+    "reviewAfter": "2026-11-25",
     "focus": "MEDIENPRAXIS",
     "offerType": "KURS",
-    "priceDisplay": "CHF 3'472 (Online); CHF 3'972 (Classroom)",
+    "priceDisplay": "Preise abhängig von Teilnehmerzahl und Format; kein allgemein gültiger Einzelpreis. Anbieter-Buchungsmaske am 18.10.2026: Beispiel bei 4 Teilnehmenden Online CHF 1’519 oder Präsenz Basel CHF 1’794 pro Person, jeweils exkl. MWST; für 5 Teilnehmende Offertanfrage. Aktuellen Variantenpreis beim Anbieter bestätigen.",
     "priceCategory": "MEHRERE_TARIFE",
     "format": "PRÄSENZ | ONLINE LIVE",
     "duration": "14 Hours",
-    "start": "Nächster Termin nicht publiziert (letzte belegte Durchführungen 2026 bereits vergangen)",
-    "startDate": "",
+    "start": "Nächster auf der offiziellen Schweizer Kursseite gelisteter Start: 26.11.2026, 09:30 Uhr, Basel (Online- oder Classroom-Tarif). Weitere gelistete Termine: 10.12.2026 Genf, 24.12.2026 Lausanne und 07.01.2027 Zürich; konkrete Plätze und Unterrichtsadresse beim Anbieter bestätigen.",
+    "startDate": "2026-11-26",
     "endDate": "",
-    "region": "Schweiz / Live-Online; konkreter Präsenzort je Durchführung",
+    "sessions": [{"startDate":"2026-11-26","endDate":"","label":"26.11.2026, 09:30 · Basel oder Live-Online","region":"Basel (angeboten) / Live-Online; genaue Präsenzadresse prüfen"},{"startDate":"2026-12-10","endDate":"","label":"10.12.2026, 09:30 · Genf oder Live-Online","region":"Genf (angeboten) / Live-Online; genaue Präsenzadresse prüfen"},{"startDate":"2026-12-24","endDate":"","label":"24.12.2026, 09:30 · Lausanne oder Live-Online","region":"Lausanne (angeboten) / Live-Online; genaue Präsenzadresse prüfen"},{"startDate":"2027-01-07","endDate":"","label":"07.01.2027, 09:30 · Zürich oder Live-Online","region":"Zürich (angeboten) / Live-Online; genaue Präsenzadresse prüfen"}],
+    "region": "Kursliste 26.11.2026: Basel (angebotener Standort) oder Live-Online; genaue Präsenzadresse dieser Durchführung nicht publiziert.",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10268,14 +10286,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-003",
     "provider": "ORSYS Training Schweiz",
     "title": "Adobe Audition, maîtriser l'audio professionnel",
-    "description": "Adobe Audition, maîtriser l'audio professionnel Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Adobe Audition, maîtriser l'audio professionnel Formation pratique - 2j - 14h00 - Réf. AAC Prix : 1380 CHF H.T. Adobe Audition, maîtriser l'audio professionnel Dans cette formation spécialisée, vous serez guidé à travers une ex",
+    "description": "Professionelle Audiobearbeitung mit Adobe Audition.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -10292,14 +10310,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "19.11.2026",
     "startDate": "2026-11-19",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-005",
     "provider": "ORSYS Training Schweiz",
     "title": "Adobe Express : booster sa communication visuelle",
-    "description": "Adobe Express : booster sa communication visuelle Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Adobe Express : booster sa communication visuelle Formation pratique - 1j - 7h00 - Réf. AEX Prix : 840 CHF H.T. Adobe Express : booster sa communication visuelle 4,8 / 5 Apprenez à utiliser les fonctionnalités intuitives d'Ad",
+    "description": "Visuelle Inhalte mit Adobe Express gestalten.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -10323,8 +10341,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-006",
     "provider": "ORSYS Training Schweiz",
     "title": "Adobe Illustrator, perfectionnement",
-    "description": "Adobe Illustrator, perfectionnement Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Adobe Illustrator, perfectionnement Formation pratique - 2j - 14h00 - Réf. ICR Prix : 1380 CHF H.T. Adobe Illustrator, perfectionnement 4,7 / 5 Cette formation de perfectionnement sur Illustrator vous exposera les outils de dessin vectorie",
-    "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
+    "description": "Zweitägiger Illustrator-Vertiefungskurs (14 Stunden) zu Vektorgrafik, Mustern, Masken, 3D-Effekten, KI-Funktionen und Export für Druck und Web. Grundkenntnisse in Illustrator erforderlich. TOSA-Zertifizierung optional und separat.",
+    "access": "ORSYS Suisse: Anmeldung spätestens 24 Stunden vor Kursbeginn abschließen; keine Platzbestätigung aus der Kursliste.",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
     "country": "Schweiz",
@@ -10337,8 +10355,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "ONLINE LIVE",
     "duration": "2j - 14h00",
-    "start": "25.03.2027 (offizielle Kurs-/Formatvariante)",
-    "startDate": "2027-03-25",
+    "start": "14.12.2026 (Live-Online-Option laut ORSYS Suisse; Platz nicht bestätigt)",
+    "startDate": "2026-12-14",
     "endDate": "",
     "region": "Online",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
@@ -10347,8 +10365,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-007",
     "provider": "ORSYS Training Schweiz",
     "title": "Adobe Illustrator, prise en main",
-    "description": "Adobe Illustrator, prise en main Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Adobe Illustrator, prise en main Formation pratique - 3j - 21h00 - Réf. ICN Prix : 1720 CHF H.T. Adobe Illustrator, prise en main 4,4 / 5 Cette formation vous accompagnera dans la prise en main des fonctionnalités fondamentales d'Illustrator.",
-    "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
+    "description": "Dreitägiger Illustrator-Einstiegskurs (21 Stunden) zu Vektorzeichnungen, Grafiken, Layout und Export für Druck und Web. Vorausgesetzt werden Grundkenntnisse in Windows. TOSA-Zertifizierung optional und separat.",
+    "access": "ORSYS Suisse: Anmeldung spätestens 24 Stunden vor Kursbeginn abschließen; keine Platzbestätigung aus der Kursliste.",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
     "country": "Schweiz",
@@ -10361,8 +10379,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "ONLINE LIVE",
     "duration": "3j - 21h00",
-    "start": "15.02.2027 (offizielle Kurs-/Formatvariante)",
-    "startDate": "2027-02-15",
+    "start": "02.12.2026 (Live-Online-Option laut ORSYS Suisse; Platz nicht bestätigt)",
+    "startDate": "2026-12-02",
     "endDate": "",
     "region": "Online",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
@@ -10371,8 +10389,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-008",
     "provider": "ORSYS Training Schweiz",
     "title": "Adobe InDesign, perfectionnement",
-    "description": "Adobe InDesign, perfectionnement Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Adobe InDesign, perfectionnement Formation pratique - 2j - 14h00 - Réf. IDP Prix : 1380 CHF H.T. Adobe InDesign, perfectionnement 4,4 / 5 Lors de cette formation, vous affinerez vos compétences en InDesign, le logiciel de PAO polyvalent dédié",
-    "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
+    "description": "Zweitägiger InDesign-Vertiefungskurs (14 Stunden) zu Layout, Absatzformaten, Buchfunktion und Export für gedruckte und digitale Publikationen. InDesign-Grundkenntnisse nötig. Schweizer Durchführungstermin und genauer Präsenzort sind nicht publiziert.",
+    "access": "ORSYS Suisse: Anmeldung spätestens 24 Stunden vor Kursbeginn abschließen; keine Platzbestätigung aus der Kursliste.",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
     "country": "Schweiz",
@@ -10388,15 +10406,15 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Nächster Termin nicht publiziert (bisher 05.10.2026)",
     "startDate": "",
     "endDate": "",
-    "region": "Präsenzkurs; konkreter Unterrichtsort nicht publiziert. Distanz-/Inhouse-Variante nur auf Anfrage, keine bestätigte Online-Session.",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung)",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-009",
     "provider": "ORSYS Training Schweiz",
     "title": "Adobe InDesign, prise en main",
-    "description": "Adobe InDesign, prise en main Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Adobe InDesign, prise en main Formation pratique - 3j - 21h00 - Réf. IDM Prix : 1630 CHF H.T. Adobe InDesign, prise en main 4,9 / 5 Plongez dans l'univers dynamique d'InDesign dans la création d'œuvres variées : affiches, dépliants, journaux et",
-    "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
+    "description": "Dreitägiger InDesign-Einstiegskurs (21 Stunden) für Layout, Text- und Bildgestaltung sowie gedruckte und digitale Publikationen. Die datierten Schweizer Kursoptionen sind Live-Online; TOSA-Zertifizierung ist optional.",
+    "access": "ORSYS Suisse: Anmeldung spätestens 24 Stunden vor Kursbeginn abschließen; keine Platzbestätigung aus der Kursliste.",
     "level": "EINSTIEG",
     "language": "FR",
     "country": "Schweiz",
@@ -10409,7 +10427,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "ONLINE LIVE",
     "duration": "3j - 21h00",
-    "start": "16.12.2026 (offizielle Kurs-/Formatvariante)",
+    "start": "16.12.2026 (Live-Online-Option laut ORSYS Suisse; Platz nicht bestätigt)",
     "startDate": "2026-12-16",
     "endDate": "",
     "region": "Online",
@@ -10436,14 +10454,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "01.07.2027",
     "startDate": "2027-07-01",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-011",
     "provider": "ORSYS Training Schweiz",
     "title": "Adobe Photoshop, perfectionnement",
-    "description": "Adobe Photoshop, perfectionnement Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Adobe Photoshop, perfectionnement Formation pratique - 2j - 14h00 - Réf. PCT Prix : 1380 CHF H.T. Adobe Photoshop, perfectionnement 4,6 / 5 Photoshop est un logiciel de retouche, de traitement et de dessin assisté par ordinateur. Vous y déco",
+    "description": "Photoshop-Kenntnisse für anspruchsvollere Bildbearbeitung vertiefen.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -10460,14 +10478,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "10.12.2026",
     "startDate": "2026-12-10",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-012",
     "provider": "ORSYS Training Schweiz",
     "title": "Adobe Photoshop, prise en main",
-    "description": "Adobe Photoshop, prise en main Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Adobe Photoshop, prise en main Formation pratique - 3j - 21h00 - Réf. PCM Prix : 1540 CHF H.T. Adobe Photoshop, prise en main 4,6 / 5 Photoshop est un logiciel de retouche, de traitement et de dessin assisté par ordinateur. Vous vous initierez",
+    "description": "Photoshop-Einstieg für die Bildbearbeitung: Farbanpassungen, Ebenen, Dateiformate und Export für Web und Print. Die TOSA-Prüfung ist optional.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -10491,7 +10509,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-013",
     "provider": "ORSYS Training Schweiz",
     "title": "Adobe Premiere Pro, montage et compression vidéo",
-    "description": "Adobe Premiere Pro, montage et compression vidéo Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Adobe Premiere Pro, montage et compression vidéo Formation pratique - 3j - 21h00 - Réf. DEO Prix : 1630 CHF H.T. Adobe Premiere Pro, montage et compression vidéo 4,7 / 5 Vous aurez les connaissances nécessaires pour utiliser A",
+    "description": "Videomontage und Export mit Adobe Premiere Pro.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -10508,14 +10526,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-014",
     "provider": "ORSYS Training Schweiz",
     "title": "Adobe Premiere Pro, techniques avancées de montage et postproduction",
-    "description": "Adobe Premiere Pro, techniques avancées de montage et postproduction Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Adobe Premiere Pro, techniques avancées de montage et postproduction Formation pratique - 2j - 14h00 - Réf. APN Prix : 1380 CHF H.T. Adobe Premiere Pro, techniques avancées de montage et postproduction 4,9",
+    "description": "Fortgeschrittener Videoschnitt mit Adobe Premiere Pro: Montage, Audiomischung, Masken und Farbkorrektur für audiovisuelle Produktionen.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -10556,7 +10574,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "13.01.2027",
     "startDate": "2027-01-13",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10580,15 +10598,15 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "23.11.2026",
     "startDate": "2026-11-23",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-020",
     "provider": "ORSYS Training Schweiz",
     "title": "Adobe® After Effects, perfectionnement",
-    "description": "Adobe® After Effects, perfectionnement Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Adobe® After Effects, perfectionnement Formation pratique - 5j - 35h00 - Réf. AFE Prix : 2320 CHF H.T. Adobe® After Effects, perfectionnement 4,5 / 5 After Effects est à l'origine un logiciel de montage vidéo et qui est devenu un outil",
-    "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
+    "description": "Fortgeschrittene Adobe-After-Effects-Praxis für Medien- und Videoproduktion: komplexe 3D-Animationen und Kompositionen gestalten, Expressions und Partikeleffekte nutzen, Plug-ins einsetzen und Rendering optimieren.",
+    "access": "Anmeldung beim Anbieter; spätestens 24 Stunden vor Kursbeginn abzuschliessen. Nächste Schweizer Ausgabe und Plätze auf Anfrage.",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
     "country": "Schweiz",
@@ -10599,19 +10617,19 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "offerType": "KURS",
     "priceDisplay": "CHF 2'360 H.T. (exkl. MWST)",
     "priceCategory": "UEBER_2000",
-    "format": "PRÄSENZ|ONLINE LIVE",
+    "format": "PRÄSENZ",
     "duration": "5j - 35h00",
-    "start": "Nächster Termin nicht publiziert (bisher 28.09.2026)",
+    "start": "Nächster Schweizer Durchführungstermin nicht publiziert",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche ORSYS-Präsenzstandorte; genaue Ausgabe und Ort bei Anmeldung)",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-021",
     "provider": "ORSYS Training Schweiz",
     "title": "Adobe® After Effects, prise en main",
-    "description": "Adobe® After Effects, prise en main Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Adobe® After Effects, prise en main Formation pratique - 4j - 28h00 - Réf. AFT Prix : 1940 CHF H.T. Adobe® After Effects, prise en main 4,7 / 5 Vous apprendrez à utiliser le logiciel After Effects pour créer, à partir de différentes source",
+    "description": "Grundlagen für Animationen und Effekte mit Adobe After Effects.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -10628,14 +10646,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-022",
     "provider": "ORSYS Training Schweiz",
     "title": "Agile UX, faire cohabiter la démarche UX et les cycles Agile",
-    "description": "Agile UX, faire cohabiter la démarche UX et les cycles Agile Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Agile UX, faire cohabiter la démarche UX et les cycles Agile Démarche d’intégration de l’UX en projet Agile Scrum Formation pratique - 2j - 14h00 - Réf. UXG Prix : 2790 CHF H.T. Agile UX, faire cohabiter la démarch",
+    "description": "Agile Methoden und UX-Arbeit in gemeinsamen Produktprozessen verbinden.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -10659,7 +10677,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-023",
     "provider": "ORSYS Training Schweiz",
     "title": "Analyse et ergonomie des IHM logicielles",
-    "description": "Analyse et ergonomie des IHM logicielles Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Analyse et ergonomie des IHM logicielles Formation pratique - 2j - 14h00 - Réf. AIL Prix : 1540 CHF H.T. Analyse et ergonomie des IHM logicielles 4,4 / 5 Qu’il s’agisse d’écrans directement intégrés aux machines, d’écrans d’ordinateur",
+    "description": "Software-Oberflächen unter Gesichtspunkten von Analyse und Ergonomie betrachten.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -10676,7 +10694,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10700,7 +10718,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "04.11.2027",
     "startDate": "2027-11-04",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10724,14 +10742,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "21.10.2026",
     "startDate": "2026-10-21",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-027",
     "provider": "ORSYS Training Schweiz",
     "title": "Big data, analyse, data visualisation et data storytelling",
-    "description": "Big data, analyse, data visualisation et data storytelling Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Big data, analyse, data visualisation et data storytelling Formation pratique - 3j - 21h00 - Réf. YJB Prix : 2360 CHF H.T. Big data, analyse, data visualisation et data storytelling 4,3 / 5 Cette formation vous perme",
+    "description": "Grosse Datenbestände analysieren, visualisieren und als Data Story aufbereiten.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -10748,7 +10766,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10772,14 +10790,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "30.11.2026",
     "startDate": "2026-11-30",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-032",
     "provider": "ORSYS Training Schweiz",
     "title": "Canva - perfectionnement",
-    "description": "Canva - perfectionnement Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Canva - perfectionnement Formation pratique - 1j - 7h00 - Réf. NVB Prix : 910 CHF H.T. Canva - perfectionnement 4,4 / 5 Cette formation permet aux utilisateurs expérimentés de Canva de passer à un niveau de maîtrise avancé, en développant des support",
+    "description": "Fortgeschrittene Gestaltung mit Canva.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -10796,14 +10814,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-033",
     "provider": "ORSYS Training Schweiz",
     "title": "Canva : maîtriser les outils de création visuelle",
-    "description": "Canva : maîtriser les outils de création visuelle Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Canva : maîtriser les outils de création visuelle Formation pratique - 2j - 14h00 - Réf. NVA Prix : 1380 CHF H.T. Canva : maîtriser les outils de création visuelle 4,6 / 5 Cette formation vous permettra de créer des contenus",
+    "description": "Visuelle Inhalte mit den Gestaltungswerkzeugen von Canva erstellen.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -10820,7 +10838,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10844,14 +10862,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-039",
     "provider": "ORSYS Training Schweiz",
     "title": "Concevoir des contenus web et éditoriaux accessibles",
-    "description": "Concevoir des contenus web et éditoriaux accessibles Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Concevoir des contenus web et éditoriaux accessibles Examen de certification DiGiTT® à distance, en option Formation pratique - 2j - 14h00 - Réf. CED Prix : 1590 CHF H.T. Concevoir des contenus web et éditoriaux accessible",
+    "description": "Barrierefreie Web- und redaktionelle Inhalte gestalten: Textalternativen, Untertitel, Audiodeskription und zugängliche Tabellen. Die DiGiTT-Prüfung ist optional.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -10885,13 +10903,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "reviewAfter": "2027-03-11",
     "focus": "MEDIENPRAXIS",
     "offerType": "KURS",
-    "priceDisplay": "INTER (offener Kurs): CHF 1'640 H.T. / exkl. Steuer gemäss Schweizer Kurskarte vom 16.10.2026. INTRA (Firmenschulung): Preis auf Anfrage. SUR MESURE (individuelle Schulung): Preis auf Anfrage. Frühere abweichende CHF-1'610-Angabe nicht auf die drei Varianten übertragen.",
-    "priceCategory": "PREIS_AUF_ANFRAGE",
+    "priceDisplay": "INTER (offener Kurs): CHF 1'640 H.T. / exkl. Steuer gemäss Schweizer Kurskarte vom 16.10.2026. INTRA (Firmenschulung): Offerte erforderlich. SUR MESURE (individuelle Schulung): Offerte erforderlich. Frühere abweichende CHF-1'610-Angabe nicht auf die drei Varianten übertragen.",
+    "priceCategory": "MEHRERE_TARIFE",
     "format": "PRÄSENZ|ONLINE LIVE",
     "duration": "INTER und INTRA: 2 Tage / 14 Stunden; SUR MESURE: individuelle Dauer, nicht ausgewiesen.",
     "start": "INTER (Classe à distance): 01.–02.04.2027; weitere Online-Termine 01.–02.07., 06.–07.09. und 16.–17.12.2027. INTRA / SUR MESURE: auf Anfrage, keine öffentlichen Fixtermine.",
     "startDate": "2027-04-01",
     "endDate": "2027-04-02",
+    "sessions": [{"startDate":"2027-04-01","endDate":"2027-04-02","label":"01.–02.04.2027 · Live-Online","region":"Live-Online; kein Präsenzort für INTER-Ausgabe"},{"startDate":"2027-07-01","endDate":"2027-07-02","label":"01.–02.07.2027 · Live-Online","region":"Live-Online; kein Präsenzort für INTER-Ausgabe"},{"startDate":"2027-09-06","endDate":"2027-09-07","label":"06.–07.09.2027 · Live-Online","region":"Live-Online; kein Präsenzort für INTER-Ausgabe"},{"startDate":"2027-12-16","endDate":"2027-12-17","label":"16.–17.12.2027 · Live-Online","region":"Live-Online; kein Präsenzort für INTER-Ausgabe"}],
     "region": "INTER: vier veröffentlichte Termine als Classe à distance (online); kein Präsenzort für diese Termine. INTRA: beim Kunden, bei ORSYS oder online, konkreter Ort nach Offerte. SUR MESURE: Ort nach Offerte; kein Durchführungsort belegt.",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
@@ -10899,8 +10918,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-042",
     "provider": "ORSYS Training Schweiz",
     "title": "Créer des publications avec InDesign, PhotoShop et Illustrator",
-    "description": "Créer des publications avec InDesign, PhotoShop et Illustrator Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Créer des publications avec InDesign, PhotoShop et Illustrator Formation pratique - 5j - 35h00 - Réf. ROF Prix : 2320 CHF H.T. Créer des publications avec InDesign, PhotoShop et Illustrator 5 / 5 Cette formation",
-    "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
+    "description": "Fünftägiger Kurs (35 Stunden) zur Erstellung von Publikationen mit InDesign, Photoshop und Illustrator. Die datierten Schweizer Kursoptionen sind Live-Online; ein ergänzendes Blended-Modul kostet separat CHF 390 H.T.",
+    "access": "ORSYS Suisse: Anmeldung spätestens 24 Stunden vor Kursbeginn abschließen; keine Platzbestätigung aus der Kursliste.",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
     "country": "Schweiz",
@@ -10913,8 +10932,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "UEBER_2000",
     "format": "ONLINE LIVE",
     "duration": "5j - 35h00",
-    "start": "14.06.2027 (offizielle Kurs-/Formatvariante)",
-    "startDate": "2027-06-14",
+    "start": "07.12.2026 (Live-Online-Option laut ORSYS Suisse; Platz nicht bestätigt)",
+    "startDate": "2026-12-07",
     "endDate": "",
     "region": "Online",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
@@ -10923,7 +10942,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-043",
     "provider": "ORSYS Training Schweiz",
     "title": "Créer des vidéos avec l’IA : avatars, voix, scènes",
-    "description": "Créer des vidéos avec l’IA : avatars, voix, scènes Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Créer des vidéos avec l’IA : avatars, voix, scènes Créez des vidéos pros avec l’IA, même sans compétences techniques Formation pratique - 1j - 7h00 - Réf. YIA Prix : 850 CHF H.T. Créer des vidéos avec l’IA : avatars, voix, s",
+    "description": "Videos mit KI-Werkzeugen für Avatare, Stimmen und Bilder gestalten.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -10940,14 +10959,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-044",
     "provider": "ORSYS Training Schweiz",
     "title": "Créer des visuels avec Affinity - logiciel unifié (vecteur, pixel, mise en page)",
-    "description": "Créer des visuels avec Affinity - logiciel unifié (vecteur, pixel, mise en page) Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Créer des visuels avec Affinity - logiciel unifié (vecteur, pixel, mise en page) Formation pratique - 3j - 21h00 - Réf. VAF Prix : 1630 CHF H.T. Créer des visuels avec Affinity - logiciel unifié",
+    "description": "Visuelle Gestaltung mit der Affinity-Software.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -10964,7 +10983,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -10988,7 +11007,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "29.10.2026",
     "startDate": "2026-10-29",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11012,14 +11031,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-047",
     "provider": "ORSYS Training Schweiz",
     "title": "Créer un podcast pour son entreprise",
-    "description": "Créer un podcast pour son entreprise Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Créer un podcast pour son entreprise Formation pratique - 3j - 21h00 - Réf. POD Prix : 2110 CHF H.T. Créer un podcast pour son entreprise L'objectif de cette formation est de vous permettre de créer concrètement une chaîne de podcasts pou",
+    "description": "Einen Unternehmenspodcast konzipieren und produzieren.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -11036,7 +11055,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11060,14 +11079,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "19.10.2026",
     "startDate": "2026-10-19",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-049",
     "provider": "ORSYS Training Schweiz",
     "title": "Data visualisation, concepts et enjeux",
-    "description": "Data visualisation, concepts et enjeux Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Data visualisation, concepts et enjeux Cours de synthèse - 1j - 7h00 - Réf. DFR Prix : 990 CHF H.T. Data visualisation, concepts et enjeux Ce séminaire vous présentera les règles à respecter pour créer des graphiques pertinents. Vous dé",
+    "description": "Grundlagen und Einsatzmöglichkeiten der Datenvisualisierung.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -11084,14 +11103,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-050",
     "provider": "ORSYS Training Schweiz",
     "title": "Dataviz : l'art de représenter visuellement les données",
-    "description": "Dataviz : l'art de représenter visuellement les données Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Dataviz : l'art de représenter visuellement les données Appréhender la culture de la donnée à travers la visualisation Formation pratique - 3j - 21h00 - Réf. DTZ Prix : 1940 CHF H.T. Dataviz : l'art de représenter visue",
+    "description": "Daten visuell aufbereiten und als Geschichte vermitteln.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -11115,7 +11134,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-051",
     "provider": "ORSYS Training Schweiz",
     "title": "DaVinci Resolve, maîtrise de l’étalonnage couleur",
-    "description": "DaVinci Resolve, maîtrise de l’étalonnage couleur Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : DaVinci Resolve, maîtrise de l’étalonnage couleur Formation pratique - 2j - 14h00 - Réf. DVA Prix : 1380 CHF H.T. DaVinci Resolve, maîtrise de l’étalonnage couleur 5 / 5 Boostez l’impact visuel de vos vidéos grâce à notre for",
+    "description": "Farbkorrektur und Colorgrading mit DaVinci Resolve für Videoformate und den Export für TV und Web.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -11139,7 +11158,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-052",
     "provider": "ORSYS Training Schweiz",
     "title": "DaVinci Resolve, postproduction vidéo",
-    "description": "DaVinci Resolve, postproduction vidéo Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : DaVinci Resolve, postproduction vidéo Formation pratique - 3j - 21h - Réf. DVR Prix : 1660 CHF H.T. DaVinci Resolve, postproduction vidéo Blackmagic DaVinci Resolve est un logiciel de post-production professionnel utilisé par les plus gr",
+    "description": "Videopostproduktion mit DaVinci Resolve.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -11156,14 +11175,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "14.06.2027",
     "startDate": "2027-06-14",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-053",
     "provider": "ORSYS Training Schweiz",
     "title": "Design et ergonomie des IHM logicielles",
-    "description": "Design et ergonomie des IHM logicielles Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Design et ergonomie des IHM logicielles Formation pratique - 5j - 35h00 - Réf. DHM Prix : 3070 CHF H.T. Design et ergonomie des IHM logicielles 4,8 / 5 L’expérience utilisateur est l’inévitable base du processus de transformation numér",
+    "description": "Gestaltung und Ergonomie von Software-Oberflächen.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -11180,7 +11199,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11205,7 +11224,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-12-03",
     "endDate": "",
     "region": "Online – Classe à distance (Ausgabe 03.12.2026; kein physischer Kursort)",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-055",
@@ -11228,14 +11248,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "16.09.2027",
     "startDate": "2027-09-16",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-057",
     "provider": "ORSYS Training Schweiz",
     "title": "Drupal 7, gérer son CMS",
-    "description": "Drupal 7, gérer son CMS Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Drupal 7, gérer son CMS Formation pratique - 3j - 21h00 - Réf. DRU Prix : 2140 CHF H.T. Drupal 7, gérer son CMS Vous apprendrez à créer, gérer et administrer le contenu d'un site en utilisant Drupal. Vous verrez comment organiser les contenus rédactio",
+    "description": "Kurs zu «Drupal 7, gérer son CMS».",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -11253,13 +11273,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-12-09",
     "endDate": "",
     "region": "Online",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-058",
     "provider": "ORSYS Training Schweiz",
     "title": "Drupal, créer et administrer un site de gestion de contenu, préparation à la certification",
-    "description": "Drupal, créer et administrer un site de gestion de contenu, préparation à la certification Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Drupal, créer et administrer un site de gestion de contenu, préparation à la certification Examen de certification à distance, en option Formation pratique - 3j - 21h00 - Réf. UPA Prix",
+    "description": "Ein Drupal-basiertes Content-Management-System erstellen und administrieren.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -11301,7 +11322,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-17",
     "endDate": "2026-11-20",
     "region": "Online – Classe à distance (17.–20.11.2026; kein physischer Kursort für diese Ausgabe)",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-064",
@@ -11324,14 +11346,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "03.11.2026",
     "startDate": "2026-11-03",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-065",
     "provider": "ORSYS Training Schweiz",
     "title": "Emailings et newsletters, concevoir et mettre en œuvre des campagnes",
-    "description": "Emailings et newsletters, concevoir et mettre en œuvre des campagnes Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Emailings et newsletters, concevoir et mettre en œuvre des campagnes Examen de certification DiGiTT® à distance, en option Formation pratique - 2j - 14h00 - Réf. NEW Prix : 1540 CHF H.T. Emailings et newsle",
+    "description": "E-Mailings und Newsletter konzipieren und umsetzen.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -11348,14 +11370,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-066",
     "provider": "ORSYS Training Schweiz",
     "title": "Ergonomie des applications et sites mobiles, améliorer l'expérience utilisateur",
-    "description": "Ergonomie des applications et sites mobiles, améliorer l'expérience utilisateur Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Ergonomie des applications et sites mobiles, améliorer l'expérience utilisateur Examen de certification DiGiTT® à distance, en option Formation pratique - 2j - 14h00 - Réf. EGO Prix : 1540 CHF H.",
+    "description": "Ergonomie von mobilen Apps und Websites beurteilen.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -11396,7 +11418,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11420,14 +11442,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-069",
     "provider": "ORSYS Training Schweiz",
     "title": "Fact-checking : analyser et authentifier l'information",
-    "description": "Fact-checking : analyser et authentifier l'information Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Fact-checking : analyser et authentifier l'information Méthodes et outils pour déjouer les pièges de la désinformation Formation pratique - 3j - 21h00 - Réf. FCK Prix : 1640 CHF H.T. Fact-checking : analyser et authentif",
+    "description": "Fact-Checking mit Quellenprüfung, Bild- und Videoverifikation, Metadaten, Geolokalisierung und Prüfung KI-generierter Inhalte.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -11475,7 +11497,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-071",
     "provider": "ORSYS Training Schweiz",
     "title": "Final Cut Pro X, les bases du montage vidéo",
-    "description": "Final Cut Pro X, les bases du montage vidéo Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Final Cut Pro X, les bases du montage vidéo Formation pratique - 3j - 21h00 - Réf. TCU Prix : 1630 CHF H.T. Final Cut Pro X, les bases du montage vidéo Vous réaliserez des montages vidéo non linéaire avec Final Cut Pro. Vous appren",
+    "description": "Videoschnitt mit Final Cut Pro X erlernen.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -11492,7 +11514,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11516,14 +11538,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-073",
     "provider": "ORSYS Training Schweiz",
     "title": "Gagner en efficacité rédactionnelle avec l'IA",
-    "description": "Gagner en efficacité rédactionnelle avec l'IA Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Gagner en efficacité rédactionnelle avec l'IA Formation pratique - 2j - 14h00 - Réf. EPI Prix : 1540 CHF H.T. Gagner en efficacité rédactionnelle avec l'IA 4,4 / 5 Cette formation vous permettra de révolutionner votre façon de ré",
+    "description": "KI-Werkzeuge für redaktionelle Arbeitsabläufe einsetzen.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -11540,7 +11562,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11564,7 +11586,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11613,7 +11635,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-12-03",
     "endDate": "",
     "region": "Online – Classe à distance (Ausgabe 03.12.2026; kein physischer Kursort)",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-078",
@@ -11637,7 +11660,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-18",
     "endDate": "",
     "region": "Online – Classe à distance (Ausgabe 18.11.2026; kein physischer Kursort)",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-079",
@@ -11660,14 +11684,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "07.10.2026",
     "startDate": "2026-10-07",
     "endDate": "2026-10-07",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-080",
     "provider": "ORSYS Training Schweiz",
     "title": "IA et médias sociaux : industrialiser sa production de contenus",
-    "description": "IA et médias sociaux : industrialiser sa production de contenus Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : IA et médias sociaux : industrialiser sa production de contenus Concevoir des workflows, créer des contenus et structurer une méthode durable. Formation pratique - 2j - 14h00 - Réf. MDJ Prix : 1570 CHF H.T. IA e",
+    "description": "KI-Werkzeuge und Abläufe für die Produktion von Social-Media-Inhalten.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -11691,7 +11715,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-081",
     "provider": "ORSYS Training Schweiz",
     "title": "Initiation à la PAO : InDesign, Photoshop, Illustrator",
-    "description": "Initiation à la PAO : InDesign, Photoshop, Illustrator Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Initiation à la PAO : InDesign, Photoshop, Illustrator découverte de la suite Adobe® Formation pratique - 4j - 28h00 - Réf. PAU Prix : 1940 CHF H.T. Initiation à la PAO : InDesign, Photoshop, Illustrator découverte de la",
+    "description": "Einstieg in die digitale Seitengestaltung mit InDesign, Photoshop und Illustrator.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -11708,14 +11732,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-082",
     "provider": "ORSYS Training Schweiz",
     "title": "Intégrer l’IA et le GEO dans sa stratégie de contenu",
-    "description": "Intégrer l’IA et le GEO dans sa stratégie de contenu Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Intégrer l’IA et le GEO dans sa stratégie de contenu Formation pratique - 2j - 14h00 - Réf. IEO Prix : 1590 CHF H.T. Intégrer l’IA et le GEO dans sa stratégie de contenu Cette formation vous permet d’améliorer la visibilit",
+    "description": "Kurs zu «Intégrer l’IA et le GEO dans sa stratégie de contenu».",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -11733,13 +11757,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-12-10",
     "endDate": "",
     "region": "Online",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-083",
     "provider": "ORSYS Training Schweiz",
     "title": "Joomla!, créer et administrer un site Web",
-    "description": "Joomla!, créer et administrer un site Web Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Joomla!, créer et administrer un site Web Formation pratique - 3j - 21h00 - Réf. JOO Prix : 2150 CHF H.T. Joomla!, créer et administrer un site Web Vous apprendrez à installer et configurer Joomla! sur un serveur, à créer et administ",
+    "description": "Kurs zu «Joomla!, créer et administrer un site Web».",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -11757,7 +11782,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-12-02",
     "endDate": "",
     "region": "Online",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-084",
@@ -11780,14 +11806,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-086",
     "provider": "ORSYS Training Schweiz",
     "title": "L'IA en communication : contenus, CM et pilotage",
-    "description": "L'IA en communication : contenus, CM et pilotage Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : L'IA en communication : contenus, CM et pilotage Formation pratique - 2j - 14h00 - Réf. AIA Prix : 1540 CHF H.T. L'IA en communication : contenus, CM et pilotage 4,4 / 5 Communiquer et interagir avec son public sur les réseaux",
+    "description": "KI-Anwendungen für Kommunikation, Inhalte und Community Management.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -11811,7 +11837,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-088",
     "provider": "ORSYS Training Schweiz",
     "title": "Les fondamentaux de l'écriture journalistique",
-    "description": "Les fondamentaux de l'écriture journalistique Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Les fondamentaux de l'écriture journalistique Formation pratique - 2j - 14h00 - Réf. CRJ Prix : 1540 CHF H.T. Les fondamentaux de l'écriture journalistique 5 / 5 Acquérir les techniques et les réflexes de l'écriture journalistiqu",
+    "description": "Grundlagen journalistischen Schreibens: Thema und Blickwinkel wählen, Leads und Titel formulieren sowie Artikel und Reportagen redigieren.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -11835,7 +11861,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-089",
     "provider": "ORSYS Training Schweiz",
     "title": "Les fondamentaux d’Adobe Firefly pour la création d’image",
-    "description": "Les fondamentaux d’Adobe Firefly pour la création d’image Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Les fondamentaux d’Adobe Firefly pour la création d’image Formation pratique - 2j - 14h00 - Réf. BEF Prix : 1380 CHF H.T. Les fondamentaux d’Adobe Firefly pour la création d’image Cette formation permet de maîtriser l",
+    "description": "Grundlagen der Bildgestaltung mit Adobe Firefly.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -11852,7 +11878,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -11876,14 +11902,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "25.11.2027",
     "startDate": "2027-11-25",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-094",
     "provider": "ORSYS Training Schweiz",
     "title": "L’IA pour créer des contenus percutants (textes, visuels, vidéos)",
-    "description": "L’IA pour créer des contenus percutants (textes, visuels, vidéos) Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : L’IA pour créer des contenus percutants (textes, visuels, vidéos) Formation pratique - 2j - 14h00 - Réf. TVV Prix : 1530 CHF H.T. L’IA pour créer des contenus percutants (textes, visuels, vidéos) 4,6 / 5 L’int",
+    "description": "KI-Werkzeuge für Text-, Bild- und Videoinhalte einsetzen; Prompting sowie Fragen zu Urheberrecht und Ethik einordnen.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -11907,7 +11933,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-095",
     "provider": "ORSYS Training Schweiz",
     "title": "Maîtriser la chaîne de production graphique",
-    "description": "Maîtriser la chaîne de production graphique Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Maîtriser la chaîne de production graphique de la conception à la publication Formation pratique - 2j - 14h00 - Réf. CHG Prix : 1380 CHF H.T. Maîtriser la chaîne de production graphique de la conception à la publication Cette forma",
+    "description": "Abläufe der grafischen Produktion von der Gestaltung bis zur Publikation.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -11924,14 +11950,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-099",
     "provider": "ORSYS Training Schweiz",
     "title": "Mettre en œuvre sa stratégie sur TikTok",
-    "description": "Mettre en œuvre sa stratégie sur TikTok Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Mettre en œuvre sa stratégie sur TikTok De la théorie à la pratique : les clés d'une stratégie TikTok efficace Formation pratique - 2j - 14h00 - Réf. TIK Prix : 1540 CHF H.T. Mettre en œuvre sa stratégie sur TikTok De la théorie à la p",
+    "description": "Kurs zu «Mettre en œuvre sa stratégie sur TikTok».",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -11949,13 +11975,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-12-10",
     "endDate": "",
     "region": "Online",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-100",
     "provider": "ORSYS Training Schweiz",
     "title": "Midjourney, générer des visuels professionnels avec l'IA",
-    "description": "Midjourney, générer des visuels professionnels avec l'IA Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Midjourney, générer des visuels professionnels avec l'IA Formation pratique - 1j - 7h00 - Réf. IAJ Prix : 910 CHF H.T. Midjourney, générer des visuels professionnels avec l'IA 4,4 / 5 Maîtrisez MidJourney pour créer de",
+    "description": "Visuelle Inhalte mit Midjourney und generativer KI erstellen.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -11972,14 +11999,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-101",
     "provider": "ORSYS Training Schweiz",
     "title": "Motion Design, créer des animations avec Adobe® After Effects",
-    "description": "Motion Design, créer des animations avec Adobe® After Effects Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Motion Design, créer des animations avec Adobe® After Effects Formation pratique - 3j - 21h00 - Réf. MDF Prix : 1630 CHF H.T. Motion Design, créer des animations avec Adobe® After Effects 4 / 5 Le motion design es",
+    "description": "Motion Design und Animationen mit Adobe After Effects.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -11996,14 +12023,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-103",
     "provider": "ORSYS Training Schweiz",
     "title": "OSINT (investigation en source ouverte), niveau 1",
-    "description": "OSINT (investigation en source ouverte), niveau 1 Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : OSINT (investigation en source ouverte), niveau 1 investigation en source ouverte et cyber threat intelligence Formation pratique - 3j - 21h00 - Réf. OST Prix : 2470 CHF H.T. OSINT (investigation en source ouverte), niveau 1",
+    "description": "Einführung in Open-Source-Recherche: Suchtechniken, Quellenbewertung sowie Bild- und Social-Media-Recherche unter Datenschutz- und Ethikaspekten.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -12027,7 +12054,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-104",
     "provider": "ORSYS Training Schweiz",
     "title": "OSINT (investigation en source ouverte), niveau 2",
-    "description": "OSINT (investigation en source ouverte), niveau 2 Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : OSINT (investigation en source ouverte), niveau 2 investigation en source ouverte et cyber threat intelligence Formation pratique - 3j - 21h00 - Réf. OTI Prix : 2830 CHF H.T. OSINT (investigation en source ouverte), niveau 2",
+    "description": "Vertiefung von Open-Source-Recherche und OSINT-Methoden.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -12051,7 +12078,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-107",
     "provider": "ORSYS Training Schweiz",
     "title": "Penpot, conception de maquettes UX/UI",
-    "description": "Penpot, conception de maquettes UX/UI Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Penpot, conception de maquettes UX/UI Formation pratique - 2j - 14h00 - Réf. PEO Prix : 1540 CHF H.T. Penpot, conception de maquettes UX/UI Penpot est une plateforme de conception et de prototypage d'interfaces UX/UI de sites web et d'ap",
+    "description": "UX- und UI-Oberflächen mit Penpot entwerfen und als Prototyp gestalten.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -12075,7 +12102,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-108",
     "provider": "ORSYS Training Schweiz",
     "title": "Photographie : prise de vue et développement",
-    "description": "Photographie : prise de vue et développement Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Photographie : prise de vue et développement Faire des photos de qualité pour le Web et l'impression papier Formation pratique - 3j - 21h - Réf. GLG Prix : 2110 CHF H.T. Photographie : prise de vue et développement Faire des photo",
+    "description": "Fotografische Aufnahme und Bildentwicklung.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -12092,7 +12119,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "14.10.2026",
     "startDate": "2026-10-14",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12116,14 +12143,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-113",
     "provider": "ORSYS Training Schweiz",
     "title": "Responsive Design, créer des interfaces Web adaptables",
-    "description": "Responsive Design, créer des interfaces Web adaptables Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Responsive Design, créer des interfaces Web adaptables Examen de certification DiGiTT® à distance, en option Formation pratique - 2j - 14h00 - Réf. RPO Prix : 1680 CHF H.T. Responsive Design, créer des interfaces Web ada",
+    "description": "Responsive Web-Oberflächen für unterschiedliche Bildschirmgrössen entwerfen.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -12147,7 +12174,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-114",
     "provider": "ORSYS Training Schweiz",
     "title": "RGAA, auditer l'accessibilité d'un site web ou d'une application mobile",
-    "description": "RGAA, auditer l'accessibilité d'un site web ou d'une application mobile Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : RGAA, auditer l'accessibilité d'un site web ou d'une application mobile Formation pratique - 5j - 35h00 - Réf. ACJ Prix : 3390 CHF H.T. RGAA, auditer l'accessibilité d'un site web ou d'une application mo",
+    "description": "Websites und mobile Anwendungen anhand der RGAA-Anforderungen auf Barrierefreiheit prüfen.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -12171,7 +12198,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-115",
     "provider": "ORSYS Training Schweiz",
     "title": "Réaliser des vidéos pour le Web",
-    "description": "Réaliser des vidéos pour le Web Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Réaliser des vidéos pour le Web Formation pratique - 3j - 21h00 - Réf. VWI Prix : 2110 CHF H.T. Réaliser des vidéos pour le Web 4,6 / 5 Auparavant réservée à des profils très spécialisés, la réalisation de vidéo est désormais accessible à tous",
+    "description": "Webvideos planen und produzieren: Bild und Ton aufnehmen, Interviews und Reportagen gestalten, schneiden und verbreiten.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -12188,7 +12215,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "ORSYS-Schweiz-Katalog nennt 26.10.2026 als nächsten Start (Ref. VWI); konkrete Ausgabe, Kursort, Buchbarkeit und Enddatum nicht sessionscharf bestätigt.",
     "startDate": "",
     "endDate": "",
-    "region": "Präsenzkurs; konkreter Unterrichtsort nicht publiziert. Distanz-/Inhouse-Variante nur auf Anfrage, keine bestätigte Online-Session.",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung)",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12212,14 +12239,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "26.10.2026",
     "startDate": "2026-10-26",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-117",
     "provider": "ORSYS Training Schweiz",
     "title": "Réaliser ses vidéos professionnelles avec iPhone/iPad/Android",
-    "description": "Réaliser ses vidéos professionnelles avec iPhone/iPad/Android Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Réaliser ses vidéos professionnelles avec iPhone/iPad/Android Formation pratique - 1j - 7h00 - Réf. IPP Prix : 890 CHF H.T. Réaliser ses vidéos professionnelles avec iPhone/iPad/Android 4,7 / 5 La vidéo est une pi",
+    "description": "Videos mit iPhone, iPad oder Android-Geräten produzieren.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -12236,14 +12263,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "09.12.2026",
     "startDate": "2026-12-09",
     "endDate": "2026-12-09",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-118",
     "provider": "ORSYS Training Schweiz",
     "title": "Réaliser un site Web, pour non-informaticiens",
-    "description": "Réaliser un site Web, pour non-informaticiens Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Réaliser un site Web, pour non-informaticiens Formation pratique - 3j - 21h00 - Réf. NIW Prix : 1830 CHF H.T. Réaliser un site Web, pour non-informaticiens Vous apprendrez à utiliser toutes les technologies nécessaires pour dével",
+    "description": "Kurs zu «Réaliser un site Web, pour non-informaticiens».",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -12261,13 +12288,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2027-05-10",
     "endDate": "",
     "region": "Online",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-119",
     "provider": "ORSYS Training Schweiz",
     "title": "Réaliser une vidéo avec un Smartphone",
-    "description": "Réaliser une vidéo avec un Smartphone Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Réaliser une vidéo avec un Smartphone Formation pratique - 1j - 7h00 - Réf. VAN Prix : 890 CHF H.T. Réaliser une vidéo avec un Smartphone 4,1 / 5 La vidéo est une pièce maîtresse du marketing digital. Auparavant réservée à des spécialist",
+    "description": "Videoproduktion mit einem Smartphone.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -12284,14 +12312,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "06.10.2026",
     "startDate": "2026-10-06",
     "endDate": "2026-10-06",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-120",
     "provider": "ORSYS Training Schweiz",
     "title": "Rédaction journalistique avec l'IA : techniques avancées",
-    "description": "Rédaction journalistique avec l'IA : techniques avancées Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Rédaction journalistique avec l'IA : techniques avancées Produire des contenus éditoriaux structurés, créatifs et performants Formation pratique - 2j - 14h00 - Réf. JOI Prix : 1530 CHF H.T. Rédaction journalistique ave",
+    "description": "Generative KI in der journalistischen Redaktion einsetzen: Artikel strukturieren und formulieren, Ergebnisse verifizieren und redaktionell kontrollieren.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -12315,7 +12343,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-121",
     "provider": "ORSYS Training Schweiz",
     "title": "Rédiger des titres et des accroches efficaces",
-    "description": "Rédiger des titres et des accroches efficaces Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Rédiger des titres et des accroches efficaces Examen de certification DiGiTT® à distance, en option Formation pratique - 1j - 7h00 - Réf. TCI Prix : 890 CHF H.T. Rédiger des titres et des accroches efficaces Examen de certificati",
+    "description": "Wirksame Titel und Einstiege für Texte formulieren.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -12339,7 +12367,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-122",
     "provider": "ORSYS Training Schweiz",
     "title": "Rédiger pour le Web",
-    "description": "Rédiger pour le Web Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Rédiger pour le Web Optimisez vos textes pour améliorer visibilité et engagement Formation pratique - 2j - 14h00 - Réf. CCW Prix : 1540 CHF H.T. Rédiger pour le Web Optimisez vos textes pour améliorer visibilité et engagement 4,6 / 5 Cette formation abord",
+    "description": "Für das Web schreiben: Informationen recherchieren und gewichten, Überschriften entwickeln sowie lesefreundliche Online-Artikel gestalten.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -12380,7 +12408,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "01.12.2026",
     "startDate": "2026-12-01",
     "endDate": "2026-12-01",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12404,7 +12432,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "01.10.2026",
     "startDate": "2026-10-01",
     "endDate": "2026-10-01",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12428,14 +12456,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-131",
     "provider": "ORSYS Training Schweiz",
     "title": "Slow content et storytelling éthique : produire des contenus responsables",
-    "description": "Slow content et storytelling éthique : produire des contenus responsables Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Slow content et storytelling éthique : produire des contenus responsables Formation pratique - 3j - 21h00 - Réf. SLE Prix : 2110 CHF H.T. Slow content et storytelling éthique : produire des contenus re",
+    "description": "Slow Content und ethisches Storytelling für relevante Inhalte.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -12452,7 +12480,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -12476,14 +12504,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "21.06.2027",
     "startDate": "2027-06-21",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-134",
     "provider": "ORSYS Training Schweiz",
     "title": "Tableau Desktop, exploiter visuellement ses données",
-    "description": "Tableau Desktop, exploiter visuellement ses données Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Tableau Desktop, exploiter visuellement ses données Formation pratique - 2j - 14h00 - Réf. TBL Prix : 1620 CHF H.T. Tableau Desktop, exploiter visuellement ses données 4,2 / 5 A l’issue de la formation, le participant sera",
+    "description": "Daten mit Tableau Desktop visuell auswerten.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -12500,14 +12528,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-135",
     "provider": "ORSYS Training Schweiz",
     "title": "Tableau Desktop, perfectionnement",
-    "description": "Tableau Desktop, perfectionnement Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Tableau Desktop, perfectionnement enrichir les analyses et visualisations des données Formation pratique - 2j - 14h - Réf. TKY Prix : 1680 CHF H.T. Tableau Desktop, perfectionnement enrichir les analyses et visualisations des données 4 / 5 T",
+    "description": "Fortgeschrittene Analysen und Visualisierungen mit Tableau Desktop.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -12531,7 +12559,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-136",
     "provider": "ORSYS Training Schweiz",
     "title": "Tester l’accessibilité de sites et applications",
-    "description": "Tester l’accessibilité de sites et applications Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Tester l’accessibilité de sites et applications Formation pratique - 3j - 21h00 - Réf. UXC Prix : 2150 CHF H.T. Tester l’accessibilité de sites et applications 3,8 / 5 À l’issue de la formation, le participant sera capable de r",
+    "description": "Barrierefreiheit von Websites und Anwendungen testen.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -12548,14 +12576,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-137",
     "provider": "ORSYS Training Schweiz",
     "title": "User experience, état de l'art et tendances en ergonomie et IHM",
-    "description": "User experience, état de l'art et tendances en ergonomie et IHM Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : User experience, état de l'art et tendances en ergonomie et IHM Examen de certification DiGiTT® à distance, en option Séminaire - 2j - 14h00 - Réf. IUT Prix : 2170 CHF H.T. User experience, état de l'art et tend",
+    "description": "Überblick über nutzerzentrierte digitale Produkte, Barrierefreiheit, mobile Oberflächen, UX-Metriken und aktuelle Interface-Trends.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -12579,7 +12607,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-138",
     "provider": "ORSYS Training Schweiz",
     "title": "UX Design : une démarche complète pour optimiser l’expérience mobile",
-    "description": "UX Design : une démarche complète pour optimiser l’expérience mobile Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : UX Design : une démarche complète pour optimiser l’expérience mobile Expérience utilisateur et ergonomie pour tablettes et smartphones Formation pratique - 3j - 21h00 - Réf. UXX Prix : 1980 CHF H.T. UX Desi",
+    "description": "Mobile Nutzererlebnisse konzipieren: Navigation, Zugänglichkeit, Prototypen und Usability von Smartphone-Angeboten gestalten.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -12603,7 +12631,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-139",
     "provider": "ORSYS Training Schweiz",
     "title": "UX design et ergonomie des sites web",
-    "description": "UX design et ergonomie des sites web Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : UX design et ergonomie des sites web Formation pratique - 3j - 21h00 - Réf. UXA Prix : 2150 CHF H.T. UX design et ergonomie des sites web 4,6 / 5 À l’issue de la formation, le participant sera capable de concevoir ou améliorer un site web",
+    "description": "Kurs zu «UX design et ergonomie des sites web».",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -12621,13 +12649,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2027-03-22",
     "endDate": "",
     "region": "Online",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-140",
     "provider": "ORSYS Training Schweiz",
     "title": "UX design et ergonomie des sites Web",
-    "description": "UX design et ergonomie des sites Web Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : UX design et ergonomie des sites Web Examen de certification DiGiTT® à distance, en option Formation pratique - 3j - 21h00 - Réf. IHM Prix : 2020 CHF H.T. UX design et ergonomie des sites Web Examen de certification DiGiTT® à distance, en",
+    "description": "UX-Design und Ergonomie von Websites.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -12644,14 +12673,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-141",
     "provider": "ORSYS Training Schweiz",
     "title": "UX design et ergonomie pour tablettes et smartphones",
-    "description": "UX design et ergonomie pour tablettes et smartphones Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : UX design et ergonomie pour tablettes et smartphones Formation pratique - 3j - 21h00 - Réf. UXB Prix : 2150 CHF H.T. UX design et ergonomie pour tablettes et smartphones 5 / 5 À l’issue de la formation, le participant sera",
+    "description": "Kurs zu «UX design et ergonomie pour tablettes et smartphones».",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -12669,13 +12698,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2027-03-15",
     "endDate": "",
     "region": "Online",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-142",
     "provider": "ORSYS Training Schweiz",
     "title": "UX Writing : optimiser votre rédaction web",
-    "description": "UX Writing : optimiser votre rédaction web Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : UX Writing : optimiser votre rédaction web Formation pratique - 2j - 14h00 - Réf. UWG Prix : 1540 CHF H.T. UX Writing : optimiser votre rédaction web 4,2 / 5 L’UX design constitue aujourd'hui un enjeu élémentaire pour les métiers du",
+    "description": "UX Writing für verständliche und nutzerorientierte Webtexte.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -12692,14 +12722,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-143",
     "provider": "ORSYS Training Schweiz",
     "title": "UX-PM, niveau 1 : adoption de l'UX, certification Devoteam",
-    "description": "UX-PM, niveau 1 : adoption de l'UX, certification Devoteam Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : UX-PM, niveau 1 : adoption de l'UX, certification Devoteam Formation pratique - 2j - 14h00 - Réf. UXP Prix : 1820 CHF H.T. UX-PM, niveau 1 : adoption de l'UX, certification Devoteam 4,7 / 5 Démystifier la notion d’UX",
+    "description": "Kurs zu «UX-PM, niveau 1 : adoption de l'UX, certification Devoteam».",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -12717,13 +12747,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2027-02-15",
     "endDate": "",
     "region": "Online",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-144",
     "provider": "ORSYS Training Schweiz",
     "title": "UX-PM, niveau 2 : exécution de l'UX, certification Devoteam",
-    "description": "UX-PM, niveau 2 : exécution de l'UX, certification Devoteam Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : UX-PM, niveau 2 : exécution de l'UX, certification Devoteam Formation pratique - 2j - 14h00 - Réf. USX Prix : 2320 CHF H.T. UX-PM, niveau 2 : exécution de l'UX, certification Devoteam Pour des professionnels de l’UX",
+    "description": "Kurs zu «UX-PM, niveau 2 : exécution de l'UX, certification Devoteam».",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -12741,13 +12772,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-12-03",
     "endDate": "",
     "region": "Online",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-146",
     "provider": "ORSYS Training Schweiz",
     "title": "UX/UI à l’ère de l’IA : générer, structurer et piloter des interfaces intelligentes",
-    "description": "UX/UI à l’ère de l’IA : générer, structurer et piloter des interfaces intelligentes Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : UX/UI à l’ère de l’IA : générer, structurer et piloter des interfaces intelligentes Formation pratique - 2j - 14h00 - Réf. UXI Prix : 1680 CHF H.T. UX/UI à l’ère de l’IA : générer, structurer",
+    "description": "KI-gestützte UX- und UI-Konzeption: Prototypen, Designsysteme und User Journeys für digitale Oberflächen entwickeln.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -12771,7 +12803,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-148",
     "provider": "ORSYS Training Schweiz",
     "title": "Webflow, construire un site web en no-code",
-    "description": "Webflow, construire un site web en no-code Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Webflow, construire un site web en no-code Formation pratique - 3j - 21h00 - Réf. WBW Prix : 1940 CHF H.T. Webflow, construire un site web en no-code Webflow est une plateforme no-code très complète qui permet de concevoir, de dével",
+    "description": "Eine Website mit Webflow und ohne eigenen Code erstellen.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -12795,7 +12827,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-149",
     "provider": "ORSYS Training Schweiz",
     "title": "WordPress : rédiger efficacement ses contenus",
-    "description": "WordPress : rédiger efficacement ses contenus Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : WordPress : rédiger efficacement ses contenus Formation pratique - 1j - 7h00 - Réf. WPR Prix : 910 CHF H.T. WordPress : rédiger efficacement ses contenus WordPress est le système de gestion de contenus (CMS) le plus utilisé, mais",
+    "description": "Inhalte in WordPress redaktionell aufbereiten und schreiben.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "EINSTIEG",
     "language": "FR",
@@ -12819,7 +12851,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "OFFER-ORSYS-150",
     "provider": "ORSYS Training Schweiz",
     "title": "WordPress, initiation, installer et gérer un site d’entreprise",
-    "description": "WordPress, initiation, installer et gérer un site d’entreprise Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : WordPress, initiation, installer et gérer un site d’entreprise Examen de certification TOSA® à distance en option Formation pratique - 3j - 21h00 - Réf. RDP Prix : 1630 CHF H.T. WordPress, initiation, installer e",
+    "description": "Einführung in Installation und Verwaltung von WordPress.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -12836,14 +12868,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-151",
     "provider": "ORSYS Training Schweiz",
     "title": "WordPress, perfectionnement",
-    "description": "WordPress, perfectionnement Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : WordPress, perfectionnement Examen de certification TOSA® à distance en option Formation pratique - 3j - 21h00 - Réf. RDE Prix : 2150 CHF H.T. WordPress, perfectionnement Examen de certification TOSA® à distance en option 4,6 / 5 Vous apprendrez à",
+    "description": "Kurs zu «WordPress, perfectionnement».",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -12861,7 +12893,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-25",
     "endDate": "",
     "region": "Online",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ORSYS-152",
@@ -12884,14 +12917,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
     "id": "OFFER-ORSYS-154",
     "provider": "ORSYS Training Schweiz",
     "title": "Élaborer une stratégie éditoriale efficace : du concept à la création de contenus engageants",
-    "description": "Élaborer une stratégie éditoriale efficace : du concept à la création de contenus engageants Vous avez déjà un compte client ORSYS Se connecter Vous êtes nouveau chez ORSYS Créer un compte Vous ne souhaitez pas créer de compte Poursuivre sans me connecter Formation : Élaborer une stratégie éditoriale efficace : du concept à la création de contenus engageants Méthodes et outils pour le web et les réseaux sociaux Formation pratique - 2j - 14h00 - R",
+    "description": "Eine redaktionelle Strategie für Web- und Social-Media-Inhalte entwickeln.",
     "access": "OFFICIAL_PROVIDER_ACCESS_RULE_2026-09-23: ORSYS Suisse — inscription must be finalised before course start; https://www.orsys.fr/suisse/formation/",
     "level": "VERSCHIEDENE_NIVEAUS",
     "language": "FR",
@@ -12908,7 +12941,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
     "startDate": "",
     "endDate": "",
-    "region": "Schweiz / Classe à distance / weitere ORSYS-Orte je Session",
+    "region": "Lausanne und Genf (mögliche Präsenzstandorte; genauer Ort bei Anmeldung) / Online je Kursvariante",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -13173,6 +13206,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "",
     "endDate": "2026-11-12",
     "region": "CSIA, Via G. Brentani 18, 6900 Lugano",
+    "publicationStatus": "HOLD",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -13197,6 +13231,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "",
     "endDate": "2026-12-09",
     "region": "CSIA, Via G. Brentani 18, 6900 Lugano",
+    "publicationStatus": "HOLD",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -13217,8 +13252,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "BIS_500",
     "format": "PRÄSENZ",
     "duration": "7 lezioni",
-    "start": "Kursausgabe Oktober 2026: Offizielle IFC-URLs nennen 07.10. oder 14.10. als Beginn (widersprüchlich); keine neue Ausgabe publiziert.",
-    "startDate": "",
+    "start": "Kurscode 26/27A-CRE-088-0008: Beide offiziellen URL-Varianten nennen beim gleichzeitigen Primärquellenabruf am 18.10.2026 den Beginn 07.10.2026. Kurs bereits begonnen; keine neue buchbare Ausgabe belegt.",
+    "startDate": "2026-10-07",
     "endDate": "",
     "region": "IFC, Ala Munda 41, 6528 Camorino, Aula A104",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
@@ -13293,7 +13328,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "",
     "endDate": "",
     "region": "Anzonico",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-IFC-013",
@@ -13341,6 +13377,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "",
     "endDate": "2026-11-12",
     "region": "Zoo al Maglio, Via ai Mulini 14, Magliaso (11.10.); CSIA, Via G. Brentani 18, Lugano (12.11.)",
+    "publicationStatus": "HOLD",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -13437,7 +13474,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "",
     "endDate": "",
     "region": "Online",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-ATED-001",
@@ -15724,7 +15762,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "provider": "Universität Zürich / Digital Society Initiative",
     "title": "Open Source Intelligence (OSINT) – DSI Wahlpflichtmodul",
     "description": "Fünfteiliges OSINT-Wahlpflichtmodul im DSI Excellence Programme HS 2026.",
-    "access": "Voraussetzungen: DSI Excellence Programme / Doktorierende; weitere Doktorierende bei freien Plätzen. | STUDENT_RESTRICTED_ACCESS – nur berechtigter universitärer Personenkreis",
+    "access": "STUDENT_RESTRICTED_ACCESS – nur berechtigter universitärer Personenkreis | Voraussetzungen: DSI Excellence Programme / Doktorierende; weitere Doktorierende bei freien Plätzen.",
     "level": "BERUFSERFAHRUNG",
     "language": "DE|EN",
     "country": "Schweiz",
@@ -15739,9 +15777,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "duration": "5 x 4 Stunden",
     "start": "OSINT-Wahlpflichtmodul HS 2026 – begonnen; nur zugelassene Doktorierende",
     "startDate": "2026-09-24",
-    "endDate": "",
-    "region": "Zürich / Raum tbd",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "endDate": "2026-12-03",
+    "region": "Universität Zürich, Raum KO2 (DSI-OSINT-Wahlpflichtmodul HS 2026; konkrete Gebäudeadresse nicht publiziert)",
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "OFFER-MEDIENCAMPUS-002",
@@ -18843,12 +18882,12 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "PJ-V16-07",
     "provider": "photojournalism.ch / Beyond Visual GmbH",
     "title": "Konzerte und Events fotografieren – mit Praxisteil",
-    "description": "Weiterbildungsangebot «Konzerte und Events fotografieren – mit Praxisteil» von photojournalism.ch / Beyond Visual GmbH.",
-    "access": "Kurse laut Anbieter grundsätzlich für externe Teilnehmende offen; aktuelle Buchbarkeit dieses Kurses bzw. einer neuen Ausgabe nicht bestätigt.",
+    "description": "Zweitägiger Kurs zur Konzert- und Eventfotografie mit eigenständiger Praxisarbeit zwischen den Unterrichtstagen und Feedback auf die Bilder.",
+    "access": "Für externe Teilnehmende offen. Ausgabe 2028 angekündigt; Auswahl dieser Ausgabe im Anmeldeformular und freie Plätze noch nicht bestätigt.",
     "level": "NICHT_PUBLIZIERT",
     "language": "DE",
     "country": "Schweiz",
-    "url": "https://www.photojournalism.ch/kurse",
+    "url": "https://www.photojournalism.ch/konzerte-events-fotografieren",
     "approved": "2026-09-24",
     "reviewAfter": "2026-12-23",
     "focus": "MEDIENPRAXIS",
@@ -18856,11 +18895,11 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceDisplay": "CHF 980",
     "priceCategory": "501_2000",
     "format": "PRÄSENZ",
-    "duration": "2 Kurstage laut Nutzer-Kursinformation zur Ausgabe 2028; Zuordnung zu den publizierten Terminen 2026/27 nicht bestätigt.",
-    "start": "Kursübersicht nennt 09.10.2026 und 13.01.2027; unklar, ob gemeinsamer mehrteiliger Kurs oder separate Durchführungen. 13.01. nicht als neuer Kursstart belegt; Buchbarkeit nicht bestätigt.",
-    "startDate": "",
-    "endDate": "",
-    "region": "Gleis70, Hermetschloostrasse 70, 8048 Zürich (laut Nutzer-Kursinformation; für die Termine 2026/27 nicht editionsgleich bestätigt).",
+    "duration": "2 Kurstage (offizielle aktuelle Kurskarte 2028 und kursgenaue Detailseite: 2 Tage).",
+    "start": "Angekündigte Unterrichtstage: 13.03.2028 und 09.06.2028; Verfügbarkeit beim Anbieter prüfen.",
+    "startDate": "2028-03-13",
+    "endDate": "2028-06-09",
+    "region": "Gleis70, Hermetschloostrasse 70, 8048 Zürich (offizielle Kursdetailseite).",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -19941,6 +19980,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "",
     "endDate": "",
     "region": "Online",
+    "publicationStatus": "HOLD",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
   {
@@ -23225,9 +23265,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "PRÄSENZ",
     "duration": "15 h / 5 jours",
-    "start": "26.10.2026–30.10.2026 / inscriptions ouvertes",
+    "start": "26.–30.10.2026 (S-03210, fünf Nachmittage); 04.03., 11.03., 18.03., 25.03. und 15.04.2027 (S-03279, fünf Abende) – getrennte 15-Stunden-Kurse; Anbieter nennt Anmeldungen offen.",
     "startDate": "2026-10-26",
     "endDate": "2026-10-30",
+    "sessions": [{"startDate":"2026-10-26","endDate":"2026-10-30","label":"26.–30.10.2026 · S-03210 · Präsenz Genf","region":"ifage Montbrillant, Genève"},{"startDate":"2027-03-04","endDate":"2027-04-15","label":"04.03.–15.04.2027 · S-03279 · fünf Abendtermine","region":"ifage Montbrillant, Genève"}],
     "region": "ifage Montbrillant, Genève",
     "release_origin": "V98_RESTORE_W1_39"
   },
@@ -23276,6 +23317,18 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "28.09.2026–02.10.2026 / inscriptions ouvertes; additional future session published",
     "startDate": "2026-09-28",
     "endDate": "2026-10-02",
+    "sessions": [
+      {
+        "startDate": "2026-10-30",
+        "endDate": "2026-11-27",
+        "label": "30.10.2026–27.11.2026 · ifage Montbrillant"
+      },
+      {
+        "startDate": "2026-11-17",
+        "endDate": "2026-12-01",
+        "label": "17.11.2026–01.12.2026 · ifage Montbrillant"
+      }
+    ],
     "region": "ifage Montbrillant, Genève",
     "release_origin": "V98_RESTORE_W1_39"
   },
@@ -23727,11 +23780,12 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "offerType": "KURS",
     "priceDisplay": "CHF 630",
     "priceCategory": "501_2000",
-    "format": "PRÄSENZ | ONLINE LIVE",
+    "format": "PRÄSENZ",
     "duration": "15 h / 5 jours",
-    "start": "26.10.2026–30.10.2026 / inscriptions ouvertes",
+    "start": "Präsenzkurse separat: 26.–30.10.2026 (S-05247), 01.–05.02.2027 (S-05999) und 14./19./21./26./28.04.2027 (S-06000); jeweils fünf Unterrichtstage, 15 Stunden.",
     "startDate": "2026-10-26",
     "endDate": "2026-10-30",
+    "sessions": [{"startDate":"2026-10-26","endDate":"2026-10-30","label":"26.–30.10.2026 · S-05247 · Präsenz Genf","region":"ifage Augustins, Genève"},{"startDate":"2027-02-01","endDate":"2027-02-05","label":"01.–05.02.2027 · S-05999 · Präsenz Genf","region":"ifage Augustins, Genève"},{"startDate":"2027-04-14","endDate":"2027-04-28","label":"14.–28.04.2027 · S-06000 · fünf Abendtermine","region":"ifage Augustins, Genève"}],
     "region": "ifage Augustins, Genève",
     "release_origin": "V98_RESTORE_W1_39"
   },
@@ -23876,6 +23930,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "02.11.2026–04.11.2026; further 2027 dates bookable",
     "startDate": "2026-11-02",
     "endDate": "",
+    "sessions": [{"startDate":"2026-11-02","endDate":"2026-11-04","label":"02.–04.11.2026 · Wallisellen"},{"startDate":"2027-02-08","endDate":"2027-02-10","label":"08.–10.02.2027 · Wallisellen"},{"startDate":"2027-06-21","endDate":"2027-06-23","label":"21.–23.06.2027 · Wallisellen"},{"startDate":"2027-10-04","endDate":"2027-10-06","label":"04.–06.10.2027 · Wallisellen"}],
     "region": "Studio 1, Wallisellen",
     "release_origin": "V98_RESTORE_W1_39"
   },
@@ -23900,6 +23955,20 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "28.09.2026–29.09.2026 Lausanne + virtuel; 02.11.2026–03.11.2026 Genève + virtuel",
     "startDate": "2026-09-28",
     "endDate": "2026-09-29",
+    "sessions": [
+      {
+        "startDate": "2026-11-02",
+        "endDate": "2026-11-03",
+        "label": "02.–03.11.2026 · Genève / virtuell",
+        "region": "Genève, Route des Jeunes 35 / virtuell"
+      },
+      {
+        "startDate": "2026-12-07",
+        "endDate": "2026-12-08",
+        "label": "07.–08.12.2026 · Lausanne / virtuell",
+        "region": "Lausanne, Av. Mon-Repos 24 / virtuell"
+      }
+    ],
     "region": "Lausanne, Av. Mon-Repos 24 / Genève, Route des Jeunes 35 / classe virtuelle",
     "release_origin": "V98_RESTORE_W1_39"
   },
@@ -23924,6 +23993,20 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "08.10.2026–09.10.2026 Genève + virtuel; 12.11.2026–13.11.2026 Lausanne + virtuel",
     "startDate": "2026-10-08",
     "endDate": "2026-10-09",
+    "sessions": [
+      {
+        "startDate": "2026-11-12",
+        "endDate": "2026-11-13",
+        "label": "12.–13.11.2026 · Lausanne / virtuell",
+        "region": "Lausanne, Av. Mon-Repos 24 / virtuell"
+      },
+      {
+        "startDate": "2026-12-17",
+        "endDate": "2026-12-18",
+        "label": "17.–18.12.2026 · Genève / virtuell",
+        "region": "Genève, Route des Jeunes 35 / virtuell"
+      }
+    ],
     "region": "Genève, Route des Jeunes 35 / Lausanne, Av. Mon-Repos 24 / classe virtuelle",
     "release_origin": "V98_RESTORE_W1_39"
   },
@@ -23955,7 +24038,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "V78-04",
     "provider": "ITTA",
     "title": "Adobe After Effects – Avancé",
-    "description": "Vertiefungskurs zu fortgeschrittenen Workflows für visuelle Effekte und dynamische Inhalte mit Adobe After Effects, darunter Chroma Keying, Motion Tracking, Stabilisierung, 3D-Kameratracking und Rotoskopie.",
+    "description": "Zweitägiger Vertiefungskurs zu fortgeschrittenen Workflows für visuelle Effekte und dynamische Inhalte mit Adobe After Effects, darunter Chroma Keying, Motion Tracking, Stabilisierung, 3D-Kameratracking und Rotoskopie.",
     "access": "Öffentlich buchbar.",
     "level": "BERUFSERFAHRUNG",
     "language": "FR",
@@ -23972,6 +24055,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "29.10.–30.10.2026 Lausanne / virtuell; weitere Durchführung 03.12.–04.12.2026 Genève / virtuell",
     "startDate": "2026-10-29",
     "endDate": "2026-10-30",
+    "sessions": [{"startDate":"2026-10-29","endDate":"2026-10-30","label":"29.–30.10.2026 · Lausanne oder Live-Online","region":"Lausanne, Avenue Mon-Repos 24 / Live-Online; Plätze prüfen"},{"startDate":"2026-12-03","endDate":"2026-12-04","label":"03.–04.12.2026 · Genf oder Live-Online; Verfügbarkeit prüfen","region":"Genf, Route des Jeunes 35 / Live-Online; Plätze prüfen"}],
     "region": "Lausanne, Avenue Mon-Repos 24 / Genève, Route des Jeunes 35 / Live-Online, je Durchführung",
     "release_origin": "V98_RESTORE_W1_39"
   },
@@ -23996,6 +24080,20 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "14.10.2026–16.10.2026 Lausanne + virtuel; 18.11.2026–20.11.2026 Genève + virtuel",
     "startDate": "2026-10-14",
     "endDate": "2026-10-16",
+    "sessions": [
+      {
+        "startDate": "2026-11-18",
+        "endDate": "2026-11-20",
+        "label": "18.–20.11.2026 · Genève / virtuell",
+        "region": "Genève, Route des Jeunes 35 / virtuell"
+      },
+      {
+        "startDate": "2027-01-04",
+        "endDate": "2027-01-06",
+        "label": "04.–06.01.2027 · Lausanne / virtuell",
+        "region": "Lausanne, Av. Mon-Repos 24 / virtuell"
+      }
+    ],
     "region": "Lausanne, Av. Mon-Repos 24 / Genève, Route des Jeunes 35 / classe virtuelle",
     "release_origin": "V98_RESTORE_W1_39"
   },
@@ -24020,6 +24118,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "28.09.2026–30.09.2026 next future; additional Oct/Nov/Dec sessions published",
     "startDate": "2026-09-28",
     "endDate": "2026-09-30",
+    "sessions": [
+      {
+        "startDate": "2026-11-23",
+        "endDate": "2026-11-24",
+        "label": "23.–24.11.2026"
+      },
+      {
+        "startDate": "2026-12-14",
+        "endDate": "2026-12-15",
+        "label": "14.–15.12.2026"
+      },
+      {
+        "startDate": "2027-01-04",
+        "endDate": "2027-01-05",
+        "label": "04.–05.01.2027"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
@@ -24041,9 +24156,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "PREIS_AUF_ANFRAGE",
     "format": "PRÄSENZ|ONLINE LIVE",
     "duration": "2 Tage",
-    "start": "22.10.2026–23.10.2026 next future",
+    "start": "Live-Online-Durchführungen 22.–23.10.2026 (FRG261022) und 14.–15.12.2026 (FRG261214); Präsenzstandort und Plätze erst bei Auswahl bestätigen.",
     "startDate": "2026-10-22",
     "endDate": "2026-10-23",
+    "sessions": [{"startDate":"2026-10-22","endDate":"2026-10-23","label":"22.–23.10.2026 · FRG261022 · Live-Online","region":"Live-Online (kein Präsenzort)"},{"startDate":"2026-12-14","endDate":"2026-12-15","label":"14.–15.12.2026 · FRG261214 · Live-Online","region":"Live-Online (kein Präsenzort)"}],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
@@ -24068,6 +24184,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "21.10.2026–23.10.2026 next future; further Nov/Dec sessions published",
     "startDate": "2026-10-21",
     "endDate": "",
+    "sessions": [{"startDate":"2026-10-21","endDate":"2026-10-23","label":"21.–23.10.2026"},{"startDate":"2026-11-18","endDate":"2026-11-20","label":"18.–20.11.2026"},{"startDate":"2026-12-16","endDate":"2026-12-18","label":"16.–18.12.2026"},{"startDate":"2027-01-06","endDate":"2027-01-08","label":"06.–08.01.2027"}],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
@@ -24092,6 +24209,28 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "28.09.2026–30.09.2026 next future; further Oct/Nov/Dec sessions published",
     "startDate": "2026-09-28",
     "endDate": "2026-09-30",
+    "sessions": [
+      {
+        "startDate": "2026-10-21",
+        "endDate": "2026-10-23",
+        "label": "21.–23.10.2026"
+      },
+      {
+        "startDate": "2026-10-28",
+        "endDate": "2026-10-30",
+        "label": "28.–30.10.2026"
+      },
+      {
+        "startDate": "2026-11-23",
+        "endDate": "2026-11-25",
+        "label": "23.–25.11.2026"
+      },
+      {
+        "startDate": "2026-12-21",
+        "endDate": "2026-12-23",
+        "label": "21.–23.12.2026"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
@@ -24116,6 +24255,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "21.10.2026–23.10.2026 next future; further Oct/Nov/Dec sessions published",
     "startDate": "2026-10-21",
     "endDate": "",
+    "sessions": [{"startDate":"2026-10-21","endDate":"2026-10-23","label":"21.–23.10.2026"},{"startDate":"2026-10-26","endDate":"2026-10-28","label":"26.–28.10.2026 · Live-Online"},{"startDate":"2026-11-18","endDate":"2026-11-20","label":"18.–20.11.2026"},{"startDate":"2026-12-01","endDate":"2026-12-03","label":"01.–03.12.2026 · Live-Online"},{"startDate":"2026-12-16","endDate":"2026-12-18","label":"16.–18.12.2026"},{"startDate":"2027-01-06","endDate":"2027-01-08","label":"06.–08.01.2027"}],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
@@ -24140,6 +24280,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "05.10.2026–07.10.2026 next future; further Nov/Dec sessions published",
     "startDate": "2026-10-05",
     "endDate": "2026-10-07",
+    "sessions": [
+      {
+        "startDate": "2026-11-09",
+        "endDate": "2026-11-11",
+        "label": "09.–11.11.2026"
+      },
+      {
+        "startDate": "2026-11-30",
+        "endDate": "2026-12-02",
+        "label": "30.11.2026–02.12.2026"
+      },
+      {
+        "startDate": "2027-01-25",
+        "endDate": "2027-01-27",
+        "label": "25.–27.01.2027"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
@@ -24164,6 +24321,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "05.10.2026–06.10.2026 next future; additional Oct/Nov sessions published",
     "startDate": "2026-10-05",
     "endDate": "2026-10-06",
+    "sessions": [
+      {
+        "startDate": "2026-10-27",
+        "endDate": "2026-10-28",
+        "label": "27.–28.10.2026"
+      },
+      {
+        "startDate": "2026-11-30",
+        "endDate": "2026-12-01",
+        "label": "30.11.2026–01.12.2026"
+      },
+      {
+        "startDate": "2027-01-11",
+        "endDate": "2027-01-12",
+        "label": "11.–12.01.2027"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
@@ -24189,7 +24363,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-29",
     "endDate": "",
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
-    "release_origin": "V98_RESTORE_W2_PCC10"
+    "release_origin": "V98_RESTORE_W2_PCC10",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "PCC-P09",
@@ -24212,6 +24387,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "01.10.2026–02.10.2026 next future; further Oct/Nov sessions published",
     "startDate": "2026-10-01",
     "endDate": "2026-10-02",
+    "sessions": [
+      {
+        "startDate": "2026-10-29",
+        "endDate": "2026-10-30",
+        "label": "29.–30.10.2026"
+      },
+      {
+        "startDate": "2026-11-26",
+        "endDate": "2026-11-27",
+        "label": "26.–27.11.2026"
+      },
+      {
+        "startDate": "2027-01-14",
+        "endDate": "2027-01-15",
+        "label": "14.–15.01.2027"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
@@ -24236,6 +24428,28 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "05.10.2026–06.10.2026 next future; further Nov sessions published",
     "startDate": "2026-10-05",
     "endDate": "2026-10-06",
+    "sessions": [
+      {
+        "startDate": "2026-11-05",
+        "endDate": "2026-11-06",
+        "label": "05.–06.11.2026"
+      },
+      {
+        "startDate": "2026-11-11",
+        "endDate": "2026-11-12",
+        "label": "11.–12.11.2026"
+      },
+      {
+        "startDate": "2026-11-26",
+        "endDate": "2026-11-27",
+        "label": "26.–27.11.2026"
+      },
+      {
+        "startDate": "2026-11-30",
+        "endDate": "2026-12-01",
+        "label": "30.11.2026–01.12.2026"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
@@ -24260,6 +24474,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "01.10.2026–02.10.2026 next future; further Oct/Nov sessions published",
     "startDate": "2026-10-01",
     "endDate": "2026-10-02",
+    "sessions": [
+      {
+        "startDate": "2026-10-26",
+        "endDate": "2026-10-27",
+        "label": "26.–27.10.2026"
+      },
+      {
+        "startDate": "2026-10-29",
+        "endDate": "2026-10-30",
+        "label": "29.–30.10.2026"
+      },
+      {
+        "startDate": "2026-11-26",
+        "endDate": "2026-11-27",
+        "label": "26.–27.11.2026"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W3_PCC13"
   },
@@ -24284,6 +24515,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "12.10.2026–13.10.2026 next future; additional Dec sessions published",
     "startDate": "2026-10-12",
     "endDate": "2026-10-13",
+    "sessions": [
+      {
+        "startDate": "2026-12-07",
+        "endDate": "2026-12-08",
+        "label": "07.–08.12.2026"
+      },
+      {
+        "startDate": "2026-12-09",
+        "endDate": "2026-12-10",
+        "label": "09.–10.12.2026"
+      },
+      {
+        "startDate": "2027-02-01",
+        "endDate": "2027-02-02",
+        "label": "01.–02.02.2027"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W3_PCC13"
   },
@@ -24308,6 +24556,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "Veröffentlichte Live-Online-Ausgaben: 23.10.2026, 20.11.2026 und 18.12.2026 (je 1 Tag, 09:00–16:00). Präsenz in Basel/Bern/Zürich als Kursoption; tatsächlicher Präsenztermin/-ort separat bei Anmeldung wählen. Keine bestätigte Platzverfügbarkeit.",
     "startDate": "2026-10-23",
     "endDate": "",
+    "sessions": [{"startDate":"2026-10-23","endDate":"2026-10-23","label":"23.10.2026 · BRI261023 · Live-Online","region":"Live-Online (kein Präsenzort)"},{"startDate":"2026-11-20","endDate":"2026-11-20","label":"20.11.2026 · BRI261120 · Live-Online","region":"Live-Online (kein Präsenzort)"},{"startDate":"2026-12-18","endDate":"2026-12-18","label":"18.12.2026 · BRI261218 · Live-Online","region":"Live-Online (kein Präsenzort)"}],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W3_PCC13"
   },
@@ -24332,6 +24581,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "28.09.2026–29.09.2026 next future; 26.11.2026–27.11.2026 also published",
     "startDate": "2026-09-28",
     "endDate": "2026-09-29",
+    "sessions": [
+      {
+        "startDate": "2026-11-26",
+        "endDate": "2026-11-27",
+        "label": "26.–27.11.2026"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W3_PCC13"
   },
@@ -24380,6 +24636,20 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "15.10.2026–16.10.2026 next future; 07.12–08.12 and 09.12–10.12.2026 also published",
     "startDate": "2026-10-15",
     "endDate": "2026-10-16",
+    "sessions": [
+      {
+        "startDate": "2026-12-07",
+        "endDate": "2026-12-08",
+        "label": "07.–08.12.2026 · Live-Online",
+        "region": "Live-Online"
+      },
+      {
+        "startDate": "2026-12-09",
+        "endDate": "2026-12-10",
+        "label": "09.–10.12.2026 · CH-Basel / CH-Bern / CH-Zürich",
+        "region": "CH-Basel / CH-Bern / CH-Zürich"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W3_PCC13"
   },
@@ -24428,6 +24698,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "05.10.2026–06.10.2026 next future; 03.12–04.12.2026 also published",
     "startDate": "2026-10-05",
     "endDate": "2026-10-06",
+    "sessions": [
+      {
+        "startDate": "2026-12-03",
+        "endDate": "2026-12-04",
+        "label": "03.–04.12.2026"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W3_PCC13"
   },
@@ -24462,7 +24739,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "provider": "PC-COLLEGE Training GmbH (DE legal provider; CH delivery surface)",
     "title": "Adobe Premiere + Adobe After Effects - Umsteiger von Apple Final Cut Pro + Motion",
     "description": "Zweitägiger Umstiegskurs für erfahrene Final-Cut-Pro- und Motion-Anwender:innen. Vermittelt wird das Zusammenspiel von Adobe Premiere Pro und After Effects sowie die Unterschiede und Parallelen zu den Apple-Werkzeugen.",
-    "access": "Öffentlich buchbar in Basel, Bern, Zürich oder als Live-Online-Training.",
+    "access": "Archiv: Derzeit keine Schulung zu diesem Thema angeboten; keine aktuelle Anmeldung.",
     "level": "NICHT_PUBLIZIERT",
     "language": "DE",
     "country": "Schweiz",
@@ -24475,9 +24752,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "PREIS_AUF_ANFRAGE",
     "format": "PRÄSENZ | ONLINE LIVE",
     "duration": "2 Tage",
-    "start": "29.–30.10.2026 (2 Tage); weitere getrennte Durchführung 21.–22.12.2026. Präsenz-/Live-Online-Variante bei Anmeldung wählen; Verfügbarkeit prüfen.",
+    "start": "Historisch dokumentierte Ankündigungen: 29.–30.10. und 21.–22.12.2026. Derzeit keine Durchführung angeboten; diese Daten sind keine aktuellen Kursausgaben.",
     "startDate": "2026-10-29",
     "endDate": "",
+    "publicationStatus": "HOLD",
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W3_PCC13"
   },
@@ -24502,6 +24780,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "01.10.2026–02.10.2026 next future; 23.11–24.11.2026 also published",
     "startDate": "2026-10-01",
     "endDate": "2026-10-02",
+    "publicationStatus": "HOLD",
     "region": "Live-Online current fixed sessions; in-person seminar available by booking",
     "release_origin": "V98_RESTORE_W3_PCC13"
   },
@@ -24526,6 +24805,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "28.09.2026–29.09.2026 next future; 26.11–27.11.2026 also published",
     "startDate": "2026-09-28",
     "endDate": "2026-09-29",
+    "sessions": [
+      {
+        "startDate": "2026-11-26",
+        "endDate": "2026-11-27",
+        "label": "26.–27.11.2026"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W3_PCC13"
   },
@@ -24550,6 +24836,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "01.10.2026–02.10.2026 next future; 23.11–24.11.2026 also published",
     "startDate": "2026-10-01",
     "endDate": "2026-10-02",
+    "sessions": [
+      {
+        "startDate": "2026-11-23",
+        "endDate": "2026-11-24",
+        "label": "23.–24.11.2026"
+      }
+    ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W3_PCC13"
   },
@@ -24766,6 +25059,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "22.10.2026–23.10.2026 next future; further Dec 2026 and 2027 sessions published",
     "startDate": "2026-10-22",
     "endDate": "",
+    "sessions": [{"startDate":"2026-10-22","endDate":"2026-10-23","label":"22.–23.10.2026"},{"startDate":"2026-12-14","endDate":"2026-12-15","label":"14.–15.12.2026"},{"startDate":"2027-01-04","endDate":"2027-01-05","label":"04.–05.01.2027"}],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W4_PCC9"
   },
@@ -24791,7 +25085,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "",
     "endDate": "2026-10-09",
     "region": "MEEL, Rue du Château 7, 1870 Monthey (VS)",
-    "release_origin": "V98_RESTORE_W5_REMAINING17"
+    "release_origin": "V98_RESTORE_W5_REMAINING17",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "V59-SZ01",
@@ -24917,17 +25212,17 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "V79-02",
     "provider": "MiTech",
     "title": "Adobe Premiere Pro CC avanzato",
-    "description": "Online angebotener Vertiefungskurs zu Adobe Premiere Pro CC. Die aktuell publizierte Durchführung umfasst vier halbtägige Lektionen; weitergehende Inhaltsdetails sind auf der aktuellen Angebotsoberfläche nicht publiziert.",
-    "access": "Öffentliche Anmeldung möglich.",
+    "description": "Online angebotener Vertiefungskurs zu Adobe Premiere Pro CC. Der Kurs umfasst 16 Stunden in vier Halbtagslektionen und behandelt unter anderem fortgeschrittenen Schnitt, Farbkorrektur, Audiobearbeitung und Untertitel. Ein nächster Durchführungstermin ist nicht publiziert.",
+    "access": "Anmeldung beim Anbieter anfragen; Premiere-Grundkenntnisse vorausgesetzt. Keine aktuelle Platzbestätigung.",
     "level": "BERUFSERFAHRUNG",
     "language": "IT",
     "country": "CH_ACCESS / operational presence Chiasso",
-    "url": "https://www.mitech.education/Promozioni/Index/55",
+    "url": "https://www.mitech.education/Corsi/Dettaglio/corso-adobe-premiere-pro-cc-avanzato",
     "approved": "2026-09-28",
     "reviewAfter": "2026-10-28",
     "focus": "MEDIENPRAXIS",
     "offerType": "KURS",
-    "priceDisplay": "EUR 850 zzgl. IVA historisch; EUR 425 zzgl. IVA nur Sonderaktion zur Durchführung 13.10.2026 (abgelaufen). Aktueller Preis nicht publiziert.",
+    "priceDisplay": "EUR 850 zzgl. IVA laut Kursdetailseite; EUR 425 zzgl. IVA war eine abgelaufene Sonderaktion zur Durchführung vom 13.10.2026. Kein Preis für eine neue Ausgabe bestätigt.",
     "priceCategory": "PREIS_AUF_ANFRAGE",
     "format": "ONLINE LIVE",
     "duration": "4 lezioni da mezza giornata",
@@ -25030,6 +25325,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "15.10.2026–16.10.2026 next future; additional Dec 2026 and 2027 sessions published",
     "startDate": "2026-10-15",
     "endDate": "2026-10-16",
+    "sessions": [
+      {
+        "startDate": "2026-12-15",
+        "endDate": "2026-12-16",
+        "label": "15.–16.12.2026 · Wallisellen oder LiveStream"
+      },
+      {
+        "startDate": "2027-02-16",
+        "endDate": "2027-02-17",
+        "label": "16.–17.02.2027 · Wallisellen oder LiveStream"
+      },
+      {
+        "startDate": "2027-04-15",
+        "endDate": "2027-04-16",
+        "label": "15.–16.04.2027 · Wallisellen oder LiveStream"
+      }
+    ],
     "region": "Wallisellen / LiveStream",
     "release_origin": "V98_RESTORE_W5_REMAINING17"
   },
@@ -25054,6 +25366,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "06.10.2026–07.10.2026 next future; further 2027 sessions published",
     "startDate": "2026-10-06",
     "endDate": "2026-10-07",
+    "sessions": [
+      {
+        "startDate": "2027-01-12",
+        "endDate": "2027-01-13",
+        "label": "12.–13.01.2027 · Wallisellen oder LiveStream"
+      },
+      {
+        "startDate": "2027-04-01",
+        "endDate": "2027-04-02",
+        "label": "01.–02.04.2027 · Wallisellen oder LiveStream"
+      },
+      {
+        "startDate": "2027-07-05",
+        "endDate": "2027-07-06",
+        "label": "05.–06.07.2027 · Wallisellen oder LiveStream"
+      }
+    ],
     "region": "Wallisellen / LiveStream",
     "release_origin": "V98_RESTORE_W5_REMAINING17"
   },
@@ -25126,6 +25455,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "2026-09-24–2026-10-09 / CURRENT_OCCURRENCE_CONFIRMED; further 2026-10-26–11-10",
     "startDate": "2026-09-24",
     "endDate": "2026-10-09",
+    "sessions": [{"startDate":"2026-09-24","endDate":"2026-10-09","label":"24.09.–09.10.2026 · Lausanne"},{"startDate":"2026-10-26","endDate":"2026-11-10","label":"26.10.–10.11.2026 · Lausanne"}],
     "region": "Lausanne",
     "release_origin": "V98_W6_CAD26_CONTROLLED_MATERIALISATION"
   },
@@ -25147,9 +25477,9 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "PRÄSENZ | ONLINE SELBSTLERNEN",
     "duration": "15 hours",
-    "start": "26.–27.10.2026 (Lausanne, Präsenz); weitere Präsenzdurchführung 23.–24.11.2026; Selbstlernvariante ohne fixen Termin",
+    "start": "26.–27.10.2026 (Lausanne, Präsenz); weitere Präsenzdurchführung kursgenau nicht bestätigt; Selbstlernvariante ohne fixen Termin",
     "startDate": "2026-10-26",
-    "endDate": "",
+    "endDate": "2026-10-27",
     "region": "Lausanne (Präsenzdurchführungen) / selbstgesteuertes E-Learning",
     "release_origin": "V98_W6_CAD26_CONTROLLED_MATERIALISATION"
   },
@@ -25174,6 +25504,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "2026-09-28–2026-09-29 / FUTURE/CURRENT_BOOKABLE; further 2026-10-28–29",
     "startDate": "2026-09-28",
     "endDate": "2026-09-29",
+    "sessions": [{"startDate":"2026-09-28","endDate":"2026-09-29","label":"28.–29.09.2026 · Lausanne"},{"startDate":"2026-10-28","endDate":"2026-10-29","label":"28.–29.10.2026 · Lausanne"},{"startDate":"2026-11-25","endDate":"2026-11-26","label":"25.–26.11.2026 · Lausanne"}],
     "region": "Lausanne for fixed present sessions",
     "release_origin": "V98_W6_CAD26_CONTROLLED_MATERIALISATION"
   },
@@ -25222,6 +25553,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "2026-10-02–2026-10-05 / FUTURE_BOOKABLE; further 2026-11-03–04",
     "startDate": "2026-10-02",
     "endDate": "2026-10-05",
+    "sessions": [{"startDate":"2026-10-02","endDate":"2026-10-05","label":"02.–05.10.2026 · Lausanne"},{"startDate":"2026-11-03","endDate":"2026-11-04","label":"03.–04.11.2026 · Lausanne"},{"startDate":"2026-12-01","endDate":"2026-12-02","label":"01.–02.12.2026 · Lausanne"}],
     "region": "Lausanne for fixed present sessions",
     "release_origin": "V98_W6_CAD26_CONTROLLED_MATERIALISATION"
   },
@@ -25234,7 +25566,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "level": "VERTIEFUNG",
     "language": "FR",
     "country": "Schweiz",
-    "url": "https://www.cadschool.ch/formation/indesign/",
+    "url": "https://www.cadschool.ch/formation/indesign/indesign-intermediaire/",
     "approved": "2026-09-28",
     "reviewAfter": "2026-10-28",
     "focus": "MEDIENPRAXIS",
@@ -25243,7 +25575,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "PRÄSENZ|ONLINE SELBSTLERNEN",
     "duration": "15 hours / 2 days",
-    "start": "2026-10-06–2026-10-07 / FUTURE_BOOKABLE; further 2026-12-03–04",
+    "start": "Letzte belegte Präsenzdurchführung 06.–07.10.2026; neuer Präsenztermin auf der kursgenauen Seite nicht bestätigt; Selbstlernvariante ohne fixen Termin",
     "startDate": "2026-10-06",
     "endDate": "2026-10-07",
     "region": "Lausanne for fixed present sessions",
@@ -25675,9 +26007,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "PRÄSENZ",
     "duration": "45 hours",
-    "start": "2026-10-27–2026-11-10 / FUTURE_BOOKABLE",
+    "start": "Offiziell gelistete getrennte 6-Tage-Präsenzausgaben: 27.10.–10.11., 03.–17.11., 02.–16.12.2026 sowie 15.–26.02.2027; erste Ausgabe Lausanne/Dendreo, übrige Kursorte und Platzstatus nicht editionsscharf bestätigt.",
     "startDate": "2026-10-27",
     "endDate": "2026-11-10",
+    "sessions": [{"startDate":"2026-10-27","endDate":"2026-11-10","label":"27.10.–10.11.2026 · Präsenz Lausanne","region":"Salle LR22 – VD / PC, Lausanne (editionsbelegt)"},{"startDate":"2026-11-03","endDate":"2026-11-17","label":"03.–17.11.2026 · Präsenz (Katalog)","region":"Durchführungsort dieser Ausgabe nicht editionsscharf bestätigt"},{"startDate":"2026-12-02","endDate":"2026-12-16","label":"02.–16.12.2026 · Präsenz (Katalog)","region":"Durchführungsort dieser Ausgabe nicht editionsscharf bestätigt"},{"startDate":"2027-02-15","endDate":"2027-02-26","label":"15.–26.02.2027 · Präsenz (Katalog)","region":"Durchführungsort dieser Ausgabe nicht editionsscharf bestätigt"}],
     "region": "Genève or Lausanne",
     "release_origin": "V98_W6_CAD26_CONTROLLED_MATERIALISATION"
   },
@@ -25738,7 +26071,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "level": "NICHT_PUBLIZIERT",
     "language": "DE",
     "country": "Schweiz",
-    "url": "https://www.pc-college.ch/seminar/indesign-cc/index.php",
+    "url": "https://www.pc-college.ch/seminar/adobe-design-suite/adobe-indesign-seminar-schulung-inf.php",
     "approved": "2026-09-28",
     "reviewAfter": "2026-10-22",
     "focus": "MEDIENPRAXIS",
@@ -25747,9 +26080,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "PREIS_AUF_ANFRAGE",
     "format": "ONLINE LIVE",
     "duration": "1 Tag",
-    "start": "30.10.2026 – Live-Online-Garantietermin (PC-COLLEGE Kurscode INF261030). Andere Präsenz-/Online-Ausgaben nur nach konkreter Buchungswahl; Platzverfügbarkeit nicht bestätigt.",
+    "start": "Öffentliche Live-Online-Editionen separat: 30.10.2026, 23.12.2026, 15.01., 12.02., 12.03., 09.04. und 07.05.2027; je 1 Tag (09:00–16:00); Standorte für Präsenzvarianten separat bestätigen.",
     "startDate": "2026-10-30",
     "endDate": "2026-10-30",
+    "sessions": [{"startDate":"2026-10-30","endDate":"2026-10-30","label":"30.10.2026 · INF261030 · Live-Online","region":"Live-Online (kein Präsenzort)"},{"startDate":"2026-12-23","endDate":"2026-12-23","label":"23.12.2026 · INF261223 · Live-Online","region":"Live-Online (kein Präsenzort)"},{"startDate":"2027-01-15","endDate":"2027-01-15","label":"15.01.2027 · INF270115 · Live-Online","region":"Live-Online (kein Präsenzort)"},{"startDate":"2027-02-12","endDate":"2027-02-12","label":"12.02.2027 · INF270212 · Live-Online","region":"Live-Online (kein Präsenzort)"},{"startDate":"2027-03-12","endDate":"2027-03-12","label":"12.03.2027 · INF270312 · Live-Online","region":"Live-Online (kein Präsenzort)"},{"startDate":"2027-04-09","endDate":"2027-04-09","label":"09.04.2027 · INF270409 · Live-Online","region":"Live-Online (kein Präsenzort)"},{"startDate":"2027-05-07","endDate":"2027-05-07","label":"07.05.2027 · INF270507 · Live-Online","region":"Live-Online (kein Präsenzort)"}],
     "region": "ONLINE – Live-Online-Training (30.10.2026; kein Präsenzort dieser Edition)",
     "release_origin": "V98_W7_TAIL6_CONTROLLED_MATERIALISATION"
   },
@@ -26107,9 +26441,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "PRÄSENZ|ONLINE LIVE",
     "duration": "3 Tage / 21 Stunden",
-    "start": "2026-10-26–2026-10-28",
+    "start": "Live-Online-Ausgaben 26.–28.10.2026 und 30.11.–02.12.2026 (getrennte Durchführungen; Plätze nicht bestätigt).",
     "startDate": "2026-10-26",
     "endDate": "2026-10-28",
+    "sessions": [{"startDate":"2026-10-26","endDate":"2026-10-28","label":"26.–28.10.2026 · Live-Online","region":"ONLINE / Distance"},{"startDate":"2026-11-30","endDate":"2026-12-02","label":"30.11.–02.12.2026 · Live-Online","region":"ONLINE / Distance"}],
     "region": "ONLINE / Distance",
     "release_origin": "V98_W11_DAWAN2_CONTROLLED_MATERIALISATION"
   },
@@ -26471,6 +26806,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "",
     "endDate": "",
     "region": "Luganese / Tessin",
+    "publicationStatus": "HOLD",
     "release_origin": "V98_R22_BAKOM_CORE_RESTORATION"
   },
   {
@@ -26735,7 +27071,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-02",
     "endDate": "2026-11-04",
     "region": "ONLINE / Distance",
-    "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
+    "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "V82-DAWAN-013",
@@ -26855,7 +27192,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-26",
     "endDate": "2026-10-30",
     "region": "ONLINE / Distance",
-    "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
+    "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "V82-DAWAN-018",
@@ -27235,9 +27573,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "PRÄSENZ|ONLINE LIVE",
     "duration": "2 Tage",
-    "start": "2026-11-02–2026-11-03",
+    "start": "Live-Online-Ausgaben 02.–03.11.2026 und 12.–13.11.2026 (getrennte Durchführungen; Plätze nicht bestätigt).",
     "startDate": "2026-11-02",
     "endDate": "2026-11-03",
+    "sessions": [{"startDate":"2026-11-02","endDate":"2026-11-03","label":"02.–03.11.2026 · Live-Online","region":"ONLINE / Distance"},{"startDate":"2026-11-12","endDate":"2026-11-13","label":"12.–13.11.2026 · Live-Online","region":"ONLINE / Distance"}],
     "region": "ONLINE / Distance",
     "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
   },
@@ -28199,7 +28538,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-28",
     "endDate": "2026-10-28",
     "region": "ONLINE / Distance",
-    "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
+    "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "V82-DAWAN-100",
@@ -28966,6 +29306,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "08.10.2026; weitere Durchführung 18.03.2027",
     "startDate": "2026-10-08",
     "endDate": "2026-10-08",
+    "sessions": [{"startDate":"2026-10-08","endDate":"2026-10-08","label":"08.10.2026 · Genf"},{"startDate":"2027-03-18","endDate":"2027-03-18","label":"18.03.2027 · Genf"}],
     "region": "Genève",
     "release_origin": "V106_DECADREE_REMEDIATION_R1"
   },
@@ -29381,7 +29722,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "AT-PROD-OFFER-003",
     "provider": "fjum – forum journalismus und medien wien",
     "title": "AI-Media-Academy 2026",
-    "description": "Mehrmonatiges KI-Programm für Journalist:innen und Medienschaffende mit Recherche, Content-Produktion, Ethik, Coding und Medieninnovation.",
+    "description": "Mehrmonatiges KI-Programm für Journalist:innen und Medienschaffende mit Recherche, Content-Produktion, Ethik, Coding und Medieninnovation. Die reguläre Bewerbungsfrist vom 01.10.2026 ist abgelaufen. Nachmeldung beim Veranstalter anfragen; nicht zugesichert.",
     "access": "Bewerbung für Kurs 2026 war öffentlich möglich, Frist am 01.10.2026 um 23:59 Uhr abgelaufen; am 16.10.2026 keine neue Bewerbungsannahme oder Restplätze bestätigt. Schweizer:innen grundsätzlich zugangsberechtigt, individuelle Aufnahmeentscheidung.",
     "level": "NICHT_PUBLIZIERT",
     "language": "DE",
@@ -31007,7 +31348,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "",
     "endDate": "",
     "region": "Vorarlberg; Arbeitgebersitz Schwarzach. Tatsächliche Einsatzorte der Rotation durch mehrere Redaktionen nicht einzeln publiziert.",
-    "release_origin": "AT_KLUGSCHEISSER_REDTEAM_R3_20260930 / AT_SCOPE_REMEDIATION_R1_20260930 / MEDIASKILLS_AT_OWNER_DATA_FREEZE_FINALIZED_2026-09-04"
+    "release_origin": "AT_KLUGSCHEISSER_REDTEAM_R3_20260930 / AT_SCOPE_REMEDIATION_R1_20260930 / MEDIASKILLS_AT_OWNER_DATA_FREEZE_FINALIZED_2026-09-04",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "AT-PROD-OFFER-156",
@@ -31195,11 +31537,12 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "UEBER_2000",
     "format": "PRÄSENZ",
     "duration": "4 Semester / 82 ECTS",
-    "start": "Lehrgang 2026–2028 (bereits begonnen am 13.10.2026)",
+    "start": "Lehrgang 2026–2028 (seit 13.10.2026 begonnen); nachträgliche Zulassung zu diesem Jahrgang nicht bestätigt. Studienbeginn gemäss Hochschule jeweils im Oktober.",
     "startDate": "2026-10-13",
     "endDate": "",
     "region": "Universitäts- und Landessportzentrum Rif, Hallein-Rif; Online-Unterricht für diesen Lehrgang nicht bestätigt",
-    "release_origin": "AT_KLUGSCHEISSER_REDTEAM_R3_20260930 / AT_SCOPE_REMEDIATION_R1_20260930 / MEDIASKILLS_AT_OWNER_DATA_FREEZE_FINALIZED_2026-09-04"
+    "release_origin": "AT_KLUGSCHEISSER_REDTEAM_R3_20260930 / AT_SCOPE_REMEDIATION_R1_20260930 / MEDIASKILLS_AT_OWNER_DATA_FREEZE_FINALIZED_2026-09-04",
+    "publicationStatus": "HOLD"
   },
   {
     "id": "AT-PROD-OFFER-169",
