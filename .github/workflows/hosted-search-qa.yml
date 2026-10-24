@@ -77,7 +77,7 @@ jobs:
             assert(await page.locator('#searchInput').inputValue()==='','Reset did not clear search');
             await page.locator('#smartInput').fill('Ich habe CHF 800 und möchte Datenjournalismus lernen');
             await page.locator('#smartSearchForm').evaluate(el=>el.requestSubmit());
-            await page.waitForFunction(()=>/Treffer|nicht eindeutig/i.test(document.querySelector('#resultCount')?.textContent||''));
+            await page.waitForFunction(()=>/passende Angebote|Keine bestätigten Treffer/i.test(document.querySelector('#smartSummary')?.textContent||''));
             assert(!decodeURIComponent(page.url()).includes('Ich habe CHF 800'),'Smart input leaked into URL');
             await page.setViewportSize({width:390,height:844});
             const dims=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
