@@ -165,6 +165,7 @@
       start: "Selbstlernvariante ohne festen Starttermin – Verfügbarkeit beim Anbieter anfragen",
       format: "ONLINE SELBSTLERNEN",
       region: "Online / Selbstlernen (Anbieter kontaktieren)",
+      access: "Selbstlernvariante: Kursbeginn und Zugang beim Anbieter erfragen; keine bestätigte Verfügbarkeit",
       priceDisplay: `${selected.currency} ${selected.amount.toLocaleString("de-CH")} (Selbstlernvariante; optionale Leistungen separat)`,
       priceCategory: category,
       _activeVariantIds: [variantId]
@@ -369,6 +370,7 @@
   };
 
   const compactAccess = offer => {
+    if (Array.isArray(offer._activeVariantIds)) return "Selbstlernvariante: Anbieter kontaktieren";
     const raw = String(offer.access ?? "").trim();
     if (!raw) return "Nicht publiziert";
 

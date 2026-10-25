@@ -225,10 +225,13 @@ jobs:
             const cad=page.locator('#cards [data-offer-id="CAD-002"]');
             assert(await cad.count()===1,'Verified self-study variant vanished after last session');
             const cadText=await cad.innerText();
-            assert(cadText.includes('Online Selbstlernen')&&cadText.includes('CHF 250')
-              &&cadText.includes('Verfügbarkeit beim Anbieter anfragen')
-              &&!cadText.includes('Lausanne')&&!cadText.includes('23.11.2026')
-              &&!cadText.includes('CHF 500'),
+            const cadNormalized=cadText.toLocaleLowerCase('de-CH');
+            assert(cadNormalized.includes('online selbstlernen')&&cadNormalized.includes('chf 250')
+              &&cadNormalized.includes('verfügbarkeit beim anbieter anfragen')
+              &&cadNormalized.includes('anbieter kontaktieren')
+              &&!cadNormalized.includes('öffentlich buchbar')
+              &&!cadNormalized.includes('lausanne')&&!cadNormalized.includes('23.11.2026')
+              &&!cadNormalized.includes('chf 500'),
               'Self-study card retained stale in-person claims: '+cadText);
             for(const id of ['CAD-001','CAD-003','CAD-005']){
               assert(await page.locator('#cards [data-offer-id="'+id+'"]').count()===0,
