@@ -1072,7 +1072,7 @@
       [c.free, "Kostenlos"], [c.low, "Bis 500"], [c.mid, "501–2'000"], [c.high, "Über 2'000"], [c.variable, "Tarife / offen"]
     ];
     el.smartPriceBands.innerHTML = bands.map(([count, label]) => `<div class="price-band"><strong>${count.toLocaleString("de-CH")}</strong><span>${escapeHtml(label)}</span></div>`).join("");
-    if (el.smartPriceNote) el.smartPriceNote.textContent = `Preiskategorien des ${context}; Budgetvergleiche erfolgen nur bei identischer Währung; Anbieterpreise bleiben in Originalwährung.`;
+    if (el.smartPriceNote) el.smartPriceNote.textContent = `Preiskategorien des ${context}; Kostenpflichtige Angebote in Fremdwährung werden ohne Umrechnung nicht als sicher budgetpassend gewertet. Anbieterpreise bleiben in Originalwährung.`;
   };
 
   const renderSmart = raw => {
