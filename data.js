@@ -24031,6 +24031,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "19.10.2026–20.10.2026 Genève + virtuel; 23.11.2026–24.11.2026 Lausanne + virtuel",
     "startDate": "2026-10-19",
     "endDate": "2026-10-20",
+    "sessions": [
+      {"startDate": "2026-10-19", "endDate": "2026-10-20", "label": "19.–20.10.2026 · Genève oder virtuell", "region": "Genève oder classe virtuelle; Durchführungsort beim Anbieter prüfen"},
+      {"startDate": "2026-11-23", "endDate": "2026-11-24", "label": "23.–24.11.2026 · Lausanne oder virtuell; Verfügbarkeit prüfen", "region": "Lausanne oder classe virtuelle; Durchführungsort beim Anbieter prüfen"}
+    ],
     "region": "Genève, Route des Jeunes 35 / Lausanne, Av. Mon-Repos 24 / classe virtuelle",
     "release_origin": "V98_RESTORE_W1_39"
   },
@@ -25181,6 +25185,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "15.10.2026 and 20.11.2026 bookable",
     "startDate": "2026-10-15",
     "endDate": "2026-11-20",
+    "sessions": [
+      {"startDate": "2026-10-15", "endDate": "2026-10-15", "label": "15.10.2026 · Luins", "region": "Leman Studio, Chemin du Vernay 19A, 1184 Luins VD"},
+      {"startDate": "2026-11-20", "endDate": "2026-11-20", "label": "20.11.2026 · Genève; Verfügbarkeit prüfen", "region": "Downtown Studio, Rue des Vieux-Grenadiers 10, 1205 Genève GE"}
+    ],
     "region": "15.10.2026: Leman Studio, Chemin du Vernay 19A, 1184 Luins VD / 20.11.2026: Downtown Studio, Rue des Vieux-Grenadiers 10, 1205 Genève GE",
     "release_origin": "V98_RESTORE_W5_REMAINING17"
   },
