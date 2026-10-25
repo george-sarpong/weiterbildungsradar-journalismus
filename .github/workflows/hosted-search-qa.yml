@@ -130,8 +130,19 @@ jobs:
             page.on('pageerror',error=>pageErrors.push(String(error)));
             await page.clock.install({time:new Date('2026-10-25T12:00:00+01:00')});
             await page.goto('http://127.0.0.1:8765/',{waitUntil:'networkidle'});
-            const total=await page.evaluate(()=>window.WEITERBILDUNGSRADAR_OFFERS?.length);
-            assert(total===1352,'Unexpected roster total: '+total);
+            const integrity=await page.evaluate(()=>{
+              const offers=window.WEITERBILDUNGSRADAR_OFFERS||[];
+              const smart=window.MEDIA_SKILLS_SMART_DATA?.byId||{};
+              const ids=offers.map(offer=>offer.id);
+              const idSet=new Set(ids);
+              return {total:offers.length,unique:idSet.size,smart:Object.keys(smart).length,
+                missingSmart:ids.filter(id=>!Object.hasOwn(smart,id)),
+                smartOrphans:Object.keys(smart).filter(id=>!idSet.has(id))};
+            });
+            const total=integrity.total;
+            assert(total===1352&&integrity.unique===1352&&integrity.smart===1352
+              &&integrity.missingSmart.length===0&&integrity.smartOrphans.length===0,
+              'Roster/Smart sidecar ID integrity failed: '+JSON.stringify(integrity));
             assert(await page.locator('[data-offer-id="V78-03"]').count()===1,'ITTA future session missing');
             const bevisible=await page.locator('[data-offer-id="V77-04"]').innerText();
             assert(bevisible.includes('20.11.2026'),'BeVisible next session is incorrect');
