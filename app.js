@@ -157,7 +157,13 @@
       && !option.validThrough);
     if (prices.length !== 1) return offer;
     const selected = prices[0];
-    const category = selected.amount <= 500 ? "BIS_500"
+    // Der Kurspreis ist bekannt, aber eine separat benötigte Softwarelizenz
+    // macht den tatsächlichen Gesamtaufwand möglicherweise höher.
+    const unknownRequiredCost = (selected.components || []).some(c =>
+      !c.includedInBase && c.requirementStatus === "REQUIRED"
+      && (c.amountType !== "EXACT" || c.amount == null));
+    const category = unknownRequiredCost ? "MEHRERE_TARIFE"
+      : selected.amount <= 500 ? "BIS_500"
       : selected.amount <= 2000 ? "501_2000" : "UEBER_2000";
     return {
       ...offer,
@@ -166,7 +172,7 @@
       format: "ONLINE SELBSTLERNEN",
       region: "Online / Selbstlernen (Anbieter kontaktieren)",
       access: "Selbstlernvariante: Kursbeginn und Zugang beim Anbieter erfragen; keine bestätigte Verfügbarkeit",
-      priceDisplay: `${selected.currency} ${selected.amount.toLocaleString("de-CH")} (Selbstlernvariante; optionale Leistungen separat)`,
+      priceDisplay: `${selected.currency} ${selected.amount.toLocaleString("de-CH")} (Kurspreis für Selbstlernvariante; allfällige Lizenzkosten zusätzlich)`,
       priceCategory: category,
       _activeVariantIds: [variantId]
     };
@@ -509,6 +515,18 @@
       <dd>${escapeHtml(value)}</dd>
     </div>`;
 
+  const softwareLicenceNotice = offer => {
+    const options = window.MEDIA_SKILLS_SMART_DATA?.byId?.[offer.id]?.priceOptions || [];
+    const matchingOptions = Array.isArray(offer._activeVariantIds)
+      ? options.filter(option => option.deliveryVariantRefs?.some(ref => offer._activeVariantIds.includes(ref)))
+      : options;
+    return matchingOptions.some(option => (option.components || []).some(c =>
+      c.componentType === "SOFTWARE_LICENSE" && c.requirementStatus === "REQUIRED"
+      && !c.includedInBase))
+      ? "Autonomes E-Learning: Eine eigene Softwarelizenz ist erforderlich und nicht im Kurspreis enthalten. Bei fehlender Lizenz können zusätzliche, derzeit nicht bezifferte Kosten entstehen."
+      : "";
+  };
+
   const card = offer => {
     const isFavorite = favorites.has(offer.id);
     const favoriteLabel = `${offer.title} als Favorit merken`;
@@ -546,6 +564,7 @@
           ${fact("Start", publicStart(offer))}
         </dl>
         <p class="card-description">${escapeHtml(offer.description)}</p>
+        ${softwareLicenceNotice(offer) ? `<p class="access"><strong>Zusatzkosten:</strong> ${escapeHtml(softwareLicenceNotice(offer))}</p>` : ""}
         <p class="access"><strong>Zugang:</strong> ${escapeHtml(compactAccess(offer))}</p>
         <div class="badges" aria-label="Angebotsart und weitere Eigenschaften">
           <span class="badge badge-type">${escapeHtml(labels.offerType[offer.offerType] ?? offer.offerType)}</span>
@@ -1210,6 +1229,7 @@
             ? `<p class="smart-budget"><strong>Ob der Preis für Sie gilt, ist noch unklar.</strong> Preis und Bedingungen beim Kursanbieter prüfen.</p>`
             : ""}
         <p class="smart-fit"><strong>${item.isAlternative ? "Thematisch passend:" : "Passt, weil:"}</strong> ${escapeHtml(smartWhy(item, parsed))}.</p>
+        ${softwareLicenceNotice(offer) ? `<p class="smart-budget"><strong>Zusatzkosten:</strong> ${escapeHtml(softwareLicenceNotice(offer))}</p>` : ""}
         ${budgetText ? `<p class="smart-budget">${escapeHtml(budgetText)}</p>` : ""}
         ${freeText ? `<p class="smart-budget">${escapeHtml(freeText)}</p>` : ""}
         ${item.budget.status === "PRICE_UNKNOWN" ? `<p class="smart-budget">${offer.priceCategory === "PREIS_NICHT_PUBLIZIERT" || offer.priceCategory === "PREIS_AUF_ANFRAGE" || !String(offer.priceDisplay || "").trim() ? "Preis beim Kursanbieter erfragen." : `Anbieterangabe: ${escapeHtml(offer.priceDisplay)}`}</p>` : ""}

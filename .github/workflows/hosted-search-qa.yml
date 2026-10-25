@@ -229,6 +229,8 @@ jobs:
             assert(cadNormalized.includes('online selbstlernen')&&cadNormalized.includes('chf 250')
               &&cadNormalized.includes('verfügbarkeit beim anbieter anfragen')
               &&cadNormalized.includes('anbieter kontaktieren')
+              &&cadNormalized.includes('softwarelizenz')
+              &&cadNormalized.includes('nicht im kurspreis enthalten')
               &&!cadNormalized.includes('öffentlich buchbar')
               &&!cadNormalized.includes('lausanne')&&!cadNormalized.includes('23.11.2026')
               &&!cadNormalized.includes('chf 500'),
@@ -249,6 +251,15 @@ jobs:
               &&onlineResults.includes('Cadschool')
               &&onlineResults.includes('CHF 250'),
               'Self-study price/format missing from Smart Search: '+onlineResults);
+            const directCadTitles=await page.locator('#smartResults > article.smart-result-card h3').allInnerTexts();
+            assert(!directCadTitles.includes('Photoshop - Base'),
+              'Unknown software-licence cost incorrectly classified as direct budget fit');
+            const alternativeCadTitles=await page.locator('#smartResults section article.smart-result-card h3').allInnerTexts();
+            assert(alternativeCadTitles.includes('Photoshop - Base'),
+              'Qualified CAD-002 price option was hidden rather than shown as uncertain');
+            assert(onlineResults.includes('Softwarelizenz')
+              &&onlineResults.includes('nicht im Kurspreis enthalten'),
+              'Adobe licence disclosure missing from Smart result');
             await page.locator('#smartInput').fill('Photoshop Base Präsenz höchstens CHF 500');
             await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
             const inPersonResults=await page.locator('#smartResults').innerText();
