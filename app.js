@@ -295,7 +295,7 @@
     // Für mehrere Tarife ist ein explizit publizierter Journalist:innen-Tarif
     // weiterhin der relevanteste Kartenpreis.
     const journalist = raw.match(/((?:CHF|EUR|USD|GBP)\s*[0-9][0-9'’.,]*)(?=[^()]{0,45}(?:Kurspreis\s+)?Journalist)/i);
-    if (journalist) return compactAmount(journalist[1]);
+    if (journalist) return `${compactAmount(journalist[1])} · Journalist:innen-Tarif`;
 
     // Explizite Preisbereiche wie EUR 480–512 oder CHF 0–590 erhalten.
     const range = raw.match(/\b(CHF|EUR|USD|GBP)\s*([0-9][0-9'’.,]*)\s*[–-]\s*([0-9][0-9'’.,]*)/i);
@@ -635,12 +635,15 @@
 
   const parseSmartQuery = raw => {
     const input = normalize(raw);
+    const excludeEnglish = /\b(?:kein(?:e|en)?|ohne)\s+englisch\b/.test(input);
     const budget = parseSmartBudget(raw);
     const dayMatch = input.match(/\b(?:zwei|2)\s*(?:tag|tage|tagen)\b/);
     const numericDayMatch = input.match(/\b(\d{1,2})\s*(?:tag|tage|tagen)\b/);
     const deliveryIntents = parseDeliveryIntent(input);
     const freeOnly = SMART_FREE_INTENT_RE.test(input);
     let tokenSource = input
+      .replace(/\bnicht\s+mehr\s+als\b/g, " ")
+      .replace(/\b(?:kein(?:e|en)?|ohne)\s+englisch\b/g, " ")
       .replace(/\b(?:chf|eur|usd)\s*[0-9][0-9'’.,]*\b/g, " ")
       .replace(/\b[0-9][0-9'’.,]*\s*(?:chf|eur|usd)\b/g, " ")
       .replace(/\b(?:fr\.?|franken|euro|euros|dollar|dollars)\s*[0-9][0-9'’.,]*\b/g, " ")
@@ -663,6 +666,7 @@
       budget,
       maxDays: dayMatch ? 2 : numericDayMatch ? Number(numericDayMatch[1]) : null,
       deliveryIntents,
+      excludeEnglish,
       freeOnly,
       tokens: [...new Set(tokens)]
     };
@@ -859,9 +863,10 @@
         candidates.push({ status: "PRICE_UNKNOWN", option, amount: null });
         continue;
       }
-      const currencies1to1 = ["CHF", "EUR", "USD"];
-      const comparableCurrency = !option.currency || option.currency === parsed.budget.currency
-        || (currencies1to1.includes(option.currency) && currencies1to1.includes(parsed.budget.currency));
+      // Ohne geprüften Wechselkurs keine bestätigte Budgetpassung über Währungsgrenzen.
+      // Gratis-Angebote (Betrag 0) bleiben unabhängig von der Währung vergleichbar.
+      const comparableCurrency = option.amountType === "FREE"
+        || (Boolean(option.currency) && option.currency === parsed.budget.currency);
       if (!comparableCurrency) {
         candidates.push({ status: "PRICE_UNKNOWN", option, amount: null });
         continue;
@@ -955,6 +960,10 @@
   };
 
   const smartEvaluate = (offer, parsed) => {
+    if (parsed.excludeEnglish) {
+      const languages = splitTokens(offer.language, /\s*[|/]\s*/);
+      if (!languages.length || !languages.every(code => ["DE", "FR", "IT"].includes(code))) return null;
+    }
     const topic = topicMatch(offer, parsed);
     if (!topic.match) return null;
     const record = getSmartRecord(offer);
@@ -995,6 +1004,10 @@
   };
 
   const smartAlternative = (offer, parsed) => {
+    if (parsed.excludeEnglish) {
+      const languages = splitTokens(offer.language, /\s*[|/]\s*/);
+      if (!languages.length || !languages.every(code => ["DE", "FR", "IT"].includes(code))) return null;
+    }
     if (!parsed.deliveryIntents.length || !parsed.tokens.length) return null;
     const topic = topicMatch(offer, parsed);
     if (!topic.match) return null;
@@ -1017,13 +1030,13 @@
     const free = parsed.freeOnly ? resolveFreeOption(record, delivery, false) : null;
     if (parsed.freeOnly && (!free || free.status !== "DIRECT_FIT"
       || free.option?.priceScope !== "FULL_OFFER")) return null;
-    return { offer, record, delivery, budget, free, score: topic.score, isAlternative: true };
+    return { offer, record, delivery, budget, free, score: topic.score, isAlternative: true, alternativeReason: "FORMAT" };
   };
 
   const smartWhy = (item, parsed) => {
     const reasons = [];
     if (parsed.tokens.length) reasons.push(parsed.tokens.join(" + "));
-    if (parsed.deliveryIntents.length && !item.isAlternative) reasons.push("Durchführungsform verifiziert");
+    if (parsed.deliveryIntents.length && !item.isAlternative) reasons.push("Kursform bestätigt");
     if (parsed.budget) reasons.push(budgetLabel(item.budget));
     if (parsed.freeOnly && item.free) {
       if (item.free.status === "DIRECT_FIT") reasons.push("sicher als kostenlos strukturiert");
@@ -1059,12 +1072,10 @@
     if (!parsed.budget) return "";
     const status = item.budget.status;
     const actualCurrency = item.budget.option?.currency;
-    const currencyNote = actualCurrency && actualCurrency !== parsed.budget.currency
-      && ["CHF", "EUR", "USD"].includes(actualCurrency)
-      && ["CHF", "EUR", "USD"].includes(parsed.budget.currency)
-      ? "Währungen EUR/CHF/USD werden für diese Suche vereinfacht 1:1 verglichen; tatsächliche Wechselkurse und Steuern können abweichen."
-      : "";
-    const withCurrencyNote = message => currencyNote ? `${message} ${currencyNote}` : message;
+    if (actualCurrency && actualCurrency !== parsed.budget.currency) {
+      return `Preis in ${actualCurrency}, Budget in ${parsed.budget.currency}: Aktuellen Preis beim Kursanbieter prüfen. Ohne Umrechnung ist die Budgetpassung unklar.`;
+    }
+    const withCurrencyNote = message => message;
     if (["TARGET_GROUP_FIT", "DIRECT_FIT"].includes(status) && item.budget.amount != null) {
       const rest = Math.max(0, parsed.budget.amount - item.budget.amount);
       const prefix = status === "TARGET_GROUP_FIT" ? "Beim publizierten Journalist:innen-Tarif" : "Bei diesem Preis";
@@ -1092,9 +1103,15 @@
           <span>${escapeHtml(price)}</span>
           <span>${escapeHtml(humanizeTokens(offer.format, labels.format))}</span>
           <span>${escapeHtml(offer.duration || "Dauer nicht publiziert")}</span>
+          <span>Start: ${escapeHtml(publicStart(offer) || "Nicht publiziert")}</span>
+          <span>Zugang: ${escapeHtml(compactAccess(offer))}</span>
           ${place ? `<span>${escapeHtml(place)}</span>` : ""}
         </div>
-        ${item.isAlternative ? `<p class="smart-budget"><strong>Kursform noch nicht bestätigt.</strong> In unserem Katalog steht: ${escapeHtml(humanizeTokens(offer.format, labels.format))}. Bitte vor der Anmeldung beim Anbieter prüfen.</p>` : ""}
+        ${item.alternativeReason === "FORMAT"
+          ? `<p class="smart-budget"><strong>Ob dieser Kurs in der gewünschten Form stattfindet, ist noch offen.</strong> In unserem Katalog steht: ${escapeHtml(humanizeTokens(offer.format, labels.format))}. Bitte beim Kursanbieter nachfragen.</p>`
+          : item.alternativeReason === "PREIS"
+            ? `<p class="smart-budget"><strong>Ob der Preis für Sie gilt, ist noch unklar.</strong> Preis und Bedingungen beim Kursanbieter prüfen.</p>`
+            : ""}
         <p class="smart-fit"><strong>${item.isAlternative ? "Thematisch passend:" : "Passt, weil:"}</strong> ${escapeHtml(smartWhy(item, parsed))}.</p>
         ${budgetText ? `<p class="smart-budget">${escapeHtml(budgetText)}</p>` : ""}
         ${freeText ? `<p class="smart-budget">${escapeHtml(freeText)}</p>` : ""}
@@ -1122,7 +1139,7 @@
       [c.free, "Kostenlos"], [c.low, "Bis 500"], [c.mid, "501–2'000"], [c.high, "Über 2'000"], [c.variable, "Tarife / offen"]
     ];
     el.smartPriceBands.innerHTML = bands.map(([count, label]) => `<div class="price-band"><strong>${count.toLocaleString("de-CH")}</strong><span>${escapeHtml(label)}</span></div>`).join("");
-    if (el.smartPriceNote) el.smartPriceNote.textContent = `Preiskategorien des ${context}; Budgets in CHF/EUR/USD werden zur Suche vereinfacht 1:1 verglichen. Anbieterpreise bleiben in Originalwährung.`;
+    if (el.smartPriceNote) el.smartPriceNote.textContent = `Preiskategorien des ${context}; Preise in Fremdwährung zählen ohne Umrechnung nicht als sicher passend. Anbieterpreise bleiben in Originalwährung.`;
   };
 
   const renderSmart = raw => {
@@ -1145,12 +1162,22 @@
     }
     el.smartValidation.hidden = true;
     el.smartValidation.textContent = "";
-    const evaluated = offers.map(offer => smartEvaluate(offer, parsed)).filter(Boolean);
-    const alternatives = parsed.deliveryIntents.length
+    const formatMatches = offers.map(offer => smartEvaluate(offer, parsed)).filter(Boolean);
+    const evaluated = parsed.budget
+      ? formatMatches.filter(item => item.budget.status === "DIRECT_FIT")
+      : formatMatches;
+    const priceAlternatives = parsed.budget && parsed.tokens.length
+      ? formatMatches.filter(item => ["TARGET_GROUP_FIT", "CONDITIONAL_FIT", "POSSIBLE_FIT"].includes(item.budget.status))
+        .map(item => ({ ...item, isAlternative: true, alternativeReason: "PREIS" }))
+      : [];
+    const formatAlternatives = parsed.deliveryIntents.length
       ? offers.map(offer => smartAlternative(offer, parsed)).filter(Boolean)
       : [];
-    alternatives.sort((a, b) => b.score - a.score
-      || a.offer.title.localeCompare(b.offer.title, "de-CH"));
+    const alternatives = [...priceAlternatives, ...formatAlternatives];
+    alternatives.sort((a, b) =>
+      (a.alternativeReason === "PREIS" ? 0 : 1) - (b.alternativeReason === "PREIS" ? 0 : 1)
+      || (budgetStatusRank[a.budget.status] ?? 99) - (budgetStatusRank[b.budget.status] ?? 99)
+      || b.score - a.score || a.offer.title.localeCompare(b.offer.title, "de-CH"));
     evaluated.sort((a, b) => {
       if (parsed.budget) {
         const rank = (budgetStatusRank[a.budget.status] ?? 99) - (budgetStatusRank[b.budget.status] ?? 99);
@@ -1168,29 +1195,34 @@
     if (parsed.budget) chips.push(`Budget: ${parsed.budget.currency} ${parsed.budget.amount.toLocaleString("de-CH")}`);
     if (parsed.maxDays) chips.push(`Zeit: ${parsed.maxDays} ${parsed.maxDays === 1 ? "Tag" : "Tage"} · erkannt, nicht angewendet`);
     parsed.deliveryIntents.forEach(intent => chips.push(`Durchführung: ${DELIVERY_INTENT_LABELS[intent] || intent.replaceAll("_", " ")}`));
-    if (parsed.freeOnly) chips.push("Nur Angebote mit strukturierter Kostenlos-Option");
+    if (parsed.freeOnly) chips.push("Nur kostenlose Kurse");
+    if (parsed.excludeEnglish) chips.push("Keine englischsprachigen Kurse");
 
     el.smartUnderstood.innerHTML = `<span class="smart-understood-label">Verstanden:</span>${chips.length ? chips.map(chip => `<span class="smart-chip">${escapeHtml(chip)}</span>`).join("") : '<span class="smart-chip">Suchbegriffe aus deinem Satz</span>'}`;
     const shown = evaluated.slice(0, 3);
     const alternativeShown = alternatives.slice(0, 3);
-    const confirmedText = parsed.deliveryIntents.length
+    const confirmedText = parsed.budget
       ? (evaluated.length
-        ? `${evaluated.length.toLocaleString("de-CH")} Kurse mit bestätigter Kursform. Ob sie ins Budget passen, steht jeweils beim Angebot.`
-        : "Keine Kurse gefunden, bei denen wir die gewünschte Kursform bestätigen können.")
-      : (evaluated.length
-        ? `${evaluated.length.toLocaleString("de-CH")} passende Angebote im aktuellen Bestand. Hier sind ${shown.length} Optionen.`
-        : "Keine bestätigten Treffer.");
+        ? `${evaluated.length.toLocaleString("de-CH")} Kurse passen zum angegebenen Budget.`
+        : "Kein Kurs gefunden, der sicher ins angegebene Budget passt.")
+      : (parsed.deliveryIntents.length
+        ? (evaluated.length
+          ? `${evaluated.length.toLocaleString("de-CH")} Kurse mit bestätigter Kursform.`
+          : "Keine Kurse gefunden, bei denen wir die gewünschte Kursform bestätigen können.")
+        : (evaluated.length
+          ? `${evaluated.length.toLocaleString("de-CH")} passende Angebote im aktuellen Bestand. Hier sind ${shown.length} Optionen.`
+          : "Keine passenden Kurse gefunden."));
     const alternativeText = alternatives.length
-      ? ` ${alternatives.length.toLocaleString("de-CH")} weitere Kurse, die passen könnten; ${alternativeShown.length} angezeigt. Kursform bitte prüfen.`
+      ? ` ${alternatives.length.toLocaleString("de-CH")} weitere Kurse könnten passen; ${alternativeShown.length} angezeigt.`
       : "";
     el.smartSummary.innerHTML = `<p><strong>${escapeHtml(confirmedText)}</strong>${escapeHtml(alternativeText)}</p>`
       + (!evaluated.length && !alternatives.length
-        ? "<p>Formuliere Thema oder Durchführungsbedingung etwas breiter oder nutze die klassischen Filter.</p>"
+        ? "<p>Versuchen Sie einen anderen Suchbegriff oder nutzen Sie die Filter.</p>"
         : "");
     el.smartResults.innerHTML = shown.map((item, index) => smartCard(item, parsed, index)).join("")
       + (alternativeShown.length
         ? `<section aria-labelledby="smartAlternativeTitle"><h3 id="smartAlternativeTitle">Weitere Kurse, die passen könnten</h3>
-           <p>In unseren Kursangaben ist die gewünschte Kursform aufgeführt. Ob die Kurse tatsächlich so stattfinden, konnten wir aber noch nicht bestätigen. Bitte beim Anbieter nachfragen.</p>
+           <p>Bei diesen Kursen sind noch Fragen zum Preis oder zur Kursform offen. Bitte beim Kursanbieter nachfragen.</p>
            ${alternativeShown.map((item, index) => smartCard(item, parsed, index)).join("")}</section>`
         : "");
     if (el.smartBundle) {
