@@ -4,6 +4,11 @@ on:
     branches: [main]
     paths:
       - .github/workflows/hosted-search-qa.yml
+      - index.html
+      - app.js
+      - data.js
+      - smart-search-data.js
+      - styles.css
   workflow_dispatch:
 permissions:
   contents: read
