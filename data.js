@@ -2878,10 +2878,26 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "NICHT_PUBLIZIERT",
     "duration": "1 Tag, 09:00–17:00",
-    "start": "22.10.2026 (Kursdetail); weitere Katalogausgabe 26.05.2027 (Plätze/Format/Ort nicht gesondert bestätigt)",
+    "start": "22.10.2026 (historisch); weitere separate Katalogausgaben 26.05.2027 und 27.10.2027 (Plätze, Format und Ort nicht separat bestätigt)",
     "startDate": "2026-10-22",
     "endDate": "2026-10-22",
-    "sessions": [{"startDate":"2026-10-22","endDate":"2026-10-22","label":"22.10.2026 (Kursdetail)"},{"startDate":"2027-05-26","endDate":"2027-05-26","label":"26.05.2027 (CFJM-Katalog; Plätze nicht bestätigt)"}],
+    "sessions": [
+      {
+        "startDate": "2026-10-22",
+        "endDate": "2026-10-22",
+        "label": "22.10.2026 (Kursdetail)"
+      },
+      {
+        "startDate": "2027-05-26",
+        "endDate": "2027-05-26",
+        "label": "26.05.2027 (CFJM-Katalog; Plätze nicht bestätigt)"
+      },
+      {
+        "startDate": "2027-10-27",
+        "endDate": "2027-10-27",
+        "label": "27.10.2027 (CFJM-Katalog; Plätze, Unterrichtsort und Format nicht bestätigt)"
+      }
+    ],
     "region": "NOT_PUBLISHED",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
