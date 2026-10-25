@@ -635,12 +635,15 @@
 
   const parseSmartQuery = raw => {
     const input = normalize(raw);
+    const excludeEnglish = /\b(?:kein(?:e|en)?|ohne)\s+englisch\b/.test(input);
     const budget = parseSmartBudget(raw);
     const dayMatch = input.match(/\b(?:zwei|2)\s*(?:tag|tage|tagen)\b/);
     const numericDayMatch = input.match(/\b(\d{1,2})\s*(?:tag|tage|tagen)\b/);
     const deliveryIntents = parseDeliveryIntent(input);
     const freeOnly = SMART_FREE_INTENT_RE.test(input);
     let tokenSource = input
+      .replace(/\bnicht\s+mehr\s+als\b/g, " ")
+      .replace(/\b(?:kein(?:e|en)?|ohne)\s+englisch\b/g, " ")
       .replace(/\b(?:chf|eur|usd)\s*[0-9][0-9'’.,]*\b/g, " ")
       .replace(/\b[0-9][0-9'’.,]*\s*(?:chf|eur|usd)\b/g, " ")
       .replace(/\b(?:fr\.?|franken|euro|euros|dollar|dollars)\s*[0-9][0-9'’.,]*\b/g, " ")
@@ -663,6 +666,7 @@
       budget,
       maxDays: dayMatch ? 2 : numericDayMatch ? Number(numericDayMatch[1]) : null,
       deliveryIntents,
+      excludeEnglish,
       freeOnly,
       tokens: [...new Set(tokens)]
     };
@@ -955,6 +959,11 @@
   };
 
   const smartEvaluate = (offer, parsed) => {
+    if (parsed.excludeEnglish) {
+      const languages = splitTokens(offer.language, /\s*[|/]\s*/);
+      // Unverifizierte und mehrsprachige Angebote mit Englisch sind keine sicheren Treffer.
+      if (!languages.length || !languages.every(code => ["DE", "FR", "IT"].includes(code))) return null;
+    }
     const topic = topicMatch(offer, parsed);
     if (!topic.match) return null;
     const record = getSmartRecord(offer);
@@ -1116,6 +1125,7 @@
     if (parsed.maxDays) chips.push(`Zeit: ${parsed.maxDays} ${parsed.maxDays === 1 ? "Tag" : "Tage"} · erkannt, nicht angewendet`);
     parsed.deliveryIntents.forEach(intent => chips.push(`Durchführung: ${DELIVERY_INTENT_LABELS[intent] || intent.replaceAll("_", " ")}`));
     if (parsed.freeOnly) chips.push("Nur Angebote mit strukturierter Kostenlos-Option");
+    if (parsed.excludeEnglish) chips.push("Sprache: kein Englisch (nur bestätigte andere Sprachen)");
 
     el.smartUnderstood.innerHTML = `<span class="smart-understood-label">Verstanden:</span>${chips.length ? chips.map(chip => `<span class="smart-chip">${escapeHtml(chip)}</span>`).join("") : '<span class="smart-chip">Suchbegriffe aus deinem Satz</span>'}`;
     const shown = evaluated.slice(0, 3);
