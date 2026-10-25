@@ -860,6 +860,12 @@
     return option.priceScope === "FULL_OFFER";
   };
 
+  const PLAN_CURRENCIES = new Set(["CHF", "EUR", "USD"]);
+  const currenciesComparableForPlanning = (courseCurrency, budgetCurrency) =>
+    Boolean(courseCurrency && budgetCurrency)
+      && (courseCurrency === budgetCurrency
+        || (PLAN_CURRENCIES.has(courseCurrency) && PLAN_CURRENCIES.has(budgetCurrency)));
+
   const resolveBudget = (offer, record, parsed, deliveryResult) => {
     if (!parsed.budget) return { status: "NO_BUDGET", option: null, amount: null };
     if (!record || record.parserStatus !== "AUTO_ACCEPT" || record.priceEligible !== true) return { status: "PRICE_UNKNOWN", option: null, amount: null };
@@ -872,10 +878,10 @@
         candidates.push({ status: "PRICE_UNKNOWN", option, amount: null });
         continue;
       }
-      // Ohne geprüften Wechselkurs keine bestätigte Budgetpassung über Währungsgrenzen.
-      // Gratis-Angebote (Betrag 0) bleiben unabhängig von der Währung vergleichbar.
+      // Vereinbarte Planungsregel: CHF/EUR/USD 1:1, keine echte Umrechnung.
+      // Andere Währungen nur gegen dieselbe Währung vergleichen; kostenlos bleibt 0.
       const comparableCurrency = option.amountType === "FREE"
-        || (Boolean(option.currency) && option.currency === parsed.budget.currency);
+        || currenciesComparableForPlanning(option.currency, parsed.budget.currency);
       if (!comparableCurrency) {
         candidates.push({ status: "PRICE_UNKNOWN", option, amount: null });
         continue;
@@ -942,8 +948,8 @@
     Boolean(resolveFreeOption(record, deliveryResult, hasDeliveryIntent));
 
   const budgetLabel = result => ({
-    TARGET_GROUP_FIT: "Journalist:innen-Tarif im Budget",
-    DIRECT_FIT: "im Budget",
+    TARGET_GROUP_FIT: "Journalist:innen-Tarif rechnerisch im Budget",
+    DIRECT_FIT: "rechnerisch im Budget",
     CONDITIONAL_FIT: "bedingter Tarif im Budget",
     POSSIBLE_FIT: "könnte ins Budget passen",
     PRICE_UNKNOWN: "Preis nicht sicher vergleichbar",
@@ -1031,7 +1037,8 @@
       if (budget.status !== "DIRECT_FIT" || !option
         || option.priceScope !== "FULL_OFFER" || option.billingBasis !== "TOTAL"
         || option.taxMode === "EXCLUDED"
-        || (option.amountType !== "FREE" && option.currency !== parsed.budget.currency)) return null;
+        || (option.amountType !== "FREE"
+          && !currenciesComparableForPlanning(option.currency, parsed.budget.currency))) return null;
     }
     const free = parsed.freeOnly ? resolveFreeOption(record, delivery, false) : null;
     if (parsed.freeOnly && (!free || free.status !== "DIRECT_FIT"
@@ -1078,19 +1085,24 @@
     if (!parsed.budget) return "";
     const status = item.budget.status;
     const actualCurrency = item.budget.option?.currency;
-    if (actualCurrency && actualCurrency !== parsed.budget.currency) {
-      return `Preis in ${actualCurrency}, Budget in ${parsed.budget.currency}: Aktuellen Preis beim Kursanbieter prüfen. Ohne Umrechnung ist die Budgetpassung unklar.`;
-    }
-    const withCurrencyNote = message => message;
+    const crossCurrency = actualCurrency && actualCurrency !== parsed.budget.currency
+      && currenciesComparableForPlanning(actualCurrency, parsed.budget.currency);
+    const note = crossCurrency
+      ? " Für die Planung 1:1 verglichen. Tatsächlichen Preis vor der Anmeldung in Ihre Währung umrechnen."
+      : "";
     if (["TARGET_GROUP_FIT", "DIRECT_FIT"].includes(status) && item.budget.amount != null) {
+      const eligibility = status === "TARGET_GROUP_FIT" ? " Berechtigung beim Kursanbieter prüfen." : "";
+      if (crossCurrency) {
+        return `Der Preis liegt beim 1:1-Planungsvergleich in Ihrem Budget.${eligibility}${note}`;
+      }
       const rest = Math.max(0, parsed.budget.amount - item.budget.amount);
-      const prefix = status === "TARGET_GROUP_FIT" ? "Beim publizierten Journalist:innen-Tarif" : "Bei diesem Preis";
-      return withCurrencyNote(`${prefix} bleiben ${parsed.budget.currency} ${rest.toLocaleString("de-CH")}.${status === "TARGET_GROUP_FIT" ? " Berechtigung beim Kursanbieter prüfen." : ""}`);
+      const prefix = status === "TARGET_GROUP_FIT" ? "Beim Journalist:innen-Tarif" : "Bei diesem Preis";
+      return `${prefix} bleiben ${parsed.budget.currency} ${rest.toLocaleString("de-CH")}.${eligibility}`;
     }
-    if (status === "CONDITIONAL_FIT") return withCurrencyNote("Dieser Preis gilt nur unter bestimmten Bedingungen. Berechtigung beim Kursanbieter prüfen.");
-    if (status === "POSSIBLE_FIT") return withCurrencyNote("Ob der Gesamtpreis ins Budget passt, ist noch unklar. Aktuellen Preis beim Kursanbieter prüfen.");
-    if (status === "OVER_BUDGET") return withCurrencyNote("Der sicher vergleichbare Preis liegt über dem angegebenen Budget.");
-    return withCurrencyNote("Ob dieser Kurs ins Budget passt, ist unklar. Preis beim Kursanbieter prüfen.");
+    if (status === "CONDITIONAL_FIT") return `Dieser Preis gilt nur unter bestimmten Bedingungen. Berechtigung beim Kursanbieter prüfen.${note}`;
+    if (status === "POSSIBLE_FIT") return `Ob der Gesamtpreis ins Budget passt, ist noch unklar. Aktuellen Preis beim Kursanbieter prüfen.${note}`;
+    if (status === "OVER_BUDGET") return `Der Preis liegt beim Planungsvergleich über Ihrem Budget.${note}`;
+    return `Ob dieser Kurs ins Budget passt, ist unklar. Preis beim Kursanbieter prüfen.${note}`;
   };
   const smartCard = (item, parsed, index) => {
     const offer = item.offer;
@@ -1145,7 +1157,7 @@
       [c.free, "Kostenlos"], [c.low, "Bis 500"], [c.mid, "501–2'000"], [c.high, "Über 2'000"], [c.variable, "Tarife / offen"]
     ];
     el.smartPriceBands.innerHTML = bands.map(([count, label]) => `<div class="price-band"><strong>${count.toLocaleString("de-CH")}</strong><span>${escapeHtml(label)}</span></div>`).join("");
-    if (el.smartPriceNote) el.smartPriceNote.textContent = `Preiskategorien des ${context}; Preise in Fremdwährung zählen ohne Umrechnung nicht als sicher passend. Anbieterpreise bleiben in Originalwährung.`;
+    if (el.smartPriceNote) el.smartPriceNote.textContent = `Preiskategorien des ${context}; Für die Budgetplanung rechnen wir CHF, EUR und USD 1:1. Das ist kein Wechselkurs. Rechnen Sie den Preis vor der Anmeldung in Ihre Währung um. Anbieterpreise bleiben in Originalwährung.`;
   };
 
   const renderSmart = raw => {
@@ -1209,8 +1221,8 @@
     const alternativeShown = alternatives.slice(0, 3);
     const confirmedText = parsed.budget
       ? (evaluated.length
-        ? `${evaluated.length.toLocaleString("de-CH")} Kurse passen zum angegebenen Budget.`
-        : "Kein Kurs gefunden, der sicher ins angegebene Budget passt.")
+        ? `${evaluated.length.toLocaleString("de-CH")} Kurse passen rechnerisch zum Planungsbudget.`
+        : "Kein Kurs gefunden, der nach unserem Planungsvergleich ins Budget passt.")
       : (parsed.deliveryIntents.length
         ? (evaluated.length
           ? `${evaluated.length.toLocaleString("de-CH")} Kurse mit bestätigter Kursform.`
