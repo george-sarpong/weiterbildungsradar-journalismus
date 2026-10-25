@@ -2903,10 +2903,26 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "NICHT_PUBLIZIERT",
     "duration": "5 Tage, 09:00–17:00",
-    "start": "26.–30.10.2026 (Kursdetail); weitere Katalogausgabe 24.–28.05.2027 (Plätze/Format/Ort nicht gesondert bestätigt)",
+    "start": "26.–30.10.2026; 24.–28.05.2027; 27.09.–01.10.2027 (separate CFJM-Ausgaben; Plätze, Lehrort und Unterrichtsformat nicht bestätigt)",
     "startDate": "2026-10-26",
     "endDate": "2026-10-30",
-    "sessions": [{"startDate":"2026-10-26","endDate":"2026-10-30","label":"26.–30.10.2026 (Kursdetail)"},{"startDate":"2027-05-24","endDate":"2027-05-28","label":"24.–28.05.2027 (CFJM-Katalog; Plätze nicht bestätigt)"}],
+    "sessions": [
+      {
+        "startDate": "2026-10-26",
+        "endDate": "2026-10-30",
+        "label": "26.–30.10.2026 (Kursdetail)"
+      },
+      {
+        "startDate": "2027-05-24",
+        "endDate": "2027-05-28",
+        "label": "24.–28.05.2027 (CFJM-Katalog; Plätze nicht bestätigt)"
+      },
+      {
+        "startDate": "2027-09-27",
+        "endDate": "2027-10-01",
+        "label": "27.09.–01.10.2027 (CFJM-Katalog; Plätze nicht bestätigt)"
+      }
+    ],
     "region": "NOT_PUBLISHED",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
@@ -25485,11 +25501,25 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "PRÄSENZ | ONLINE SELBSTLERNEN",
     "duration": "15 hours",
-    "start": "26.–27.10.2026 (Lausanne, Präsenz); weitere Präsenzdurchführung kursgenau nicht bestätigt; Selbstlernvariante ohne fixen Termin",
+    "start": "26.–27.10.2026 und 23.–24.11.2026 (Lausanne, getrennte Präsenztermine); CHF 250 Selbstlernvariante ohne fixen Termin",
     "startDate": "2026-10-26",
     "endDate": "2026-10-27",
     "region": "Lausanne (Präsenzdurchführungen) / selbstgesteuertes E-Learning",
-    "release_origin": "V98_W6_CAD26_CONTROLLED_MATERIALISATION"
+    "release_origin": "V98_W6_CAD26_CONTROLLED_MATERIALISATION",
+    "sessions": [
+      {
+        "startDate": "2026-10-26",
+        "endDate": "2026-10-27",
+        "label": "26.–27.10.2026 · Lausanne · Präsenz",
+        "region": "Lausanne"
+      },
+      {
+        "startDate": "2026-11-23",
+        "endDate": "2026-11-24",
+        "label": "23.–24.11.2026 · Lausanne · Präsenz",
+        "region": "Lausanne"
+      }
+    ]
   },
   {
     "id": "CAD-003",
@@ -26445,14 +26475,33 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "reviewAfter": "2026-10-22",
     "focus": "MEDIENPRAXIS",
     "offerType": "KURS",
-    "priceDisplay": "CHF 1'575 Präsenz / CHF 1'260 Distanz",
+    "priceDisplay": "CHF 1'575 Präsenz / CHF 1'260 Distanz (jeweils exkl. Steuer; formatgebundene Tarife)",
     "priceCategory": "MEHRERE_TARIFE",
     "format": "PRÄSENZ|ONLINE LIVE",
     "duration": "3 Tage / 21 Stunden",
-    "start": "Live-Online-Ausgaben 26.–28.10.2026 und 30.11.–02.12.2026 (getrennte Durchführungen; Plätze nicht bestätigt).",
+    "start": "Live-Online: 26.–28.10.2026, 30.11.–02.12.2026 sowie 25.–27.01.2027 (drei getrennte Ausgaben; freie Plätze nicht bestätigt).",
     "startDate": "2026-10-26",
     "endDate": "2026-10-28",
-    "sessions": [{"startDate":"2026-10-26","endDate":"2026-10-28","label":"26.–28.10.2026 · Live-Online","region":"ONLINE / Distance"},{"startDate":"2026-11-30","endDate":"2026-12-02","label":"30.11.–02.12.2026 · Live-Online","region":"ONLINE / Distance"}],
+    "sessions": [
+      {
+        "startDate": "2026-10-26",
+        "endDate": "2026-10-28",
+        "label": "26.–28.10.2026 · Live-Online",
+        "region": "ONLINE / Distance"
+      },
+      {
+        "startDate": "2026-11-30",
+        "endDate": "2026-12-02",
+        "label": "30.11.–02.12.2026 · Live-Online",
+        "region": "ONLINE / Distance"
+      },
+      {
+        "startDate": "2027-01-25",
+        "endDate": "2027-01-27",
+        "label": "25.–27.01.2027 · Live-Online (Anbieter-Distanzliste)",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "region": "ONLINE / Distance",
     "release_origin": "V98_W11_DAWAN2_CONTROLLED_MATERIALISATION"
   },
