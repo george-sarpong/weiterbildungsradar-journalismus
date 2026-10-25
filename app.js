@@ -973,10 +973,57 @@
     return { offer, record, delivery, budget, free, score };
   };
 
+  // Das allgemeine Angebotsformat ist ein Hinweis, kein verifizierter Delivery-Nachweis.
+  const unverifiedFormatMayMatch = (offer, intents) => {
+    const formats = new Set(splitTokens(offer.format));
+    const remote = ["ONLINE", "ONLINE LIVE", "ONLINE SELBSTLERNEN", "ON_DEMAND"]
+      .some(value => formats.has(value));
+    const inPerson = formats.has("PRÄSENZ");
+    return intents.every(intent => {
+      switch (intent) {
+        case "ONLINE": return remote;
+        case "IN_PERSON": return inPerson;
+        case "STRICT_REMOTE": return remote && !inPerson && !formats.has("HYBRID");
+        case "STRICT_IN_PERSON": return inPerson && !remote && !formats.has("HYBRID");
+        case "LIVE_ONLINE": return formats.has("ONLINE LIVE");
+        case "SELF_STUDY": return formats.has("ONLINE SELBSTLERNEN");
+        case "ON_DEMAND": return formats.has("ON_DEMAND");
+        case "HYBRID": return formats.has("HYBRID");
+        default: return false;
+      }
+    });
+  };
+
+  const smartAlternative = (offer, parsed) => {
+    if (!parsed.deliveryIntents.length || !parsed.tokens.length) return null;
+    const topic = topicMatch(offer, parsed);
+    if (!topic.match) return null;
+    // "KI" nicht zufällig innerhalb längerer Wörter wie "Skills" akzeptieren.
+    if (parsed.tokens.some(token => token.length < 3
+      && !new RegExp(`(^|[^a-z0-9])${token}($|[^a-z0-9])`).test(smartHaystack(offer)))) return null;
+    const record = getSmartRecord(offer);
+    if (record?.delivery?.evidenceTier !== "UNKNOWN") return null;
+    if (!unverifiedFormatMayMatch(offer, parsed.deliveryIntents)) return null;
+    const delivery = { outcome: "UNKNOWN", evidenceTier: "UNKNOWN", matchedVariantIds: [] };
+    // Preis nur unabhängig von einer noch unbestätigten Variante bewerten.
+    const budget = resolveBudget(offer, record, { ...parsed, deliveryIntents: [] }, delivery);
+    if (parsed.budget) {
+      const option = budget.option;
+      if (budget.status !== "DIRECT_FIT" || !option
+        || option.priceScope !== "FULL_OFFER" || option.billingBasis !== "TOTAL"
+        || option.taxMode === "EXCLUDED"
+        || (option.amountType !== "FREE" && option.currency !== parsed.budget.currency)) return null;
+    }
+    const free = parsed.freeOnly ? resolveFreeOption(record, delivery, false) : null;
+    if (parsed.freeOnly && (!free || free.status !== "DIRECT_FIT"
+      || free.option?.priceScope !== "FULL_OFFER")) return null;
+    return { offer, record, delivery, budget, free, score: topic.score, isAlternative: true };
+  };
+
   const smartWhy = (item, parsed) => {
     const reasons = [];
     if (parsed.tokens.length) reasons.push(parsed.tokens.join(" + "));
-    if (parsed.deliveryIntents.length) reasons.push("Durchführungsform verifiziert");
+    if (parsed.deliveryIntents.length && !item.isAlternative) reasons.push("Durchführungsform verifiziert");
     if (parsed.budget) reasons.push(budgetLabel(item.budget));
     if (parsed.freeOnly && item.free) {
       if (item.free.status === "DIRECT_FIT") reasons.push("sicher als kostenlos strukturiert");
@@ -1047,7 +1094,8 @@
           <span>${escapeHtml(offer.duration || "Dauer nicht publiziert")}</span>
           ${place ? `<span>${escapeHtml(place)}</span>` : ""}
         </div>
-        <p class="smart-fit"><strong>Passt, weil:</strong> ${escapeHtml(smartWhy(item, parsed))}.</p>
+        ${item.isAlternative ? `<p class="smart-budget"><strong>Mögliche Alternative – Format nicht unabhängig bestätigt.</strong> Angebotsangabe: ${escapeHtml(humanizeTokens(offer.format, labels.format))}. Durchführungsform beim Anbieter überprüfen.</p>` : ""}
+        <p class="smart-fit"><strong>${item.isAlternative ? "Thematisch passend:" : "Passt, weil:"}</strong> ${escapeHtml(smartWhy(item, parsed))}.</p>
         ${budgetText ? `<p class="smart-budget">${escapeHtml(budgetText)}</p>` : ""}
         ${freeText ? `<p class="smart-budget">${escapeHtml(freeText)}</p>` : ""}
         ${item.budget.status === "PRICE_UNKNOWN" ? `<p class="smart-budget">Originalpreis: ${escapeHtml(offer.priceDisplay || "Preis nicht publiziert")}</p>` : ""}
@@ -1098,6 +1146,11 @@
     el.smartValidation.hidden = true;
     el.smartValidation.textContent = "";
     const evaluated = offers.map(offer => smartEvaluate(offer, parsed)).filter(Boolean);
+    const alternatives = parsed.deliveryIntents.length
+      ? offers.map(offer => smartAlternative(offer, parsed)).filter(Boolean)
+      : [];
+    alternatives.sort((a, b) => b.score - a.score
+      || a.offer.title.localeCompare(b.offer.title, "de-CH"));
     evaluated.sort((a, b) => {
       if (parsed.budget) {
         const rank = (budgetStatusRank[a.budget.status] ?? 99) - (budgetStatusRank[b.budget.status] ?? 99);
@@ -1119,13 +1172,27 @@
 
     el.smartUnderstood.innerHTML = `<span class="smart-understood-label">Verstanden:</span>${chips.length ? chips.map(chip => `<span class="smart-chip">${escapeHtml(chip)}</span>`).join("") : '<span class="smart-chip">Suchbegriffe aus deinem Satz</span>'}`;
     const shown = evaluated.slice(0, 3);
-    const statusMessage = evaluated.length
-      ? `${evaluated.length.toLocaleString("de-CH")} passende Angebote im aktuellen Bestand. Hier sind ${shown.length} Optionen.`
-      : "Keine bestätigten Treffer. Formuliere Thema oder harte Durchführungsbedingung etwas breiter oder nutze die klassischen Filter.";
-    el.smartSummary.innerHTML = evaluated.length
-      ? `<p><strong>${evaluated.length.toLocaleString("de-CH")} passende Angebote</strong> im aktuellen Bestand. Hier sind ${shown.length} Optionen.</p>`
-      : `<p><strong>Keine bestätigten Treffer.</strong> Formuliere Thema oder harte Durchführungsbedingung etwas breiter oder nutze die klassischen Filter.</p>`;
-    el.smartResults.innerHTML = shown.map((item, index) => smartCard(item, parsed, index)).join("");
+    const alternativeShown = alternatives.slice(0, 3);
+    const confirmedText = parsed.deliveryIntents.length
+      ? (evaluated.length
+        ? `${evaluated.length.toLocaleString("de-CH")} Angebote mit verifizierter Durchführungsform; Budgetstatus pro Angebot beachten.`
+        : "Keine Angebote mit verifizierter Durchführungsform.")
+      : (evaluated.length
+        ? `${evaluated.length.toLocaleString("de-CH")} passende Angebote im aktuellen Bestand. Hier sind ${shown.length} Optionen.`
+        : "Keine bestätigten Treffer.");
+    const alternativeText = alternatives.length
+      ? ` ${alternatives.length.toLocaleString("de-CH")} mögliche Alternativen mit unbestätigter Durchführungsform; ${alternativeShown.length} angezeigt.`
+      : "";
+    el.smartSummary.innerHTML = `<p><strong>${escapeHtml(confirmedText)}</strong>${escapeHtml(alternativeText)}</p>`
+      + (!evaluated.length && !alternatives.length
+        ? "<p>Formuliere Thema oder Durchführungsbedingung etwas breiter oder nutze die klassischen Filter.</p>"
+        : "");
+    el.smartResults.innerHTML = shown.map((item, index) => smartCard(item, parsed, index)).join("")
+      + (alternativeShown.length
+        ? `<section aria-labelledby="smartAlternativeTitle"><h3 id="smartAlternativeTitle">Mögliche Alternativen – Format nicht bestätigt</h3>
+           <p>Das Format dieser Alternativen ist nicht unabhängig verifiziert. Die Angaben stammen aus dem allgemeinen Angebotsdatensatz; bitte beim Anbieter abklären.</p>
+           ${alternativeShown.map((item, index) => smartCard(item, parsed, index)).join("")}</section>`
+        : "");
     if (el.smartBundle) {
       el.smartBundle.hidden = true;
       el.smartBundle.innerHTML = "";
@@ -1133,7 +1200,7 @@
     const topicPool = parsed.tokens.length ? offers.filter(offer => topicMatch(offer, parsed).match) : offers;
     renderPriceBands(topicPool, parsed.tokens.length ? "Themas" : "aktuell sichtbaren Bestands");
     el.smartOutput.hidden = false;
-    el.smartStatus.textContent = statusMessage;
+    el.smartStatus.textContent = confirmedText + alternativeText;
   };
 
 
