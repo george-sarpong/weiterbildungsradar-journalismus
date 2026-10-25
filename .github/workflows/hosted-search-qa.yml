@@ -30,6 +30,69 @@ jobs:
       TZ: Europe/Zurich
     steps:
       - uses: actions/checkout@v4
+      - name: Test isolated production price and variant resolvers
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import vm from 'node:vm';
+          const src=fs.readFileSync('app.js','utf8');
+          const extract=(start,end)=>{
+            const a=src.indexOf(start), b=src.indexOf(end,a+start.length);
+            if(a<0||b<a)throw new Error('Resolver extraction boundary changed: '+start);
+            return src.slice(a,b);
+          };
+          const core=extract('  const amountWithRequiredComponents =','  const freeStatusRank =');
+          const alternative=extract('  const smartAlternative =','  const smartWhy =');
+          const api=vm.runInNewContext(`(()=>{
+            const isDateActive=()=>true;
+            const topicMatch=()=>({match:true,score:10});
+            const getSmartRecord=offer=>offer.record;
+            const unverifiedFormatMayMatch=()=>true;
+            const resolveFreeOption=()=>null;
+            ${core}
+            ${alternative}
+            return {resolveBudget,smartAlternative};
+          })()`);
+          const assert=(ok,msg)=>{if(!ok)throw new Error(msg)};
+          const makeOption=(overrides={})=>({
+            amountType:'EXACT',amount:100,currency:'CHF',
+            eligibilityType:'NONE',billingBasis:'TOTAL',priceScope:'FULL_OFFER',
+            taxMode:'UNSPECIFIED',components:[],...overrides
+          });
+          const record=priceOptions=>({parserStatus:'AUTO_ACCEPT',priceEligible:true,
+            delivery:{evidenceTier:'UNKNOWN'},priceOptions});
+          const parsed=(amount,deliveryIntents=[])=>({budget:{amount,currency:'CHF'},
+            deliveryIntents,excludeEnglish:false,tokens:['test'],freeOnly:false});
+          const budget=(option,amount)=>api.resolveBudget({},record([option]),parsed(amount),
+            {matchedVariantIds:[]});
+          const free=makeOption({amountType:'FREE',amount:0,currency:'CHF'});
+          assert(budget(free,0).status==='DIRECT_FIT','Truly free price regressed');
+          const charged=makeOption({amountType:'FREE',amount:0,currency:'CHF',
+            components:[{requirementStatus:'REQUIRED',amountType:'EXACT',amount:120}]});
+          assert(budget(charged,50).status==='OVER_BUDGET',
+            'FREE plus required CHF 120 incorrectly satisfies CHF 50');
+          assert(budget(charged,150).amount===120,
+            'Required fee not included in effective total');
+          const unknown=makeOption({amountType:'FREE',amount:0,currency:'CHF',
+            components:[{requirementStatus:'REQUIRED',amountType:'ON_REQUEST'}]});
+          assert(budget(unknown,50).status!=='DIRECT_FIT',
+            'FREE plus unknown mandatory cost classified as certain');
+          assert(budget(makeOption({currency:'EUR',amount:300}),500).status==='DIRECT_FIT',
+            'CHF/EUR 1:1 product planning regressed');
+          assert(budget(makeOption({currency:'GBP',amount:300}),500).status==='PRICE_UNKNOWN',
+            'Unsupported GBP/CHF 1:1 planning incorrectly enabled');
+          const altParsed=parsed(500,['ONLINE']);
+          const offerWithVariants={format:'ONLINE LIVE',record:record([
+            makeOption({amount:100,deliveryVariantRefs:['A']})])};
+          assert(api.smartAlternative(offerWithVariants,altParsed)===null,
+            'Variant-specific price incorrectly reused for unverified format');
+          const offerNeutral={format:'ONLINE LIVE',record:record([makeOption({amount:100})])};
+          assert(api.smartAlternative(offerNeutral,altParsed)!==null,
+            'Variant-neutral budget price unexpectedly excluded from alternatives');
+          console.log('PRODUCTION_RESOLVER_FIXTURE_PASS');
+          NODE
       - name: Run integrated Chromium regression tests
         shell: bash
         run: |
