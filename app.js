@@ -859,9 +859,10 @@
         candidates.push({ status: "PRICE_UNKNOWN", option, amount: null });
         continue;
       }
-      const currencies1to1 = ["CHF", "EUR", "USD"];
-      const comparableCurrency = !option.currency || option.currency === parsed.budget.currency
-        || (currencies1to1.includes(option.currency) && currencies1to1.includes(parsed.budget.currency));
+      // Ohne geprüften Wechselkurs keine bestätigte Budgetpassung über Währungsgrenzen.
+      // Gratis-Angebote (Betrag 0) bleiben unabhängig von der Währung vergleichbar.
+      const comparableCurrency = option.amountType === "FREE"
+        || (Boolean(option.currency) && option.currency === parsed.budget.currency);
       if (!comparableCurrency) {
         candidates.push({ status: "PRICE_UNKNOWN", option, amount: null });
         continue;
@@ -1012,21 +1013,18 @@
     if (!parsed.budget) return "";
     const status = item.budget.status;
     const actualCurrency = item.budget.option?.currency;
-    const currencyNote = actualCurrency && actualCurrency !== parsed.budget.currency
-      && ["CHF", "EUR", "USD"].includes(actualCurrency)
-      && ["CHF", "EUR", "USD"].includes(parsed.budget.currency)
-      ? "Währungen EUR/CHF/USD werden für diese Suche vereinfacht 1:1 verglichen; tatsächliche Wechselkurse und Steuern können abweichen."
-      : "";
-    const withCurrencyNote = message => currencyNote ? `${message} ${currencyNote}` : message;
+    if (actualCurrency && actualCurrency !== parsed.budget.currency) {
+      return `Preis in ${actualCurrency}, Budget in ${parsed.budget.currency}: Ohne geprüften Wechselkurs ist keine verlässliche Budgetaussage möglich.`;
+    }
     if (["TARGET_GROUP_FIT", "DIRECT_FIT"].includes(status) && item.budget.amount != null) {
       const rest = Math.max(0, parsed.budget.amount - item.budget.amount);
       const prefix = status === "TARGET_GROUP_FIT" ? "Beim publizierten Journalist:innen-Tarif" : "Bei diesem Preis";
-      return withCurrencyNote(`${prefix} bleiben ${parsed.budget.currency} ${rest.toLocaleString("de-CH")}.`);
+      return `${prefix} bleiben ${parsed.budget.currency} ${rest.toLocaleString("de-CH")}.`;
     }
-    if (status === "CONDITIONAL_FIT") return withCurrencyNote("Der passende Preis gilt nur unter einer veröffentlichten Bedingung; persönliche Berechtigung wurde nicht geprüft.");
-    if (status === "POSSIBLE_FIT") return withCurrencyNote("Der publizierte Preis könnte ins Budget passen, ist aber nicht sicher als Gesamtpreis nutzbar.");
-    if (status === "OVER_BUDGET") return withCurrencyNote("Der sicher vergleichbare Preis liegt über dem angegebenen Budget.");
-    return withCurrencyNote("Für dieses Angebot ist keine sichere Budgetaussage möglich.");
+    if (status === "CONDITIONAL_FIT") return "Der passende Preis gilt nur unter einer veröffentlichten Bedingung; persönliche Berechtigung wurde nicht geprüft.";
+    if (status === "POSSIBLE_FIT") return "Der publizierte Preis könnte ins Budget passen, ist aber nicht sicher als Gesamtpreis nutzbar.";
+    if (status === "OVER_BUDGET") return "Der sicher vergleichbare Preis liegt über dem angegebenen Budget.";
+    return "Für dieses Angebot ist keine sichere Budgetaussage möglich.";
   };
   const smartCard = (item, parsed, index) => {
     const offer = item.offer;
@@ -1074,7 +1072,7 @@
       [c.free, "Kostenlos"], [c.low, "Bis 500"], [c.mid, "501–2'000"], [c.high, "Über 2'000"], [c.variable, "Tarife / offen"]
     ];
     el.smartPriceBands.innerHTML = bands.map(([count, label]) => `<div class="price-band"><strong>${count.toLocaleString("de-CH")}</strong><span>${escapeHtml(label)}</span></div>`).join("");
-    if (el.smartPriceNote) el.smartPriceNote.textContent = `Preiskategorien des ${context}; Budgets in CHF/EUR/USD werden zur Suche vereinfacht 1:1 verglichen. Anbieterpreise bleiben in Originalwährung.`;
+    if (el.smartPriceNote) el.smartPriceNote.textContent = `Preiskategorien des ${context}; Budgetvergleiche erfolgen nur bei identischer Währung; Anbieterpreise bleiben in Originalwährung.`;
   };
 
   const renderSmart = raw => {
