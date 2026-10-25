@@ -1068,12 +1068,12 @@
     if (["TARGET_GROUP_FIT", "DIRECT_FIT"].includes(status) && item.budget.amount != null) {
       const rest = Math.max(0, parsed.budget.amount - item.budget.amount);
       const prefix = status === "TARGET_GROUP_FIT" ? "Beim publizierten Journalist:innen-Tarif" : "Bei diesem Preis";
-      return withCurrencyNote(`${prefix} bleiben ${parsed.budget.currency} ${rest.toLocaleString("de-CH")}.`);
+      return withCurrencyNote(`${prefix} bleiben ${parsed.budget.currency} ${rest.toLocaleString("de-CH")}.${status === "TARGET_GROUP_FIT" ? " Berechtigung beim Kursanbieter prüfen." : ""}`);
     }
-    if (status === "CONDITIONAL_FIT") return withCurrencyNote("Der passende Preis gilt nur unter einer veröffentlichten Bedingung; persönliche Berechtigung wurde nicht geprüft.");
-    if (status === "POSSIBLE_FIT") return withCurrencyNote("Der publizierte Preis könnte ins Budget passen, ist aber nicht sicher als Gesamtpreis nutzbar.");
+    if (status === "CONDITIONAL_FIT") return withCurrencyNote("Dieser Preis gilt nur unter bestimmten Bedingungen. Berechtigung beim Kursanbieter prüfen.");
+    if (status === "POSSIBLE_FIT") return withCurrencyNote("Ob der Gesamtpreis ins Budget passt, ist noch unklar. Aktuellen Preis beim Kursanbieter prüfen.");
     if (status === "OVER_BUDGET") return withCurrencyNote("Der sicher vergleichbare Preis liegt über dem angegebenen Budget.");
-    return withCurrencyNote("Für dieses Angebot ist keine sichere Budgetaussage möglich.");
+    return withCurrencyNote("Ob dieser Kurs ins Budget passt, ist unklar. Preis beim Kursanbieter prüfen.");
   };
   const smartCard = (item, parsed, index) => {
     const offer = item.offer;
@@ -1098,7 +1098,7 @@
         <p class="smart-fit"><strong>${item.isAlternative ? "Thematisch passend:" : "Passt, weil:"}</strong> ${escapeHtml(smartWhy(item, parsed))}.</p>
         ${budgetText ? `<p class="smart-budget">${escapeHtml(budgetText)}</p>` : ""}
         ${freeText ? `<p class="smart-budget">${escapeHtml(freeText)}</p>` : ""}
-        ${item.budget.status === "PRICE_UNKNOWN" ? `<p class="smart-budget">Originalpreis: ${escapeHtml(offer.priceDisplay || "Preis nicht publiziert")}</p>` : ""}
+        ${item.budget.status === "PRICE_UNKNOWN" ? `<p class="smart-budget">${offer.priceCategory === "PREIS_NICHT_PUBLIZIERT" || offer.priceCategory === "PREIS_AUF_ANFRAGE" || !String(offer.priceDisplay || "").trim() ? "Preis beim Kursanbieter erfragen." : `Anbieterangabe: ${escapeHtml(offer.priceDisplay)}`}</p>` : ""}
         <a class="source-link" href="${escapeHtml(offer.url)}" target="_blank" rel="noopener noreferrer" aria-label="Offizielle Angebotsseite zu ${escapeHtml(offer.title)} öffnen">Zum Angebot <span aria-hidden="true">↗</span></a>
       </article>`;
   };
