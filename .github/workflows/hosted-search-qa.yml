@@ -157,7 +157,50 @@ jobs:
             assert(/Kein Kurs gefunden.*Budget/i.test(ki300.summary),'Unsafe KI CHF 300 summary');
             await query('Ich habe nicht mehr als 300 Franken, aber kein Englisch, Podcast',2,1);
             await page.locator('#searchInput').fill('MAZ');
-            assert((await page.locator('[data-offer-id]').count())>0,'Classic search failed');
+            assert((await page.locator('#cards [data-offer-id]').count())>0,'Classic search failed');
+            assert(!decodeURIComponent(page.url()).includes('Ich habe nicht mehr als 300'),
+              'Private Smart text leaked into URL');
+            assert(!Object.values(await page.evaluate(()=>Object.fromEntries(
+              Object.keys(localStorage).map(k=>[k,localStorage.getItem(k)]))))
+              .some(value=>String(value).includes('kein Englisch')),
+              'Private Smart text leaked into localStorage');
+            await page.locator('#resetFilters').click();
+            const baseVisible=await page.locator('#cards [data-offer-id]').count();
+            assert(baseVisible>0,'No visible catalogue cards');
+            assert(await page.locator('#cards [data-offer-id="PCC-P33"]').count()===0,
+              'Archived QA09 item became visible');
+            const filterIds=['focusFilter','typeFilter','priceFilter','formatFilter',
+              'languageFilter','countryFilter','levelFilter'];
+            let changedFilters=0;
+            for(const id of filterIds){
+              const ctl=page.locator('#'+id);
+              const options=await ctl.locator('option').evaluateAll(nodes=>
+                nodes.map(n=>n.value).filter(Boolean));
+              assert(options.length>0,'No populated options for '+id);
+              await ctl.selectOption(options[0]);
+              const afterFilter=await page.locator('#cards [data-offer-id]').count();
+              assert(afterFilter<=baseVisible,'Filter expanded results: '+id);
+              if(afterFilter!==baseVisible)changedFilters++;
+              await ctl.selectOption('');
+              assert(await page.locator('#cards [data-offer-id]').count()===baseVisible,
+                'Filter did not reset: '+id);
+            }
+            assert(changedFilters===7,'Not all seven filters alter results: '+changedFilters);
+            const firstId=await page.locator('#cards [data-offer-id]').first()
+              .getAttribute('data-offer-id');
+            await page.locator('#cards [data-favorite-id="'+firstId+'"]').first().click();
+            await page.locator('#favoritesToggle').click();
+            assert(await page.locator('#cards [data-offer-id]').count()===1,
+              'Favorites-only view did not isolate one offer');
+            assert(await page.locator('#cards [data-offer-id]').first().getAttribute('data-offer-id')===firstId,
+              'Favorites-only view selected wrong offer');
+            await page.locator('#resetFilters').click();
+            const sortOptions=await page.locator('#sortSelect option').evaluateAll(nodes=>
+              nodes.map(n=>n.value).filter(v=>v&&v!=='EDITORIAL'));
+            assert(sortOptions.length>0,'No secondary sort mode available');
+            await page.locator('#sortSelect').selectOption(sortOptions[0]);
+            assert(await page.locator('#cards [data-offer-id]').count()===baseVisible,
+              'Sorting unexpectedly changed the result set');
             await page.locator('#resetFilters').click();
             await page.setViewportSize({width:390,height:844});
             const sizes=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
