@@ -681,9 +681,18 @@
     if (!parsed.tokens.length) return { match: true, score: 0 };
     const title = normalize(offer.title);
     const haystack = smartHaystack(offer);
-    const allMatch = parsed.tokens.every(token => haystack.includes(token));
-    if (!allMatch) return { match: false, score: 0 };
-    const score = parsed.tokens.reduce((sum, token) => sum + (title.includes(token) ? 8 : 2), 0);
+    const wordMatch = (text, token) => {
+      // "KI" als eigenen Begriff prüfen: "Skills" ist kein KI-Treffer.
+      // KI und AI sind fachlich übliche Bezeichnungen für dasselbe Thema.
+      if (token === "ki" || token === "ai") {
+        return /(^|[^a-z0-9])(ki|ai|genai)($|[^a-z0-9])|kunstliche intelligenz|artificial intelligence/.test(text);
+      }
+      return token.length < 3
+        ? new RegExp(`(^|[^a-z0-9])${token}($|[^a-z0-9])`).test(text)
+        : text.includes(token);
+    };
+    if (!parsed.tokens.every(token => wordMatch(haystack, token))) return { match: false, score: 0 };
+    const score = parsed.tokens.reduce((sum, token) => sum + (wordMatch(title, token) ? 8 : 2), 0);
     return { match: true, score };
   };
 
@@ -1011,9 +1020,6 @@
     if (!parsed.deliveryIntents.length || !parsed.tokens.length) return null;
     const topic = topicMatch(offer, parsed);
     if (!topic.match) return null;
-    // "KI" nicht zufällig innerhalb längerer Wörter wie "Skills" akzeptieren.
-    if (parsed.tokens.some(token => token.length < 3
-      && !new RegExp(`(^|[^a-z0-9])${token}($|[^a-z0-9])`).test(smartHaystack(offer)))) return null;
     const record = getSmartRecord(offer);
     if (record?.delivery?.evidenceTier !== "UNKNOWN") return null;
     if (!unverifiedFormatMayMatch(offer, parsed.deliveryIntents)) return null;
