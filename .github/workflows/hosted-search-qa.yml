@@ -4,12 +4,85 @@ on:
     branches: [main]
     paths:
       - .github/workflows/hosted-search-qa.yml
+      - index.html
+      - app.js
+      - data.js
+      - smart-search-data.js
+      - styles.css
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/hosted-search-qa.yml
+      - index.html
+      - app.js
+      - data.js
+      - smart-search-data.js
+      - styles.css
   workflow_dispatch:
 permissions:
   contents: read
 
 jobs:
+  local-pr-qa:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    env:
+      TZ: Europe/Zurich
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run integrated Chromium regression tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm init -y >/dev/null 2>&1
+          npm install --silent playwright-core
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/media-skills-local-qa.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          CHROME_PATH="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          test -n "$CHROME_PATH"
+          CHROME_PATH="$CHROME_PATH" node --input-type=module <<'NODE'
+          import {chromium} from 'playwright-core';
+          const assert=(value,message)=>{if(!value)throw new Error(message)};
+          const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_PATH,args:['--no-sandbox']});
+          try {
+            const page=await browser.newPage({viewport:{width:1280,height:900}});
+            const pageErrors=[];
+            page.on('pageerror',error=>pageErrors.push(String(error)));
+            await page.clock.install({time:new Date('2026-10-25T12:00:00+01:00')});
+            await page.goto('http://127.0.0.1:8765/',{waitUntil:'networkidle'});
+            const total=await page.evaluate(()=>window.WEITERBILDUNGSRADAR_OFFERS?.length);
+            assert(total===1352,'Unexpected roster total: '+total);
+            assert(await page.locator('[data-offer-id="V78-03"]').count()===1,'ITTA future session missing');
+            const bevisible=await page.locator('[data-offer-id="V77-04"]').innerText();
+            assert(bevisible.includes('20.11.2026'),'BeVisible next session is incorrect');
+            const query=async(input,expectedDirect,expectedOther)=>{
+              await page.locator('#smartInput').fill(input);
+              await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+              const direct=await page.locator('#smartResults > article.smart-result-card').count();
+              const other=await page.locator('#smartResults section article.smart-result-card').count();
+              assert(direct===expectedDirect&&other===expectedOther,
+                'Wrong groups for '+input+' direct='+direct+' other='+other);
+              return {direct,other,summary:await page.locator('#smartSummary').innerText()};
+            };
+            const ki=await query('Ich suche einen Online-Kurs zu KI für höchstens CHF 500',0,3);
+            assert(ki.summary.includes('Kein Kurs gefunden, der sicher'),'Unsafe KI budget summary');
+            assert((await page.locator('#smartResults section').innerText()).includes('Kursanbieter'),'No clear alternative warning');
+            await query('Ich habe CHF 800 und möchte Datenjournalismus lernen',2,0);
+            await query('KI online höchstens CHF 300',0,2);
+            await query('Ich habe nicht mehr als 300 Franken, aber kein Englisch, Podcast',2,1);
+            await page.locator('#searchInput').fill('MAZ');
+            assert((await page.locator('[data-offer-id]').count())>0,'Classic search failed');
+            await page.locator('#resetFilters').click();
+            await page.setViewportSize({width:390,height:844});
+            const sizes=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
+            assert(sizes.scroll<=sizes.client,'Mobile page horizontal overflow: '+JSON.stringify(sizes));
+            assert(pageErrors.length===0,'Browser errors: '+pageErrors.join(' | '));
+            console.log('LOCAL_PR_CHROMIUM_REGRESSION_PASS',JSON.stringify({total,ki,mobile:sizes}));
+          } finally {await browser.close()}
+          NODE
   hosted-qa:
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     env:
       BASE_URL: https://george-sarpong.github.io/weiterbildungsradar-journalismus
@@ -77,7 +150,7 @@ jobs:
             assert(await page.locator('#searchInput').inputValue()==='','Reset did not clear search');
             await page.locator('#smartInput').fill('Ich habe CHF 800 und möchte Datenjournalismus lernen');
             await page.locator('#smartSearchForm').evaluate(el=>el.requestSubmit());
-            await page.waitForFunction(()=>/passende Angebote|Keine bestätigten Treffer/i.test(document.querySelector('#smartSummary')?.textContent||''));
+            await page.waitForFunction(()=>/Kurse passen zum angegebenen Budget|Kein Kurs gefunden, der sicher ins angegebene Budget passt/i.test(document.querySelector('#smartSummary')?.textContent||''));
             assert(!decodeURIComponent(page.url()).includes('Ich habe CHF 800'),'Smart input leaked into URL');
             await page.setViewportSize({width:390,height:844});
             const dims=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
