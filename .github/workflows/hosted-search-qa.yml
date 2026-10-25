@@ -83,6 +83,22 @@ jobs:
             'CHF/EUR 1:1 product planning regressed');
           assert(budget(makeOption({currency:'GBP',amount:300}),500).status==='PRICE_UNKNOWN',
             'Unsupported GBP/CHF 1:1 planning incorrectly enabled');
+          const publicAndMember=record([
+            makeOption({amount:500}),
+            makeOption({amount:150,eligibilityType:'PROFESSION',eligibilityValue:'JOURNALIST'})
+          ]);
+          assert(api.resolveBudget({},publicAndMember,parsed(800),{matchedVariantIds:[]}).status
+            ==='DIRECT_FIT','Public full price should win over optional journalist discount');
+          assert(api.resolveBudget({},publicAndMember,parsed(300),{matchedVariantIds:[]}).status
+            ==='TARGET_GROUP_FIT','Journalist-only price should remain conditional');
+          const onlyFree=record([
+            makeOption({amount:60}),
+            makeOption({amountType:'FREE',amount:0,currency:null,
+              eligibilityType:'MEMBERSHIP',eligibilityValue:'MEMBER'})
+          ]);
+          const onlyFreeParsed=parsed(100); onlyFreeParsed.freeOnly=true;
+          assert(api.resolveBudget({},onlyFree,onlyFreeParsed,{matchedVariantIds:[]}).status
+            !=='DIRECT_FIT','Paid public tariff cannot satisfy only-free search');
           const altParsed=parsed(500,['ONLINE']);
           const offerWithVariants={format:'ONLINE LIVE',record:record([
             makeOption({amount:100,deliveryVariantRefs:['A']})])};
