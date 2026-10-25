@@ -1094,7 +1094,7 @@
           <span>${escapeHtml(offer.duration || "Dauer nicht publiziert")}</span>
           ${place ? `<span>${escapeHtml(place)}</span>` : ""}
         </div>
-        ${item.isAlternative ? `<p class="smart-budget"><strong>Mögliche Alternative – Format nicht unabhängig bestätigt.</strong> Angebotsangabe: ${escapeHtml(humanizeTokens(offer.format, labels.format))}. Durchführungsform beim Anbieter überprüfen.</p>` : ""}
+        ${item.isAlternative ? `<p class="smart-budget"><strong>Kursform noch nicht bestätigt.</strong> In unserem Katalog steht: ${escapeHtml(humanizeTokens(offer.format, labels.format))}. Bitte vor der Anmeldung beim Anbieter prüfen.</p>` : ""}
         <p class="smart-fit"><strong>${item.isAlternative ? "Thematisch passend:" : "Passt, weil:"}</strong> ${escapeHtml(smartWhy(item, parsed))}.</p>
         ${budgetText ? `<p class="smart-budget">${escapeHtml(budgetText)}</p>` : ""}
         ${freeText ? `<p class="smart-budget">${escapeHtml(freeText)}</p>` : ""}
@@ -1175,13 +1175,13 @@
     const alternativeShown = alternatives.slice(0, 3);
     const confirmedText = parsed.deliveryIntents.length
       ? (evaluated.length
-        ? `${evaluated.length.toLocaleString("de-CH")} Angebote mit verifizierter Durchführungsform; Budgetstatus pro Angebot beachten.`
-        : "Keine Angebote mit verifizierter Durchführungsform.")
+        ? `${evaluated.length.toLocaleString("de-CH")} Kurse mit bestätigter Kursform. Ob sie ins Budget passen, steht jeweils beim Angebot.`
+        : "Keine Kurse gefunden, bei denen wir die gewünschte Kursform bestätigen können.")
       : (evaluated.length
         ? `${evaluated.length.toLocaleString("de-CH")} passende Angebote im aktuellen Bestand. Hier sind ${shown.length} Optionen.`
         : "Keine bestätigten Treffer.");
     const alternativeText = alternatives.length
-      ? ` ${alternatives.length.toLocaleString("de-CH")} mögliche Alternativen mit unbestätigter Durchführungsform; ${alternativeShown.length} angezeigt.`
+      ? ` ${alternatives.length.toLocaleString("de-CH")} weitere Kurse, die passen könnten; ${alternativeShown.length} angezeigt. Kursform bitte prüfen.`
       : "";
     el.smartSummary.innerHTML = `<p><strong>${escapeHtml(confirmedText)}</strong>${escapeHtml(alternativeText)}</p>`
       + (!evaluated.length && !alternatives.length
@@ -1189,8 +1189,8 @@
         : "");
     el.smartResults.innerHTML = shown.map((item, index) => smartCard(item, parsed, index)).join("")
       + (alternativeShown.length
-        ? `<section aria-labelledby="smartAlternativeTitle"><h3 id="smartAlternativeTitle">Mögliche Alternativen – Format nicht bestätigt</h3>
-           <p>Das Format dieser Alternativen ist nicht unabhängig verifiziert. Die Angaben stammen aus dem allgemeinen Angebotsdatensatz; bitte beim Anbieter abklären.</p>
+        ? `<section aria-labelledby="smartAlternativeTitle"><h3 id="smartAlternativeTitle">Weitere Kurse, die passen könnten</h3>
+           <p>In unseren Kursangaben ist die gewünschte Kursform aufgeführt. Ob die Kurse tatsächlich so stattfinden, konnten wir aber noch nicht bestätigen. Bitte beim Anbieter nachfragen.</p>
            ${alternativeShown.map((item, index) => smartCard(item, parsed, index)).join("")}</section>`
         : "");
     if (el.smartBundle) {
