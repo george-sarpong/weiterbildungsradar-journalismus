@@ -1093,7 +1093,7 @@
     if (["TARGET_GROUP_FIT", "DIRECT_FIT"].includes(status) && item.budget.amount != null) {
       const eligibility = status === "TARGET_GROUP_FIT" ? " Berechtigung beim Kursanbieter prüfen." : "";
       if (crossCurrency) {
-        return `Der Preis liegt beim 1:1-Planungsvergleich in Ihrem Budget.${eligibility}${note}`;
+        return `Der Preis liegt bei unserem 1:1-Vergleich in Ihrem Budget.${eligibility} Den tatsächlichen Betrag vor der Anmeldung in Ihre Währung umrechnen.`;
       }
       const rest = Math.max(0, parsed.budget.amount - item.budget.amount);
       const prefix = status === "TARGET_GROUP_FIT" ? "Beim Journalist:innen-Tarif" : "Bei diesem Preis";
