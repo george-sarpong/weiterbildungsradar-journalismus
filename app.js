@@ -870,7 +870,8 @@
   const resolveBudget = (offer, record, parsed, deliveryResult) => {
     if (!parsed.budget) return { status: "NO_BUDGET", option: null, amount: null };
     if (!record || record.parserStatus !== "AUTO_ACCEPT" || record.priceEligible !== true) return { status: "PRICE_UNKNOWN", option: null, amount: null };
-    const options = Array.isArray(record.priceOptions) ? record.priceOptions : [];
+    const options = (Array.isArray(record.priceOptions) ? record.priceOptions : [])
+      .filter(option => !parsed.freeOnly || option.amountType === "FREE");
     const candidates = [];
     for (const option of options) {
       if (!isDateActive(option)) continue;
@@ -903,11 +904,12 @@
     }
     if (!candidates.length) return { status: "PRICE_UNKNOWN", option: null, amount: null };
     const withinOfferTier = status => {
-      if (status === "DIRECT_FIT" || status === "TARGET_GROUP_FIT") return 0;
-      if (status === "CONDITIONAL_FIT") return 1;
-      if (status === "POSSIBLE_FIT") return 2;
-      if (status === "PRICE_UNKNOWN") return 3;
-      if (status === "OVER_BUDGET") return 4;
+      if (status === "DIRECT_FIT") return 0;
+      if (status === "TARGET_GROUP_FIT") return 1;
+      if (status === "CONDITIONAL_FIT") return 2;
+      if (status === "POSSIBLE_FIT") return 3;
+      if (status === "PRICE_UNKNOWN") return 4;
+      if (status === "OVER_BUDGET") return 5;
       return 99;
     };
     candidates.sort((a, b) => withinOfferTier(a.status) - withinOfferTier(b.status)
