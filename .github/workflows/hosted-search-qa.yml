@@ -146,6 +146,18 @@ jobs:
             assert(await page.locator('[data-offer-id="V78-03"]').count()===1,'ITTA future session missing');
             const bevisible=await page.locator('[data-offer-id="V77-04"]').innerText();
             assert(bevisible.includes('20.11.2026'),'BeVisible next session is incorrect');
+            const studio=page.locator('#cards [data-offer-id="V58-S1-07"]');
+            assert(await studio.count()===1,'Studio 1 next offered edition should remain visible');
+            const studioText=await studio.innerText();
+            assert(studioText.includes('08.–10.02.2027')
+              && !studioText.includes('02.–04.11.2026'),
+              'Sold-out November session was presented as next bookable: '+studioText);
+            const studioRecord=await page.evaluate(()=>
+              window.WEITERBILDUNGSRADAR_OFFERS.find(x=>x.id==='V58-S1-07'));
+            assert(studioRecord.sessions[0].availabilityStatus==='SOLD_OUT'
+              && studioRecord.sessions[0].statusObservedAt==='2026-10-25'
+              && studioRecord.sessions.length===4,
+              'Studio 1 sold-out history or availability provenance missing');
             const query=async(input,expectedDirect,expectedOther)=>{
               await page.locator('#smartInput').fill(input);
               await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());

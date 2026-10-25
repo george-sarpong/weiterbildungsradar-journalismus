@@ -23959,10 +23959,34 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "PRÄSENZ",
     "duration": "3 Tage",
-    "start": "02.11.2026–04.11.2026; further 2027 dates bookable",
+    "start": "02.–04.11.2026 ausgebucht laut Anbieter (Stand 25.10.2026); weitere einzelne Ausgaben ab 08.02.2027 gelistet, Plätze je Ausgabe prüfen.",
     "startDate": "2026-11-02",
     "endDate": "",
-    "sessions": [{"startDate":"2026-11-02","endDate":"2026-11-04","label":"02.–04.11.2026 · Wallisellen"},{"startDate":"2027-02-08","endDate":"2027-02-10","label":"08.–10.02.2027 · Wallisellen"},{"startDate":"2027-06-21","endDate":"2027-06-23","label":"21.–23.06.2027 · Wallisellen"},{"startDate":"2027-10-04","endDate":"2027-10-06","label":"04.–06.10.2027 · Wallisellen"}],
+    "sessions": [
+      {
+        "startDate": "2026-11-02",
+        "endDate": "2026-11-04",
+        "label": "02.–04.11.2026 · Wallisellen",
+        "availabilityStatus": "SOLD_OUT",
+        "statusObservedAt": "2026-10-25",
+        "statusEvidenceUrl": "https://www.studioeins.ch/"
+      },
+      {
+        "startDate": "2027-02-08",
+        "endDate": "2027-02-10",
+        "label": "08.–10.02.2027 · Wallisellen"
+      },
+      {
+        "startDate": "2027-06-21",
+        "endDate": "2027-06-23",
+        "label": "21.–23.06.2027 · Wallisellen"
+      },
+      {
+        "startDate": "2027-10-04",
+        "endDate": "2027-10-06",
+        "label": "04.–06.10.2027 · Wallisellen"
+      }
+    ],
     "region": "Studio 1, Wallisellen",
     "release_origin": "V98_RESTORE_W1_39"
   },

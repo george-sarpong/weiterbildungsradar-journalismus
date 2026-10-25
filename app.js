@@ -114,7 +114,8 @@
   const nextSession = offer => {
     if (!Array.isArray(offer.sessions)) return null;
     return offer.sessions
-      .filter(session => parseDate(session.startDate) >= today)
+      .filter(session => parseDate(session.startDate) >= today
+        && session.availabilityStatus !== "SOLD_OUT")
       .sort((a, b) => a.startDate.localeCompare(b.startDate))[0] || null;
   };
 
