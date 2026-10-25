@@ -218,6 +218,42 @@ jobs:
             assert(sizes.scroll<=sizes.client,'Mobile page horizontal overflow: '+JSON.stringify(sizes));
             assert(pageErrors.length===0,'Browser errors: '+pageErrors.join(' | '));
             console.log('LOCAL_PR_CHROMIUM_REGRESSION_PASS',JSON.stringify({total,ki,mobile:sizes}));
+            // Zukunftstest: ohne buchbare Präsenzausgabe darf nur die separat
+            // VERIFIED markierte Selbstlernvariante von CAD-002 angezeigt werden.
+            await page.clock.setFixedTime(new Date('2027-02-03T12:00:00+01:00'));
+            await page.reload({waitUntil:'networkidle'});
+            const cad=page.locator('#cards [data-offer-id="CAD-002"]');
+            assert(await cad.count()===1,'Verified self-study variant vanished after last session');
+            const cadText=await cad.innerText();
+            assert(cadText.includes('Online Selbstlernen')&&cadText.includes('CHF 250')
+              &&cadText.includes('Verfügbarkeit beim Anbieter anfragen')
+              &&!cadText.includes('Lausanne')&&!cadText.includes('23.11.2026')
+              &&!cadText.includes('CHF 500'),
+              'Self-study card retained stale in-person claims: '+cadText);
+            for(const id of ['CAD-001','CAD-003','CAD-005']){
+              assert(await page.locator('#cards [data-offer-id="'+id+'"]').count()===0,
+                'Unverified self-study variant improperly reinstated: '+id);
+            }
+            await page.locator('#formatFilter').selectOption('PRÄSENZ');
+            assert(await cad.count()===0,'Expired in-person option passed presence filter');
+            await page.locator('#formatFilter').selectOption('ONLINE SELBSTLERNEN');
+            assert(await cad.count()===1,'Verified self-study option missing from online filter');
+            await page.locator('#formatFilter').selectOption('');
+            await page.locator('#smartInput').fill('Photoshop Base online selbstlernen höchstens CHF 300');
+            await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+            const onlineResults=await page.locator('#smartResults').innerText();
+            assert(onlineResults.includes('Photoshop - Base')
+              &&onlineResults.includes('Cadschool')
+              &&onlineResults.includes('CHF 250'),
+              'Self-study price/format missing from Smart Search: '+onlineResults);
+            await page.locator('#smartInput').fill('Photoshop Base Präsenz höchstens CHF 500');
+            await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+            const inPersonResults=await page.locator('#smartResults').innerText();
+            assert(!inPersonResults.includes('Photoshop - Base')
+              || !inPersonResults.includes('Cadschool'),
+              'Expired CAD-002 in-person course leaked into Smart Search: '+inPersonResults);
+            assert(pageErrors.length===0,'Future date browser errors: '+pageErrors.join(' | '));
+            console.log('VARIANT_AWARE_VISIBILITY_CHROMIUM_PASS');
           } finally {await browser.close()}
           NODE
   hosted-qa:

@@ -129,7 +129,50 @@
     return (!end || end >= today) && (end || !start || start >= today);
   };
 
-  const offers = allOffers.filter(offer => isCurrent(offer) && offer.publicationStatus !== "HOLD");
+  // Ausgelaufene Präsenz-Sessions dürfen eine separat belegte, undatierte
+  // Selbstlernvariante nicht verbergen. Ohne VERIFIED-Sidecar keine Ausnahme.
+  // Dies ist ausschliesslich eine Anzeigeprojektion, kein Schreibzugriff auf data.js.
+  const evergreenProjection = offer => {
+    if (!Array.isArray(offer.sessions) || nextSession(offer)
+        || !String(offer.format || "").includes("ONLINE SELBSTLERNEN")) return offer;
+    const record = window.MEDIA_SKILLS_SMART_DATA?.byId?.[offer.id];
+    if (record?.delivery?.evidenceTier !== "VERIFIED") return offer;
+    const candidates = (record.delivery.variants || []).filter(variant =>
+      variant.temporalMode === "ASYNCHRONOUS"
+      && variant.attendanceChannels?.length === 1
+      && variant.attendanceChannels[0] === "REMOTE"
+      && variant.instructionFormats?.includes("SELF_STUDY")
+      && variant.deliveryVariantId);
+    if (candidates.length !== 1) return offer;
+    const variantId = candidates[0].deliveryVariantId;
+    const prices = (record.priceOptions || []).filter(option =>
+      option.deliveryVariantRefs?.includes(variantId)
+      && option.deliveryVariantRefs?.length === 1
+      && option.amountType === "EXACT"
+      && option.priceScope === "FULL_OFFER"
+      && option.billingBasis === "TOTAL"
+      && option.eligibilityType === "NONE"
+      && Number.isFinite(option.amount)
+      && typeof option.currency === "string"
+      && !option.validThrough);
+    if (prices.length !== 1) return offer;
+    const selected = prices[0];
+    const category = selected.amount <= 500 ? "BIS_500"
+      : selected.amount <= 2000 ? "501_2000" : "UEBER_2000";
+    return {
+      ...offer,
+      sessions: undefined, startDate: "", endDate: "",
+      start: "Selbstlernvariante ohne festen Starttermin – Verfügbarkeit beim Anbieter anfragen",
+      format: "ONLINE SELBSTLERNEN",
+      region: "Online / Selbstlernen (Anbieter kontaktieren)",
+      priceDisplay: `${selected.currency} ${selected.amount.toLocaleString("de-CH")} (Selbstlernvariante; optionale Leistungen separat)`,
+      priceCategory: category,
+      _activeVariantIds: [variantId]
+    };
+  };
+
+  const offers = allOffers.map(evergreenProjection)
+    .filter(offer => isCurrent(offer) && offer.publicationStatus !== "HOLD");
   const allKnownIds = new Set(allOffers.map(offer => offer.id));
   const activeIds = new Set(offers.map(offer => offer.id));
   let favorites = loadFavorites();
@@ -696,7 +739,27 @@
     return { match: true, score };
   };
 
-  const getSmartRecord = offer => SMART_DATA.byId[offer.id] || null;
+  const getSmartRecord = offer => {
+    const record = SMART_DATA.byId[offer.id] || null;
+    if (!record || !Array.isArray(offer._activeVariantIds)) return record;
+    const ids = offer._activeVariantIds;
+    const variants = (record.delivery?.variants || [])
+      .filter(variant => ids.includes(variant.deliveryVariantId));
+    // Bei der zeitunabhängigen Anzeige keine ausgelaufenen Präsenz-Tarife
+    // und -Modalitäten als passende Smart-Search-Optionen interpretieren.
+    return {
+      ...record,
+      delivery: {
+        ...record.delivery,
+        structure: variants.length === 1 ? "SINGLE_CHANNEL" : record.delivery.structure,
+        variants,
+        channels: [...new Set(variants.flatMap(variant => variant.attendanceChannels || []))]
+      },
+      priceOptions: (record.priceOptions || []).filter(option =>
+        Array.isArray(option.deliveryVariantRefs)
+        && option.deliveryVariantRefs.some(id => ids.includes(id)))
+    };
+  };
   const variantsOf = delivery => Array.isArray(delivery?.variants) ? delivery.variants : [];
   const variantChannels = variant => Array.isArray(variant?.attendanceChannels) ? variant.attendanceChannels : [];
   const variantFormats = variant => Array.isArray(variant?.instructionFormats) ? variant.instructionFormats : [];
