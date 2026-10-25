@@ -61,15 +61,21 @@ jobs:
               await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
               const direct=await page.locator('#smartResults > article.smart-result-card').count();
               const other=await page.locator('#smartResults section article.smart-result-card').count();
+              const summary=await page.locator('#smartSummary').innerText();
+              const titles=await page.locator('#smartResults article.smart-result-card h3').allInnerTexts();
               assert(direct===expectedDirect&&other===expectedOther,
-                'Wrong groups for '+input+' direct='+direct+' other='+other);
-              return {direct,other,summary:await page.locator('#smartSummary').innerText()};
+                'Wrong groups for '+input+' direct='+direct+' other='+other
+                +' expected='+expectedDirect+'/'+expectedOther+' titles='+JSON.stringify(titles)
+                +' summary='+JSON.stringify(summary));
+              return {direct,other,summary,titles};
             };
             const ki=await query('Ich suche einen Online-Kurs zu KI für höchstens CHF 500',0,3);
-            assert(ki.summary.includes('Kein Kurs gefunden, der sicher'),'Unsafe KI budget summary');
+            assert(/Kein Kurs gefunden.*Budget/i.test(ki.summary),'Unsafe KI budget summary: '+ki.summary);
             assert((await page.locator('#smartResults section').innerText()).includes('Kursanbieter'),'No clear alternative warning');
-            await query('Ich habe CHF 800 und möchte Datenjournalismus lernen',2,0);
-            await query('KI online höchstens CHF 300',0,2);
+            const data800=await query('Ich habe CHF 800 und möchte Datenjournalismus lernen',2,1);
+            assert(/weitere Kurse könnten passen/i.test(data800.summary),'Conditional data-journalism tariff not disclosed');
+            const ki300=await query('KI online höchstens CHF 300',0,3);
+            assert(/Kein Kurs gefunden.*Budget/i.test(ki300.summary),'Unsafe KI CHF 300 summary');
             await query('Ich habe nicht mehr als 300 Franken, aber kein Englisch, Podcast',2,1);
             await page.locator('#searchInput').fill('MAZ');
             assert((await page.locator('[data-offer-id]').count())>0,'Classic search failed');
