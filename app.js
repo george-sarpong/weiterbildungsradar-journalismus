@@ -813,11 +813,12 @@
   };
 
   const amountWithRequiredComponents = option => {
-    if (option.amountType === "FREE") return { kind: "EXACT", amount: 0 };
     if (option.amountType === "FROM") return { kind: "FROM", amount: option.minAmount };
     if (option.amountType === "RANGE") return { kind: "RANGE", amount: option.minAmount, maxAmount: option.maxAmount };
-    if (option.amountType !== "EXACT" || option.amount == null) return { kind: "UNKNOWN", amount: null };
-    let amount = Number(option.amount);
+    if (!["EXACT", "FREE"].includes(option.amountType)
+      || (option.amountType === "EXACT" && option.amount == null)) return { kind: "UNKNOWN", amount: null };
+    // Auch ein publizierter Gratis-Grundpreis kann obligatorische Zusatzkosten haben.
+    let amount = option.amountType === "FREE" ? 0 : Number(option.amount);
     let uncertain = false;
     for (const component of Array.isArray(option.components) ? option.components : []) {
       if (component.includedInBase || component.requirementStatus === "OPTIONAL") continue;
@@ -880,14 +881,15 @@
       }
       // Vereinbarte Planungsregel: CHF/EUR/USD 1:1, keine echte Umrechnung.
       // Andere Währungen nur gegen dieselbe Währung vergleichen; kostenlos bleibt 0.
-      const comparableCurrency = option.amountType === "FREE"
-        || currenciesComparableForPlanning(option.currency, parsed.budget.currency);
-      if (!comparableCurrency) {
+      const calc = amountWithRequiredComponents(option);
+      if (calc.kind === "UNKNOWN") {
         candidates.push({ status: "PRICE_UNKNOWN", option, amount: null });
         continue;
       }
-      const calc = amountWithRequiredComponents(option);
-      if (calc.kind === "UNKNOWN") {
+      // Nur tatsächlich kostenfreie Angebote sind unabhängig von der Währung vergleichbar.
+      const trulyFree = option.amountType === "FREE"
+        && calc.kind === "EXACT" && calc.amount === 0;
+      if (!trulyFree && !currenciesComparableForPlanning(option.currency, parsed.budget.currency)) {
         candidates.push({ status: "PRICE_UNKNOWN", option, amount: null });
         continue;
       }
@@ -961,9 +963,14 @@
     if (!result.option) return compactPrice(offer);
     const option = result.option;
     const amount = result.amount;
-    if (option.amountType === "FREE") return option.tariffLabel
-      ? `Kostenlos · ${option.tariffLabel}`
-      : "Kostenlos";
+    if (option.amountType === "FREE") {
+      const mandatoryCosts = (Array.isArray(option.components) ? option.components : [])
+        .some(component => !component.includedInBase && component.requirementStatus !== "OPTIONAL");
+      if (!mandatoryCosts && amount === 0) return option.tariffLabel
+        ? `Kostenlos · ${option.tariffLabel}` : "Kostenlos";
+      if (amount == null || amount === 0 || !option.currency)
+        return "Grundpreis kostenlos · Pflichtkosten zu prüfen";
+    }
     if (amount != null && option.currency) {
       const label = `${option.currency} ${amount.toLocaleString("de-CH")}`;
       const taxQualifiedLabel = option.taxMode === "EXCLUDED" && option.taxRate == null
@@ -1030,8 +1037,13 @@
     if (record?.delivery?.evidenceTier !== "UNKNOWN") return null;
     if (!unverifiedFormatMayMatch(offer, parsed.deliveryIntents)) return null;
     const delivery = { outcome: "UNKNOWN", evidenceTier: "UNKNOWN", matchedVariantIds: [] };
-    // Preis nur unabhängig von einer noch unbestätigten Variante bewerten.
-    const budget = resolveBudget(offer, record, { ...parsed, deliveryIntents: [] }, delivery);
+    // Keine variantenabhängigen Tarife aus einer unbestätigten Kursform übernehmen.
+    const neutralRecord = record ? { ...record,
+      priceOptions: (Array.isArray(record.priceOptions) ? record.priceOptions : [])
+        .filter(option => !Array.isArray(option.deliveryVariantRefs)
+          || option.deliveryVariantRefs.length === 0)
+    } : record;
+    const budget = resolveBudget(offer, neutralRecord, { ...parsed, deliveryIntents: [] }, delivery);
     if (parsed.budget) {
       const option = budget.option;
       if (budget.status !== "DIRECT_FIT" || !option
@@ -1040,7 +1052,7 @@
         || (option.amountType !== "FREE"
           && !currenciesComparableForPlanning(option.currency, parsed.budget.currency))) return null;
     }
-    const free = parsed.freeOnly ? resolveFreeOption(record, delivery, false) : null;
+    const free = parsed.freeOnly ? resolveFreeOption(neutralRecord, delivery, false) : null;
     if (parsed.freeOnly && (!free || free.status !== "DIRECT_FIT"
       || free.option?.priceScope !== "FULL_OFFER")) return null;
     return { offer, record, delivery, budget, free, score: topic.score, isAlternative: true, alternativeReason: "FORMAT" };
