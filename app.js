@@ -295,7 +295,7 @@
     // Für mehrere Tarife ist ein explizit publizierter Journalist:innen-Tarif
     // weiterhin der relevanteste Kartenpreis.
     const journalist = raw.match(/((?:CHF|EUR|USD|GBP)\s*[0-9][0-9'’.,]*)(?=[^()]{0,45}(?:Kurspreis\s+)?Journalist)/i);
-    if (journalist) return compactAmount(journalist[1]);
+    if (journalist) return `${compactAmount(journalist[1])} · Journalist:innen-Tarif`;
 
     // Explizite Preisbereiche wie EUR 480–512 oder CHF 0–590 erhalten.
     const range = raw.match(/\b(CHF|EUR|USD|GBP)\s*([0-9][0-9'’.,]*)\s*[–-]\s*([0-9][0-9'’.,]*)/i);
@@ -1045,6 +1045,8 @@
           <span>${escapeHtml(price)}</span>
           <span>${escapeHtml(humanizeTokens(offer.format, labels.format))}</span>
           <span>${escapeHtml(offer.duration || "Dauer nicht publiziert")}</span>
+          <span>Start: ${escapeHtml(publicStart(offer) || "Nicht publiziert")}</span>
+          <span>Zugang: ${escapeHtml(compactAccess(offer))}</span>
           ${place ? `<span>${escapeHtml(place)}</span>` : ""}
         </div>
         <p class="smart-fit"><strong>Passt, weil:</strong> ${escapeHtml(smartWhy(item, parsed))}.</p>
