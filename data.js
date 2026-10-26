@@ -2757,10 +2757,9 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "NICHT_PUBLIZIERT",
     "duration": "1 Tag, 09:00–17:00",
-    "start": "08.10.2026 (historisch); getrennte CFJM-Ausgaben 03.06.2027 und 28.10.2027 (Plätze, Unterrichtsort und Format nicht bestätigt)",
+    "start": "08.10.2026",
     "startDate": "2026-10-08",
     "endDate": "2026-10-08",
-    "sessions": [{"startDate":"2026-10-08","endDate":"2026-10-08","label":"08.10.2026 (historische Ausgabe)"},{"startDate":"2027-06-03","endDate":"2027-06-03","label":"03.06.2027 (CFJM-Kursdetail; Plätze nicht bestätigt)"},{"startDate":"2027-10-28","endDate":"2027-10-28","label":"28.10.2027 (CFJM-Katalog; Plätze nicht bestätigt)"}],
     "region": "NOT_PUBLISHED",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
