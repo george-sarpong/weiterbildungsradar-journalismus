@@ -26085,10 +26085,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "PRÄSENZ",
     "duration": "45 hours",
-    "start": "Offiziell gelistete getrennte 6-Tage-Präsenzausgaben: 27.10.–10.11., 03.–17.11., 02.–16.12.2026 sowie 15.–26.02.2027; erste Ausgabe Lausanne/Dendreo, übrige Kursorte und Platzstatus nicht editionsscharf bestätigt.",
+    "start": "Getrennte 6-Tage-Präsenzausgaben: 27.10.–10.11.2026 Lausanne LR22, 03.–17.11.2026 Genf GF05, 15.–26.02.2027 Lausanne LR22 (Dendreo-Buchungsseite). 02.–16.12.2026 nur früherer Katalogbeleg; aktueller Buchungsstatus und Unterrichtsort dieser Ausgabe nicht bestätigt. Freie Plätze der anderen Ausgaben nicht transaktional bestätigt.",
     "startDate": "2026-10-27",
     "endDate": "2026-11-10",
-    "sessions": [{"startDate":"2026-10-27","endDate":"2026-11-10","label":"27.10.–10.11.2026 · Präsenz Lausanne","region":"Salle LR22 – VD / PC, Lausanne (editionsbelegt)"},{"startDate":"2026-11-03","endDate":"2026-11-17","label":"03.–17.11.2026 · Präsenz (Katalog)","region":"Durchführungsort dieser Ausgabe nicht editionsscharf bestätigt"},{"startDate":"2026-12-02","endDate":"2026-12-16","label":"02.–16.12.2026 · Präsenz (Katalog)","region":"Durchführungsort dieser Ausgabe nicht editionsscharf bestätigt"},{"startDate":"2027-02-15","endDate":"2027-02-26","label":"15.–26.02.2027 · Präsenz (Katalog)","region":"Durchführungsort dieser Ausgabe nicht editionsscharf bestätigt"}],
+    "sessions": [{"startDate":"2026-10-27","endDate":"2026-11-10","label":"27.10.–10.11.2026 · Präsenz Lausanne","region":"Salle LR22 – VD / PC, Lausanne (editionsbelegt)"},{"startDate":"2026-11-03","endDate":"2026-11-17","label":"03.–17.11.2026 · Präsenz Genf GF05","region":"Salle GF05 – GE / MAC, Route de Frontenex 62, 1207 Genève (Dendreo, editionsbelegt)"},{"startDate":"2026-12-02","endDate":"2026-12-16","label":"02.–16.12.2026 · Präsenz (Katalog)","region":"Durchführungsort dieser Ausgabe nicht editionsscharf bestätigt"},{"startDate":"2027-02-15","endDate":"2027-02-26","label":"15.–26.02.2027 · Präsenz Lausanne LR22","region":"Salle LR22 – VD / PC, Avenue de la Rasude 2, 1006 Lausanne (Dendreo, editionsbelegt)"}],
     "region": "Genève or Lausanne",
     "release_origin": "V98_W6_CAD26_CONTROLLED_MATERIALISATION"
   },
