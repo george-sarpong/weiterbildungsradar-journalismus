@@ -569,6 +569,26 @@ code { padding: 2px 5px; border-radius: 4px; background: #edf0f3; font-size: .92
 .smart-alternatives > h3 { margin: 8px 0; font-size: 1.1rem; }
 .smart-alternatives > p { margin: 0 0 14px; color: var(--muted); }
 .smart-alternative-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+
+/* Smart Search: progressive disclosure, distinct from the main catalogue filters. */
+.smart-more {
+  grid-column: 1 / -1;
+  justify-self: start;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 10px 16px;
+  border: 1px solid var(--navy);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--navy);
+  font-weight: 800;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.smart-more:hover { background: var(--blue-soft); }
+.smart-alternatives > .smart-more { margin-top: 14px; }
+
 .smart-result-card { display: flex; flex-direction: column; min-width: 0; border: 1px solid var(--line); border-radius: 13px; padding: 18px; background: #fbfcfd; }
 .smart-result-rank { margin: 0 0 7px; color: var(--blue); font-size: .72rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
 .smart-result-card h3 { margin-bottom: 6px; font-size: 1.08rem; }

@@ -186,6 +186,42 @@ jobs:
             assert(desktopAlt.ratio>.98&&desktopAlt.rows===1&&!desktopAlt.scroll,
               'Desktop alternative grid failed: '+JSON.stringify(desktopAlt));
             console.log('SMART_ALTERNATIVE_LAYOUT_QA_DESKTOP_PASS');
+
+            // Progressive reveal of uncertain alternatives preserves grouping and confidence.
+            const initialAltTitles=await page.locator('#smartResults .smart-alternative-cards h3').allInnerTexts();
+            assert(initialAltTitles.length===3,'Expected initial three possible alternatives');
+            const moreAlternatives=page.locator('[data-smart-more="alternatives"]');
+            assert(await moreAlternatives.count()===1,'Missing more-alternatives action');
+            await moreAlternatives.click();
+            const expandedAltTitles=await page.locator('#smartResults .smart-alternative-cards h3').allInnerTexts();
+            assert(expandedAltTitles.length>3 && expandedAltTitles.length<=6
+              && initialAltTitles.every((title,index)=>title===expandedAltTitles[index]),
+              'More alternatives changed ordering or failed to reveal new cards');
+            assert(await page.locator('#smartResults > article.smart-result-card').count()===0,
+              'Unconfirmed price options became confirmed matches');
+            assert((await page.locator('#smartSummary').innerText()).includes('Kein Kurs gefunden'),
+              'Uncertain alternatives altered safe zero-direct budget summary');
+            assert((await page.locator(':focus').innerText())===expandedAltTitles[3],
+              'Focus not moved to first revealed alternative');
+            await query('Ich suche einen Online-Kurs zu KI für höchstens CHF 500',0,3);
+            assert(await page.locator('[data-smart-more="alternatives"]').count()===1,
+              'New search did not reset alternative pagination');
+            // A broad thematic search also has an independently paginated direct group.
+            await query('KI',3,0);
+            const initialDirectTitles=await page.locator('#smartResults > article.smart-result-card h3').allInnerTexts();
+            const moreDirect=page.locator('[data-smart-more="direct"]');
+            assert(await moreDirect.count()===1,'Missing more-confirmed-results action');
+            await moreDirect.click();
+            const expandedDirectTitles=await page.locator('#smartResults > article.smart-result-card h3').allInnerTexts();
+            assert(expandedDirectTitles.length>3 && expandedDirectTitles.length<=6
+              && initialDirectTitles.every((title,index)=>title===expandedDirectTitles[index]),
+              'More confirmed results changed ordering or failed to reveal cards');
+            assert((await page.locator(':focus').innerText())===expandedDirectTitles[3],
+              'Focus not moved to first revealed confirmed result');
+            await query('KI',3,0);
+            assert(await page.locator('#smartResults > article.smart-result-card').count()===3,
+              'New search did not reset direct pagination');
+            console.log('SMART_PROGRESSIVE_REVEAL_DESKTOP_PASS');
             const data800=await query('Ich habe CHF 800 und möchte Datenjournalismus lernen',2,1);
             assert(/weitere Kurse könnten passen/i.test(data800.summary),'Conditional data-journalism tariff not disclosed');
             const ki300=await query('KI online höchstens CHF 300',0,3);
@@ -251,6 +287,17 @@ jobs:
             assert(mobileAlt.ratio>.98&&mobileAlt.rows===3&&!mobileAlt.scroll,
               'Mobile alternative grid failed: '+JSON.stringify(mobileAlt));
             console.log('SMART_ALTERNATIVE_LAYOUT_QA_MOBILE_PASS');
+            await page.locator('[data-smart-more="alternatives"]').click();
+            const expandedMobile=await page.evaluate(()=>{
+              const cards=[...document.querySelectorAll('.smart-alternative-cards > article.smart-result-card')];
+              return {count:cards.length,rows:new Set(cards.map(x=>Math.round(x.getBoundingClientRect().top))).size,
+                scroll:document.documentElement.scrollWidth>document.documentElement.clientWidth};
+            });
+            assert(expandedMobile.count>3&&expandedMobile.count<=6
+              &&expandedMobile.rows===expandedMobile.count&&!expandedMobile.scroll,
+              'Mobile progressive reveal overflow or grouping regression: '+JSON.stringify(expandedMobile));
+            console.log('SMART_PROGRESSIVE_REVEAL_MOBILE_PASS');
+
             const sizes=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
             assert(sizes.scroll<=sizes.client,'Mobile page horizontal overflow: '+JSON.stringify(sizes));
             assert(pageErrors.length===0,'Browser errors: '+pageErrors.join(' | '));

@@ -1260,9 +1260,52 @@
     if (el.smartPriceNote) el.smartPriceNote.textContent = `Preiskategorien des ${context}; Für die Budgetplanung rechnen wir CHF, EUR und USD 1:1. Das ist kein Wechselkurs. Rechnen Sie den Preis vor der Anmeldung in Ihre Währung um. Anbieterpreise bleiben in Originalwährung.`;
   };
 
+  let smartResultState = null;
+  const renderSmartCards = () => {
+    const { parsed, evaluated, alternatives, directLimit, alternativeLimit } = smartResultState;
+    const shown = evaluated.slice(0, directLimit);
+    const alternativeShown = alternatives.slice(0, alternativeLimit);
+    const confirmedText = parsed.budget
+      ? (evaluated.length
+        ? `${evaluated.length.toLocaleString("de-CH")} Kurse passen rechnerisch zum Planungsbudget.`
+        : "Kein Kurs gefunden, der nach unserem Planungsvergleich ins Budget passt.")
+      : (parsed.deliveryIntents.length
+        ? (evaluated.length
+          ? `${evaluated.length.toLocaleString("de-CH")} Kurse mit bestätigter Kursform.`
+          : "Keine Kurse gefunden, bei denen wir die gewünschte Kursform bestätigen können.")
+        : (evaluated.length
+          ? `${evaluated.length.toLocaleString("de-CH")} passende Angebote im aktuellen Bestand.`
+          : "Keine passenden Kurse gefunden."));
+    const progressText = evaluated.length
+      ? ` ${shown.length.toLocaleString("de-CH")} von ${evaluated.length.toLocaleString("de-CH")} passenden Kursen angezeigt.`
+      : "";
+    const alternativeText = alternatives.length
+      ? ` ${alternatives.length.toLocaleString("de-CH")} weitere Kurse könnten passen; ${alternativeShown.length} angezeigt.`
+      : "";
+    el.smartSummary.innerHTML = `<p><strong>${escapeHtml(confirmedText)}</strong>${escapeHtml(alternativeText)}</p>`
+      + (!evaluated.length && !alternatives.length
+        ? "<p>Versuchen Sie einen anderen Suchbegriff oder nutzen Sie die Filter.</p>"
+        : "");
+    const moreDirect = evaluated.length > shown.length
+      ? `<button type="button" class="smart-more" data-smart-more="direct">Weitere passende Kurse anzeigen · noch ${(evaluated.length - shown.length).toLocaleString("de-CH")}</button>`
+      : "";
+    const moreAlternatives = alternatives.length > alternativeShown.length
+      ? `<button type="button" class="smart-more" data-smart-more="alternatives">Weitere mögliche Alternativen anzeigen · noch ${(alternatives.length - alternativeShown.length).toLocaleString("de-CH")}</button>`
+      : "";
+    el.smartResults.innerHTML = shown.map((item, index) => smartCard(item, parsed, index)).join("")
+      + moreDirect
+      + (alternativeShown.length
+        ? `<section class="smart-alternatives" aria-labelledby="smartAlternativeTitle"><h3 id="smartAlternativeTitle">Weitere Kurse, die passen könnten</h3>
+           <p>Bei diesen Kursen sind noch Fragen zum Preis oder zur Kursform offen. Bitte beim Kursanbieter nachfragen.</p>
+           <div class="smart-alternative-cards">${alternativeShown.map((item, index) => smartCard(item, parsed, index)).join("")}</div>${moreAlternatives}</section>`
+        : "");
+    el.smartStatus.textContent = confirmedText + progressText + alternativeText;
+  };
+
   const renderSmart = raw => {
     const parsed = parseSmartQuery(raw);
     if (!parsed.raw) {
+      smartResultState = null;
       const message = "Bitte eine Anfrage eingeben.";
       el.smartUnderstood.innerHTML = "";
       el.smartSummary.innerHTML = "";
@@ -1317,32 +1360,8 @@
     if (parsed.excludeEnglish) chips.push("Keine englischsprachigen Kurse");
 
     el.smartUnderstood.innerHTML = `<span class="smart-understood-label">Verstanden:</span>${chips.length ? chips.map(chip => `<span class="smart-chip">${escapeHtml(chip)}</span>`).join("") : '<span class="smart-chip">Suchbegriffe aus deinem Satz</span>'}`;
-    const shown = evaluated.slice(0, 3);
-    const alternativeShown = alternatives.slice(0, 3);
-    const confirmedText = parsed.budget
-      ? (evaluated.length
-        ? `${evaluated.length.toLocaleString("de-CH")} Kurse passen rechnerisch zum Planungsbudget.`
-        : "Kein Kurs gefunden, der nach unserem Planungsvergleich ins Budget passt.")
-      : (parsed.deliveryIntents.length
-        ? (evaluated.length
-          ? `${evaluated.length.toLocaleString("de-CH")} Kurse mit bestätigter Kursform.`
-          : "Keine Kurse gefunden, bei denen wir die gewünschte Kursform bestätigen können.")
-        : (evaluated.length
-          ? `${evaluated.length.toLocaleString("de-CH")} passende Angebote im aktuellen Bestand. Hier sind ${shown.length} Optionen.`
-          : "Keine passenden Kurse gefunden."));
-    const alternativeText = alternatives.length
-      ? ` ${alternatives.length.toLocaleString("de-CH")} weitere Kurse könnten passen; ${alternativeShown.length} angezeigt.`
-      : "";
-    el.smartSummary.innerHTML = `<p><strong>${escapeHtml(confirmedText)}</strong>${escapeHtml(alternativeText)}</p>`
-      + (!evaluated.length && !alternatives.length
-        ? "<p>Versuchen Sie einen anderen Suchbegriff oder nutzen Sie die Filter.</p>"
-        : "");
-    el.smartResults.innerHTML = shown.map((item, index) => smartCard(item, parsed, index)).join("")
-      + (alternativeShown.length
-        ? `<section class="smart-alternatives" aria-labelledby="smartAlternativeTitle"><h3 id="smartAlternativeTitle">Weitere Kurse, die passen könnten</h3>
-           <p>Bei diesen Kursen sind noch Fragen zum Preis oder zur Kursform offen. Bitte beim Kursanbieter nachfragen.</p>
-           <div class="smart-alternative-cards">${alternativeShown.map((item, index) => smartCard(item, parsed, index)).join("")}</div></section>`
-        : "");
+    smartResultState = { parsed, evaluated, alternatives, directLimit: 3, alternativeLimit: 3 };
+    renderSmartCards();
     if (el.smartBundle) {
       el.smartBundle.hidden = true;
       el.smartBundle.innerHTML = "";
@@ -1350,7 +1369,6 @@
     const topicPool = parsed.tokens.length ? offers.filter(offer => topicMatch(offer, parsed).match) : offers;
     renderPriceBands(topicPool, parsed.tokens.length ? "Themas" : "aktuell sichtbaren Bestands");
     el.smartOutput.hidden = false;
-    el.smartStatus.textContent = confirmedText + alternativeText;
   };
 
 
@@ -1515,6 +1533,28 @@
         ? current
         : `${current} Nur kostenlos.`.trim();
       renderSmart(el.smartInput.value);
+    });
+    // Event delegation keeps both pagination actions active after each rerender.
+    el.smartResults.addEventListener("click", event => {
+      const button = event.target.closest("button[data-smart-more]");
+      if (!button || !el.smartResults.contains(button) || !smartResultState) return;
+      const kind = button.dataset.smartMore;
+      if (kind !== "direct" && kind !== "alternatives") return;
+      const key = kind === "direct" ? "directLimit" : "alternativeLimit";
+      const pool = kind === "direct" ? smartResultState.evaluated : smartResultState.alternatives;
+      const firstNewIndex = smartResultState[key];
+      if (firstNewIndex >= pool.length) return;
+      smartResultState[key] = Math.min(firstNewIndex + 3, pool.length);
+      renderSmartCards();
+      const selector = kind === "direct"
+        ? ":scope > article.smart-result-card"
+        : ".smart-alternative-cards > article.smart-result-card";
+      const firstNewCard = el.smartResults.querySelectorAll(selector)[firstNewIndex];
+      const heading = firstNewCard?.querySelector("h3");
+      if (heading) {
+        heading.tabIndex = -1;
+        heading.focus();
+      }
     });
     renderPriceBands(offers);
   }
