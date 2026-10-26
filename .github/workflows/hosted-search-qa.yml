@@ -461,8 +461,15 @@ jobs:
             page.on('pageerror',e=>errors.push(String(e)));
             await page.goto(base+'/?qa='+process.env.GITHUB_SHA,{waitUntil:'networkidle'});
             await page.waitForFunction(()=>/\d/.test(document.querySelector('#resultCount')?.textContent||''));
-            const visible=await page.locator('[data-offer-id]').count();
-            assert(visible>0,'No course cards rendered');
+            const visible=await page.locator('#cards [data-offer-id]').count();
+            assert(visible===30,'Expected 30 initial published catalogue cards');
+            const firstIds=await page.locator('#cards [data-offer-id]').evaluateAll(items=>items.map(x=>x.dataset.offerId));
+            assert(await page.locator('#moreCourses').isVisible(),'Hosted catalogue pagination action missing');
+            await page.locator('#moreCourses').click();
+            const allIds=await page.locator('#cards [data-offer-id]').evaluateAll(items=>items.map(x=>x.dataset.offerId));
+            assert(allIds.length===60&&firstIds.every((id,i)=>id===allIds[i]),
+              'Hosted catalogue did not preserve order when loading 30 more cards');
+            console.log('HOSTED_CATALOG_PROGRESSIVE_PASS');
             const data=await page.evaluate(()=>{
               const offers=window.WEITERBILDUNGSRADAR_OFFERS||[];
               const side=window.MEDIA_SKILLS_SMART_DATA;
