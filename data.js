@@ -25944,7 +25944,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "2026-11-03–2026-12-01 / FUTURE_BOOKABLE",
     "startDate": "2026-11-03",
     "endDate": "2026-12-01",
-    "region": "Genève or Lausanne",
+    "region": "Genève – Salle GF02, Route de Frontenex 62, 1207 Genève (Ausgabe 03.11.–01.12.2026)",
     "release_origin": "V98_W6_CAD26_CONTROLLED_MATERIALISATION"
   },
   {
