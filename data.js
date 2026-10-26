@@ -24851,7 +24851,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "region": "Konkreter Durchführungsort einer nächsten PSP-Ausgabe nicht bestätigt; allgemeine Anbieterstandorte sind keine Kursort-Zusage.",
     "release_origin": "V98_RESTORE_W3_PCC13",
     "publicationStatus": "HOLD",
-    "publicationReason": "PCC-P32: kein funktionierender aktueller kursgenauer PSP-Buchungslink; 02.–03.11.2026 und Durchführungsmodalität nicht verifiziert. Anbieter-Katalogeintrag allein genügt nicht zur Buchbarkeitsbehauptung."
+    "publicationReason": "QA09 R2_063 (19.10.2026): FACHLICH OUT_OF_SCOPE – Adobe Photoshop Professionelle Porträt-Retusche (PSP) behandelt Werbe-/Beauty- und Modelretusche statt journalistisch-redaktioneller Bildproduktion. Redaktionsentscheid abgeschlossen, im 116er-Roster nur historisch behalten und nicht publizieren. KEINE weitere CH-Termin-, Preis-, Ort- oder Buchbarkeitsrecherche. Reopen ausschliesslich bei neuer expliziter redaktioneller Scope-Entscheidung. Der ältere PSP-Link-/Session-Hold ist historisch, kein aktiver Quellenarbeitsauftrag."
   },
   {
     "id": "PCC-P33",
@@ -24876,7 +24876,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "endDate": "",
     "publicationStatus": "HOLD",
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
-    "release_origin": "V98_RESTORE_W3_PCC13"
+    "release_origin": "V98_RESTORE_W3_PCC13",
+    "publicationReason": "QA09 Nutzerentscheid 20.10.2026: ARCHIV__DERZEIT_KEINE_DURCHFUEHRUNG – zurzeit kein aktuelles PC-COLLEGE-Angebot für diesen PAE-Umsteigerkurs. Frühere 2026-Termine nur historischer Kontext und NICHT als aktuell buchbar darstellen; keine routinemässige Termin-/Preis-/Ort-Nachrecherche. Reopen erst bei neuer kursidentischer offizieller Ausschreibung mit tatsächlicher Buchungsoption oder expliziter Nutzerentscheidung."
   },
   {
     "id": "PCC-P38",
