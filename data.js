@@ -23800,7 +23800,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "IF-W03",
     "provider": "ifage – Fondation pour la formation des adultes",
     "title": "Wordpress: créer son site internet facilement",
-    "description": "Präsenzkurs zur praktischen Erstellung einer Website mit WordPress.",
+    "description": "WordPress-Praxiskurs in Genf. Laut offizieller Kursbeschreibung ist gleichzeitige Teilnahme vor Ort und per Videokonferenz vorgesehen. Die Kursausgaben nennen ifage Augustins; eine editionsspezifische Online-Buchungsoption ist bislang nicht belegt.",
     "access": "Öffentliche Anmeldung möglich.",
     "level": "NICHT_PUBLIZIERT",
     "language": "FR",
