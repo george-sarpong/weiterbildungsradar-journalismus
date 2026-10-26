@@ -255,8 +255,10 @@ jobs:
               'Private Smart text leaked into localStorage');
             await page.locator('#searchInput').fill('Podcast');
             await page.locator('#resetFilters').click();
+            const rebuildsAfterReset=await page.evaluate(()=>window.__classicSearchRebuilds);
             await page.clock.runFor(220);
-            assert(await page.evaluate(()=>window.__classicSearchRebuilds)===2
+            assert(await page.evaluate(()=>window.__classicSearchRebuilds)===rebuildsAfterReset
+              &&await page.locator('#searchInput').inputValue()===''
               &&!new URL(await page.url()).searchParams.has('q'),
               'Pending text debounce overwrote a filter reset');
             const baseVisible=await page.locator('#cards [data-offer-id]').count();
