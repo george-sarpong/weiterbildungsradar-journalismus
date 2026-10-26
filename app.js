@@ -1339,9 +1339,9 @@
         : "");
     el.smartResults.innerHTML = shown.map((item, index) => smartCard(item, parsed, index)).join("")
       + (alternativeShown.length
-        ? `<section aria-labelledby="smartAlternativeTitle"><h3 id="smartAlternativeTitle">Weitere Kurse, die passen könnten</h3>
+        ? `<section class="smart-alternatives" aria-labelledby="smartAlternativeTitle"><h3 id="smartAlternativeTitle">Weitere Kurse, die passen könnten</h3>
            <p>Bei diesen Kursen sind noch Fragen zum Preis oder zur Kursform offen. Bitte beim Kursanbieter nachfragen.</p>
-           ${alternativeShown.map((item, index) => smartCard(item, parsed, index)).join("")}</section>`
+           <div class="smart-alternative-cards">${alternativeShown.map((item, index) => smartCard(item, parsed, index)).join("")}</div></section>`
         : "");
     if (el.smartBundle) {
       el.smartBundle.hidden = true;
