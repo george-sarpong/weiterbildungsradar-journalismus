@@ -2418,9 +2418,29 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "NICHT_PUBLIZIERT",
     "duration": "3 Tage",
-    "start": "27.10.2026",
+    "start": "27.10.–17.11.2026 (0 freie Plätze; Anmeldung am 26.10.2026 als Abgelaufen markiert); neue Ausgabe 07.–27.10.2027 (Anmeldung am 26.10.2026 möglich; aktuelle Verfügbarkeit prüfen)",
     "startDate": "2026-10-27",
     "endDate": "2026-11-17",
+    "sessions": [
+      {
+        "startDate": "2026-10-27",
+        "endDate": "2026-11-17",
+        "label": "27.10.–17.11.2026 (3 Tage; Anmeldung am 26.10.2026 als «Abgelaufen» ausgewiesen)",
+        "availabilityStatus": "SOLD_OUT",
+        "availablePlacesObserved": 0,
+        "statusObservedAt": "2026-10-26",
+        "statusEvidenceUrl": "https://my.maz.ch/public/Ereignis/PublicList?angebote=18226768-b325-4fdb-9319-dd7f22bb57cd"
+      },
+      {
+        "startDate": "2027-10-07",
+        "endDate": "2027-10-27",
+        "label": "07.–27.10.2027 (3 Tage; aktuelle Verfügbarkeit beim MAZ prüfen)",
+        "availablePlacesObserved": 9,
+        "bookingStatusObserved": "ANMELDUNG",
+        "statusObservedAt": "2026-10-26",
+        "statusEvidenceUrl": "https://my.maz.ch/public/Ereignis/PublicList?angebote=18226768-b325-4fdb-9319-dd7f22bb57cd"
+      }
+    ],
     "region": "NOT_PUBLISHED",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
