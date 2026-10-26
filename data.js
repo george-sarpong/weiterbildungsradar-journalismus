@@ -2434,11 +2434,50 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
       {
         "startDate": "2027-10-07",
         "endDate": "2027-10-27",
-        "label": "07.–27.10.2027 (3 Tage; aktuelle Verfügbarkeit beim MAZ prüfen)",
+        "label": "07.–27.10.2027 · Unterricht 07., 08. und 27.10.2027, jeweils 09:15–16:45 (Verfügbarkeit beim MAZ prüfen)",
         "availablePlacesObserved": 9,
         "bookingStatusObserved": "ANMELDUNG",
         "statusObservedAt": "2026-10-26",
-        "statusEvidenceUrl": "https://my.maz.ch/public/Ereignis/PublicList?angebote=18226768-b325-4fdb-9319-dd7f22bb57cd"
+        "statusEvidenceUrl": "https://my.maz.ch/public/Ereignis/PublicList?angebote=18226768-b325-4fdb-9319-dd7f22bb57cd",
+        "region": "MAZ, Luzern (Raum nicht ausgewiesen)",
+        "courseEditionId": "23352",
+        "courseEditionLabel": "2027/28",
+        "registrationDeadline": "2027-09-06",
+        "teachingDays": [
+          {
+            "date": "2027-10-07",
+            "startTime": "09:15",
+            "endTime": "16:45",
+            "instructor": "Katharina Deuber"
+          },
+          {
+            "date": "2027-10-08",
+            "startTime": "09:15",
+            "endTime": "16:45",
+            "instructor": "Katharina Deuber"
+          },
+          {
+            "date": "2027-10-27",
+            "startTime": "09:15",
+            "endTime": "16:45",
+            "instructor": "Katharina Deuber"
+          }
+        ],
+        "editionPrices": [
+          {
+            "tariffClass": "REGULAR",
+            "amount": 2970,
+            "currency": "CHF",
+            "label": "Kurspreis G-Kurs 3 Tage"
+          },
+          {
+            "tariffClass": "CONDITIONAL",
+            "eligibility": "JOURNALIST",
+            "amount": 1950,
+            "currency": "CHF",
+            "label": "Kurspreis Journalist:innen G-Kurs 3 Tage"
+          }
+        ]
       }
     ],
     "region": "NOT_PUBLISHED",
