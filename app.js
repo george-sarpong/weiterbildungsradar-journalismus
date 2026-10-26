@@ -85,6 +85,7 @@
     favoritesToggle: document.querySelector("#favoritesToggle"),
     favoritesCount: document.querySelector("#favoritesCount"),
     cards: document.querySelector("#cards"),
+    moreCourses: document.querySelector("#moreCourses"),
     count: document.querySelector("#resultCount"),
     empty: document.querySelector("#emptyState"),
     emptyTitle: document.querySelector("#emptyTitle"),
@@ -1450,7 +1451,9 @@
 
   // Coalesce rapid typing; every classic filter or reset still renders immediately.
   let searchRenderTimer = null;
-  const render = () => {
+  const CATALOG_PAGE_SIZE = 30;
+  let catalogVisibleLimit = CATALOG_PAGE_SIZE;
+  const render = ({ preserveLimit = false } = {}) => {
     if (searchRenderTimer !== null) {
       clearTimeout(searchRenderTimer);
       searchRenderTimer = null;
@@ -1460,9 +1463,14 @@
     const filtered = offers.filter(offer => matches(offer, currentFilters));
     const sorted = sortOffers(filtered);
     const activeFavoriteCount = [...favorites].filter(id => activeIds.has(id)).length;
+    if (!preserveLimit) catalogVisibleLimit = CATALOG_PAGE_SIZE;
+    const visible = sorted.slice(0, catalogVisibleLimit);
 
-    el.cards.innerHTML = sorted.map(card).join("");
-    el.count.textContent = `${filtered.length} von ${offers.length} aktuellen Angeboten${favoritesOnly ? " · Favoriten" : ""}`;
+    el.cards.innerHTML = visible.map(card).join("");
+    el.count.textContent = `${visible.length.toLocaleString("de-CH")} von ${filtered.length.toLocaleString("de-CH")} Treffern angezeigt · ${offers.length.toLocaleString("de-CH")} Angebote im Katalog${favoritesOnly ? " · Favoriten" : ""}`;
+    const remaining = Math.max(0, sorted.length - visible.length);
+    el.moreCourses.hidden = remaining === 0;
+    el.moreCourses.textContent = `Weitere ${Math.min(CATALOG_PAGE_SIZE, remaining).toLocaleString("de-CH")} Angebote anzeigen · noch ${remaining.toLocaleString("de-CH")}`;
     el.filterStatus.textContent = activeCount === 0
       ? "Keine Filter aktiv"
       : `${activeCount} Filter aktiv`;
@@ -1488,7 +1496,7 @@
     if (favorites.has(id)) favorites.delete(id);
     else favorites.add(id);
     saveFavorites();
-    render();
+    render({ preserveLimit: true });
 
     const newButton = [...el.cards.querySelectorAll("[data-favorite-id]")]
       .find(button => button.dataset.favoriteId === id);
@@ -1512,6 +1520,17 @@
   [el.focus, el.type, el.price, el.format, el.language, el.country, el.level]
     .forEach(node => node.addEventListener("input", render));
   el.sort.addEventListener("change", render);
+  el.moreCourses.addEventListener("click", () => {
+    const previousLength = el.cards.querySelectorAll("[data-offer-id]").length;
+    catalogVisibleLimit += CATALOG_PAGE_SIZE;
+    render({ preserveLimit: true });
+    const firstNewCard = el.cards.querySelectorAll("[data-offer-id]")[previousLength];
+    const heading = firstNewCard?.querySelector("h3");
+    if (heading) {
+      heading.tabIndex = -1;
+      heading.focus();
+    }
+  });
 
   el.reset.addEventListener("click", reset);
   el.favoritesToggle.addEventListener("click", () => {

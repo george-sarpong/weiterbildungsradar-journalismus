@@ -118,6 +118,9 @@ h2 { margin-bottom: 0; font-size: clamp(1.65rem, 3vw, 2.25rem); letter-spacing: 
 .results-section { padding: 54px 0 76px; }
 .result-count { margin: 0; color: var(--muted); font-weight: 700; }
 .cards { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 22px; }
+.catalog-more { display: block; min-height: 48px; max-width: 100%; margin: 28px auto 0; padding: 10px 22px; border: 1px solid var(--navy); border-radius: 999px; background: #fff; color: var(--navy); font-weight: 800; overflow-wrap: anywhere; }
+.catalog-more:hover { background: var(--blue-soft); }
+.catalog-more[hidden] { display: none; }
 .card { display: flex; flex-direction: column; min-height: 100%; padding: 26px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: 0 8px 24px rgba(23,51,79,.05); }
 .card-topline { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
 .provider { margin: 4px 0 0; color: var(--blue); font-size: .9rem; font-weight: 800; }

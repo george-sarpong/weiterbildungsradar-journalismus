@@ -143,9 +143,34 @@ jobs:
             assert(total===1352&&integrity.unique===1352&&integrity.smart===1352
               &&integrity.missingSmart.length===0&&integrity.smartOrphans.length===0,
               'Roster/Smart sidecar ID integrity failed: '+JSON.stringify(integrity));
-            assert(await page.locator('[data-offer-id="V78-03"]').count()===1,'ITTA future session missing');
+            // Full-source projection checks remain possible with progressive card rendering.
+            const focusOffer=async(id)=>{
+              const name=await page.evaluate(id=>window.WEITERBILDUNGSRADAR_OFFERS.find(o=>o.id===id)?.title,id);
+              assert(name,'Unknown source offer '+id);
+              await page.locator('#searchInput').fill(name);
+              await page.clock.runFor(220);
+              assert(await page.locator('#cards [data-offer-id="'+id+'"]').count()===1,
+                'Published offer missing after focused classic search: '+id);
+            };
+            const initialCards=page.locator('#cards [data-offer-id]');
+            const initialCount=await initialCards.count();
+            assert(initialCount===30,'Initial catalogue should render exactly 30 cards, got '+initialCount);
+            assert(await page.locator('#moreCourses').isVisible(),'More-courses control missing on initial catalogue');
+            const firstThirty=await initialCards.evaluateAll(items=>items.map(x=>x.dataset.offerId));
+            await page.locator('#moreCourses').click();
+            const afterMore=await initialCards.evaluateAll(items=>items.map(x=>x.dataset.offerId));
+            assert(afterMore.length===60&&firstThirty.every((id,index)=>id===afterMore[index]),
+              'More-courses control changed order or added wrong number');
+            assert((await page.locator(':focus').evaluate(el=>el.closest('.card')?.dataset.offerId))===afterMore[30],
+              'Keyboard focus did not move to first newly visible offer');
+            const progressLabel=await page.locator('#resultCount').innerText();
+            assert(/60 von /.test(progressLabel),'Visible/total counters incorrect: '+progressLabel);
+            console.log('CATALOG_PROGRESSIVE_RENDER_PASS',JSON.stringify({initialCount,afterMore:afterMore.length}));
+            await focusOffer('V78-03');
+            await focusOffer('V77-04');
             const bevisible=await page.locator('[data-offer-id="V77-04"]').innerText();
             assert(bevisible.includes('20.11.2026'),'BeVisible next session is incorrect');
+            await focusOffer('V58-S1-07');
             const studio=page.locator('#cards [data-offer-id="V58-S1-07"]');
             assert(await studio.count()===1,'Studio 1 next offered edition should remain visible');
             const studioText=await studio.innerText();
@@ -262,7 +287,11 @@ jobs:
               &&!new URL(await page.url()).searchParams.has('q'),
               'Pending text debounce overwrote a filter reset');
             const baseVisible=await page.locator('#cards [data-offer-id]').count();
-            assert(baseVisible>0,'No visible catalogue cards');
+            assert(baseVisible===30,'Reset should restore initial catalogue page');
+            const resultTotal=async()=>Number((await page.locator('#resultCount').innerText())
+              .match(/von ([0-9'’.,]+) Treffern/)[1].replace(/[^0-9]/g,''));
+            const baseTotal=await resultTotal();
+            assert(baseTotal>baseVisible,'Full catalogue should remain filterable');
             assert(await page.locator('#cards [data-offer-id="PCC-P33"]').count()===0,
               'Archived QA09 item became visible');
             const filterIds=['focusFilter','typeFilter','priceFilter','formatFilter',
@@ -274,11 +303,14 @@ jobs:
                 nodes.map(n=>n.value).filter(Boolean));
               assert(options.length>0,'No populated options for '+id);
               await ctl.selectOption(options[0]);
-              const afterFilter=await page.locator('#cards [data-offer-id]').count();
-              assert(afterFilter<=baseVisible,'Filter expanded results: '+id);
-              if(afterFilter!==baseVisible)changedFilters++;
+              const afterFilter=await resultTotal();
+              assert(afterFilter<=baseTotal,'Filter expanded result pool: '+id);
+              if(afterFilter!==baseTotal)changedFilters++;
+              assert(await page.locator('#cards [data-offer-id]').count()===Math.min(30,afterFilter),
+                'Filtered results must render one page: '+id);
               await ctl.selectOption('');
-              assert(await page.locator('#cards [data-offer-id]').count()===baseVisible,
+              assert(await resultTotal()===baseTotal
+                &&await page.locator('#cards [data-offer-id]').count()===baseVisible,
                 'Filter did not reset: '+id);
             }
             assert(changedFilters===7,'Not all seven filters alter results: '+changedFilters);
@@ -331,6 +363,7 @@ jobs:
             // VERIFIED markierte Selbstlernvariante von CAD-002 angezeigt werden.
             await page.clock.setFixedTime(new Date('2027-02-03T12:00:00+01:00'));
             await page.reload({waitUntil:'networkidle'});
+            await focusOffer('CAD-002');
             const cad=page.locator('#cards [data-offer-id="CAD-002"]');
             assert(await cad.count()===1,'Verified self-study variant vanished after last session');
             const cadText=await cad.innerText();
