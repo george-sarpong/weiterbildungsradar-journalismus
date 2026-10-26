@@ -223,6 +223,8 @@ jobs:
               'New search did not reset direct pagination');
             console.log('SMART_PROGRESSIVE_REVEAL_DESKTOP_PASS');
             const data800=await query('Ich habe CHF 800 und möchte Datenjournalismus lernen',2,1);
+            assert(/Kurse passen rechnerisch zum Planungsbudget/i.test(data800.summary),
+              'Release smoke would reject the current Smart Search budget summary');
             assert(/weitere Kurse könnten passen/i.test(data800.summary),'Conditional data-journalism tariff not disclosed');
             const ki300=await query('KI online höchstens CHF 300',0,3);
             assert(/Kein Kurs gefunden.*Budget/i.test(ki300.summary),'Unsafe KI CHF 300 summary');
@@ -355,13 +357,13 @@ jobs:
           } finally {await browser.close()}
           NODE
   hosted-qa:
-    if: github.event_name != 'pull_request'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     env:
       BASE_URL: https://george-sarpong.github.io/weiterbildungsradar-journalismus
     steps:
       - uses: actions/checkout@v4
-      - name: Public HTTPS assets exactly match main branch
+      - name: GitHub Pages mirror assets exactly match main branch
         shell: bash
         run: |
           set -euo pipefail
@@ -408,10 +410,15 @@ jobs:
             const data=await page.evaluate(()=>{
               const offers=window.WEITERBILDUNGSRADAR_OFFERS||[];
               const side=window.MEDIA_SKILLS_SMART_DATA;
-              return {total:offers.length,unique:new Set(offers.map(o=>o.id)).size,eligible:side?.byId?.['OFFER-NOBLE-067']?.priceEligible,parser:side?.byId?.['OFFER-NOBLE-067']?.parserStatus};
+              const sideIds=Object.keys(side?.byId||{});
+              const offerIds=new Set(offers.map(offer=>offer.id));
+              return {total:offers.length,unique:offerIds.size,sideCount:sideIds.length,
+                missingSmart:offers.filter(offer=>!Object.hasOwn(side?.byId||{},offer.id)).length,
+                orphanSmart:sideIds.filter(id=>!offerIds.has(id)).length};
             });
-            assert(data.total>=116&&data.total===data.unique,'Invalid/duplicate course dataset: '+JSON.stringify(data));
-            assert(data.eligible===false&&data.parser==='NEEDS_REVIEW','Variable-price budget guard missing');
+            assert(data.total>0&&data.total===data.unique&&data.total===data.sideCount
+              &&data.missingSmart===0&&data.orphanSmart===0,
+              'Catalog / Smart Search sidecar not one-to-one: '+JSON.stringify(data));
             for(const id of ['focusFilter','typeFilter','priceFilter','formatFilter','languageFilter','countryFilter','levelFilter']){
               assert(await page.locator('#'+id).count()===1,'Missing filter '+id);
             }
@@ -423,8 +430,27 @@ jobs:
             assert(await page.locator('#searchInput').inputValue()==='','Reset did not clear search');
             await page.locator('#smartInput').fill('Ich habe CHF 800 und möchte Datenjournalismus lernen');
             await page.locator('#smartSearchForm').evaluate(el=>el.requestSubmit());
-            await page.waitForFunction(()=>/Kurse passen zum angegebenen Budget|Kein Kurs gefunden, der sicher ins angegebene Budget passt/i.test(document.querySelector('#smartSummary')?.textContent||''));
+            await page.waitForFunction(()=>/Kurse passen rechnerisch zum Planungsbudget|Kein Kurs gefunden, der nach unserem Planungsvergleich ins Budget passt/i.test(document.querySelector('#smartSummary')?.textContent||''));
             assert(!decodeURIComponent(page.url()).includes('Ich habe CHF 800'),'Smart input leaked into URL');
+            // GitHub Pages mirror smoke follows the updated Smart Search UI contract.
+            await page.locator('#smartInput').fill('KI');
+            await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+            const initialDirect=await page.locator('#smartResults > article.smart-result-card').count();
+            assert(initialDirect===3,'Three direct Smart Search preview cards expected');
+            await page.locator('[data-smart-more="direct"]').click();
+            const increasedDirect=await page.locator('#smartResults > article.smart-result-card').count();
+            assert(increasedDirect>initialDirect&&increasedDirect<=initialDirect+3,
+              'Progressive Smart Search direct results did not expand');
+            await page.locator('#smartInput').fill('Ich suche einen Online-Kurs zu KI für höchstens CHF 500');
+            await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+            const initialAlternative=await page.locator('.smart-alternative-cards > article.smart-result-card').count();
+            assert(initialAlternative===3,'Three provisional alternatives expected');
+            await page.locator('[data-smart-more="alternatives"]').click();
+            const increasedAlternative=await page.locator('.smart-alternative-cards > article.smart-result-card').count();
+            assert(increasedAlternative>initialAlternative&&increasedAlternative<=initialAlternative+3
+              &&await page.locator('#smartResults > article.smart-result-card').count()===0,
+              'Provisional Smart Search alternatives changed safety classification');
+
             await page.setViewportSize({width:390,height:844});
             const dims=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
             assert(dims.scroll<=dims.client,'Mobile horizontal overflow: '+JSON.stringify(dims));
