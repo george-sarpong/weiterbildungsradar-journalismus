@@ -1448,7 +1448,13 @@
     }
   };
 
+  // Coalesce rapid typing; every classic filter or reset still renders immediately.
+  let searchRenderTimer = null;
   const render = () => {
+    if (searchRenderTimer !== null) {
+      clearTimeout(searchRenderTimer);
+      searchRenderTimer = null;
+    }
     const currentFilters = filters();
     const activeCount = activeFilterCount(currentFilters);
     const filtered = offers.filter(offer => matches(offer, currentFilters));
@@ -1498,7 +1504,12 @@
   addOptions(el.country, countryValues(preferredOrder.country));
   addOptions(el.level, orderedValues("level", preferredOrder.level), value => labels.level[value] ?? value);
 
-  [el.search, el.focus, el.type, el.price, el.format, el.language, el.country, el.level]
+  const scheduleSearchRender = () => {
+    if (searchRenderTimer !== null) clearTimeout(searchRenderTimer);
+    searchRenderTimer = setTimeout(render, 180);
+  };
+  el.search.addEventListener("input", scheduleSearchRender);
+  [el.focus, el.type, el.price, el.format, el.language, el.country, el.level]
     .forEach(node => node.addEventListener("input", render));
   el.sort.addEventListener("change", render);
 

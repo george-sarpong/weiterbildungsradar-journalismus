@@ -229,15 +229,36 @@ jobs:
             const ki300=await query('KI online höchstens CHF 300',0,3);
             assert(/Kein Kurs gefunden.*Budget/i.test(ki300.summary),'Unsafe KI CHF 300 summary');
             await query('Ich habe nicht mehr als 300 Franken, aber kein Englisch, Podcast',2,1);
-            await page.locator('#searchInput').fill('MAZ');
+            // A large roster must not rerender the complete catalogue on each keystroke.
+            await page.evaluate(()=>{
+              window.__classicSearchRebuilds=0;
+              new MutationObserver(records=>{
+                if(records.some(record=>record.type==='childList'))
+                  window.__classicSearchRebuilds++;
+              }).observe(document.querySelector('#cards'),{childList:true});
+            });
+            for (const input of ['M','MA','MAZ']) await page.locator('#searchInput').fill(input);
+            assert(await page.evaluate(()=>window.__classicSearchRebuilds)===0,
+              'Search rebuilt the complete catalogue while the user was still typing');
+            await page.clock.runFor(220);
+            assert(await page.evaluate(()=>window.__classicSearchRebuilds)===1,
+              'Rapid search input must coalesce to a single card rebuild');
+            assert(new URL(await page.url()).searchParams.get('q')==='MAZ',
+              'Debounced search failed to update its shareable URL');
             assert((await page.locator('#cards [data-offer-id]').count())>0,'Classic search failed');
+            console.log('CLASSIC_SEARCH_COALESCING_PASS');
             assert(!decodeURIComponent(page.url()).includes('Ich habe nicht mehr als 300'),
               'Private Smart text leaked into URL');
             assert(!Object.values(await page.evaluate(()=>Object.fromEntries(
               Object.keys(localStorage).map(k=>[k,localStorage.getItem(k)]))))
               .some(value=>String(value).includes('kein Englisch')),
               'Private Smart text leaked into localStorage');
+            await page.locator('#searchInput').fill('Podcast');
             await page.locator('#resetFilters').click();
+            await page.clock.runFor(220);
+            assert(await page.evaluate(()=>window.__classicSearchRebuilds)===2
+              &&!new URL(await page.url()).searchParams.has('q'),
+              'Pending text debounce overwrote a filter reset');
             const baseVisible=await page.locator('#cards [data-offer-id]').count();
             assert(baseVisible>0,'No visible catalogue cards');
             assert(await page.locator('#cards [data-offer-id="PCC-P33"]').count()===0,
