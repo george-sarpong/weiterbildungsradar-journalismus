@@ -601,6 +601,9 @@
   // Negated price intent must not silently turn "keine kostenlosen Kurse"
   // into the opposite "nur kostenlose Kurse".
   const SMART_NEGATED_FREE_INTENT_RE = /\b(?:nicht(?:\s+mehr)?|kein(?:e|en|er|es|em)?|ohne)\s+(?:gratis|kostenlos(?:e(?:n|r|s|m)?)?|kostenfrei(?:e(?:n|r|s|m)?)?)\b/gi;
+  // Match ordinary German phrases, not only the exact words "kein Englisch".
+  // Never reinterpret a positive "auf Englisch" request as an exclusion.
+  const SMART_NO_ENGLISH_RE = /\b(?:(?:kein(?:e|en|er|es|em)?|ohne)\s+(?:englisch(?:sprachig)?(?:e|en|er|es|em)?|(?:kurse?|angebote?)\s+auf\s+englisch)|nicht\s+auf\s+englisch)\b/g;
 
   const DELIVERY_INTENT_LABELS = Object.freeze({
     ONLINE: "Online",
@@ -707,7 +710,8 @@
 
   const parseSmartQuery = raw => {
     const input = normalize(raw);
-    const excludeEnglish = /\b(?:kein(?:e|en)?|ohne)\s+englisch\b/.test(input);
+    const excludeEnglish = SMART_NO_ENGLISH_RE.test(input);
+    SMART_NO_ENGLISH_RE.lastIndex = 0;
     const budget = parseSmartBudget(raw);
     const dayMatch = input.match(/\b(?:zwei|2)\s*(?:tag|tage|tagen)\b/);
     const numericDayMatch = input.match(/\b(\d{1,2})\s*(?:tag|tage|tagen)\b/);
@@ -718,7 +722,7 @@
     let tokenSource = input
       .replace(SMART_NEGATED_FREE_INTENT_RE, " ")
       .replace(/\bnicht\s+mehr\s+als\b/g, " ")
-      .replace(/\b(?:kein(?:e|en)?|ohne)\s+englisch\b/g, " ")
+      .replace(SMART_NO_ENGLISH_RE, " ")
       .replace(/\b(?:chf|eur|usd)\s*[0-9][0-9'’.,]*\b/g, " ")
       .replace(/\b[0-9][0-9'’.,]*\s*(?:chf|eur|usd)\b/g, " ")
       .replace(/\b(?:fr\.?|franken|euro|euros|dollar|dollars)\s*[0-9][0-9'’.,]*\b/g, " ")
