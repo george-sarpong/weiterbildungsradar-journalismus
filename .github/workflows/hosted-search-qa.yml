@@ -77,7 +77,7 @@ jobs:
           })()`);
           const assert=(ok,msg)=>{if(!ok)throw new Error(msg)};
           const rosterRaw=fs.readFileSync('data.js','utf8');
-          const roster=JSON.parse(rosterRaw.slice(rosterRaw.indexOf('=')+1).trim().replace(/;\\s*$/,''));
+          const roster=JSON.parse(rosterRaw.slice(rosterRaw.indexOf('=')+1).trim().replace(/;\s*$/,''));
           const corso=roster.find(o=>o.id==='OFFER-CORSO-002');
           const sfj=roster.find(o=>o.id==='OFFER-SFJ-001');
           assert(corso?.priceCategory==='KOSTENLOS'
