@@ -1309,6 +1309,18 @@
     if (el.smartPriceNote) el.smartPriceNote.textContent = `Preiskategorien des ${context}; Für die Budgetplanung rechnen wir CHF, EUR und USD 1:1. Das ist kein Wechselkurs. Rechnen Sie den Preis vor der Anmeldung in Ihre Währung um. Anbieterpreise bleiben in Originalwährung.`;
   };
 
+  // The parser can recognise wishes that the current evidence model cannot
+  // safely filter. Surface these limitations in the result summary as well as
+  // the criteria chips, so the apparent matches are not over-promised.
+  const unappliedSmartConstraints = parsed => {
+    const excluded = [];
+    if (parsed.maxDays != null) excluded.push("die gewünschte Höchstdauer");
+    if (parsed.excludesFree) excluded.push("der Ausschluss kostenloser Angebote");
+    return excluded.length
+      ? `Nicht angewendet: ${excluded.join(" und ")}. Die Treffer sind für diese Bedingungen nicht geprüft.`
+      : "";
+  };
+
   let smartResultState = null;
   const renderSmartCards = () => {
     const { parsed, evaluated, alternatives, directLimit, alternativeLimit } = smartResultState;
@@ -1331,7 +1343,9 @@
     const alternativeText = alternatives.length
       ? ` ${alternatives.length.toLocaleString("de-CH")} weitere Kurse könnten passen; ${alternativeShown.length} angezeigt.`
       : "";
+    const unappliedWarning = unappliedSmartConstraints(parsed);
     el.smartSummary.innerHTML = `<p><strong>${escapeHtml(confirmedText)}</strong>${escapeHtml(alternativeText)}</p>`
+      + (unappliedWarning ? `<p class="smart-budget"><strong>${escapeHtml(unappliedWarning)}</strong></p>` : "")
       + (!evaluated.length && !alternatives.length
         ? "<p>Versuchen Sie einen anderen Suchbegriff oder nutzen Sie die Filter.</p>"
         : "");
@@ -1348,7 +1362,8 @@
            <p>Bei diesen Kursen sind noch Fragen zum Preis oder zur Kursform offen. Bitte beim Kursanbieter nachfragen.</p>
            <div class="smart-alternative-cards">${alternativeShown.map((item, index) => smartCard(item, parsed, index)).join("")}</div>${moreAlternatives}</section>`
         : "");
-    el.smartStatus.textContent = confirmedText + progressText + alternativeText;
+    el.smartStatus.textContent = confirmedText + progressText + alternativeText
+      + (unappliedWarning ? ` ${unappliedWarning}` : "");
   };
 
   const renderSmart = raw => {
