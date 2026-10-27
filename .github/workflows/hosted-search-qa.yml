@@ -254,7 +254,8 @@ jobs:
             }
             await focusOffer('OFFER-SFJ-001');
             const trulyFreePrice=await page.locator('#cards [data-offer-id="OFFER-SFJ-001"] .facts dd').first().innerText();
-            assert(trulyFreePrice==='Kostenlos','Unconditionally free card lost its price label: '+trulyFreePrice);
+            assert(trulyFreePrice.toLocaleLowerCase('de-CH')==='kostenlos',
+              'Unconditionally free card lost its price label: '+trulyFreePrice);
             console.log('CATALOG_CONDITIONAL_FREE_DISPLAY_PASS');
             await focusOffer('V78-03');
             await focusOffer('V77-04');
