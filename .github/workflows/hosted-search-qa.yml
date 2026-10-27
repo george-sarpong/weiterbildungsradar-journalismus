@@ -356,6 +356,22 @@ jobs:
               &&await page.locator('#smartInput').inputValue()==='Ich suche einen Präsenzkurs zu Videoproduktion.',
               'Public video example advertises unsupported or unparsed intent: '+videoChips);
             console.log('SMART_EXAMPLE_SUPPORTED_INTENTS_PASS');
+            // No query should claim full suitability when recognised constraints
+            // are not actually applied to matches.
+            await page.locator('#smartInput').fill('Ich habe höchstens zwei Tage Zeit für Videoproduktion');
+            await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+            const durationWarning=await page.locator('#smartSummary').innerText();
+            const durationStatus=await page.locator('#smartStatus').innerText();
+            assert(durationWarning.includes('Nicht angewendet: die gewünschte Höchstdauer')
+              &&durationWarning.includes('Treffer sind für diese Bedingungen nicht geprüft.')
+              &&durationStatus.includes('Nicht angewendet: die gewünschte Höchstdauer')
+              &&(await page.locator('#smartUnderstood').innerText()).includes('Zeit: 2 Tage · erkannt, nicht angewendet'),
+              'Unapplied duration silently reported as successful course match: '+durationWarning);
+            await page.locator('#smartInput').fill('Videoproduktion');
+            await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+            assert(!(await page.locator('#smartSummary').innerText()).includes('Nicht angewendet:'),
+              'Unapplied-constraint warning leaked into a supported topic-only query');
+            console.log('SMART_UNAPPLIED_DURATION_SUMMARY_PASS');
             // Negated "kostenlos" must not mean "nur kostenlose Kurse".
             await page.locator('#smartInput').fill('Ich suche keine kostenlosen Kurse zu KI');
             await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
@@ -364,6 +380,11 @@ jobs:
               &&negatedFreeChips.includes('Keine Gratisangebote · erkannt, nicht angewendet')
               &&!negatedFreeChips.includes('Nur kostenlose Kurse'),
               'Negated free query silently became only-free: '+negatedFreeChips);
+            const paidOnlyWarning=await page.locator('#smartSummary').innerText();
+            assert(paidOnlyWarning.includes('Nicht angewendet: der Ausschluss kostenloser Angebote')
+              &&(await page.locator('#smartStatus').innerText())
+                .includes('Nicht angewendet: der Ausschluss kostenloser Angebote'),
+              'Unapplied paid-only intent missing from visible/accessible summary');
             // The existing explicit action must be able to override the negation.
             await page.locator('#smartFreeButton').click();
             const switchedFreeChips=await page.locator('#smartUnderstood').innerText();
@@ -371,7 +392,8 @@ jobs:
             assert(switchedFreeChips.includes('Nur kostenlose Kurse')
               &&!switchedFreeChips.includes('Keine Gratisangebote')
               &&switchedFreeInput.includes('Nur kostenlos')
-              &&!switchedFreeInput.includes('keine kostenlosen'),
+              &&!switchedFreeInput.includes('keine kostenlosen')
+              &&!(await page.locator('#smartSummary').innerText()).includes('Nicht angewendet:'),
               'Explicit free-only action did not override previous negation: '
                 +JSON.stringify({switchedFreeChips,switchedFreeInput}));
             await page.locator('#smartInput').fill('Ich suche einen kostenlosen Kurs zu KI');
