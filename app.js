@@ -315,7 +315,13 @@
         || normalized.includes("nicht_publiziert")
         || normalized.includes("nicht publiziert")) return "Nicht publiziert";
     if (offer.priceCategory === "NOT_APPLICABLE") return "Nicht anwendbar";
-    if (offer.priceCategory === "KOSTENLOS" || /\b(kostenlos|gratis|free)\b/i.test(raw)) return "Kostenlos";
+    if (offer.priceCategory === "KOSTENLOS") return "Kostenlos";
+    // The word "kostenlos" in mixed tariffs often applies to members only.
+    // Never label an entire offer free solely because a conditional waiver exists.
+    if (/\b(kostenlos|gratis|free)\b/i.test(raw)) {
+      const tariffClass = labels.priceCategory[offer.priceCategory] ?? "Mehrere Tarife";
+      return `${tariffClass} · teils kostenlos`;
+    }
     if (offer.priceCategory === "PREIS_AUF_ANFRAGE" || /preis\s+auf\s+anfrage/i.test(raw)) return "Auf Anfrage";
 
     const moneyRegex = /\b(CHF|EUR|USD|GBP)\s*([0-9][0-9'’.,]*)/gi;
