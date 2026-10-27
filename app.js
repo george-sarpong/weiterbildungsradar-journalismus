@@ -598,6 +598,9 @@
 
   const SMART_FREE_TOKEN_RE = /^(?:gratis|kostenlos(?:e(?:n|r|s|m)?)?|kostenfrei(?:e(?:n|r|s|m)?)?)$/;
   const SMART_FREE_INTENT_RE = /\b(?:gratis|kostenlos(?:e(?:n|r|s|m)?)?|kostenfrei(?:e(?:n|r|s|m)?)?)\b/;
+  // Negated price intent must not silently turn "keine kostenlosen Kurse"
+  // into the opposite "nur kostenlose Kurse".
+  const SMART_NEGATED_FREE_INTENT_RE = /\b(?:nicht(?:\s+mehr)?|kein(?:e|en|er|es|em)?|ohne)\s+(?:gratis|kostenlos(?:e(?:n|r|s|m)?)?|kostenfrei(?:e(?:n|r|s|m)?)?)\b/gi;
 
   const DELIVERY_INTENT_LABELS = Object.freeze({
     ONLINE: "Online",
@@ -709,8 +712,11 @@
     const dayMatch = input.match(/\b(?:zwei|2)\s*(?:tag|tage|tagen)\b/);
     const numericDayMatch = input.match(/\b(\d{1,2})\s*(?:tag|tage|tagen)\b/);
     const deliveryIntents = parseDeliveryIntent(input);
-    const freeOnly = SMART_FREE_INTENT_RE.test(input);
+    const excludesFree = SMART_NEGATED_FREE_INTENT_RE.test(input);
+    SMART_NEGATED_FREE_INTENT_RE.lastIndex = 0;
+    const freeOnly = !excludesFree && SMART_FREE_INTENT_RE.test(input);
     let tokenSource = input
+      .replace(SMART_NEGATED_FREE_INTENT_RE, " ")
       .replace(/\bnicht\s+mehr\s+als\b/g, " ")
       .replace(/\b(?:kein(?:e|en)?|ohne)\s+englisch\b/g, " ")
       .replace(/\b(?:chf|eur|usd)\s*[0-9][0-9'’.,]*\b/g, " ")
@@ -737,6 +743,7 @@
       deliveryIntents,
       excludeEnglish,
       freeOnly,
+      excludesFree,
       tokens: [...new Set(tokens)]
     };
   };
@@ -1369,6 +1376,7 @@
     if (parsed.maxDays) chips.push(`Zeit: ${parsed.maxDays} ${parsed.maxDays === 1 ? "Tag" : "Tage"} · erkannt, nicht angewendet`);
     parsed.deliveryIntents.forEach(intent => chips.push(`Durchführung: ${DELIVERY_INTENT_LABELS[intent] || intent.replaceAll("_", " ")}`));
     if (parsed.freeOnly) chips.push("Nur kostenlose Kurse");
+    if (parsed.excludesFree) chips.push("Keine Gratisangebote · erkannt, nicht angewendet");
     if (parsed.excludeEnglish) chips.push("Keine englischsprachigen Kurse");
 
     el.smartUnderstood.innerHTML = `<span class="smart-understood-label">Verstanden:</span>${chips.length ? chips.map(chip => `<span class="smart-chip">${escapeHtml(chip)}</span>`).join("") : '<span class="smart-chip">Suchbegriffe aus deinem Satz</span>'}`;
@@ -1577,9 +1585,13 @@
     });
     if (el.smartFreeButton) el.smartFreeButton.addEventListener("click", () => {
       const current = el.smartInput.value.trim();
-      el.smartInput.value = SMART_FREE_INTENT_RE.test(normalize(current))
-        ? current
-        : `${current} Nur kostenlos.`.trim();
+      // An explicit switch to "Nur Gratis-Angebote" overrides a negated free
+      // wish rather than preserving its contradictory words in the query.
+      const withoutNegation = current.replace(SMART_NEGATED_FREE_INTENT_RE, " ")
+        .replace(/\s+/g, " ").trim();
+      el.smartInput.value = SMART_FREE_INTENT_RE.test(normalize(withoutNegation))
+        ? withoutNegation
+        : `${withoutNegation} Nur kostenlos.`.trim();
       renderSmart(el.smartInput.value);
     });
     // Event delegation keeps both pagination actions active after each rerender.
