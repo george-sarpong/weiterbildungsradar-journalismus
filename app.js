@@ -891,12 +891,20 @@
   };
 
   const isDateActive = option => {
-    const now = today.getTime();
-    const from = option.validFrom ? parseDate(option.validFrom) : null;
-    const through = option.validThrough ? parseDate(option.validThrough) : null;
-    if (from && from.getTime() > now) return false;
-    if (through && through.getTime() < now) return false;
-    return true;
+    // Price validity dates are inclusive CALENDAR dates, not session end timestamps.
+    // A new tariff applies from the start of validFrom, not 23:59:59 that day.
+    const from = String(option.validFrom ?? "").trim();
+    const through = String(option.validThrough ?? "").trim();
+    const validDate = value => {
+      if (!ISO_DATE.test(value)) return false;
+      const parsed = new Date(`${value}T12:00:00Z`);
+      return Number.isFinite(parsed.getTime()) && parsed.toISOString().slice(0, 10) === value;
+    };
+    // A malformed validity bound must never be silently treated as unbounded.
+    if ((from && !validDate(from)) || (through && !validDate(through))) return false;
+    const localToday = [today.getFullYear(), String(today.getMonth() + 1).padStart(2, "0"),
+      String(today.getDate()).padStart(2, "0")].join("-");
+    return (!from || from <= localToday) && (!through || through >= localToday);
   };
 
   const amountWithRequiredComponents = option => {
@@ -1522,6 +1530,13 @@
     .forEach(node => node.addEventListener("input", render));
   el.sort.addEventListener("change", render);
   el.moreCourses.addEventListener("click", () => {
+    // A changed search query takes precedence over the old result page size.
+    // Otherwise a click during the 180-ms debounce could show 60 NEW matches
+    // and focus the 31st card, skipping the first page for keyboard users.
+    if (searchRenderTimer !== null) {
+      render();
+      return;
+    }
     const previousLength = el.cards.querySelectorAll("[data-offer-id]").length;
     catalogVisibleLimit += CATALOG_PAGE_SIZE;
     render({ preserveLimit: true });
