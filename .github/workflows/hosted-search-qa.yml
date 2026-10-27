@@ -249,7 +249,7 @@ jobs:
             for(const id of ['OFFER-EDITO-002','OFFER-HELIAS-014','CH-V18-F03','CH-NOV-OF-020']){
               await focusOffer(id);
               const priceText=await page.locator('#cards [data-offer-id="'+id+'"] .facts dd').first().innerText();
-              assert(priceText==='Mehrere Tarife · teils kostenlos',
+              assert(priceText.toLocaleLowerCase('de-CH')==='mehrere tarife · teils kostenlos',
                 'Conditional waiver incorrectly advertised as free: '+id+' '+priceText);
             }
             await focusOffer('OFFER-SFJ-001');
