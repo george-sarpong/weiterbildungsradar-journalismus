@@ -156,7 +156,8 @@
       && option.eligibilityType === "NONE"
       && Number.isFinite(option.amount)
       && typeof option.currency === "string"
-      && !option.validThrough);
+      && !option.validThrough
+      && isDateActive(option));
     if (prices.length !== 1) return offer;
     const selected = prices[0];
     // Der Kurspreis ist bekannt, aber eine separat benötigte Softwarelizenz
@@ -890,7 +891,7 @@
     return { outcome: "MATCH", evidenceTier: tier, matchedVariantIds: matchingIds };
   };
 
-  const isDateActive = option => {
+  function isDateActive(option) {
     // Price validity dates are inclusive CALENDAR dates, not session end timestamps.
     // A new tariff applies from the start of validFrom, not 23:59:59 that day.
     const from = String(option.validFrom ?? "").trim();
@@ -905,7 +906,7 @@
     const localToday = [today.getFullYear(), String(today.getMonth() + 1).padStart(2, "0"),
       String(today.getDate()).padStart(2, "0")].join("-");
     return (!from || from <= localToday) && (!through || through >= localToday);
-  };
+  }
 
   const amountWithRequiredComponents = option => {
     if (option.amountType === "FROM") return { kind: "FROM", amount: option.minAmount };
