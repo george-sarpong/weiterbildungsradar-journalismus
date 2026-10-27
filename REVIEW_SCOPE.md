@@ -1,3 +1,13 @@
+# SUPERSEDED — HISTORISCHER REVIEW-AUFTRAG (MS-32, 11.10.2026)
+
+> **NICHT AKTIV / NOT AN ACTIVE AGENT INSTRUCTION.** Dieser Text dokumentiert ausschliesslich den abgeschlossenen MS-32-Fokusreview für die historischen Stände V18/V21. Er ist keine aktuelle Repo-, Claude- oder Website-Entwicklungsanweisung. **Nicht automatisch ausführen.**
+>
+> Massgebend für neue Arbeiten sind der jüngste verifizierte GitHub-HEAD und der jüngste readback-bestätigte Drive-Run-State sowie die jüngere Nutzerentscheidung vom 26.10.2026: Fokus Website-UX, gezieltes Bugfixing und Regressionen; **keine erneute 116er-Sonderprüfung**. Diese Datei bleibt nur zur historischen Nachvollziehbarkeit erhalten.
+>
+> Technische LLM-Gegenprüfungen heissen **MODEL_ADVERSARIAL_AUDIT**, nicht unabhängige externe Audits. Kein Git-main-Merge, kein Hosting-/FTP-Deployment ohne separate Zustimmung.
+
+---
+
 # REVIEW_SCOPE — mediaskills_fix_20261011_V21_MS32
 
 MODUS: BUGFIX-REVIEW
