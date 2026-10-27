@@ -286,6 +286,29 @@ jobs:
               &&await page.locator('#smartInput').inputValue()==='Ich suche einen Präsenzkurs zu Videoproduktion.',
               'Public video example advertises unsupported or unparsed intent: '+videoChips);
             console.log('SMART_EXAMPLE_SUPPORTED_INTENTS_PASS');
+            // Negated "kostenlos" must not mean "nur kostenlose Kurse".
+            await page.locator('#smartInput').fill('Ich suche keine kostenlosen Kurse zu KI');
+            await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+            const negatedFreeChips=await page.locator('#smartUnderstood').innerText();
+            assert(negatedFreeChips.includes('Thema: ki')
+              &&negatedFreeChips.includes('Keine Gratisangebote · erkannt, nicht angewendet')
+              &&!negatedFreeChips.includes('Nur kostenlose Kurse'),
+              'Negated free query silently became only-free: '+negatedFreeChips);
+            // The existing explicit action must be able to override the negation.
+            await page.locator('#smartFreeButton').click();
+            const switchedFreeChips=await page.locator('#smartUnderstood').innerText();
+            const switchedFreeInput=await page.locator('#smartInput').inputValue();
+            assert(switchedFreeChips.includes('Nur kostenlose Kurse')
+              &&!switchedFreeChips.includes('Keine Gratisangebote')
+              &&switchedFreeInput.includes('Nur kostenlos')
+              &&!switchedFreeInput.includes('keine kostenlosen'),
+              'Explicit free-only action did not override previous negation: '
+                +JSON.stringify({switchedFreeChips,switchedFreeInput}));
+            await page.locator('#smartInput').fill('Ich suche einen kostenlosen Kurs zu KI');
+            await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+            assert((await page.locator('#smartUnderstood').innerText()).includes('Nur kostenlose Kurse'),
+              'Positive free-only query stopped working');
+            console.log('SMART_NEGATED_FREE_INTENT_PASS');
             const ki=await query('Ich suche einen Online-Kurs zu KI für höchstens CHF 500',0,3);
             assert(/Kein Kurs gefunden.*Budget/i.test(ki.summary),'Unsafe KI budget summary: '+ki.summary);
             assert((await page.locator('#smartResults section').innerText()).includes('Kursanbieter'),'No clear alternative warning');
