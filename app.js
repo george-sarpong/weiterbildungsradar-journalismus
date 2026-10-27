@@ -747,6 +747,7 @@
       ["WORKLOAD", /\b(?:maximal|hochstens|mindestens|unter|bis\s+zu)?\s*(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+stunden?\s+(?:inklusive|einschliesslich|mit)\s+(?:pflicht[- ]?)?(?:ubungen?|selbststudium|selbstlernen|vorbereitung)\b/g],
       ["WORKLOAD", /\b(?:mit\s+)?(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+stunden?\s+(?:pflicht[- ]?)?(?:selbststudium|selbstlernen)\b/g],
       ["WORKLOAD", /\b(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+mal\s+(?:\d+|ein|zwei|drei|vier)\s+stunden?\b/g],
+      ["WORKLOAD", /\b(?:maximal|hochstens|mindestens|unter)\s+(?:\d{1,2}|ein|zwei|drei|vier|funf|sechs)\s+tage[n]?\s+(?:inklusive|einschliesslich|mit)\s+(?:vorbereitung|selbststudium|ubungen?)\b/g],
       ["HOURS", /\b(?:maximal|hochstens|mindestens|unter|bis\s+zu)?\s*(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+(?:stunden?|std\.?|h)\b/g],
       ["DURATION_RANGE", /\bzwischen\s+(?:\d+|ein|zwei|drei|vier|funf)\s+und\s+(?:\d+|ein|zwei|drei|vier|funf)\s+tagen?\b/g],
       ["TEACHING_DAYS", /\b(?:(?:mit\s+)?(?:max\.?|maximal|hochstens|mindestens|nicht\s+mehr\s+als)\s+|mit\s+)?(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+(?:unterrichtstage[n]?|kurstage[n]?|praesenztage[n]?)\b/g],
