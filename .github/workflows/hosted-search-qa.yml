@@ -268,6 +268,27 @@ jobs:
             assert(corsoSource?.priceCategory==='KOSTENLOS'
               &&corsoSource?.priceDisplay?.includes('Für andere Kandidat:innen wird die Kursgebühr'),
               'Canonical discrepancy or wording changed: revisit explicit guard, do not infer new fee');
+            // Price filters must agree with the displayed, qualified price:
+            // Corso is NOT an unconditionally free offer for every applicant.
+            await page.locator('#priceFilter').selectOption('KOSTENLOS');
+            assert(await page.locator('#cards [data-offer-id="OFFER-CORSO-002"]').count()===0,
+              'Conditional-fee Corso leaked into the classic free-only filter');
+            await page.locator('#priceFilter').selectOption('MEHRERE_TARIFE');
+            assert(await page.locator('#cards [data-offer-id="OFFER-CORSO-002"]').count()===1,
+              'Qualified Corso disappeared from the multiple-tariffs filter');
+            const qualifiedPrice=await page.locator('#cards [data-offer-id="OFFER-CORSO-002"] .facts dd').first().innerText();
+            assert(qualifiedPrice.toLocaleLowerCase('de-CH')==='teilweise kostenlos · übrige gebühr offen',
+              'Category-filtered Corso card lost its qualified fee notice');
+            await page.locator('#priceFilter').selectOption('');
+            await focusOffer('OFFER-SFJ-001');
+            await page.locator('#priceFilter').selectOption('KOSTENLOS');
+            assert(await page.locator('#cards [data-offer-id="OFFER-SFJ-001"]').count()===1,
+              'Genuine free SFJ offer wrongly removed by category projection');
+            await page.locator('#priceFilter').selectOption('MEHRERE_TARIFE');
+            assert(await page.locator('#cards [data-offer-id="OFFER-SFJ-001"]').count()===0,
+              'Genuine free SFJ offer incorrectly classified as mixed-tariff');
+            await page.locator('#priceFilter').selectOption('');
+            console.log('CATALOG_PRICE_FILTER_DISPLAY_ALIGNMENT_PASS');
             console.log('CATALOG_CONDITIONAL_FREE_DISPLAY_PASS');
             console.log('CORSO_CONDITIONAL_FEE_GUARD_PASS');
             await focusOffer('V78-03');
