@@ -533,7 +533,6 @@
 
   const card = offer => {
     const isFavorite = favorites.has(offer.id);
-    const favoriteLabel = `${offer.title} als Favorit merken`;
     const favoriteTitle = isFavorite
       ? `${offer.title} aus den Favoriten entfernen`
       : `${offer.title} zu den Favoriten hinzufügen`;
@@ -554,7 +553,7 @@
               type="button"
               data-favorite-id="${escapeHtml(offer.id)}"
               aria-pressed="${isFavorite}"
-              aria-label="${escapeHtml(favoriteLabel)}"
+              aria-label="${escapeHtml(favoriteTitle)}"
               title="${escapeHtml(favoriteTitle)}">
               ${heartSvg}
             </button>
