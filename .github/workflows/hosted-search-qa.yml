@@ -44,16 +44,19 @@ jobs:
             return src.slice(a,b);
           };
           const core=extract('  const amountWithRequiredComponents =','  const freeStatusRank =');
+          const dateValidity=extract('  const isDateActive =','  const amountWithRequiredComponents =');
           const alternative=extract('  const smartAlternative =','  const smartWhy =');
           const api=vm.runInNewContext(`(()=>{
-            const isDateActive=()=>true;
+            const ISO_DATE=/^\\d{4}-\\d{2}-\\d{2}$/;
+            const today=new Date(2026,9,27);
+            ${dateValidity}
             const topicMatch=()=>({match:true,score:10});
             const getSmartRecord=offer=>offer.record;
             const unverifiedFormatMayMatch=()=>true;
             const resolveFreeOption=()=>null;
             ${core}
             ${alternative}
-            return {resolveBudget,smartAlternative};
+            return {resolveBudget,smartAlternative,isDateActive};
           })()`);
           const assert=(ok,msg)=>{if(!ok)throw new Error(msg)};
           const makeOption=(overrides={})=>({
@@ -67,8 +70,23 @@ jobs:
             deliveryIntents,excludeEnglish:false,tokens:['test'],freeOnly:false});
           const budget=(option,amount)=>api.resolveBudget({},record([option]),parsed(amount),
             {matchedVariantIds:[]});
+          // Compare price bounds on inclusive Zurich calendar dates, including malformed data.
+          assert(api.isDateActive({validFrom:'2026-10-27'}),'Tariff starts too late');
+          assert(api.isDateActive({validFrom:'2026-10-27',validThrough:'2026-10-27'}),
+            'Tariff inactive on its sole valid day');
+          assert(!api.isDateActive({validFrom:'2026-10-28'}),'Future price active');
+          assert(api.isDateActive({validThrough:'2026-10-27'}),'Tariff expires too early');
+          assert(!api.isDateActive({validThrough:'2026-10-26'}),'Expired price active');
+          assert(!api.isDateActive({validThrough:'31.10.2025'}),'Non-ISO date accepted');
+          assert(!api.isDateActive({validFrom:'2026-13-01'}),'Impossible month accepted');
+          assert(!api.isDateActive({validThrough:'2026-02-30'}),'Impossible day accepted');
           const free=makeOption({amountType:'FREE',amount:0,currency:'CHF'});
           assert(budget(free,0).status==='DIRECT_FIT','Truly free price regressed');
+          assert(budget(makeOption({validFrom:'2026-10-27'}),100).status==='DIRECT_FIT',
+            'Budget resolver missed price on first valid day');
+          assert(budget(makeOption({validThrough:'2026-10-26'}),100).status==='PRICE_UNKNOWN',
+            'Budget resolver kept expired price');
+          console.log('PRICE_VALIDITY_BOUNDARY_PASS');
           const charged=makeOption({amountType:'FREE',amount:0,currency:'CHF',
             components:[{requirementStatus:'REQUIRED',amountType:'EXACT',amount:120}]});
           assert(budget(charged,50).status==='OVER_BUDGET',
@@ -179,6 +197,21 @@ jobs:
             const progressLabel=await page.locator('#resultCount').innerText();
             assert(/60 von /.test(progressLabel),'Visible/total counters incorrect: '+progressLabel);
             console.log('CATALOG_PROGRESSIVE_RENDER_PASS',JSON.stringify({initialCount,afterMore:afterMore.length}));
+            // Clicking "more" during a pending search must show page 1 of the new results.
+            await page.locator('#searchInput').fill('Journalismus');
+            await page.locator('#moreCourses').click();
+            assert(await initialCards.count()===30,'Pending search kept old 60-card limit');
+            const pendingState=await page.evaluate(()=>({
+              focusedCard:document.activeElement?.closest('.card')?.dataset.offerId||null,
+              q:new URL(location.href).searchParams.get('q'),
+              count:document.querySelector('#resultCount')?.textContent||''
+            }));
+            assert(pendingState.focusedCard===null&&pendingState.q==='Journalismus'
+              &&/30 von /.test(pendingState.count),
+              'Debounce-pagination focus or URL regression: '+JSON.stringify(pendingState));
+            await page.clock.runFor(220);
+            assert(await initialCards.count()===30,'Cancelled timer unexpectedly re-rendered');
+            console.log('CATALOG_PENDING_SEARCH_PAGINATION_PASS');
             await focusOffer('V78-03');
             await focusOffer('V77-04');
             const bevisible=await page.locator('[data-offer-id="V77-04"]').innerText();
