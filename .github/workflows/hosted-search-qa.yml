@@ -44,19 +44,27 @@ jobs:
             return src.slice(a,b);
           };
           const core=extract('  const amountWithRequiredComponents =','  const freeStatusRank =');
-          const dateValidity=extract('  const isDateActive =','  const amountWithRequiredComponents =');
+          const dateValidity=extract('  function isDateActive(option) {','  const amountWithRequiredComponents =');
+          const evergreen=extract('  const evergreenProjection = offer => {','  const offers = allOffers.map');
           const alternative=extract('  const smartAlternative =','  const smartWhy =');
           const api=vm.runInNewContext(`(()=>{
             const ISO_DATE=/^\\d{4}-\\d{2}-\\d{2}$/;
             const today=new Date(2026,9,27);
             ${dateValidity}
+            const window={MEDIA_SKILLS_SMART_DATA:{byId:{}}};
+            const nextSession=()=>null;
+            ${evergreen}
             const topicMatch=()=>({match:true,score:10});
             const getSmartRecord=offer=>offer.record;
             const unverifiedFormatMayMatch=()=>true;
             const resolveFreeOption=()=>null;
             ${core}
             ${alternative}
-            return {resolveBudget,smartAlternative,isDateActive};
+            return {resolveBudget,smartAlternative,isDateActive,
+              projectEvergreen:(offer,record)=>{
+                window.MEDIA_SKILLS_SMART_DATA.byId[offer.id]=record;
+                return evergreenProjection(offer);
+              }};
           })()`);
           const assert=(ok,msg)=>{if(!ok)throw new Error(msg)};
           const makeOption=(overrides={})=>({
@@ -87,6 +95,25 @@ jobs:
           assert(budget(makeOption({validThrough:'2026-10-26'}),100).status==='PRICE_UNKNOWN',
             'Budget resolver kept expired price');
           console.log('PRICE_VALIDITY_BOUNDARY_PASS');
+          const changedSession={id:'TEST-EVERGREEN',format:'PRÄSENZ | ONLINE SELBSTLERNEN',
+            sessions:[{startDate:'2026-10-26',endDate:'2026-10-26'}]};
+          const evergreenRecord=validFrom=>({
+            delivery:{evidenceTier:'VERIFIED',variants:[{deliveryVariantId:'ON-DEMAND',
+              temporalMode:'ASYNCHRONOUS',attendanceChannels:['REMOTE'],
+              instructionFormats:['SELF_STUDY']}]},
+            priceOptions:[makeOption({amount:250,validFrom,validThrough:null,
+              deliveryVariantRefs:['ON-DEMAND']})]
+          });
+          assert(api.projectEvergreen(changedSession,evergreenRecord('2026-10-28'))===changedSession,
+            'Future-dated self-study price incorrectly exposed as evergreen course');
+          const activeEvergreen=api.projectEvergreen(changedSession,evergreenRecord('2026-10-27'));
+          assert(activeEvergreen!==changedSession
+            &&activeEvergreen.format==='ONLINE SELBSTLERNEN'
+            &&activeEvergreen.priceDisplay.includes('CHF 250'),
+            'Valid self-study course suppressed by tariff-date guard');
+          assert(api.projectEvergreen(changedSession,evergreenRecord('31.10.2026'))===changedSession,
+            'Malformed self-study tariff validity published');
+          console.log('EVERGREEN_PRICE_START_DATE_GUARD_PASS');
           const charged=makeOption({amountType:'FREE',amount:0,currency:'CHF',
             components:[{requirementStatus:'REQUIRED',amountType:'EXACT',amount:120}]});
           assert(budget(charged,50).status==='OVER_BUDGET',
