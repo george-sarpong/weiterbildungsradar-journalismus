@@ -7,14 +7,15 @@
 - Öffentliches Repo: `george-sarpong/weiterbildungsradar-journalismus`.
 - Zu prüfender **Website-Code-Snapshot**: `10c59436155f1f94ef054f2a7d277be171c2c215` (R2_138). Neuere Commits auf PR10 betreffen bislang nur Review-Dokumentation; zuerst SHA und Dateidiffs prüfen.
 - Review durch Claude in einer Sitzung mit Terminal: öffentlich über HTTPS klonen, ohne GitHub-Credentials, den Code-SHA auschecken. **Nicht** automatisch den ganzen PR mit 46 Commits prüfen.
-- Branch-Root `REVIEW_SCOPE.md` ist **SUPERSEDED** und ein historischer MS-32-Auftrag, kein neuer Arbeitsauftrag.
+- Die Root-Datei `REVIEW_SCOPE.md` ist im **aktuellen Entwicklungsbranch** mit SUPERSEDED gekennzeichnet. **Kein Checkout des alten Commit 10c5943 als Arbeitsbaum**: Dadurch käme die überholte Root-Anweisung zurück. Für Codeanalyse den aktuellen Branch verwenden, aber die geprüfte Code-Baseline 10c5943 durch einen ausschliesslich dokumentarischen Diff absichern. Bei jedem funktionalen Code-Delta seit 10c5943 STOP als `REVIEW_STALE`.
 - Kein Git-Push, kein PR-Kommentar, kein Merge, kein Deploy, keine Recherchen zu den alten 116 Angeboten, kein erneuter Gesamtcheck.
 
 ```sh
-git clone --filter=blob:none https://github.com/george-sarpong/weiterbildungsradar-journalismus.git
+git clone --single-branch --branch integration/media-skills-smart-search-20261025 https://github.com/george-sarpong/weiterbildungsradar-journalismus.git
 cd weiterbildungsradar-journalismus
-git checkout --detach 10c59436155f1f94ef054f2a7d277be171c2c215
 git rev-parse HEAD
+# Guard: seit der geprüften Produkt-Baseline sind ausschliesslich Review-Dokumente verändert.
+git diff --name-only 10c59436155f1f94ef054f2a7d277be171c2c215 HEAD
 ```
 
 **Vorbedingung:** Claude-Umgebung ohne GitHub-Schreib-Credentials verwenden. Git-Clone ist nur hinsichtlich des Remote-Pushs read-only; lokal kann ein Agent Dateien ändern. Deshalb keine geheimen Schlüssel oder Bereitstellungsrechte an die Sitzung geben.
