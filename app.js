@@ -449,15 +449,16 @@
             || a.title.localeCompare(b.title, "de-CH");
         });
       }
-      case "APPROVED":
-        return sorted.sort((a, b) => b.approved.localeCompare(a.approved)
-          || a.provider.localeCompare(b.provider, "de-CH")
-          || a.title.localeCompare(b.title, "de-CH"));
       case "PROVIDER":
         return sorted.sort((a, b) => a.provider.localeCompare(b.provider, "de-CH")
           || a.title.localeCompare(b.title, "de-CH"));
+      case "APPROVED":
       default:
-        return sorted;
+        // Default to the documented review date, not an implied editorial ranking.
+        return sorted.sort((a, b) => String(b.approved ?? "").localeCompare(String(a.approved ?? ""))
+          || a.provider.localeCompare(b.provider, "de-CH")
+          || a.title.localeCompare(b.title, "de-CH")
+          || String(a.id).localeCompare(String(b.id), "de-CH"));
     }
   };
 
@@ -499,7 +500,7 @@
     if (filter.language) params.set("language", filter.language);
     if (filter.country) params.set("country", filter.country);
     if (filter.level) params.set("level", filter.level);
-    if (el.sort.value !== "EDITORIAL") params.set("sort", el.sort.value);
+    if (el.sort.value !== "APPROVED") params.set("sort", el.sort.value);
 
     const query = params.toString();
     const next = `${window.location.pathname}${query ? `?${query}` : ""}${window.location.hash}`;
@@ -1423,7 +1424,7 @@
     filter.language,
     filter.country,
     filter.level,
-    el.sort.value !== "EDITORIAL",
+    el.sort.value !== "APPROVED",
     favoritesOnly
   ].filter(Boolean).length;
 
@@ -1485,7 +1486,7 @@
   const reset = () => {
     [el.search, el.focus, el.type, el.price, el.format, el.language, el.country, el.level]
       .forEach(node => { node.value = ""; });
-    el.sort.value = "EDITORIAL";
+    el.sort.value = "APPROVED";
     favoritesOnly = false;
     render();
     el.search.focus();

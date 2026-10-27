@@ -155,6 +155,19 @@ jobs:
             const initialCards=page.locator('#cards [data-offer-id]');
             const initialCount=await initialCards.count();
             assert(initialCount===30,'Initial catalogue should render exactly 30 cards, got '+initialCount);
+            assert(await page.locator('#sortSelect').inputValue()==='APPROVED',
+              'Freshness by last verified date must be the default sort');
+            assert((await page.locator('#sortSelect').innerText()).includes('Zuletzt geprüft (neueste zuerst)')
+              &&!(await page.locator('#sortSelect').innerText()).includes('Redaktionelle Auswahl'),
+              'Sort selector still implies unsubstantiated editorial ranking');
+            const reviewDates=await page.evaluate(()=>{
+              const byId=new Map((window.WEITERBILDUNGSRADAR_OFFERS||[]).map(x=>[x.id,String(x.approved||'')]));
+              return [...document.querySelectorAll('#cards [data-offer-id]')]
+                .map(el=>byId.get(el.dataset.offerId)||'');
+            });
+            assert(reviewDates.every((date,index)=>index===0||date<=reviewDates[index-1]),
+              'Default catalogue order does not follow last verification date descending: '+JSON.stringify(reviewDates));
+            console.log('CATALOG_DEFAULT_FRESHNESS_SORT_PASS',JSON.stringify({first:reviewDates[0],last:reviewDates.at(-1)}));
             assert(await page.locator('#moreCourses').isVisible(),'More-courses control missing on initial catalogue');
             const firstThirty=await initialCards.evaluateAll(items=>items.map(x=>x.dataset.offerId));
             await page.locator('#moreCourses').click();
@@ -324,12 +337,15 @@ jobs:
               'Favorites-only view selected wrong offer');
             await page.locator('#resetFilters').click();
             const sortOptions=await page.locator('#sortSelect option').evaluateAll(nodes=>
-              nodes.map(n=>n.value).filter(v=>v&&v!=='EDITORIAL'));
+              nodes.map(n=>n.value).filter(v=>v&&v!=='APPROVED'));
             assert(sortOptions.length>0,'No secondary sort mode available');
             await page.locator('#sortSelect').selectOption(sortOptions[0]);
             assert(await page.locator('#cards [data-offer-id]').count()===baseVisible,
               'Sorting unexpectedly changed the result set');
             await page.locator('#resetFilters').click();
+            assert(await page.locator('#sortSelect').inputValue()==='APPROVED'
+              &&!new URL(await page.url()).searchParams.has('sort'),
+              'Reset did not restore the default freshness sort or clean shareable URL');
             await page.setViewportSize({width:390,height:844});
             await query('Ich suche einen Online-Kurs zu KI für höchstens CHF 500',0,3);
             const mobileAlt=await page.evaluate(()=>{
@@ -463,6 +479,16 @@ jobs:
             await page.waitForFunction(()=>/\d/.test(document.querySelector('#resultCount')?.textContent||''));
             const visible=await page.locator('#cards [data-offer-id]').count();
             assert(visible===30,'Expected 30 initial published catalogue cards');
+            assert(await page.locator('#sortSelect').inputValue()==='APPROVED',
+              'Hosted catalogue not sorted by freshness by default');
+            const approvedDates=await page.evaluate(()=>{
+              const byId=new Map((window.WEITERBILDUNGSRADAR_OFFERS||[]).map(o=>[o.id,String(o.approved||'')]));
+              return [...document.querySelectorAll('#cards [data-offer-id]')]
+                .map(card=>byId.get(card.dataset.offerId)||'');
+            });
+            assert(approvedDates.every((date,i)=>i===0||date<=approvedDates[i-1]),
+              'Hosted catalogue review-date ordering is incorrect');
+            console.log('HOSTED_CATALOG_FRESHNESS_SORT_PASS');
             const firstIds=await page.locator('#cards [data-offer-id]').evaluateAll(items=>items.map(x=>x.dataset.offerId));
             assert(await page.locator('#moreCourses').isVisible(),'Hosted catalogue pagination action missing');
             await page.locator('#moreCourses').click();
