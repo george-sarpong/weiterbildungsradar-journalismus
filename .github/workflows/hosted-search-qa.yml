@@ -47,6 +47,15 @@ jobs:
           const dateValidity=extract('  function isDateActive(option) {','  const amountWithRequiredComponents =');
           const evergreen=extract('  const evergreenProjection = offer => {','  const offers = allOffers.map');
           const alternative=extract('  const smartAlternative =','  const smartWhy =');
+          const priceDisplayCategory=extract('  const priceCategoryForDisplay = offer => {','  const compactPrice =');
+          const priceBands=extract('  const priceBandCounts = list => {','  const renderPriceBands =');
+          const priceUI=vm.runInNewContext(`(()=>{
+            const normalize=value=>String(value??'').normalize('NFD')
+              .replace(/[\\u0300-\\u036f]/g,'').toLocaleLowerCase('de-CH');
+            ${priceDisplayCategory}
+            ${priceBands}
+            return {priceCategoryForDisplay,priceBandCounts};
+          })()`);
           const api=vm.runInNewContext(`(()=>{
             const ISO_DATE=/^\\d{4}-\\d{2}-\\d{2}$/;
             const today=new Date(2026,9,27);
@@ -67,6 +76,20 @@ jobs:
               }};
           })()`);
           const assert=(ok,msg)=>{if(!ok)throw new Error(msg)};
+          const rosterRaw=fs.readFileSync('data.js','utf8');
+          const roster=JSON.parse(rosterRaw.slice(rosterRaw.indexOf('=')+1).trim().replace(/;\\s*$/,''));
+          const corso=roster.find(o=>o.id==='OFFER-CORSO-002');
+          const sfj=roster.find(o=>o.id==='OFFER-SFJ-001');
+          assert(corso?.priceCategory==='KOSTENLOS'
+            &&sfj?.priceCategory==='KOSTENLOS','Source categories unexpectedly mutated');
+          assert(priceUI.priceCategoryForDisplay(corso)==='MEHRERE_TARIFE',
+            'Known conditional Corso fee still treated as unconditional free');
+          assert(priceUI.priceCategoryForDisplay(sfj)==='KOSTENLOS',
+            'Actually-free SFJ programme incorrectly classified as mixed tariff');
+          const bandCounts=priceUI.priceBandCounts([corso,sfj]);
+          assert(bandCounts.free===1&&bandCounts.variable===1,
+            'Smart price bands disagree with display-filter projection: '+JSON.stringify(bandCounts));
+          console.log('PRICE_CATEGORY_PROJECTION_BANDS_PASS');
           const makeOption=(overrides={})=>({
             amountType:'EXACT',amount:100,currency:'CHF',
             eligibilityType:'NONE',billingBasis:'TOTAL',priceScope:'FULL_OFFER',
