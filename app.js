@@ -315,6 +315,15 @@
         || normalized.includes("nicht_publiziert")
         || normalized.includes("nicht publiziert")) return "Nicht publiziert";
     if (offer.priceCategory === "NOT_APPLICABLE") return "Nicht anwendbar";
+    // A narrow, evidence-backed display guard: the source text explicitly
+    // distinguishes free partner participation from a fee for other candidates.
+    // Keep the canonical category and Sidecar unchanged pending data remediation.
+    if (offer.priceCategory === "KOSTENLOS"
+        && normalized.includes("fur andere kandidaten")
+        && normalized.includes("kursgebuhr")
+        && /\\b(kostenlos|gratis|free)\\b/i.test(raw)) {
+      return "Teilweise kostenlos · übrige Gebühr offen";
+    }
     if (offer.priceCategory === "KOSTENLOS") return "Kostenlos";
     // The word "kostenlos" in mixed tariffs often applies to members only.
     // Never label an entire offer free solely because a conditional waiver exists.
