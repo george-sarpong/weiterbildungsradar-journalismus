@@ -406,13 +406,35 @@ jobs:
             assert(changedFilters===7,'Not all seven filters alter results: '+changedFilters);
             const firstId=await page.locator('#cards [data-offer-id]').first()
               .getAttribute('data-offer-id');
-            await page.locator('#cards [data-favorite-id="'+firstId+'"]').first().click();
+            const favoriteButton=page.locator('#cards [data-favorite-id="'+firstId+'"]').first();
+            const favoriteName=await page.locator('#cards [data-offer-id="'+firstId+'"] h3').innerText();
+            const stableLabel=favoriteName+' als Favorit';
+            assert(await favoriteButton.getAttribute('aria-pressed')==='false'
+              &&await favoriteButton.getAttribute('aria-label')===stableLabel
+              &&(await favoriteButton.getAttribute('title')).includes('hinzufügen'),
+              'Favorite toggle has wrong initial accessible name or state');
+            await favoriteButton.click();
+            assert(await favoriteButton.getAttribute('aria-pressed')==='true'
+              &&await favoriteButton.getAttribute('aria-label')===stableLabel
+              &&(await favoriteButton.getAttribute('title')).includes('entfernen'),
+              'Favorite toggle changed accessible name or failed to announce selected state');
             await page.locator('#favoritesToggle').click();
             assert(await page.locator('#cards [data-offer-id]').count()===1,
               'Favorites-only view did not isolate one offer');
             assert(await page.locator('#cards [data-offer-id]').first().getAttribute('data-offer-id')===firstId,
               'Favorites-only view selected wrong offer');
             await page.locator('#resetFilters').click();
+            const favoriteAfterReset=page.locator('#cards [data-favorite-id="'+firstId+'"]').first();
+            assert(await favoriteAfterReset.getAttribute('aria-pressed')==='true'
+              &&await favoriteAfterReset.getAttribute('aria-label')===stableLabel,
+              'Reset lost favorite toggle state or stable label');
+            await favoriteAfterReset.click();
+            const favoriteAfterRemove=page.locator('#cards [data-favorite-id="'+firstId+'"]').first();
+            assert(await favoriteAfterRemove.getAttribute('aria-pressed')==='false'
+              &&await favoriteAfterRemove.getAttribute('aria-label')===stableLabel
+              &&(await favoriteAfterRemove.getAttribute('title')).includes('hinzufügen'),
+              'Favorite removal did not restore unpressed state and action');
+            console.log('FAVORITE_TOGGLE_A11Y_STATE_PASS');
             const sortOptions=await page.locator('#sortSelect option').evaluateAll(nodes=>
               nodes.map(n=>n.value).filter(v=>v&&v!=='APPROVED'));
             assert(sortOptions.length>0,'No secondary sort mode available');
