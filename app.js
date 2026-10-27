@@ -743,32 +743,36 @@
       ["SCHEDULE", /\b(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+(?:freitag(?:e|en)?|montag(?:e|en)?|dienstag(?:e|en)?|mittwoch(?:e|en)?|donnerstag(?:e|en)?|samstag(?:e|en)?|sonntag(?:e|en)?)\s+in\s+(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+wochen?\b/g],
       ["SCHEDULE", /\b(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+abende?\s+zu\s+je\s+(?:\d+|ein|zwei|drei|vier)\s+stunden?\b/g],
       ["SCHEDULE", /\b(?:am\s+wochenende|nur\s+abends(?:\s+nach\s+feierabend)?|dienstag\s+und\s+mittwoch\s+abend)\b/g],
+      ["SCHEDULE", /\b(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+abende?\b/g],
+      ["SCHEDULE", /\b(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+wochen?\s+abendkurs\b/g],
+      ["SCHEDULE", /\b(?:montag|dienstag|mittwoch|donnerstag|freitag|samstag|sonntag)\s+und\s+(?:montag|dienstag|mittwoch|donnerstag|freitag|samstag|sonntag)\b/g],
       ["COMPLETION", /\b(?:in|innerhalb(?:\s+von)?)\s+(?:\d+|ein(?:em|en)?|zwei|drei|vier|funf)\s+tag(?:en|e)?\s+(?:fertig(?:\s+sein)?|abschliess(?:en|bar)|absolvieren|absolviert|beenden)\b/g],
       ["WORKLOAD", /\b(?:maximal|hochstens|mindestens|unter|bis\s+zu)?\s*(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+stunden?\s+(?:inklusive|einschliesslich|mit)\s+(?:pflicht[- ]?)?(?:ubungen?|selbststudium|selbstlernen|vorbereitung)\b/g],
       ["WORKLOAD", /\b(?:mit\s+)?(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+stunden?\s+(?:pflicht[- ]?)?(?:selbststudium|selbstlernen)\b/g],
       ["WORKLOAD", /\b(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+mal\s+(?:\d+|ein|zwei|drei|vier)\s+stunden?\b/g],
-      ["WORKLOAD", /\b(?:maximal|hochstens|mindestens|unter)\s+(?:\d{1,2}|ein|zwei|drei|vier|funf|sechs)\s+tage[n]?\s+(?:inklusive|einschliesslich|mit)\s+(?:vorbereitung|selbststudium|ubungen?)\b/g],
+      ["WORKLOAD", /\b(?:maximal|hochstens|mindestens|unter)\s+(?:\d{1,2}|ein(?:e|en|em)?|zwei|drei|vier|funf|sechs)\s+tag(?:e|en)?\s+(?:inklusive|einschliesslich|mit)\s+(?:vorbereitung|selbststudium|ubungen?)\b/g],
+      ["WORKLOAD", /\b(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+wochen?\s+(?:pflicht[- ]?)?selbststudium\b/g],
       ["HOURS", /\b(?:maximal|hochstens|mindestens|unter|bis\s+zu)?\s*(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+(?:stunden?|std\.?|h)\b/g],
       ["DURATION_RANGE", /\bzwischen\s+(?:\d+|ein|zwei|drei|vier|funf)\s+und\s+(?:\d+|ein|zwei|drei|vier|funf)\s+tagen?\b/g],
       ["TEACHING_DAYS", /\b(?:(?:mit\s+)?(?:max\.?|maximal|hochstens|mindestens|nicht\s+mehr\s+als)\s+|mit\s+)?(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+(?:unterrichtstage[n]?|kurstage[n]?|praesenztage[n]?)\b/g],
       ["ADJACENT_DAYS", /\b(?:(?:mit\s+)?(?:maximal|hochstens|mindestens)\s+|mit\s+)?(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+aufeinanderfolgende[nr]?\s+tage[n]?\b/g],
+      ["DAYS", /\b(?:eintagiger|zweitagiger|dreitagiger|viertagiger)\s+(?:kurs|workshop|seminar)\b/g],
       ["DAYS", /\b(?:\d{1,2}[- ]tage[- ]kurs|\d{1,2}[- ]tagiger\s+kurs|eintagiger\s+workshop)\b/g],
-      ["DAYS", /\b(?:nicht\s+langer\s+als|nie\s+mehr\s+als|mehr\s+als|langer\s+als|mindestens|maximal|max\.?|hochstens|bis\s+zu|unter)?\s*(?:\d{1,2}|ein|zwei|drei|vier|funf|sechs)\s+tage[n]?\b(?:\s+zeit)?/g]
+      ["DAYS", /\b(?:nicht\s+langer\s+als|nicht\s+mehr\s+als|nie\s+mehr\s+als|mehr\s+als|langer\s+als|mindestens|maximal|max\.?|hochstens|bis\s+zu|unter)?\s*(?:\d{1,2}|ein(?:e|en|em|es)?|zwei|drei|vier|funf|sechs)\s+tag(?:e|en)?\b(?:\s+zeit)?/g]
     ];
     const clauses = [];
     let remaining = input;
     for (const [kind, regex] of rules) {
       remaining = remaining.replace(regex, (match, offset, full) => {
         if (kind === "DAYS" && /\buber\s*$/.test(full.slice(0, offset))
-            && /^\s*[a-z]{3,}/.test(full.slice(offset + match.length))
-            && !/\b(?:kurs|workshop|seminar|dauer)\s+uber\s*$/.test(full.slice(0, offset))) {
+            && /^\s*[a-z]{3,}/.test(full.slice(offset + match.length))) {
           return match;
         }
-        const comparator = /\b(?:nicht\s+langer\s+als|nie\s+mehr\s+als|max(?:imal)?\.?|hochstens|bis\s+zu|unter)\b/.test(match)
+        const comparator = /\b(?:nicht\s+langer\s+als|nicht\s+mehr\s+als|nie\s+mehr\s+als|max(?:imal)?\.?|hochstens|bis\s+zu|unter)\b/.test(match)
           ? "MAX" : /\b(?:mindestens|mehr\s+als|langer\s+als)\b/.test(match)
           ? "MIN" : kind === "DURATION_RANGE" ? "RANGE" : "UNSPECIFIED";
-        const n = match.match(/\b(?:\d{1,2}|ein|zwei|drei|vier|funf|sechs)\b/);
-        const words = {ein:1,zwei:2,drei:3,vier:4,funf:5,sechs:6};
+        const n = match.match(/\b(?:\d{1,2}|ein(?:e|en|em|es)?|zwei|drei|vier|funf|sechs)\b/);
+        const words = {ein:1,eine:1,einen:1,einem:1,eines:1,zwei:2,drei:3,vier:4,funf:5,sechs:6};
         clauses.push({kind, comparator, amount: n
           ? (words[n[0]] || Number(n[0]) || null) : null,
           expression: match.trim(), start: offset, end: offset + match.length,
