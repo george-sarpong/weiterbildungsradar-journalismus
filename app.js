@@ -533,6 +533,8 @@
 
   const card = offer => {
     const isFavorite = favorites.has(offer.id);
+    // Toggle-button accessible name stays stable; aria-pressed conveys the state.
+    const favoriteLabel = `${offer.title} als Favorit`;
     const favoriteTitle = isFavorite
       ? `${offer.title} aus den Favoriten entfernen`
       : `${offer.title} zu den Favoriten hinzufügen`;
@@ -553,7 +555,7 @@
               type="button"
               data-favorite-id="${escapeHtml(offer.id)}"
               aria-pressed="${isFavorite}"
-              aria-label="${escapeHtml(favoriteTitle)}"
+              aria-label="${escapeHtml(favoriteLabel)}"
               title="${escapeHtml(favoriteTitle)}">
               ${heartSvg}
             </button>
