@@ -1383,7 +1383,12 @@
     const { parsed, evaluated, alternatives, directLimit, alternativeLimit } = smartResultState;
     const shown = evaluated.slice(0, directLimit);
     const alternativeShown = alternatives.slice(0, alternativeLimit);
-    const confirmedText = parsed.budget
+    const unsupportedOnly = !parsed.tokens.length && !parsed.budget
+      && !parsed.deliveryIntents.length && !parsed.excludeEnglish && !parsed.freeOnly
+      && Boolean(parsed.durationClauses?.length || parsed.excludesFree);
+    const confirmedText = unsupportedOnly
+      ? `${evaluated.length.toLocaleString("de-CH")} Angebote im aktuellen Bestand angezeigt; die gewünschten Bedingungen konnten nicht angewendet werden.`
+      : parsed.budget
       ? (evaluated.length
         ? `${evaluated.length.toLocaleString("de-CH")} Kurse passen rechnerisch zum Planungsbudget.`
         : "Kein Kurs gefunden, der nach unserem Planungsvergleich ins Budget passt.")
@@ -1398,7 +1403,7 @@
       ? ` ${shown.length.toLocaleString("de-CH")} von ${evaluated.length.toLocaleString("de-CH")} passenden Kursen angezeigt.`
       : "";
     const alternativeText = alternatives.length
-      ? ` ${alternatives.length.toLocaleString("de-CH")} weitere Kurse könnten passen; ${alternativeShown.length} angezeigt.`
+      ? ` ${alternatives.length.toLocaleString("de-CH")} ${alternatives.length === 1 ? "weiterer Kurs könnte" : "weitere Kurse könnten"} passen; ${alternativeShown.length} angezeigt.`
       : "";
     const unappliedWarning = unappliedSmartConstraints(parsed);
     el.smartSummary.innerHTML = `<p><strong>${escapeHtml(confirmedText)}</strong>${escapeHtml(alternativeText)}</p>`
@@ -1476,7 +1481,7 @@
     if (parsed.tokens.length) chips.push(`Thema: ${parsed.tokens.join(" + ")}`);
     if (parsed.budget) chips.push(`Budget: ${parsed.budget.currency} ${parsed.budget.amount.toLocaleString("de-CH")}`);
     parsed.durationClauses.forEach(c => {
-      const label = c.kind === "DAYS" && c.amount != null
+      const label = c.kind === "DAYS" && c.amount != null && c.comparator !== "MIN"
         ? `${c.amount} ${c.amount === 1 ? "Tag" : "Tage"}` : c.expression;
       chips.push(`Zeit: ${label} · erkannt, nicht angewendet`);
     });
