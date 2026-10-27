@@ -307,6 +307,18 @@
     return Number.isFinite(amount) ? amount : null;
   };
 
+  // Website-only price interpretation. Keep raw/master and the price sidecar
+  // intact, but do not show known conditional-fee offers as universally free
+  // in the card, the classic price filter or the Smart price-band counts.
+  const priceCategoryForDisplay = offer => {
+    if (offer.priceCategory !== "KOSTENLOS") return offer.priceCategory;
+    const source = normalize(offer.priceDisplay);
+    return source.includes("fur andere kandidat")
+      && source.includes("kursgebuhr")
+      && source.includes("kostenlos")
+      ? "MEHRERE_TARIFE" : "KOSTENLOS";
+  };
+
   const compactPrice = offer => {
     const raw = String(offer.priceDisplay ?? "").trim();
     const normalized = normalize(raw);
@@ -319,9 +331,7 @@
     // distinguishes free partner participation from a fee for other candidates.
     // Keep the canonical category and Sidecar unchanged pending data remediation.
     if (offer.priceCategory === "KOSTENLOS"
-        && normalized.includes("fur andere kandidat")
-        && normalized.includes("kursgebuhr")
-        && normalized.includes("kostenlos")) {
+        && priceCategoryForDisplay(offer) === "MEHRERE_TARIFE") {
       return "Teilweise kostenlos · übrige Gebühr offen";
     }
     if (offer.priceCategory === "KOSTENLOS") return "Kostenlos";
@@ -1279,10 +1289,11 @@
   const priceBandCounts = list => {
     const counts = { free: 0, low: 0, mid: 0, high: 0, variable: 0 };
     list.forEach(offer => {
-      if (offer.priceCategory === "KOSTENLOS") counts.free += 1;
-      else if (offer.priceCategory === "BIS_500") counts.low += 1;
-      else if (offer.priceCategory === "501_2000") counts.mid += 1;
-      else if (offer.priceCategory === "UEBER_2000") counts.high += 1;
+      const category = priceCategoryForDisplay(offer);
+      if (category === "KOSTENLOS") counts.free += 1;
+      else if (category === "BIS_500") counts.low += 1;
+      else if (category === "501_2000") counts.mid += 1;
+      else if (category === "UEBER_2000") counts.high += 1;
       else counts.variable += 1;
     });
     return counts;
@@ -1445,7 +1456,7 @@
       && (!filter.query || haystack.includes(filter.query))
       && (!filter.focus || offer.focus === filter.focus)
       && (!filter.type || offer.offerType === filter.type)
-      && (!filter.price || offer.priceCategory === filter.price)
+      && (!filter.price || priceCategoryForDisplay(offer) === filter.price)
       && (!filter.format || splitTokens(offer.format).includes(filter.format))
       && (!filter.language || splitTokens(offer.language, /\s*[|/]\s*/).includes(filter.language))
       && (!filter.country || countryDisplay(offer.country) === filter.country)
