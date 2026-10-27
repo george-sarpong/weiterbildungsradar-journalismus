@@ -367,6 +367,39 @@ jobs:
             const ki300=await query('KI online höchstens CHF 300',0,3);
             assert(/Kein Kurs gefunden.*Budget/i.test(ki300.summary),'Unsafe KI CHF 300 summary');
             await query('Ich habe nicht mehr als 300 Franken, aber kein Englisch, Podcast',2,1);
+            // Ordinary German English exclusions must give the same subject pool
+            // as the established "kein Englisch" form, without a fake topic token.
+            const languageQuery=async input=>{
+              await page.locator('#smartInput').fill(input);
+              await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+              return {
+                chips:await page.locator('#smartUnderstood').innerText(),
+                summary:await page.locator('#smartSummary').innerText(),
+                titles:await page.locator('#smartResults article.smart-result-card h3').allInnerTexts()
+              };
+            };
+            const englishBaseline=await languageQuery('Podcast, kein Englisch');
+            assert(englishBaseline.chips.includes('Keine englischsprachigen Kurse')
+              &&englishBaseline.titles.length>0,'English-exclusion baseline not usable');
+            for(const text of [
+              'Ich suche keine englischsprachigen Podcast-Kurse',
+              'Ich suche keine englischen Podcast-Kurse',
+              'Ich suche keine Kurse auf Englisch zu Podcast',
+              'Podcast nicht auf Englisch'
+            ]){
+              const variant=await languageQuery(text);
+              assert(variant.chips.includes('Keine englischsprachigen Kurse')
+                &&variant.chips.includes('Thema: podcast')
+                &&!variant.chips.includes('englischsprachigen +')
+                &&variant.summary===englishBaseline.summary
+                &&JSON.stringify(variant.titles)===JSON.stringify(englishBaseline.titles),
+                'Common German English exclusion changed subject results: '
+                  +JSON.stringify({text,variant,baseline:englishBaseline}));
+            }
+            const positiveEnglish=await languageQuery('Podcast auf Englisch');
+            assert(!positiveEnglish.chips.includes('Keine englischsprachigen Kurse'),
+              'Positive English request was interpreted as exclusion');
+            console.log('SMART_ENGLISH_NEGATION_VARIANTS_PASS');
             // A large roster must not rerender the complete catalogue on each keystroke.
             await page.evaluate(()=>{
               window.__classicSearchRebuilds=0;
