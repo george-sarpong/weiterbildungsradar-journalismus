@@ -274,6 +274,18 @@ jobs:
                 +' summary='+JSON.stringify(summary));
               return {direct,other,summary,titles};
             };
+            // Public examples must exercise implemented intents, not suggest
+            // that an unimplemented two-day duration filter affects matches.
+            const videoExample=page.locator('[data-smart-example="Ich suche einen Präsenzkurs zu Videoproduktion."]');
+            assert(await videoExample.count()===1,'Supported video example missing');
+            await videoExample.click();
+            const videoChips=await page.locator('#smartUnderstood').innerText();
+            assert(videoChips.includes('Thema: videoproduktion')
+              &&videoChips.includes('Durchführung: Präsenz')
+              &&!videoChips.includes('erkannt, nicht angewendet')
+              &&await page.locator('#smartInput').inputValue()==='Ich suche einen Präsenzkurs zu Videoproduktion.',
+              'Public video example advertises unsupported or unparsed intent: '+videoChips);
+            console.log('SMART_EXAMPLE_SUPPORTED_INTENTS_PASS');
             const ki=await query('Ich suche einen Online-Kurs zu KI für höchstens CHF 500',0,3);
             assert(/Kein Kurs gefunden.*Budget/i.test(ki.summary),'Unsafe KI budget summary: '+ki.summary);
             assert((await page.locator('#smartResults section').innerText()).includes('Kursanbieter'),'No clear alternative warning');
