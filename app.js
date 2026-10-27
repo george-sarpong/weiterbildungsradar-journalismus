@@ -733,18 +733,65 @@
     return [...new Set(intents)];
   };
 
+
+  // CR-MS-PARSER-P0-V1: recognised constraints cannot become hard filters.
+  const extractSmartConstraints = input => {
+    const rules = [
+      ["PRICE_EXCLUSION", /\bkein(?:e|en|er|es|em)?\s+(?:kurse?|angebote?)\s*,?\s*die\s+(?:gratis|kostenlos|kostenfrei)\s+sind\b/g],
+      ["PRICE_EXCLUSION", /\b(?:kein(?:e|en|er|es|em)?|ohne)\s+(?:gratis[- ]?angebote|gratis[- ]?kurse|kostenlos(?:e|en|er|es|em)?\s+(?:kurse|angebote)|kostenfreie\s+angebote|gratis\s+(?:online|praesenz)[- ]?kurse)\b/g],
+      ["PRICE_EXCLUSION", /\b(?:nur|ausschliesslich)\s+kostenpflichtige[nr]?\s+(?:kurse|angebote)\b/g],
+      ["SCHEDULE", /\b(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+(?:freitag(?:e|en)?|montag(?:e|en)?|dienstag(?:e|en)?|mittwoch(?:e|en)?|donnerstag(?:e|en)?|samstag(?:e|en)?|sonntag(?:e|en)?)\s+in\s+(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+wochen?\b/g],
+      ["SCHEDULE", /\b(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+abende?\s+zu\s+je\s+(?:\d+|ein|zwei|drei|vier)\s+stunden?\b/g],
+      ["SCHEDULE", /\b(?:am\s+wochenende|nur\s+abends(?:\s+nach\s+feierabend)?|dienstag\s+und\s+mittwoch\s+abend)\b/g],
+      ["COMPLETION", /\b(?:in|innerhalb(?:\s+von)?)\s+(?:\d+|ein(?:em|en)?|zwei|drei|vier|funf)\s+tag(?:en|e)?\s+(?:fertig(?:\s+sein)?|abschliess(?:en|bar)|absolvieren|absolviert|beenden)\b/g],
+      ["WORKLOAD", /\b(?:maximal|hochstens|mindestens|unter|bis\s+zu)?\s*(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+stunden?\s+(?:inklusive|einschliesslich|mit)\s+(?:pflicht[- ]?)?(?:ubungen?|selbststudium|selbstlernen|vorbereitung)\b/g],
+      ["WORKLOAD", /\b(?:mit\s+)?(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+stunden?\s+(?:pflicht[- ]?)?(?:selbststudium|selbstlernen)\b/g],
+      ["WORKLOAD", /\b(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+mal\s+(?:\d+|ein|zwei|drei|vier)\s+stunden?\b/g],
+      ["HOURS", /\b(?:maximal|hochstens|mindestens|unter|bis\s+zu)?\s*(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+(?:stunden?|std\.?|h)\b/g],
+      ["DURATION_RANGE", /\bzwischen\s+(?:\d+|ein|zwei|drei|vier|funf)\s+und\s+(?:\d+|ein|zwei|drei|vier|funf)\s+tagen?\b/g],
+      ["TEACHING_DAYS", /\b(?:(?:mit\s+)?(?:max\.?|maximal|hochstens|mindestens|nicht\s+mehr\s+als)\s+|mit\s+)?(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+(?:unterrichtstage[n]?|kurstage[n]?|praesenztage[n]?)\b/g],
+      ["ADJACENT_DAYS", /\b(?:(?:mit\s+)?(?:maximal|hochstens|mindestens)\s+|mit\s+)?(?:\d+|ein|zwei|drei|vier|funf|sechs)\s+aufeinanderfolgende[nr]?\s+tage[n]?\b/g],
+      ["DAYS", /\b(?:\d{1,2}[- ]tage[- ]kurs|\d{1,2}[- ]tagiger\s+kurs|eintagiger\s+workshop)\b/g],
+      ["DAYS", /\b(?:nicht\s+langer\s+als|nie\s+mehr\s+als|mehr\s+als|langer\s+als|mindestens|maximal|max\.?|hochstens|bis\s+zu|unter)?\s*(?:\d{1,2}|ein|zwei|drei|vier|funf|sechs)\s+tage[n]?\b(?:\s+zeit)?/g]
+    ];
+    const clauses = [];
+    let remaining = input;
+    for (const [kind, regex] of rules) {
+      remaining = remaining.replace(regex, (match, offset, full) => {
+        if (kind === "DAYS" && /\buber\s*$/.test(full.slice(0, offset))
+            && /^\s*[a-z]{3,}/.test(full.slice(offset + match.length))
+            && !/\b(?:kurs|workshop|seminar|dauer)\s+uber\s*$/.test(full.slice(0, offset))) {
+          return match;
+        }
+        const comparator = /\b(?:nicht\s+langer\s+als|nie\s+mehr\s+als|max(?:imal)?\.?|hochstens|bis\s+zu|unter)\b/.test(match)
+          ? "MAX" : /\b(?:mindestens|mehr\s+als|langer\s+als)\b/.test(match)
+          ? "MIN" : kind === "DURATION_RANGE" ? "RANGE" : "UNSPECIFIED";
+        const n = match.match(/\b(?:\d{1,2}|ein|zwei|drei|vier|funf|sechs)\b/);
+        const words = {ein:1,zwei:2,drei:3,vier:4,funf:5,sechs:6};
+        clauses.push({kind, comparator, amount: n
+          ? (words[n[0]] || Number(n[0]) || null) : null,
+          expression: match.trim(), start: offset, end: offset + match.length,
+          status: "RECOGNIZED_UNAPPLIED"});
+        return " ".repeat(match.length);
+      });
+    }
+    return {remaining, clauses, excludesFree: clauses.some(c => c.kind === "PRICE_EXCLUSION")};
+  };
+
   const parseSmartQuery = raw => {
     const input = normalize(raw);
     const excludeEnglish = SMART_NO_ENGLISH_RE.test(input);
     SMART_NO_ENGLISH_RE.lastIndex = 0;
     const budget = parseSmartBudget(raw);
-    const dayMatch = input.match(/\b(?:zwei|2)\s*(?:tag|tage|tagen)\b/);
-    const numericDayMatch = input.match(/\b(\d{1,2})\s*(?:tag|tage|tagen)\b/);
-    const deliveryIntents = parseDeliveryIntent(input);
-    const excludesFree = SMART_NEGATED_FREE_INTENT_RE.test(input);
+    const semantic = extractSmartConstraints(input);
+    const durationClauses = semantic.clauses.filter(c => c.kind !== "PRICE_EXCLUSION");
+    const maxClause = durationClauses.find(c => c.kind === "DAYS"
+      && ["MAX", "UNSPECIFIED"].includes(c.comparator) && c.amount != null);
+    const deliveryIntents = parseDeliveryIntent(semantic.remaining);
+    const excludesFree = semantic.excludesFree || SMART_NEGATED_FREE_INTENT_RE.test(semantic.remaining);
     SMART_NEGATED_FREE_INTENT_RE.lastIndex = 0;
-    const freeOnly = !excludesFree && SMART_FREE_INTENT_RE.test(input);
-    let tokenSource = input
+    const freeOnly = !excludesFree && SMART_FREE_INTENT_RE.test(semantic.remaining);
+    let tokenSource = semantic.remaining
       .replace(SMART_NEGATED_FREE_INTENT_RE, " ")
       .replace(/\bnicht\s+mehr\s+als\b/g, " ")
       .replace(SMART_NO_ENGLISH_RE, " ")
@@ -754,7 +801,6 @@
       .replace(/\b[0-9][0-9'’.,]*\s*(?:fr\.?|franken|euro|euros|dollar|dollars)\b/g, " ")
       .replace(/[€$]\s*[0-9][0-9'’.,]*/g, " ")
       .replace(/[0-9][0-9'’.,]*\s*[€$]/g, " ")
-      .replace(/\b(?:zwei|\d{1,2})\s*(?:tag|tage|tagen)\b/g, " ")
       .replace(/\b(?:rein|vollstandig|vollstaendig|100\s*%)\s+online\b/g, " ")
       .replace(/\bohne\s+prae?senz\b|\bkein(?:e|en)?\s+prae?senz(?:kurs)?\b/g, " ")
       .replace(/\bnur\s+prae?senz\b|\b100\s*%\s+(?:vor\s+ort|prae?senz)\b|\b(?:ohne|kein(?:e|en)?)\s+online(?:[- ]?anteil)?\b/g, " ")
@@ -768,7 +814,8 @@
     return {
       raw: String(raw ?? "").trim(),
       budget,
-      maxDays: dayMatch ? 2 : numericDayMatch ? Number(numericDayMatch[1]) : null,
+      maxDays: maxClause?.amount ?? null,
+      durationClauses,
       deliveryIntents,
       excludeEnglish,
       freeOnly,
@@ -1314,7 +1361,12 @@
   // the criteria chips, so the apparent matches are not over-promised.
   const unappliedSmartConstraints = parsed => {
     const excluded = [];
-    if (parsed.maxDays != null) excluded.push("die gewünschte Höchstdauer");
+    if (parsed.durationClauses?.length) {
+      const maxDaysOnly = parsed.durationClauses.every(c =>
+        c.kind === "DAYS" && c.comparator === "MAX");
+      excluded.push(maxDaysOnly ? "die gewünschte Höchstdauer"
+        : "die gewünschte Kurszeit oder Kursdauer");
+    }
     if (parsed.excludesFree) excluded.push("der Ausschluss kostenloser Angebote");
     return excluded.length
       ? `Nicht angewendet: ${excluded.join(" und ")}. Die Treffer sind für diese Bedingungen nicht geprüft.`
@@ -1418,7 +1470,11 @@
     const chips = [];
     if (parsed.tokens.length) chips.push(`Thema: ${parsed.tokens.join(" + ")}`);
     if (parsed.budget) chips.push(`Budget: ${parsed.budget.currency} ${parsed.budget.amount.toLocaleString("de-CH")}`);
-    if (parsed.maxDays) chips.push(`Zeit: ${parsed.maxDays} ${parsed.maxDays === 1 ? "Tag" : "Tage"} · erkannt, nicht angewendet`);
+    parsed.durationClauses.forEach(c => {
+      const label = c.kind === "DAYS" && c.amount != null
+        ? `${c.amount} ${c.amount === 1 ? "Tag" : "Tage"}` : c.expression;
+      chips.push(`Zeit: ${label} · erkannt, nicht angewendet`);
+    });
     parsed.deliveryIntents.forEach(intent => chips.push(`Durchführung: ${DELIVERY_INTENT_LABELS[intent] || intent.replaceAll("_", " ")}`));
     if (parsed.freeOnly) chips.push("Nur kostenlose Kurse");
     if (parsed.excludesFree) chips.push("Keine Gratisangebote · erkannt, nicht angewendet");
