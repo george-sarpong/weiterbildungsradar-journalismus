@@ -321,7 +321,7 @@
     if (offer.priceCategory === "KOSTENLOS"
         && normalized.includes("fur andere kandidaten")
         && normalized.includes("kursgebuhr")
-        && /\\b(kostenlos|gratis|free)\\b/i.test(raw)) {
+        && normalized.includes("kostenlos")) {
       return "Teilweise kostenlos · übrige Gebühr offen";
     }
     if (offer.priceCategory === "KOSTENLOS") return "Kostenlos";
