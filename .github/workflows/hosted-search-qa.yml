@@ -256,7 +256,20 @@ jobs:
             const trulyFreePrice=await page.locator('#cards [data-offer-id="OFFER-SFJ-001"] .facts dd').first().innerText();
             assert(trulyFreePrice.toLocaleLowerCase('de-CH')==='kostenlos',
               'Unconditionally free card lost its price label: '+trulyFreePrice);
+            // Data discrepancy: structured KOSTENLOS but source text also
+            // explicitly sets a fee for candidates outside partner groups.
+            // UI must qualify the price, without rewriting canonical roster.
+            await focusOffer('OFFER-CORSO-002');
+            const corsoPrice=await page.locator('#cards [data-offer-id="OFFER-CORSO-002"] .facts dd').first().innerText();
+            assert(corsoPrice.toLocaleLowerCase('de-CH')==='teilweise kostenlos · übrige gebühr offen',
+              'Corso conditional fee still advertised as unconditionally free: '+corsoPrice);
+            const corsoSource=await page.evaluate(()=>
+              (window.WEITERBILDUNGSRADAR_OFFERS||[]).find(o=>o.id==='OFFER-CORSO-002'));
+            assert(corsoSource?.priceCategory==='KOSTENLOS'
+              &&corsoSource?.priceDisplay?.includes('Für andere Kandidat:innen wird die Kursgebühr'),
+              'Canonical discrepancy or wording changed: revisit explicit guard, do not infer new fee');
             console.log('CATALOG_CONDITIONAL_FREE_DISPLAY_PASS');
+            console.log('CORSO_CONDITIONAL_FEE_GUARD_PASS');
             await focusOffer('V78-03');
             await focusOffer('V77-04');
             const bevisible=await page.locator('[data-offer-id="V77-04"]').innerText();
