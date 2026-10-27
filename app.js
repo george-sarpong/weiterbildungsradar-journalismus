@@ -319,7 +319,7 @@
     // distinguishes free partner participation from a fee for other candidates.
     // Keep the canonical category and Sidecar unchanged pending data remediation.
     if (offer.priceCategory === "KOSTENLOS"
-        && normalized.includes("fur andere kandidaten")
+        && normalized.includes("fur andere kandidat")
         && normalized.includes("kursgebuhr")
         && normalized.includes("kostenlos")) {
       return "Teilweise kostenlos · übrige Gebühr offen";
