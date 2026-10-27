@@ -198,8 +198,13 @@ jobs:
             assert(/60 von /.test(progressLabel),'Visible/total counters incorrect: '+progressLabel);
             console.log('CATALOG_PROGRESSIVE_RENDER_PASS',JSON.stringify({initialCount,afterMore:afterMore.length}));
             // Clicking "more" during a pending search must show page 1 of the new results.
-            await page.locator('#searchInput').fill('Journalismus');
-            await page.locator('#moreCourses').click();
+            await page.evaluate(()=>{
+              const input=document.querySelector('#searchInput');
+              input.value='Journalismus';
+              input.dispatchEvent(new Event('input',{bubbles:true}));
+              // Same event-loop turn: the 180-ms debounce cannot have fired yet.
+              document.querySelector('#moreCourses').click();
+            });
             assert(await initialCards.count()===30,'Pending search kept old 60-card limit');
             const pendingState=await page.evaluate(()=>({
               focusedCard:document.activeElement?.closest('.card')?.dataset.offerId||null,
