@@ -1403,7 +1403,7 @@
       ? ` ${shown.length.toLocaleString("de-CH")} von ${evaluated.length.toLocaleString("de-CH")} passenden Kursen angezeigt.`
       : "";
     const alternativeText = alternatives.length
-      ? ` ${alternatives.length.toLocaleString("de-CH")} ${alternatives.length === 1 ? "weiterer Kurs könnte" : "weitere Kurse könnten"} passen; ${alternativeShown.length} angezeigt.`
+      ? ` ${alternatives.length.toLocaleString("de-CH")} weitere Kurse könnten passen; ${alternativeShown.length} angezeigt.`
       : "";
     const unappliedWarning = unappliedSmartConstraints(parsed);
     el.smartSummary.innerHTML = `<p><strong>${escapeHtml(confirmedText)}</strong>${escapeHtml(alternativeText)}</p>`
