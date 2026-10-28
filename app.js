@@ -325,9 +325,71 @@
     return "PREIS_NICHT_PUBLIZIERT";
   };
 
+  // WDA-05: previously misleading compact-price cards. Keep the scope exact:
+  // verified full-course tariffs are computed; unverified unit/variant mixes
+  // receive a qualified label, NEVER the smallest number in a free-text note.
+  const WDA05_STRUCTURED_CARD_IDS = new Set([
+    "OFFER-ZHDK-002", "OFFER-ZHDK-003", "OFFER-ZHDK-004",
+    "OFFER-ZHDK-005", "OFFER-EBU-020"
+  ]);
+  const WDA05_QUALIFIED_CARD_TEXT = {
+    "OFFER-FHGR-004": "Semestergebühr · Einschreibung separat · Details prüfen",
+    "OFFER-HKB-001": "Studiengebühr pro Semester · Details prüfen",
+    "OFFER-ZHDK-016": "Semesterpreis · Aufnahmegebühr separat · Details prüfen",
+    "OFFER-LAUDIUS-001": "Monatsraten · Kursgesamtpreis beim Anbieter prüfen",
+    "CAD-019": "Kursvarianten mit unterschiedlichen Preisen · Details prüfen",
+    "V82-DAWAN-049": "Preis nach Präsenz-/Distanzvariante · Details prüfen",
+    "V82-DAWAN-051": "Tages-, Firmen- und Fernkurstarife · Details prüfen",
+    "OFFER-HELIAS-011": "Kostenlos nur für bestimmte Teilnehmendengruppe · weitere Tarife",
+    "OFFER-HELIAS-012": "Kostenlos nur für bestimmte Teilnehmendengruppe · weitere Tarife",
+    "AT-PROD-OFFER-030": "EUR 4'000 pro Semester · Gesamtstudienpreis prüfen",
+    "AT-PROD-OFFER-033": "Nur für bestimmte Berufsgruppe kostenlos · sonst Gebühren"
+  };
+  const wda05StructuredCardPrice = offer => {
+    if (!WDA05_STRUCTURED_CARD_IDS.has(offer.id)) return null;
+    const record = window.MEDIA_SKILLS_SMART_DATA?.byId?.[offer.id];
+    if (record?.parserStatus !== "AUTO_ACCEPT" || record.priceEligible !== true)
+      return "Aktuellen Kurspreis beim Anbieter prüfen";
+    const prices = (Array.isArray(record.priceOptions) ? record.priceOptions : [])
+      .filter(p => p.amountType === "EXACT"
+        && p.eligibilityType === "NONE" && p.priceScope === "FULL_OFFER"
+        && p.billingBasis === "TOTAL" && p.taxMode !== "EXCLUDED"
+        && Array.isArray(p.deliveryVariantRefs) && p.deliveryVariantRefs.length === 0
+        && isDateActive(p) && Number.isFinite(p.amount) && typeof p.currency === "string")
+      .map(p => {
+        const calc = amountWithRequiredComponents(p);
+        if (calc.kind !== "EXACT" || !Number.isFinite(calc.amount)) return null;
+        const enrollmentFees = (Array.isArray(p.components) ? p.components : [])
+          .filter(c => !c.includedInBase && c.requirementStatus === "REQUIRED"
+            && ["REGISTRATION_FEE", "ENROLMENT_FEE"].includes(c.componentType))
+          .reduce((sum, c) => sum + c.amount, 0);
+        return { p, amount: calc.amount, enrollmentFees };
+      }).filter(Boolean)
+      .sort((a,b) => a.amount - b.amount);
+    if (!prices.length) return "Aktuellen Kurspreis beim Anbieter prüfen";
+    const best=prices[0];
+    const unit=best.p.currency;
+    const money=(amount,currency=unit) => `${currency} ${amount.toLocaleString("de-CH")}`;
+    const other=prices.some(row => row.p.currency !== unit);
+    if (other) return "Mehrere Währungen · aktuellen Kurspreis prüfen";
+    const includesEnrollment=best.enrollmentFees
+      ? ` · inkl. ${money(best.enrollmentFees)} Anmeldegebühr` : "";
+    const promotional=best.p.tariffClass === "PROMOTIONAL" && best.p.validThrough
+      ? ` · Aktion bis ${formatDate(best.p.validThrough)}` : "";
+    const conditional=(record.priceOptions || []).filter(p => isDateActive(p)
+      && p.eligibilityType === "MEMBERSHIP" && p.amountType === "EXACT"
+      && p.currency === unit && p.priceScope === "FULL_OFFER" && p.billingBasis === "TOTAL"
+      && Number.isFinite(p.amount));
+    const member=conditional.length
+      ? ` · Mitglieder ${money(Math.min(...conditional.map(x=>x.amount))) }` : "";
+    return `${money(best.amount)} Kurs- und Anmeldegebühr${includesEnrollment}${promotional}${member}`;
+  };
+
   const compactPrice = offer => {
     const raw = String(offer.priceDisplay ?? "").trim();
     const normalized = normalize(raw);
+    const guardedPrice = WDA05_QUALIFIED_CARD_TEXT[offer.id] || wda05StructuredCardPrice(offer);
+    if (guardedPrice) return guardedPrice;
 
     if (!raw || offer.priceCategory === "PREIS_NICHT_PUBLIZIERT"
         || normalized.includes("nicht_publiziert")
