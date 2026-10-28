@@ -4,18 +4,757 @@ on:
     branches: [main]
     paths:
       - .github/workflows/hosted-search-qa.yml
+      - index.html
+      - app.js
+      - data.js
+      - smart-search-data.js
+      - styles.css
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/hosted-search-qa.yml
+      - index.html
+      - app.js
+      - data.js
+      - smart-search-data.js
+      - styles.css
   workflow_dispatch:
 permissions:
   contents: read
 
 jobs:
+  local-pr-qa:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    env:
+      TZ: Europe/Zurich
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify four WDA-04 Edito source-backed delivery variants
+        run: node tests/wda04-edito-delivery-evidence-20261028.test.cjs
+      - name: Test isolated production price and variant resolvers
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import vm from 'node:vm';
+          const src=fs.readFileSync('app.js','utf8');
+          const extract=(start,end)=>{
+            const a=src.indexOf(start), b=src.indexOf(end,a+start.length);
+            if(a<0||b<a)throw new Error('Resolver extraction boundary changed: '+start);
+            return src.slice(a,b);
+          };
+          const core=extract('  const amountWithRequiredComponents =','  const freeStatusRank =');
+          const dateValidity=extract('  function isDateActive(option) {','  const amountWithRequiredComponents =');
+          const evergreen=extract('  const evergreenProjection = offer => {','  const offers = allOffers.map');
+          const alternative=extract('  const smartAlternative =','  const smartWhy =');
+          const priceDisplayCategory=extract('  const priceCategoryForDisplay = offer => {','  const compactPrice =');
+          const priceBands=extract('  const priceBandCounts = list => {','  const renderPriceBands =');
+          const sharedFreeTypes=extract('  const NON_TUITION_COST_TYPES = new Set([','  const priceCategoryForDisplay =');
+          const strictFree=extract('  const freeStatusRank =','  const budgetLabel =');
+          const deliveryJoin=extract('  const optionAppliesToDelivery =','  const PLAN_CURRENCIES =');
+          const sidecarSource=fs.readFileSync('smart-search-data.js','utf8');
+          const sidecar=JSON.parse(sidecarSource.slice(sidecarSource.indexOf('{'),sidecarSource.lastIndexOf('}')+1));
+          const priceUI=vm.runInNewContext(`(()=>{
+            const normalize=value=>String(value??'').normalize('NFD')
+              .replace(/[\\u0300-\\u036f]/g,'').toLocaleLowerCase('de-CH');
+            const ISO_DATE=/^\\d{4}-\\d{2}-\\d{2}$/;
+            const today=new Date(2026,9,27);
+            ${sharedFreeTypes}
+            ${dateValidity}
+            ${deliveryJoin}
+            ${strictFree}
+            ${priceDisplayCategory}
+            ${priceBands}
+            return {priceCategoryForDisplay,priceBandCounts};
+          })()`,{window:{MEDIA_SKILLS_SMART_DATA:sidecar}});
+          const api=vm.runInNewContext(`(()=>{
+            const ISO_DATE=/^\\d{4}-\\d{2}-\\d{2}$/;
+            const today=new Date(2026,9,27);
+            ${dateValidity}
+            ${sharedFreeTypes}
+            const window={MEDIA_SKILLS_SMART_DATA:{byId:{}}};
+            const nextSession=()=>null;
+            ${evergreen}
+            const topicMatch=()=>({match:true,score:10});
+            const getSmartRecord=offer=>offer.record;
+            const unverifiedFormatMayMatch=()=>true;
+            ${strictFree}
+            ${core}
+            ${alternative}
+            return {resolveBudget,smartAlternative,isDateActive,
+              projectEvergreen:(offer,record)=>{
+                window.MEDIA_SKILLS_SMART_DATA.byId[offer.id]=record;
+                return evergreenProjection(offer);
+              }};
+          })()`);
+          const assert=(ok,msg)=>{if(!ok)throw new Error(msg)};
+          const rosterRaw=fs.readFileSync('data.js','utf8');
+          const roster=JSON.parse(rosterRaw.slice(rosterRaw.indexOf('=')+1).trim().replace(/;\s*$/,''));
+          const corso=roster.find(o=>o.id==='OFFER-CORSO-002');
+          const sfj=roster.find(o=>o.id==='OFFER-SFJ-001');
+          assert(corso?.priceCategory==='KOSTENLOS'
+            &&sfj?.priceCategory==='KOSTENLOS','Source categories unexpectedly mutated');
+          assert(priceUI.priceCategoryForDisplay(corso)==='MEHRERE_TARIFE',
+            'Known conditional Corso fee still treated as unconditional free');
+          assert(priceUI.priceCategoryForDisplay(sfj)==='KOSTENLOS',
+            'Actually-free SFJ programme incorrectly classified as mixed tariff');
+          const bandCounts=priceUI.priceBandCounts([corso,sfj]);
+          assert(bandCounts.free===1&&bandCounts.variable===1,
+            'Smart price bands disagree with display-filter projection: '+JSON.stringify(bandCounts));
+          console.log('PRICE_CATEGORY_PROJECTION_BANDS_PASS');
+          const makeOption=(overrides={})=>({
+            amountType:'EXACT',amount:100,currency:'CHF',
+            eligibilityType:'NONE',billingBasis:'TOTAL',priceScope:'FULL_OFFER',
+            taxMode:'UNSPECIFIED',components:[],...overrides
+          });
+          const record=priceOptions=>({parserStatus:'AUTO_ACCEPT',priceEligible:true,
+            delivery:{evidenceTier:'UNKNOWN'},priceOptions});
+          const parsed=(amount,deliveryIntents=[])=>({budget:{amount,currency:'CHF'},
+            deliveryIntents,excludeEnglish:false,tokens:['test'],freeOnly:false});
+          const budget=(option,amount)=>api.resolveBudget({},record([option]),parsed(amount),
+            {matchedVariantIds:[]});
+          // Compare price bounds on inclusive Zurich calendar dates, including malformed data.
+          assert(api.isDateActive({validFrom:'2026-10-27'}),'Tariff starts too late');
+          assert(api.isDateActive({validFrom:'2026-10-27',validThrough:'2026-10-27'}),
+            'Tariff inactive on its sole valid day');
+          assert(!api.isDateActive({validFrom:'2026-10-28'}),'Future price active');
+          assert(api.isDateActive({validThrough:'2026-10-27'}),'Tariff expires too early');
+          assert(!api.isDateActive({validThrough:'2026-10-26'}),'Expired price active');
+          assert(!api.isDateActive({validThrough:'31.10.2025'}),'Non-ISO date accepted');
+          assert(!api.isDateActive({validFrom:'2026-13-01'}),'Impossible month accepted');
+          assert(!api.isDateActive({validThrough:'2026-02-30'}),'Impossible day accepted');
+          const free=makeOption({amountType:'FREE',amount:0,currency:'CHF'});
+          assert(budget(free,0).status==='DIRECT_FIT','Truly free price regressed');
+          assert(budget(makeOption({validFrom:'2026-10-27'}),100).status==='DIRECT_FIT',
+            'Budget resolver missed price on first valid day');
+          assert(budget(makeOption({validThrough:'2026-10-26'}),100).status==='PRICE_UNKNOWN',
+            'Budget resolver kept expired price');
+          console.log('PRICE_VALIDITY_BOUNDARY_PASS');
+          const changedSession={id:'TEST-EVERGREEN',format:'PRÄSENZ | ONLINE SELBSTLERNEN',
+            sessions:[{startDate:'2026-10-26',endDate:'2026-10-26'}]};
+          const evergreenRecord=validFrom=>({
+            delivery:{evidenceTier:'VERIFIED',variants:[{deliveryVariantId:'ON-DEMAND',
+              temporalMode:'ASYNCHRONOUS',attendanceChannels:['REMOTE'],
+              instructionFormats:['SELF_STUDY']}]},
+            priceOptions:[makeOption({amount:250,validFrom,validThrough:null,
+              deliveryVariantRefs:['ON-DEMAND']})]
+          });
+          assert(api.projectEvergreen(changedSession,evergreenRecord('2026-10-28'))===changedSession,
+            'Future-dated self-study price incorrectly exposed as evergreen course');
+          const activeEvergreen=api.projectEvergreen(changedSession,evergreenRecord('2026-10-27'));
+          assert(activeEvergreen!==changedSession
+            &&activeEvergreen.format==='ONLINE SELBSTLERNEN'
+            &&activeEvergreen.priceDisplay.includes('CHF 250'),
+            'Valid self-study course suppressed by tariff-date guard');
+          assert(api.projectEvergreen(changedSession,evergreenRecord('31.10.2026'))===changedSession,
+            'Malformed self-study tariff validity published');
+          console.log('EVERGREEN_PRICE_START_DATE_GUARD_PASS');
+          const charged=makeOption({amountType:'FREE',amount:0,currency:'CHF',
+            components:[{requirementStatus:'REQUIRED',amountType:'EXACT',amount:120}]});
+          assert(budget(charged,50).status==='OVER_BUDGET',
+            'FREE plus required CHF 120 incorrectly satisfies CHF 50');
+          assert(budget(charged,150).amount===120,
+            'Required fee not included in effective total');
+          const unknown=makeOption({amountType:'FREE',amount:0,currency:'CHF',
+            components:[{requirementStatus:'REQUIRED',amountType:'ON_REQUEST'}]});
+          assert(budget(unknown,50).status!=='DIRECT_FIT',
+            'FREE plus unknown mandatory cost classified as certain');
+          assert(budget(makeOption({currency:'EUR',amount:300}),500).status==='DIRECT_FIT',
+            'CHF/EUR 1:1 product planning regressed');
+          assert(budget(makeOption({currency:'GBP',amount:300}),500).status==='PRICE_UNKNOWN',
+            'Unsupported GBP/CHF 1:1 planning incorrectly enabled');
+          const publicAndMember=record([
+            makeOption({amount:500}),
+            makeOption({amount:150,eligibilityType:'PROFESSION',eligibilityValue:'JOURNALIST'})
+          ]);
+          assert(api.resolveBudget({},publicAndMember,parsed(800),{matchedVariantIds:[]}).status
+            ==='DIRECT_FIT','Public full price should win over optional journalist discount');
+          assert(api.resolveBudget({},publicAndMember,parsed(300),{matchedVariantIds:[]}).status
+            ==='TARGET_GROUP_FIT','Journalist-only price should remain conditional');
+          const onlyFree=record([
+            makeOption({amount:60}),
+            makeOption({amountType:'FREE',amount:0,currency:null,
+              eligibilityType:'MEMBERSHIP',eligibilityValue:'MEMBER'})
+          ]);
+          const onlyFreeParsed=parsed(100); onlyFreeParsed.freeOnly=true;
+          assert(api.resolveBudget({},onlyFree,onlyFreeParsed,{matchedVariantIds:[]}).status
+            !=='DIRECT_FIT','Paid public tariff cannot satisfy only-free search');
+          const altParsed=parsed(500,['ONLINE']);
+          const offerWithVariants={format:'ONLINE LIVE',record:record([
+            makeOption({amount:100,deliveryVariantRefs:['A']})])};
+          assert(api.smartAlternative(offerWithVariants,altParsed)===null,
+            'Variant-specific price incorrectly reused for unverified format');
+          const offerNeutral={format:'ONLINE LIVE',record:record([makeOption({amount:100})])};
+          assert(api.smartAlternative(offerNeutral,altParsed)!==null,
+            'Variant-neutral budget price unexpectedly excluded from alternatives');
+          console.log('PRODUCTION_RESOLVER_FIXTURE_PASS');
+          NODE
+      - name: Run integrated Chromium regression tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm init -y >/dev/null 2>&1
+          npm install --silent playwright-core
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/media-skills-local-qa.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          CHROME_PATH="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          test -n "$CHROME_PATH"
+          CHROME_PATH="$CHROME_PATH" node --input-type=module <<'NODE'
+          import {chromium} from 'playwright-core';
+          const assert=(value,message)=>{if(!value)throw new Error(message)};
+          const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_PATH,args:['--no-sandbox']});
+          try {
+            const page=await browser.newPage({viewport:{width:1280,height:900}});
+            const pageErrors=[];
+            page.on('pageerror',error=>pageErrors.push(String(error)));
+            await page.clock.install({time:new Date('2026-10-25T12:00:00+01:00')});
+            await page.goto('http://127.0.0.1:8765/',{waitUntil:'networkidle'});
+            const integrity=await page.evaluate(()=>{
+              const offers=window.WEITERBILDUNGSRADAR_OFFERS||[];
+              const smart=window.MEDIA_SKILLS_SMART_DATA?.byId||{};
+              const ids=offers.map(offer=>offer.id);
+              const idSet=new Set(ids);
+              return {total:offers.length,unique:idSet.size,smart:Object.keys(smart).length,
+                missingSmart:ids.filter(id=>!Object.hasOwn(smart,id)),
+                smartOrphans:Object.keys(smart).filter(id=>!idSet.has(id))};
+            });
+            const total=integrity.total;
+            assert(total===1352&&integrity.unique===1352&&integrity.smart===1352
+              &&integrity.missingSmart.length===0&&integrity.smartOrphans.length===0,
+              'Roster/Smart sidecar ID integrity failed: '+JSON.stringify(integrity));
+            // Full-source projection checks remain possible with progressive card rendering.
+            const focusOffer=async(id)=>{
+              const offerQuery=await page.evaluate(id=>{
+                const offer=window.WEITERBILDUNGSRADAR_OFFERS.find(o=>o.id===id);
+                return offer ? offer.provider+' '+offer.title : null;
+              },id);
+              assert(offerQuery,'Unknown source offer '+id);
+              await page.locator('#searchInput').fill(offerQuery);
+              await page.clock.runFor(220);
+              assert(await page.locator('#cards [data-offer-id="'+id+'"]').count()===1,
+                'Published offer missing after focused classic search: '+id);
+            };
+            const initialCards=page.locator('#cards [data-offer-id]');
+            const initialCount=await initialCards.count();
+            assert(initialCount===30,'Initial catalogue should render exactly 30 cards, got '+initialCount);
+            assert(await page.locator('#sortSelect').inputValue()==='APPROVED',
+              'Freshness by last verified date must be the default sort');
+            assert((await page.locator('#sortSelect').innerText()).includes('Zuletzt geprüft (neueste zuerst)')
+              &&!(await page.locator('#sortSelect').innerText()).includes('Redaktionelle Auswahl'),
+              'Sort selector still implies unsubstantiated editorial ranking');
+            const reviewDates=await page.evaluate(()=>{
+              const byId=new Map((window.WEITERBILDUNGSRADAR_OFFERS||[]).map(x=>[x.id,String(x.approved||'')]));
+              return [...document.querySelectorAll('#cards [data-offer-id]')]
+                .map(el=>byId.get(el.dataset.offerId)||'');
+            });
+            assert(reviewDates.every((date,index)=>index===0||date<=reviewDates[index-1]),
+              'Default catalogue order does not follow last verification date descending: '+JSON.stringify(reviewDates));
+            console.log('CATALOG_DEFAULT_FRESHNESS_SORT_PASS',JSON.stringify({first:reviewDates[0],last:reviewDates.at(-1)}));
+            assert(await page.locator('#moreCourses').isVisible(),'More-courses control missing on initial catalogue');
+            const firstThirty=await initialCards.evaluateAll(items=>items.map(x=>x.dataset.offerId));
+            await page.locator('#moreCourses').click();
+            const afterMore=await initialCards.evaluateAll(items=>items.map(x=>x.dataset.offerId));
+            assert(afterMore.length===60&&firstThirty.every((id,index)=>id===afterMore[index]),
+              'More-courses control changed order or added wrong number');
+            assert((await page.locator(':focus').evaluate(el=>el.closest('.card')?.dataset.offerId))===afterMore[30],
+              'Keyboard focus did not move to first newly visible offer');
+            const progressLabel=await page.locator('#resultCount').innerText();
+            assert(/60 von /.test(progressLabel),'Visible/total counters incorrect: '+progressLabel);
+            console.log('CATALOG_PROGRESSIVE_RENDER_PASS',JSON.stringify({initialCount,afterMore:afterMore.length}));
+            // Clicking "more" during a pending search must show page 1 of the new results.
+            await page.evaluate(()=>{
+              const input=document.querySelector('#searchInput');
+              input.value='Journalismus';
+              input.dispatchEvent(new Event('input',{bubbles:true}));
+              // Same event-loop turn: the 180-ms debounce cannot have fired yet.
+              document.querySelector('#moreCourses').click();
+            });
+            assert(await initialCards.count()===30,'Pending search kept old 60-card limit');
+            const pendingState=await page.evaluate(()=>({
+              focusedCard:document.activeElement?.closest('.card')?.dataset.offerId||null,
+              q:new URL(location.href).searchParams.get('q'),
+              count:document.querySelector('#resultCount')?.textContent||''
+            }));
+            assert(pendingState.focusedCard===null&&pendingState.q==='Journalismus'
+              &&/30 von /.test(pendingState.count),
+              'Debounce-pagination focus or URL regression: '+JSON.stringify(pendingState));
+            await page.clock.runFor(220);
+            assert(await initialCards.count()===30,'Cancelled timer unexpectedly re-rendered');
+            console.log('CATALOG_PENDING_SEARCH_PAGINATION_PASS');
+            // WDA-03: one consistent strict-free projection in the classic filter.
+            await page.locator('#searchInput').fill('');
+            await page.clock.runFor(220);
+            await page.locator('#priceFilter').selectOption('KOSTENLOS');
+            const strictFreeCount=await page.locator('#resultCount').innerText();
+            assert(/von 15 Treffern/.test(strictFreeCount),
+              'WDA03 strict-free classic filter should contain 15 structurally confirmed offers: '+strictFreeCount);
+            const strictIds=await page.locator('#cards [data-offer-id]').evaluateAll(items=>items.map(x=>x.dataset.offerId));
+            assert(strictIds.includes('LI-REG-001') && strictIds.includes('OFFER-SFJ-001'),
+              'Genuine free course incorrectly excluded');
+            assert(!strictIds.some(id => ['CH-CLEAN2-V9-D01',
+              'CH-NOV-OF-022','CH-NOV-OF-023','CH-NOV-OF-024','CH-NOV-OF-025','CH-NOV-OF-026',
+              'AT-PROD-OFFER-208','OFFER-CORSO-002'].includes(id)),
+              'Conditional or historical price still advertised as free: '+strictIds.join(','));
+            await page.locator('#priceFilter').selectOption('');
+            console.log('WDA03_STRICT_FREE_CLASSIC_15_PASS');
+            // WDA-05: browser-visible prices cannot be random minimums from raw text.
+            const normalizedPriceNumber=text=>String(text).replace(/[^0-9]/g,'');
+            const structuredPrices=[
+              ['OFFER-ZHDK-002','9000'],['OFFER-ZHDK-003','9000'],
+              ['OFFER-ZHDK-004','9000'],['OFFER-ZHDK-005','8100'],
+              ['OFFER-EBU-020','1125']
+            ];
+            for(const [id,number] of structuredPrices){
+              await focusOffer(id);
+              const price=await page.locator('#cards [data-offer-id="'+id+'"] .facts dd').first().innerText();
+              assert(normalizedPriceNumber(price).startsWith(number)
+                &&/kursgebühr|kurs- und anmeldegebühr/i.test(price),
+                'WDA05 structured price incorrect for '+id+': '+price);
+              if(id==='OFFER-ZHDK-003') assert(!/early bird|aktion/i.test(price),
+                'Expired ZHdK promotional price leaked: '+price);
+              if(id==='OFFER-ZHDK-005') assert(price.includes('15.11.2026'),
+                'Still-valid Early Bird deadline omitted: '+price);
+              if(id==='OFFER-EBU-020') assert(/mitglieder/i.test(price),
+                'Conditional EBU member tariff hidden: '+price);
+            }
+            const qualifiedPriceIds=[
+              'OFFER-FHGR-004','OFFER-HKB-001','OFFER-ZHDK-016','OFFER-LAUDIUS-001',
+              'CAD-019','V82-DAWAN-049','V82-DAWAN-051','OFFER-HELIAS-011',
+              'OFFER-HELIAS-012','AT-PROD-OFFER-030','AT-PROD-OFFER-033'
+            ];
+            for(const id of qualifiedPriceIds){
+              await focusOffer(id);
+              const price=await page.locator('#cards [data-offer-id="'+id+'"] .facts dd').first().innerText();
+              assert(!/^ab\\s+(CHF|EUR|USD)\\s*(?:0|15|100|139|250|300|1125|1800|4000)\\b/i.test(price)
+                &&/prüfen|Tarife|Tarif|Gebühren|kostenlos|Semester/i.test(price),
+                'WDA05 unconfirmed price remains misleading: '+id+' '+price);
+            }
+            console.log('WDA05_16_CARD_PRICE_GUARDS_CHROMIUM_PASS');
+            // Mixed tariffs with limited free access are not universally free.
+            // This covers actual published roster entries, not synthetic catalog edits.
+            for(const id of ['OFFER-EDITO-002','OFFER-HELIAS-014','CH-V18-F03','CH-NOV-OF-020']){
+              await focusOffer(id);
+              const priceText=await page.locator('#cards [data-offer-id="'+id+'"] .facts dd').first().innerText();
+              assert(priceText.toLocaleLowerCase('de-CH')==='mehrere tarife · teils kostenlos',
+                'Conditional waiver incorrectly advertised as free: '+id+' '+priceText);
+            }
+            await focusOffer('OFFER-SFJ-001');
+            const trulyFreePrice=await page.locator('#cards [data-offer-id="OFFER-SFJ-001"] .facts dd').first().innerText();
+            assert(trulyFreePrice.toLocaleLowerCase('de-CH')==='kostenlos',
+              'Unconditionally free card lost its price label: '+trulyFreePrice);
+            // Data discrepancy: structured KOSTENLOS but source text also
+            // explicitly sets a fee for candidates outside partner groups.
+            // UI must qualify the price, without rewriting canonical roster.
+            await focusOffer('OFFER-CORSO-002');
+            const corsoPrice=await page.locator('#cards [data-offer-id="OFFER-CORSO-002"] .facts dd').first().innerText();
+            assert(corsoPrice.toLocaleLowerCase('de-CH')==='teilweise kostenlos · übrige gebühr offen',
+              'Corso conditional fee still advertised as unconditionally free: '+corsoPrice);
+            const corsoSource=await page.evaluate(()=>
+              (window.WEITERBILDUNGSRADAR_OFFERS||[]).find(o=>o.id==='OFFER-CORSO-002'));
+            assert(corsoSource?.priceCategory==='KOSTENLOS'
+              &&corsoSource?.priceDisplay?.includes('Für andere Kandidat:innen wird die Kursgebühr'),
+              'Canonical discrepancy or wording changed: revisit explicit guard, do not infer new fee');
+            // Price filters must agree with the displayed, qualified price:
+            // Corso is NOT an unconditionally free offer for every applicant.
+            await page.locator('#priceFilter').selectOption('KOSTENLOS');
+            assert(await page.locator('#cards [data-offer-id="OFFER-CORSO-002"]').count()===0,
+              'Conditional-fee Corso leaked into the classic free-only filter');
+            await page.locator('#priceFilter').selectOption('MEHRERE_TARIFE');
+            assert(await page.locator('#cards [data-offer-id="OFFER-CORSO-002"]').count()===1,
+              'Qualified Corso disappeared from the multiple-tariffs filter');
+            const qualifiedPrice=await page.locator('#cards [data-offer-id="OFFER-CORSO-002"] .facts dd').first().innerText();
+            assert(qualifiedPrice.toLocaleLowerCase('de-CH')==='teilweise kostenlos · übrige gebühr offen',
+              'Category-filtered Corso card lost its qualified fee notice');
+            await page.locator('#priceFilter').selectOption('');
+            await focusOffer('OFFER-SFJ-001');
+            await page.locator('#priceFilter').selectOption('KOSTENLOS');
+            assert(await page.locator('#cards [data-offer-id="OFFER-SFJ-001"]').count()===1,
+              'Genuine free SFJ offer wrongly removed by category projection');
+            await page.locator('#priceFilter').selectOption('MEHRERE_TARIFE');
+            assert(await page.locator('#cards [data-offer-id="OFFER-SFJ-001"]').count()===0,
+              'Genuine free SFJ offer incorrectly classified as mixed-tariff');
+            await page.locator('#priceFilter').selectOption('');
+            console.log('CATALOG_PRICE_FILTER_DISPLAY_ALIGNMENT_PASS');
+            console.log('CATALOG_CONDITIONAL_FREE_DISPLAY_PASS');
+            console.log('CORSO_CONDITIONAL_FEE_GUARD_PASS');
+            await focusOffer('V78-03');
+            await focusOffer('V77-04');
+            const bevisible=await page.locator('[data-offer-id="V77-04"]').innerText();
+            assert(bevisible.includes('20.11.2026'),'BeVisible next session is incorrect');
+            await focusOffer('V58-S1-07');
+            const studio=page.locator('#cards [data-offer-id="V58-S1-07"]');
+            assert(await studio.count()===1,'Studio 1 next offered edition should remain visible');
+            const studioText=await studio.innerText();
+            assert(studioText.includes('08.–10.02.2027')
+              && !studioText.includes('02.–04.11.2026'),
+              'Sold-out November session was presented as next bookable: '+studioText);
+            const studioRecord=await page.evaluate(()=>
+              window.WEITERBILDUNGSRADAR_OFFERS.find(x=>x.id==='V58-S1-07'));
+            assert(studioRecord.sessions[0].availabilityStatus==='SOLD_OUT'
+              && studioRecord.sessions[0].statusObservedAt==='2026-10-25'
+              && studioRecord.sessions.length===4,
+              'Studio 1 sold-out history or availability provenance missing');
+            const query=async(input,expectedDirect,expectedOther)=>{
+              await page.locator('#smartInput').fill(input);
+              await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+              const direct=await page.locator('#smartResults > article.smart-result-card').count();
+              const other=await page.locator('#smartResults section article.smart-result-card').count();
+              const summary=await page.locator('#smartSummary').innerText();
+              const titles=await page.locator('#smartResults article.smart-result-card h3').allInnerTexts();
+              assert(direct===expectedDirect&&other===expectedOther,
+                'Wrong groups for '+input+' direct='+direct+' other='+other
+                +' expected='+expectedDirect+'/'+expectedOther+' titles='+JSON.stringify(titles)
+                +' summary='+JSON.stringify(summary));
+              return {direct,other,summary,titles};
+            };
+            // Public examples must exercise implemented intents, not suggest
+            // that an unimplemented two-day duration filter affects matches.
+            const videoExample=page.locator('[data-smart-example="Ich suche einen Präsenzkurs zu Videoproduktion."]');
+            assert(await videoExample.count()===1,'Supported video example missing');
+            await videoExample.click();
+            const videoChips=await page.locator('#smartUnderstood').innerText();
+            assert(videoChips.includes('Thema: videoproduktion')
+              &&videoChips.includes('Durchführung: Präsenz')
+              &&!videoChips.includes('erkannt, nicht angewendet')
+              &&await page.locator('#smartInput').inputValue()==='Ich suche einen Präsenzkurs zu Videoproduktion.',
+              'Public video example advertises unsupported or unparsed intent: '+videoChips);
+            console.log('SMART_EXAMPLE_SUPPORTED_INTENTS_PASS');
+            // No query should claim full suitability when recognised constraints
+            // are not actually applied to matches.
+            await page.locator('#smartInput').fill('Ich habe höchstens zwei Tage Zeit für Videoproduktion');
+            await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+            const durationWarning=await page.locator('#smartSummary').innerText();
+            const durationStatus=await page.locator('#smartStatus').innerText();
+            assert(durationWarning.includes('Nicht angewendet: die gewünschte Höchstdauer')
+              &&durationWarning.includes('Treffer sind für diese Bedingungen nicht geprüft.')
+              &&durationStatus.includes('Nicht angewendet: die gewünschte Höchstdauer')
+              &&(await page.locator('#smartUnderstood').innerText()).includes('Zeit: 2 Tage · erkannt, nicht angewendet'),
+              'Unapplied duration silently reported as successful course match: '+durationWarning);
+            await page.locator('#smartInput').fill('Videoproduktion');
+            await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+            assert(!(await page.locator('#smartSummary').innerText()).includes('Nicht angewendet:'),
+              'Unapplied-constraint warning leaked into a supported topic-only query');
+            console.log('SMART_UNAPPLIED_DURATION_SUMMARY_PASS');
+            // Negated "kostenlos" must not mean "nur kostenlose Kurse".
+            await page.locator('#smartInput').fill('Ich suche keine kostenlosen Kurse zu KI');
+            await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+            const negatedFreeChips=await page.locator('#smartUnderstood').innerText();
+            assert(negatedFreeChips.includes('Thema: ki')
+              &&negatedFreeChips.includes('Keine Gratisangebote · erkannt, nicht angewendet')
+              &&!negatedFreeChips.includes('Nur kostenlose Kurse'),
+              'Negated free query silently became only-free: '+negatedFreeChips);
+            const paidOnlyWarning=await page.locator('#smartSummary').innerText();
+            assert(paidOnlyWarning.includes('Nicht angewendet: der Ausschluss kostenloser Angebote')
+              &&(await page.locator('#smartStatus').innerText())
+                .includes('Nicht angewendet: der Ausschluss kostenloser Angebote'),
+              'Unapplied paid-only intent missing from visible/accessible summary');
+            // The existing explicit action must be able to override the negation.
+            await page.locator('#smartFreeButton').click();
+            const switchedFreeChips=await page.locator('#smartUnderstood').innerText();
+            const switchedFreeInput=await page.locator('#smartInput').inputValue();
+            assert(switchedFreeChips.includes('Nur kostenlose Kurse')
+              &&!switchedFreeChips.includes('Keine Gratisangebote')
+              &&switchedFreeInput.includes('Nur kostenlos')
+              &&!switchedFreeInput.includes('keine kostenlosen')
+              &&!(await page.locator('#smartSummary').innerText()).includes('Nicht angewendet:'),
+              'Explicit free-only action did not override previous negation: '
+                +JSON.stringify({switchedFreeChips,switchedFreeInput}));
+            await page.locator('#smartInput').fill('Ich suche einen kostenlosen Kurs zu KI');
+            await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+            assert((await page.locator('#smartUnderstood').innerText()).includes('Nur kostenlose Kurse'),
+              'Positive free-only query stopped working');
+            console.log('SMART_NEGATED_FREE_INTENT_PASS');
+            const ki=await query('Ich suche einen Online-Kurs zu KI für höchstens CHF 500',3,3);
+            assert(/Kurse passen rechnerisch zum Planungsbudget/i.test(ki.summary),
+              'Source-verified Edito courses missing from budget summary: '+ki.summary);
+            assert((await page.locator('#smartResults section').innerText()).includes('Kursanbieter'),'No clear alternative warning');
+            const desktopAlt=await page.evaluate(()=>{
+              const root=document.querySelector('#smartResults');
+              const group=root?.querySelector('.smart-alternatives');
+              const cards=[...document.querySelectorAll('.smart-alternative-cards > .smart-result-card')];
+              if(!group||cards.length!==3)return {missing:true,count:cards.length};
+              return {ratio:group.getBoundingClientRect().width/root.getBoundingClientRect().width,
+                rows:new Set(cards.map(x=>Math.round(x.getBoundingClientRect().top))).size,
+                scroll:document.documentElement.scrollWidth>document.documentElement.clientWidth};
+            });
+            assert(desktopAlt.ratio>.98&&desktopAlt.rows===1&&!desktopAlt.scroll,
+              'Desktop alternative grid failed: '+JSON.stringify(desktopAlt));
+            console.log('SMART_ALTERNATIVE_LAYOUT_QA_DESKTOP_PASS');
+
+            // Progressive reveal of uncertain alternatives preserves grouping and confidence.
+            const initialAltTitles=await page.locator('#smartResults .smart-alternative-cards h3').allInnerTexts();
+            assert(initialAltTitles.length===3,'Expected initial three possible alternatives');
+            const moreAlternatives=page.locator('[data-smart-more="alternatives"]');
+            assert(await moreAlternatives.count()===1,'Missing more-alternatives action');
+            await moreAlternatives.click();
+            const expandedAltTitles=await page.locator('#smartResults .smart-alternative-cards h3').allInnerTexts();
+            assert(expandedAltTitles.length>3 && expandedAltTitles.length<=6
+              && initialAltTitles.every((title,index)=>title===expandedAltTitles[index]),
+              'More alternatives changed ordering or failed to reveal new cards');
+            const confirmedEdito=await page.locator('#smartResults > article.smart-result-card h3').allInnerTexts();
+            assert(confirmedEdito.length===3
+              &&confirmedEdito.includes('Illustrieren mit KI – Tausend Worte für ein Bild')
+              &&confirmedEdito.includes('Was darf die KI wissen?')
+              &&confirmedEdito.includes('Edito Deep Dive: Euria im Redaktionsalltag'),
+              'Source-verified Edito programmes missing from confirmed online matches: '+JSON.stringify(confirmedEdito));
+            assert((await page.locator('#smartSummary').innerText()).includes('Kurse passen rechnerisch zum Planungsbudget'),
+              'Verified Edito results lost their confirmed budget summary');
+            assert((await page.locator(':focus').innerText())===expandedAltTitles[3],
+              'Focus not moved to first revealed alternative');
+            await query('Ich suche einen Online-Kurs zu KI für höchstens CHF 500',3,3);
+            assert(await page.locator('[data-smart-more="alternatives"]').count()===1,
+              'New search did not reset alternative pagination');
+            // A broad thematic search also has an independently paginated direct group.
+            await query('KI',3,0);
+            const initialDirectTitles=await page.locator('#smartResults > article.smart-result-card h3').allInnerTexts();
+            const moreDirect=page.locator('[data-smart-more="direct"]');
+            assert(await moreDirect.count()===1,'Missing more-confirmed-results action');
+            await moreDirect.click();
+            const expandedDirectTitles=await page.locator('#smartResults > article.smart-result-card h3').allInnerTexts();
+            assert(expandedDirectTitles.length>3 && expandedDirectTitles.length<=6
+              && initialDirectTitles.every((title,index)=>title===expandedDirectTitles[index]),
+              'More confirmed results changed ordering or failed to reveal cards');
+            assert((await page.locator(':focus').innerText())===expandedDirectTitles[3],
+              'Focus not moved to first revealed confirmed result');
+            await query('KI',3,0);
+            assert(await page.locator('#smartResults > article.smart-result-card').count()===3,
+              'New search did not reset direct pagination');
+            console.log('SMART_PROGRESSIVE_REVEAL_DESKTOP_PASS');
+            const data800=await query('Ich habe CHF 800 und möchte Datenjournalismus lernen',2,1);
+            assert(/Kurse passen rechnerisch zum Planungsbudget/i.test(data800.summary),
+              'Release smoke would reject the current Smart Search budget summary');
+            assert(/weitere Kurse könnten passen/i.test(data800.summary),'Conditional data-journalism tariff not disclosed');
+            const ki300=await query('KI online höchstens CHF 300',3,3);
+            assert(/Kurse passen rechnerisch zum Planungsbudget/i.test(ki300.summary),
+              'Verified CHF 25 Edito webinars omitted from confirmed online matches: '+ki300.summary);
+            await query('Ich habe nicht mehr als 300 Franken, aber kein Englisch, Podcast',2,1);
+            // Ordinary German English exclusions must give the same subject pool
+            // as the established "kein Englisch" form, without a fake topic token.
+            const languageQuery=async input=>{
+              await page.locator('#smartInput').fill(input);
+              await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+              return {
+                chips:await page.locator('#smartUnderstood').innerText(),
+                summary:await page.locator('#smartSummary').innerText(),
+                titles:await page.locator('#smartResults article.smart-result-card h3').allInnerTexts()
+              };
+            };
+            const englishBaseline=await languageQuery('Podcast, kein Englisch');
+            assert(englishBaseline.chips.includes('Keine englischsprachigen Kurse')
+              &&englishBaseline.titles.length>0,'English-exclusion baseline not usable');
+            for(const text of [
+              'Ich suche keine englischsprachigen Podcast-Kurse',
+              'Ich suche keine englischen Podcast-Kurse',
+              'Ich suche keine Kurse auf Englisch zu Podcast',
+              'Podcast nicht auf Englisch'
+            ]){
+              const variant=await languageQuery(text);
+              assert(variant.chips.includes('Keine englischsprachigen Kurse')
+                &&variant.chips.includes('Thema: podcast')
+                &&!variant.chips.includes('englischsprachigen +')
+                &&variant.summary===englishBaseline.summary
+                &&JSON.stringify(variant.titles)===JSON.stringify(englishBaseline.titles),
+                'Common German English exclusion changed subject results: '
+                  +JSON.stringify({text,variant,baseline:englishBaseline}));
+            }
+            const positiveEnglish=await languageQuery('Podcast auf Englisch');
+            assert(!positiveEnglish.chips.includes('Keine englischsprachigen Kurse'),
+              'Positive English request was interpreted as exclusion');
+            console.log('SMART_ENGLISH_NEGATION_VARIANTS_PASS');
+            // A large roster must not rerender the complete catalogue on each keystroke.
+            await page.evaluate(()=>{
+              window.__classicSearchRebuilds=0;
+              new MutationObserver(records=>{
+                if(records.some(record=>record.type==='childList'))
+                  window.__classicSearchRebuilds++;
+              }).observe(document.querySelector('#cards'),{childList:true});
+            });
+            for (const input of ['M','MA','MAZ']) await page.locator('#searchInput').fill(input);
+            assert(await page.evaluate(()=>window.__classicSearchRebuilds)===0,
+              'Search rebuilt the complete catalogue while the user was still typing');
+            await page.clock.runFor(220);
+            assert(await page.evaluate(()=>window.__classicSearchRebuilds)===1,
+              'Rapid search input must coalesce to a single card rebuild');
+            assert(new URL(await page.url()).searchParams.get('q')==='MAZ',
+              'Debounced search failed to update its shareable URL');
+            assert((await page.locator('#cards [data-offer-id]').count())>0,'Classic search failed');
+            console.log('CLASSIC_SEARCH_COALESCING_PASS');
+            assert(!decodeURIComponent(page.url()).includes('Ich habe nicht mehr als 300'),
+              'Private Smart text leaked into URL');
+            assert(!Object.values(await page.evaluate(()=>Object.fromEntries(
+              Object.keys(localStorage).map(k=>[k,localStorage.getItem(k)]))))
+              .some(value=>String(value).includes('kein Englisch')),
+              'Private Smart text leaked into localStorage');
+            await page.locator('#searchInput').fill('Podcast');
+            await page.locator('#resetFilters').click();
+            const rebuildsAfterReset=await page.evaluate(()=>window.__classicSearchRebuilds);
+            await page.clock.runFor(220);
+            assert(await page.evaluate(()=>window.__classicSearchRebuilds)===rebuildsAfterReset
+              &&await page.locator('#searchInput').inputValue()===''
+              &&!new URL(await page.url()).searchParams.has('q'),
+              'Pending text debounce overwrote a filter reset');
+            const baseVisible=await page.locator('#cards [data-offer-id]').count();
+            assert(baseVisible===30,'Reset should restore initial catalogue page');
+            const resultTotal=async()=>Number((await page.locator('#resultCount').innerText())
+              .match(/von ([0-9'’.,]+) Treffern/)[1].replace(/[^0-9]/g,''));
+            const baseTotal=await resultTotal();
+            assert(baseTotal>baseVisible,'Full catalogue should remain filterable');
+            assert(await page.locator('#cards [data-offer-id="PCC-P33"]').count()===0,
+              'Archived QA09 item became visible');
+            const filterIds=['focusFilter','typeFilter','priceFilter','formatFilter',
+              'languageFilter','countryFilter','levelFilter'];
+            let changedFilters=0;
+            for(const id of filterIds){
+              const ctl=page.locator('#'+id);
+              const options=await ctl.locator('option').evaluateAll(nodes=>
+                nodes.map(n=>n.value).filter(Boolean));
+              assert(options.length>0,'No populated options for '+id);
+              await ctl.selectOption(options[0]);
+              const afterFilter=await resultTotal();
+              assert(afterFilter<=baseTotal,'Filter expanded result pool: '+id);
+              if(afterFilter!==baseTotal)changedFilters++;
+              assert(await page.locator('#cards [data-offer-id]').count()===Math.min(30,afterFilter),
+                'Filtered results must render one page: '+id);
+              await ctl.selectOption('');
+              assert(await resultTotal()===baseTotal
+                &&await page.locator('#cards [data-offer-id]').count()===baseVisible,
+                'Filter did not reset: '+id);
+            }
+            assert(changedFilters===7,'Not all seven filters alter results: '+changedFilters);
+            const firstId=await page.locator('#cards [data-offer-id]').first()
+              .getAttribute('data-offer-id');
+            const favoriteButton=page.locator('#cards [data-favorite-id="'+firstId+'"]').first();
+            const favoriteName=await page.locator('#cards [data-offer-id="'+firstId+'"] h3').innerText();
+            const stableLabel=favoriteName+' als Favorit';
+            assert(await favoriteButton.getAttribute('aria-pressed')==='false'
+              &&await favoriteButton.getAttribute('aria-label')===stableLabel
+              &&(await favoriteButton.getAttribute('title')).includes('hinzufügen'),
+              'Favorite toggle has wrong initial accessible name or state');
+            await favoriteButton.click();
+            assert(await favoriteButton.getAttribute('aria-pressed')==='true'
+              &&await favoriteButton.getAttribute('aria-label')===stableLabel
+              &&(await favoriteButton.getAttribute('title')).includes('entfernen'),
+              'Favorite toggle changed accessible name or failed to announce selected state');
+            await page.locator('#favoritesToggle').click();
+            assert(await page.locator('#cards [data-offer-id]').count()===1,
+              'Favorites-only view did not isolate one offer');
+            assert(await page.locator('#cards [data-offer-id]').first().getAttribute('data-offer-id')===firstId,
+              'Favorites-only view selected wrong offer');
+            await page.locator('#resetFilters').click();
+            const favoriteAfterReset=page.locator('#cards [data-favorite-id="'+firstId+'"]').first();
+            assert(await favoriteAfterReset.getAttribute('aria-pressed')==='true'
+              &&await favoriteAfterReset.getAttribute('aria-label')===stableLabel,
+              'Reset lost favorite toggle state or stable label');
+            await favoriteAfterReset.click();
+            const favoriteAfterRemove=page.locator('#cards [data-favorite-id="'+firstId+'"]').first();
+            assert(await favoriteAfterRemove.getAttribute('aria-pressed')==='false'
+              &&await favoriteAfterRemove.getAttribute('aria-label')===stableLabel
+              &&(await favoriteAfterRemove.getAttribute('title')).includes('hinzufügen'),
+              'Favorite removal did not restore unpressed state and action');
+            console.log('FAVORITE_TOGGLE_A11Y_STATE_PASS');
+            const sortOptions=await page.locator('#sortSelect option').evaluateAll(nodes=>
+              nodes.map(n=>n.value).filter(v=>v&&v!=='APPROVED'));
+            assert(sortOptions.length>0,'No secondary sort mode available');
+            await page.locator('#sortSelect').selectOption(sortOptions[0]);
+            assert(await page.locator('#cards [data-offer-id]').count()===baseVisible,
+              'Sorting unexpectedly changed the result set');
+            await page.locator('#resetFilters').click();
+            assert(await page.locator('#sortSelect').inputValue()==='APPROVED'
+              &&!new URL(await page.url()).searchParams.has('sort'),
+              'Reset did not restore the default freshness sort or clean shareable URL');
+            await page.setViewportSize({width:390,height:844});
+            await query('Ich suche einen Online-Kurs zu KI für höchstens CHF 500',3,3);
+            const mobileAlt=await page.evaluate(()=>{
+              const root=document.querySelector('#smartResults');
+              const group=root?.querySelector('.smart-alternatives');
+              const cards=[...document.querySelectorAll('.smart-alternative-cards > .smart-result-card')];
+              if(!group||cards.length!==3)return {missing:true,count:cards.length};
+              return {ratio:group.getBoundingClientRect().width/root.getBoundingClientRect().width,
+                rows:new Set(cards.map(x=>Math.round(x.getBoundingClientRect().top))).size,
+                scroll:document.documentElement.scrollWidth>document.documentElement.clientWidth};
+            });
+            assert(mobileAlt.ratio>.98&&mobileAlt.rows===3&&!mobileAlt.scroll,
+              'Mobile alternative grid failed: '+JSON.stringify(mobileAlt));
+            console.log('SMART_ALTERNATIVE_LAYOUT_QA_MOBILE_PASS');
+            await page.locator('[data-smart-more="alternatives"]').click();
+            const expandedMobile=await page.evaluate(()=>{
+              const cards=[...document.querySelectorAll('.smart-alternative-cards > article.smart-result-card')];
+              return {count:cards.length,rows:new Set(cards.map(x=>Math.round(x.getBoundingClientRect().top))).size,
+                scroll:document.documentElement.scrollWidth>document.documentElement.clientWidth};
+            });
+            assert(expandedMobile.count>3&&expandedMobile.count<=6
+              &&expandedMobile.rows===expandedMobile.count&&!expandedMobile.scroll,
+              'Mobile progressive reveal overflow or grouping regression: '+JSON.stringify(expandedMobile));
+            console.log('SMART_PROGRESSIVE_REVEAL_MOBILE_PASS');
+
+            const sizes=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
+            assert(sizes.scroll<=sizes.client,'Mobile page horizontal overflow: '+JSON.stringify(sizes));
+            assert(pageErrors.length===0,'Browser errors: '+pageErrors.join(' | '));
+            console.log('LOCAL_PR_CHROMIUM_REGRESSION_PASS',JSON.stringify({total,ki,mobile:sizes}));
+            // Zukunftstest: ohne buchbare Präsenzausgabe darf nur die separat
+            // VERIFIED markierte Selbstlernvariante von CAD-002 angezeigt werden.
+            await page.clock.setFixedTime(new Date('2027-02-03T12:00:00+01:00'));
+            await page.reload({waitUntil:'networkidle'});
+            await focusOffer('CAD-002');
+            const cad=page.locator('#cards [data-offer-id="CAD-002"]');
+            assert(await cad.count()===1,'Verified self-study variant vanished after last session');
+            const cadText=await cad.innerText();
+            const cadNormalized=cadText.toLocaleLowerCase('de-CH');
+            assert(cadNormalized.includes('online selbstlernen')&&cadNormalized.includes('chf 250')
+              &&cadNormalized.includes('verfügbarkeit beim anbieter anfragen')
+              &&cadNormalized.includes('anbieter kontaktieren')
+              &&!cadNormalized.includes('softwarelizenz')
+              &&!cadNormalized.includes('nicht im kurspreis enthalten')
+              &&!cadNormalized.includes('öffentlich buchbar')
+              &&!cadNormalized.includes('lausanne')&&!cadNormalized.includes('23.11.2026')
+              &&!cadNormalized.includes('chf 500'),
+              'Self-study card retained stale in-person claims: '+cadText);
+            for(const id of ['CAD-001','CAD-003','CAD-005']){
+              assert(await page.locator('#cards [data-offer-id="'+id+'"]').count()===0,
+                'Unverified self-study variant improperly reinstated: '+id);
+            }
+            await page.locator('#formatFilter').selectOption('PRÄSENZ');
+            assert(await cad.count()===0,'Expired in-person option passed presence filter');
+            await page.locator('#formatFilter').selectOption('ONLINE SELBSTLERNEN');
+            assert(await cad.count()===1,'Verified self-study option missing from online filter');
+            await page.locator('#formatFilter').selectOption('');
+            await page.locator('#smartInput').fill('Photoshop Base online selbstlernen höchstens CHF 300');
+            await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+            const onlineResults=await page.locator('#smartResults').innerText();
+            assert(onlineResults.includes('Photoshop - Base')
+              &&onlineResults.includes('Cadschool')
+              &&onlineResults.includes('CHF 250'),
+              'Self-study price/format missing from Smart Search: '+onlineResults);
+            const directCadTitles=await page.locator('#smartResults > article.smart-result-card h3').allInnerTexts();
+            assert(directCadTitles.includes('Photoshop - Base'),
+              'Owner-approved CHF 250 self-study tuition was not a direct budget fit');
+            const alternativeCadTitles=await page.locator('#smartResults section article.smart-result-card h3').allInnerTexts();
+            assert(!alternativeCadTitles.includes('Photoshop - Base'),
+              'CAD-002 was incorrectly downgraded because of personal equipment costs');
+            assert(!onlineResults.includes('Softwarelizenz')
+              &&!onlineResults.includes('nicht im Kurspreis enthalten'),
+              'Personal software licence was incorrectly presented as a course fee');
+            await page.locator('#smartInput').fill('Photoshop Base Präsenz höchstens CHF 500');
+            await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+            const inPersonResults=await page.locator('#smartResults').innerText();
+            assert(!inPersonResults.includes('Photoshop - Base')
+              || !inPersonResults.includes('Cadschool'),
+              'Expired CAD-002 in-person course leaked into Smart Search: '+inPersonResults);
+            assert(pageErrors.length===0,'Future date browser errors: '+pageErrors.join(' | '));
+            console.log('VARIANT_AWARE_VISIBILITY_CHROMIUM_PASS');
+          } finally {await browser.close()}
+          NODE
   hosted-qa:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     env:
       BASE_URL: https://george-sarpong.github.io/weiterbildungsradar-journalismus
     steps:
       - uses: actions/checkout@v4
-      - name: Public HTTPS assets exactly match main branch
+      - name: GitHub Pages mirror assets exactly match main branch
         shell: bash
         run: |
           set -euo pipefail
@@ -57,15 +796,37 @@ jobs:
             page.on('pageerror',e=>errors.push(String(e)));
             await page.goto(base+'/?qa='+process.env.GITHUB_SHA,{waitUntil:'networkidle'});
             await page.waitForFunction(()=>/\d/.test(document.querySelector('#resultCount')?.textContent||''));
-            const visible=await page.locator('[data-offer-id]').count();
-            assert(visible>0,'No course cards rendered');
+            const visible=await page.locator('#cards [data-offer-id]').count();
+            assert(visible===30,'Expected 30 initial published catalogue cards');
+            assert(await page.locator('#sortSelect').inputValue()==='APPROVED',
+              'Hosted catalogue not sorted by freshness by default');
+            const approvedDates=await page.evaluate(()=>{
+              const byId=new Map((window.WEITERBILDUNGSRADAR_OFFERS||[]).map(o=>[o.id,String(o.approved||'')]));
+              return [...document.querySelectorAll('#cards [data-offer-id]')]
+                .map(card=>byId.get(card.dataset.offerId)||'');
+            });
+            assert(approvedDates.every((date,i)=>i===0||date<=approvedDates[i-1]),
+              'Hosted catalogue review-date ordering is incorrect');
+            console.log('HOSTED_CATALOG_FRESHNESS_SORT_PASS');
+            const firstIds=await page.locator('#cards [data-offer-id]').evaluateAll(items=>items.map(x=>x.dataset.offerId));
+            assert(await page.locator('#moreCourses').isVisible(),'Hosted catalogue pagination action missing');
+            await page.locator('#moreCourses').click();
+            const allIds=await page.locator('#cards [data-offer-id]').evaluateAll(items=>items.map(x=>x.dataset.offerId));
+            assert(allIds.length===60&&firstIds.every((id,i)=>id===allIds[i]),
+              'Hosted catalogue did not preserve order when loading 30 more cards');
+            console.log('HOSTED_CATALOG_PROGRESSIVE_PASS');
             const data=await page.evaluate(()=>{
               const offers=window.WEITERBILDUNGSRADAR_OFFERS||[];
               const side=window.MEDIA_SKILLS_SMART_DATA;
-              return {total:offers.length,unique:new Set(offers.map(o=>o.id)).size,eligible:side?.byId?.['OFFER-NOBLE-067']?.priceEligible,parser:side?.byId?.['OFFER-NOBLE-067']?.parserStatus};
+              const sideIds=Object.keys(side?.byId||{});
+              const offerIds=new Set(offers.map(offer=>offer.id));
+              return {total:offers.length,unique:offerIds.size,sideCount:sideIds.length,
+                missingSmart:offers.filter(offer=>!Object.hasOwn(side?.byId||{},offer.id)).length,
+                orphanSmart:sideIds.filter(id=>!offerIds.has(id)).length};
             });
-            assert(data.total>=116&&data.total===data.unique,'Invalid/duplicate course dataset: '+JSON.stringify(data));
-            assert(data.eligible===false&&data.parser==='NEEDS_REVIEW','Variable-price budget guard missing');
+            assert(data.total>0&&data.total===data.unique&&data.total===data.sideCount
+              &&data.missingSmart===0&&data.orphanSmart===0,
+              'Catalog / Smart Search sidecar not one-to-one: '+JSON.stringify(data));
             for(const id of ['focusFilter','typeFilter','priceFilter','formatFilter','languageFilter','countryFilter','levelFilter']){
               assert(await page.locator('#'+id).count()===1,'Missing filter '+id);
             }
@@ -77,8 +838,27 @@ jobs:
             assert(await page.locator('#searchInput').inputValue()==='','Reset did not clear search');
             await page.locator('#smartInput').fill('Ich habe CHF 800 und möchte Datenjournalismus lernen');
             await page.locator('#smartSearchForm').evaluate(el=>el.requestSubmit());
-            await page.waitForFunction(()=>/passende Angebote|Keine bestätigten Treffer/i.test(document.querySelector('#smartSummary')?.textContent||''));
+            await page.waitForFunction(()=>/Kurse passen rechnerisch zum Planungsbudget|Kein Kurs gefunden, der nach unserem Planungsvergleich ins Budget passt/i.test(document.querySelector('#smartSummary')?.textContent||''));
             assert(!decodeURIComponent(page.url()).includes('Ich habe CHF 800'),'Smart input leaked into URL');
+            // GitHub Pages mirror smoke follows the updated Smart Search UI contract.
+            await page.locator('#smartInput').fill('KI');
+            await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+            const initialDirect=await page.locator('#smartResults > article.smart-result-card').count();
+            assert(initialDirect===3,'Three direct Smart Search preview cards expected');
+            await page.locator('[data-smart-more="direct"]').click();
+            const increasedDirect=await page.locator('#smartResults > article.smart-result-card').count();
+            assert(increasedDirect>initialDirect&&increasedDirect<=initialDirect+3,
+              'Progressive Smart Search direct results did not expand');
+            await page.locator('#smartInput').fill('Ich suche einen Online-Kurs zu KI für höchstens CHF 500');
+            await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+            const initialAlternative=await page.locator('.smart-alternative-cards > article.smart-result-card').count();
+            assert(initialAlternative===3,'Three provisional alternatives expected');
+            await page.locator('[data-smart-more="alternatives"]').click();
+            const increasedAlternative=await page.locator('.smart-alternative-cards > article.smart-result-card').count();
+            assert(increasedAlternative>initialAlternative&&increasedAlternative<=initialAlternative+3
+              &&await page.locator('#smartResults > article.smart-result-card').count()===0,
+              'Provisional Smart Search alternatives changed safety classification');
+
             await page.setViewportSize({width:390,height:844});
             const dims=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
             assert(dims.scroll<=dims.client,'Mobile horizontal overflow: '+JSON.stringify(dims));

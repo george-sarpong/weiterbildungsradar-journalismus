@@ -81,7 +81,7 @@
           <span>Beispiele:</span>
           <button type="button" data-smart-example="Ich habe CHF 800 und möchte mich im Bereich Datenjournalismus weiterbilden.">CHF 800 · Datenjournalismus</button>
           <button type="button" data-smart-example="Ich suche einen Online-Kurs zu KI für höchstens CHF 500.">Online · KI · bis CHF 500</button>
-          <button type="button" data-smart-example="Ich habe zwei Tage Zeit und möchte Videoproduktion lernen.">2 Tage · Video</button>
+          <button type="button" data-smart-example="Ich suche einen Präsenzkurs zu Videoproduktion.">Video · Präsenz</button>
         </div>
 
         <div class="smart-output" id="smartOutput" hidden>
@@ -181,9 +181,8 @@
             <label class="sort-control">
               <span>Sortieren nach</span>
               <select id="sortSelect">
-                <option value="EDITORIAL">Redaktionelle Auswahl</option>
+                <option value="APPROVED">Zuletzt geprüft (neueste zuerst)</option>
                 <option value="START">Nächster Start</option>
-                <option value="APPROVED">Zuletzt geprüft</option>
                 <option value="PROVIDER">Anbieter A–Z</option>
               </select>
             </label>
@@ -197,6 +196,7 @@
           </div>
         </div>
         <div class="cards" id="cards"></div>
+        <button id="moreCourses" type="button" class="catalog-more" aria-controls="cards" hidden>Weitere Angebote anzeigen</button>
         <div class="empty-state" id="emptyState" hidden>
           <h3 id="emptyTitle">Keine passenden Angebote</h3>
           <p id="emptyText">Ändere den Suchbegriff oder setze einzelne Filter zurück.</p>
@@ -238,7 +238,7 @@
         <div class="orientation-box">
           <p class="eyebrow">Transparenz</p>
           <h2 id="orientation-title">Orientierung statt Angebotsflut</h2>
-          <p>Media Skills ist eine redaktionell ausgewählte und anhand offizieller Quellen geprüfte Marktübersicht für Journalist:innen und Creator-Journalist:innen. Die Beta-Version erhebt derzeit keinen Anspruch auf vollständige Marktabdeckung. Termine, Preise, Tarife und Buchbarkeit können sich ändern; abgelaufene Einmalangebote werden ausgeblendet.</p>
+          <p>Media Skills erfasst Weiterbildungsangebote anhand dokumentierter Aufnahmekriterien und prüft die Angaben anhand offizieller Quellen. Die Beta-Version erhebt derzeit keinen Anspruch auf vollständige Marktabdeckung. Termine, Preise, Tarife und Buchbarkeit können sich ändern; abgelaufene Einmalangebote werden ausgeblendet.</p>
         </div>
       </div>
     </section>

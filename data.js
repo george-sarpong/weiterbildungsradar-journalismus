@@ -2418,9 +2418,68 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "NICHT_PUBLIZIERT",
     "duration": "3 Tage",
-    "start": "27.10.2026",
+    "start": "27.10.–17.11.2026 (0 freie Plätze; Anmeldung am 26.10.2026 als Abgelaufen markiert); neue Ausgabe 07.–27.10.2027 (Anmeldung am 26.10.2026 möglich; aktuelle Verfügbarkeit prüfen)",
     "startDate": "2026-10-27",
     "endDate": "2026-11-17",
+    "sessions": [
+      {
+        "startDate": "2026-10-27",
+        "endDate": "2026-11-17",
+        "label": "27.10.–17.11.2026 (3 Tage; Anmeldung am 26.10.2026 als «Abgelaufen» ausgewiesen)",
+        "availabilityStatus": "SOLD_OUT",
+        "availablePlacesObserved": 0,
+        "statusObservedAt": "2026-10-26",
+        "statusEvidenceUrl": "https://my.maz.ch/public/Ereignis/PublicList?angebote=18226768-b325-4fdb-9319-dd7f22bb57cd"
+      },
+      {
+        "startDate": "2027-10-07",
+        "endDate": "2027-10-27",
+        "label": "07.–27.10.2027 · Unterricht 07., 08. und 27.10.2027, jeweils 09:15–16:45 (Verfügbarkeit beim MAZ prüfen)",
+        "availablePlacesObserved": 9,
+        "bookingStatusObserved": "ANMELDUNG",
+        "statusObservedAt": "2026-10-26",
+        "statusEvidenceUrl": "https://my.maz.ch/public/Ereignis/PublicList?angebote=18226768-b325-4fdb-9319-dd7f22bb57cd",
+        "region": "MAZ, Luzern (Raum nicht ausgewiesen)",
+        "courseEditionId": "23352",
+        "courseEditionLabel": "2027/28",
+        "registrationDeadline": "2027-09-06",
+        "teachingDays": [
+          {
+            "date": "2027-10-07",
+            "startTime": "09:15",
+            "endTime": "16:45",
+            "instructor": "Katharina Deuber"
+          },
+          {
+            "date": "2027-10-08",
+            "startTime": "09:15",
+            "endTime": "16:45",
+            "instructor": "Katharina Deuber"
+          },
+          {
+            "date": "2027-10-27",
+            "startTime": "09:15",
+            "endTime": "16:45",
+            "instructor": "Katharina Deuber"
+          }
+        ],
+        "editionPrices": [
+          {
+            "tariffClass": "REGULAR",
+            "amount": 2970,
+            "currency": "CHF",
+            "label": "Kurspreis G-Kurs 3 Tage"
+          },
+          {
+            "tariffClass": "CONDITIONAL",
+            "eligibility": "JOURNALIST",
+            "amount": 1950,
+            "currency": "CHF",
+            "label": "Kurspreis Journalist:innen G-Kurs 3 Tage"
+          }
+        ]
+      }
+    ],
     "region": "NOT_PUBLISHED",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
@@ -2878,10 +2937,26 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "NICHT_PUBLIZIERT",
     "duration": "1 Tag, 09:00–17:00",
-    "start": "22.10.2026 (Kursdetail); weitere Katalogausgabe 26.05.2027 (Plätze/Format/Ort nicht gesondert bestätigt)",
+    "start": "22.10.2026 (historisch); weitere separate Katalogausgaben 26.05.2027 und 27.10.2027 (Plätze, Format und Ort nicht separat bestätigt)",
     "startDate": "2026-10-22",
     "endDate": "2026-10-22",
-    "sessions": [{"startDate":"2026-10-22","endDate":"2026-10-22","label":"22.10.2026 (Kursdetail)"},{"startDate":"2027-05-26","endDate":"2027-05-26","label":"26.05.2027 (CFJM-Katalog; Plätze nicht bestätigt)"}],
+    "sessions": [
+      {
+        "startDate": "2026-10-22",
+        "endDate": "2026-10-22",
+        "label": "22.10.2026 (Kursdetail)"
+      },
+      {
+        "startDate": "2027-05-26",
+        "endDate": "2027-05-26",
+        "label": "26.05.2027 (CFJM-Katalog; Plätze nicht bestätigt)"
+      },
+      {
+        "startDate": "2027-10-27",
+        "endDate": "2027-10-27",
+        "label": "27.10.2027 (CFJM-Katalog; Plätze, Unterrichtsort und Format nicht bestätigt)"
+      }
+    ],
     "region": "NOT_PUBLISHED",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
@@ -2903,10 +2978,26 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "NICHT_PUBLIZIERT",
     "duration": "5 Tage, 09:00–17:00",
-    "start": "26.–30.10.2026 (Kursdetail); weitere Katalogausgabe 24.–28.05.2027 (Plätze/Format/Ort nicht gesondert bestätigt)",
+    "start": "26.–30.10.2026; 24.–28.05.2027; 27.09.–01.10.2027 (separate CFJM-Ausgaben; Plätze, Lehrort und Unterrichtsformat nicht bestätigt)",
     "startDate": "2026-10-26",
     "endDate": "2026-10-30",
-    "sessions": [{"startDate":"2026-10-26","endDate":"2026-10-30","label":"26.–30.10.2026 (Kursdetail)"},{"startDate":"2027-05-24","endDate":"2027-05-28","label":"24.–28.05.2027 (CFJM-Katalog; Plätze nicht bestätigt)"}],
+    "sessions": [
+      {
+        "startDate": "2026-10-26",
+        "endDate": "2026-10-30",
+        "label": "26.–30.10.2026 (Kursdetail)"
+      },
+      {
+        "startDate": "2027-05-24",
+        "endDate": "2027-05-28",
+        "label": "24.–28.05.2027 (CFJM-Katalog; Plätze nicht bestätigt)"
+      },
+      {
+        "startDate": "2027-09-27",
+        "endDate": "2027-10-01",
+        "label": "27.09.–01.10.2027 (CFJM-Katalog; Plätze nicht bestätigt)"
+      }
+    ],
     "region": "NOT_PUBLISHED",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
@@ -23768,7 +23859,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "IF-W03",
     "provider": "ifage – Fondation pour la formation des adultes",
     "title": "Wordpress: créer son site internet facilement",
-    "description": "Präsenzkurs zur praktischen Erstellung einer Website mit WordPress.",
+    "description": "WordPress-Praxiskurs in Genf. Laut offizieller Kursbeschreibung ist gleichzeitige Teilnahme vor Ort und per Videokonferenz vorgesehen. Die Kursausgaben nennen ifage Augustins; eine editionsspezifische Online-Buchungsoption ist bislang nicht belegt.",
     "access": "Öffentliche Anmeldung möglich.",
     "level": "NICHT_PUBLIZIERT",
     "language": "FR",
@@ -23927,10 +24018,34 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "PRÄSENZ",
     "duration": "3 Tage",
-    "start": "02.11.2026–04.11.2026; further 2027 dates bookable",
+    "start": "02.–04.11.2026 ausgebucht laut Anbieter (Stand 25.10.2026); weitere einzelne Ausgaben ab 08.02.2027 gelistet, Plätze je Ausgabe prüfen.",
     "startDate": "2026-11-02",
     "endDate": "",
-    "sessions": [{"startDate":"2026-11-02","endDate":"2026-11-04","label":"02.–04.11.2026 · Wallisellen"},{"startDate":"2027-02-08","endDate":"2027-02-10","label":"08.–10.02.2027 · Wallisellen"},{"startDate":"2027-06-21","endDate":"2027-06-23","label":"21.–23.06.2027 · Wallisellen"},{"startDate":"2027-10-04","endDate":"2027-10-06","label":"04.–06.10.2027 · Wallisellen"}],
+    "sessions": [
+      {
+        "startDate": "2026-11-02",
+        "endDate": "2026-11-04",
+        "label": "02.–04.11.2026 · Wallisellen",
+        "availabilityStatus": "SOLD_OUT",
+        "statusObservedAt": "2026-10-25",
+        "statusEvidenceUrl": "https://www.studioeins.ch/"
+      },
+      {
+        "startDate": "2027-02-08",
+        "endDate": "2027-02-10",
+        "label": "08.–10.02.2027 · Wallisellen"
+      },
+      {
+        "startDate": "2027-06-21",
+        "endDate": "2027-06-23",
+        "label": "21.–23.06.2027 · Wallisellen"
+      },
+      {
+        "startDate": "2027-10-04",
+        "endDate": "2027-10-06",
+        "label": "04.–06.10.2027 · Wallisellen"
+      }
+    ],
     "region": "Studio 1, Wallisellen",
     "release_origin": "V98_RESTORE_W1_39"
   },
@@ -24031,6 +24146,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "19.10.2026–20.10.2026 Genève + virtuel; 23.11.2026–24.11.2026 Lausanne + virtuel",
     "startDate": "2026-10-19",
     "endDate": "2026-10-20",
+    "sessions": [
+      {"startDate": "2026-10-19", "endDate": "2026-10-20", "label": "19.–20.10.2026 · Genève oder virtuell", "region": "Genève oder classe virtuelle; Durchführungsort beim Anbieter prüfen"},
+      {"startDate": "2026-11-23", "endDate": "2026-11-24", "label": "23.–24.11.2026 · Lausanne oder virtuell; Verfügbarkeit prüfen", "region": "Lausanne oder classe virtuelle; Durchführungsort beim Anbieter prüfen"}
+    ],
     "region": "Genève, Route des Jeunes 35 / Lausanne, Av. Mon-Repos 24 / classe virtuelle",
     "release_origin": "V98_RESTORE_W1_39"
   },
@@ -24143,7 +24262,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "provider": "PC-COLLEGE Training GmbH (DE legal provider; CH delivery surface)",
     "title": "Adobe FrameMaker - Grundkurs",
     "description": "Grundkurs zu Adobe FrameMaker für Desktop Publishing und lange technische Crossmedia-Dokumente. Der Kurs behandelt die Erstellung und Bearbeitung von Dokumenten für Print, PDF, XML und weitere digitale Ausgabeformate.",
-    "access": "Öffentlich buchbar in Basel, Bern, Zürich oder als Live-Online-Training.",
+    "access": "Öffentliches Kursangebot mit Präsenzoptionen Basel, Bern und Zürich oder Live-Online. Konkreten Präsenzort, Terminbuchbarkeit und freie Plätze für die gewählte Durchführung beim Anbieter prüfen.",
     "level": "EINSTIEG",
     "language": "DE",
     "country": "Schweiz",
@@ -24346,7 +24465,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "provider": "PC-COLLEGE Training GmbH (DE legal provider; CH delivery surface)",
     "title": "Adobe FrameMaker - Aufbaukurs",
     "description": "Aufbaukurs für fortgeschrittene FrameMaker-Anwender:innen. Im Zentrum stehen typografische und gestalterische Fragen, anspruchsvolle technische Dokumente, Druck- und PDF-Aufbereitung sowie die Optimierung des eigenen Workflows.",
-    "access": "Öffentlich buchbar in Basel, Bern, Zürich oder als Live-Online-Training.",
+    "access": "Schweizer FrameMaker-Kategorie am 26.10.2026 ohne gelistete Schulung; aktuell buchbare Schweizer Aufbaukurs-Ausgabe (FRA), Standortwahl und Live-Online-Platz nicht bestätigt.",
     "level": "BERUFSERFAHRUNG",
     "language": "DE",
     "country": "Schweiz",
@@ -24359,10 +24478,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "PREIS_AUF_ANFRAGE",
     "format": "PRÄSENZ|ONLINE LIVE",
     "duration": "2 Tage",
-    "start": "29.10.2026–30.10.2026 next future; further Dec session published",
-    "startDate": "2026-10-29",
+    "start": "CH-FrameMaker-Kategorie am 26.10.2026 ohne gelistete Schulung. Ausländische FRA-Termine 29.–30.10. und 21.–22.12.2026 nicht als Schweizer Buchung nachgewiesen.",
+    "startDate": "",
     "endDate": "",
-    "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
+    "region": "Allgemeine frühere CH-Optionen Basel/Bern/Zürich/Live-Online; tatsächlicher Kursort der aktuell nicht nachgewiesenen Schweizer FRA-Ausgabe offen",
     "release_origin": "V98_RESTORE_W2_PCC10",
     "publicationStatus": "HOLD"
   },
@@ -24540,7 +24659,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "provider": "PC-COLLEGE Training GmbH (DE legal provider; CH delivery surface)",
     "title": "Adobe Bridge - Kompaktkurs",
     "description": "Kompaktkurs zur zentralen Verwaltung von Bildern und Dateien mit Adobe Bridge. Behandelt werden Organisation, Suche, Vorschau, Archivierung, Präsentation und Farbverwaltung innerhalb von Adobe-Workflows.",
-    "access": "Öffentlich buchbar in Basel, Bern, Zürich oder als Live-Online-Training.",
+    "access": "Öffentliches Kursangebot mit Präsenzoptionen Basel, Bern und Zürich oder Live-Online. Konkreten Präsenzort, Terminbuchbarkeit und freie Plätze für die gewählte Durchführung beim Anbieter prüfen.",
     "level": "NICHT_PUBLIZIERT",
     "language": "DE",
     "country": "Schweiz",
@@ -24732,7 +24851,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "region": "Konkreter Durchführungsort einer nächsten PSP-Ausgabe nicht bestätigt; allgemeine Anbieterstandorte sind keine Kursort-Zusage.",
     "release_origin": "V98_RESTORE_W3_PCC13",
     "publicationStatus": "HOLD",
-    "publicationReason": "PCC-P32: kein funktionierender aktueller kursgenauer PSP-Buchungslink; 02.–03.11.2026 und Durchführungsmodalität nicht verifiziert. Anbieter-Katalogeintrag allein genügt nicht zur Buchbarkeitsbehauptung."
+    "publicationReason": "QA09 R2_063 (19.10.2026): FACHLICH OUT_OF_SCOPE – Adobe Photoshop Professionelle Porträt-Retusche (PSP) behandelt Werbe-/Beauty- und Modelretusche statt journalistisch-redaktioneller Bildproduktion. Redaktionsentscheid abgeschlossen, im 116er-Roster nur historisch behalten und nicht publizieren. KEINE weitere CH-Termin-, Preis-, Ort- oder Buchbarkeitsrecherche. Reopen ausschliesslich bei neuer expliziter redaktioneller Scope-Entscheidung. Der ältere PSP-Link-/Session-Hold ist historisch, kein aktiver Quellenarbeitsauftrag."
   },
   {
     "id": "PCC-P33",
@@ -24757,7 +24876,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "endDate": "",
     "publicationStatus": "HOLD",
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
-    "release_origin": "V98_RESTORE_W3_PCC13"
+    "release_origin": "V98_RESTORE_W3_PCC13",
+    "publicationReason": "QA09 Nutzerentscheid 20.10.2026: ARCHIV__DERZEIT_KEINE_DURCHFUEHRUNG – zurzeit kein aktuelles PC-COLLEGE-Angebot für diesen PAE-Umsteigerkurs. Frühere 2026-Termine nur historischer Kontext und NICHT als aktuell buchbar darstellen; keine routinemässige Termin-/Preis-/Ort-Nachrecherche. Reopen erst bei neuer kursidentischer offizieller Ausschreibung mit tatsächlicher Buchungsoption oder expliziter Nutzerentscheidung."
   },
   {
     "id": "PCC-P38",
@@ -25181,6 +25301,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "15.10.2026 and 20.11.2026 bookable",
     "startDate": "2026-10-15",
     "endDate": "2026-11-20",
+    "sessions": [
+      {"startDate": "2026-10-15", "endDate": "2026-10-15", "label": "15.10.2026 · Luins", "region": "Leman Studio, Chemin du Vernay 19A, 1184 Luins VD"},
+      {"startDate": "2026-11-20", "endDate": "2026-11-20", "label": "20.11.2026 · Genève; Verfügbarkeit prüfen", "region": "Downtown Studio, Rue des Vieux-Grenadiers 10, 1205 Genève GE"}
+    ],
     "region": "15.10.2026: Leman Studio, Chemin du Vernay 19A, 1184 Luins VD / 20.11.2026: Downtown Studio, Rue des Vieux-Grenadiers 10, 1205 Genève GE",
     "release_origin": "V98_RESTORE_W5_REMAINING17"
   },
@@ -25477,11 +25601,25 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "PRÄSENZ | ONLINE SELBSTLERNEN",
     "duration": "15 hours",
-    "start": "26.–27.10.2026 (Lausanne, Präsenz); weitere Präsenzdurchführung kursgenau nicht bestätigt; Selbstlernvariante ohne fixen Termin",
+    "start": "26.–27.10.2026 und 23.–24.11.2026 (Lausanne, getrennte Präsenztermine); CHF 250 Selbstlernvariante ohne fixen Termin",
     "startDate": "2026-10-26",
     "endDate": "2026-10-27",
     "region": "Lausanne (Präsenzdurchführungen) / selbstgesteuertes E-Learning",
-    "release_origin": "V98_W6_CAD26_CONTROLLED_MATERIALISATION"
+    "release_origin": "V98_W6_CAD26_CONTROLLED_MATERIALISATION",
+    "sessions": [
+      {
+        "startDate": "2026-10-26",
+        "endDate": "2026-10-27",
+        "label": "26.–27.10.2026 · Lausanne · Präsenz",
+        "region": "Lausanne"
+      },
+      {
+        "startDate": "2026-11-23",
+        "endDate": "2026-11-24",
+        "label": "23.–24.11.2026 · Lausanne · Präsenz",
+        "region": "Lausanne"
+      }
+    ]
   },
   {
     "id": "CAD-003",
@@ -25866,7 +26004,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "2026-11-03–2026-12-01 / FUTURE_BOOKABLE",
     "startDate": "2026-11-03",
     "endDate": "2026-12-01",
-    "region": "Genève or Lausanne",
+    "region": "Genève – Salle GF02, Route de Frontenex 62, 1207 Genève (Ausgabe 03.11.–01.12.2026)",
     "release_origin": "V98_W6_CAD26_CONTROLLED_MATERIALISATION"
   },
   {
@@ -26007,10 +26145,53 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "PRÄSENZ",
     "duration": "45 hours",
-    "start": "Offiziell gelistete getrennte 6-Tage-Präsenzausgaben: 27.10.–10.11., 03.–17.11., 02.–16.12.2026 sowie 15.–26.02.2027; erste Ausgabe Lausanne/Dendreo, übrige Kursorte und Platzstatus nicht editionsscharf bestätigt.",
+    "start": "Sieben getrennte 6-Tage-Präsenzausgaben, je 45h und CHF 1'950 (Dendreo): 27.10.–10.11.2026 Lausanne LR22; 03.–17.11.2026 Genf GF05; 02.–16.12.2026 Genf GF00; 15.–26.02., 12.–23.04., 07.–18.06. und 11.–22.10.2027 Lausanne LR22. Durchführungsorte pro Ausgabe belegt; freie Plätze nicht transaktional bestätigt.",
     "startDate": "2026-10-27",
     "endDate": "2026-11-10",
-    "sessions": [{"startDate":"2026-10-27","endDate":"2026-11-10","label":"27.10.–10.11.2026 · Präsenz Lausanne","region":"Salle LR22 – VD / PC, Lausanne (editionsbelegt)"},{"startDate":"2026-11-03","endDate":"2026-11-17","label":"03.–17.11.2026 · Präsenz (Katalog)","region":"Durchführungsort dieser Ausgabe nicht editionsscharf bestätigt"},{"startDate":"2026-12-02","endDate":"2026-12-16","label":"02.–16.12.2026 · Präsenz (Katalog)","region":"Durchführungsort dieser Ausgabe nicht editionsscharf bestätigt"},{"startDate":"2027-02-15","endDate":"2027-02-26","label":"15.–26.02.2027 · Präsenz (Katalog)","region":"Durchführungsort dieser Ausgabe nicht editionsscharf bestätigt"}],
+    "sessions": [
+      {
+        "startDate": "2026-10-27",
+        "endDate": "2026-11-10",
+        "label": "27.10.–10.11.2026 · Präsenz Lausanne",
+        "region": "Salle LR22 – VD / PC, Lausanne (editionsbelegt)"
+      },
+      {
+        "startDate": "2026-11-03",
+        "endDate": "2026-11-17",
+        "label": "03.–17.11.2026 · Präsenz Genf GF05",
+        "region": "Salle GF05 – GE / MAC, Route de Frontenex 62, 1207 Genève (Dendreo, editionsbelegt)"
+      },
+      {
+        "startDate": "2026-12-02",
+        "endDate": "2026-12-16",
+        "label": "02.–16.12.2026 · Präsenz Genf GF00",
+        "region": "Salle GF00 – GE / PC, Route de Frontenex 62, 1207 Genève (Dendreo, editionsbelegt)"
+      },
+      {
+        "startDate": "2027-02-15",
+        "endDate": "2027-02-26",
+        "label": "15.–26.02.2027 · Präsenz Lausanne LR22",
+        "region": "Salle LR22 – VD / PC, Avenue de la Rasude 2, 1006 Lausanne (Dendreo, editionsbelegt)"
+      },
+      {
+        "startDate": "2027-04-12",
+        "endDate": "2027-04-23",
+        "label": "12.–23.04.2027 · Präsenz Lausanne LR22",
+        "region": "Salle LR22 – VD / PC, Avenue de la Rasude 2, 1006 Lausanne (Dendreo, editionsbelegt)"
+      },
+      {
+        "startDate": "2027-06-07",
+        "endDate": "2027-06-18",
+        "label": "07.–18.06.2027 · Präsenz Lausanne LR22",
+        "region": "Salle LR22 – VD / PC, Avenue de la Rasude 2, 1006 Lausanne (Dendreo, editionsbelegt)"
+      },
+      {
+        "startDate": "2027-10-11",
+        "endDate": "2027-10-22",
+        "label": "11.–22.10.2027 · Präsenz Lausanne LR22",
+        "region": "Salle LR22 – VD / PC, Avenue de la Rasude 2, 1006 Lausanne (Dendreo, editionsbelegt)"
+      }
+    ],
     "region": "Genève or Lausanne",
     "release_origin": "V98_W6_CAD26_CONTROLLED_MATERIALISATION"
   },
@@ -26437,14 +26618,33 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "reviewAfter": "2026-10-22",
     "focus": "MEDIENPRAXIS",
     "offerType": "KURS",
-    "priceDisplay": "CHF 1'575 Präsenz / CHF 1'260 Distanz",
+    "priceDisplay": "CHF 1'575 Präsenz / CHF 1'260 Distanz (jeweils exkl. Steuer; formatgebundene Tarife)",
     "priceCategory": "MEHRERE_TARIFE",
     "format": "PRÄSENZ|ONLINE LIVE",
     "duration": "3 Tage / 21 Stunden",
-    "start": "Live-Online-Ausgaben 26.–28.10.2026 und 30.11.–02.12.2026 (getrennte Durchführungen; Plätze nicht bestätigt).",
+    "start": "Live-Online: 26.–28.10.2026, 30.11.–02.12.2026 sowie 25.–27.01.2027 (drei getrennte Ausgaben; freie Plätze nicht bestätigt).",
     "startDate": "2026-10-26",
     "endDate": "2026-10-28",
-    "sessions": [{"startDate":"2026-10-26","endDate":"2026-10-28","label":"26.–28.10.2026 · Live-Online","region":"ONLINE / Distance"},{"startDate":"2026-11-30","endDate":"2026-12-02","label":"30.11.–02.12.2026 · Live-Online","region":"ONLINE / Distance"}],
+    "sessions": [
+      {
+        "startDate": "2026-10-26",
+        "endDate": "2026-10-28",
+        "label": "26.–28.10.2026 · Live-Online",
+        "region": "ONLINE / Distance"
+      },
+      {
+        "startDate": "2026-11-30",
+        "endDate": "2026-12-02",
+        "label": "30.11.–02.12.2026 · Live-Online",
+        "region": "ONLINE / Distance"
+      },
+      {
+        "startDate": "2027-01-25",
+        "endDate": "2027-01-27",
+        "label": "25.–27.01.2027 · Live-Online (Anbieter-Distanzliste)",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "region": "ONLINE / Distance",
     "release_origin": "V98_W11_DAWAN2_CONTROLLED_MATERIALISATION"
   },
