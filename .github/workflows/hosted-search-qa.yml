@@ -281,6 +281,55 @@ jobs:
             await page.clock.runFor(220);
             assert(await initialCards.count()===30,'Cancelled timer unexpectedly re-rendered');
             console.log('CATALOG_PENDING_SEARCH_PAGINATION_PASS');
+            // WDA-03: one consistent strict-free projection in the classic filter.
+            await page.locator('#searchInput').fill('');
+            await page.clock.runFor(220);
+            await page.locator('#priceFilter').selectOption('KOSTENLOS');
+            const strictFreeCount=await page.locator('#resultCount').innerText();
+            assert(/von 15 Treffern/.test(strictFreeCount),
+              'WDA03 strict-free classic filter should contain 15 structurally confirmed offers: '+strictFreeCount);
+            const strictIds=await page.locator('#cards [data-offer-id]').evaluateAll(items=>items.map(x=>x.dataset.offerId));
+            assert(strictIds.includes('LI-REG-001') && strictIds.includes('OFFER-SFJ-001'),
+              'Genuine free course incorrectly excluded');
+            assert(!strictIds.some(id => ['CH-CLEAN2-V9-D01',
+              'CH-NOV-OF-022','CH-NOV-OF-023','CH-NOV-OF-024','CH-NOV-OF-025','CH-NOV-OF-026',
+              'AT-PROD-OFFER-208','OFFER-CORSO-002'].includes(id)),
+              'Conditional or historical price still advertised as free: '+strictIds.join(','));
+            await page.locator('#priceFilter').selectOption('');
+            console.log('WDA03_STRICT_FREE_CLASSIC_15_PASS');
+            // WDA-05: browser-visible prices cannot be random minimums from raw text.
+            const normalizedPriceNumber=text=>String(text).replace(/[^0-9]/g,'');
+            const structuredPrices=[
+              ['OFFER-ZHDK-002','9000'],['OFFER-ZHDK-003','9000'],
+              ['OFFER-ZHDK-004','9000'],['OFFER-ZHDK-005','8100'],
+              ['OFFER-EBU-020','1125']
+            ];
+            for(const [id,number] of structuredPrices){
+              await focusOffer(id);
+              const price=await page.locator('#cards [data-offer-id="'+id+'"] .facts dd').first().innerText();
+              assert(normalizedPriceNumber(price).startsWith(number)
+                &&price.includes('Kurs- und Anmeldegebühr'),
+                'WDA05 structured price incorrect for '+id+': '+price);
+              if(id==='OFFER-ZHDK-003') assert(!price.includes('Early Bird')&&!price.includes('Aktion'),
+                'Expired ZHdK promotional price leaked: '+price);
+              if(id==='OFFER-ZHDK-005') assert(price.includes('15.11.2026'),
+                'Still-valid Early Bird deadline omitted: '+price);
+              if(id==='OFFER-EBU-020') assert(price.includes('Mitglieder'),
+                'Conditional EBU member tariff hidden: '+price);
+            }
+            const qualifiedPriceIds=[
+              'OFFER-FHGR-004','OFFER-HKB-001','OFFER-ZHDK-016','OFFER-LAUDIUS-001',
+              'CAD-019','V82-DAWAN-049','V82-DAWAN-051','OFFER-HELIAS-011',
+              'OFFER-HELIAS-012','AT-PROD-OFFER-030','AT-PROD-OFFER-033'
+            ];
+            for(const id of qualifiedPriceIds){
+              await focusOffer(id);
+              const price=await page.locator('#cards [data-offer-id="'+id+'"] .facts dd').first().innerText();
+              assert(!/^ab\\s+(CHF|EUR|USD)\\s*(?:0|15|100|139|250|300|1125|1800|4000)\\b/i.test(price)
+                &&/prüfen|Tarife|Tarif|Gebühren|kostenlos|Semester/i.test(price),
+                'WDA05 unconfirmed price remains misleading: '+id+' '+price);
+            }
+            console.log('WDA05_16_CARD_PRICE_GUARDS_CHROMIUM_PASS');
             // Mixed tariffs with limited free access are not universally free.
             // This covers actual published roster entries, not synthetic catalog edits.
             for(const id of ['OFFER-EDITO-002','OFFER-HELIAS-014','CH-V18-F03','CH-NOV-OF-020']){
