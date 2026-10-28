@@ -227,9 +227,12 @@ jobs:
               'Roster/Smart sidecar ID integrity failed: '+JSON.stringify(integrity));
             // Full-source projection checks remain possible with progressive card rendering.
             const focusOffer=async(id)=>{
-              const name=await page.evaluate(id=>window.WEITERBILDUNGSRADAR_OFFERS.find(o=>o.id===id)?.title,id);
-              assert(name,'Unknown source offer '+id);
-              await page.locator('#searchInput').fill(name);
+              const offerQuery=await page.evaluate(id=>{
+                const offer=window.WEITERBILDUNGSRADAR_OFFERS.find(o=>o.id===id);
+                return offer ? offer.provider+' '+offer.title : null;
+              },id);
+              assert(offerQuery,'Unknown source offer '+id);
+              await page.locator('#searchInput').fill(offerQuery);
               await page.clock.runFor(220);
               assert(await page.locator('#cards [data-offer-id="'+id+'"]').count()===1,
                 'Published offer missing after focused classic search: '+id);
