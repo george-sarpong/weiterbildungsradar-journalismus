@@ -399,6 +399,8 @@
       const category = priceCategoryForDisplay(offer);
       if (category === "KOSTENLOS") return "Kostenlos";
       if (category === "MEHRERE_TARIFE") {
+        if (/fur andere kandidat/.test(normalized) && /kursgebuhr/.test(normalized))
+          return "Teilweise kostenlos · übrige Gebühr offen";
         if (/mitglied/i.test(raw)) return "Für Mitglieder kostenlos · Mitgliedschaft erforderlich";
         return "Teilweise kostenlos · übrige Gebühr offen";
       }
