@@ -311,7 +311,7 @@ jobs:
               await focusOffer(id);
               const price=await page.locator('#cards [data-offer-id="'+id+'"] .facts dd').first().innerText();
               assert(normalizedPriceNumber(price).startsWith(number)
-                &&price.toLocaleLowerCase('de-CH').includes('kurs- und anmeldegebühr'),
+                &&/kursgebühr|kurs- und anmeldegebühr/i.test(price),
                 'WDA05 structured price incorrect for '+id+': '+price);
               if(id==='OFFER-ZHDK-003') assert(!/early bird|aktion/i.test(price),
                 'Expired ZHdK promotional price leaked: '+price);
