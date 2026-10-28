@@ -51,17 +51,29 @@ jobs:
           const alternative=extract('  const smartAlternative =','  const smartWhy =');
           const priceDisplayCategory=extract('  const priceCategoryForDisplay = offer => {','  const compactPrice =');
           const priceBands=extract('  const priceBandCounts = list => {','  const renderPriceBands =');
+          const sharedFreeTypes=extract('  const NON_TUITION_COST_TYPES = new Set([','  const priceCategoryForDisplay =');
+          const strictFree=extract('  const freeStatusRank =','  const budgetLabel =');
+          const deliveryJoin=extract('  const optionAppliesToDelivery =','  const PLAN_CURRENCIES =');
+          const sidecarSource=fs.readFileSync('smart-search-data.js','utf8');
+          const sidecar=JSON.parse(sidecarSource.slice(sidecarSource.indexOf('{'),sidecarSource.lastIndexOf('}')+1));
           const priceUI=vm.runInNewContext(`(()=>{
             const normalize=value=>String(value??'').normalize('NFD')
               .replace(/[\\u0300-\\u036f]/g,'').toLocaleLowerCase('de-CH');
+            const ISO_DATE=/^\\d{4}-\\d{2}-\\d{2}$/;
+            const today=new Date(2026,9,27);
+            ${sharedFreeTypes}
+            ${dateValidity}
+            ${deliveryJoin}
+            ${strictFree}
             ${priceDisplayCategory}
             ${priceBands}
             return {priceCategoryForDisplay,priceBandCounts};
-          })()`);
+          })()`,{window:{MEDIA_SKILLS_SMART_DATA:sidecar}});
           const api=vm.runInNewContext(`(()=>{
             const ISO_DATE=/^\\d{4}-\\d{2}-\\d{2}$/;
             const today=new Date(2026,9,27);
             ${dateValidity}
+            ${sharedFreeTypes}
             const window={MEDIA_SKILLS_SMART_DATA:{byId:{}}};
             const nextSession=()=>null;
             ${evergreen}
