@@ -307,16 +307,22 @@
     return Number.isFinite(amount) ? amount : null;
   };
 
-  // Website-only price interpretation. Keep raw/master and the price sidecar
-  // intact, but do not show known conditional-fee offers as universally free
-  // in the card, the classic price filter or the Smart price-band counts.
+  // WDA-03: "Kostenlos" is a confirmed unconditional COURSE/participation fee.
+  // Canonical offer fields and the price Sidecar remain untouched.
+  const NON_TUITION_COST_TYPES = new Set([
+    "SOFTWARE_LICENSE", "SOFTWARE_LICENCE", "LICENSE_FEE", "LICENCE_FEE",
+    "LICENSE", "LICENCE", "EXAM_FEE", "EXAMINATION_FEE", "EXAM",
+    "MATERIAL_FEE", "COURSE_MATERIAL", "MATERIAL", "COURSE_MATERIALS",
+    "TRAVEL", "ACCOMMODATION", "HARDWARE"
+  ]);
   const priceCategoryForDisplay = offer => {
     if (offer.priceCategory !== "KOSTENLOS") return offer.priceCategory;
+    const record = window.MEDIA_SKILLS_SMART_DATA?.byId?.[offer.id];
+    if (isSafelyFree(record)) return "KOSTENLOS";
     const source = normalize(offer.priceDisplay);
-    return source.includes("fur andere kandidat")
-      && source.includes("kursgebuhr")
-      && source.includes("kostenlos")
-      ? "MEHRERE_TARIFE" : "KOSTENLOS";
+    if ((source.includes("fur andere kandidat") && source.includes("kursgebuhr"))
+        || (source.includes("mitglied") && source.includes("kostenlos"))) return "MEHRERE_TARIFE";
+    return "PREIS_NICHT_PUBLIZIERT";
   };
 
   const compactPrice = offer => {
@@ -327,14 +333,17 @@
         || normalized.includes("nicht_publiziert")
         || normalized.includes("nicht publiziert")) return "Nicht publiziert";
     if (offer.priceCategory === "NOT_APPLICABLE") return "Nicht anwendbar";
-    // A narrow, evidence-backed display guard: the source text explicitly
-    // distinguishes free partner participation from a fee for other candidates.
-    // Keep the canonical category and Sidecar unchanged pending data remediation.
-    if (offer.priceCategory === "KOSTENLOS"
-        && priceCategoryForDisplay(offer) === "MEHRERE_TARIFE") {
-      return "Teilweise kostenlos · übrige Gebühr offen";
+    if (offer.priceCategory === "KOSTENLOS") {
+      const category = priceCategoryForDisplay(offer);
+      if (category === "KOSTENLOS") return "Kostenlos";
+      if (category === "MEHRERE_TARIFE") {
+        if (/mitglied/i.test(raw)) return "Für Mitglieder kostenlos · Mitgliedschaft erforderlich";
+        return "Teilweise kostenlos · übrige Gebühr offen";
+      }
+      if (/erstes kaffeetreffen/i.test(raw)) return "Mentoringpreis nicht bestätigt · erstes Treffen übernommen";
+      if (/eventabh[aä]ngig/i.test(raw)) return "Preis der nächsten Durchführung nicht bestätigt";
+      return "Aktueller Kurspreis nicht bestätigt";
     }
-    if (offer.priceCategory === "KOSTENLOS") return "Kostenlos";
     // The word "kostenlos" in mixed tariffs often applies to members only.
     // Never label an entire offer free solely because a conditional waiver exists.
     if (/\b(kostenlos|gratis|free)\b/i.test(raw)) {
@@ -544,18 +553,6 @@
       <dd>${escapeHtml(value)}</dd>
     </div>`;
 
-  const softwareLicenceNotice = offer => {
-    const options = window.MEDIA_SKILLS_SMART_DATA?.byId?.[offer.id]?.priceOptions || [];
-    const matchingOptions = Array.isArray(offer._activeVariantIds)
-      ? options.filter(option => option.deliveryVariantRefs?.some(ref => offer._activeVariantIds.includes(ref)))
-      : options;
-    return matchingOptions.some(option => (option.components || []).some(c =>
-      c.componentType === "SOFTWARE_LICENSE" && c.requirementStatus === "REQUIRED"
-      && !c.includedInBase))
-      ? "Autonomes E-Learning: Eine eigene Softwarelizenz ist erforderlich und nicht im Kurspreis enthalten. Bei fehlender Lizenz können zusätzliche, derzeit nicht bezifferte Kosten entstehen."
-      : "";
-  };
-
   const card = offer => {
     const isFavorite = favorites.has(offer.id);
     // Toggle-button accessible name stays stable; aria-pressed conveys the state.
@@ -594,7 +591,6 @@
           ${fact("Start", publicStart(offer))}
         </dl>
         <p class="card-description">${escapeHtml(offer.description)}</p>
-        ${softwareLicenceNotice(offer) ? `<p class="access"><strong>Zusatzkosten:</strong> ${escapeHtml(softwareLicenceNotice(offer))}</p>` : ""}
         <p class="access"><strong>Zugang:</strong> ${escapeHtml(compactAccess(offer))}</p>
         <div class="badges" aria-label="Angebotsart und weitere Eigenschaften">
           <span class="badge badge-type">${escapeHtml(labels.offerType[offer.offerType] ?? offer.offerType)}</span>
@@ -1002,13 +998,17 @@
     if (option.amountType === "RANGE") return { kind: "RANGE", amount: option.minAmount, maxAmount: option.maxAmount };
     if (!["EXACT", "FREE"].includes(option.amountType)
       || (option.amountType === "EXACT" && option.amount == null)) return { kind: "UNKNOWN", amount: null };
-    // Auch ein publizierter Gratis-Grundpreis kann obligatorische Zusatzkosten haben.
+    // Course/registration costs count; exams/materials are separate,
+    // and personal software licences are treated like own hardware.
     let amount = option.amountType === "FREE" ? 0 : Number(option.amount);
     let uncertain = false;
     for (const component of Array.isArray(option.components) ? option.components : []) {
-      if (component.includedInBase || component.requirementStatus === "OPTIONAL") continue;
+      if (component.includedInBase || component.requirementStatus === "OPTIONAL"
+          || NON_TUITION_COST_TYPES.has(component.componentType)) continue;
       if (component.requirementStatus !== "REQUIRED") { uncertain = true; continue; }
-      if (component.amountType === "EXACT" && component.amount != null) amount += Number(component.amount);
+      if (component.amountType === "EXACT" && Number.isFinite(component.amount)
+          && (!component.currency || component.currency === option.currency)
+          && (!component.billingBasis || component.billingBasis === "TOTAL")) amount += component.amount;
       else { uncertain = true; }
     }
     if (option.billingBasis !== "TOTAL") {
@@ -1056,7 +1056,7 @@
     if (!parsed.budget) return { status: "NO_BUDGET", option: null, amount: null };
     if (!record || record.parserStatus !== "AUTO_ACCEPT" || record.priceEligible !== true) return { status: "PRICE_UNKNOWN", option: null, amount: null };
     const options = (Array.isArray(record.priceOptions) ? record.priceOptions : [])
-      .filter(option => !parsed.freeOnly || option.amountType === "FREE");
+      .filter(option => !parsed.freeOnly || isUnconditionallyFreeOption(option));
     const candidates = [];
     for (const option of options) {
       if (!isDateActive(option)) continue;
@@ -1103,16 +1103,11 @@
     return candidates[0];
   };
 
-  const freeStatusRank = {
-    DIRECT_FIT: 0,
-    TARGET_GROUP_FIT: 1,
-    CONDITIONAL_FIT: 2,
-    POSSIBLE_FIT: 3
-  };
-
+  const freeStatusRank = { DIRECT_FIT: 0 };
   const freeOptionHasNoRequiredCosts = option =>
     (Array.isArray(option.components) ? option.components : []).every(component => {
-      if (component.includedInBase || component.requirementStatus === "OPTIONAL") return true;
+      if (component.includedInBase || component.requirementStatus === "OPTIONAL"
+          || NON_TUITION_COST_TYPES.has(component.componentType)) return true;
       return component.requirementStatus === "REQUIRED"
         && component.amountType === "EXACT"
         && typeof component.amount === "number"
@@ -1120,17 +1115,21 @@
         && component.amount === 0;
     });
 
+  const isUnconditionallyFreeOption = option =>
+    option.amountType === "FREE"
+      && option.eligibilityType === "NONE"
+      && option.priceScope === "FULL_OFFER"
+      && option.billingBasis === "TOTAL"
+      && option.taxMode !== "EXCLUDED"
+      && isDateActive(option)
+      && freeOptionHasNoRequiredCosts(option);
+
   const resolveFreeOption = (record, deliveryResult = { matchedVariantIds: [] }, hasDeliveryIntent = false) => {
     if (!record || record.parserStatus !== "AUTO_ACCEPT" || record.priceEligible !== true) return null;
-    const candidates = (Array.isArray(record.priceOptions) ? record.priceOptions : [])
-      .filter(option => option.amountType === "FREE"
-        && isDateActive(option)
-        && freeOptionHasNoRequiredCosts(option)
-        && optionAppliesToDelivery(option, deliveryResult, hasDeliveryIntent))
-      .map(option => ({ option, status: classifyEligibility(option) }))
-      .filter(result => result.status !== "POSSIBLE_FIT")
-      .sort((a, b) => (freeStatusRank[a.status] ?? 99) - (freeStatusRank[b.status] ?? 99));
-    return candidates[0] || null;
+    const option = (Array.isArray(record.priceOptions) ? record.priceOptions : [])
+      .find(candidate => isUnconditionallyFreeOption(candidate)
+        && optionAppliesToDelivery(candidate, deliveryResult, hasDeliveryIntent));
+    return option ? { option, status: "DIRECT_FIT" } : null;
   };
 
   const isSafelyFree = (record, deliveryResult, hasDeliveryIntent) =>
@@ -1151,12 +1150,11 @@
     const option = result.option;
     const amount = result.amount;
     if (option.amountType === "FREE") {
-      const mandatoryCosts = (Array.isArray(option.components) ? option.components : [])
-        .some(component => !component.includedInBase && component.requirementStatus !== "OPTIONAL");
-      if (!mandatoryCosts && amount === 0) return option.tariffLabel
-        ? `Kostenlos · ${option.tariffLabel}` : "Kostenlos";
-      if (amount == null || amount === 0 || !option.currency)
-        return "Grundpreis kostenlos · Pflichtkosten zu prüfen";
+      if (isUnconditionallyFreeOption(option) && amount === 0) return "Kostenlos";
+      if (option.eligibilityType === "MEMBERSHIP") return "Für Mitglieder kostenlos · Berechtigung prüfen";
+      if (option.eligibilityType === "SUBSCRIPTION") return "Für Abonnent:innen kostenlos · Berechtigung prüfen";
+      if (option.eligibilityType === "PROFESSION") return "Für bestimmte Berufsgruppen kostenlos · Berechtigung prüfen";
+      return "Kostenlos unter Bedingungen · Anspruch prüfen";
     }
     if (amount != null && option.currency) {
       const label = `${option.currency} ${amount.toLocaleString("de-CH")}`;
@@ -1299,7 +1297,7 @@
       return `${prefix} bleiben ${parsed.budget.currency} ${rest.toLocaleString("de-CH")}.${eligibility}`;
     }
     if (status === "CONDITIONAL_FIT") return `Dieser Preis gilt nur unter bestimmten Bedingungen. Berechtigung beim Kursanbieter prüfen.${note}`;
-    if (status === "POSSIBLE_FIT") return `Ob der Gesamtpreis ins Budget passt, ist noch unklar. Aktuellen Preis beim Kursanbieter prüfen.${note}`;
+    if (status === "POSSIBLE_FIT") return `Ob die Kurs- und Anmeldegebühr ins Budget passt, ist noch unklar. Aktuellen Tarif beim Anbieter prüfen.${note}`;
     if (status === "OVER_BUDGET") return `Der Preis liegt beim Planungsvergleich über Ihrem Budget.${note}`;
     return `Ob dieser Kurs ins Budget passt, ist unklar. Preis beim Kursanbieter prüfen.${note}`;
   };
@@ -1330,7 +1328,6 @@
             ? `<p class="smart-budget"><strong>Ob der Preis für Sie gilt, ist noch unklar.</strong> Preis und Bedingungen beim Kursanbieter prüfen.</p>`
             : ""}
         <p class="smart-fit"><strong>${item.isAlternative ? "Thematisch passend:" : "Passt, weil:"}</strong> ${escapeHtml(smartWhy(item, parsed))}.</p>
-        ${softwareLicenceNotice(offer) ? `<p class="smart-budget"><strong>Zusatzkosten:</strong> ${escapeHtml(softwareLicenceNotice(offer))}</p>` : ""}
         ${budgetText ? `<p class="smart-budget">${escapeHtml(budgetText)}</p>` : ""}
         ${freeText ? `<p class="smart-budget">${escapeHtml(freeText)}</p>` : ""}
         ${item.budget.status === "PRICE_UNKNOWN" ? `<p class="smart-budget">${offer.priceCategory === "PREIS_NICHT_PUBLIZIERT" || offer.priceCategory === "PREIS_AUF_ANFRAGE" || !String(offer.priceDisplay || "").trim() ? "Preis beim Kursanbieter erfragen." : `Anbieterangabe: ${escapeHtml(offer.priceDisplay)}`}</p>` : ""}
