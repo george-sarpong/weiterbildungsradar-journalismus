@@ -30,6 +30,8 @@ jobs:
       TZ: Europe/Zurich
     steps:
       - uses: actions/checkout@v4
+      - name: Verify four WDA-04 Edito source-backed delivery variants
+        run: node tests/wda04-edito-delivery-evidence-20261028.test.cjs
       - name: Test isolated production price and variant resolvers
         shell: bash
         run: |
@@ -401,8 +403,9 @@ jobs:
             assert((await page.locator('#smartUnderstood').innerText()).includes('Nur kostenlose Kurse'),
               'Positive free-only query stopped working');
             console.log('SMART_NEGATED_FREE_INTENT_PASS');
-            const ki=await query('Ich suche einen Online-Kurs zu KI für höchstens CHF 500',0,3);
-            assert(/Kein Kurs gefunden.*Budget/i.test(ki.summary),'Unsafe KI budget summary: '+ki.summary);
+            const ki=await query('Ich suche einen Online-Kurs zu KI für höchstens CHF 500',3,3);
+            assert(/Kurse passen rechnerisch zum Planungsbudget/i.test(ki.summary),
+              'Source-verified Edito courses missing from budget summary: '+ki.summary);
             assert((await page.locator('#smartResults section').innerText()).includes('Kursanbieter'),'No clear alternative warning');
             const desktopAlt=await page.evaluate(()=>{
               const root=document.querySelector('#smartResults');
@@ -427,13 +430,17 @@ jobs:
             assert(expandedAltTitles.length>3 && expandedAltTitles.length<=6
               && initialAltTitles.every((title,index)=>title===expandedAltTitles[index]),
               'More alternatives changed ordering or failed to reveal new cards');
-            assert(await page.locator('#smartResults > article.smart-result-card').count()===0,
-              'Unconfirmed price options became confirmed matches');
-            assert((await page.locator('#smartSummary').innerText()).includes('Kein Kurs gefunden'),
-              'Uncertain alternatives altered safe zero-direct budget summary');
+            const confirmedEdito=await page.locator('#smartResults > article.smart-result-card h3').allInnerTexts();
+            assert(confirmedEdito.length===3
+              &&confirmedEdito.includes('Illustrieren mit KI – Tausend Worte für ein Bild')
+              &&confirmedEdito.includes('Was darf die KI wissen?')
+              &&confirmedEdito.includes('Edito Deep Dive: Euria im Redaktionsalltag'),
+              'Source-verified Edito programmes missing from confirmed online matches: '+JSON.stringify(confirmedEdito));
+            assert((await page.locator('#smartSummary').innerText()).includes('Kurse passen rechnerisch zum Planungsbudget'),
+              'Verified Edito results lost their confirmed budget summary');
             assert((await page.locator(':focus').innerText())===expandedAltTitles[3],
               'Focus not moved to first revealed alternative');
-            await query('Ich suche einen Online-Kurs zu KI für höchstens CHF 500',0,3);
+            await query('Ich suche einen Online-Kurs zu KI für höchstens CHF 500',3,3);
             assert(await page.locator('[data-smart-more="alternatives"]').count()===1,
               'New search did not reset alternative pagination');
             // A broad thematic search also has an independently paginated direct group.
@@ -594,7 +601,7 @@ jobs:
               &&!new URL(await page.url()).searchParams.has('sort'),
               'Reset did not restore the default freshness sort or clean shareable URL');
             await page.setViewportSize({width:390,height:844});
-            await query('Ich suche einen Online-Kurs zu KI für höchstens CHF 500',0,3);
+            await query('Ich suche einen Online-Kurs zu KI für höchstens CHF 500',3,3);
             const mobileAlt=await page.evaluate(()=>{
               const root=document.querySelector('#smartResults');
               const group=root?.querySelector('.smart-alternatives');
