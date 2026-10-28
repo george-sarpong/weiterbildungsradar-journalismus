@@ -463,8 +463,9 @@ jobs:
             assert(/Kurse passen rechnerisch zum Planungsbudget/i.test(data800.summary),
               'Release smoke would reject the current Smart Search budget summary');
             assert(/weitere Kurse könnten passen/i.test(data800.summary),'Conditional data-journalism tariff not disclosed');
-            const ki300=await query('KI online höchstens CHF 300',0,3);
-            assert(/Kein Kurs gefunden.*Budget/i.test(ki300.summary),'Unsafe KI CHF 300 summary');
+            const ki300=await query('KI online höchstens CHF 300',3,3);
+            assert(/Kurse passen rechnerisch zum Planungsbudget/i.test(ki300.summary),
+              'Verified CHF 25 Edito webinars omitted from confirmed online matches: '+ki300.summary);
             await query('Ich habe nicht mehr als 300 Franken, aber kein Englisch, Podcast',2,1);
             // Ordinary German English exclusions must give the same subject pool
             // as the established "kein Englisch" form, without a fake topic token.
