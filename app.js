@@ -382,7 +382,8 @@
       && Number.isFinite(p.amount));
     const member=conditional.length
       ? ` · Mitglieder ${money(Math.min(...conditional.map(x=>x.amount))) }` : "";
-    return `${money(best.amount)} Kurs- und Anmeldegebühr${includesEnrollment}${promotional}${member}`;
+    const feeKind = best.enrollmentFees ? "Kurs- und Anmeldegebühr" : "Kursgebühr";
+    return `${money(best.amount)} ${feeKind}${includesEnrollment}${promotional}${member}`;
   };
 
   const compactPrice = offer => {
