@@ -80,7 +80,6 @@ jobs:
             const topicMatch=()=>({match:true,score:10});
             const getSmartRecord=offer=>offer.record;
             const unverifiedFormatMayMatch=()=>true;
-            ${deliveryJoin}
             ${strictFree}
             ${core}
             ${alternative}
