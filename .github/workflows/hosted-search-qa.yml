@@ -308,13 +308,13 @@ jobs:
               await focusOffer(id);
               const price=await page.locator('#cards [data-offer-id="'+id+'"] .facts dd').first().innerText();
               assert(normalizedPriceNumber(price).startsWith(number)
-                &&price.includes('Kurs- und Anmeldegebühr'),
+                &&price.toLocaleLowerCase('de-CH').includes('kurs- und anmeldegebühr'),
                 'WDA05 structured price incorrect for '+id+': '+price);
-              if(id==='OFFER-ZHDK-003') assert(!price.includes('Early Bird')&&!price.includes('Aktion'),
+              if(id==='OFFER-ZHDK-003') assert(!/early bird|aktion/i.test(price),
                 'Expired ZHdK promotional price leaked: '+price);
               if(id==='OFFER-ZHDK-005') assert(price.includes('15.11.2026'),
                 'Still-valid Early Bird deadline omitted: '+price);
-              if(id==='OFFER-EBU-020') assert(price.includes('Mitglieder'),
+              if(id==='OFFER-EBU-020') assert(/mitglieder/i.test(price),
                 'Conditional EBU member tariff hidden: '+price);
             }
             const qualifiedPriceIds=[
