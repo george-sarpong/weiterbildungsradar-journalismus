@@ -354,7 +354,7 @@
       .filter(p => p.amountType === "EXACT"
         && p.eligibilityType === "NONE" && p.priceScope === "FULL_OFFER"
         && p.billingBasis === "TOTAL" && p.taxMode !== "EXCLUDED"
-        && Array.isArray(p.deliveryVariantRefs) && p.deliveryVariantRefs.length === 0
+        && (!Array.isArray(p.deliveryVariantRefs) || p.deliveryVariantRefs.length === 0)
         && isDateActive(p) && Number.isFinite(p.amount) && typeof p.currency === "string")
       .map(p => {
         const calc = amountWithRequiredComponents(p);
