@@ -32,6 +32,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Verify four WDA-04 Edito source-backed delivery variants
         run: node tests/wda04-edito-delivery-evidence-20261028.test.cjs
+      - name: Verify B2 CFJM sessions and Cadschool course-fee variants
+        run: node tests/b2-cfjm-cadschool-20261104.test.cjs
       - name: Test isolated production price and variant resolvers
         shell: bash
         run: |
