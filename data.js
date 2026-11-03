@@ -2723,7 +2723,19 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-09-28",
     "endDate": "2026-10-02",
     "region": "NOT_PUBLISHED",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "sessions": [
+      {
+        "startDate": "2026-09-28",
+        "endDate": "2026-10-02",
+        "label": "28.09.–02.10.2026 · historische Durchführung"
+      },
+      {
+        "startDate": "2027-03-01",
+        "endDate": "2027-03-05",
+        "label": "01.–05.03.2027 · Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "OFFER-CFJM-006",
@@ -2892,7 +2904,24 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-19",
     "endDate": "2026-10-23",
     "region": "NOT_PUBLISHED",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "sessions": [
+      {
+        "startDate": "2026-10-19",
+        "endDate": "2026-10-23",
+        "label": "19.–23.10.2026 · historische Durchführung"
+      },
+      {
+        "startDate": "2027-04-26",
+        "endDate": "2027-04-30",
+        "label": "26.–30.04.2027 · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-11-01",
+        "endDate": "2027-11-05",
+        "label": "01.–05.11.2027 · Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "OFFER-CFJM-013",
