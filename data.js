@@ -24773,7 +24773,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "level": "NICHT_PUBLIZIERT",
     "language": "DE",
     "country": "Schweiz",
-    "url": "https://www.pc-college.ch/seminare-schulungen-kurse/indesign-und-xml/adobe-indesign-und-xml-xml-workflow-mit-adobe-indesign-ixm.php",
+    "url": "https://www.pc-college.ch/seminar/programmieren-fuer-anfaenger/adobe-indesign-und-xml-seminar-schulung-ixm.php",
     "approved": "2026-09-27",
     "reviewAfter": "2026-10-15",
     "focus": "MEDIENPRAXIS",
@@ -24782,11 +24782,78 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "PRÄSENZ|ONLINE LIVE",
     "duration": "2 Tage",
-    "start": "05.11.2026–06.11.2026 next future",
+    "start": "05.–06.11.2026; weitere direkt veröffentlichte 2027-Termine gemäss sessions[], Plätze und Modus je Durchführung prüfen",
     "startDate": "2026-11-05",
     "endDate": "2026-11-06",
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
-    "release_origin": "V98_RESTORE_W3_PCC13"
+    "release_origin": "V98_RESTORE_W3_PCC13",
+    "sessions": [
+      {
+        "startDate": "2026-11-05",
+        "endDate": "2026-11-06",
+        "label": "05.11.–06.11.2026 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-01-18",
+        "endDate": "2027-01-19",
+        "label": "18.01.–19.01.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-02-15",
+        "endDate": "2027-02-16",
+        "label": "15.02.–16.02.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-03-18",
+        "endDate": "2027-03-19",
+        "label": "18.03.–19.03.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-04-15",
+        "endDate": "2027-04-16",
+        "label": "15.04.–16.04.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-10",
+        "endDate": "2027-05-11",
+        "label": "10.05.–11.05.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-06-07",
+        "endDate": "2027-06-08",
+        "label": "07.06.–08.06.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-08",
+        "endDate": "2027-07-09",
+        "label": "08.07.–09.07.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-08-05",
+        "endDate": "2027-08-06",
+        "label": "05.08.–06.08.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-08-30",
+        "endDate": "2027-08-31",
+        "label": "30.08.–31.08.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-09-27",
+        "endDate": "2027-09-28",
+        "label": "27.09.–28.09.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-10-28",
+        "endDate": "2027-10-29",
+        "label": "28.10.–29.10.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-11-25",
+        "endDate": "2027-11-26",
+        "label": "25.11.–26.11.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "PCC-P29",
