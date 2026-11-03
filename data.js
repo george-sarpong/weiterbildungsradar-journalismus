@@ -23485,7 +23485,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "level": "EINSTIEG",
     "language": "FR",
     "country": "Schweiz",
-    "url": "https://www.ifage.ch/formation/tic/graphisme-infographie/",
+    "url": "https://www.ifage.ch/formation/tic/formations-cao-dao-pao/indesign-niveau-1/",
     "approved": "2026-09-27",
     "reviewAfter": "2026-10-19",
     "focus": "MEDIENPRAXIS",
@@ -23494,11 +23494,24 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "PRÄSENZ",
     "duration": "15 h / 5 jours",
-    "start": "09.11.2026–13.11.2026 / inscriptions ouvertes; additional 2027 session published",
+    "start": "09.–13.11.2026 ausgebucht (S-03213); weitere Durchführung 20.04.–04.05.2027 (S-03280), Buchbarkeit separat prüfen",
     "startDate": "2026-11-09",
     "endDate": "2026-11-13",
     "region": "ifage Montbrillant, Genève",
-    "release_origin": "V98_RESTORE_W1_39"
+    "release_origin": "V98_RESTORE_W1_39",
+    "sessions": [
+      {
+        "startDate": "2026-11-09",
+        "endDate": "2026-11-13",
+        "label": "09.–13.11.2026 · ifage Montbrillant · ausgebucht",
+        "availabilityStatus": "SOLD_OUT"
+      },
+      {
+        "startDate": "2027-04-20",
+        "endDate": "2027-05-04",
+        "label": "20.04.–04.05.2027 · ifage Montbrillant · Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "IF-G09",
@@ -23581,7 +23594,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "level": "NICHT_PUBLIZIERT",
     "language": "FR",
     "country": "Schweiz",
-    "url": "https://www.ifage.ch/formation/tic/graphisme-infographie/",
+    "url": "https://www.ifage.ch/formation/tic/graphisme-infographie/mise-en-page-et-maquettage/",
     "approved": "2026-09-27",
     "reviewAfter": "2026-10-26",
     "focus": "MEDIENPRAXIS",
@@ -23590,11 +23603,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "PRÄSENZ",
     "duration": "15 h / 5 jours",
-    "start": "16.11.2026–25.11.2026 / inscriptions ouvertes; additional 2027 session published",
+    "start": "16.–25.11.2026 (S-03214); weitere Durchführung 11.–25.05.2027 (S-03281), Buchbarkeit separat prüfen",
     "startDate": "2026-11-16",
     "endDate": "2026-11-25",
     "region": "ifage Montbrillant, Genève",
-    "release_origin": "V98_RESTORE_W1_39"
+    "release_origin": "V98_RESTORE_W1_39",
+    "sessions": [
+      {
+        "startDate": "2026-11-16",
+        "endDate": "2026-11-25",
+        "label": "16.–25.11.2026 · ifage Montbrillant · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-11",
+        "endDate": "2027-05-25",
+        "label": "11.–25.05.2027 · ifage Montbrillant · Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "IF-P03",
