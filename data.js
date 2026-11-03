@@ -3120,11 +3120,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "PREIS_NICHT_PUBLIZIERT",
     "format": "NICHT_PUBLIZIERT",
     "duration": "3 Wochen Intensivmodul; optionales Vertiefungsmodul innerhalb der folgenden 3 Monate",
-    "start": "09.11.2026–27.11.2026",
+    "start": "09.–27.11.2026; weitere bestätigte Katalogedition 01.–19.03.2027 (Kursort und freie Plätze nicht separat bestätigt)",
     "startDate": "2026-11-09",
     "endDate": "2026-11-27",
     "region": "NOT_PUBLISHED",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "sessions": [
+      {
+        "startDate": "2026-11-09",
+        "endDate": "2026-11-27",
+        "label": "09.–27.11.2026 · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-03-01",
+        "endDate": "2027-03-19",
+        "label": "01.–19.03.2027 · CFJM-Katalog; Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "OFFER-CFJM-020",
