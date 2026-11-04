@@ -40,6 +40,8 @@ jobs:
         run: node tests/b2-pcc-ade-20261104.test.cjs
       - name: Verify B2 source-backed cross-provider edition cohort
         run: node tests/b2-source-cohort-20261104.test.cjs
+      - name: Verify B2 three PC-COLLEGE future edition series
+        run: node tests/b2-pc-future-sessions-20261104.test.cjs
       - name: Test isolated production price and variant resolvers
         shell: bash
         run: |

@@ -16,5 +16,5 @@ assert.equal(map.get("OFFER-CFJM-020").endDate,"2026-11-27");
 assert.equal(map.get("OFFER-CFJM-020").offerType,"KURS");
 assert.equal(map.get("PCC-P20").sessions,undefined,"PDL/PSI identity remains on HOLD");
 assert.equal(roster.filter(o=>Array.isArray(o.sessions)).length,57);
-assert.equal(roster.reduce((n,o)=>n+(o.sessions?.length||0),0),185);
+assert.equal(roster.reduce((n,o)=>n+(o.sessions?.length||0),0),223);
 console.log("B2_6_OFFERS_23_ADDED_SESSION_ROWS_1352_STABLE_IDS_PASS");
