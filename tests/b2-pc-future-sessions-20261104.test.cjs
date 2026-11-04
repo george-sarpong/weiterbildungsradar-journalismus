@@ -20,4 +20,19 @@ assert.equal(byId["PCC-P13"].sessions,undefined,"ACP versus ACD identity remains
 assert.equal(byId["PCC-P20"].sessions,undefined,"PDL versus PSI identity remains HOLD");
 assert.equal(data.filter(o=>Array.isArray(o.sessions)).length,60);
 assert.equal(data.reduce((n,o)=>n+(o.sessions?.length||0),0),304);
+// B2_CH_AFT source: Swiss PC-COLLEGE AFT detail, 3-day CH sessions, checked 2026-11-04.
+// German 2027 2-day presentation must NOT be promoted as the Swiss edition.
+const chAft=byId["PCC-P01"];
+assert.ok(chAft,"PCC-P01 missing");
+assert.equal(chAft.duration,"3 Tage");
+assert.deepEqual(chAft.sessions.filter(x=>x.startDate.startsWith("2026-"))
+ .map(x=>[x.startDate,x.endDate,x.label]),[
+ ["2026-11-23","2026-11-25","23.–25.11.2026"],
+ ["2026-12-14","2026-12-16","14.–16.12.2026"]
+],"PCC-P01 Swiss editions must be 3 days and source-exact");
+assert.equal(chAft.sessions.length,3);
+assert.equal(chAft.sessions[2].startDate,"2027-01-04");
+assert.equal(chAft.sessions[2].endDate,"2027-01-05");
+console.log("B2_CH_AFT_2026_SWISS_3_DAY_EDITIONS_PASS");
+
 console.log("B2_PC_COLLEGE_3_OFFERS_38_NEW_FUTURE_EDITION_WINDOWS_PASS");
