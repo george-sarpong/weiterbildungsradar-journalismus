@@ -24388,13 +24388,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "sessions": [
       {
         "startDate": "2026-11-23",
-        "endDate": "2026-11-24",
-        "label": "23.–24.11.2026"
+        "endDate": "2026-11-25",
+        "label": "23.–25.11.2026"
       },
       {
         "startDate": "2026-12-14",
-        "endDate": "2026-12-15",
-        "label": "14.–15.12.2026"
+        "endDate": "2026-12-16",
+        "label": "14.–16.12.2026"
       },
       {
         "startDate": "2027-01-04",
