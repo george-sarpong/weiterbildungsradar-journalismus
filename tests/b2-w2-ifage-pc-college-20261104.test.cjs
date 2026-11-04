@@ -48,10 +48,28 @@ yes(run.nextSession(G).startDate==="2027-04-20"&&run.isCurrent(G)===true,
     "Production parser must skip fully-booked Nov 2026 edition and keep 2027");
 yes(run.nextSession(M).startDate==="2026-11-16"&&run.nextSession(P).startDate==="2026-11-05",
     "Correct next edition per offer");
-yes(roster.filter(o=>Array.isArray(o.sessions)).length===50&&
-    roster.reduce((n,o)=>n+(o.sessions?.length||0),0)===150,
-    "All cumulative session rows, no unexpected additions");
+yes(roster.filter(o=>Array.isArray(o.sessions)).length===51&&
+    roster.reduce((n,o)=>n+(o.sessions?.length||0),0)===152,
+    "All B2 cumulative session rows, no unexpected additions");
+const sideRaw=fs.readFileSync("smart-search-data.js","utf8");
+const byId=JSON.parse(sideRaw.slice(sideRaw.indexOf("{"),sideRaw.lastIndexOf("}")+1)).byId;
+for(const id of ["IF-G08","IF-G12"]) {
+  const delivery=byId[id].delivery;
+  yes(delivery.evidenceTier==="VERIFIED"&&delivery.structure==="SINGLE_CHANNEL"&&
+      delivery.channels.join(",")==="IN_PERSON"&&
+      delivery.variants.length===1&&delivery.variants[0].scheduleMode==="FIXED"&&
+      delivery.variants[0].temporalMode==="SYNCHRONOUS"&&
+      delivery.sourceText.startsWith(offer(id).url),id+" edition-specific in-person proof");
+}
+const J=offer("OFFER-CFJM-019");
+yes(J.priceDisplay==="Preis nicht publiziert"&&J.region==="NOT_PUBLISHED",
+    "JRI price and venue must remain unresolved");
+yes(J.sessions?.length===2&&J.sessions[0].startDate==="2026-11-09"&&
+    J.sessions[0].endDate==="2026-11-27"&&
+    J.sessions[1].startDate==="2027-03-01"&&J.sessions[1].endDate==="2027-03-19"&&
+    J.sessions.every(s=>!s.availabilityStatus), "CFJM JRI Mar 2027 session, no seat assertion");
 console.log("B2_W2_IFAGE_BOOKED_OUT_NEXT_2027_PASS");
 console.log("B2_W2_IFAGE_DETAILS_PRICE_AND_2027_SESSIONS_PASS");
 console.log("B2_W2_PCC_13_EXACT_SESSIONS_PASS");
-console.log("B2_W2_1352_IDS_150_SESSIONS_PASS");
+console.log("B2_W2_CFJM_JRI_MAR2027_PRESERVES_PRICE_HOLD_PASS");
+console.log("B2_W2_1352_IDS_152_SESSIONS_PASS");
