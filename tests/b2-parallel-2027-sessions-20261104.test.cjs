@@ -3,8 +3,8 @@ const assert=require("node:assert/strict"),fs=require("node:fs");
 const s=fs.readFileSync("data.js","utf8");
 const a=JSON.parse(s.slice(s.indexOf("["),s.lastIndexOf("]")+1)),byId=new Map(a.map(o=>[o.id,o]));
 assert.equal(a.length,1352);assert.equal(byId.size,1352);
-assert.equal(a.filter(o=>Array.isArray(o.sessions)).length,60);
-assert.equal(a.reduce((n,o)=>n+(o.sessions?.length||0),0),304);
+assert.equal(a.filter(o=>Array.isArray(o.sessions)).length,61);
+assert.equal(a.reduce((n,o)=>n+(o.sessions?.length||0),0),308);
 const dates={
   "PCC-P04": [
     "2027-01-18",

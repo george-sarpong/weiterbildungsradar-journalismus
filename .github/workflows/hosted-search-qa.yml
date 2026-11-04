@@ -44,6 +44,8 @@ jobs:
         run: node tests/b2-pc-future-sessions-20261104.test.cjs
       - name: Verify B2 Austria 2027 journalism degree intake and USTP
         run: node tests/b2-at-academic-2027-intake-20261104.test.cjs
+      - name: Verify B2 Dawan InDesign four source-confirmed FOAD sessions
+        run: node tests/b2-dawan-indesign-20261104.test.cjs
       - name: Verify B2 Studio 1 DaVinci sold-out and future sessions
         run: node tests/b2-studio1-davinci-20261104.test.cjs
       - name: Verify B2 parallel PC-COLLEGE and Microwin future editions

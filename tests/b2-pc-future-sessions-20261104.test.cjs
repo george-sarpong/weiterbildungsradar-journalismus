@@ -18,8 +18,8 @@ for(const [id,starts] of Object.entries(expected)){
 }
 assert.equal(byId["PCC-P13"].sessions,undefined,"ACP versus ACD identity remains HOLD");
 assert.equal(byId["PCC-P20"].sessions,undefined,"PDL versus PSI identity remains HOLD");
-assert.equal(data.filter(o=>Array.isArray(o.sessions)).length,60);
-assert.equal(data.reduce((n,o)=>n+(o.sessions?.length||0),0),304);
+assert.equal(data.filter(o=>Array.isArray(o.sessions)).length,61);
+assert.equal(data.reduce((n,o)=>n+(o.sessions?.length||0),0),308);
 // B2_CH_AFT source: Swiss PC-COLLEGE AFT detail, 3-day CH sessions, checked 2026-11-04.
 // German 2027 2-day presentation must NOT be promoted as the Swiss edition.
 const chAft=byId["PCC-P01"];

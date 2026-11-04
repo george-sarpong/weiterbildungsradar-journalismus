@@ -35,7 +35,7 @@ assert.match(joanneum.start, /Aufnahmeentscheid vorbehalten/);
 // Date updates are not permission to alter price, eligibility or other offer fields.
 assert.equal(joanneum.priceCategory, "PREIS_NICHT_PUBLIZIERT");
 for (const id of vienna) assert.equal(byId.get(id).priceCategory, "BIS_500");
-assert.equal(offers.reduce((n, o) => n + (o.sessions?.length || 0), 0), 304);
+assert.equal(offers.reduce((n, o) => n + (o.sessions?.length || 0), 0), 308);
 // USTP official intake (2027/28), no invented September study date.
 // https://www.ustp.at/de/studium/bewerbungsinfo/alle-bewerbungsfristen-und-aufnahmetermine
 const ustp = byId.get("AT-PROD-OFFER-023");
