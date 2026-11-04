@@ -37,9 +37,9 @@ for (const [id, tuples] of Object.entries(expected)) {
 }
 yes(get("OFFER-CFJM-005").priceDisplay.includes("par jour de formation"),
     "CFJM-005 per-day tariffs have not been converted to whole-course fees");
-yes(offers.filter(o => Array.isArray(o.sessions)).length === 50 &&
-    offers.reduce((n,o) => n + (o.sessions?.length || 0),0) === 150,
-    "B2 A/B plus source-backed ifage and PC-COLLEGE successor session totals");
+yes(offers.filter(o => Array.isArray(o.sessions)).length === 51 &&
+    offers.reduce((n,o) => n + (o.sessions?.length || 0),0) === 152,
+    "B2 source-backed CFJM/ifage and PC-COLLEGE session totals");
 const cadOffer = get("CAD-005"), cad = byId["CAD-005"];
 yes(cadOffer.sessions.length === 3 &&
     cadOffer.sessions[2].startDate === "2026-12-01" &&
@@ -96,4 +96,4 @@ yes(budget(400,"A").status === "OVER_BUDGET" && budget(250,"B").status === "DIRE
 console.log("B2_CFJM_2027_EXACT_SESSIONS_PASS");
 console.log("B2_CADSCHOOL_MODE_CHOICE_AND_OPTIONAL_CERTIFICATION_PASS");
 console.log("B2_PERSONAL_COSTS_EXCLUDED_FROM_COURSE_BUDGET_PASS");
-console.log("B2_1352_ID_PARITY_AND_150_SESSION_ROWS_PASS");
+console.log("B2_1352_ID_PARITY_AND_152_SESSION_ROWS_PASS");
