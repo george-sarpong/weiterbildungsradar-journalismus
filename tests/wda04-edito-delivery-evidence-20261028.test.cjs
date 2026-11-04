@@ -72,13 +72,17 @@ const tiers = Object.values(byId).reduce((acc, rec) => {
   acc[tier] = (acc[tier] || 0) + 1;
   return acc;
 }, {});
-// WDA04 baseline plus the individually source-proven CAD-005 B2 promotion (EVT170).
-// This is NOT a blanket promotion of unrelated delivery records.
+// Scoped successor: CAD-005 B2 and IF-G08/IF-G12 source-proven ifage delivery.
+// No unrelated delivery record may be silently promoted.
 yes(byId["CAD-005"]?.delivery?.evidenceTier === "VERIFIED" &&
     byId["CAD-005"]?.delivery?.structure === "MODE_CHOICE",
     "B2 CAD-005 source-proven delivery variant missing");
-yes(tiers.VERIFIED === 148 && tiers.PROVISIONAL === 397 && tiers.UNKNOWN === 807,
-    "Global evidence tiers outside the authorised CAD-005 change: " + JSON.stringify(tiers));
+yes(["IF-G08","IF-G12"].every(id=>byId[id]?.delivery?.evidenceTier==="VERIFIED"&&
+    byId[id]?.delivery?.structure==="SINGLE_CHANNEL"&&
+    byId[id]?.delivery?.channels?.join(",")==="IN_PERSON"),
+    "Ifage exact in-person source proof missing");
+yes(tiers.VERIFIED === 150 && tiers.PROVISIONAL === 395 && tiers.UNKNOWN === 807,
+    "Global evidence tiers outside authorised B2 CAD-005/ifage changes: " + JSON.stringify(tiers));
 console.log("WDA04_EDITO_SOURCE_VERIFIED_4_OF_4_PASS");
 console.log("WDA04_ONLINE_VARIANT_AND_PRICE_GUARDS_PASS");
 console.log("WDA04_ROSTER_1352_PARITY_PASS");
