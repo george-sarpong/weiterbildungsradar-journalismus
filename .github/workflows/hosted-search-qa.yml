@@ -42,7 +42,7 @@ jobs:
         run: node tests/b2-source-cohort-20261104.test.cjs
       - name: Verify B2 PC-COLLEGE future editions and source-confirmed Swiss AFT dates
         run: node tests/b2-pc-future-sessions-20261104.test.cjs
-      - name: Verify B2 Austria 2027 journalism academic intake dates
+      - name: Verify B2 Austria 2027 journalism degree intake and USTP
         run: node tests/b2-at-academic-2027-intake-20261104.test.cjs
       - name: Verify B2 Studio 1 DaVinci sold-out and future sessions
         run: node tests/b2-studio1-davinci-20261104.test.cjs
