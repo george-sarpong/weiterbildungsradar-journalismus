@@ -44,6 +44,8 @@ jobs:
         run: node tests/b2-pc-future-sessions-20261104.test.cjs
       - name: Verify B2 Studio 1 DaVinci sold-out and future sessions
         run: node tests/b2-studio1-davinci-20261104.test.cjs
+      - name: Verify B2 parallel PC-COLLEGE and Microwin future editions
+        run: node tests/b2-parallel-2027-sessions-20261104.test.cjs
       - name: Test isolated production price and variant resolvers
         shell: bash
         run: |

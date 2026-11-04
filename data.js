@@ -24496,6 +24496,111 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
         "startDate": "2026-12-21",
         "endDate": "2026-12-23",
         "label": "21.–23.12.2026"
+      },
+      {
+        "startDate": "2027-01-18",
+        "endDate": "2027-01-20",
+        "label": "IND270118 · 2027-01-18–2027-01-20 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-02-01",
+        "endDate": "2027-02-03",
+        "label": "IND270201 · 2027-02-01–2027-02-03 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-02-08",
+        "endDate": "2027-02-10",
+        "label": "IND270208 · 2027-02-08–2027-02-10 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-02-22",
+        "endDate": "2027-02-24",
+        "label": "IND270222 · 2027-02-22–2027-02-24 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-03-15",
+        "endDate": "2027-03-17",
+        "label": "IND270315 · 2027-03-15–2027-03-17 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-03-31",
+        "endDate": "2027-04-02",
+        "label": "IND270331 · 2027-03-31–2027-04-02 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-04-05",
+        "endDate": "2027-04-07",
+        "label": "IND270405 · 2027-04-05–2027-04-07 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-04-19",
+        "endDate": "2027-04-21",
+        "label": "IND270419 · 2027-04-19–2027-04-21 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-10",
+        "endDate": "2027-05-12",
+        "label": "IND270510 · 2027-05-10–2027-05-12 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-24",
+        "endDate": "2027-05-26",
+        "label": "IND270524 · 2027-05-24–2027-05-26 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-31",
+        "endDate": "2027-06-02",
+        "label": "IND270531 · 2027-05-31–2027-06-02 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-06-14",
+        "endDate": "2027-06-16",
+        "label": "IND270614 · 2027-06-14–2027-06-16 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-05",
+        "endDate": "2027-07-07",
+        "label": "IND270705 · 2027-07-05–2027-07-07 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-19",
+        "endDate": "2027-07-21",
+        "label": "IND270719 · 2027-07-19–2027-07-21 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-26",
+        "endDate": "2027-07-28",
+        "label": "IND270726 · 2027-07-26–2027-07-28 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-08-09",
+        "endDate": "2027-08-11",
+        "label": "IND270809 · 2027-08-09–2027-08-11 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-08-30",
+        "endDate": "2027-09-01",
+        "label": "IND270830 · 2027-08-30–2027-09-01 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-09-13",
+        "endDate": "2027-09-15",
+        "label": "IND270913 · 2027-09-13–2027-09-15 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-09-20",
+        "endDate": "2027-09-22",
+        "label": "IND270920 · 2027-09-20–2027-09-22 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-10-04",
+        "endDate": "2027-10-06",
+        "label": "IND271004 · 2027-10-04–2027-10-06 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-10-25",
+        "endDate": "2027-10-27",
+        "label": "IND271025 · 2027-10-25–2027-10-27 · Plätze / Präsenzort nicht bestätigt"
       }
     ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
@@ -24587,6 +24692,61 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
         "startDate": "2027-01-11",
         "endDate": "2027-01-12",
         "label": "11.–12.01.2027"
+      },
+      {
+        "startDate": "2027-02-11",
+        "endDate": "2027-02-12",
+        "label": "AFA270211 · 2027-02-11–2027-02-12 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-03-08",
+        "endDate": "2027-03-09",
+        "label": "AFA270308 · 2027-03-08–2027-03-09 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-03-09",
+        "endDate": "2027-03-10",
+        "label": "AFA270309 · 2027-03-09–2027-03-10 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-03",
+        "endDate": "2027-05-04",
+        "label": "AFA270503 · 2027-05-03–2027-05-04 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-06-03",
+        "endDate": "2027-06-04",
+        "label": "AFA270603 · 2027-06-03–2027-06-04 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-06-28",
+        "endDate": "2027-06-29",
+        "label": "AFA270628 · 2027-06-28–2027-06-29 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-29",
+        "endDate": "2027-07-30",
+        "label": "AFA270729 · 2027-07-29–2027-07-30 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-08-23",
+        "endDate": "2027-08-24",
+        "label": "AFA270823 · 2027-08-23–2027-08-24 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-09-23",
+        "endDate": "2027-09-24",
+        "label": "AFA270923 · 2027-09-23–2027-09-24 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-10-18",
+        "endDate": "2027-10-19",
+        "label": "AFA271018 · 2027-10-18–2027-10-19 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-11-18",
+        "endDate": "2027-11-19",
+        "label": "AFA271118 · 2027-11-18–2027-11-19 · Plätze / Präsenzort nicht bestätigt"
       }
     ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
@@ -24653,6 +24813,61 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
         "startDate": "2027-01-14",
         "endDate": "2027-01-15",
         "label": "14.–15.01.2027"
+      },
+      {
+        "startDate": "2027-02-11",
+        "endDate": "2027-02-12",
+        "label": "ILA270211 · 2027-02-11–2027-02-12 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-04-08",
+        "endDate": "2027-04-09",
+        "label": "ILA270408 · 2027-04-08–2027-04-09 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-03",
+        "endDate": "2027-05-04",
+        "label": "ILA270503 · 2027-05-03–2027-05-04 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-06-03",
+        "endDate": "2027-06-04",
+        "label": "ILA270603 · 2027-06-03–2027-06-04 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-01",
+        "endDate": "2027-07-02",
+        "label": "ILA270701 · 2027-07-01–2027-07-02 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-29",
+        "endDate": "2027-07-30",
+        "label": "ILA270729 · 2027-07-29–2027-07-30 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-08-26",
+        "endDate": "2027-08-27",
+        "label": "ILA270826 · 2027-08-26–2027-08-27 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-09-23",
+        "endDate": "2027-09-24",
+        "label": "ILA270923 · 2027-09-23–2027-09-24 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-10-21",
+        "endDate": "2027-10-22",
+        "label": "ILA271021 · 2027-10-21–2027-10-22 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-11-18",
+        "endDate": "2027-11-19",
+        "label": "ILA271118 · 2027-11-18–2027-11-19 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-12-16",
+        "endDate": "2027-12-17",
+        "label": "ILA271216 · 2027-12-16–2027-12-17 · Plätze / Präsenzort nicht bestätigt"
       }
     ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
@@ -24790,6 +25005,66 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
         "startDate": "2026-11-26",
         "endDate": "2026-11-27",
         "label": "26.–27.11.2026"
+      },
+      {
+        "startDate": "2027-01-14",
+        "endDate": "2027-01-15",
+        "label": "PSA270114 · 2027-01-14–2027-01-15 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-02-11",
+        "endDate": "2027-02-12",
+        "label": "PSA270211 · 2027-02-11–2027-02-12 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-04-08",
+        "endDate": "2027-04-09",
+        "label": "PSA270408 · 2027-04-08–2027-04-09 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-03",
+        "endDate": "2027-05-04",
+        "label": "PSA270503 · 2027-05-03–2027-05-04 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-06-03",
+        "endDate": "2027-06-04",
+        "label": "PSA270603 · 2027-06-03–2027-06-04 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-01",
+        "endDate": "2027-07-02",
+        "label": "PSA270701 · 2027-07-01–2027-07-02 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-29",
+        "endDate": "2027-07-30",
+        "label": "PSA270729 · 2027-07-29–2027-07-30 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-08-26",
+        "endDate": "2027-08-27",
+        "label": "PSA270826 · 2027-08-26–2027-08-27 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-09-23",
+        "endDate": "2027-09-24",
+        "label": "PSA270923 · 2027-09-23–2027-09-24 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-10-21",
+        "endDate": "2027-10-22",
+        "label": "PSA271021 · 2027-10-21–2027-10-22 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-11-18",
+        "endDate": "2027-11-19",
+        "label": "PSA271118 · 2027-11-18–2027-11-19 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-12-16",
+        "endDate": "2027-12-17",
+        "label": "PSA271216 · 2027-12-16–2027-12-17 · Plätze / Präsenzort nicht bestätigt"
       }
     ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
@@ -24831,6 +25106,51 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
         "startDate": "2027-02-01",
         "endDate": "2027-02-02",
         "label": "01.–02.02.2027"
+      },
+      {
+        "startDate": "2027-02-22",
+        "endDate": "2027-02-23",
+        "label": "PRF270222 · 2027-02-22–2027-02-23 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-03-30",
+        "endDate": "2027-03-31",
+        "label": "PRF270330 · 2027-03-30–2027-03-31 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-04-19",
+        "endDate": "2027-04-20",
+        "label": "PRF270419 · 2027-04-19–2027-04-20 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-24",
+        "endDate": "2027-05-25",
+        "label": "PRF270524 · 2027-05-24–2027-05-25 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-06-14",
+        "endDate": "2027-06-15",
+        "label": "PRF270614 · 2027-06-14–2027-06-15 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-19",
+        "endDate": "2027-07-20",
+        "label": "PRF270719 · 2027-07-19–2027-07-20 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-08-09",
+        "endDate": "2027-08-10",
+        "label": "PRF270809 · 2027-08-09–2027-08-10 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-10-04",
+        "endDate": "2027-10-05",
+        "label": "PRF271004 · 2027-10-04–2027-10-05 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-11-04",
+        "endDate": "2027-11-05",
+        "label": "PRF271104 · 2027-11-04–2027-11-05 · Plätze / Präsenzort nicht bestätigt"
       }
     ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
@@ -25806,6 +26126,11 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
         "startDate": "2027-07-05",
         "endDate": "2027-07-06",
         "label": "05.–06.07.2027 · Wallisellen oder LiveStream"
+      },
+      {
+        "startDate": "2027-10-04",
+        "endDate": "2027-10-05",
+        "label": "2027-10-04–2027-10-05 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
       }
     ],
     "region": "Wallisellen / LiveStream",
@@ -25833,7 +26158,44 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-11",
     "endDate": "",
     "region": "Wallisellen / LiveStream",
-    "release_origin": "V98_RESTORE_W5_REMAINING17"
+    "release_origin": "V98_RESTORE_W5_REMAINING17",
+    "sessions": [
+      {
+        "startDate": "2026-11-11",
+        "endDate": "2026-11-11",
+        "label": "2026-11-11–2026-11-11 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-01-11",
+        "endDate": "2027-01-11",
+        "label": "2027-01-11–2027-01-11 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-03-10",
+        "endDate": "2027-03-10",
+        "label": "2027-03-10–2027-03-10 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-10",
+        "endDate": "2027-05-10",
+        "label": "2027-05-10–2027-05-10 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-09",
+        "endDate": "2027-07-09",
+        "label": "2027-07-09–2027-07-09 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-09-10",
+        "endDate": "2027-09-10",
+        "label": "2027-09-10–2027-09-10 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-11-10",
+        "endDate": "2027-11-10",
+        "label": "2027-11-10–2027-11-10 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "MW-P09",
@@ -25857,7 +26219,34 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-23",
     "endDate": "2026-11-24",
     "region": "Wallisellen / LiveStream",
-    "release_origin": "V98_RESTORE_W5_REMAINING17"
+    "release_origin": "V98_RESTORE_W5_REMAINING17",
+    "sessions": [
+      {
+        "startDate": "2026-11-23",
+        "endDate": "2026-11-24",
+        "label": "2026-11-23–2026-11-24 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-02-22",
+        "endDate": "2027-02-23",
+        "label": "2027-02-22–2027-02-23 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-18",
+        "endDate": "2027-05-19",
+        "label": "2027-05-18–2027-05-19 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-08-23",
+        "endDate": "2027-08-24",
+        "label": "2027-08-23–2027-08-24 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-11-04",
+        "endDate": "2027-11-05",
+        "label": "2027-11-04–2027-11-05 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "CAD-001",
