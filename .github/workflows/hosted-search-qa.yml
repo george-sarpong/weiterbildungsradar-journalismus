@@ -38,6 +38,8 @@ jobs:
         run: node tests/b2-w2-ifage-pc-college-20261104.test.cjs
       - name: Verify B2 PC-COLLEGE ADE future session identities
         run: node tests/b2-pcc-ade-20261104.test.cjs
+      - name: Verify B2 source-backed cross-provider edition cohort
+        run: node tests/b2-source-cohort-20261104.test.cjs
       - name: Test isolated production price and variant resolvers
         shell: bash
         run: |

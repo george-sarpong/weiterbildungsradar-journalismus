@@ -48,8 +48,8 @@ yes(run.nextSession(G).startDate==="2027-04-20"&&run.isCurrent(G)===true,
     "Production parser must skip fully-booked Nov 2026 edition and keep 2027");
 yes(run.nextSession(M).startDate==="2026-11-16"&&run.nextSession(P).startDate==="2026-11-05",
     "Correct next edition per offer");
-yes(roster.filter(o=>Array.isArray(o.sessions)).length === 52&&
-    roster.reduce((n,o)=>n+(o.sessions?.length||0),0)=== 162,
+yes(roster.filter(o=>Array.isArray(o.sessions)).length === 57&&
+    roster.reduce((n,o)=>n+(o.sessions?.length||0),0)=== 185,
     "All B2 cumulative session rows, no unexpected additions");
 const sideRaw=fs.readFileSync("smart-search-data.js","utf8");
 const byId=JSON.parse(sideRaw.slice(sideRaw.indexOf("{"),sideRaw.lastIndexOf("}")+1)).byId;
@@ -72,4 +72,4 @@ console.log("B2_W2_IFAGE_BOOKED_OUT_NEXT_2027_PASS");
 console.log("B2_W2_IFAGE_DETAILS_PRICE_AND_2027_SESSIONS_PASS");
 console.log("B2_W2_PCC_13_EXACT_SESSIONS_PASS");
 console.log("B2_W2_CFJM_JRI_MAR2027_PRESERVES_PRICE_HOLD_PASS");
-console.log("B2_W2_1352_IDS_162_SESSIONS_PASS");
+console.log("B2_W2_1352_IDS_185_SESSIONS_PASS");

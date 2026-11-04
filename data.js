@@ -2832,7 +2832,24 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-08",
     "endDate": "2026-10-08",
     "region": "NOT_PUBLISHED",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "sessions": [
+      {
+        "startDate": "2026-10-08",
+        "endDate": "2026-10-08",
+        "label": "08.10.2026 · CFJM · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-06-03",
+        "endDate": "2027-06-03",
+        "label": "03.06.2027 · CFJM · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-10-28",
+        "endDate": "2027-10-28",
+        "label": "28.10.2027 · CFJM · Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "OFFER-CFJM-010",
@@ -2880,7 +2897,24 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-16",
     "endDate": "2026-10-23",
     "region": "NOT_PUBLISHED",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "sessions": [
+      {
+        "startDate": "2026-10-16",
+        "endDate": "2026-10-23",
+        "label": "16.10.2026–23.10.2026 · CFJM · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-04-23",
+        "endDate": "2027-04-30",
+        "label": "23.04.2027–30.04.2027 · CFJM · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-10-29",
+        "endDate": "2027-11-05",
+        "label": "29.10.2027–05.11.2027 · CFJM · Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "OFFER-CFJM-012",
@@ -3156,11 +3190,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "NICHT_PUBLIZIERT",
     "duration": "2 Tage, 09:00–17:00",
-    "start": "25.11.2026–26.11.2026",
-    "startDate": "2026-11-25",
-    "endDate": "2026-11-26",
+    "start": "26.–27.11.2026; weitere Durchführung 26.–27.04.2027 gemäss sessions[]; Plätze nicht bestätigt",
+    "startDate": "2026-11-26",
+    "endDate": "2026-11-27",
     "region": "NOT_PUBLISHED",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "sessions": [
+      {
+        "startDate": "2026-11-26",
+        "endDate": "2026-11-27",
+        "label": "26.11.2026–27.11.2026 · CFJM · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-04-26",
+        "endDate": "2027-04-27",
+        "label": "26.04.2027–27.04.2027 · CFJM · Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "OFFER-CORSO-002",
@@ -19100,11 +19146,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "NICHT_PUBLIZIERT",
     "duration": "1 jour, de 9h à 17h",
-    "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
+    "start": "12.03.2027 und 29.10.2027 gemäss sessions[]; Plätze nicht bestätigt",
     "startDate": "",
     "endDate": "",
     "region": "NOT_PUBLISHED",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "sessions": [
+      {
+        "startDate": "2027-03-12",
+        "endDate": "2027-03-12",
+        "label": "12.03.2027 · CFJM · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-10-29",
+        "endDate": "2027-10-29",
+        "label": "29.10.2027 · CFJM · Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "OFFER-CFJM-004",
@@ -24610,7 +24668,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "PRÄSENZ|ONLINE LIVE",
     "duration": "2 Tage",
-    "start": "05.10.2026–06.10.2026 next future; further Nov sessions published",
+    "start": "Vergangene Durchführung 05.–06.10.2026; weitere 2026/2027-Termine gemäss sessions[]; Plätze und Veranstaltungsort prüfen",
     "startDate": "2026-10-05",
     "endDate": "2026-10-06",
     "sessions": [
@@ -24633,6 +24691,56 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
         "startDate": "2026-11-30",
         "endDate": "2026-12-01",
         "label": "30.11.2026–01.12.2026"
+      },
+      {
+        "startDate": "2027-01-25",
+        "endDate": "2027-01-26",
+        "label": "25.01.2027–26.01.2027 · PC-COLLEGE INA 270125 · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-02-15",
+        "endDate": "2027-02-16",
+        "label": "15.02.2027–16.02.2027 · PC-COLLEGE INA 270215 · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-03-22",
+        "endDate": "2027-03-23",
+        "label": "22.03.2027–23.03.2027 · PC-COLLEGE INA 270322 · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-04-12",
+        "endDate": "2027-04-13",
+        "label": "12.04.2027–13.04.2027 · PC-COLLEGE INA 270412 · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-06-07",
+        "endDate": "2027-06-08",
+        "label": "07.06.2027–08.06.2027 · PC-COLLEGE INA 270607 · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-08-02",
+        "endDate": "2027-08-03",
+        "label": "02.08.2027–03.08.2027 · PC-COLLEGE INA 270802 · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-09-06",
+        "endDate": "2027-09-07",
+        "label": "06.09.2027–07.09.2027 · PC-COLLEGE INA 270906 · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-09-27",
+        "endDate": "2027-09-28",
+        "label": "27.09.2027–28.09.2027 · PC-COLLEGE INA 270927 · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-11-02",
+        "endDate": "2027-11-03",
+        "label": "02.11.2027–03.11.2027 · PC-COLLEGE INA 271102 · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-11-22",
+        "endDate": "2027-11-23",
+        "label": "22.11.2027–23.11.2027 · PC-COLLEGE INA 271122 · Plätze nicht bestätigt"
       }
     ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
@@ -26971,11 +27079,28 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "NICHT_PUBLIZIERT",
     "duration": "2 jours, de 9h à 17h",
-    "start": "Letzte belegte Durchführung 24.–25.09.2026; aktuell kein künftiger Termin publiziert",
+    "start": "Vergangene Durchführung 24.–25.09.2026; weitere 24.–25.05. und 27.–28.09.2027 gemäss sessions[]; Plätze nicht bestätigt",
     "startDate": "",
     "endDate": "",
     "region": "NOT_PUBLISHED",
-    "release_origin": "V98_R18_SDBB_CFJM_RESTORATION"
+    "release_origin": "V98_R18_SDBB_CFJM_RESTORATION",
+    "sessions": [
+      {
+        "startDate": "2026-09-24",
+        "endDate": "2026-09-25",
+        "label": "24.09.2026–25.09.2026 · CFJM · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-24",
+        "endDate": "2027-05-25",
+        "label": "24.05.2027–25.05.2027 · CFJM · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-09-27",
+        "endDate": "2027-09-28",
+        "label": "27.09.2027–28.09.2027 · CFJM · Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "OFFER-CFJM-031",
