@@ -25,8 +25,8 @@ for(const s of o.sessions){
 }
 assert.equal(other.url,"https://www.pc-college.ch/seminare-schulungen-kurse/adobe-creative-cloud/adobe-creative-cloud-cc-print-und-digitales-layout-mit-indesign-und-photoshop-pdl.php");
 assert.equal(other.sessions,undefined,"Unverified PSI sessions must not enter the PDL offer");
-assert.equal(offers.filter(x=>Array.isArray(x.sessions)).length,61);
-assert.equal(offers.reduce((n,x)=>n+(x.sessions?.length||0),0),308);
+assert.equal(offers.filter(x=>Array.isArray(x.sessions)).length,73);
+assert.equal(offers.reduce((n,x)=>n+(x.sessions?.length||0),0),325);
 const app=fs.readFileSync("app.js","utf8");
 const from=app.indexOf("  const ISO_DATE ="),to=app.indexOf("  // Ausgelaufene Präsenz-Sessions",from);
 assert.ok(from>=0&&to>from);

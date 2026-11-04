@@ -37,8 +37,8 @@ for (const [id, tuples] of Object.entries(expected)) {
 }
 yes(get("OFFER-CFJM-005").priceDisplay.includes("par jour de formation"),
     "CFJM-005 per-day tariffs have not been converted to whole-course fees");
-yes(offers.filter(o => Array.isArray(o.sessions)).length === 61 &&
-    offers.reduce((n,o) => n + (o.sessions?.length || 0),0) === 308,
+yes(offers.filter(o => Array.isArray(o.sessions)).length === 73 &&
+    offers.reduce((n,o) => n + (o.sessions?.length || 0),0) === 325,
     "B2 source-backed CFJM/ifage and PC-COLLEGE session totals");
 const cadOffer = get("CAD-005"), cad = byId["CAD-005"];
 yes(cadOffer.sessions.length === 3 &&

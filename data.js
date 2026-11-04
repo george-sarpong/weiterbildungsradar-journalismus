@@ -27076,6 +27076,20 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-22",
     "endDate": "2026-10-23",
     "region": "ONLINE / Distance",
+    "sessions": [
+      {
+        "startDate": "2026-11-26",
+        "endDate": "2026-11-27",
+        "label": "2026-11-26–2026-11-27 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      },
+      {
+        "startDate": "2026-12-03",
+        "endDate": "2026-12-04",
+        "label": "2026-12-03–2026-12-04 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V98_W8_DAWAN8_CONTROLLED_MATERIALISATION"
   },
   {
@@ -27150,6 +27164,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "",
     "endDate": "",
     "region": "Genève / Distance",
+    "sessions": [
+      {
+        "startDate": "2026-12-07",
+        "endDate": "2026-12-11",
+        "label": "2026-12-07–2026-12-11 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V98_W8_DAWAN8_CONTROLLED_MATERIALISATION"
   },
   {
@@ -27270,6 +27292,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-15",
     "endDate": "2026-10-16",
     "region": "ONLINE / Distance",
+    "sessions": [
+      {
+        "startDate": "2026-11-19",
+        "endDate": "2026-11-20",
+        "label": "2026-11-19–2026-11-20 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V98_W9_DAWAN1_CONTROLLED_MATERIALISATION"
   },
   {
@@ -27956,6 +27986,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-09-28",
     "endDate": "2026-09-30",
     "region": "ONLINE / Distance",
+    "sessions": [
+      {
+        "startDate": "2026-12-07",
+        "endDate": "2026-12-09",
+        "label": "2026-12-07–2026-12-09 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
   },
   {
@@ -27980,6 +28018,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-01",
     "endDate": "2026-10-02",
     "region": "ONLINE / Distance",
+    "sessions": [
+      {
+        "startDate": "2026-12-10",
+        "endDate": "2026-12-11",
+        "label": "2026-12-10–2026-12-11 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
   },
   {
@@ -28029,6 +28075,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-16",
     "endDate": "2026-11-18",
     "region": "ONLINE / Distance",
+    "sessions": [
+      {
+        "startDate": "2026-12-07",
+        "endDate": "2026-12-09",
+        "label": "2026-12-07–2026-12-09 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
   },
   {
@@ -28053,6 +28107,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-12",
     "endDate": "2026-10-14",
     "region": "ONLINE / Distance",
+    "sessions": [
+      {
+        "startDate": "2026-12-14",
+        "endDate": "2026-12-16",
+        "label": "2026-12-14–2026-12-16 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
   },
   {
@@ -28294,6 +28356,26 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-09-28",
     "endDate": "2026-10-02",
     "region": "ONLINE / Distance",
+    "sessions": [
+      {
+        "startDate": "2026-11-23",
+        "endDate": "2026-11-27",
+        "label": "2026-11-23–2026-11-27 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      },
+      {
+        "startDate": "2026-11-30",
+        "endDate": "2026-12-04",
+        "label": "2026-11-30–2026-12-04 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      },
+      {
+        "startDate": "2026-12-14",
+        "endDate": "2026-12-18",
+        "label": "2026-12-14–2026-12-18 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
   },
   {
@@ -28318,6 +28400,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-09-28",
     "endDate": "2026-09-30",
     "region": "ONLINE / Distance",
+    "sessions": [
+      {
+        "startDate": "2026-11-30",
+        "endDate": "2026-12-02",
+        "label": "2026-11-30–2026-12-02 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
   },
   {
@@ -28679,6 +28769,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-05",
     "endDate": "2026-10-07",
     "region": "ONLINE / Distance",
+    "sessions": [
+      {
+        "startDate": "2026-12-14",
+        "endDate": "2026-12-16",
+        "label": "2026-12-14–2026-12-16 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
   },
   {
@@ -28751,6 +28849,26 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-01",
     "endDate": "2026-10-02",
     "region": "ONLINE / Distance",
+    "sessions": [
+      {
+        "startDate": "2026-11-19",
+        "endDate": "2026-11-20",
+        "label": "2026-11-19–2026-11-20 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      },
+      {
+        "startDate": "2026-12-03",
+        "endDate": "2026-12-04",
+        "label": "2026-12-03–2026-12-04 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      },
+      {
+        "startDate": "2026-12-10",
+        "endDate": "2026-12-11",
+        "label": "2026-12-10–2026-12-11 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
   },
   {
@@ -29496,6 +29614,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-09-28",
     "endDate": "2026-09-30",
     "region": "Genève current occurrence",
+    "sessions": [
+      {
+        "startDate": "2026-11-30",
+        "endDate": "2026-12-02",
+        "label": "2026-11-30–2026-12-02 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
   },
   {

@@ -24,6 +24,6 @@ for(const x of d.sessions){
  assert.equal(x.availabilityStatus,undefined);
  assert.match(x.label,/Plätze nicht bestätigt/);
 }
-assert.equal(offers.filter(o=>Array.isArray(o.sessions)).length,61);
-assert.equal(offers.reduce((n,o)=>n+(o.sessions?.length||0),0),308);
+assert.equal(offers.filter(o=>Array.isArray(o.sessions)).length,73);
+assert.equal(offers.reduce((n,o)=>n+(o.sessions?.length||0),0),325);
 console.log("B2_DAWAN_FOAD_FOUR_SOURCE_CONFIRMED_SESSIONS_PASS");
