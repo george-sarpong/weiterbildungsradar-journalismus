@@ -1,0 +1,19 @@
+name: B2 Review Queue Audit
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/catalogue-b2-audit.yml
+      - scripts/catalogue-b2-audit.cjs
+      - data.js
+      - smart-search-data.js
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  risk-cohort-qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Assert catalogue cohort and show priority queue
+        run: node scripts/catalogue-b2-audit.cjs --as-of=2026-11-04 --summary --assert-baseline
