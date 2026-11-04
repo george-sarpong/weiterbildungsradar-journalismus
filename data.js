@@ -25217,7 +25217,59 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-06",
     "endDate": "",
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
-    "release_origin": "V98_RESTORE_W4_PCC9"
+    "release_origin": "V98_RESTORE_W4_PCC9",
+    "sessions": [
+      {
+        "startDate": "2026-11-06",
+        "endDate": "2026-11-06",
+        "label": "06.11.2026 · PC-COLLEGE ADE 261106 · Live-Online laut Anbieter; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-01-18",
+        "endDate": "2027-01-18",
+        "label": "18.01.2027 · PC-COLLEGE ADE 270118 · Live-Online laut Anbieter; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-02-15",
+        "endDate": "2027-02-15",
+        "label": "15.02.2027 · PC-COLLEGE ADE 270215 · Live-Online laut Anbieter; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-03-19",
+        "endDate": "2027-03-19",
+        "label": "19.03.2027 · PC-COLLEGE ADE 270319 · Live-Online laut Anbieter; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-04-16",
+        "endDate": "2027-04-16",
+        "label": "16.04.2027 · PC-COLLEGE ADE 270416 · Live-Online laut Anbieter; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-14",
+        "endDate": "2027-05-14",
+        "label": "14.05.2027 · PC-COLLEGE ADE 270514 · Live-Online laut Anbieter; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-06-11",
+        "endDate": "2027-06-11",
+        "label": "11.06.2027 · PC-COLLEGE ADE 270611 · Live-Online laut Anbieter; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-09",
+        "endDate": "2027-07-09",
+        "label": "09.07.2027 · PC-COLLEGE ADE 270709 · Live-Online laut Anbieter; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-08-06",
+        "endDate": "2027-08-06",
+        "label": "06.08.2027 · PC-COLLEGE ADE 270806 · Live-Online laut Anbieter; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-09-03",
+        "endDate": "2027-09-03",
+        "label": "03.09.2027 · PC-COLLEGE ADE 270903 · Live-Online laut Anbieter; Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "PCC-P20",

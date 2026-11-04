@@ -36,6 +36,8 @@ jobs:
         run: node tests/b2-cfjm-cadschool-20261104.test.cjs
       - name: Verify B2 W2 ifage, PC-COLLEGE and CFJM-JRI source editions
         run: node tests/b2-w2-ifage-pc-college-20261104.test.cjs
+      - name: Verify B2 PC-COLLEGE ADE future session identities
+        run: node tests/b2-pcc-ade-20261104.test.cjs
       - name: Test isolated production price and variant resolvers
         shell: bash
         run: |
