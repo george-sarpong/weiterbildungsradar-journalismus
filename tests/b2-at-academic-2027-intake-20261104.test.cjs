@@ -36,4 +36,15 @@ assert.match(joanneum.start, /Aufnahmeentscheid vorbehalten/);
 assert.equal(joanneum.priceCategory, "PREIS_NICHT_PUBLIZIERT");
 for (const id of vienna) assert.equal(byId.get(id).priceCategory, "BIS_500");
 assert.equal(offers.reduce((n, o) => n + (o.sessions?.length || 0), 0), 304);
+// USTP official intake (2027/28), no invented September study date.
+// https://www.ustp.at/de/studium/bewerbungsinfo/alle-bewerbungsfristen-und-aufnahmetermine
+const ustp = byId.get("AT-PROD-OFFER-023");
+assert.ok(ustp);
+assert.equal(ustp.startDate, "");
+assert.match(ustp.start, /Wintersemester 2027\/28/);
+assert.match(ustp.start, /01\.10\.2026/);
+assert.match(ustp.start, /31\.05\.2027/);
+assert.match(ustp.start, /01\.02\.2027/);
+assert.match(ustp.access, /Schweizer Zugang grundsätzlich möglich/);
+assert.match(ustp.access, /Aufnahmetest vorbehalten/);
 console.log("B2_AT_2027_JOURNALISM_INTAKE_SOURCE_REGRESSION_PASS");
