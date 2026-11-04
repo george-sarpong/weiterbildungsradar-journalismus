@@ -35,8 +35,15 @@ const k=s.startDate+"|"+s.endDate;if(seen.has(k))duplicates++;seen.add(k);
 if(s.endDate && s.endDate<s.startDate)badDates++;if(s.availabilityStatus==="SOLD_OUT")soldOut++;}}
 const hash=s=>crypto.createHash("sha256").update(s).digest("hex");
 const report={kind:"READ_ONLY_NOT_SOURCE_VERIFICATION",asOf:day,sha:{data:hash(r),sidecar:hash(b)},totals:{offers:offers.length,unique:new Set(offers.map(o=>o.id)).size,sidecar:Object.keys(side).length,visible:current.length,due:due.length,rows,duplicates,badDates,soldOut},laneCounts:counts,cohorts:{startedButRunning:ongoingCohort},reviewQueue:process.argv.includes("--summary")?risk.slice(0,12):risk};
-if(process.argv.includes("--assert-baseline"))assert.deepEqual(report.totals,{offers:1352,unique:1352,sidecar:1352,visible:1103,due:128,rows:304,duplicates:0,badDates:0,soldOut:4});
+if(process.argv.includes("--assert-baseline"))assert.deepEqual(report.totals,{offers:1352,unique:1352,sidecar:1352,visible:1102,due:127,rows:304,duplicates:0,badDates:0,soldOut:4});
 if(process.argv.includes("--assert-baseline"))assert.deepEqual(report.cohorts.startedButRunning,{
   count:57,reviewDue:8,byType:{KURS:39,STUDIUM:8,PROGRAMM:10},byCountry:{"Schweiz":53,"Österreich":4}
 });
+if(process.argv.includes("--assert-baseline")) {
+  const wifi=offers.find(o=>o.id==="AT-PROD-OFFER-073");
+  assert(wifi,"WIFI podcast archive offer missing");
+  assert.equal(wifi.startDate,"2026-09-23");
+  assert.equal(wifi.endDate,"2026-10-20");
+  assert.equal(active(wifi),false,"Completed WIFI podcast edition must not be visible");
+}
 console.log(JSON.stringify(report));
