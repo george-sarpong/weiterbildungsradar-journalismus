@@ -24098,7 +24098,31 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-09",
     "endDate": "2026-11-11",
     "region": "Studio 1, Wallisellen",
-    "release_origin": "V98_RESTORE_W1_39"
+    "release_origin": "V98_RESTORE_W1_39",
+    "sessions": [
+      {
+        "startDate": "2026-11-09",
+        "endDate": "2026-11-11",
+        "label": "09.–11.11.2026 · Wallisellen (ausgebucht)",
+        "availabilityStatus": "SOLD_OUT",
+        "statusEvidenceUrl": "https://www.studioeins.ch/kurse/davinci-resolve/"
+      },
+      {
+        "startDate": "2027-03-08",
+        "endDate": "2027-03-10",
+        "label": "08.–10.03.2027 · Wallisellen (Plätze nicht bestätigt)"
+      },
+      {
+        "startDate": "2027-06-14",
+        "endDate": "2027-06-16",
+        "label": "14.–16.06.2027 · Wallisellen (Plätze nicht bestätigt)"
+      },
+      {
+        "startDate": "2027-10-25",
+        "endDate": "2027-10-27",
+        "label": "25.–27.10.2027 · Wallisellen (Plätze nicht bestätigt)"
+      }
+    ]
   },
   {
     "id": "V58-S1-06",

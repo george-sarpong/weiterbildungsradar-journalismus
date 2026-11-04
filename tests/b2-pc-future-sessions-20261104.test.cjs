@@ -18,6 +18,6 @@ for(const [id,starts] of Object.entries(expected)){
 }
 assert.equal(byId["PCC-P13"].sessions,undefined,"ACP versus ACD identity remains HOLD");
 assert.equal(byId["PCC-P20"].sessions,undefined,"PDL versus PSI identity remains HOLD");
-assert.equal(data.filter(o=>Array.isArray(o.sessions)).length,57);
-assert.equal(data.reduce((n,o)=>n+(o.sessions?.length||0),0),223);
+assert.equal(data.filter(o=>Array.isArray(o.sessions)).length,58);
+assert.equal(data.reduce((n,o)=>n+(o.sessions?.length||0),0),227);
 console.log("B2_PC_COLLEGE_3_OFFERS_38_NEW_FUTURE_EDITION_WINDOWS_PASS");

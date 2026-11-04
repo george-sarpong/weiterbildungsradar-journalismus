@@ -42,7 +42,8 @@ jobs:
         run: node tests/b2-source-cohort-20261104.test.cjs
       - name: Verify B2 three PC-COLLEGE future edition series
         run: node tests/b2-pc-future-sessions-20261104.test.cjs
-      - name: Test isolated production price and variant resolvers
+      - name: Verify B2 Studio 1 DaVinci sold-out and future sessions
+        run: node tests/b2-studio1-davinci-20261104.test.cjs\n      - name: Test isolated production price and variant resolvers
         shell: bash
         run: |
           set -euo pipefail
