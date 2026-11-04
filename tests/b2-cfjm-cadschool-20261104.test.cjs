@@ -93,6 +93,18 @@ yes(budget(800,"B").status === "DIRECT_FIT" && budget(800,"B").amount === 250,
     "Self-study budget must count only CHF250 course fee");
 yes(budget(400,"A").status === "OVER_BUDGET" && budget(250,"B").status === "DIRECT_FIT",
     "Variant-sensitive budget thresholds");
+const evergreen=extract("  const evergreenProjection = offer => {","  const offers = allOffers.map");
+const projectAfterLastSession=vm.runInNewContext("(() => {"+
+ "const window={MEDIA_SKILLS_SMART_DATA:{byId}};const today=new Date(2026,11,3);"+
+ "const nextSession=()=>null;const isDateActive=()=>true;"+
+ evergreen+"return evergreenProjection;})()",{byId});
+const projectedCAD=projectAfterLastSession(cadOffer);
+yes(projectedCAD.priceCategory==="BIS_500","Autonomous CHF250 course fee must stay in BIS_500");
+yes(projectedCAD.format==="ONLINE SELBSTLERNEN"&&projectedCAD.sessions===undefined,
+    "Self-study route remains visible after final 02.12.2026 fixed session");
+yes(projectedCAD._activeVariantIds?.join(",")==="B",
+    "Only source-verified autonomous CAD variant projected");
+console.log("B2_CAD_AUTONOMOUS_CHF250_BAND_AFTER_FINAL_SESSION_PASS");
 console.log("B2_CFJM_2027_EXACT_SESSIONS_PASS");
 console.log("B2_CADSCHOOL_MODE_CHOICE_AND_OPTIONAL_CERTIFICATION_PASS");
 console.log("B2_PERSONAL_COSTS_EXCLUDED_FROM_COURSE_BUDGET_PASS");

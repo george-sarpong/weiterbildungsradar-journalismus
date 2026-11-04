@@ -160,10 +160,12 @@
       && isDateActive(option));
     if (prices.length !== 1) return offer;
     const selected = prices[0];
-    // Der Kurspreis ist bekannt, aber eine separat benötigte Softwarelizenz
-    // macht den tatsächlichen Gesamtaufwand möglicherweise höher.
+    // Course budget excludes separately paid software, hardware, travel, exams and materials.
+    // This early projection runs before the later NON_TUITION_COST_TYPES declaration.
+    const nonTuitionType = /^(SOFTWARE_LICENSE|SOFTWARE_LICENCE|LICENSE_FEE|LICENCE_FEE|LICENSE|LICENCE|EXAM_FEE|EXAMINATION_FEE|EXAM|MATERIAL_FEE|COURSE_MATERIAL|MATERIAL|COURSE_MATERIALS|TRAVEL|ACCOMMODATION|HARDWARE)$/;
     const unknownRequiredCost = (selected.components || []).some(c =>
       !c.includedInBase && c.requirementStatus === "REQUIRED"
+      && !nonTuitionType.test(c.componentType || "")
       && (c.amountType !== "EXACT" || c.amount == null));
     const category = unknownRequiredCost ? "MEHRERE_TARIFE"
       : selected.amount <= 500 ? "BIS_500"
