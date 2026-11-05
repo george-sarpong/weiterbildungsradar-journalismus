@@ -85,7 +85,7 @@ assert.equal(matrix.data.filter(x=>x.venue_data_state==="NOT_PUBLISHED").length,
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="MULTIPLE_OPTIONS_OR_AMBIGUOUS").length,39);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="REMOTE_ONLY_DISPLAY_NOT_OCCURRENCE_GOLD").length,37);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="SINGLE_DISPLAY_LOCATION_UNPROVEN").length,32);
-assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,98);
+assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,88);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("OWNER_SCOPE_REVIEW")).length,10);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD")).length,18);
 assert.ok(!get("OFFER-MAZ-146").field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
@@ -235,8 +235,27 @@ for(const id of djaBatchMore){
  assert.equal(rec.priceEligible,true);
  if(id==="OFFER-DJA-007")assert.ok(rec.delivery.sourceText.includes("Demnächst"));
 }
+const lastDjaTen=["OFFER-DJA-011","OFFER-DJA-013","OFFER-DJA-014","OFFER-DJA-015","OFFER-DJA-016","OFFER-DJA-017","OFFER-DJA-018","OFFER-DJA-019","OFFER-DJA-020","OFFER-DJA-021"];
+for(const id of lastDjaTen){
+ const row=get(id),delivery=side.byId[id].delivery,action=backlog.data.find(r=>r.offer_id===id);
+ assert.equal(delivery.evidenceTier,"VERIFIED",id+" official online model");
+ assert.equal(row.delivery_evidence_tier,"VERIFIED");
+ assert.equal(row.delivery_variant_count,"1");
+ assert.equal(action.delivery_tier,"VERIFIED");
+ assert.equal(action.unresolved_field_gaps,row.field_gap_tags);
+ assert.equal(delivery.structure,"SINGLE_CHANNEL");
+ assert.deepEqual(delivery.channels,["REMOTE"]);
+ assert.equal(delivery.variants[0].temporalMode,"ASYNCHRONOUS");
+ assert.equal(delivery.variants[0].scheduleMode,"FIXED");
+ assert.ok(delivery.materialisationStatus.includes("INTAKE_CAMPUS_HOLD"));
+ assert.ok(!row.field_gap_tags.includes("DELIVERY_NOT_VERIFIED"));
+ assert.ok(row.field_gap_tags.includes("BOOKING_OR_INTAKE_NOT_PROVEN"));
+ assert.ok(row.field_gap_tags.includes("REMOTE_CHANNEL_SEAT_NOT_PROVEN"));
+ assert.equal(row.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
+}
+assert.ok(side.byId["OFFER-DJA-013"].delivery.sourceText.includes("/nachhaltigkeitsjournalismus/"),"DJA013 existing original URL slug preserved despite Klimajournalismus title");
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
  all:140,sourceBounded:139,sourcePending:1,numericEligible:106,
  priceGap:34,venueUnpublished:32,venueAmbiguous:51,
- deliveryUnverified:98,ownerScopeFlags:10,publicationApproved:0
+ deliveryUnverified:88,ownerScopeFlags:10,publicationApproved:0
 }));
