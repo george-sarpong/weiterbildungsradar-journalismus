@@ -17,3 +17,7 @@ Der Katalog mit 1’352 Stable-Offer-IDs bleibt unverändert. `offer-search-view
 **Nächste echte Baustellen:** Validierung des vollständigen Datenvertrags gegen massive neue Provider-Batches mit unterschiedlichen Tarifen und Orts-/Variantenfamilien; Import-Performance und externe Quellevidence; normalisierte Quellstruktur für ältere Einträge nur dann, wenn echte Suchfunktionen die Felder brauchen. Gehostetes E5/G3 separat freizugeben, kein stiller Merge.
 
 **Wichtige Grenze:** Es ist eine typisierte *Sicht*, keine nachträglich bewiesene Website-Gold-Normalisierung aller alten 1’352 Offers. 1352 UNKNOWN-CH-Access bei Altangeboten ist konservativer Stand im strukturierten Modell, **nicht** eine Behauptung, dass die Teilnahme tatsächlich unmöglich sei.
+
+## Separater Scale- und Browsernachweis
+
+Der 250er-Batch-Test verwendet ausschliesslich synthetische Offer-IDs, aber das vollständige Import-/Preis-/Datum-/Zugangsmodell. Er prüft 250/250 exklusive IDs, 250 eindeutige Occurrences, die typisierte Sicht, Duplikatverweigerung und harte Batchobergrenze. Die integrierte Browserregression testet CH-Zugangsfilter (Alt-1352 = UNKNOWN, nicht bestätigte YES), URL-Zustand, Reset, leere/verifizierte Ortsfacetten und natürlichsprachliche CH-Zugangsabfragen. Keine dieser Tests ist eine neue fachliche Primärquellenabnahme.

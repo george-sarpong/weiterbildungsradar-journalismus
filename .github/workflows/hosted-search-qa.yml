@@ -62,6 +62,8 @@ jobs:
         run: node tests/b3-mass-import-contract-20261105.test.cjs
       - name: Verify B4 1352 typed read-only view, CH access and venue facets
         run: node tests/b4-typed-view-20261105.test.cjs
+      - name: Verify B4 scale 250 unique researcher records into the typed site model
+        run: node tests/b4-250-batch-scale-20261105.test.cjs
       - name: Verify B2 Dawan InDesign four source-confirmed FOAD sessions
         run: node tests/b2-dawan-indesign-20261104.test.cjs
       - name: Verify B2 bulk Dawan 12 offers and 17 confirmed FOAD session dates
