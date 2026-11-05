@@ -28,8 +28,19 @@ for(const [id,regular,journalist] of [
      &&x.taxMode==="UNSPECIFIED"&&x.components.length===0));
  assert.ok(offer.priceDisplay.includes(String(regular).replace(/\B(?=(\d{3})+(?!\d))/g,"'"))
        ||offer.priceDisplay.includes(String(regular)));
- assert.ok(p.delivery.evidenceTier!=="VERIFIED",
-     "Price proof must not promote delivery source Gold");
+ if(id==="OFFER-MAZ-077"){
+   assert.notEqual(p.delivery.evidenceTier,"VERIFIED",
+       "MAZ077 price proof alone does not prove mode");
+ } else {
+   assert.equal(p.delivery.evidenceTier,"VERIFIED",
+       "MAZ100 independently sourced exact NZZ in-person event mode");
+   assert.equal(p.delivery.structure,"SINGLE_CHANNEL");
+   assert.deepEqual(p.delivery.channels,["IN_PERSON"]);
+   assert.equal(p.delivery.variants[0].temporalMode,"SYNCHRONOUS");
+   assert.equal(p.delivery.variants[0].scheduleMode,"FIXED");
+   assert.ok(p.delivery.sourceText.includes("NZZ, Falkenstrasse 11"));
+   assert.ok(p.delivery.materialisationStatus.includes("TAX_SEAT_CURRENTNESS_HOLD"));
+ }
  assert.ok(!offer.publicationStatus || offer.publicationStatus!=="HOLD");
 }
 assert.equal(side.byId["OFFER-MAZ-080"].priceEligible,false,
