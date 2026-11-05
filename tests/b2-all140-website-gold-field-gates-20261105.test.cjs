@@ -85,7 +85,7 @@ assert.equal(matrix.data.filter(x=>x.venue_data_state==="NOT_PUBLISHED").length,
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="MULTIPLE_OPTIONS_OR_AMBIGUOUS").length,39);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="REMOTE_ONLY_DISPLAY_NOT_OCCURRENCE_GOLD").length,37);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="SINGLE_DISPLAY_LOCATION_UNPROVEN").length,32);
-assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,76);
+assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,75);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("OWNER_SCOPE_REVIEW")).length,10);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD")).length,18);
 assert.ok(!get("OFFER-MAZ-146").field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
@@ -382,8 +382,23 @@ for(const [id,p] of Object.entries(exactOnsite)){
 }
 assert.ok(get("V77-04").field_gap_tags.includes("VENUE_FORMAT_SESSION_CROSSWALK"));
 assert.ok(side.byId["V77-04"].delivery.sourceText.includes("4 months old"));
+const mazKi=get("OFFER-MAZ-100"),mazKiSide=side.byId["OFFER-MAZ-100"],mazKiQueue=backlog.data.find(x=>x.offer_id==="OFFER-MAZ-100");
+assert.equal(mazKi.delivery_evidence_tier,"VERIFIED");
+assert.equal(mazKi.catalogue_region,"NZZ, Falkenstrasse 11, 8008 Zürich");
+assert.equal(mazKiSide.delivery.structure,"SINGLE_CHANNEL");
+assert.deepEqual(mazKiSide.delivery.channels,["IN_PERSON"]);
+assert.equal(mazKiSide.delivery.variants[0].temporalMode,"SYNCHRONOUS");
+assert.equal(mazKiSide.delivery.variants[0].scheduleMode,"FIXED");
+assert.ok(mazKiSide.delivery.sourceText.includes("Falkenstrasse 11"));
+assert.deepEqual(mazKiSide.priceOptions.map(p=>p.amount),[380,290]);
+assert.equal(mazKiSide.priceOptions[1].tariffClass,"CONDITIONAL");
+assert.ok(mazKi.field_gap_tags.includes("CURRENTNESS_REVIEW_DUE"));
+assert.ok(!mazKi.field_gap_tags.includes("DELIVERY_NOT_VERIFIED"));
+assert.equal(mazKi.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
+assert.equal(mazKiQueue.unresolved_field_gaps,mazKi.field_gap_tags);
+assert.equal(mazKiQueue.delivery_tier,"VERIFIED");
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
  all:140,sourceBounded:139,sourcePending:1,numericEligible:107,
  priceGap:33,venueUnpublished:32,venueAmbiguous:51,
- deliveryUnverified:76,ownerScopeFlags:10,publicationApproved:0
+ deliveryUnverified:75,ownerScopeFlags:10,publicationApproved:0
 }));
