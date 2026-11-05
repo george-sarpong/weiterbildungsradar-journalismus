@@ -92,7 +92,7 @@ assert.ok(matrix.data.filter(x=>x.venue_data_state==="OWNER_CONFIRMED_CITY_LUZER
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="MULTIPLE_OPTIONS_OR_AMBIGUOUS").length,39);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="REMOTE_ONLY_DISPLAY_NOT_OCCURRENCE_GOLD").length,37);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="SINGLE_DISPLAY_LOCATION_UNPROVEN").length,32);
-assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,61);
+assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,58);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("OWNER_SCOPE_REVIEW")).length,10);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD")).length,18);
 assert.ok(!get("OFFER-MAZ-146").field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
@@ -404,7 +404,7 @@ assert.ok(!mazKi.field_gap_tags.includes("DELIVERY_NOT_VERIFIED"));
 assert.equal(mazKi.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
 assert.equal(mazKiQueue.unresolved_field_gaps,mazKi.field_gap_tags);
 assert.equal(mazKiQueue.delivery_tier,"VERIFIED");
-for(const id of ["V82-DAWAN-020","V82-DAWAN-050"]){
+for(const id of ["V82-DAWAN-050"]){
  const row=get(id),sc=side.byId[id],q=backlog.data.find(x=>x.offer_id===id);
  assert.ok(row&&sc&&q);
  assert.equal(row.delivery_evidence_tier,"PROVISIONAL");
@@ -480,15 +480,39 @@ assert.ok(get("CAD-026").source_decision.includes("HOLD_2026_11_25_EDITION_NOT_P
 assert.ok(side.byId["AT-PROD-OFFER-022"].delivery.sourceText.includes("NOT choice"));
 
 
+
+// EVT238: historical EVT237 ledger is immutable, later exact provider sources are successor updates.
+for(const id of ["PCC-P11","PCC-P19","V82-DAWAN-020"]){
+ const r=get(id),sc=side.byId[id],q=backlog.data.find(x=>x.offer_id===id);
+ assert.equal(sc.delivery.evidenceTier,"VERIFIED",id+" source-supported course teaching choice");
+ assert.equal(sc.delivery.structure,"MODE_CHOICE");
+ assert.deepEqual(sc.delivery.channels,["REMOTE","IN_PERSON"]);
+ assert.equal(sc.delivery.variants.length,2);
+ assert.ok(sc.delivery.sourceText.includes(r.catalogue_source_url));
+ assert.ok(sc.delivery.materialisationStatus.includes("_HOLD"));
+ assert.equal(r.delivery_evidence_tier,"VERIFIED");
+ assert.equal(r.delivery_variant_count,"2");
+ assert.ok(!r.field_gap_tags.includes("DELIVERY_NOT_VERIFIED"));
+ assert.equal(q.unresolved_field_gaps,r.field_gap_tags);
+ assert.equal(q.delivery_tier,"VERIFIED");
+ assert.equal(r.website_gold_gate,"NOT_PROVEN");
+ assert.equal(r.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
+}
+assert.ok(side.byId["V82-DAWAN-020"].delivery.sourceText.includes("AUD102205-F"));
+assert.equal(side.byId["V82-DAWAN-020"].priceEligible,false);
+assert.equal(side.byId["V82-DAWAN-020"].priceOptions.length,0);
+assert.equal(get("PCC-P19").source_decision,freeze.data.find(x=>x.offer_id==="PCC-P19")?.source_decision||get("PCC-P19").source_decision);
+
 const original63=rows("docs/b2/evt237-all63-parallel-delivery-source-review-20261105.tsv");
 assert.equal(original63.header.length,27);
 assert.equal(original63.data.length,63);
 assert.equal(new Set(original63.data.map(x=>x.offer_id)).size,63);
 const delta237=new Set(["CAD-026","AT-PROD-OFFER-022"]);
 assert.deepEqual(new Set(original63.data.filter(x=>x.review_disposition==="FIELD_DELTA_PROVEN").map(x=>x.offer_id)),delta237);
+const delta238=new Set(["PCC-P11","PCC-P19","V82-DAWAN-020"]);
 const dueCurrentlyNotVerified=new Set(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").map(x=>x.offer_id));
-assert.equal(dueCurrentlyNotVerified.size,61);
-assert.deepEqual(new Set([...dueCurrentlyNotVerified,...delta237]),new Set(original63.data.map(x=>x.offer_id)));
+assert.equal(dueCurrentlyNotVerified.size,58);
+assert.deepEqual(new Set([...dueCurrentlyNotVerified,...delta237,...delta238]),new Set(original63.data.map(x=>x.offer_id)));
 const original63Groups=original63.data.reduce((o,x)=>((o[x.source_cohort]=(o[x.source_cohort]||0)+1),o),{});
 assert.deepEqual(original63Groups,{
  CH_CFJM:11,CH_MAZ:20,CH_PCC:7,CH_HELIAS_SYNDICOM:2,CH_DAWAN:10,
@@ -501,9 +525,17 @@ for(const x of original63.data) {
  assert.equal(x.provider,row.provider);
  assert.equal(x.title,row.catalogue_title);
  assert.equal(x.canonical_primary_url,row.catalogue_source_url);
- assert.equal(x.current_delivery_tier_evt237,row.delivery_evidence_tier);
- assert.equal(x.delivery_variant_count,String(sc.delivery.variants.length));
- assert.equal(x.full_field_gaps,row.field_gap_tags);
+ if(!delta238.has(x.offer_id)) {
+  assert.equal(x.current_delivery_tier_evt237,row.delivery_evidence_tier);
+  assert.equal(x.delivery_variant_count,String(sc.delivery.variants.length));
+  assert.equal(x.full_field_gaps,row.field_gap_tags);
+ } else {
+  assert.notEqual(x.current_delivery_tier_evt237,"VERIFIED");
+  assert.equal(row.delivery_evidence_tier,"VERIFIED");
+  assert.equal(sc.delivery.variants.length,2);
+  assert.ok(!row.field_gap_tags.includes("DELIVERY_NOT_VERIFIED"));
+  assert.ok(x.full_field_gaps.includes("DELIVERY_NOT_VERIFIED"));
+ }
  assert.equal(x.venue_evidence_state,row.venue_data_state);
  assert.equal(x.price_parser_eligible,String(sc.priceEligible));
  assert.equal(x.booking_gate,"NOT_PROVEN_FOR_INDIVIDUAL_SEAT");
@@ -525,5 +557,5 @@ for(const x of original63.data) {
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
  all:140,sourceBounded:139,sourcePending:1,numericEligible:107,
  priceGap:33,venueUnpublishedInCanonical:32,ownerConfirmedCityLuzern:20,venueCityUnassigned:12,venueAmbiguous:51,
- deliveryUnverified:61,ownerScopeFlags:10,publicationApproved:0
+ deliveryUnverified:58,ownerScopeFlags:10,publicationApproved:0
 }));
