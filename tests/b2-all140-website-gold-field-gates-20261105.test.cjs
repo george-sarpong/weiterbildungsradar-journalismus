@@ -90,7 +90,7 @@ assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("OWNER_SCOPE_REVIEW
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD")).length,18);
 assert.ok(!get("OFFER-MAZ-146").field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
 assert.ok(!get("OFFER-MAZ-163").field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
-assert.ok(get("OFFER-CFJM-018").source_recheck_state.includes("INDEX"));
+assert.equal(get("OFFER-CFJM-018").source_recheck_state,"PRIMARY_PROVIDER_CATALOG_EXACT_DATE_TITLE");
 assert.ok(get("PCC-P41").source_decision.includes("HOLD_EXACT_COURSE_CODE"));
 assert.ok(get("PCC-P31").source_decision.includes("HOLD_PSF_VS_PS3_ALIAS"));
 assert.ok(get("V78-04").source_decision.includes("HOLD_DURATION_SOURCE_CONFLICT"));
