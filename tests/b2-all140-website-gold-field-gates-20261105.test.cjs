@@ -85,7 +85,7 @@ assert.equal(matrix.data.filter(x=>x.venue_data_state==="NOT_PUBLISHED").length,
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="MULTIPLE_OPTIONS_OR_AMBIGUOUS").length,39);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="REMOTE_ONLY_DISPLAY_NOT_OCCURRENCE_GOLD").length,37);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="SINGLE_DISPLAY_LOCATION_UNPROVEN").length,32);
-assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,111);
+assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,107);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("OWNER_SCOPE_REVIEW")).length,10);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD")).length,18);
 assert.ok(!get("OFFER-MAZ-146").field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
@@ -134,8 +134,22 @@ for(const id of corrected){
   assert.equal(live.priceOptions[0].taxMode,"EXCLUDED");
  }
 }
+const djaGuardIds=["OFFER-DJA-003","OFFER-DJA-005","OFFER-DJA-009","OFFER-DJA-012"];
+for(const id of djaGuardIds){
+ const row=get(id),delivery=side.byId[id]?.delivery;
+ assert.equal(row.delivery_evidence_tier,"VERIFIED",id+" delivery evidence source");
+ assert.equal(row.delivery_variant_count,"1",id+" single remote mode");
+ assert.ok(!row.field_gap_tags.includes("DELIVERY_NOT_VERIFIED"),id+" delivery gap removed");
+ assert.ok(row.field_gap_tags.includes("BOOKING_OR_INTAKE_NOT_PROVEN"),id+" intake hold persists");
+ assert.equal(row.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
+ assert.equal(delivery.structure,"SINGLE_CHANNEL");
+ assert.deepEqual(delivery.channels,["REMOTE"]);
+ assert.equal(delivery.variants[0].temporalMode,"ASYNCHRONOUS");
+ assert.equal(delivery.variants[0].scheduleMode,"FIXED");
+ assert.ok(delivery.materialisationStatus.includes("INTAKE_HOLD"));
+}
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
  all:140,sourceBounded:139,sourcePending:1,numericEligible:98,
  priceGap:42,venueUnpublished:32,venueAmbiguous:51,
- deliveryUnverified:111,ownerScopeFlags:10,publicationApproved:0
+ deliveryUnverified:107,ownerScopeFlags:10,publicationApproved:0
 }));
