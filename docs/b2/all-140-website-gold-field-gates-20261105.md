@@ -29,7 +29,7 @@ Der Nutzer verlangte ausdrücklich, **alle 140 Fälle gleichzeitig**, nicht weit
 | Ausschliesslich online im Katalog gekennzeichnet | 37 | nicht mit hybrider / mehreren Standorten gleichsetzen |
 | Mehrere Orts- oder Formatoptionen im Katalog | 39 | echte Edition/Variante nötig, kein willkürlich gewählter Standort |
 | Ein einzelner angegebener Ort | 32 | Angabe im Katalog ≠ erneuter unabhängiger Veranstaltungsortbeweis |
-| Nicht source-verifiziertes Delivery-Modell | 105 | Semantik/Durchführung muss getrennt vom Anbieter-Sitz belegt werden |
+| Nicht source-verifiziertes Delivery-Modell | 98 | Semantik/Durchführung muss getrennt vom Anbieter-Sitz belegt werden |
 | Präzise Owner-Scope-Signale | 10 | redaktionell/journalistisch vs. PR/Marketing/IT prüfen |
 | Offene Quellenversion-/Alias-/Dauer-Guards | 18 | konfliktbehaftete Fälle, **ohne** zwei falsch-positive Hold-Markierungen |
 | `reviewAfter` am 05.11.2026 fällig | 140 | nicht automatisch auf ein neues Datum verschieben |
@@ -136,3 +136,21 @@ Am 05.11.2026 wurden vier bestehende Angebote in einem Guarded-Write auf dem PR1
 - **`OFFER-MAZ-151`**: CHF 990 Normalpreis / CHF 650 Journalist:innenpreis, die zweite Stufe nur mit Berufsberechtigung. Anbieter: https://www.maz.ch/kurs/sichtbarkeit-und-reichweite-im-ki-zeitalter-j . **OWNER_SCOPE_REVIEW bleibt explizit offen**, weil Kurszielgruppe primär Kommunikations- und Content-Marketing-Funktionen nennt, redaktionelle Nutzung zwar möglich ist, aber keine pauschale journalistische Einstufung ohne Entscheid erteilt wird.
 
 Nach dem Batch sind **106/140** Sidecars numerisch preisfilterfähig, **34/140** Preis-Gaps und **105/140** nicht vollständig source-verifizierte Delivery-Modelle offen. 18 Source-Version-/Alias-Holds und 10 Owner-Scope-Gates unverändert. Die Regression kontrolliert die vier Preisprofile, ITTA/CAD-Modellvarianten, die optionale CHF150-Zertifizierung und den offenen MAZ-Scope-Gate. Gültige Tarifstruktur oder modellierter Kursmodus ist keine individualisierte Buchungs- oder Website-Gold-Freigabe. Keine E4/E5/G3/Owner-/Hosted-Release-Abnahme.
+
+## EVT225 – sieben DJA-Lehrgänge: tatsächliche Online-Lernform verifiziert
+
+Das Anbieterprogramm der Deutschen Journalisten-Akademie nennt bei **sieben weiteren exakt benannten und bereits eingefrorenen Angeboten** 100 % Onlineunterricht, videobasiertes und schriftliches Selbststudium, Online-Prüfungen und individuelles Lerntempo. Jeweils nur das **Unterrichtsmodell**, nicht die aktuell offene Einschreibung oder der Zugang zum Online-Campus, wurde als `VERIFIED` klassifiziert. Die Lehrgänge behalten die `FIXED`-Aufnahmecharakteristik: Selbstlernen heisst nicht jederzeit buchen.
+
+| Offer | Offizieller Einzelnachweis |
+|---|---|
+| `OFFER-DJA-002` Blogging | https://deutschejournalistenakademie.de/lehrgang/blogging/ |
+| `OFFER-DJA-004` Unternehmerischer Journalismus | https://deutschejournalistenakademie.de/lehrgang/unternehmerischer-journalismus/ |
+| `OFFER-DJA-006` Konstruktiver Journalismus | https://deutschejournalistenakademie.de/lehrgang/konstruktiver-journalismus/ |
+| `OFFER-DJA-007` Mobiler Journalismus | https://deutschejournalistenakademie.de/lehrgang/mobiler-journalismus/ |
+| `OFFER-DJA-008` Auslandsberichterstattung | https://deutschejournalistenakademie.de/lehrgang/auslandsberichterstattung/ |
+| `OFFER-DJA-010` Digitaler Journalismus | https://deutschejournalistenakademie.de/lehrgang/digitaler-journalismus/ |
+| `OFFER-DJA-022` Wissenschaftsjournalismus | https://deutschejournalistenakademie.de/lehrgang/wissenschaftsjournalismus/ |
+
+Bei `DJA-007` steht offiziell **«Demnächst!»** statt einer nachgewiesen geöffneten Anmeldung. Einzelne andere DJA-Seiten zeigen alte 2026-Bewerbungsfenster. Das Anbieter-Online-Campus-Störungsereignis vom 22.10.2026 wurde noch nicht als definitiv behoben bestätigt. Folglich bleiben `BOOKING_OR_INTAKE_NOT_PROVEN`, `CURRENTNESS_REVIEW_DUE`, `REMOTE_CHANNEL_SEAT_NOT_PROVEN` und nicht gesicherte Schweizer Endpreise in allen sieben Fällen unverändert offen. 0 automatische Neuaufnahmen oder Gold-Freigaben.
+
+Die beiden existierenden B2-Matrix-/Backlog-Dateien und zwei Regressionsdateien wurden nach genau sieben Source/Old-Value-gesicherten Sidecar-Writes synchronisiert. 140 Offer-IDs und 1'352 Sidecars bleiben konstant; numerische Preisfelder **106** und Preis-Gaps **34** unverändert; Delivery ohne Full Source Verification nun **98** (zuvor 105). Globaler Sidecar-Tier-Counter: VERIFIED 167 / PROVISIONAL 399 / UNKNOWN 786. Tests prüfen die exakten sieben IDs und alle offenen Admission-Gates. Neue externe Red-Team-/Hosted-E5-/G3-/Owner-Freigaben: 0.
