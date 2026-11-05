@@ -85,7 +85,7 @@ assert.equal(matrix.data.filter(x=>x.venue_data_state==="NOT_PUBLISHED").length,
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="MULTIPLE_OPTIONS_OR_AMBIGUOUS").length,39);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="REMOTE_ONLY_DISPLAY_NOT_OCCURRENCE_GOLD").length,37);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="SINGLE_DISPLAY_LOCATION_UNPROVEN").length,32);
-assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,79);
+assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,76);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("OWNER_SCOPE_REVIEW")).length,10);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD")).length,18);
 assert.ok(!get("OFFER-MAZ-146").field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
@@ -359,8 +359,31 @@ assert.equal(vsmRow.website_gold_gate,"NOT_PROVEN");
 assert.equal(vsmRow.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
 assert.equal(vsmQueue.delivery_tier,"VERIFIED");
 assert.equal(vsmQueue.unresolved_field_gaps,vsmRow.field_gap_tags);
+const exactOnsite={"V59-SZ01":{"price":700,"date":"17.11.2026"},"V59-SZ04":{"price":640,"date":"10.11.2026"},"V77-04":{"price":689,"date":"20.11.2026"}};
+for(const [id,p] of Object.entries(exactOnsite)){
+ const row=get(id),sc=side.byId[id],q=backlog.data.find(x=>x.offer_id===id);
+ assert.equal(row.delivery_evidence_tier,"VERIFIED",id+" onsite tier");
+ assert.equal(row.structured_numeric_price_eligible,"true");
+ assert.equal(sc.priceOptions.length,1);
+ assert.equal(sc.priceOptions[0].amount,p.price);
+ assert.equal(sc.delivery.structure,"SINGLE_CHANNEL");
+ assert.deepEqual(sc.delivery.channels,["IN_PERSON"]);
+ assert.equal(sc.delivery.variants.length,1);
+ assert.deepEqual(sc.delivery.variants[0].attendanceChannels,["IN_PERSON"]);
+ assert.equal(sc.delivery.variants[0].temporalMode,"SYNCHRONOUS");
+ assert.equal(sc.delivery.variants[0].scheduleMode,"FIXED");
+ assert.ok(sc.delivery.sourceText.includes(p.date));
+ assert.ok(sc.delivery.materialisationStatus.includes("_HOLD"));
+ assert.ok(!row.field_gap_tags.includes("DELIVERY_NOT_VERIFIED"));
+ assert.ok(row.field_gap_tags.includes("CURRENTNESS_REVIEW_DUE"));
+ assert.equal(row.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
+ assert.equal(q.delivery_tier,"VERIFIED");
+ assert.equal(q.unresolved_field_gaps,row.field_gap_tags);
+}
+assert.ok(get("V77-04").field_gap_tags.includes("VENUE_FORMAT_SESSION_CROSSWALK"));
+assert.ok(side.byId["V77-04"].delivery.sourceText.includes("4 months old"));
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
  all:140,sourceBounded:139,sourcePending:1,numericEligible:107,
  priceGap:33,venueUnpublished:32,venueAmbiguous:51,
- deliveryUnverified:79,ownerScopeFlags:10,publicationApproved:0
+ deliveryUnverified:76,ownerScopeFlags:10,publicationApproved:0
 }));
