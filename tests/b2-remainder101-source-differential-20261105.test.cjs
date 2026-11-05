@@ -41,9 +41,9 @@ for(const r of actual){
 assert.deepEqual(byLane,{R01_DJA:21,R02_RUNNING:11,R03_JOURNALISM_LATER:9,R04_PCC_LATER:15,R05_TECH_LATER:26,R06_SINGLE_LATER:9,R07_UNDATED:10});
 const partial=actual.filter(x=>x.recheck_state.startsWith("PRIMARY_"));
 const pending=actual.filter(x=>x.recheck_state==="PENDING_FRESH_FIELD_PROOF");
-assert.equal(partial.length,92);
-assert.equal(pending.length,9);
-assert.deepEqual(pendingByLane,{R04_PCC_LATER:2,R05_TECH_LATER:7});
+assert.equal(partial.length,95);
+assert.equal(pending.length,6);
+assert.deepEqual(pendingByLane,{R04_PCC_LATER:2,R05_TECH_LATER:4});
 const get=id=>actual.find(x=>x.offer_id===id);
 assert.ok(get("OFFER-CFJM-013").decision.includes("HOLD_2027_04_15_EDITION_NOT_SOURCE_PROVEN"));
 assert.ok(get("OFFER-CFJM-005").decision.includes("HOLD_2027_03_01"));
@@ -53,10 +53,13 @@ assert.ok(get("PCC-P09").decision.includes("HOLD_2026_11_26_EDITION_FRESHNESS"))
 assert.ok(get("PCC-P20").decision.includes("HOLD_PDL_PSI_ALIAS_CROSSWALK"));
 assert.ok(get("LI-REG-003").decision.includes("HOLD_EXACT_EMPLOYMENT_ACCESS"));
 assert.ok(actual.filter(x=>x.lane==="R01_DJA").every(x=>x.decision.includes("HOLD_")));
-assert.deepEqual(pending.map(x=>x.offer_id),["PCC-P29","PCC-P31","MW-P06","V77-04","V78-04","V82-DAWAN-027","V82-DAWAN-028","V82-DAWAN-037","V82-DAWAN-100"]);
+assert.deepEqual(pending.map(x=>x.offer_id),["PCC-P29","PCC-P31","MW-P06","V77-04","V78-04","V82-DAWAN-037"]);
 assert.ok(get("IF-G08").decision.includes("2026_SOLD_OUT"));
 assert.ok(get("V78-01").decision.includes("HOLD_DURATION_SOURCE_CONFLICT"));
 assert.ok(get("V78-03").decision.includes("HOLD_DURATION_SOURCE_CONFLICT"));
 assert.ok(get("CAD-025").decision.includes("CAF_ELIGIBILITY"));
 assert.ok(get("V82-DAWAN-029").decision.includes("HOLD_TARIFF_SCOPE"));
-console.log("B2_REMAINDER101_SOURCE_DIFFERENTIAL_PASS",JSON.stringify({total:101,sourcePartial:92,pending:9,byLane,partialByLane,pendingByLane,publicationChanges:0}));
+assert.ok(get("V82-DAWAN-100").decision.includes("HOLD_CANONICAL_CITY_VS_REMOTE_OCCURRENCE"));
+assert.ok(get("V82-DAWAN-027").source_verified_fields.includes("FOAD_remote"));
+assert.ok(get("V82-DAWAN-028").source_verified_fields.includes("FOAD_remote"));
+console.log("B2_REMAINDER101_SOURCE_DIFFERENTIAL_PASS",JSON.stringify({total:101,sourcePartial:95,pending:6,byLane,partialByLane,pendingByLane,publicationChanges:0}));
