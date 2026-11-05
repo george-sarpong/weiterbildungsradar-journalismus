@@ -18,6 +18,10 @@ Der Katalog mit 1’352 Stable-Offer-IDs bleibt unverändert. `offer-search-view
 
 **Wichtige Grenze:** Es ist eine typisierte *Sicht*, keine nachträglich bewiesene Website-Gold-Normalisierung aller alten 1’352 Offers. 1352 UNKNOWN-CH-Access bei Altangeboten ist konservativer Stand im strukturierten Modell, **nicht** eine Behauptung, dass die Teilnahme tatsächlich unmöglich sei.
 
+## Korrigierte Import-Schutzgrenzen (B4-Drift-Review)
+
+Der registrierte Anbieterstandort ist niemals Ersatz für einen quellenbelegten physischen Kursort. Online-, Selbstlern- und undatierte Ausgaben ohne physischen Veranstaltungsort tragen `deliveryCountry=null`, klassisches Ortsland `Nicht publiziert` und weiterhin ein separates `providerCountry`. Für gemischte Anbieter-/Durchführungsstaaten entscheidet allein ein belegter `IN_PERSON`-Kursort. `ON_REQUEST` oder `NOT_PUBLISHED` ist kein numerisch berechenbarer Preis und wird nicht als `priceEligible` markiert. Selbst vollständig quellengeprüfte neue Batch-Angebote werden beim lokalen Import zuerst mit `publicationStatus=HOLD` angelegt; Quellenprüfung ist keine E4/E5- oder Owner-Publikationsfreigabe. Ein separater Owner-/Release-Vorgang ist Voraussetzung jeder öffentlichen Sichtbarkeit.
+
 ## Separater Scale- und Browsernachweis
 
 Der 250er-Batch-Test verwendet ausschliesslich synthetische Offer-IDs, aber das vollständige Import-/Preis-/Datum-/Zugangsmodell. Er prüft 250/250 exklusive IDs, 250 eindeutige Occurrences, die typisierte Sicht, Duplikatverweigerung und harte Batchobergrenze. Die integrierte Browserregression testet CH-Zugangsfilter (Alt-1352 = UNKNOWN, nicht bestätigte YES), URL-Zustand, Reset, leere/verifizierte Ortsfacetten und natürlichsprachliche CH-Zugangsabfragen. Keine dieser Tests ist eine neue fachliche Primärquellenabnahme.
