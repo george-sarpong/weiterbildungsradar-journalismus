@@ -436,7 +436,8 @@ for (const id of pccBatch236) {
  assert.equal(sc.delivery.variants.length,2);
  assert.equal(sc.delivery.variants[0].temporalMode,"SYNCHRONOUS");
  assert.equal(sc.delivery.variants[1].scheduleMode,"FIXED");
- assert.ok(sc.delivery.sourceText.includes("Official exact course") && sc.delivery.sourceText.includes("not the modality, room, booking status or seat"));
+ assert.ok(sc.delivery.sourceText.includes("Official exact course") && sc.delivery.sourceText.includes("not the modality, room, booking status or seat") && sc.delivery.sourceText.includes(row.catalogue_source_url));
+ assert.ok(sc.delivery.variants.every(v=>v.instructionFormats.length===0));
  assert.ok(sc.delivery.materialisationStatus.includes("CH_FEE_SEAT_CURRENTNESS_HOLD"));
  assert.equal(row.delivery_evidence_tier,"VERIFIED");
  assert.equal(row.delivery_variant_count,"2");
