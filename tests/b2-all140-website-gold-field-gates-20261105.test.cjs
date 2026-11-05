@@ -272,6 +272,29 @@ for(const id of microwinExtra){
 }
 assert.ok(side.byId["MW-P09"].delivery.sourceText.includes("Flash/DHTML"),"WEBDA syllabus currentness flag required");
 assert.ok(side.byId["MW-P07"].delivery.sourceText.includes("INDF not INDE"),"Microwin exact course code identity");
+const nextDawanFOADIds=["V82-DAWAN-027","V82-DAWAN-028","V82-DAWAN-046","V82-DAWAN-100"];
+for(const id of nextDawanFOADIds){
+ const row=get(id),sc=side.byId[id],q=backlog.data.find(x=>x.offer_id===id);
+ assert.ok(row&&sc&&q,id+" missing frozen cross-reference");
+ assert.equal(row.delivery_evidence_tier,"PROVISIONAL",id+" source-backed whole offer provisional");
+ assert.equal(row.delivery_variant_count,"1",id+" exact one observed remote cohort");
+ assert.equal(q.delivery_tier,"PROVISIONAL",id+" queue synchronised");
+ assert.equal(q.unresolved_field_gaps,row.field_gap_tags,id+" unresolved field parity");
+ assert.ok(row.field_gap_tags.includes("DELIVERY_NOT_VERIFIED"),id+" in-person still not verified");
+ assert.ok(row.field_gap_tags.includes("CURRENTNESS_REVIEW_DUE"),id+" currentness gate retained");
+ assert.equal(sc.priceEligible,false);
+ assert.equal(sc.priceOptions.length,0);
+ assert.deepEqual(sc.delivery.channels,["REMOTE","IN_PERSON"]);
+ assert.equal(sc.delivery.variants.length,1);
+ assert.deepEqual(sc.delivery.variants[0].attendanceChannels,["REMOTE"]);
+ assert.equal(sc.delivery.variants[0].temporalMode,"SYNCHRONOUS");
+ assert.equal(sc.delivery.variants[0].scheduleMode,"FIXED");
+ assert.ok(sc.delivery.sourceText.includes("dawan.ch/sessions-confirmees"));
+ assert.ok(sc.delivery.materialisationStatus.includes("INPERSON_VARIANT_UNRESOLVED"));
+ assert.equal(row.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
+}
+assert.ok(side.byId["V82-DAWAN-027"].delivery.materialisationStatus.includes("SOURCE_VERSION_DIFFERENTIAL_HOLD"));
+assert.ok(side.byId["V82-DAWAN-100"].delivery.materialisationStatus.includes("CANONICAL_CITY_VS_REMOTE_HOLD"));
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
  all:140,sourceBounded:139,sourcePending:1,numericEligible:106,
  priceGap:34,venueUnpublished:32,venueAmbiguous:51,
