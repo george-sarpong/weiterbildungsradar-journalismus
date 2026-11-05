@@ -201,3 +201,15 @@ Die vier Sidecars, Matrix-/Backlog-Zeilen und beiden Regressionsdateien wurden a
 | `V82-DAWAN-100` WordPress Initiation | 30.11.–02.12.2026, Distanz | Bisheriger kanonischer Ortswert Genève ist **kein** Nachweis für den Raum der belegten Online-Durchführung; kein stiller Ortsersatz |
 
 Zustand: 1352 Sidecars, vier neue `PROVISIONAL` statt `UNKNOWN`; VERIFIED **181**, PROVISIONAL **403**, UNKNOWN **768**. 140er Kohorte **106** numerisch budgetfähig, **34** Preis-Gaps, **84** auf Offer-Niveau nicht `VERIFIED` (die vier bleiben darin), 18 Source-Guards, 10 Scope-Signale, 0 neue Website-Gold/Owner/Release. Eingefrorene Quellendifferentiale, `data.js`, kalendarische Originaldaten und alle `DELIVERY_NOT_VERIFIED`-Gaps unverändert. Die Tests prüfen vier konkrete ID/FOAD/PROVISIONAL/HOLD-Kombinationen und den globalen Tier-Snapshot.
+
+## EVT229 – Drei echte Kursraumdurchführungen quellenbelegt
+
+Nach EVT228 wurden genau die drei bereits vorhandenen Datensätze `IF-G06`, `V58-S1-04` und `V58-S1-07` gegen ihre offiziellen Kurs-/Anmeldeseiten abgeglichen. Unterrichtsmodell je **eine separate ausschliessliche Präsenzvariante**, `SINGLE_CHANNEL`, `IN_PERSON`, `SYNCHRONOUS`, `FIXED`; drei Sidecars **PROVISIONAL → VERIFIED** nur im Fachfeld Delivery. Ihre bereits korrekt strukturierten CHF-Preiswerte wurden nicht verändert.
+
+| ID | Anbieterbeleg für Termin und tatsächlichen Unterrichtsort | Offene Schranke |
+|---|---|---|
+| `IF-G06` | [ifage Illustrator](https://www.ifage.ch/formation/tic/formations-cao-dao-pao/illustrator-niveau-1/), Kurs S-03275 an **fünf Abenden** 17., 19., 24. und 26. November sowie 1. Dezember 2026, 18–21 Uhr, **insgesamt 15 Stunden**, Ifage Montbrillant Genf, CHF 620 | kein Kapazitätsversprechen, keine Rechnung/Steuerprüfung, keine Gold-Freigabe |
+| `V58-S1-04` | [Studio 1 DaVinci Resolve](https://www.studioeins.ch/kurse/davinci-resolve/), 8.–10. März 2027, 9–17 Uhr, Wallisellen, CHF 1'690 | ausgebuchter November 2026 (Mac/PC) nicht auf März übertragen; kein Einzelplatzbeleg |
+| `V58-S1-07` | [Studio 1 Smartphone-Videokurs](https://www.studioeins.ch/kurse/video-mit-smartphone/), 8.–10. Februar 2027, 9–17 Uhr, Wallisellen, CHF 1'690 | eigenes Smartphone und Stativ nötig, keine freie-Platz-Garantie |
+
+Stand: 1'352 Sidecars unverändert, 140 eingefrorene IDs; Delivery `VERIFIED` global nun **184**, `PROVISIONAL` **400**, `UNKNOWN` **768**, Summe 1'352. In der 140er Due-Kohorte jetzt **81** nicht `VERIFIED` (zuvor 84). Preise technisch nutzbar **106/140**, offene Preis-Gaps **34** unverändert, Source-Holds **18**, Scope-Signale **10**. Entfernt wurde pro ID ausschliesslich `DELIVERY_NOT_VERIFIED`; der ursprüngliche generelle Ortsklassifikator wurde nicht neu erfunden und aktuelle Sitzplätze und individuelle Buchung bleiben offene Gates. `data.js`, Frozen-Differentiale und Termin-Historie unberührt; keine E4/E5/G3/Owner-Freigaben.
