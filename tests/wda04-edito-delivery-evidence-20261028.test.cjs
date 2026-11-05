@@ -83,7 +83,8 @@ yes(["IF-G08","IF-G12"].every(id=>byId[id]?.delivery?.evidenceTier==="VERIFIED"&
     "Ifage exact in-person source proof missing");
 yes(["MW-P06","V78-01","V78-02","V78-03"].every(id=>byId[id]?.delivery?.evidenceTier==="VERIFIED" && byId[id]?.delivery?.variants?.length===2),"B2 four source-backed delivery successors missing");
 yes(["V78-01","V78-02","V78-03"].every(id=>byId[id]?.delivery?.sourceText?.includes("trois jours") && byId[id]?.delivery?.materialisationStatus==="SOURCE_VERIFIED_PRICE_DELIVERY_DURATION_HOLD"),"ITTA duration-source contradiction must remain a hold");
-yes(tiers.VERIFIED === 154 && tiers.PROVISIONAL === 395 && tiers.UNKNOWN === 803,
+yes(["OFFER-DJA-003","OFFER-DJA-005","OFFER-DJA-009","OFFER-DJA-012"].every(id=>byId[id]?.delivery?.evidenceTier==="VERIFIED" && byId[id]?.delivery?.structure==="SINGLE_CHANNEL" && byId[id]?.delivery?.variants?.[0]?.temporalMode==="ASYNCHRONOUS"),"B2 source-proven DJA online study design missing");
+yes(tiers.VERIFIED === 158 && tiers.PROVISIONAL === 395 && tiers.UNKNOWN === 799,
     "Global evidence tiers outside authorised B2 CAD-005/ifage changes: " + JSON.stringify(tiers));
 console.log("WDA04_EDITO_SOURCE_VERIFIED_4_OF_4_PASS");
 console.log("WDA04_ONLINE_VARIANT_AND_PRICE_GUARDS_PASS");
