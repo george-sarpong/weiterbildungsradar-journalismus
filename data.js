@@ -27124,7 +27124,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
       {
         "startDate": "2026-11-30",
         "endDate": "2026-12-02",
-        "label": "30.11.–02.12.2026 · Dawan FOAD bestätigt; Plätze nicht bestätigt",
+        "label": "30.11.–02.12.2026 · Dawan FOAD gemäss aktueller offizieller Liste 05.11.2026 bestätigt; Plätze nicht bestätigt",
         "region": "ONLINE / Distance"
       },
       {

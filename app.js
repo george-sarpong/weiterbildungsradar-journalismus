@@ -139,6 +139,14 @@
     return Boolean(start && end && start < today && end >= today);
   };
 
+  // A documented expired intake is not an open enrolment, even when tuition
+  // is known and the course remains valuable as a stable programme identity.
+  // Evidence is limited to the 21 DJA families with their own explicit text.
+  const intakeNotConfirmed = offer => String(offer.id || "").startsWith("OFFER-DJA-")
+    && /nächster offener start nicht publiziert/i.test(String(offer.start || ""))
+    && /bewerbungsschluss[^)]*abgelaufen/i.test(String(offer.start || ""));
+  const bookingStatusUnconfirmed = offer => startedButRunning(offer) || intakeNotConfirmed(offer);
+
   // Ausgelaufene Präsenz-Sessions dürfen eine separat belegte, undatierte
   // Selbstlernvariante nicht verbergen. Ohne VERIFIED-Sidecar keine Ausnahme.
   // Dies ist ausschliesslich eine Anzeigeprojektion, kein Schreibzugriff auf data.js.
@@ -1430,6 +1438,7 @@
           ${place ? `<span>${escapeHtml(place)}</span>` : ""}
         </div>
         ${startedButRunning(offer) ? `<p class="smart-budget"><strong>Bereits begonnen:</strong> Eine Neuanmeldung oder ein Späteinstieg ist nicht bestätigt. Bitte direkt beim Anbieter klären.</p>` : ""}
+        ${intakeNotConfirmed(offer) ? `<p class="smart-budget"><strong>Kein neuer offener Start bestätigt:</strong> Der zuletzt publizierte Bewerbungsschluss ist abgelaufen. Nächste Anmeldemöglichkeit beim Anbieter prüfen.</p>` : ""}
         ${item.alternativeReason === "FORMAT"
           ? `<p class="smart-budget"><strong>Ob dieser Kurs in der gewünschten Form stattfindet, ist noch offen.</strong> In unserem Katalog steht: ${escapeHtml(humanizeTokens(offer.format, labels.format))}. Bitte beim Kursanbieter nachfragen.</p>`
           : item.alternativeReason === "PREIS"
@@ -1556,15 +1565,15 @@
     el.smartValidation.textContent = "";
     const formatMatches = offers.map(offer => smartEvaluate(offer, parsed)).filter(Boolean);
     const evaluated = parsed.budget
-      ? formatMatches.filter(item => !startedButRunning(item.offer) && item.budget.status === "DIRECT_FIT")
-      : formatMatches.filter(item => !startedButRunning(item.offer));
+      ? formatMatches.filter(item => !bookingStatusUnconfirmed(item.offer) && item.budget.status === "DIRECT_FIT")
+      : formatMatches.filter(item => !bookingStatusUnconfirmed(item.offer));
     const priceAlternatives = parsed.budget && parsed.tokens.length
-      ? formatMatches.filter(item => !startedButRunning(item.offer)
+      ? formatMatches.filter(item => !bookingStatusUnconfirmed(item.offer)
           && ["TARGET_GROUP_FIT", "CONDITIONAL_FIT", "POSSIBLE_FIT"].includes(item.budget.status))
         .map(item => ({ ...item, isAlternative: true, alternativeReason: "PREIS" }))
       : [];
     const bookingAlternatives = parsed.tokens.length
-      ? formatMatches.filter(item => startedButRunning(item.offer)
+      ? formatMatches.filter(item => bookingStatusUnconfirmed(item.offer)
           && (!parsed.budget || ["DIRECT_FIT", "TARGET_GROUP_FIT", "CONDITIONAL_FIT", "POSSIBLE_FIT"].includes(item.budget.status)))
         .map(item => ({ ...item, isAlternative: true, alternativeReason: "BOOKING" }))
       : [];
