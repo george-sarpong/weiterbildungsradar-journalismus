@@ -92,7 +92,7 @@ assert.ok(matrix.data.filter(x=>x.venue_data_state==="OWNER_CONFIRMED_CITY_LUZER
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="MULTIPLE_OPTIONS_OR_AMBIGUOUS").length,39);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="REMOTE_ONLY_DISPLAY_NOT_OCCURRENCE_GOLD").length,37);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="SINGLE_DISPLAY_LOCATION_UNPROVEN").length,32);
-assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,75);
+assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,65);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("OWNER_SCOPE_REVIEW")).length,10);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD")).length,18);
 assert.ok(!get("OFFER-MAZ-146").field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
@@ -426,8 +426,32 @@ for(const id of ["V82-DAWAN-020","V82-DAWAN-050"]){
  assert.equal(row.website_gold_gate,"NOT_PROVEN");
  assert.equal(row.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
 }
+
+const pccBatch236=["PCC-P40","PCC-P10","PCC-P06","PCC-P01","PCC-P04","PCC-P09","PCC-P39","PCC-P07","PCC-P12","PCC-P30"];
+for (const id of pccBatch236) {
+ const row=get(id),sc=side.byId[id],b=backlog.data.find(r=>r.offer_id===id);
+ assert.equal(sc.delivery.evidenceTier,"VERIFIED",id+" product-level mode evidence");
+ assert.equal(sc.delivery.structure,"MODE_CHOICE");
+ assert.deepEqual(sc.delivery.channels,["REMOTE","IN_PERSON"]);
+ assert.equal(sc.delivery.variants.length,2);
+ assert.equal(sc.delivery.variants[0].temporalMode,"SYNCHRONOUS");
+ assert.equal(sc.delivery.variants[1].scheduleMode,"FIXED");
+ assert.ok(sc.delivery.sourceText.includes("Official exact course") && sc.delivery.sourceText.includes("not the modality, room, booking status or seat"));
+ assert.ok(sc.delivery.materialisationStatus.includes("CH_FEE_SEAT_CURRENTNESS_HOLD"));
+ assert.equal(row.delivery_evidence_tier,"VERIFIED");
+ assert.equal(row.delivery_variant_count,"2");
+ assert.ok(!row.field_gap_tags.includes("DELIVERY_NOT_VERIFIED"));
+ assert.ok(row.field_gap_tags.includes("CH_FINAL_FEE_NOT_PROVEN"));
+ assert.ok(row.field_gap_tags.includes("VENUE_FORMAT_SESSION_CROSSWALK"));
+ assert.equal(row.website_gold_gate,"NOT_PROVEN");
+ assert.equal(row.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
+ assert.equal(b.delivery_tier,"VERIFIED");
+ assert.equal(b.unresolved_field_gaps,row.field_gap_tags);
+ assert.ok(sc.priceOptions.every(p=>p.amountType==="FROM" && p.taxMode==="EXCLUDED"),id+" original from-price untouched");
+}
+
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
  all:140,sourceBounded:139,sourcePending:1,numericEligible:107,
  priceGap:33,venueUnpublishedInCanonical:32,ownerConfirmedCityLuzern:20,venueCityUnassigned:12,venueAmbiguous:51,
- deliveryUnverified:75,ownerScopeFlags:10,publicationApproved:0
+ deliveryUnverified:65,ownerScopeFlags:10,publicationApproved:0
 }));
