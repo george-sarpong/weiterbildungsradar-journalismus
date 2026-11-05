@@ -5,8 +5,8 @@ This is an **offer-ID-level source-recheck staging ledger**, NOT E4/E5/website G
 ## Reconciled population
 - Historical due pool: 140 IDs, decomposed into N01 15 + N02 8 + N03 16 = **39 near-term IDs**, and 101 other IDs.
 - 39/39 IDs copied from `docs/b2/parallel-review-140-20261105.tsv`, with source URL, existing evidence_state and focus_field intact. No retitling or new offer IDs.
-- **29** near-term records contain **partial provider-source observations**, bounded by crawler freshness and still-open booking/edition/scope details. **10** retain `PENDING_FRESH_EDITION_PROOF`. This is not 29/39 E4 PASS and not a claim of 29 material defects.
-- The prior 10 partial / 29 pending state (EVT216), followed by 22 partial / 17 pending, are historical parents; **the current 29 partial / 10 pending state** is governed by the TSV row statuses. N01 15, N02 8 and N03 16 stay exclusive.
+- **36** near-term records contain **partial provider-source observations**, bounded by crawler freshness and still-open booking/edition/scope details. **3** retain `PENDING_FRESH_EDITION_PROOF`. This is not 36/39 E4 PASS and not a claim of 36 material defects.
+- The prior 10 partial / 29 pending state (EVT216), followed by 22 partial / 17 pending and 29 partial / 10 pending, are historical parents; **the current 36 partial / 3 pending state** is governed by the TSV row statuses. N01 15, N02 8 and N03 16 stay exclusive.
 
 ## Material findings and non-findings
 
@@ -66,4 +66,20 @@ The following seven additional cases have bounded **primary provider observation
 - **MW-P08:** Microwin cached course calendar lists 11 Nov 2026, CHF 790, Wallisellen or livestream. The observed crawl is over a year old; it cannot support a *fresh* edition/seat guarantee. https://www.microwin.com/pages/coursedetails/phot.aspx
 - **OFFER-VSM-001:** VSM published 17 Nov, WESTHIVE HARDTURM, Zürich; CHF 250 for nonmembers, CHF 150 for qualifying members/MAZ categories, and a journalist-specific free registration condition. Smart sidecar already has the differentiated tariff classes. Event signup does not guarantee admission. https://www.schweizermedien.ch/events/agenda/2026/2026-11-17-trendtagung-fach-und-spezialmedien-2026/
 
-**Latest 39-ID cohort:** 29 bounded source observations, 10 pending proof. **101 other due IDs** remain in R01–R07 with no automatic change. No new full Offer-Gold claim, no booking OPEN claim, no live publication.
+**Latest 39-ID cohort:** 36 bounded source observations, 3 pending proof. **101 other due IDs** remain in R01–R07 with no automatic change. No new full Offer-Gold claim, no booking OPEN claim, no live publication.
+
+## Residual-provider primary differential — 7 additional limited observations (05.11.2026)
+
+Additional **provider/publisher source observations** reconcile seven of the previous ten still pending IDs. This is source coverage only, never E4/G3/seat guarantee. No `data.js` / `smart-search-data.js` update in this batch. Distinguish SOURCE_URL in frozen queue from supplemental external official URL; no canonical URL replacement without a verified stable redirect/alias.
+
+- **PCC-P13:** official course title “Adobe Acrobat – PDF für die Druckvorstufe” on current PC-COLLEGE `acd.php` page, course code ACD 261106, **6 Nov 2026, one day**, online and selectable attendance variants. The queue uses `acp.php`, and **ACD↔ACP identity/version is not yet proven**; put original alias on HOLD. Generic fee is not certified Swiss gross and live-venue/seat remain unproven. [Official ACD page](https://www.pc-college.ch/seminare-schulungen-kurse/acrobat/adobe-acrobat-pdf-fuer-die-druckvorstufe-acd.php)
+- **OFFER-HELIAS-011:** dpsuisse official Helias course page confirms **6 Nov 2026**, 09:45–16:45, **Impact Hub Bern**, CHF **0 / 140 / 420** by eligibility category. Do not treat CHF0 as universal; category eligibility requires explicit mapping, and enrolment deadline in the provider detail is already in the past. [Official detail](https://dpsuisse.ch/kurs/weiterf%C3%BChrend-k%C3%BCnstliche-intelligenz?hsLang=de)
+- **OFFER-HELIAS-012:** publisher course index confirms **14 Nov 2026, Bern** and exact course title. It does **not** independently reconfirm CHF0/140/420 tiers, Impact Hub room or place availability. [Official index](https://dpsuisse.ch/kurse)
+- **OFFER-ORSYS-137:** ORSYS CH official detail confirms **17 Nov 2026, remote**, **2 days / 14h**, **CHF 2'170 ex tax**, matching the original offer and sidecar. The declared audience comprises IT/business/marketing decision-makers; **owner journalism-scope review signal**, no automatic reclassification. [Official detail](https://orsys.fr/suisse/formation/formation-user-experience-etat-art-tendances-en-ergonomie-ihm)
+- **V82-DAWAN-039:** official Dawan “Premiers pas en création graphique à Distance” schedule shows **2–3 Nov** and **12–13 Nov 2026**, FOAD remote. It does not prove the original CHF 1'475/1'180 tariff or specific Swiss eligibility. [Official Distance schedule](https://www.dawan.ch/formations/pao/formations-premiers-pas-en-creation-graphique-Distance)
+- **V82-DAWAN-049:** Dawan own **“Sessions confirmées”** feed lists **InDesign Initiation 16–18 Nov 2026**, FOAD remote. This is stronger than an undated course description for scheduling but still not a seat guarantee, Swiss gross tuition or price tier verification. [Official confirmed sessions](https://www.dawan.ch/sessions-confirmees)
+- **V82-DAWAN-050:** same feed lists **InDesign Approfondissement 19–20 Nov 2026**, FOAD remote. No new price field written, and no availability OPEN inferred. [Official confirmed sessions](https://www.dawan.ch/sessions-confirmees)
+
+**Exactly three near-term IDs still without an adequate current primary-field proof:** `OFFER-CFJM-018` (provider detail unavailable through research layer), `PCC-P41` (only generic PDF topic-category page, no exact session crosswalk), and `OFFER-HELIAS-014` (syndicom booking URL inaccessible). These are **not** proven to be cancelled or invalid. Leave their retained published fields unchanged and use `PENDING_FRESH_EDITION_PROOF`.
+
+**Residual work beyond this stage:** 36/39 source-partial is not 36/39 verified or publication-ready; explicitly unresolved eligibility, venues, fees, booking evidence and owner-scope questions remain open. The **101 other due IDs** in disjoint R-lanes have not been moved by this near-term triage. All gates remain enforced.
