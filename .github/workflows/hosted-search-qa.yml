@@ -570,6 +570,24 @@ jobs:
             assert(djaCard.includes('EUR 480–512') && djaCard.includes('1:1')
               && djaCard.includes('Kein neuer offener Start bestätigt'),
               'Financially safe DJA tariff must remain visible but without false enrolment promise');
+            // User scenario: one intent combines subject, CHF budget and approx. two teaching days.
+            await page.locator('#smartInput').fill('Ich möchte Datenjournalismus lernen, habe CHF 800 und ca. 2 Tage Zeit');
+            await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+            const combinedChips=await page.locator('#smartUnderstood').innerText();
+            assert(combinedChips.includes('Thema: datenjournalismus')
+              &&combinedChips.includes('Budget: CHF 800')
+              &&combinedChips.includes('Zeit: 2 Tage · angewendet'),
+              'Combined topic/budget/days intent was not jointly understood: '+combinedChips);
+            const combinedSummary=await page.locator('#smartSummary').innerText();
+            assert(!combinedSummary.includes('Nicht angewendet: die gewünschte')
+              &&!combinedSummary.includes('gewünschte Höchstdauer'),
+              'Combined duration condition remains unapplied: '+combinedSummary);
+            const combinedDirect=await page.locator('#smartResults > article.smart-result-card').allInnerTexts();
+            const combinedDurations=await page.locator('#smartResults > article.smart-result-card .smart-result-meta span:nth-child(3)').allInnerTexts();
+            assert(combinedDirect.length===combinedDurations.length
+              &&combinedDurations.every(t=>/^\s*(?:[012](?:[,.]\d+)?)\s*(?:tag|tage|kurstage|unterrichtstage)/i.test(t)),
+              'Combined user query suggested a course beyond the proven two-day limit: '+JSON.stringify(combinedDurations));
+            console.log('B3_USER_QUERY_DATAJOURNALISM_CHF800_CIRCA_TWO_DAYS_CHROMIUM_PASS');
             const ki300=await query('KI online höchstens CHF 300',3,3);
             assert(/Kurse passen rechnerisch zum Planungsbudget/i.test(ki300.summary),
               'Verified CHF 25 Edito webinars omitted from confirmed online matches: '+ki300.summary);
