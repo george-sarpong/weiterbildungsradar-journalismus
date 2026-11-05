@@ -81,7 +81,14 @@ assert.deepEqual(matrix.data.filter(x=>x.scheduled_date_alignment==="MATCHES_EXI
 assert.deepEqual(matrix.data.filter(x=>x.scheduled_date_alignment==="NO_SPECIFIC_DUE_START").length,31);
 assert.equal(matrix.data.filter(x=>x.structured_numeric_price_eligible==="true").length,107);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("STRUCTURED_PRICE_BUDGET_UNVERIFIED")).length,33);
-assert.equal(matrix.data.filter(x=>x.venue_data_state==="NOT_PUBLISHED").length,32);
+assert.equal(matrix.data.filter(x=>x.venue_data_state==="NOT_PUBLISHED").length,12);
+assert.equal(matrix.data.filter(x=>x.venue_data_state==="OWNER_CONFIRMED_CITY_LUZERN_EXACT_VENUE_UNVERIFIED").length,20);
+assert.equal(matrix.data.filter(x=>x.provider.startsWith("MAZ")).length,21);
+assert.equal(matrix.data.filter(x=>x.provider.startsWith("MAZ")&&x.venue_data_state==="OWNER_CONFIRMED_CITY_LUZERN_EXACT_VENUE_UNVERIFIED").length,20);
+assert.ok(get("OFFER-MAZ-100").catalogue_region.includes("Zürich"));
+assert.ok(get("OFFER-MAZ-100").catalogue_region.includes("NZZ"));
+assert.ok(matrix.data.filter(x=>x.venue_data_state==="OWNER_CONFIRMED_CITY_LUZERN_EXACT_VENUE_UNVERIFIED").every(x=>x.catalogue_region==="NOT_PUBLISHED"&&x.field_gap_tags.includes("VENUE_NOT_PUBLISHED")&&x.delivery_evidence_tier!=="VERIFIED"&&x.website_gold_gate==="NOT_PROVEN"));
+
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="MULTIPLE_OPTIONS_OR_AMBIGUOUS").length,39);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="REMOTE_ONLY_DISPLAY_NOT_OCCURRENCE_GOLD").length,37);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="SINGLE_DISPLAY_LOCATION_UNPROVEN").length,32);
@@ -421,6 +428,6 @@ for(const id of ["V82-DAWAN-020","V82-DAWAN-050"]){
 }
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
  all:140,sourceBounded:139,sourcePending:1,numericEligible:107,
- priceGap:33,venueUnpublished:32,venueAmbiguous:51,
+ priceGap:33,venueUnpublishedInCanonical:32,ownerConfirmedCityLuzern:20,venueCityUnassigned:12,venueAmbiguous:51,
  deliveryUnverified:75,ownerScopeFlags:10,publicationApproved:0
 }));
