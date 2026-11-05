@@ -85,7 +85,7 @@ assert.equal(matrix.data.filter(x=>x.venue_data_state==="NOT_PUBLISHED").length,
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="MULTIPLE_OPTIONS_OR_AMBIGUOUS").length,39);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="REMOTE_ONLY_DISPLAY_NOT_OCCURRENCE_GOLD").length,37);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="SINGLE_DISPLAY_LOCATION_UNPROVEN").length,32);
-assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,84);
+assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,81);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("OWNER_SCOPE_REVIEW")).length,10);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD")).length,18);
 assert.ok(!get("OFFER-MAZ-146").field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
@@ -295,8 +295,28 @@ for(const id of nextDawanFOADIds){
 }
 assert.ok(side.byId["V82-DAWAN-027"].delivery.materialisationStatus.includes("SOURCE_VERSION_DIFFERENTIAL_HOLD"));
 assert.ok(side.byId["V82-DAWAN-100"].delivery.materialisationStatus.includes("CANONICAL_CITY_VS_REMOTE_HOLD"));
+const verifiedPhysicalIds=["IF-G06","V58-S1-04","V58-S1-07"];
+for(const id of verifiedPhysicalIds){
+ const row=get(id),sc=side.byId[id],q=backlog.data.find(x=>x.offer_id===id);
+ assert.equal(row.delivery_evidence_tier,"VERIFIED",id+" current provider confirms in-person mode");
+ assert.equal(q.delivery_tier,"VERIFIED");
+ assert.equal(q.unresolved_field_gaps,row.field_gap_tags,id+" frozen ledger parity");
+ assert.ok(!row.field_gap_tags.includes("DELIVERY_NOT_VERIFIED"));
+ assert.ok(row.field_gap_tags.includes("CURRENTNESS_REVIEW_DUE"));
+ assert.equal(sc.delivery.structure,"SINGLE_CHANNEL");
+ assert.deepEqual(sc.delivery.channels,["IN_PERSON"]);
+ assert.equal(sc.delivery.variants.length,1);
+ assert.deepEqual(sc.delivery.variants[0].attendanceChannels,["IN_PERSON"]);
+ assert.equal(sc.delivery.variants[0].temporalMode,"SYNCHRONOUS");
+ assert.equal(sc.delivery.variants[0].scheduleMode,"FIXED");
+ assert.ok(sc.delivery.materialisationStatus.includes("SEAT_TAX_CURRENTNESS_HOLD"));
+ assert.equal(row.website_gold_gate,"NOT_PROVEN");
+ assert.equal(row.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
+}
+assert.ok(side.byId["IF-G06"].delivery.sourceText.includes("Five meetings are 15 hours NOT five full 8-hour teaching days."));
+assert.ok(side.byId["V58-S1-04"].delivery.sourceText.includes("sold out"));
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
  all:140,sourceBounded:139,sourcePending:1,numericEligible:106,
  priceGap:34,venueUnpublished:32,venueAmbiguous:51,
- deliveryUnverified:84,ownerScopeFlags:10,publicationApproved:0
+ deliveryUnverified:81,ownerScopeFlags:10,publicationApproved:0
 }));
