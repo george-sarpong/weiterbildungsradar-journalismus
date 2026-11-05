@@ -79,13 +79,13 @@ const pending=matrix.data.filter(x=>x.primary_field_evidence_class!=="BOUNDED_PR
 assert.equal(n.length,139);assert.deepEqual(pending.map(x=>x.offer_id),["OFFER-HELIAS-014"]);
 assert.deepEqual(matrix.data.filter(x=>x.scheduled_date_alignment==="MATCHES_EXISTING_START_OR_SESSION").length,109);
 assert.deepEqual(matrix.data.filter(x=>x.scheduled_date_alignment==="NO_SPECIFIC_DUE_START").length,31);
-assert.equal(matrix.data.filter(x=>x.structured_numeric_price_eligible==="true").length,95);
-assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("STRUCTURED_PRICE_BUDGET_UNVERIFIED")).length,45);
+assert.equal(matrix.data.filter(x=>x.structured_numeric_price_eligible==="true").length,98);
+assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("STRUCTURED_PRICE_BUDGET_UNVERIFIED")).length,42);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="NOT_PUBLISHED").length,32);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="MULTIPLE_OPTIONS_OR_AMBIGUOUS").length,39);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="REMOTE_ONLY_DISPLAY_NOT_OCCURRENCE_GOLD").length,37);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="SINGLE_DISPLAY_LOCATION_UNPROVEN").length,32);
-assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,115);
+assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,111);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("OWNER_SCOPE_REVIEW")).length,10);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD")).length,18);
 assert.ok(!get("OFFER-MAZ-146").field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
@@ -115,8 +115,27 @@ for(const r of backlog.data){
 }
 assert.deepEqual(priority,{P0_SOURCE_IDENTITY_SCOPE:28,P1_PRICE_ACCESS_VENUE:85,P2_OCCURRENCE_DELIVERY:18,P3_CURRENTNESS_AND_CLOSURE:9});
 assert.ok(backlog.data.every((r,i)=>i===0||backlog.data[i-1].priority<=r.priority));
+const corrected=["MW-P06","V78-01","V78-02","V78-03"];
+for(const id of corrected){
+ const row=get(id),live=side.byId[id];
+ assert.equal(row.delivery_evidence_tier,"VERIFIED",id+" delivery source");
+ assert.equal(row.delivery_variant_count,"2",id+" variant count");
+ assert.ok(!row.field_gap_tags.includes("DELIVERY_NOT_VERIFIED"),id+" delivery gap closed");
+ assert.equal(row.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
+ if(id.startsWith("V78")){
+  assert.equal(row.structured_numeric_price_eligible,"true");
+  assert.equal(row.structured_price_option_count,"2");
+  assert.deepEqual(live.priceOptions.map(x=>x.amount),[1300,1400]);
+  assert.ok(live.delivery.sourceText.includes("2 jours")&&live.delivery.sourceText.includes("trois jours"),id+" duration conflict remains");
+  assert.ok(row.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"),id+" source duration gate remains");
+ }else{
+  assert.equal(row.structured_numeric_price_eligible,"true");
+  assert.equal(row.structured_price_option_count,"1");
+  assert.equal(live.priceOptions[0].taxMode,"EXCLUDED");
+ }
+}
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
- all:140,sourceBounded:139,sourcePending:1,numericEligible:95,
- priceGap:45,venueUnpublished:32,venueAmbiguous:51,
- deliveryUnverified:115,ownerScopeFlags:10,publicationApproved:0
+ all:140,sourceBounded:139,sourcePending:1,numericEligible:98,
+ priceGap:42,venueUnpublished:32,venueAmbiguous:51,
+ deliveryUnverified:111,ownerScopeFlags:10,publicationApproved:0
 }));
