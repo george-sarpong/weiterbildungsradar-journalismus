@@ -148,6 +148,26 @@ for(const id of djaGuardIds){
  assert.equal(delivery.variants[0].scheduleMode,"FIXED");
  assert.ok(delivery.materialisationStatus.includes("INTAKE_HOLD"));
 }
+const dawanDecIds=["V82-DAWAN-010","V82-DAWAN-011","V82-DAWAN-013","V82-DAWAN-014"];
+for(const id of dawanDecIds){
+ const row=get(id),sc=side.byId[id],b=backlog.data.find(x=>x.offer_id===id);
+ assert.ok(row&&sc&&b,id+" cross-artifact completeness");
+ assert.equal(row.delivery_evidence_tier,"PROVISIONAL",id+" whole-offer remains provisional");
+ assert.equal(sc.delivery.structure,"MODE_CHOICE",id+" mixed provider formats");
+ assert.equal(sc.delivery.variants.length,1,id+" only sourced FOAD occurrence");
+ assert.deepEqual(sc.delivery.variants[0].attendanceChannels,["REMOTE"]);
+ assert.equal(sc.delivery.variants[0].temporalMode,"SYNCHRONOUS");
+ assert.ok(sc.delivery.sourceText.includes("sessions-confirmees"));
+ assert.ok(sc.delivery.materialisationStatus.includes("INPERSON_VARIANT_UNRESOLVED"));
+ assert.equal(row.delivery_variant_count,"1");
+ assert.ok(row.field_gap_tags.includes("DELIVERY_NOT_VERIFIED"));
+ assert.equal(row.structured_numeric_price_eligible,"false");
+ assert.equal(sc.priceEligible,false);
+ assert.equal(sc.priceOptions.length,0);
+ assert.equal(b.delivery_tier,"PROVISIONAL");
+ assert.equal(b.unresolved_field_gaps,row.field_gap_tags);
+ assert.equal(row.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
+}
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
  all:140,sourceBounded:139,sourcePending:1,numericEligible:98,
  priceGap:42,venueUnpublished:32,venueAmbiguous:51,
