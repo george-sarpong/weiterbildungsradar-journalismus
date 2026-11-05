@@ -117,7 +117,8 @@ yes(byId["V82-DAWAN-050"]?.delivery?.evidenceTier==="PROVISIONAL"&&byId["V82-DAW
 yes(byId["V82-DAWAN-020"]?.delivery?.evidenceTier==="VERIFIED"&&byId["V82-DAWAN-020"]?.delivery?.variants?.length===2&&byId["V82-DAWAN-020"]?.priceEligible===false&&byId["V82-DAWAN-020"]?.delivery?.sourceText?.includes("AUD102205-F"),"Dawan Motion Design exact product page verifies two teaching modes, not onsite 19Nov cohort or price");
 yes(["PCC-P40","PCC-P10","PCC-P06","PCC-P01","PCC-P04","PCC-P09","PCC-P39","PCC-P07","PCC-P12","PCC-P30","PCC-P26","PCC-P27"].every(id=>byId[id]?.delivery?.evidenceTier==="VERIFIED"&&byId[id]?.delivery?.structure==="MODE_CHOICE"&&byId[id]?.delivery?.variants?.length===2&&byId[id]?.delivery?.materialisationStatus?.includes("CH_FEE_SEAT_CURRENTNESS_HOLD")&&byId[id]?.delivery?.sourceText?.includes("https://www.pc-college.ch/")&&byId[id]?.priceOptions?.every(p=>p.amountType==="FROM"&&p.taxMode==="EXCLUDED")),"PCC ten exact product teaching modes confirmed but no Swiss end-price / seat");
 yes(["CAD-026","AT-PROD-OFFER-022"].every(id=>byId[id]?.delivery?.evidenceTier==="VERIFIED"&&byId[id]?.delivery?.materialisationStatus?.includes("HOLD")),"EVT237 exact teaching model confirmations remain gated");
-yes(tiers.VERIFIED === 207 && tiers.PROVISIONAL === 393 && tiers.UNKNOWN === 752,
+yes(byId["PCC-P41"]?.delivery?.evidenceTier==="VERIFIED"&&byId["PCC-P41"]?.delivery?.variants?.length===2&&byId["PCC-P41"]?.delivery?.sourceText?.includes("course ID APF")&&byId["PCC-P41"]?.priceOptions?.[0]?.amountType==="FROM","Exact APF course identity and channel option confirmed without CH price release");
+yes(tiers.VERIFIED === 208 && tiers.PROVISIONAL === 393 && tiers.UNKNOWN === 751,
     "Global evidence tiers outside authorised B2 CAD-005/ifage changes: " + JSON.stringify(tiers));
 console.log("WDA04_EDITO_SOURCE_VERIFIED_4_OF_4_PASS");
 console.log("WDA04_ONLINE_VARIANT_AND_PRICE_GUARDS_PASS");
