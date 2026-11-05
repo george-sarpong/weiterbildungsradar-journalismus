@@ -142,12 +142,18 @@ function project(batch){
   sessions.sort((a,b)=>a.startDate.localeCompare(b.startDate));
   const earliest=sessions[0];
   const location=earliest?.region||variants.map(v=>v.location.label).filter(Boolean).join(" / ");
-  const actualVenue=(o.occurrences.find(s=>s.venue.country)?.venue.country
-    ||variants.find(v=>v.location.country)?.location.country||o.provider.country);
-  const primaryCountry=COUNTRIES[actualVenue];
+  // Only a sourced physical delivery venue can define a geographical course country.
+  // A provider's registered seat (or an online endpoint) is never a fallback venue.
+  const physicalVenue=(o.occurrences||[]).map(s=>s.venue)
+    .concat(variants.map(v=>v.location))
+    .find(v=>v?.kind==="IN_PERSON"&&v.country);
+  const actualVenue=physicalVenue?.country||null;
+  const primaryCountry=actualVenue?COUNTRIES[actualVenue]:"Nicht publiziert";
   const accessText={YES:"Zugang aus der Schweiz bestätigt",CONDITIONAL:"Zugang aus der Schweiz mit Bedingungen",
     NO:"Zugang aus der Schweiz nicht nachgewiesen / ausgeschlossen",UNKNOWN:"Zugang aus der Schweiz unklar"}[o.access.chEligibility];
   const duration=o.learningTime.raw;
+  const hasPriceEvidence=o.prices.some(p=>
+    ["EXACT","RANGE","FREE","FROM"].includes(p.amountType));
   const record={
     id:o.id,provider:o.provider.name,title:o.title,description:o.description,
     access:accessText+(o.access.conditions?" – "+o.access.conditions:""),
@@ -168,7 +174,12 @@ function project(batch){
     sourceEvidence:{url:o.source.url,checkedAt:o.source.checkedAt,verifiedFields:o.source.verifiedFields},
     release_origin:"B3_IMPORT_"+batch.batchId,
     ...(sessions.length?{sessions}:{}),
-    ...(!ready?{publicationStatus:"HOLD",publicationReason:"Import source/scope review not complete"}:{})
+    // Source review is not the E4/E5 owner and publication approval chain.
+    // No record imported by this tool is implicitly released for the website.
+    publicationStatus:"HOLD",
+    publicationReason:ready
+      ?"B3_IMPORT_AWAITING_SEPARATE_OWNER_RELEASE_GATE"
+      :"Import source/scope review not complete"
   };
   const deliveryVariants=variants.map(v=>({
     deliveryVariantId:v.id,attendanceChannels:channels(v.mode),
@@ -178,8 +189,8 @@ function project(batch){
     sourceLocation:v.location.label
   }));
   const side={
-    parserStatus:ready&&o.prices.length?"AUTO_ACCEPT":"NEEDS_REVIEW",
-    priceEligible:ready&&o.prices.length>0,
+    parserStatus:ready&&hasPriceEvidence?"AUTO_ACCEPT":"NEEDS_REVIEW",
+    priceEligible:ready&&hasPriceEvidence,
     priceOptions:o.prices.map(p=>({
       amountType:p.amountType,amount:p.amount??null,minAmount:p.minAmount??null,maxAmount:p.maxAmount??null,
       currency:p.currency??null,tariffClass:p.tariffClass,tariffLabel:p.tariffLabel??null,
