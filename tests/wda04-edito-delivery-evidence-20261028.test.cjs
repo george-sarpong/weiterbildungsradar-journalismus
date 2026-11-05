@@ -101,7 +101,15 @@ yes(byId["V82-DAWAN-027"]?.delivery?.materialisationStatus?.includes("SOURCE_VER
     "DaVinci 23Nov vs later official occurrence crosswalk cannot be dropped");
 yes(byId["V82-DAWAN-100"]?.delivery?.materialisationStatus?.includes("CANONICAL_CITY_VS_REMOTE_HOLD"),
     "WordPress Geneva canonical vs current remote cohort must be kept distinct");
-yes(tiers.VERIFIED === 181 && tiers.PROVISIONAL === 403 && tiers.UNKNOWN === 768,
+yes(["IF-G06","V58-S1-04","V58-S1-07"].every(id=>byId[id]?.delivery?.evidenceTier==="VERIFIED"&&
+    byId[id]?.delivery?.structure==="SINGLE_CHANNEL"&&
+    byId[id]?.delivery?.channels?.join(",")==="IN_PERSON"&&
+    byId[id]?.delivery?.variants?.length===1&&
+    byId[id]?.delivery?.variants?.[0]?.temporalMode==="SYNCHRONOUS"&&
+    byId[id]?.delivery?.variants?.[0]?.scheduleMode==="FIXED"&&
+    byId[id]?.delivery?.materialisationStatus?.includes("SEAT_TAX_CURRENTNESS_HOLD")),
+    "Three exact in-person IFAGE Studio1 course deliveries source-verified without seat or tax claims");
+yes(tiers.VERIFIED === 184 && tiers.PROVISIONAL === 400 && tiers.UNKNOWN === 768,
     "Global evidence tiers outside authorised B2 CAD-005/ifage changes: " + JSON.stringify(tiers));
 console.log("WDA04_EDITO_SOURCE_VERIFIED_4_OF_4_PASS");
 console.log("WDA04_ONLINE_VARIANT_AND_PRICE_GUARDS_PASS");
