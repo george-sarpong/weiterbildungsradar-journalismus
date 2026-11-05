@@ -532,7 +532,10 @@ jobs:
             assert(await page.locator('[data-smart-more="alternatives"]').count()===1,
               'New search did not reset alternative pagination');
             // A broad thematic search also has an independently paginated direct group.
-            await query('KI',3,0);
+            await query('KI',3,3);
+            const kiBookingWarning = await page.locator('#smartResults .smart-alternative-cards').innerText();
+            assert(kiBookingWarning.includes('Eine Neuanmeldung oder ein Späteinstieg ist nicht bestätigt'),
+              'Already-started KI alternatives lack explicit late-enrolment warning');
             const initialDirectTitles=await page.locator('#smartResults > article.smart-result-card h3').allInnerTexts();
             const moreDirect=page.locator('[data-smart-more="direct"]');
             assert(await moreDirect.count()===1,'Missing more-confirmed-results action');
@@ -543,7 +546,7 @@ jobs:
               'More confirmed results changed ordering or failed to reveal cards');
             assert((await page.locator(':focus').innerText())===expandedDirectTitles[3],
               'Focus not moved to first revealed confirmed result');
-            await query('KI',3,0);
+            await query('KI',3,3);
             assert(await page.locator('#smartResults > article.smart-result-card').count()===3,
               'New search did not reset direct pagination');
             console.log('SMART_PROGRESSIVE_REVEAL_DESKTOP_PASS');
