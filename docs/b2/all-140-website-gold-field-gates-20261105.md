@@ -29,7 +29,7 @@ Der Nutzer verlangte ausdrücklich, **alle 140 Fälle gleichzeitig**, nicht weit
 | Ausschliesslich online im Katalog gekennzeichnet | 37 | nicht mit hybrider / mehreren Standorten gleichsetzen |
 | Mehrere Orts- oder Formatoptionen im Katalog | 39 | echte Edition/Variante nötig, kein willkürlich gewählter Standort |
 | Ein einzelner angegebener Ort | 32 | Angabe im Katalog ≠ erneuter unabhängiger Veranstaltungsortbeweis |
-| Nicht source-verifiziertes Delivery-Modell | 88 | Semantik/Durchführung muss getrennt vom Anbieter-Sitz belegt werden |
+| Nicht source-verifiziertes Delivery-Modell | 84 | Semantik/Durchführung muss getrennt vom Anbieter-Sitz belegt werden |
 | Präzise Owner-Scope-Signale | 10 | redaktionell/journalistisch vs. PR/Marketing/IT prüfen |
 | Offene Quellenversion-/Alias-/Dauer-Guards | 18 | konfliktbehaftete Fälle, **ohne** zwei falsch-positive Hold-Markierungen |
 | `reviewAfter` am 05.11.2026 fällig | 140 | nicht automatisch auf ein neues Datum verschieben |
@@ -175,3 +175,16 @@ Die restlichen zehn Angebote aus der bereits eingefrorenen DJA-Teilgruppe haben 
 **Identitäts-Guard:** Der historische URL-Slug `nachhaltigkeitsjournalismus` führt bei DJA ausdrücklich die Kursüberschrift «Klimajournalismus» (`OFFER-DJA-013`); die bestehende Stable-ID und Quellen-URL wurden nicht umgeschrieben. Keine neue doppelte Offer-ID. Die früheren DJA-2026-Fristen und die Anbieter-Störungsmeldung zur Online-Campus-Nichtverfügbarkeit vom 22.10.2026 erlauben keine aktuelle Platz-/Neubeginn-Zusage. Die 2026 Kursstarts bleiben historische, nicht neu gebuchte Editionen. Allgemeine aktuelle Betreiber-FAQ ersetzt keinen neuen individueller Angebotstermin.
 
 **Neue 140er-Zahlen:** 1'352 Sidecars unverändert, exakt 140 frozen IDs; 106 numerisch preisfilterbar, 34 Preis-Gaps, **88 nicht auf Whole-Offer-Level source-verifizierte Delivery-Modelle** (vor EVT225 105, nach EVT225 98). Alle 21 DJA-Angebote der Due-Teilgruppe haben nun quellenverifizierte Unterrichtsmodelle; Aufnahme/Plattform/CH-Endpreis/individuelle Berechtigung bleiben gesondert offen. Globale Statusverteilung: VERIFIED 177, PROVISIONAL 399, UNKNOWN 776. Source-Version-Guards 18, Owner-Scope-Signale 10, 139/1 limited source signals, 0 neue Gold-/E4-/E5-/G3-/Owner-/Publish-Freigaben. Die 140er Matrix/Backlog-Regressions und der globale WDA-04-Tier-Test prüfen die zehn exakten IDs; beide Sidecar-Writes erfolgten in getrennten Fünferblöcken.
+
+## EVT227 – vier Microwin-Mediendesignkurse, quellengenaue Unterrichtsform
+
+Vier bestehende Microwin-Angebote erhielten aus der **jeweiligen offiziellen Kursseite** die belegte Wahl zwischen synchronem Präsenzunterricht in **Wallisellen** und **LiveStream**. Dieser Nachweis gilt für die Modalität, **nicht** für den aktuell buchbaren individuellen Platz oder den aktuellen Schulungsinhalt. Die Kursgebühren blieben als im Datenbestand vorhandene CHF-Werte unverändert, in den offiziellen Quellen jeweils zzgl. MwSt. Alle vier haben `SINGLE` nicht, sondern `MODE_CHOICE` mit getrennten A-Präsenz- und B-Remote-Varianten.
+
+| ID | Quelle und Nachweis | Offene Qualitätsfrage |
+|---|---|---|
+| `MW-P08` Adobe Photoshop CC (PHOT), CHF 790 zzgl. MwSt. | https://www.microwin.com/pages/coursedetails/phot.aspx – Anbieter listet 11.11.2026/11.01.2027 und zu jedem Termin LiveStream | Originalquelle ca. 1 Jahr alt; tatsächliche 2026-Buchung und unveränderte Details nicht frisch bestätigt |
+| `MW-P07` Adobe InDesign Advanced (INDF), CHF 1'690 zzgl. MwSt. | https://www.microwin.com/pages/coursedetails/indf.aspx – 12.–13.01.2027, weitere spätere Wallisellen- und LiveStream-Ausgaben | Kurscode **INDF**, nicht bereits erledigtes **INDE**; Kursdurchführungsgarantie ist keine freie-Platz-Garantie |
+| `MW-P09` Webdesign (WEBDA), CHF 1'490 zzgl. MwSt. | https://www.microwin.com/pages/coursedetails/webda.aspx – 23.–24.11.2026, Wallisellen/LiveStream | **Substanzieller aktueller Inhalts-Hold**: Anbieter-Lehrplan nennt Flash, DHTML und veraltete Frame-basierte Web-Techniken; fachliche Aktualität neu beurteilen, nicht als moderne Web-Publishing-Ausbildung freigeben |
+| `MW-P03` Adobe FrameMaker (FRMA), CHF 2'490 zzgl. MwSt. | https://www.microwin.com/pages/coursedetails/frma.aspx – 23.–25.11.2026, weitere 2027-Termine, Wallisellen/LiveStream | Kein Beleg für freien einzelnen Sitzplatz, steuerinklusiven Endbetrag oder Gold-Release |
+
+Die vier Sidecars, Matrix-/Backlog-Zeilen und beiden Regressionsdateien wurden anhand unveränderter Stable IDs, Originalquellen und Vorwerten synchronisiert. **140er Delivery weiterhin offen: 84**, vorher 88. Numerisch strukturierte Preise weiter **106** und 34 Preis-Gaps. Globaltier VERIFIED181 / PROVISIONAL399 / UNKNOWN772. 18 source-version-Holds und 10 ursprüngliche Scope-Signale unverändert; der WEBDA-Lehrplan braucht zusätzliche fachliche Aktualitätsabnahme, ohne eigenmächtige Umklassifikation des Scope-Gates. Datum auf Kursseite ≠ freie Buchungskapazität; keine E4/E5/G3/Owner-/Release-Freigabe.
