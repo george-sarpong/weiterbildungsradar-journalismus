@@ -72,8 +72,8 @@ const tiers = Object.values(byId).reduce((acc, rec) => {
   acc[tier] = (acc[tier] || 0) + 1;
   return acc;
 }, {});
-// Scoped successor: CAD-005 B2 and IF-G08/IF-G12 source-proven ifage delivery.
-// No unrelated delivery record may be silently promoted.
+// Scoped successors: CAD-005, ifage, plus four source-proven B2 Microwin/ITTA delivery modes.
+// Any further count change requires an exact-ID and provider-source guard.
 yes(byId["CAD-005"]?.delivery?.evidenceTier === "VERIFIED" &&
     byId["CAD-005"]?.delivery?.structure === "MODE_CHOICE",
     "B2 CAD-005 source-proven delivery variant missing");
@@ -81,7 +81,9 @@ yes(["IF-G08","IF-G12"].every(id=>byId[id]?.delivery?.evidenceTier==="VERIFIED"&
     byId[id]?.delivery?.structure==="SINGLE_CHANNEL"&&
     byId[id]?.delivery?.channels?.join(",")==="IN_PERSON"),
     "Ifage exact in-person source proof missing");
-yes(tiers.VERIFIED === 150 && tiers.PROVISIONAL === 395 && tiers.UNKNOWN === 807,
+yes(["MW-P06","V78-01","V78-02","V78-03"].every(id=>byId[id]?.delivery?.evidenceTier==="VERIFIED" && byId[id]?.delivery?.variants?.length===2),"B2 four source-backed delivery successors missing");
+yes(["V78-01","V78-02","V78-03"].every(id=>byId[id]?.delivery?.sourceText?.includes("trois jours") && byId[id]?.delivery?.materialisationStatus==="SOURCE_VERIFIED_PRICE_DELIVERY_DURATION_HOLD"),"ITTA duration-source contradiction must remain a hold");
+yes(tiers.VERIFIED === 154 && tiers.PROVISIONAL === 395 && tiers.UNKNOWN === 803,
     "Global evidence tiers outside authorised B2 CAD-005/ifage changes: " + JSON.stringify(tiers));
 console.log("WDA04_EDITO_SOURCE_VERIFIED_4_OF_4_PASS");
 console.log("WDA04_ONLINE_VARIANT_AND_PRICE_GUARDS_PASS");
