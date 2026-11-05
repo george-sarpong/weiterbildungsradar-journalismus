@@ -89,7 +89,19 @@ yes(["CAD-003","V78-05"].every(id=>byId[id]?.delivery?.evidenceTier==="VERIFIED"
 yes(["OFFER-DJA-002","OFFER-DJA-004","OFFER-DJA-006","OFFER-DJA-007","OFFER-DJA-008","OFFER-DJA-010","OFFER-DJA-022"].every(id=>byId[id]?.delivery?.evidenceTier==="VERIFIED"&&byId[id]?.delivery?.structure==="SINGLE_CHANNEL"&&byId[id]?.delivery?.variants?.[0]?.temporalMode==="ASYNCHRONOUS"&&byId[id]?.delivery?.materialisationStatus?.includes("INTAKE_AND_CAMPUS_HOLD")),"DJA seven exact online programme proofs must retain intake restrictions");
 yes(["OFFER-DJA-011","OFFER-DJA-013","OFFER-DJA-014","OFFER-DJA-015","OFFER-DJA-016","OFFER-DJA-017","OFFER-DJA-018","OFFER-DJA-019","OFFER-DJA-020","OFFER-DJA-021"].every(id=>byId[id]?.delivery?.evidenceTier==="VERIFIED" && byId[id]?.delivery?.structure==="SINGLE_CHANNEL" && byId[id]?.delivery?.variants?.[0]?.attendanceChannels?.join(",")==="REMOTE" && byId[id]?.delivery?.variants?.[0]?.temporalMode==="ASYNCHRONOUS" && byId[id]?.delivery?.materialisationStatus?.includes("INTAKE_CAMPUS_HOLD")),"DJA ten source-backed teaching modes still retain enrolment restriction");
 yes(["MW-P08","MW-P07","MW-P09","MW-P03"].every(id=>byId[id]?.delivery?.evidenceTier==="VERIFIED"&&byId[id]?.delivery?.structure==="MODE_CHOICE"&&byId[id]?.delivery?.variants?.length===2&&byId[id]?.delivery?.materialisationStatus?.includes("CURRENTNESS_HOLD")),"four exact Microwin source delivery but not Gold");
-yes(tiers.VERIFIED === 181 && tiers.PROVISIONAL === 399 && tiers.UNKNOWN === 772,
+const dawanConfirmedRemote=["V82-DAWAN-027","V82-DAWAN-028","V82-DAWAN-046","V82-DAWAN-100"];
+yes(dawanConfirmedRemote.every(id=>byId[id]?.delivery?.evidenceTier==="PROVISIONAL"&&
+    byId[id]?.delivery?.structure==="MODE_CHOICE"&&
+    byId[id]?.delivery?.variants?.length===1&&
+    byId[id]?.delivery?.variants?.[0]?.attendanceChannels?.join(",")==="REMOTE"&&
+    byId[id]?.delivery?.materialisationStatus?.includes("INPERSON_VARIANT_UNRESOLVED")&&
+    byId[id]?.priceEligible===false&&byId[id]?.priceOptions?.length===0),
+    "Dawan four newly confirmed remote-only FOAD occurrences must retain in-person and price holds");
+yes(byId["V82-DAWAN-027"]?.delivery?.materialisationStatus?.includes("SOURCE_VERSION_DIFFERENTIAL_HOLD"),
+    "DaVinci 23Nov vs later official occurrence crosswalk cannot be dropped");
+yes(byId["V82-DAWAN-100"]?.delivery?.materialisationStatus?.includes("CANONICAL_CITY_VS_REMOTE_HOLD"),
+    "WordPress Geneva canonical vs current remote cohort must be kept distinct");
+yes(tiers.VERIFIED === 181 && tiers.PROVISIONAL === 403 && tiers.UNKNOWN === 768,
     "Global evidence tiers outside authorised B2 CAD-005/ifage changes: " + JSON.stringify(tiers));
 console.log("WDA04_EDITO_SOURCE_VERIFIED_4_OF_4_PASS");
 console.log("WDA04_ONLINE_VARIANT_AND_PRICE_GUARDS_PASS");
