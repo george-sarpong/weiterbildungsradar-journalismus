@@ -564,6 +564,37 @@ jobs:
             assert(await page.locator('#smartResults > article.smart-result-card').count()===3,
               'New search did not reset direct pagination');
             console.log('SMART_PROGRESSIVE_REVEAL_DESKTOP_PASS');
+            // B4: No legacy free-text CH access or provider office may be misread
+            // as a verified eligibility or real course-city fact.
+            const typed=await page.evaluate(()=>({
+              offers:window.MEDIA_SKILLS_OFFER_VIEW?.build(
+                window.WEITERBILDUNGSRADAR_OFFERS,
+                window.MEDIA_SKILLS_SMART_DATA.byId,window.MEDIA_SKILLS_DURATION).summary.offers,
+              access:document.querySelector('#accessFilter')?.value,
+              venueDisabled:document.querySelector('#venueFilter')?.disabled,
+              venueOptions:document.querySelector('#venueFilter')?.options.length
+            }));
+            assert(typed.offers===1352 && typed.access==='' && typed.venueDisabled && typed.venueOptions===1,
+              'B4 typed view or no-invented-city facet drifted: '+JSON.stringify(typed));
+            await page.locator('#accessFilter').selectOption('YES');
+            assert((await page.locator('#cards article.card').count())===0
+              &&decodeURIComponent(page.url()).includes('access=YES'),
+              'Legacy CH access prose leaked into confirmed-access filter');
+            await page.locator('#accessFilter').selectOption('UNKNOWN');
+            assert((await page.locator('#cards article.card').count())>0,
+              'Unknown-but-valid legacy courses were erroneously hidden');
+            await page.locator('#resetFilters').click();
+            assert((await page.locator('#accessFilter').inputValue())===''
+              &&!decodeURIComponent(page.url()).includes('access='),
+              'Classic filter reset/URL synchronization failed for CH access');
+            await page.locator('#smartInput').fill('Datenjournalismus aus der Schweiz, Budget CHF 800');
+            await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
+            assert((await page.locator('#smartUnderstood').innerText()).includes('Zugang: Teilnahme aus der Schweiz')
+              &&(await page.locator('#smartResults > article.smart-result-card').count())===0
+              &&(await page.locator('#smartResults section article.smart-result-card').count())>0
+              &&(await page.locator('#smartResults').innerText()).includes('CH-Zugang nicht bestätigt'),
+              'Smart CH-access intent silently sold legacy offers as admissible');
+            console.log('B4_CH_ELIGIBILITY_UNKNOWN_AND_CITY_PROOF_BROWSER_PASS');
             const data800=await query('Ich habe CHF 800 und möchte Datenjournalismus lernen',2,1);
             assert(/Kurse passen rechnerisch zum Planungsbudget/i.test(data800.summary),
               'Release smoke would reject the current Smart Search budget summary');
