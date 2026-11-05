@@ -5,8 +5,8 @@ This is an **offer-ID-level source-recheck staging ledger**, NOT E4/E5/website G
 ## Reconciled population
 - Historical due pool: 140 IDs, decomposed into N01 15 + N02 8 + N03 16 = **39 near-term IDs**, and 101 other IDs.
 - 39/39 IDs copied from `docs/b2/parallel-review-140-20261105.tsv`, with source URL, existing evidence_state and focus_field intact. No retitling or new offer IDs.
-- **36** near-term records contain **partial provider-source observations**, bounded by crawler freshness and still-open booking/edition/scope details. **3** retain `PENDING_FRESH_EDITION_PROOF`. This is not 36/39 E4 PASS and not a claim of 36 material defects.
-- The prior 10 partial / 29 pending state (EVT216), followed by 22 partial / 17 pending and 29 partial / 10 pending, are historical parents; **the current 36 partial / 3 pending state** is governed by the TSV row statuses. N01 15, N02 8 and N03 16 stay exclusive.
+- **38** near-term records contain **bounded provider-source observations** (sometimes only an exact course listing, NOT a specific booked session). **1** retains `PENDING_FRESH_EDITION_PROOF`. This is not 38/39 E4 PASS or evidence of 38 defects.
+- The prior 10 partial / 29 pending state (EVT216), followed by 22 partial / 17 pending and 29 partial / 10 pending, are historical parents; 36 partial / 3 pending are earlier states; **the current 38 partial / 1 pending state** is governed by the TSV row statuses. N01 15, N02 8 and N03 16 stay exclusive.
 
 ## Material findings and non-findings
 
@@ -54,7 +54,7 @@ These are **offer-field** checks only; exact late-Nov 2026 booking, available se
 - **OFFER-MAZ-149:** CHF 1'980 regular matches current offer; official target explicitly employees in companies/agencies/NPOs. Existing **OWNER_SCOPE_HOLD** remains. https://www.maz.ch/kurs/schreiben-fuers-web-onlinetexten-leichtgemacht
 - **OFFER-MAZ-163:** CHF 990 regular / CHF 650 journalist, exact match. Current data lists an undetailed 1-day start; the displayed `duration` remains not source-verified. https://www.maz.ch/kurs/tiktok-junge-zielgruppen-professionell-erreichen-k
 
-No sidecar modification to any of those ten other newly triaged IDs. Current 29 partial / 10 pending status is a larger **triage** population, not proof of all mandated currentness or per-edition booking.
+No sidecar modification to any of those ten other newly triaged IDs. The historical 29 partial / 10 pending status was a larger **triage** population, not proof of all mandated currentness or per-edition booking.
 
 ## Supplementary PCC, ifage, Microwin and VSM provider panel (7 source comparisons)
 
@@ -66,7 +66,7 @@ The following seven additional cases have bounded **primary provider observation
 - **MW-P08:** Microwin cached course calendar lists 11 Nov 2026, CHF 790, Wallisellen or livestream. The observed crawl is over a year old; it cannot support a *fresh* edition/seat guarantee. https://www.microwin.com/pages/coursedetails/phot.aspx
 - **OFFER-VSM-001:** VSM published 17 Nov, WESTHIVE HARDTURM, Zürich; CHF 250 for nonmembers, CHF 150 for qualifying members/MAZ categories, and a journalist-specific free registration condition. Smart sidecar already has the differentiated tariff classes. Event signup does not guarantee admission. https://www.schweizermedien.ch/events/agenda/2026/2026-11-17-trendtagung-fach-und-spezialmedien-2026/
 
-**Latest 39-ID cohort:** 36 bounded source observations, 3 pending proof. **101 other due IDs** remain in R01–R07 with no automatic change. No new full Offer-Gold claim, no booking OPEN claim, no live publication.
+**Latest 39-ID cohort:** 38 bounded source observations, 1 source-pending proof. The other 101 R-lane IDs are now covered by the separate 101-source ledger and combined 140 field audit. No new full Offer-Gold claim, no booking OPEN claim, no live publication.
 
 ## Residual-provider primary differential — 7 additional limited observations (05.11.2026)
 
@@ -80,6 +80,14 @@ Additional **provider/publisher source observations** reconcile seven of the pre
 - **V82-DAWAN-049:** Dawan own **“Sessions confirmées”** feed lists **InDesign Initiation 16–18 Nov 2026**, FOAD remote. This is stronger than an undated course description for scheduling but still not a seat guarantee, Swiss gross tuition or price tier verification. [Official confirmed sessions](https://www.dawan.ch/sessions-confirmees)
 - **V82-DAWAN-050:** same feed lists **InDesign Approfondissement 19–20 Nov 2026**, FOAD remote. No new price field written, and no availability OPEN inferred. [Official confirmed sessions](https://www.dawan.ch/sessions-confirmees)
 
-**Exactly three near-term IDs still without an adequate current primary-field proof:** `OFFER-CFJM-018` (provider detail unavailable through research layer), `PCC-P41` (only generic PDF topic-category page, no exact session crosswalk), and `OFFER-HELIAS-014` (syndicom booking URL inaccessible). These are **not** proven to be cancelled or invalid. Leave their retained published fields unchanged and use `PENDING_FRESH_EDITION_PROOF`.
+**Parent snapshot (historical):** three near-term IDs were source-pending at this stage. In the 140-wide successor, CFJM-018 and PCC-P41 have bounded official catalogue evidence; only OFFER-HELIAS-014 remains source-pending. No one was cancelled or archived.
 
-**Residual work beyond this stage:** 36/39 source-partial is not 36/39 verified or publication-ready; explicitly unresolved eligibility, venues, fees, booking evidence and owner-scope questions remain open. The **101 other due IDs** in disjoint R-lanes have not been moved by this near-term triage. All gates remain enforced.
+**Residual work beyond this stage:** 38/39 source-partial is not 38/39 verified or publication-ready; explicitly unresolved eligibility, venues, fees, booking evidence and owner-scope questions remain open. The **101 other due IDs** in disjoint R-lanes have not been moved by this near-term triage. All gates remain enforced.
+
+## 140-wide successor (same date; supersedes previous counts)
+
+- **OFFER-CFJM-018:** the official CFJM continuing-training catalogue has the *exact linked course* “Photoreportage / Post-production et gestion des données”, **6 Nov 2026**. The linked detail URL still cannot be fetched reliably. Only programme identity/date are provider-index-evidenced; price, city/room and individual seat stay HOLD. Source: https://www.cfjm.ch/model/formation-continue
+- **PCC-P41:** PC-COLLEGE current online course index explicitly lists “PDF in Adobe Creative Cloud CC – PDF Erstellung ... Workflow für die Druckvorstufe.” This verifies the stable advertised topic but **not** the original queue's 6 Nov session, exact seminar code or Swiss total fee; do not alias to ACD or ADD courses. Source: https://www.pc-college.ch/seminar/online-trainings/index.php
+- **OFFER-HELIAS-014:** syndicom original booking URL not accessible, and generic member-registration pages are not offer evidence. It remains the **sole source-pending ID in the 140-wide cohort**; no cancellation or archival decision.
+
+Current N source ledger = **38 bounded partial / 1 pending / 39 total**. Combined 140-wide field matrix covers all 140, with all publication gates held. No canonical course data edits in this successor.
