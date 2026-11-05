@@ -177,7 +177,8 @@
             null
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "variant": {
       "type": "object",

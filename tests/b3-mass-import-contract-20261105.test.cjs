@@ -1,8 +1,16 @@
 "use strict";
-const assert=require("node:assert/strict"),fs=require("node:fs"),os=require("node:os"),path=require("node:path");
+const assert=require("node:assert/strict"),fs=require("node:fs"),os=require("node:os"),path=require("node:path"),crypto=require("node:crypto");
 const {validate,project,materialize}=require("../scripts/catalogue-ingest-v1.cjs");
+const sha=s=>crypto.createHash("sha256").update(fs.readFileSync(s)).digest("hex");
 const input=JSON.parse(fs.readFileSync("tests/fixtures/b3-import-demo.json","utf8"));
 assert.deepEqual(validate(input),[]);
+const duplicate=structuredClone(input);
+duplicate.offers.push({...structuredClone(input.offers[0]),id:"CH-DEMO-DJ-002"});
+assert.ok(validate(duplicate).some(x=>x.includes("duplicate provider/title identity")));
+const unknownField=structuredClone(input);
+unknownField.offers[0].unmappedResearchClaim="not silently lost";
+assert.ok(validate(unknownField).some(x=>x.includes("offer unknown field")));
+
 const p=project(input);assert.equal(p.length,1);
 const o=p[0].offer,s=p[0].sidecar;
 assert.equal(o.learningTime.instructionDays.max,2);
@@ -29,14 +37,16 @@ const data=path.join(dir,"data.js"),side=path.join(dir,"smart-search-data.js");
 try{
  fs.writeFileSync(data,'window.WEITERBILDUNGSRADAR_OFFERS = [\n{"id":"BASE-0001"}\n];\n');
  fs.writeFileSync(side,'window.MEDIA_SKILLS_SMART_DATA = {"meta":{"rosterCount":1},"byId":{"BASE-0001":{"parserStatus":"NEEDS_REVIEW"}}};\n');
- const r=materialize(input,data,side,1);
+ const firstDataSha=sha(data),firstSideSha=sha(side);
+ assert.throws(()=>materialize(input,data,side,1,"0".repeat(64),firstSideSha),/SHA256_BASELINE_DRIFT/);
+ const r=materialize(input,data,side,1,firstDataSha,firstSideSha);
  assert.equal(r.oldCount,1);assert.equal(r.newCount,2);
  const add=JSON.parse(fs.readFileSync(data,"utf8").split(" = ")[1].trim().replace(/;$/,""));
  const ps=JSON.parse(fs.readFileSync(side,"utf8").split(" = ")[1].trim().replace(/;$/,""));
  assert.deepEqual(add.map(x=>x.id),["BASE-0001","CH-DEMO-DJ-001"]);
  assert.equal(Object.keys(ps.byId).length,2);
  assert.equal(ps.meta.rosterCount,2);
- assert.throws(()=>materialize(input,data,side,2),/duplicate stable offer ID/);
+ assert.throws(()=>materialize(input,data,side,2,sha(data),sha(side)),/duplicate stable offer ID/);
  assert.equal(JSON.parse(fs.readFileSync(data,"utf8").split(" = ")[1].trim().replace(/;$/,"")).length,2);
 }finally{fs.rmSync(dir,{recursive:true,force:true})}
 const duration=require("../duration-model.js");

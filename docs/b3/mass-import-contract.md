@@ -17,7 +17,7 @@ Die **bestehenden 1’352 Angebote bleiben unverändert**. Neue Recherche wird i
 
 ## Import-Pipeline (funktionsfähiges CLI)
 
-`node scripts/catalogue-ingest-v1.cjs --input research-batch.json` prüft JSON-Struktur, Feldbelege, Fremdschlüssel, Zeitfenster, Tarife und eindeutige IDs. Ergebnis ist standardmässig **PREVIEW_ONLY**, keine Schreibmutation. `--apply` ist bewusst explizit, verlangt `--data-file`, `--sidecar-file` und `--expected-existing-offers` als optimistische Baseline-Sperre. Es ergänzt **nur neue IDs**, validiert beide erzeugten Artefakte, schreibt beide lokal mit Backups und bricht bei Duplikat oder Drift ab. Bestehende IDs/Versionen werden nicht überschrieben. Freigabe `REVIEWED + IN_SCOPE` mit feldbezogenen Quellenbelegen ist Voraussetzung für die sichtbare Angebotsschicht; andere Records erhalten `publicationStatus=HOLD`.
+`node scripts/catalogue-ingest-v1.cjs --input research-batch.json` prüft JSON-Struktur, Feldbelege, Fremdschlüssel, Zeitfenster, Tarife und eindeutige IDs. Ergebnis ist standardmässig **PREVIEW_ONLY**, keine Schreibmutation. `--apply` ist bewusst explizit, verlangt `--data-file`, `--sidecar-file` und `--expected-existing-offers` und die beiden obligatorischen `--expected-data-sha256`/`--expected-sidecar-sha256` als Baseline-Sperren. Es ergänzt **nur neue IDs**, validiert beide erzeugten Artefakte, schreibt beide lokal mit Backups und bricht bei Duplikat oder Drift ab. Bestehende IDs/Versionen werden nicht überschrieben. Freigabe `REVIEWED + IN_SCOPE` mit feldbezogenen Quellenbelegen ist Voraussetzung für die sichtbare Angebotsschicht; andere Records erhalten `publicationStatus=HOLD`.
 
 Das Kommando ändert **kein Google-Drive-Master, GitHub-main oder die gehostete Website**. Veröffentlichung, Nacharbeiten an Quellen und Merge bleiben gesonderte Gates. Ausführen nur mit projektdefiniertem Single Writer, nicht parallel mit anderen schreibenden Importen.
 
@@ -32,3 +32,7 @@ Gespeicherter Kurs: **Datenjournalismus, CHF 750, 2 Kurstage**, Quelle geprüft,
 Der v1-Adapter erhält die bestehende `data.js`-/Sidecar-Darstellung. Beim Übergang zu einem serverbasierten Backend wird die API aus den typisierten Provider-, Offer-, Occurrence-, Price- und Evidence-Entitäten generiert, ohne die Suchlogik neu zu schreiben. Für künftige Quellenfunde pro Provider eine Batchdatei und ein konsolidiertes atomisches Writer-Commit; Nutzeroberfläche liest weiterhin allein validierte Angebote.
 
 Nicht gelöst durch diesen Importvertrag: alle vorbestehenden Freitextfelder der 1’352 Angebote automatisch auf Gold-Niveau normalisieren, neue API/Backend, Hosted E5/G3, geografische Suchanfragen oder tatsächliche Platzverfügbarkeit.
+
+### Zusätzliche Datenintegrität
+
+Der Import verwirft nicht nur doppelte Offer-IDs, sondern auch dieselbe normalisierte **Provider-/Titel-Identität** unter einer anderen ID; spätere Kurstermine müssen als Occurrences derselben Offer-Familie erfasst werden. Unbekannte Eingabefelder sind Fehler, keine still ignorierten Angaben. Für einen Write müssen die SHA-256-Prüfsummen **beider** Eingangsdatenbestände mit den vorab gelesenene Prüfsummen übereinstimmen; fehlt ein Lease oder stimmt er nicht, wird ohne Mutation abgebrochen. Nach lokalem Apply ist ein separater Git-Commit und CI-/Drive-Readback weiterhin Pflicht.

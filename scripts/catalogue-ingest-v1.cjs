@@ -2,27 +2,48 @@
 /* Mass import contract: independently sourced offers -> validated typed records
  * -> preview -> opt-in materialization, never silently publish or alter the master.
  * No dependencies beyond Node.js and no network calls. */
-const fs=require("node:fs"),path=require("node:path"),assert=require("node:assert/strict");
+const fs=require("node:fs"),path=require("node:path"),assert=require("node:assert/strict"),crypto=require("node:crypto");
 const schema=require("../schemas/media-skills-batch-v1.schema.json");
 const COUNTRIES={CH:"Schweiz",DE:"Deutschland",AT:"Österreich",LI:"Liechtenstein",US:"USA"};
 const HTTPS=/^https:\/\/[^/\s]+\//i;
 const validDate=x=>typeof x==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(x)
   &&!Number.isNaN(Date.parse(x))&&new Date(x+"T00:00:00Z").toISOString().slice(0,10)===x;
 const isText=x=>typeof x==="string"&&x.trim().length>0;
+const sha256=s=>crypto.createHash("sha256").update(s).digest("hex");
+const fingerprint=o=>{
+ const norm=s=>String(s??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+   .toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
+ return norm(o.provider?.name)+"|"+norm(o.title);
+};
+const checkKeys=(x,allowed,id,label,add)=>{
+ if(!x||typeof x!=="object"||Array.isArray(x)){add(id,label+" must be object");return}
+ for(const k of Object.keys(x))if(!allowed.includes(k))add(id,label+" unknown field "+k);
+};
 const known=(x,items)=>items.includes(x);
-function validate(batch,existingIds=new Set()){
+function validate(batch,existingIds=new Set(),existingFingerprints=new Set()){
  const errors=[];
  const add=(id,msg)=>errors.push(id+": "+msg);
  if(!batch||batch.schemaVersion!=="MEDIA_SKILLS_BATCH_V1")add("BATCH","unknown schemaVersion");
  if(!/^[A-Z0-9][A-Z0-9_-]{4,80}$/.test(batch?.batchId||""))add("BATCH","invalid batchId");
  if(!isText(batch?.reviewer)||batch.reviewer.length<3)add("BATCH","reviewer missing");
  if(!Array.isArray(batch?.offers)||!batch.offers.length||batch.offers.length>250){add("BATCH","offers must have 1..250 entries");return errors}
- const seen=new Set();
+ checkKeys(batch,Object.keys(schema.properties),"BATCH","batch",add);
+ const seen=new Set(),semantic=new Set();
  const critical=["provider","title","focus","access","duration","delivery","price","availability"];
  for(const o of batch.offers){
   const id=o?.id||"<missing-id>";
   if(!/^[A-Z0-9][A-Z0-9_-]{4,99}$/.test(id))add(id,"invalid stable ID");
   if(seen.has(id)||existingIds.has(id))add(id,"duplicate stable offer ID; no automatic overwrite");seen.add(id);
+  const fp=fingerprint(o);
+  if(semantic.has(fp)||existingFingerprints.has(fp))add(id,"duplicate provider/title identity; model next editions as occurrences");
+  semantic.add(fp);
+  checkKeys(o,Object.keys(schema.definitions.offer.properties),id,"offer",add);
+  checkKeys(o.provider,Object.keys(schema.definitions.provider.properties),id,"provider",add);
+  checkKeys(o.access,Object.keys(schema.definitions.access.properties),id,"access",add);
+  checkKeys(o.learningTime,Object.keys(schema.definitions.learningTime.properties),id,"learningTime",add);
+  if(o.learningTime?.instructionDays)checkKeys(o.learningTime.instructionDays,Object.keys(schema.definitions.learningTime.properties.instructionDays.properties),id,"instructionDays",add);
+  checkKeys(o.source,Object.keys(schema.definitions.source.properties),id,"source",add);
+
   if(!isText(o.title)||!isText(o.description)||!isText(o.level))add(id,"title/description/level required");
   if(!known(o.focus,["JOURNALISMUS","MEDIENPRAXIS","MANAGEMENT","MEDIENRECHT","SICHERHEIT","MODERATION"]))add(id,"unknown focus");
   if(!known(o.offerType,["KURS","PROGRAMM","STUDIUM","EVENT"]))add(id,"unknown offerType");
@@ -44,6 +65,8 @@ function validate(batch,existingIds=new Set()){
   if(!Array.isArray(variants)||!variants.length)add(id,"delivery variants missing");
   const vIds=new Set();
   for(const v of variants||[]){
+   checkKeys(v,Object.keys(schema.definitions.variant.properties),id,"delivery variant",add);
+   checkKeys(v.location,Object.keys(schema.definitions.location.properties),id,"delivery location",add);
    if(!isText(v.id)||vIds.has(v.id))add(id,"invalid/duplicate delivery variant");vIds.add(v.id);
    if(!known(v.mode,["IN_PERSON","LIVE_ONLINE","ON_DEMAND","HYBRID"]))add(id,"invalid delivery mode");
    if(!HTTPS.test(v.sourceUrl||""))add(id,"delivery source required");
@@ -53,6 +76,7 @@ function validate(batch,existingIds=new Set()){
   }
   if(!Array.isArray(o.prices))add(id,"prices array missing");
   for(const p of o.prices||[]){
+    checkKeys(p,Object.keys(schema.definitions.price.properties),id,"price",add);
     if(!known(p.amountType,["EXACT","RANGE","FREE","FROM","ON_REQUEST","NOT_PUBLISHED"]))add(id,"invalid amountType");
     if(!known(p.tariffClass,["REGULAR","CONDITIONAL"])||!known(p.eligibilityType,["NONE","MEMBERSHIP","PROFESSION","STUDENT","OTHER"]))add(id,"tariff eligibility missing");
     if(!known(p.priceScope,["FULL_OFFER","PARTIAL","UNKNOWN"])||!known(p.billingBasis,["TOTAL","PER_DAY","PER_SEMESTER","UNKNOWN"]))add(id,"scope/basis missing");
@@ -67,6 +91,8 @@ function validate(batch,existingIds=new Set()){
   if(!Array.isArray(o.occurrences))add(id,"occurrences array missing");
   const sIds=new Set(),datePairs=new Set();
   for(const occ of o.occurrences||[]){
+    checkKeys(occ,Object.keys(schema.definitions.occurrence.properties),id,"occurrence",add);
+    checkKeys(occ.venue,Object.keys(schema.definitions.location.properties),id,"occurrence venue",add);
     if(!isText(occ.id)||sIds.has(occ.id))add(id,"duplicate occurrence ID");sIds.add(occ.id);
     if(!validDate(occ.startDate)||!validDate(occ.endDate)||occ.endDate<occ.startDate)add(id,"invalid occurrence window");
     const pair=occ.startDate+"|"+occ.endDate;
@@ -171,13 +197,18 @@ function project(batch){
   return {offer:record,sidecar:side};
  });
 }
-function materialize(batch,dataFile,sideFile,expectedCount){
+function materialize(batch,dataFile,sideFile,expectedCount,expectedDataSha,expectedSideSha){
  const dataRaw=fs.readFileSync(dataFile,"utf8"),sideRaw=fs.readFileSync(sideFile,"utf8");
+ if(!/^[a-f0-9]{64}$/.test(expectedDataSha||"")||!/^[a-f0-9]{64}$/.test(expectedSideSha||""))
+   throw Error("Both SHA-256 baseline leases are required for --apply");
+ if(sha256(dataRaw)!==expectedDataSha||sha256(sideRaw)!==expectedSideSha)
+   throw Error("SHA256_BASELINE_DRIFT: data/sidecar changed; reconcile before retry");
  const prev=parseFile(dataRaw),side=parseSide(sideRaw);
  assert.equal(prev.length,expectedCount,"Canonical offer-count lease changed");
  assert.equal(prev.length,new Set(prev.map(o=>o.id)).size,"Canonical duplicates");
  assert.equal(Object.keys(side.byId).length,prev.length,"Offer ↔ sidecar parity failed");
- const errors=validate(batch,new Set(prev.map(o=>o.id)));
+ const errors=validate(batch,new Set(prev.map(o=>o.id)),
+   new Set(prev.map(o=>fingerprint(o))));
  if(errors.length)throw Error("VALIDATION_FAILED\n"+errors.join("\n"));
  const projections=project(batch);
  const newOffers=projections.map(x=>x.offer);
@@ -202,6 +233,9 @@ function materialize(batch,dataFile,sideFile,expectedCount){
  const daBak=path.join(dir,".b3-offers-"+process.pid+".bak");
  const siBak=path.join(dir,".b3-sidecar-"+process.pid+".bak");
  try{
+  if(sha256(fs.readFileSync(dataFile,"utf8"))!==expectedDataSha
+    ||sha256(fs.readFileSync(sideFile,"utf8"))!==expectedSideSha)
+    throw Error("SHA256_BASELINE_DRIFT before atomic writer");
   fs.copyFileSync(dataFile,daBak);fs.copyFileSync(sideFile,siBak);
   fs.renameSync(daTmp,dataFile);fs.renameSync(siTmp,sideFile);
  }catch(e){
@@ -230,8 +264,9 @@ function main(){
  const count=Number(arg("--expected-existing-offers"));
  if(!Number.isInteger(count)||count<0)throw Error("Explicit expected baseline count required");
  const dataFile=arg("--data-file"),sideFile=arg("--sidecar-file");
+ const expectedDataSha=arg("--expected-data-sha256"),expectedSideSha=arg("--expected-sidecar-sha256");
  if(!dataFile||!sideFile)throw Error("Explicit data/sidecar paths required");
- console.log(JSON.stringify({status:"APPLIED_LOCAL_DRAFT_ONLY",...materialize(batch,dataFile,sideFile,count)}));
+ console.log(JSON.stringify({status:"APPLIED_LOCAL_DRAFT_ONLY",...materialize(batch,dataFile,sideFile,count,expectedDataSha,expectedSideSha)}));
 }
 if(require.main===module)try{main()}catch(e){console.error(String(e.message||e));process.exitCode=1}
 module.exports={validate,project,materialize};
