@@ -70,6 +70,7 @@ for(let i=0;i<250;i++){
 }
 const bad=structuredClone(batch);
 bad.offers[249].title=bad.offers[0].title;
+bad.offers[249].provider={id:"B4-OTHER-PROVIDER",name:"Unabhängige Testakademie",country:"LI"};
 assert.ok(validate(bad).some(x=>x.includes("duplicate provider/title identity"))===false,
   "Cross-provider title equality alone must not trigger a collision");
 const badSameProvider=structuredClone(batch);
