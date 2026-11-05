@@ -79,8 +79,8 @@ const pending=matrix.data.filter(x=>x.primary_field_evidence_class!=="BOUNDED_PR
 assert.equal(n.length,139);assert.deepEqual(pending.map(x=>x.offer_id),["OFFER-HELIAS-014"]);
 assert.deepEqual(matrix.data.filter(x=>x.scheduled_date_alignment==="MATCHES_EXISTING_START_OR_SESSION").length,109);
 assert.deepEqual(matrix.data.filter(x=>x.scheduled_date_alignment==="NO_SPECIFIC_DUE_START").length,31);
-assert.equal(matrix.data.filter(x=>x.structured_numeric_price_eligible==="true").length,98);
-assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("STRUCTURED_PRICE_BUDGET_UNVERIFIED")).length,42);
+assert.equal(matrix.data.filter(x=>x.structured_numeric_price_eligible==="true").length,102);
+assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("STRUCTURED_PRICE_BUDGET_UNVERIFIED")).length,38);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="NOT_PUBLISHED").length,32);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="MULTIPLE_OPTIONS_OR_AMBIGUOUS").length,39);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="REMOTE_ONLY_DISPLAY_NOT_OCCURRENCE_GOLD").length,37);
@@ -168,8 +168,27 @@ for(const id of dawanDecIds){
  assert.equal(b.unresolved_field_gaps,row.field_gap_tags);
  assert.equal(row.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
 }
+const cfjmTariffIds={"OFFER-CFJM-009":[590,400,300,130,0],"OFFER-CFJM-011":[1180,800,600,260,0],"OFFER-CFJM-012":[2950,2000,1500,650,0],"OFFER-CFJM-020":[1180,800,600,260,0]};
+for(const [id,amounts] of Object.entries(cfjmTariffIds)){
+ const row=get(id),prices=side.byId[id].priceOptions,bl=backlog.data.find(r=>r.offer_id===id);
+ assert.deepEqual(prices.map(x=>x.amount),amounts,id+" exact fee tiers");
+ assert.equal(row.structured_numeric_price_eligible,"true");
+ assert.equal(row.structured_price_option_count,"5");
+ assert.equal(row.structured_conditional_tariff_count,"4");
+ assert.equal(bl.price_numeric_eligible,"true");
+ assert.equal(bl.unresolved_field_gaps,row.field_gap_tags);
+ assert.ok(!row.field_gap_tags.includes("STRUCTURED_PRICE_BUDGET_UNVERIFIED"));
+ assert.equal(row.website_gold_gate,"NOT_PROVEN");
+ assert.equal(row.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
+ assert.deepEqual(prices.map(x=>x.tariffClass),["REGULAR","CONDITIONAL","CONDITIONAL","CONDITIONAL","CONDITIONAL"]);
+ assert.equal(prices[4].eligibilityValue,"CFJM_FC_COTISANT");
+ assert.equal(prices[4].amountType,"FREE");
+ assert.equal(prices[4].amount,0);
+ assert.equal(prices[0].eligibilityType,"NONE");
+ assert.equal(prices[3].eligibilityValue,id==="OFFER-CFJM-009"?"IMPRESSUM_AND_50_PERCENT_FREELANCE":"IMPRESSUM");
+}
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
- all:140,sourceBounded:139,sourcePending:1,numericEligible:98,
- priceGap:42,venueUnpublished:32,venueAmbiguous:51,
+ all:140,sourceBounded:139,sourcePending:1,numericEligible:102,
+ priceGap:38,venueUnpublished:32,venueAmbiguous:51,
  deliveryUnverified:107,ownerScopeFlags:10,publicationApproved:0
 }));
