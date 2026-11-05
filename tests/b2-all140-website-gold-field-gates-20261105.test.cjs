@@ -18,6 +18,7 @@ const freeze=rows("docs/b2/parallel-review-140-20261105.tsv");
 const near=rows("docs/b2/near-term-39-source-differential-20261105.tsv");
 const rest=rows("docs/b2/remainder-101-source-differential-20261105.tsv");
 const matrix=rows("docs/b2/all-140-website-gold-field-gates-20261105.tsv");
+const backlog=rows("docs/b2/all-140-priority-evidence-backlog-20261105.tsv");
 const offers=parseWindow("data.js","[","]");
 const side=parseWindow("smart-search-data.js","{","}");
 assert.equal(offers.length,1352);
@@ -97,6 +98,23 @@ assert.ok(get("V82-DAWAN-037").source_verified_fields.includes("PAO946-F"));
 assert.ok(get("OFFER-CFJM-013").source_decision.includes("HOLD_EXACT_DETAIL_VERSION"));
 assert.ok(get("OFFER-HELIAS-014").field_gap_tags.includes("SOURCE_PRIMARY_UNRESOLVED"));
 assert.ok(get("OFFER-MAZ-100").structured_price_option_count==="2");
+assert.equal(backlog.data.length,140);
+assert.equal(backlog.header.length,19);
+assert.equal(new Set(backlog.data.map(r=>r.offer_id)).size,140);
+assert.deepEqual(new Set(backlog.data.map(r=>r.offer_id)),new Set(matrix.data.map(r=>r.offer_id)));
+const priority={};
+for(const r of backlog.data){
+ priority[r.priority]=(priority[r.priority]||0)+1;
+ const original=get(r.offer_id);
+ assert.equal(r.unresolved_field_gaps,original.field_gap_tags);
+ assert.equal(r.source_evidence_class,original.primary_field_evidence_class);
+ assert.equal(r.full_differential_action,original.next_evidence_action);
+ assert.equal(r.automatic_publication_allowed,"NO");
+ assert.equal(r.owner_release_required,"YES");
+ assert.equal(r.status,"QUEUE_NOT_GOLD");
+}
+assert.deepEqual(priority,{P0_SOURCE_IDENTITY_SCOPE:28,P1_PRICE_ACCESS_VENUE:85,P2_OCCURRENCE_DELIVERY:18,P3_CURRENTNESS_AND_CLOSURE:9});
+assert.ok(backlog.data.every((r,i)=>i===0||backlog.data[i-1].priority<=r.priority));
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
  all:140,sourceBounded:139,sourcePending:1,numericEligible:95,
  priceGap:45,venueUnpublished:32,venueAmbiguous:51,
