@@ -231,3 +231,17 @@ Einzig `OFFER-VSM-001`: Die [offizielle VSM-Ausschreibung](https://www.schweizer
 Die 3 bestehenden strukturierten Teilnahmeoptionen wurden **unverändert** gelassen: CHF 250 Nichtmitglieder regulär **exkl. MWST**, CHF 150 für bestimmte Mitglieder / MAZ-Absolvent:innen ebenfalls **exkl. MWST**, und eine **ausdrücklich nur für Journalist:innen im Anmeldeformular ausgewiesene**, bedingte kostenlose Teilnahme. Das Vorhandensein des Formulars ist keine Zusage verfügbarer Plätze. `TAX_SCOPE_UNSPECIFIED`, `BOOKING_OR_INTAKE_NOT_PROVEN`, `CURRENTNESS_REVIEW_DUE`, Scope-/Gold-/Publication-Holds bleiben. Die früheren Preisoptionen dürfen nicht pauschal als allgemein günstig oder kostenlos kategorisiert werden.
 
 Nach diesem exakt ein-ID-begrenzten Schritt 1'352 Sidecars: global VERIFIED **186**, PROVISIONAL **398**, UNKNOWN **768**. In der 140er Due-Kohorte 107 numerisch strukturierte Preise, 33 Preis-Gaps, **79** nicht vollständig verifizierte Delivery-Modelle (zuvor 80), 18 Versions- und 10 Scope-Holds, null Gold-Freigaben. Synchrone Anpassung: Preis-/Delivery-Sidecar (nur Delivery), 140×57 Matrix, 140×19 Backlog, beide Regression-Tests; nachfolgende CI-Gates separat abfragen.
+
+## EVT232 – Schreibszene und BeVisible: drei belegte Präsenzkursmodelle
+
+Für drei bestehende Datensätze ist die **Unterrichtsform Präsenz, zeitgleich und termingebunden** durch Anbieter-Kursseiten belegt. Es werden weder die historische Termin-/Ortsbasis in `data.js` noch die eingefrorenen Quellendifferentiale verändert.
+
+| ID | Anbieterbeleg | Eng begrenzte Korrektur |
+|---|---|---|
+| `V59-SZ01` | [Schreibszene – Das gelungene Interview](https://schreibszene.ch/das-gelungene-interview/): 17.11.2026, 09:00–17:00, Zürich, CHF 700 | Eine `IN_PERSON`, `SYNCHRONOUS`, `FIXED`-Variante, genaue Raumadresse weiterhin unbekannt, keine individuelle Platzzusage |
+| `V59-SZ04` | [Schreibszene – Redigieren](https://schreibszene.ch/redigieren/): 10.11.2026, Zürich, CHF 640 | Gleiches einheitliches Präsenzmodell, kein erfundener Unterrichtsraum, Quelle ist eine jüngere Indexfassung als eine ältere Detailcache-Variante |
+| `V77-04` | [BeVisible – BeSMARTphoneVIDEO](https://www.bevisible.swiss/book-online): 15.10.2026 Leman Studio Luins (vergangene Ausgabe) und 20.11.2026 Downtown Studio, Rue des Vieux-Grenadiers 10, Genève; CHF 689 | Anbieter bestätigt Präsenzformat, aber der abrufbare Buchungsstand ist rund vier Monate alt; `VENUE_FORMAT_SESSION_CROSSWALK` und `BOOKING_OR_INTAKE_NOT_PROVEN` bleiben bestehen |
+
+Bei Schreibszene werden auf Wunsch **zusätzliche** Online-Firmenkurse angeboten. Daraus folgt **keine** neue Online-Variante für die drei hier eingefrorenen festen öffentlichen Editionen. Auch ein Buchungsformular ist nicht die individuelle Zulassung.
+
+Genau diese drei Sidecars `PROVISIONAL → VERIFIED` (nur Delivery), die Matrix-/Backlog-Delivery-Gaps und zwei Regressionstests wurden source-boundiert angepasst. Preisschätzungen, steuerliche Behandlung und alle Release-Gates bleiben unverändert. Global 1'352 Sidecars: **189 VERIFIED, 395 PROVISIONAL, 768 UNKNOWN**; 140 Due-IDs: **107** Preis-fähig, 33 Preis-Gaps, **76** Delivery nicht VERIFIED (zuvor 79), 18 Source-/10 Scope-Holds, null neue Website-Gold. Nachfolgende CI-Ergebnisse separat readback-bestätigen.
