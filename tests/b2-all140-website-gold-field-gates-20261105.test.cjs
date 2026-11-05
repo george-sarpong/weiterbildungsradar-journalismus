@@ -79,13 +79,13 @@ const pending=matrix.data.filter(x=>x.primary_field_evidence_class!=="BOUNDED_PR
 assert.equal(n.length,139);assert.deepEqual(pending.map(x=>x.offer_id),["OFFER-HELIAS-014"]);
 assert.deepEqual(matrix.data.filter(x=>x.scheduled_date_alignment==="MATCHES_EXISTING_START_OR_SESSION").length,109);
 assert.deepEqual(matrix.data.filter(x=>x.scheduled_date_alignment==="NO_SPECIFIC_DUE_START").length,31);
-assert.equal(matrix.data.filter(x=>x.structured_numeric_price_eligible==="true").length,106);
-assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("STRUCTURED_PRICE_BUDGET_UNVERIFIED")).length,34);
+assert.equal(matrix.data.filter(x=>x.structured_numeric_price_eligible==="true").length,107);
+assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("STRUCTURED_PRICE_BUDGET_UNVERIFIED")).length,33);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="NOT_PUBLISHED").length,32);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="MULTIPLE_OPTIONS_OR_AMBIGUOUS").length,39);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="REMOTE_ONLY_DISPLAY_NOT_OCCURRENCE_GOLD").length,37);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="SINGLE_DISPLAY_LOCATION_UNPROVEN").length,32);
-assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,81);
+assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,80);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("OWNER_SCOPE_REVIEW")).length,10);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD")).length,18);
 assert.ok(!get("OFFER-MAZ-146").field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
@@ -315,8 +315,32 @@ for(const id of verifiedPhysicalIds){
 }
 assert.ok(side.byId["IF-G06"].delivery.sourceText.includes("Five meetings are 15 hours NOT five full 8-hour teaching days."));
 assert.ok(side.byId["V58-S1-04"].delivery.sourceText.includes("sold out"));
+const heli = get("OFFER-HELIAS-011"),heliSide=side.byId["OFFER-HELIAS-011"],heliQueue=backlog.data.find(x=>x.offer_id==="OFFER-HELIAS-011");
+assert.equal(heli.structured_numeric_price_eligible,"true");
+assert.equal(heli.structured_price_option_count,"3");
+assert.equal(heli.structured_conditional_tariff_count,"2");
+assert.equal(heli.delivery_evidence_tier,"VERIFIED");
+assert.deepEqual(heliSide.priceOptions.map(p=>p.amount),[420,140,0]);
+assert.deepEqual(heliSide.priceOptions.map(p=>p.eligibilityType),["NONE","MEMBERSHIP","MEMBERSHIP"]);
+assert.deepEqual(heliSide.priceOptions.map(p=>p.tariffClass),["REGULAR","CONDITIONAL","CONDITIONAL"]);
+assert.equal(heliSide.delivery.structure,"SINGLE_CHANNEL");
+assert.deepEqual(heliSide.delivery.channels,["IN_PERSON"]);
+assert.equal(heliSide.delivery.variants.length,1);
+assert.equal(heliSide.delivery.variants[0].scheduleMode,"FIXED");
+assert.ok(heliSide.delivery.sourceText.includes("Impact Room"));
+assert.ok(heliSide.delivery.sourceText.includes("2025"));
+assert.ok(!heli.field_gap_tags.includes("STRUCTURED_PRICE_BUDGET_UNVERIFIED"));
+assert.ok(!heli.field_gap_tags.includes("DELIVERY_NOT_VERIFIED"));
+assert.ok(heli.field_gap_tags.includes("ACCESS_TARIFF_ELIGIBILITY_GUARD"));
+assert.ok(heli.field_gap_tags.includes("BOOKING_OR_INTAKE_NOT_PROVEN"));
+assert.equal(heli.scope_gate,"NOT_FULLY_REVIEWED_FOR_SCOPE");
+assert.equal(heli.website_gold_gate,"NOT_PROVEN");
+assert.equal(heli.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
+assert.equal(heliQueue.price_numeric_eligible,"true");
+assert.equal(heliQueue.delivery_tier,"VERIFIED");
+assert.equal(heliQueue.unresolved_field_gaps,heli.field_gap_tags);
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
- all:140,sourceBounded:139,sourcePending:1,numericEligible:106,
- priceGap:34,venueUnpublished:32,venueAmbiguous:51,
- deliveryUnverified:81,ownerScopeFlags:10,publicationApproved:0
+ all:140,sourceBounded:139,sourcePending:1,numericEligible:107,
+ priceGap:33,venueUnpublished:32,venueAmbiguous:51,
+ deliveryUnverified:80,ownerScopeFlags:10,publicationApproved:0
 }));
