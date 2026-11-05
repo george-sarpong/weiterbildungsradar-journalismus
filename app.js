@@ -131,6 +131,14 @@
     return (!end || end >= today) && (end || !start || start >= today);
   };
 
+  // Begonnene, noch laufende Nicht-Session-Kurse beweisen keinen Späteinstieg.
+  const startedButRunning = offer => {
+    if (Array.isArray(offer.sessions) || !offer.startDate || !offer.endDate) return false;
+    const start = parseDate(offer.startDate);
+    const end = parseDate(offer.endDate);
+    return Boolean(start && end && start < today && end >= today);
+  };
+
   // Ausgelaufene Präsenz-Sessions dürfen eine separat belegte, undatierte
   // Selbstlernvariante nicht verbergen. Ohne VERIFIED-Sidecar keine Ausnahme.
   // Dies ist ausschliesslich eine Anzeigeprojektion, kein Schreibzugriff auf data.js.
@@ -1389,6 +1397,7 @@
           <span>Zugang: ${escapeHtml(compactAccess(offer))}</span>
           ${place ? `<span>${escapeHtml(place)}</span>` : ""}
         </div>
+        ${startedButRunning(offer) ? `<p class="smart-budget"><strong>Bereits begonnen:</strong> Eine Neuanmeldung oder ein Späteinstieg ist nicht bestätigt. Bitte direkt beim Anbieter klären.</p>` : ""}
         ${item.alternativeReason === "FORMAT"
           ? `<p class="smart-budget"><strong>Ob dieser Kurs in der gewünschten Form stattfindet, ist noch offen.</strong> In unserem Katalog steht: ${escapeHtml(humanizeTokens(offer.format, labels.format))}. Bitte beim Kursanbieter nachfragen.</p>`
           : item.alternativeReason === "PREIS"
@@ -1485,7 +1494,7 @@
       + moreDirect
       + (alternativeShown.length
         ? `<section class="smart-alternatives" aria-labelledby="smartAlternativeTitle"><h3 id="smartAlternativeTitle">Weitere Kurse, die passen könnten</h3>
-           <p>Bei diesen Kursen sind noch Fragen zum Preis oder zur Kursform offen. Bitte beim Kursanbieter nachfragen.</p>
+           <p>Bei diesen Kursen sind noch Fragen zum Preis, zur Kursform oder zu einem möglichen Späteinstieg offen. Bitte beim Kursanbieter nachfragen.</p>
            <div class="smart-alternative-cards">${alternativeShown.map((item, index) => smartCard(item, parsed, index)).join("")}</div>${moreAlternatives}</section>`
         : "");
     el.smartStatus.textContent = confirmedText + progressText + alternativeText
@@ -1515,18 +1524,25 @@
     el.smartValidation.textContent = "";
     const formatMatches = offers.map(offer => smartEvaluate(offer, parsed)).filter(Boolean);
     const evaluated = parsed.budget
-      ? formatMatches.filter(item => item.budget.status === "DIRECT_FIT")
-      : formatMatches;
+      ? formatMatches.filter(item => !startedButRunning(item.offer) && item.budget.status === "DIRECT_FIT")
+      : formatMatches.filter(item => !startedButRunning(item.offer));
     const priceAlternatives = parsed.budget && parsed.tokens.length
-      ? formatMatches.filter(item => ["TARGET_GROUP_FIT", "CONDITIONAL_FIT", "POSSIBLE_FIT"].includes(item.budget.status))
+      ? formatMatches.filter(item => !startedButRunning(item.offer)
+          && ["TARGET_GROUP_FIT", "CONDITIONAL_FIT", "POSSIBLE_FIT"].includes(item.budget.status))
         .map(item => ({ ...item, isAlternative: true, alternativeReason: "PREIS" }))
+      : [];
+    const bookingAlternatives = parsed.tokens.length
+      ? formatMatches.filter(item => startedButRunning(item.offer)
+          && (!parsed.budget || ["DIRECT_FIT", "TARGET_GROUP_FIT", "CONDITIONAL_FIT", "POSSIBLE_FIT"].includes(item.budget.status)))
+        .map(item => ({ ...item, isAlternative: true, alternativeReason: "BOOKING" }))
       : [];
     const formatAlternatives = parsed.deliveryIntents.length
       ? offers.map(offer => smartAlternative(offer, parsed)).filter(Boolean)
       : [];
-    const alternatives = [...priceAlternatives, ...formatAlternatives];
+    const alternatives = [...priceAlternatives, ...bookingAlternatives, ...formatAlternatives];
+    const alternativeOrder = { PREIS: 0, BOOKING: 1, FORMAT: 2 };
     alternatives.sort((a, b) =>
-      (a.alternativeReason === "PREIS" ? 0 : 1) - (b.alternativeReason === "PREIS" ? 0 : 1)
+      (alternativeOrder[a.alternativeReason] ?? 3) - (alternativeOrder[b.alternativeReason] ?? 3)
       || (budgetStatusRank[a.budget.status] ?? 99) - (budgetStatusRank[b.budget.status] ?? 99)
       || b.score - a.score || a.offer.title.localeCompare(b.offer.title, "de-CH"));
     evaluated.sort((a, b) => {
