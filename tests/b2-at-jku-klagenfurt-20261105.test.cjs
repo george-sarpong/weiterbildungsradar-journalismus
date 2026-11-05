@@ -21,7 +21,7 @@ assert.equal(jku.startDate,"");
 const aau=byId.get("AT-PROD-OFFER-098");
 assert.ok(aau);
 assert.match(aau.start,/Sommersemester 2027/);
-assert.ok(aau.start.includes("08.01.2027") && aau.start.includes("31.03.2027"), "AAU official application period");
+assert.ok(aau.start.includes("08.01.–31.03.2027"), "AAU official application period");
 assert.match(aau.start,/Deutsch C1/);
 assert.match(aau.start,/Exakter Studien- und Unterrichtsbeginn nicht publiziert/);
 assert.equal(aau.startDate,"");
