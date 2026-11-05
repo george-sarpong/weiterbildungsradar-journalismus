@@ -26,7 +26,8 @@ assert.equal(index.summary.occurrences,250);
 assert.equal(index.summary.priceEligible,250);
 assert.equal(new Set(all.map(x=>x.id)).size,250);
 assert.equal(index.summary.legacyAccessUnknown,0);
-assert.ok(all.every(o=>o.providerCountry==="CH"&&o.deliveryCountry==="CH"));
+assert.ok(all.every(o=>o.providerCountry==="CH"&&o.deliveryCountry===null
+ &&o.country==="Nicht publiziert"&&o.publicationStatus==="HOLD"));
 const over=structuredClone(batch);over.offers.push({...structuredClone(many[0]),id:"CH-B4-BULK-1000"});
 assert.ok(validate(over).some(s=>s.includes("1..250")),"Oversize batch must fail");
 const dup=structuredClone(batch);dup.offers[249].title=dup.offers[0].title;
