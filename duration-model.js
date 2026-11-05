@@ -12,8 +12,8 @@
     const source = String(text ?? "").trim();
     if (!source) return unknown("NO_DURATION");
     // "2 Tage pro Woche" describes a recurring rate, not total attendance.
-    if (/\\b(?:pro|je)\\s+(?:woche|monat|semester)\\b/i.test(source)
-      || /\\b(?:\\d+)\\s*(?:x|×|mal)\\s*\\d+(?:[.,]\\d+)?\\s*(?:tag|tage|jours?|days?)\\b/i.test(source))
+    if (/\b(?:pro|je)\s+(?:woche|monat|semester)\b/i.test(source)
+      || /\b(?:\d+)\s*(?:x|×|mal)\s*\d+(?:[.,]\d+)?\s*(?:tag|tage|jours?|days?)\b/i.test(source))
       return unknown("RECURRING_OR_MULTIPLIED");
     const matches = [...source.matchAll(PATTERN)];
     if (matches.length !== 1) return unknown(matches.length ? "MULTIPLE_DAY_CLAUSES" : "NO_EXPLICIT_DAYS");
@@ -21,10 +21,10 @@
     const min = numeric(first), max = second == null ? min : numeric(second);
     if (!Number.isFinite(min) || !Number.isFinite(max) || min<=0 || max<min)
       return unknown("INVALID_RANGE");
-    if (/\\b(?:ca\\.?|circa|etwa|ungef(?:ä|ae)hr|rund|approximately|approx\\.?)\\s*\\d/i.test(source))
+    if (/\b(?:ca\.?|circa|etwa|ungef(?:ä|ae)hr|rund|approximately|approx\.?)\s*\d/i.test(source))
       return unknown("APPROXIMATE_SOURCE_DURATION");
     // Do not silently ignore extra weeks, months or mandatory self-study.
-    if (/\\b(?:\\d+\\s*(?:wochen?|monate?|semestern?|weeks?|months?)|zus(?:ä|ae)tzlich\\s+\\d+\\s*stunden?\\s+selbststudium)\\b/i.test(source))
+    if (/\b(?:\d+\s*(?:wochen?|monate?|semestern?|weeks?|months?)|zus(?:ä|ae)tzlich\s+\d+\s*stunden?\s+selbststudium)\b/i.test(source))
       return unknown("ADDITIONAL_SCHEDULE_OR_WORKLOAD");
     return { status: "KNOWN", minDays: min, maxDays: max, source: "EXPLICIT_DAY_TEXT", reason: null };
   };
@@ -38,7 +38,7 @@
     return fromText(offer?.duration);
   };
   const classify = (offer, maxDays, approximate=false) => {
-    if (!Number.isFinite(maxDays) || maxDays<=0) return {status:"FIT",...fromRecord(offer)};
+    if (!Number.isFinite(maxDays) || maxDays<=0) return {...fromRecord(offer),status:"FIT"};
     const duration=fromRecord(offer);
     if(duration.status!=="KNOWN") return {status:"UNKNOWN",...duration};
     if(duration.maxDays<=maxDays) return { ...duration,status:"FIT" };
