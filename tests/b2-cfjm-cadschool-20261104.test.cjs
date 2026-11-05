@@ -33,7 +33,22 @@ for (const [id, tuples] of Object.entries(expected)) {
       id + " exact source-backed sessions");
   yes(offer.sessions.every(s => !s.availabilityStatus || s.availabilityStatus === "UNKNOWN"),
       id + " no asserted capacity");
-  yes(byId[id].priceEligible === false, id + " price must not be auto-promoted");
+  if (id === "OFFER-CFJM-005") {
+    yes(byId[id].priceEligible === false && byId[id].priceOptions.length === 0,
+        id + " per-day fees must stay unconverted to course total");
+  } else {
+    const prices = byId[id].priceOptions;
+    yes(byId[id].priceEligible === true && byId[id].parserStatus === "AUTO_ACCEPT",
+        id + " sourced course-total price parse");
+    yes(prices.length === 5 && prices.map(p=>p.amount).join(",") === "2950,2000,1500,650,0",
+        id + " sourced five-tier fee schedule");
+    yes(prices[0].tariffClass === "REGULAR" && prices.slice(1).every(p=>p.tariffClass === "CONDITIONAL"),
+        id + " conditional journalist tiers not unconditional");
+    yes(prices.every(p=>p.billingBasis === "TOTAL" && p.priceScope === "FULL_OFFER"),
+        id + " complete five-day course fee");
+    yes(prices[4].eligibilityValue === "CFJM_FC_COTISANT" && prices[3].eligibilityValue === "IMPRESSUM",
+        id + " named membership conditions");
+  }
 }
 yes(get("OFFER-CFJM-005").priceDisplay.includes("par jour de formation"),
     "CFJM-005 per-day tariffs have not been converted to whole-course fees");
