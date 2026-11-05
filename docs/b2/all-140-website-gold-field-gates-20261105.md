@@ -29,7 +29,7 @@ Der Nutzer verlangte ausdrücklich, **alle 140 Fälle gleichzeitig**, nicht weit
 | Ausschliesslich online im Katalog gekennzeichnet | 37 | nicht mit hybrider / mehreren Standorten gleichsetzen |
 | Mehrere Orts- oder Formatoptionen im Katalog | 39 | echte Edition/Variante nötig, kein willkürlich gewählter Standort |
 | Ein einzelner angegebener Ort | 32 | Angabe im Katalog ≠ erneuter unabhängiger Veranstaltungsortbeweis |
-| Nicht source-verifiziertes Delivery-Modell | 98 | Semantik/Durchführung muss getrennt vom Anbieter-Sitz belegt werden |
+| Nicht source-verifiziertes Delivery-Modell | 88 | Semantik/Durchführung muss getrennt vom Anbieter-Sitz belegt werden |
 | Präzise Owner-Scope-Signale | 10 | redaktionell/journalistisch vs. PR/Marketing/IT prüfen |
 | Offene Quellenversion-/Alias-/Dauer-Guards | 18 | konfliktbehaftete Fälle, **ohne** zwei falsch-positive Hold-Markierungen |
 | `reviewAfter` am 05.11.2026 fällig | 140 | nicht automatisch auf ein neues Datum verschieben |
@@ -154,3 +154,24 @@ Das Anbieterprogramm der Deutschen Journalisten-Akademie nennt bei **sieben weit
 Bei `DJA-007` steht offiziell **«Demnächst!»** statt einer nachgewiesen geöffneten Anmeldung. Einzelne andere DJA-Seiten zeigen alte 2026-Bewerbungsfenster. Das Anbieter-Online-Campus-Störungsereignis vom 22.10.2026 wurde noch nicht als definitiv behoben bestätigt. Folglich bleiben `BOOKING_OR_INTAKE_NOT_PROVEN`, `CURRENTNESS_REVIEW_DUE`, `REMOTE_CHANNEL_SEAT_NOT_PROVEN` und nicht gesicherte Schweizer Endpreise in allen sieben Fällen unverändert offen. 0 automatische Neuaufnahmen oder Gold-Freigaben.
 
 Die beiden existierenden B2-Matrix-/Backlog-Dateien und zwei Regressionsdateien wurden nach genau sieben Source/Old-Value-gesicherten Sidecar-Writes synchronisiert. 140 Offer-IDs und 1'352 Sidecars bleiben konstant; numerische Preisfelder **106** und Preis-Gaps **34** unverändert; Delivery ohne Full Source Verification nun **98** (zuvor 105). Globaler Sidecar-Tier-Counter: VERIFIED 167 / PROVISIONAL 399 / UNKNOWN 786. Tests prüfen die exakten sieben IDs und alle offenen Admission-Gates. Neue externe Red-Team-/Hosted-E5-/G3-/Owner-Freigaben: 0.
+
+## EVT226 – restliche zehn DJA-Fernlehrgänge: Unterrichtsmodell verifiziert
+
+Die restlichen zehn Angebote aus der bereits eingefrorenen DJA-Teilgruppe haben je eine **offizielle anbietereigene Kursseite**, die einen 100-%-Online-Fernlehrgang mit digitalen Skripten/Videos, selbständigem Lerntempo und Online-Prüfungen belegt. Es handelt sich um ein verifiziertes **Unterrichtsmodell**, nicht um eine bestätigte freie Aufnahme oder garantierte Zugänglichkeit zum Online-Campus. Alle Lehrgänge erhalten `SINGLE_CHANNEL REMOTE`, `ASYNCHRONOUS`, `FIXED` (kein falsches jederzeitiges Self-Enrollment) und den Hold `SOURCE_VERIFIED_DELIVERY_ONLY_INTAKE_CAMPUS_HOLD`.
+
+| Offer-ID | Offizielle Anbieter-Einzelseite |
+|---|---|
+| `OFFER-DJA-011` Fernsehjournalismus | https://deutschejournalistenakademie.de/lehrgang/fernsehjournalismus/ |
+| `OFFER-DJA-013` Klimajournalismus | https://deutschejournalistenakademie.de/lehrgang/nachhaltigkeitsjournalismus/ |
+| `OFFER-DJA-014` Kulturjournalismus | https://deutschejournalistenakademie.de/lehrgang/kulturjournalismus/ |
+| `OFFER-DJA-015` Lokaljournalismus | https://deutschejournalistenakademie.de/lehrgang/lokaljournalismus/ |
+| `OFFER-DJA-016` Musikjournalismus | https://deutschejournalistenakademie.de/lehrgang/musikjournalismus/ |
+| `OFFER-DJA-017` Politikjournalismus | https://deutschejournalistenakademie.de/lehrgang/politikjournalismus/ |
+| `OFFER-DJA-018` Radiojournalismus | https://deutschejournalistenakademie.de/lehrgang/radiojournalismus/ |
+| `OFFER-DJA-019` Reisejournalismus | https://deutschejournalistenakademie.de/lehrgang/reisejournalismus/ |
+| `OFFER-DJA-020` Sportjournalismus | https://deutschejournalistenakademie.de/lehrgang/sportjournalismus/ |
+| `OFFER-DJA-021` Wirtschaftsjournalismus | https://deutschejournalistenakademie.de/lehrgang/wirtschaftsjournalismus/ |
+
+**Identitäts-Guard:** Der historische URL-Slug `nachhaltigkeitsjournalismus` führt bei DJA ausdrücklich die Kursüberschrift «Klimajournalismus» (`OFFER-DJA-013`); die bestehende Stable-ID und Quellen-URL wurden nicht umgeschrieben. Keine neue doppelte Offer-ID. Die früheren DJA-2026-Fristen und die Anbieter-Störungsmeldung zur Online-Campus-Nichtverfügbarkeit vom 22.10.2026 erlauben keine aktuelle Platz-/Neubeginn-Zusage. Die 2026 Kursstarts bleiben historische, nicht neu gebuchte Editionen. Allgemeine aktuelle Betreiber-FAQ ersetzt keinen neuen individueller Angebotstermin.
+
+**Neue 140er-Zahlen:** 1'352 Sidecars unverändert, exakt 140 frozen IDs; 106 numerisch preisfilterbar, 34 Preis-Gaps, **88 nicht auf Whole-Offer-Level source-verifizierte Delivery-Modelle** (vor EVT225 105, nach EVT225 98). Alle 21 DJA-Angebote der Due-Teilgruppe haben nun quellenverifizierte Unterrichtsmodelle; Aufnahme/Plattform/CH-Endpreis/individuelle Berechtigung bleiben gesondert offen. Globale Statusverteilung: VERIFIED 177, PROVISIONAL 399, UNKNOWN 776. Source-Version-Guards 18, Owner-Scope-Signale 10, 139/1 limited source signals, 0 neue Gold-/E4-/E5-/G3-/Owner-/Publish-Freigaben. Die 140er Matrix/Backlog-Regressions und der globale WDA-04-Tier-Test prüfen die zehn exakten IDs; beide Sidecar-Writes erfolgten in getrennten Fünferblöcken.
