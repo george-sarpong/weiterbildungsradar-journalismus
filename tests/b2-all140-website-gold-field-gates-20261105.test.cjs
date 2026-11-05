@@ -85,7 +85,7 @@ assert.equal(matrix.data.filter(x=>x.venue_data_state==="NOT_PUBLISHED").length,
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="MULTIPLE_OPTIONS_OR_AMBIGUOUS").length,39);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="REMOTE_ONLY_DISPLAY_NOT_OCCURRENCE_GOLD").length,37);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="SINGLE_DISPLAY_LOCATION_UNPROVEN").length,32);
-assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,105);
+assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,98);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("OWNER_SCOPE_REVIEW")).length,10);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD")).length,18);
 assert.ok(!get("OFFER-MAZ-146").field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
@@ -217,8 +217,26 @@ for(const [id,amounts] of Object.entries(priceBatchNext)){
    assert.equal(sc.priceOptions[1].eligibilityValue,"JOURNALIST");
  }
 }
+const djaBatchMore=["OFFER-DJA-002","OFFER-DJA-004","OFFER-DJA-006","OFFER-DJA-007","OFFER-DJA-008","OFFER-DJA-010","OFFER-DJA-022"];
+for(const id of djaBatchMore){
+ const row=get(id),rec=side.byId[id],back=backlog.data.find(r=>r.offer_id===id);
+ assert.equal(row.delivery_evidence_tier,"VERIFIED",id+" provider 100% online");
+ assert.equal(row.delivery_variant_count,"1");
+ assert.equal(back.unresolved_field_gaps,row.field_gap_tags);
+ assert.equal(back.delivery_tier,"VERIFIED");
+ assert.equal(rec.delivery.structure,"SINGLE_CHANNEL");
+ assert.deepEqual(rec.delivery.channels,["REMOTE"]);
+ assert.equal(rec.delivery.variants[0].temporalMode,"ASYNCHRONOUS");
+ assert.equal(rec.delivery.variants[0].scheduleMode,"FIXED");
+ assert.ok(rec.delivery.materialisationStatus.includes("INTAKE_AND_CAMPUS_HOLD"));
+ assert.ok(row.field_gap_tags.includes("BOOKING_OR_INTAKE_NOT_PROVEN"));
+ assert.ok(row.field_gap_tags.includes("REMOTE_CHANNEL_SEAT_NOT_PROVEN"));
+ assert.equal(row.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
+ assert.equal(rec.priceEligible,true);
+ if(id==="OFFER-DJA-007")assert.ok(rec.delivery.sourceText.includes("Demnächst"));
+}
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
  all:140,sourceBounded:139,sourcePending:1,numericEligible:106,
  priceGap:34,venueUnpublished:32,venueAmbiguous:51,
- deliveryUnverified:105,ownerScopeFlags:10,publicationApproved:0
+ deliveryUnverified:98,ownerScopeFlags:10,publicationApproved:0
 }));
