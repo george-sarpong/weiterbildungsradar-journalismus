@@ -465,7 +465,7 @@ jobs:
               &&(await page.locator('#smartUnderstood').innerText()).includes('Zeit: 2 Tage · angewendet'),
               'Maximum-day constraint was recognised but not applied: '+durationWarning);
             const directDurations=await page.locator('#smartResults > article.smart-result-card .smart-result-meta span:nth-child(3)').allInnerTexts();
-            assert(directDurations.every(t=>/^\\s*(?:[012](?:[,.]\\d+)?)\\s*(?:tag|tage|kurstage|unterrichtstage)/i.test(t)),
+            assert(directDurations.every(t=>/^\s*(?:[012](?:[,.]\d+)?)\s*(?:tag|tage|kurstage|unterrichtstage)/i.test(t)),
               'Direct results include a course without proven two-day duration: '+JSON.stringify(directDurations));
             await page.locator('#smartInput').fill('Videoproduktion');
             await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
