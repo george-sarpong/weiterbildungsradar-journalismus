@@ -1,12 +1,12 @@
 # B2 Near-term 39 — source differential and strict release-gated ledger (05.11.2026)
 
-This is an **offer-ID-level source-recheck staging ledger**, NOT E4/E5/website Gold and NOT a claim that all 39 offers have been verified. The original fixed 39/140 queue is preserved. This record is attached to the B4 technical mass-import hardening work on PR #10; no source-derived offer fields have yet been written to production files.
+This is an **offer-ID-level source-recheck staging ledger**, NOT E4/E5/website Gold and NOT a claim that all 39 offers have been verified. The original fixed 39/140 queue is preserved. This record is attached to the B4 technical mass-import hardening work on PR #10; two price-only source-derived MAZ sidecar corrections have been committed to the **unmerged PR branch**; no source-derived changes were made to `data.js`, the main branch, the Drive master or the deployed website.
 
 ## Reconciled population
 - Historical due pool: 140 IDs, decomposed into N01 15 + N02 8 + N03 16 = **39 near-term IDs**, and 101 other IDs.
 - 39/39 IDs copied from `docs/b2/parallel-review-140-20261105.tsv`, with source URL, existing evidence_state and focus_field intact. No retitling or new offer IDs.
-- **22** near-term records contain **partial official source observations**, bounded by crawler freshness and still open booking/edition/scope details. **17** retain `PENDING_FRESH_EDITION_PROOF`. This is not 22/39 E4 PASS and not a claim of 22 material defects.
-- The prior 10/29 state (EVT216) is an earlier parent; the current 22/17 state is governed by the TSV row statuses. N01 15, N02 8 and N03 16 stay exclusive.
+- **29** near-term records contain **partial provider-source observations**, bounded by crawler freshness and still-open booking/edition/scope details. **10** retain `PENDING_FRESH_EDITION_PROOF`. This is not 29/39 E4 PASS and not a claim of 29 material defects.
+- The prior 10 partial / 29 pending state (EVT216), followed by 22 partial / 17 pending, are historical parents; **the current 29 partial / 10 pending state** is governed by the TSV row statuses. N01 15, N02 8 and N03 16 stay exclusive.
 
 ## Material findings and non-findings
 
@@ -54,4 +54,16 @@ These are **offer-field** checks only; exact late-Nov 2026 booking, available se
 - **OFFER-MAZ-149:** CHF 1'980 regular matches current offer; official target explicitly employees in companies/agencies/NPOs. Existing **OWNER_SCOPE_HOLD** remains. https://www.maz.ch/kurs/schreiben-fuers-web-onlinetexten-leichtgemacht
 - **OFFER-MAZ-163:** CHF 990 regular / CHF 650 journalist, exact match. Current data lists an undetailed 1-day start; the displayed `duration` remains not source-verified. https://www.maz.ch/kurs/tiktok-junge-zielgruppen-professionell-erreichen-k
 
-No sidecar modification to any of those ten other newly triaged IDs. New 22/17 status is a larger **triage** population, not proof of all mandated currentness or per-edition booking.
+No sidecar modification to any of those ten other newly triaged IDs. Current 29 partial / 10 pending status is a larger **triage** population, not proof of all mandated currentness or per-edition booking.
+
+## Supplementary PCC, ifage, Microwin and VSM provider panel (7 source comparisons)
+
+The following seven additional cases have bounded **primary provider observations**, not full E4/E5 approval. Review after does not change automatically. Dates in cached provider pages are publication evidence only, not proof of a guaranteed place.
+
+- **PCC-P03, P05, P06, P10:** PC-COLLEGE course schedules display 18–20 Nov (Illustrator, Photoshop), 9–11 Nov (Premiere Pro) and 5–6 Nov (InDesign Aufbau) respectively; generic FROM prices and the VAT example are not verified Switzerland-specific final prices. A campus selector “Basel / Bern / Zürich” does not confirm a specific session venue. The price parsing for P03/P05 deliberately remains excluded from budget matching pending Swiss total.
+  Sources: https://www.pc-college.ch/seminare-schulungen-kurse/illustrator/adobe-illustrator-grundkurs-ill.php | https://www.pc-college.ch/seminare-schulungen-kurse/photoshop/adobe-photoshop-grundkurs-psg.php | https://www.pc-college.ch/seminare-schulungen-kurse/premiere/adobe-premiere-pro-grundkurs-pre.php | https://www.pc-college.ch/seminare-schulungen-kurse/indesign/adobe-indesign-aufbaukurs-ina.php
+- **IF-G06:** ifage listing S-03275 publishes 17 Nov–1 Dec 2026, CHF 620, ifage Montbrillant. It comprises five 3-hour evening sessions (= 15 contact hours), not five conventional 8-hour days. https://www.ifage.ch/formation/tic/graphisme-infographie/
+- **MW-P08:** Microwin cached course calendar lists 11 Nov 2026, CHF 790, Wallisellen or livestream. The observed crawl is over a year old; it cannot support a *fresh* edition/seat guarantee. https://www.microwin.com/pages/coursedetails/phot.aspx
+- **OFFER-VSM-001:** VSM published 17 Nov, WESTHIVE HARDTURM, Zürich; CHF 250 for nonmembers, CHF 150 for qualifying members/MAZ categories, and a journalist-specific free registration condition. Smart sidecar already has the differentiated tariff classes. Event signup does not guarantee admission. https://www.schweizermedien.ch/events/agenda/2026/2026-11-17-trendtagung-fach-und-spezialmedien-2026/
+
+**Latest 39-ID cohort:** 29 bounded source observations, 10 pending proof. **101 other due IDs** remain in R01–R07 with no automatic change. No new full Offer-Gold claim, no booking OPEN claim, no live publication.
