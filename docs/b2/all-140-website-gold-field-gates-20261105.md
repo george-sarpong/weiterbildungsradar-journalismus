@@ -23,8 +23,8 @@ Der Nutzer verlangte ausdrücklich, **alle 140 Fälle gleichzeitig**, nicht weit
 | Due-Start deckt sich mit mindestens einem kanonischen Start oder Session-Start | 109 | **interne** Datumskonsistenz, kein Echtzeit-Platzbeweis |
 | Due ohne konkret datierten Start | 31 | oft On-demand, Programme, alte Aufnahmefenster oder offene Starts |
 | Datum in Queue ohne Entsprechung in Daten-Start oder Sessions | 0 | kein struktureller Mismatch in dieser eingefrorenen Kohorte |
-| Strukturierter numerischer Preis für Filter freigegeben | 98 | technische Filterfähigkeit, **kein** attestierter gültiger Endpreis |
-| Preis nicht verlässlich numerisch im strukturierten Sidecar | 42 | Budgetempfehlungen aus diesen Werten bleiben gesperrt |
+| Strukturierter numerischer Preis für Filter freigegeben | 102 | technische Filterfähigkeit, **kein** attestierter gültiger Endpreis |
+| Preis nicht verlässlich numerisch im strukturierten Sidecar | 38 | Budgetempfehlungen aus diesen Werten bleiben gesperrt |
 | Kursort nicht publiziert | 32 | Kursort als individuelles E4-Feld offen |
 | Ausschliesslich online im Katalog gekennzeichnet | 37 | nicht mit hybrider / mehreren Standorten gleichsetzen |
 | Mehrere Orts- oder Formatoptionen im Katalog | 39 | echte Edition/Variante nötig, kein willkürlich gewählter Standort |
@@ -110,3 +110,18 @@ Der Regressionstest tests/b2-all140-website-gold-field-gates-20261105.test.cjs p
 **Materielle Vorsichtsmeldung:** Die offiziellen Kursseiten zeigen je nach Beobachtungsstand unterschiedliche und abgelaufene Bewerbungsfenster/Starttermine (einige August/September 2026, andere Oktober 2026). Kein altes `data.js`-Startdatum auf neue Durchführung fortschreiben und kein neues Aufnahmefenster behaupten. Die DJA meldete ausserdem am [22. Oktober 2026 die vorübergehende Nichtverfügbarkeit ihres Online-Campus](https://deutschejournalistenakademie.de/voruebergehende-nichtverfuegbarkeit-des-online-campus/). Die Wiederherstellung ist nicht unabhängig belegt. `BOOKING_OR_INTAKE_NOT_PROVEN`, `CURRENTNESS_REVIEW_DUE` und `REMOTE_CHANNEL_SEAT_NOT_PROVEN` bleiben offen. Nicht als `ON_DEMAND` mit jederzeit möglichem Einstieg darstellen; Self-Paced-Lernmaterial ist nicht Self-Enrollment.
 
 **Neue Gesamtrechnung nach EVT220+EVT221:** Weiterhin 1'352 Bestands-Sidecars und 140 eindeutige Due-IDs; 98/140 numerische Preisfelder, 42 Preis-Gaps; **107/140** Delivery-Sidecars ohne `VERIFIED` (vor EVT220 115, nach EVT220 111). Globaler Sidecar-Tier-Count 158 VERIFIED / 395 PROVISIONAL / 799 UNKNOWN. Unverändert 18 bestehende Source-Guards, 10 Owner-Scope-Signale, 139/1 Source-Partial und 0 neue Website-Gold-/E4/E5/G3-/Owner- oder Release-Abnahmen. Vier neuen Regression-Guards in 140er-Test und global WDA-04-Counter-Test; aktuelle CI separat nach letztem Commit zu prüfen.
+
+## EVT223 – vier CFJM-Angebote mit voll strukturierten konditionalen Kurspreisen
+
+Die folgenden bestehenden vier CFJM-Sidecars wurden anhand der direkten offiziellen CFJM-Kursseiten **nur im Preisfeld** repariert. Alle fünf Tarife gelten je **für den Gesamtkurs**, nicht für einen einzelnen Tag. Die allgemeinen Höchsttarife sind normale Preiskandidaten; Medien-, Partner-, Impressum- und Beitragszahler-Tarife sind ausdrücklich **konditional** und dürfen nicht automatisch als Preis für jede Person verwendet werden.
+
+| ID | Regulär CHF | Medien ohne Partner CHF | Partner nicht beitragszahlend CHF | Freie Journalist:innen mit impressum CHF | Beitragszahler FC | Quelle |
+|---|---:|---:|---:|---:|---|---|
+| `OFFER-CFJM-009` (1 Tag) | 590 | 400 | 300 | 130, nur bei **mindestens 50 % freier journalistischer Tätigkeit** und Mitgliedschaft | CHF 0; ggf. CHF 100 bei Annullierung | [CFJM](https://www.cfjm.ch/model/formation-continue/fc-journaliste-libre-un-guide-de-survie-27) |
+| `OFFER-CFJM-011` (2 Tage) | 1'180 | 800 | 600 | 260 | CHF 0; ggf. CHF 100 bei Annullierung | [CFJM](https://www.cfjm.ch/model/formation-continue/fc-creer-une-video-percutante-pour-les-reseaux-sociaux-16) |
+| `OFFER-CFJM-012` (5 Tage) | 2'950 | 2'000 | 1'500 | 650 | CHF 0; ggf. CHF 100 bei Annullierung | [CFJM](https://www.cfjm.ch/model/formation-continue/fc-l-ia-au-service-du-journalisme-8) |
+| `OFFER-CFJM-020` (2 Tage) | 1'180 | 800 | 600 | 260 | CHF 0; ggf. CHF 100 bei Annullierung | [CFJM](https://www.cfjm.ch/model/formation-continue/fc-de-journaliste-a-auteur-comment-creer-son-premier-ouvrage-12) |
+
+**Quellen-/Qualitätsbegrenzung:** CFJM kann Tarife laufend ändern. Steuerklasse blieb `UNSPECIFIED`. Keine Ableitung eines neuen Starttermins oder eines Kursraums vom CFJM-Sitz. Der 2026er Dauerstale-Text in `CFJM-011`, der November-2026-Index-Widerspruch bei `CFJM-020`, die unbestätigte Buchbarkeit aller vier sowie eventuell notwendige Softwarelizenzen bei `CFJM-012` bleiben als separate Fragen offen. `data.js` (Angebotsdetails und vergangene Termine) unverändert.
+
+Die 140er-Feldmatrix und der Backlog wurden strikt nur um vier Preisfeld-Korrekturen aktualisiert; Preisfilter-fähige Datensätze **102/140** (vorher 98); offene strukturierte Preisfälle **38/140** (vorher 42). Die 107 nicht auf Angebotslevel verifizierten Delivery-Modelle bleiben unverändert. Die Regression `tests/b2-all140-website-gold-field-gates-20261105.test.cjs` prüft alle vier fünfstufigen Preisprofile, die 130-CHF-Impressum-/50-%-Zugangsbedingung, die Quelle und offene Release-Gates. Veröffentlichung weiterhin nicht freigegeben.
