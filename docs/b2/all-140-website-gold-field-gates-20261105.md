@@ -29,7 +29,7 @@ Der Nutzer verlangte ausdrücklich, **alle 140 Fälle gleichzeitig**, nicht weit
 | Ausschliesslich online im Katalog gekennzeichnet | 37 | nicht mit hybrider / mehreren Standorten gleichsetzen |
 | Mehrere Orts- oder Formatoptionen im Katalog | 39 | echte Edition/Variante nötig, kein willkürlich gewählter Standort |
 | Ein einzelner angegebener Ort | 32 | Angabe im Katalog ≠ erneuter unabhängiger Veranstaltungsortbeweis |
-| Nicht source-verifiziertes Delivery-Modell | 111 | Semantik/Durchführung muss getrennt vom Anbieter-Sitz belegt werden |
+| Nicht source-verifiziertes Delivery-Modell | 107 | Semantik/Durchführung muss getrennt vom Anbieter-Sitz belegt werden |
 | Präzise Owner-Scope-Signale | 10 | redaktionell/journalistisch vs. PR/Marketing/IT prüfen |
 | Offene Quellenversion-/Alias-/Dauer-Guards | 18 | konfliktbehaftete Fälle, **ohne** zwei falsch-positive Hold-Markierungen |
 | `reviewAfter` am 05.11.2026 fällig | 140 | nicht automatisch auf ein neues Datum verschieben |
@@ -97,3 +97,16 @@ Die maschinenlesbaren 140-Zeilen- und 140-Prioritätsartefakte sind auf dem **Dr
 **Post-Correction-Kohorte 140:** 98 numerisch nutzbare Smart-Preise (vorher 95), 42 Preis-Gaps (vorher 45), 111 nicht source-verifizierte Delivery-Sidecars (vorher 115). Unverändert: 139/1 Source-Teilbelege, 18 Quellkonflikt-Guards, 10 Owner-Scope-Signale, 28/85/18/9 Prioritäten, 0 neue E4/E5/G3/Website-Gold-Freigaben. Der Dauerkonflikt der drei ITTA-Angebote bleibt ausdrücklich als SOURCE_VERSION_OR_IDENTITY_GUARD markiert.
 
 Der Regressionstest tests/b2-all140-website-gold-field-gates-20261105.test.cjs prüft die nachgeführten vier bestehenden Sidecars und die 140er-Matrix; CI/Actions ist davon getrennt zu prüfen.
+
+## EVT221 – vier weitere DJA-Onlinelehrgänge: Delivery-Only-Remediation
+
+**Geändert in vier bestehenden Smart-Sidecars:** `OFFER-DJA-003` Podcasting, `OFFER-DJA-005` Investigativer Journalismus, `OFFER-DJA-009` Datenjournalismus, `OFFER-DJA-012` KI für Journalismus. Alle vier Anbieter-Einzelseiten belegen 100% Online-Unterricht, digitale Lernmaterialien, Online-Prüfungen und weitgehend selbständiges Lerntempo ohne Präsenzphasen. Die Software-Einordnung ist `SINGLE_CHANNEL REMOTE`, `ASYNCHRONOUS`, `FIXED` (Intake-Fenster ist nicht jederzeit offen), `E_LEARNING|SELF_STUDY`, `delivery.evidenceTier=VERIFIED`, aber ausdrücklich **nur** für die Lehrgangsmodalität, nicht für Buchung, aktuelle Campus-Erreichbarkeit oder Website-Gold.
+
+- [Podcasting](https://deutschejournalistenakademie.de/lehrgang/podcasting/) – `OFFER-DJA-003`
+- [Investigativer Journalismus](https://deutschejournalistenakademie.de/lehrgang/investigativer-journalismus/) – `OFFER-DJA-005`
+- [Datenjournalismus](https://deutschejournalistenakademie.de/lehrgang/datenjournalismus/) – `OFFER-DJA-009`
+- [KI für Journalismus](https://deutschejournalistenakademie.de/lehrgang/ki-fuer-journalismus/) – `OFFER-DJA-012`
+
+**Materielle Vorsichtsmeldung:** Die offiziellen Kursseiten zeigen je nach Beobachtungsstand unterschiedliche und abgelaufene Bewerbungsfenster/Starttermine (einige August/September 2026, andere Oktober 2026). Kein altes `data.js`-Startdatum auf neue Durchführung fortschreiben und kein neues Aufnahmefenster behaupten. Die DJA meldete ausserdem am [22. Oktober 2026 die vorübergehende Nichtverfügbarkeit ihres Online-Campus](https://deutschejournalistenakademie.de/voruebergehende-nichtverfuegbarkeit-des-online-campus/). Die Wiederherstellung ist nicht unabhängig belegt. `BOOKING_OR_INTAKE_NOT_PROVEN`, `CURRENTNESS_REVIEW_DUE` und `REMOTE_CHANNEL_SEAT_NOT_PROVEN` bleiben offen. Nicht als `ON_DEMAND` mit jederzeit möglichem Einstieg darstellen; Self-Paced-Lernmaterial ist nicht Self-Enrollment.
+
+**Neue Gesamtrechnung nach EVT220+EVT221:** Weiterhin 1'352 Bestands-Sidecars und 140 eindeutige Due-IDs; 98/140 numerische Preisfelder, 42 Preis-Gaps; **107/140** Delivery-Sidecars ohne `VERIFIED` (vor EVT220 115, nach EVT220 111). Globaler Sidecar-Tier-Count 158 VERIFIED / 395 PROVISIONAL / 799 UNKNOWN. Unverändert 18 bestehende Source-Guards, 10 Owner-Scope-Signale, 139/1 Source-Partial und 0 neue Website-Gold-/E4/E5/G3-/Owner- oder Release-Abnahmen. Vier neuen Regression-Guards in 140er-Test und global WDA-04-Counter-Test; aktuelle CI separat nach letztem Commit zu prüfen.
