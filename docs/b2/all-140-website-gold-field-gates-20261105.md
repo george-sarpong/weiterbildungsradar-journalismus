@@ -188,3 +188,16 @@ Vier bestehende Microwin-Angebote erhielten aus der **jeweiligen offiziellen Kur
 | `MW-P03` Adobe FrameMaker (FRMA), CHF 2'490 zzgl. MwSt. | https://www.microwin.com/pages/coursedetails/frma.aspx – 23.–25.11.2026, weitere 2027-Termine, Wallisellen/LiveStream | Kein Beleg für freien einzelnen Sitzplatz, steuerinklusiven Endbetrag oder Gold-Release |
 
 Die vier Sidecars, Matrix-/Backlog-Zeilen und beiden Regressionsdateien wurden anhand unveränderter Stable IDs, Originalquellen und Vorwerten synchronisiert. **140er Delivery weiterhin offen: 84**, vorher 88. Numerisch strukturierte Preise weiter **106** und 34 Preis-Gaps. Globaltier VERIFIED181 / PROVISIONAL399 / UNKNOWN772. 18 source-version-Holds und 10 ursprüngliche Scope-Signale unverändert; der WEBDA-Lehrplan braucht zusätzliche fachliche Aktualitätsabnahme, ohne eigenmächtige Umklassifikation des Scope-Gates. Datum auf Kursseite ≠ freie Buchungskapazität; keine E4/E5/G3/Owner-/Release-Freigabe.
+
+## EVT228 – vier Dawan-Kursfamilien mit gesicherten Online-Durchführungen
+
+**Stand 05.11.2026.** Offizielle Dawan-Quellenseite: https://www.dawan.ch/sessions-confirmees . Die vier bestehenden Stable Offer IDs wurden nur beim **konkret belegten FOAD-Online-Termin** verbessert. Der gesamte Kurs bleibt PROVISIONAL, weil die ursprünglichen Katalog-Angebote zusätzlich Präsenz behaupten. **Keine** neu belegte buchbare Präsenzdurchführung, kein steuerinklusive CHF-Angebot und kein individueller Sitzplatz. Preisstatus in allen vier `NEEDS_REVIEW`, `priceEligible=false`, `priceOptions=[]`.
+
+| ID | Nur belegter aktueller FOAD-Termin | Spezifische Sperre |
+|---|---|---|
+| `V82-DAWAN-027` DaVinci Resolve | 30.11.–04.12.2026, Distanz | Historischer Indexbeleg 23.–27.11.2026 nicht automatisch ersetzt; Datumsversion und einzelne Durchführungen gesondert abgleichen |
+| `V82-DAWAN-028` DaVinci Resolve, Kommunikationsvideo kurz | 30.11.–02.12.2026, Distanz | Einzelkurs nicht mit dem fünftägigen Angebot oder Kombikurs vermischen |
+| `V82-DAWAN-046` Illustrator Initiation | 14.–16.12.2026, Distanz | Nicht mit Initiation+Approfondissement 14.–18.12.2026 verwechseln |
+| `V82-DAWAN-100` WordPress Initiation | 30.11.–02.12.2026, Distanz | Bisheriger kanonischer Ortswert Genève ist **kein** Nachweis für den Raum der belegten Online-Durchführung; kein stiller Ortsersatz |
+
+Zustand: 1352 Sidecars, vier neue `PROVISIONAL` statt `UNKNOWN`; VERIFIED **181**, PROVISIONAL **403**, UNKNOWN **768**. 140er Kohorte **106** numerisch budgetfähig, **34** Preis-Gaps, **84** auf Offer-Niveau nicht `VERIFIED` (die vier bleiben darin), 18 Source-Guards, 10 Scope-Signale, 0 neue Website-Gold/Owner/Release. Eingefrorene Quellendifferentiale, `data.js`, kalendarische Originaldaten und alle `DELIVERY_NOT_VERIFIED`-Gaps unverändert. Die Tests prüfen vier konkrete ID/FOAD/PROVISIONAL/HOLD-Kombinationen und den globalen Tier-Snapshot.
