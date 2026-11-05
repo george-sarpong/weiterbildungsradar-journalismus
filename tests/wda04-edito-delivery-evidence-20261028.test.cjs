@@ -109,7 +109,8 @@ yes(["IF-G06","V58-S1-04","V58-S1-07"].every(id=>byId[id]?.delivery?.evidenceTie
     byId[id]?.delivery?.variants?.[0]?.scheduleMode==="FIXED"&&
     byId[id]?.delivery?.materialisationStatus?.includes("SEAT_TAX_CURRENTNESS_HOLD")),
     "Three exact in-person IFAGE Studio1 course deliveries source-verified without seat or tax claims");
-yes(tiers.VERIFIED === 184 && tiers.PROVISIONAL === 400 && tiers.UNKNOWN === 768,
+yes(byId["OFFER-HELIAS-011"]?.delivery?.evidenceTier==="VERIFIED" && byId["OFFER-HELIAS-011"]?.priceEligible===true && byId["OFFER-HELIAS-011"]?.priceOptions?.length===3 && byId["OFFER-HELIAS-011"]?.delivery?.materialisationStatus?.includes("SCOPE_BOOKING_HOLD"),"HELIAS exact venue/prices field corrected while owner and enrollment gates stay");
+yes(tiers.VERIFIED === 185 && tiers.PROVISIONAL === 399 && tiers.UNKNOWN === 768,
     "Global evidence tiers outside authorised B2 CAD-005/ifage changes: " + JSON.stringify(tiers));
 console.log("WDA04_EDITO_SOURCE_VERIFIED_4_OF_4_PASS");
 console.log("WDA04_ONLINE_VARIANT_AND_PRICE_GUARDS_PASS");
