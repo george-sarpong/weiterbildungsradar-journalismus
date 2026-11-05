@@ -397,6 +397,28 @@ assert.ok(!mazKi.field_gap_tags.includes("DELIVERY_NOT_VERIFIED"));
 assert.equal(mazKi.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
 assert.equal(mazKiQueue.unresolved_field_gaps,mazKi.field_gap_tags);
 assert.equal(mazKiQueue.delivery_tier,"VERIFIED");
+for(const id of ["V82-DAWAN-020","V82-DAWAN-050"]){
+ const row=get(id),sc=side.byId[id],q=backlog.data.find(x=>x.offer_id===id);
+ assert.ok(row&&sc&&q);
+ assert.equal(row.delivery_evidence_tier,"PROVISIONAL");
+ assert.equal(q.delivery_tier,"PROVISIONAL");
+ assert.equal(row.delivery_variant_count,"1");
+ assert.equal(sc.delivery.structure,"MODE_CHOICE");
+ assert.deepEqual(sc.delivery.channels,["REMOTE","IN_PERSON"]);
+ assert.equal(sc.delivery.variants.length,1);
+ assert.deepEqual(sc.delivery.variants[0].attendanceChannels,["REMOTE"]);
+ assert.equal(sc.delivery.variants[0].temporalMode,"SYNCHRONOUS");
+ assert.equal(sc.delivery.variants[0].scheduleMode,"FIXED");
+ assert.ok(sc.delivery.sourceText.includes("19–20.11.2026"));
+ assert.ok(sc.delivery.materialisationStatus.includes("INPERSON_VARIANT_UNRESOLVED"));
+ assert.equal(sc.priceEligible,false);
+ assert.equal(sc.priceOptions.length,0);
+ assert.ok(row.field_gap_tags.includes("DELIVERY_NOT_VERIFIED"));
+ assert.ok(row.field_gap_tags.includes("STRUCTURED_PRICE_BUDGET_UNVERIFIED"));
+ assert.equal(q.unresolved_field_gaps,row.field_gap_tags);
+ assert.equal(row.website_gold_gate,"NOT_PROVEN");
+ assert.equal(row.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
+}
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
  all:140,sourceBounded:139,sourcePending:1,numericEligible:107,
  priceGap:33,venueUnpublished:32,venueAmbiguous:51,
