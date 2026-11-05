@@ -111,7 +111,8 @@ yes(["IF-G06","V58-S1-04","V58-S1-07"].every(id=>byId[id]?.delivery?.evidenceTie
     "Three exact in-person IFAGE Studio1 course deliveries source-verified without seat or tax claims");
 yes(byId["OFFER-HELIAS-011"]?.delivery?.evidenceTier==="VERIFIED" && byId["OFFER-HELIAS-011"]?.priceEligible===true && byId["OFFER-HELIAS-011"]?.priceOptions?.length===3 && byId["OFFER-HELIAS-011"]?.delivery?.materialisationStatus?.includes("SCOPE_BOOKING_HOLD"),"HELIAS exact venue/prices field corrected while owner and enrollment gates stay");
 yes(byId["OFFER-VSM-001"]?.delivery?.evidenceTier==="VERIFIED" && byId["OFFER-VSM-001"]?.delivery?.structure==="SINGLE_CHANNEL" && byId["OFFER-VSM-001"]?.delivery?.channels?.join(",")==="IN_PERSON" && byId["OFFER-VSM-001"]?.delivery?.variants?.[0]?.scheduleMode==="FIXED" && byId["OFFER-VSM-001"]?.delivery?.materialisationStatus?.includes("TAX_BOOKING_SCOPE_CURRENTNESS_HOLD"),"VSM 17Nov official onsite single fixed session, tax/booking holds preserved");
-yes(tiers.VERIFIED === 186 && tiers.PROVISIONAL === 398 && tiers.UNKNOWN === 768,
+yes(["V59-SZ01","V59-SZ04","V77-04"].every(id=>byId[id]?.delivery?.evidenceTier==="VERIFIED"&&byId[id]?.delivery?.structure==="SINGLE_CHANNEL"&&byId[id]?.delivery?.channels?.join(",")==="IN_PERSON"&&byId[id]?.delivery?.variants?.[0]?.scheduleMode==="FIXED"&&byId[id]?.delivery?.materialisationStatus?.includes("_HOLD")),"Schreibszene and BeVisible onsite source-backed exact rows have separate availability holds");
+yes(tiers.VERIFIED === 189 && tiers.PROVISIONAL === 395 && tiers.UNKNOWN === 768,
     "Global evidence tiers outside authorised B2 CAD-005/ifage changes: " + JSON.stringify(tiers));
 console.log("WDA04_EDITO_SOURCE_VERIFIED_4_OF_4_PASS");
 console.log("WDA04_ONLINE_VARIANT_AND_PRICE_GUARDS_PASS");
