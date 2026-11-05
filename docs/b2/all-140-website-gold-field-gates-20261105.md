@@ -245,3 +245,9 @@ Für drei bestehende Datensätze ist die **Unterrichtsform Präsenz, zeitgleich 
 Bei Schreibszene werden auf Wunsch **zusätzliche** Online-Firmenkurse angeboten. Daraus folgt **keine** neue Online-Variante für die drei hier eingefrorenen festen öffentlichen Editionen. Auch ein Buchungsformular ist nicht die individuelle Zulassung.
 
 Genau diese drei Sidecars `PROVISIONAL → VERIFIED` (nur Delivery), die Matrix-/Backlog-Delivery-Gaps und zwei Regressionstests wurden source-boundiert angepasst. Preisschätzungen, steuerliche Behandlung und alle Release-Gates bleiben unverändert. Global 1'352 Sidecars: **189 VERIFIED, 395 PROVISIONAL, 768 UNKNOWN**; 140 Due-IDs: **107** Preis-fähig, 33 Preis-Gaps, **76** Delivery nicht VERIFIED (zuvor 79), 18 Source-/10 Scope-Holds, null neue Website-Gold. Nachfolgende CI-Ergebnisse separat readback-bestätigen.
+
+## EVT233 – MAZ KI-Thementagung mit tatsächlichem NZZ-Ort
+
+`OFFER-MAZ-100` [offizielle MAZ-Veranstaltungsseite](https://www.maz.ch/kurs/maz-thementagung-ki-im-journalismus): **18.11.2026**, MAZ-Thementagung KI im Journalismus, **NZZ, Falkenstrasse 11, 8008 Zürich**. Damit ist der spezifische Veranstaltungsort statt eines MAZ-Firmensitzes und das feste Präsenzformat eindeutig belegt. Preisprofil **CHF 380 regulär / CHF 290 nur für Journalist:innen** war zuvor korrekt und bleibt unverändert. Nach diesem Quellenabgleich **nur** Delivery `PROVISIONAL → VERIFIED`, eine feste synchrone Präsenzvariante, kein eigenständiger Live-Teilnehmerplatz oder MWST-Beleg. Eine CTA beweist keine Reservierung.
+
+Die 140×57 Matrix, 140×19 Backlog und beide Tests synchron, Frozen Sources und `data.js` unverändert. Stand global 1'352 VERIFIED190 / PROVISIONAL394 / UNKNOWN768. In der 140er Due-Kohorte **75** Delivery nicht vollständig VERIFIED (zuvor 76), **107** Preisfilter-brauchbar, **33** Preisgaps, **18** Source-Guards, **10** Owner-Scope-Signale; weiterhin keine Website-Gold-Freigabe.
