@@ -696,6 +696,7 @@
 
   // Smart Search MS-12: deterministic BUG-01 implementation.
   // Structured price/delivery truth comes from smart-search-data.js; data.js remains the display/topic roster.
+  const DURATION_MODEL = window.MEDIA_SKILLS_DURATION;
   const SMART_DATA = window.MEDIA_SKILLS_SMART_DATA && window.MEDIA_SKILLS_SMART_DATA.byId
     ? window.MEDIA_SKILLS_SMART_DATA
     : { meta: {}, byId: {} };
@@ -734,7 +735,7 @@
     "online", "remote", "hybrid", "prasenz", "praesenz", "ort", "live", "demand", "selbststudium",
     "selbstlernen", "self", "paced", "webinar", "hyflex", "asynchron", "asynchronous", "rein",
     "vollstandig", "vollstaendig", "nur", "kein", "keine", "lieber", "aber", "prasenzkurs", "praesenzkurs",
-    "gratis", "kostenlos", "kostenfrei"
+    "gratis", "kostenlos", "kostenfrei", "ca", "circa", "ungefahr", "rund", "etwa"
   ]);
 
   const smartNumber = raw => {
@@ -899,6 +900,7 @@
       raw: String(raw ?? "").trim(),
       budget,
       maxDays: maxClause?.amount ?? null,
+      approximateDays: /\b(?:ca\.?|circa|etwa|ungefahr|rund)\s*(?:\d+|ein|zwei|drei|vier|funf)\s+tag(?:e|en)?\b/.test(input),
       durationClauses,
       deliveryIntents,
       excludeEnglish,
@@ -1298,7 +1300,8 @@
     let score = topic.score;
     if (parsed.deliveryIntents.length) score += 6;
     if (offer.startDate) score += 1;
-    return { offer, record, delivery, budget, free, score };
+    const durationFit = DURATION_MODEL.classify(offer, parsed.maxDays, parsed.approximateDays);
+    return { offer, record, delivery, budget, free, durationFit, score };
   };
 
   // Das allgemeine Angebotsformat ist ein Hinweis, kein verifizierter Delivery-Nachweis.
@@ -1328,6 +1331,9 @@
       if (!languages.length || !languages.every(code => ["DE", "FR", "IT"].includes(code))) return null;
     }
     if (!parsed.deliveryIntents.length || !parsed.tokens.length) return null;
+    if (parsed.maxDays != null
+        && DURATION_MODEL.classify(offer, parsed.maxDays, parsed.approximateDays).status === "OVER")
+      return null;
     const topic = topicMatch(offer, parsed);
     if (!topic.match) return null;
     const record = getSmartRecord(offer);
@@ -1439,6 +1445,13 @@
         </div>
         ${startedButRunning(offer) ? `<p class="smart-budget"><strong>Bereits begonnen:</strong> Eine Neuanmeldung oder ein Späteinstieg ist nicht bestätigt. Bitte direkt beim Anbieter klären.</p>` : ""}
         ${intakeNotConfirmed(offer) ? `<p class="smart-budget"><strong>Kein neuer offener Start bestätigt:</strong> Der zuletzt publizierte Bewerbungsschluss ist abgelaufen. Nächste Anmeldemöglichkeit beim Anbieter prüfen.</p>` : ""}
+        ${parsed.maxDays != null && item.durationFit?.status !== "FIT"
+          ? `<p class="smart-budget"><strong>Kursdauer nicht sicher passend:</strong> ${item.durationFit?.status === "NEAR"
+            ? "Leicht über der gewünschten ungefähren Kursdauer."
+            : item.durationFit?.status === "POSSIBLE"
+              ? "Die publizierte Dauer reicht über das Zeitbudget hinaus."
+              : "Die Zahl der benötigten Kurstage ist nicht eindeutig belegt."} Bitte Kursdauer beim Anbieter prüfen.</p>`
+          : ""}
         ${item.alternativeReason === "FORMAT"
           ? `<p class="smart-budget"><strong>Ob dieser Kurs in der gewünschten Form stattfindet, ist noch offen.</strong> In unserem Katalog steht: ${escapeHtml(humanizeTokens(offer.format, labels.format))}. Bitte beim Kursanbieter nachfragen.</p>`
           : item.alternativeReason === "PREIS"
@@ -1480,12 +1493,9 @@
   // the criteria chips, so the apparent matches are not over-promised.
   const unappliedSmartConstraints = parsed => {
     const excluded = [];
-    if (parsed.durationClauses?.length) {
-      const maxDaysOnly = parsed.durationClauses.every(c =>
-        c.kind === "DAYS" && c.comparator === "MAX");
-      excluded.push(maxDaysOnly ? "die gewünschte Höchstdauer"
-        : "die gewünschte Kurszeit oder Kursdauer");
-    }
+    if (parsed.durationClauses?.some(c => c.kind !== "DAYS"
+      || !["MAX", "UNSPECIFIED"].includes(c.comparator) || parsed.maxDays == null))
+      excluded.push("die gewünschte Kurszeit oder Kursdauer");
     if (parsed.excludesFree) excluded.push("der Ausschluss kostenloser Angebote");
     return excluded.length
       ? `Nicht angewendet: ${excluded.join(" und ")}. Die Treffer sind für diese Bedingungen nicht geprüft.`
@@ -1499,12 +1509,14 @@
     const alternativeShown = alternatives.slice(0, alternativeLimit);
     const unsupportedOnly = !parsed.tokens.length && !parsed.budget
       && !parsed.deliveryIntents.length && !parsed.excludeEnglish && !parsed.freeOnly
-      && Boolean(parsed.durationClauses?.length || parsed.excludesFree);
+      && Boolean(parsed.durationClauses?.some(c => c.kind !== "DAYS"
+        || !["MAX", "UNSPECIFIED"].includes(c.comparator) || parsed.maxDays == null)
+        || parsed.excludesFree);
     const confirmedText = unsupportedOnly
       ? `${evaluated.length.toLocaleString("de-CH")} Angebote im aktuellen Bestand angezeigt; die gewünschten Bedingungen konnten nicht angewendet werden.`
       : parsed.budget
       ? (evaluated.length
-        ? `${evaluated.length.toLocaleString("de-CH")} Kurse passen rechnerisch zum Planungsbudget.`
+        ? `${evaluated.length.toLocaleString("de-CH")} Kurse passen rechnerisch zum Planungsbudget${parsed.maxDays != null ? " und zur angegebenen Kursdauer" : ""}.`
         : "Kein Kurs gefunden, der nach unserem Planungsvergleich ins Budget passt.")
       : (parsed.deliveryIntents.length
         ? (evaluated.length
@@ -1535,7 +1547,7 @@
       + moreDirect
       + (alternativeShown.length
         ? `<section class="smart-alternatives" aria-labelledby="smartAlternativeTitle"><h3 id="smartAlternativeTitle">Weitere Kurse, die passen könnten</h3>
-           <p>Bei diesen Kursen sind noch Fragen zum Preis, zur Kursform oder zu einem möglichen Späteinstieg offen. Bitte beim Kursanbieter nachfragen.</p>
+           <p>Bei diesen Kursen sind noch Fragen zum Preis, zur Kursdauer, zur Kursform oder zu einem möglichen Späteinstieg offen. Bitte beim Kursanbieter nachfragen.</p>
            <div class="smart-alternative-cards">${alternativeShown.map((item, index) => smartCard(item, parsed, index)).join("")}</div>${moreAlternatives}</section>`
         : "");
     el.smartStatus.textContent = confirmedText + progressText + alternativeText
@@ -1564,26 +1576,34 @@
     el.smartValidation.hidden = true;
     el.smartValidation.textContent = "";
     const formatMatches = offers.map(offer => smartEvaluate(offer, parsed)).filter(Boolean);
+    const durationDirect = item => parsed.maxDays == null || item.durationFit.status === "FIT";
     const evaluated = parsed.budget
-      ? formatMatches.filter(item => !bookingStatusUnconfirmed(item.offer) && item.budget.status === "DIRECT_FIT")
-      : formatMatches.filter(item => !bookingStatusUnconfirmed(item.offer));
+      ? formatMatches.filter(item => durationDirect(item) && !bookingStatusUnconfirmed(item.offer)
+          && item.budget.status === "DIRECT_FIT")
+      : formatMatches.filter(item => durationDirect(item) && !bookingStatusUnconfirmed(item.offer));
     const priceAlternatives = parsed.budget && parsed.tokens.length
-      ? formatMatches.filter(item => !bookingStatusUnconfirmed(item.offer)
+      ? formatMatches.filter(item => durationDirect(item) && !bookingStatusUnconfirmed(item.offer)
           && ["TARGET_GROUP_FIT", "CONDITIONAL_FIT", "POSSIBLE_FIT"].includes(item.budget.status))
         .map(item => ({ ...item, isAlternative: true, alternativeReason: "PREIS" }))
       : [];
     const bookingAlternatives = parsed.tokens.length
-      ? formatMatches.filter(item => bookingStatusUnconfirmed(item.offer)
+      ? formatMatches.filter(item => durationDirect(item) && bookingStatusUnconfirmed(item.offer)
           && (!parsed.budget || ["DIRECT_FIT", "TARGET_GROUP_FIT", "CONDITIONAL_FIT", "POSSIBLE_FIT"].includes(item.budget.status)))
         .map(item => ({ ...item, isAlternative: true, alternativeReason: "BOOKING" }))
+      : [];
+    const durationAlternatives = parsed.maxDays != null && parsed.tokens.length
+      ? formatMatches.filter(item => ["UNKNOWN", "POSSIBLE", "NEAR"].includes(item.durationFit.status)
+          && (!parsed.budget || ["DIRECT_FIT", "TARGET_GROUP_FIT", "CONDITIONAL_FIT", "POSSIBLE_FIT"].includes(item.budget.status)))
+        .map(item => ({ ...item, isAlternative: true, alternativeReason: "DAUER" }))
       : [];
     const formatAlternatives = parsed.deliveryIntents.length
       ? offers.map(offer => smartAlternative(offer, parsed)).filter(Boolean)
       : [];
-    const alternatives = [...priceAlternatives, ...bookingAlternatives, ...formatAlternatives];
-    const alternativeOrder = { PREIS: 0, BOOKING: 1, FORMAT: 2 };
+    const candidates = [...priceAlternatives, ...bookingAlternatives, ...durationAlternatives, ...formatAlternatives];
+    const alternatives = [...new Map(candidates.map(item => [item.offer.id, item])).values()];
+    const alternativeOrder = { PREIS: 0, BOOKING: 1, DAUER: 2, FORMAT: 3 };
     alternatives.sort((a, b) =>
-      (alternativeOrder[a.alternativeReason] ?? 3) - (alternativeOrder[b.alternativeReason] ?? 3)
+      (alternativeOrder[a.alternativeReason] ?? 4) - (alternativeOrder[b.alternativeReason] ?? 4)
       || (budgetStatusRank[a.budget.status] ?? 99) - (budgetStatusRank[b.budget.status] ?? 99)
       || b.score - a.score || a.offer.title.localeCompare(b.offer.title, "de-CH"));
     evaluated.sort((a, b) => {
@@ -1604,7 +1624,7 @@
     parsed.durationClauses.forEach(c => {
       const label = c.kind === "DAYS" && c.amount != null && c.comparator !== "MIN"
         ? `${c.amount} ${c.amount === 1 ? "Tag" : "Tage"}` : c.expression;
-      chips.push(`Zeit: ${label} · erkannt, nicht angewendet`);
+      chips.push(`Zeit: ${label}${c.kind === "DAYS" && ["MAX", "UNSPECIFIED"].includes(c.comparator) && parsed.maxDays != null ? " · angewendet" : " · erkannt, nicht angewendet"}`);
     });
     parsed.deliveryIntents.forEach(intent => chips.push(`Durchführung: ${DELIVERY_INTENT_LABELS[intent] || intent.replaceAll("_", " ")}`));
     if (parsed.freeOnly) chips.push("Nur kostenlose Kurse");

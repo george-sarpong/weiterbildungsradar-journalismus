@@ -56,6 +56,8 @@ jobs:
         run: node tests/b2-at-fhwn-ch-zhdk-2027-20261105.test.cjs
       - name: Verify B2 deterministic 140-case parallel workblock and ten disjoint lanes
         run: node tests/b2-parallel-workblock-20261105.test.cjs
+      - name: Verify B3 teaching-day parser and strict budget/time recommendation
+        run: node tests/b3-duration-model-20261105.test.cjs
       - name: Verify B2 Dawan InDesign four source-confirmed FOAD sessions
         run: node tests/b2-dawan-indesign-20261104.test.cjs
       - name: Verify B2 bulk Dawan 12 offers and 17 confirmed FOAD session dates
@@ -454,22 +456,22 @@ jobs:
               &&await page.locator('#smartInput').inputValue()==='Ich suche einen Präsenzkurs zu Videoproduktion.',
               'Public video example advertises unsupported or unparsed intent: '+videoChips);
             console.log('SMART_EXAMPLE_SUPPORTED_INTENTS_PASS');
-            // No query should claim full suitability when recognised constraints
-            // are not actually applied to matches.
+            // The two-day time budget now narrows direct results; missing duration
+            // evidence appears separately instead of being sold as a definite fit.
             await page.locator('#smartInput').fill('Ich habe höchstens zwei Tage Zeit für Videoproduktion');
             await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
             const durationWarning=await page.locator('#smartSummary').innerText();
-            const durationStatus=await page.locator('#smartStatus').innerText();
-            assert(durationWarning.includes('Nicht angewendet: die gewünschte Höchstdauer')
-              &&durationWarning.includes('Treffer sind für diese Bedingungen nicht geprüft.')
-              &&durationStatus.includes('Nicht angewendet: die gewünschte Höchstdauer')
-              &&(await page.locator('#smartUnderstood').innerText()).includes('Zeit: 2 Tage · erkannt, nicht angewendet'),
-              'Unapplied duration silently reported as successful course match: '+durationWarning);
+            assert(!durationWarning.includes('Nicht angewendet: die gewünschte Höchstdauer')
+              &&(await page.locator('#smartUnderstood').innerText()).includes('Zeit: 2 Tage · angewendet'),
+              'Maximum-day constraint was recognised but not applied: '+durationWarning);
+            const directDurations=await page.locator('#smartResults > article.smart-result-card .smart-result-meta span:nth-child(3)').allInnerTexts();
+            assert(directDurations.every(t=>/^\\s*(?:[012](?:[,.]\\d+)?)\\s*(?:tag|tage|kurstage|unterrichtstage)/i.test(t)),
+              'Direct results include a course without proven two-day duration: '+JSON.stringify(directDurations));
             await page.locator('#smartInput').fill('Videoproduktion');
             await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
             assert(!(await page.locator('#smartSummary').innerText()).includes('Nicht angewendet:'),
               'Unapplied-constraint warning leaked into a supported topic-only query');
-            console.log('SMART_UNAPPLIED_DURATION_SUMMARY_PASS');
+            console.log('SMART_TWO_DAY_DURATION_APPLIED_PASS');
             // Negated "kostenlos" must not mean "nur kostenlose Kurse".
             await page.locator('#smartInput').fill('Ich suche keine kostenlosen Kurse zu KI');
             await page.locator('#smartSearchForm').evaluate(form=>form.requestSubmit());
