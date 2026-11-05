@@ -85,7 +85,7 @@ assert.equal(matrix.data.filter(x=>x.venue_data_state==="NOT_PUBLISHED").length,
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="MULTIPLE_OPTIONS_OR_AMBIGUOUS").length,39);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="REMOTE_ONLY_DISPLAY_NOT_OCCURRENCE_GOLD").length,37);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="SINGLE_DISPLAY_LOCATION_UNPROVEN").length,32);
-assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,80);
+assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,79);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("OWNER_SCOPE_REVIEW")).length,10);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD")).length,18);
 assert.ok(!get("OFFER-MAZ-146").field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
@@ -339,8 +339,28 @@ assert.equal(heli.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
 assert.equal(heliQueue.price_numeric_eligible,"true");
 assert.equal(heliQueue.delivery_tier,"VERIFIED");
 assert.equal(heliQueue.unresolved_field_gaps,heli.field_gap_tags);
+const vsmRow=get("OFFER-VSM-001"),vsmSide=side.byId["OFFER-VSM-001"],vsmQueue=backlog.data.find(x=>x.offer_id==="OFFER-VSM-001");
+assert.equal(vsmRow.delivery_evidence_tier,"VERIFIED");
+assert.equal(vsmRow.delivery_variant_count,"1");
+assert.deepEqual(vsmSide.delivery.channels,["IN_PERSON"]);
+assert.equal(vsmSide.delivery.structure,"SINGLE_CHANNEL");
+assert.equal(vsmSide.delivery.variants.length,1);
+assert.equal(vsmSide.delivery.variants[0].temporalMode,"SYNCHRONOUS");
+assert.equal(vsmSide.delivery.variants[0].scheduleMode,"FIXED");
+assert.ok(vsmSide.delivery.sourceText.includes("08:30–13:30")&&vsmSide.delivery.sourceText.includes("WESTHIVE HARDTURM"));
+assert.equal(vsmSide.delivery.materialisationStatus,"SOURCE_VERIFIED_EXACT_INPERSON_ONLY_TAX_BOOKING_SCOPE_CURRENTNESS_HOLD");
+assert.deepEqual(vsmSide.priceOptions.map(p=>p.amount),[250,150,0]);
+assert.deepEqual(vsmSide.priceOptions.map(p=>p.taxMode),["EXCLUDED","EXCLUDED","UNSPECIFIED"]);
+assert.deepEqual(vsmSide.priceOptions.map(p=>p.tariffClass),["REGULAR","CONDITIONAL","CONDITIONAL"]);
+assert.equal(vsmRow.structured_numeric_price_eligible,"true");
+assert.ok(!vsmRow.field_gap_tags.includes("DELIVERY_NOT_VERIFIED"));
+assert.ok(vsmRow.field_gap_tags.includes("TAX_SCOPE_UNSPECIFIED")&&vsmRow.field_gap_tags.includes("BOOKING_OR_INTAKE_NOT_PROVEN"));
+assert.equal(vsmRow.website_gold_gate,"NOT_PROVEN");
+assert.equal(vsmRow.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
+assert.equal(vsmQueue.delivery_tier,"VERIFIED");
+assert.equal(vsmQueue.unresolved_field_gaps,vsmRow.field_gap_tags);
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
  all:140,sourceBounded:139,sourcePending:1,numericEligible:107,
  priceGap:33,venueUnpublished:32,venueAmbiguous:51,
- deliveryUnverified:80,ownerScopeFlags:10,publicationApproved:0
+ deliveryUnverified:79,ownerScopeFlags:10,publicationApproved:0
 }));
