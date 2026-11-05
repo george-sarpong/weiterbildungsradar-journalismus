@@ -479,6 +479,49 @@ assert.ok(get("CAD-026").source_decision.includes("HOLD_2026_11_25_EDITION_NOT_P
  "Original frozen observation is intentionally retained; newer version evidence in EVT237");
 assert.ok(side.byId["AT-PROD-OFFER-022"].delivery.sourceText.includes("NOT choice"));
 
+
+const original63=rows("docs/b2/evt237-all63-parallel-delivery-source-review-20261105.tsv");
+assert.equal(original63.header.length,27);
+assert.equal(original63.data.length,63);
+assert.equal(new Set(original63.data.map(x=>x.offer_id)).size,63);
+const delta237=new Set(["CAD-026","AT-PROD-OFFER-022"]);
+assert.deepEqual(new Set(original63.data.filter(x=>x.review_disposition==="FIELD_DELTA_PROVEN").map(x=>x.offer_id)),delta237);
+const dueCurrentlyNotVerified=new Set(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").map(x=>x.offer_id));
+assert.equal(dueCurrentlyNotVerified.size,61);
+assert.deepEqual(new Set([...dueCurrentlyNotVerified,...delta237]),new Set(original63.data.map(x=>x.offer_id)));
+const original63Groups=original63.data.reduce((o,x)=>((o[x.source_cohort]=(o[x.source_cohort]||0)+1),o),{});
+assert.deepEqual(original63Groups,{
+ CH_CFJM:11,CH_MAZ:20,CH_PCC:7,CH_HELIAS_SYNDICOM:2,CH_DAWAN:10,
+ CH_JJS:1,AT_ACADEMIC:8,CADSCHOOL:1,AT_FH_JOANNEUM:1,AT_FJUM:1,LI_WORK_ENTRY:1
+});
+for(const x of original63.data) {
+ const row=get(x.offer_id),sc=side.byId[x.offer_id],priority=backlog.data.find(z=>z.offer_id===x.offer_id);
+ assert.ok(row&&sc&&priority);
+ assert.equal(x.lane,row.lane);
+ assert.equal(x.provider,row.provider);
+ assert.equal(x.title,row.catalogue_title);
+ assert.equal(x.canonical_primary_url,row.catalogue_source_url);
+ assert.equal(x.current_delivery_tier_evt237,row.delivery_evidence_tier);
+ assert.equal(x.delivery_variant_count,String(sc.delivery.variants.length));
+ assert.equal(x.full_field_gaps,row.field_gap_tags);
+ assert.equal(x.venue_evidence_state,row.venue_data_state);
+ assert.equal(x.price_parser_eligible,String(sc.priceEligible));
+ assert.equal(x.booking_gate,"NOT_PROVEN_FOR_INDIVIDUAL_SEAT");
+ assert.equal(x.website_gold_gate,"NOT_PROVEN");
+ assert.equal(x.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
+ assert.equal(priority.delivery_tier,row.delivery_evidence_tier);
+ assert.ok(x.specific_open_gate.length>10 && x.source_observation.length>20);
+ if(delta237.has(x.offer_id)){
+  assert.equal(x.baseline_delivery_tier_evt236,"PROVISIONAL");
+  assert.equal(x.current_delivery_tier_evt237,"VERIFIED");
+  assert.equal(x.control_plane_write_kind,"SCOPED_SIDECAR_MATRIX_BACKLOG_QA_COMMIT");
+ }else{
+  assert.equal(x.baseline_delivery_tier_evt236,x.current_delivery_tier_evt237);
+  assert.ok(x.full_field_gaps.includes("DELIVERY_NOT_VERIFIED"));
+  assert.ok(x.control_plane_write_kind.includes("REPORT_ONLY"));
+ }
+}
+
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
  all:140,sourceBounded:139,sourcePending:1,numericEligible:107,
  priceGap:33,venueUnpublishedInCanonical:32,ownerConfirmedCityLuzern:20,venueCityUnassigned:12,venueAmbiguous:51,
