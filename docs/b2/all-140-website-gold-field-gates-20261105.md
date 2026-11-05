@@ -23,13 +23,13 @@ Der Nutzer verlangte ausdrücklich, **alle 140 Fälle gleichzeitig**, nicht weit
 | Due-Start deckt sich mit mindestens einem kanonischen Start oder Session-Start | 109 | **interne** Datumskonsistenz, kein Echtzeit-Platzbeweis |
 | Due ohne konkret datierten Start | 31 | oft On-demand, Programme, alte Aufnahmefenster oder offene Starts |
 | Datum in Queue ohne Entsprechung in Daten-Start oder Sessions | 0 | kein struktureller Mismatch in dieser eingefrorenen Kohorte |
-| Strukturierter numerischer Preis für Filter freigegeben | 102 | technische Filterfähigkeit, **kein** attestierter gültiger Endpreis |
-| Preis nicht verlässlich numerisch im strukturierten Sidecar | 38 | Budgetempfehlungen aus diesen Werten bleiben gesperrt |
+| Strukturierter numerischer Preis für Filter freigegeben | 106 | technische Filterfähigkeit, **kein** attestierter gültiger Endpreis |
+| Preis nicht verlässlich numerisch im strukturierten Sidecar | 34 | Budgetempfehlungen aus diesen Werten bleiben gesperrt |
 | Kursort nicht publiziert | 32 | Kursort als individuelles E4-Feld offen |
 | Ausschliesslich online im Katalog gekennzeichnet | 37 | nicht mit hybrider / mehreren Standorten gleichsetzen |
 | Mehrere Orts- oder Formatoptionen im Katalog | 39 | echte Edition/Variante nötig, kein willkürlich gewählter Standort |
 | Ein einzelner angegebener Ort | 32 | Angabe im Katalog ≠ erneuter unabhängiger Veranstaltungsortbeweis |
-| Nicht source-verifiziertes Delivery-Modell | 107 | Semantik/Durchführung muss getrennt vom Anbieter-Sitz belegt werden |
+| Nicht source-verifiziertes Delivery-Modell | 105 | Semantik/Durchführung muss getrennt vom Anbieter-Sitz belegt werden |
 | Präzise Owner-Scope-Signale | 10 | redaktionell/journalistisch vs. PR/Marketing/IT prüfen |
 | Offene Quellenversion-/Alias-/Dauer-Guards | 18 | konfliktbehaftete Fälle, **ohne** zwei falsch-positive Hold-Markierungen |
 | `reviewAfter` am 05.11.2026 fällig | 140 | nicht automatisch auf ein neues Datum verschieben |
@@ -125,3 +125,14 @@ Die folgenden bestehenden vier CFJM-Sidecars wurden anhand der direkten offiziel
 **Quellen-/Qualitätsbegrenzung:** CFJM kann Tarife laufend ändern. Steuerklasse blieb `UNSPECIFIED`. Keine Ableitung eines neuen Starttermins oder eines Kursraums vom CFJM-Sitz. Der 2026er Dauerstale-Text in `CFJM-011`, der November-2026-Index-Widerspruch bei `CFJM-020`, die unbestätigte Buchbarkeit aller vier sowie eventuell notwendige Softwarelizenzen bei `CFJM-012` bleiben als separate Fragen offen. `data.js` (Angebotsdetails und vergangene Termine) unverändert.
 
 Die 140er-Feldmatrix und der Backlog wurden strikt nur um vier Preisfeld-Korrekturen aktualisiert; Preisfilter-fähige Datensätze **102/140** (vorher 98); offene strukturierte Preisfälle **38/140** (vorher 42). Die 107 nicht auf Angebotslevel verifizierten Delivery-Modelle bleiben unverändert. Die Regression `tests/b2-all140-website-gold-field-gates-20261105.test.cjs` prüft alle vier fünfstufigen Preisprofile, die 130-CHF-Impressum-/50-%-Zugangsbedingung, die Quelle und offene Release-Gates. Veröffentlichung weiterhin nicht freigegeben.
+
+## EVT224 – vier weitere geprüfte Preisfelder und zwei geprüfte Kursformate
+
+Am 05.11.2026 wurden vier bestehende Angebote in einem Guarded-Write auf dem PR10-Entwurfszweig preisfeldbezogen korrigiert, ohne die Stable Offer IDs, die alten und neuen Starttermine, Anbieter, Quellen-URLs, `reviewAfter`, `data.js`, die 140er-Kohorte oder den Release-Status zu ändern:
+
+- **`OFFER-CFJM-017`**: dreitägiger Premiere-Pro-Kurs beim CFJM. Anbieter belegt Gesamtkurstarife CHF 1'770 regulär, 1'200 Medien nicht Partner, 900 Medienpartner ohne FC-Beitrag, 390 freie Journalist:innen mit impressum und 0 FC-Beitragszahlende (allenfalls Storno CHF 100). Alle vier ermässigten Stufen sind persönlich bedingt. Anbieter: https://www.cfjm.ch/model/formation-continue/fc-monter-une-video-avec-adobe-premiere-pro-initiation-et-pratique-26 . Exakte ehemalige 4.–6.11.-Edition, Kursort und Buchbarkeit bleiben ungeprüft.
+- **`V78-05`**: ITTA APPFC-01 Final Cut Pro Fondamentaux. CHF 2'350 synchron virtuell, CHF 2'500 Präsenz in Genf/Lausanne, je drei Tage, Varianten A und B getrennt. Anbieter: https://www.itta.net/formations/multimedia/video-et-son/final-cut-pro-fondamentaux/ . Die konkrete eingefrorene November-Durchführung und Sitzplätze werden durch den älteren Quellenauszug nicht frisch belegt; Hersteller-Academy-Scope gesondert.
+- **`CAD-003`**: unabhängiger Anbieter Cadschool, Photoshop Intermédiaire: CHF 500 betreuter Präsenz-Mischkurs mit Videolektionen, CHF 250 autonomes Online-Lernen mit mindestens 15 Stunden Lernaufwand und einstündigem Abschlusscoaching, optionale Zertifizierung CHF 150 extra. Online-Arbeit erfordert separate persönliche Photoshop-Nutzung; Softwarekosten sind nicht im Kursbudget angesetzt. Anbieter: https://www.cadschool.ch/formation/photoshop/photoshop-intermediaire/ . Aktueller Anbieter nennt Präsenzdaten **auf Anfrage**, nicht die im Katalog früher eingefrorene 25.11.-Ausgabe; Datum bleibt Hold. Keine neue Behauptung eines Kursraums.
+- **`OFFER-MAZ-151`**: CHF 990 Normalpreis / CHF 650 Journalist:innenpreis, die zweite Stufe nur mit Berufsberechtigung. Anbieter: https://www.maz.ch/kurs/sichtbarkeit-und-reichweite-im-ki-zeitalter-j . **OWNER_SCOPE_REVIEW bleibt explizit offen**, weil Kurszielgruppe primär Kommunikations- und Content-Marketing-Funktionen nennt, redaktionelle Nutzung zwar möglich ist, aber keine pauschale journalistische Einstufung ohne Entscheid erteilt wird.
+
+Nach dem Batch sind **106/140** Sidecars numerisch preisfilterfähig, **34/140** Preis-Gaps und **105/140** nicht vollständig source-verifizierte Delivery-Modelle offen. 18 Source-Version-/Alias-Holds und 10 Owner-Scope-Gates unverändert. Die Regression kontrolliert die vier Preisprofile, ITTA/CAD-Modellvarianten, die optionale CHF150-Zertifizierung und den offenen MAZ-Scope-Gate. Gültige Tarifstruktur oder modellierter Kursmodus ist keine individualisierte Buchungs- oder Website-Gold-Freigabe. Keine E4/E5/G3/Owner-/Hosted-Release-Abnahme.
