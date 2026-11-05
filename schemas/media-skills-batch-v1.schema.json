@@ -1,0 +1,496 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mediaskills.ch/schema/batch-v1",
+  "title": "Media Skills bulk research ingest / v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "batchId",
+    "reviewer",
+    "offers"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "MEDIA_SKILLS_BATCH_V1"
+    },
+    "batchId": {
+      "type": "string",
+      "pattern": "^[A-Z0-9][A-Z0-9_-]{4,80}$"
+    },
+    "reviewer": {
+      "type": "string",
+      "minLength": 3
+    },
+    "offers": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 250,
+      "items": {
+        "$ref": "#/definitions/offer"
+      }
+    }
+  },
+  "definitions": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "url",
+        "checkedAt",
+        "verifiedFields"
+      ],
+      "properties": {
+        "url": {
+          "type": "string",
+          "pattern": "^https://"
+        },
+        "checkedAt": {
+          "type": "string",
+          "format": "date"
+        },
+        "verifiedFields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "provider": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "country"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "country": {
+          "enum": [
+            "CH",
+            "DE",
+            "AT",
+            "LI",
+            "US"
+          ]
+        }
+      }
+    },
+    "access": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "chEligibility",
+        "conditions"
+      ],
+      "properties": {
+        "chEligibility": {
+          "enum": [
+            "YES",
+            "CONDITIONAL",
+            "NO",
+            "UNKNOWN"
+          ]
+        },
+        "conditions": {
+          "type": "string"
+        }
+      }
+    },
+    "learningTime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw",
+        "instructionDays"
+      ],
+      "properties": {
+        "raw": {
+          "type": "string"
+        },
+        "instructionDays": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "min": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "max": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "status": {
+              "const": "VERIFIED"
+            }
+          },
+          "required": [
+            "min",
+            "max",
+            "status"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "location": {
+      "type": "object",
+      "required": [
+        "kind",
+        "label"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "IN_PERSON",
+            "ONLINE",
+            "UNSPECIFIED"
+          ]
+        },
+        "label": {
+          "type": "string"
+        },
+        "city": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "country": {
+          "enum": [
+            "CH",
+            "DE",
+            "AT",
+            "LI",
+            "US",
+            null
+          ]
+        }
+      }
+    },
+    "variant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "mode",
+        "location",
+        "sourceUrl"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "IN_PERSON",
+            "LIVE_ONLINE",
+            "ON_DEMAND",
+            "HYBRID"
+          ]
+        },
+        "location": {
+          "$ref": "#/definitions/location"
+        },
+        "sourceUrl": {
+          "type": "string",
+          "pattern": "^https://"
+        }
+      }
+    },
+    "price": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "amountType",
+        "currency",
+        "tariffClass",
+        "eligibilityType",
+        "priceScope",
+        "billingBasis",
+        "taxMode",
+        "sourceUrl"
+      ],
+      "properties": {
+        "amountType": {
+          "enum": [
+            "EXACT",
+            "RANGE",
+            "FREE",
+            "FROM",
+            "ON_REQUEST",
+            "NOT_PUBLISHED"
+          ]
+        },
+        "amount": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "minAmount": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "maxAmount": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "currency": {
+          "enum": [
+            "CHF",
+            "EUR",
+            "USD",
+            null
+          ]
+        },
+        "tariffClass": {
+          "enum": [
+            "REGULAR",
+            "CONDITIONAL"
+          ]
+        },
+        "tariffLabel": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "eligibilityType": {
+          "enum": [
+            "NONE",
+            "MEMBERSHIP",
+            "PROFESSION",
+            "STUDENT",
+            "OTHER"
+          ]
+        },
+        "eligibilityValue": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "priceScope": {
+          "enum": [
+            "FULL_OFFER",
+            "PARTIAL",
+            "UNKNOWN"
+          ]
+        },
+        "billingBasis": {
+          "enum": [
+            "TOTAL",
+            "PER_DAY",
+            "PER_SEMESTER",
+            "UNKNOWN"
+          ]
+        },
+        "taxMode": {
+          "enum": [
+            "INCLUDED",
+            "EXCLUDED",
+            "UNSPECIFIED",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "validThrough": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "deliveryVariantRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "sourceUrl": {
+          "type": "string",
+          "pattern": "^https://"
+        }
+      }
+    },
+    "occurrence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "startDate",
+        "endDate",
+        "venue",
+        "availability",
+        "sourceUrl"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "venue": {
+          "$ref": "#/definitions/location"
+        },
+        "availability": {
+          "enum": [
+            "UNKNOWN",
+            "OPEN",
+            "SOLD_OUT"
+          ]
+        },
+        "availabilityObservedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "sourceUrl": {
+          "type": "string",
+          "pattern": "^https://"
+        }
+      }
+    },
+    "offer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "provider",
+        "title",
+        "description",
+        "focus",
+        "offerType",
+        "level",
+        "languages",
+        "scopeDecision",
+        "reviewStatus",
+        "reviewAfter",
+        "access",
+        "learningTime",
+        "deliveryVariants",
+        "prices",
+        "occurrences",
+        "source"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Z0-9][A-Z0-9_-]{4,99}$"
+        },
+        "provider": {
+          "$ref": "#/definitions/provider"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 3
+        },
+        "description": {
+          "type": "string",
+          "minLength": 10
+        },
+        "focus": {
+          "enum": [
+            "JOURNALISMUS",
+            "MEDIENPRAXIS",
+            "MANAGEMENT",
+            "MEDIENRECHT",
+            "SICHERHEIT",
+            "MODERATION"
+          ]
+        },
+        "offerType": {
+          "enum": [
+            "KURS",
+            "PROGRAMM",
+            "STUDIUM",
+            "EVENT"
+          ]
+        },
+        "level": {
+          "type": "string"
+        },
+        "languages": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "DE",
+              "FR",
+              "IT",
+              "EN"
+            ]
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "scopeDecision": {
+          "enum": [
+            "IN_SCOPE",
+            "HOLD"
+          ]
+        },
+        "reviewStatus": {
+          "enum": [
+            "REVIEWED",
+            "HOLD"
+          ]
+        },
+        "reviewAfter": {
+          "type": "string",
+          "format": "date"
+        },
+        "access": {
+          "$ref": "#/definitions/access"
+        },
+        "learningTime": {
+          "$ref": "#/definitions/learningTime"
+        },
+        "deliveryVariants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/variant"
+          }
+        },
+        "prices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/price"
+          }
+        },
+        "occurrences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/occurrence"
+          }
+        },
+        "source": {
+          "$ref": "#/definitions/source"
+        }
+      }
+    }
+  }
+}

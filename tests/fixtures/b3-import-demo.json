@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "MEDIA_SKILLS_BATCH_V1",
+  "batchId": "DEMO_20261105_V1",
+  "reviewer": "Testredaktion",
+  "offers": [
+    {
+      "id": "CH-DEMO-DJ-001",
+      "provider": {
+        "id": "CH-DEMO",
+        "name": "Demo Fachjournalismus",
+        "country": "CH"
+      },
+      "title": "Datenjournalismus in zwei Tagen",
+      "description": "Praktischer Workshop mit Datenrecherche und Visualisierung.",
+      "focus": "JOURNALISMUS",
+      "offerType": "KURS",
+      "level": "EINSTIEG",
+      "languages": [
+        "DE"
+      ],
+      "scopeDecision": "IN_SCOPE",
+      "reviewStatus": "REVIEWED",
+      "reviewAfter": "2026-12-01",
+      "access": {
+        "chEligibility": "YES",
+        "conditions": "Teilnahme für Journalistinnen und Journalisten aus der Schweiz."
+      },
+      "learningTime": {
+        "raw": "2 Tage",
+        "instructionDays": {
+          "min": 2,
+          "max": 2,
+          "status": "VERIFIED"
+        }
+      },
+      "deliveryVariants": [
+        {
+          "id": "A",
+          "mode": "LIVE_ONLINE",
+          "location": {
+            "kind": "ONLINE",
+            "label": "Online live",
+            "city": null,
+            "country": null
+          },
+          "sourceUrl": "https://example.org/training/"
+        }
+      ],
+      "prices": [
+        {
+          "amountType": "EXACT",
+          "amount": 750,
+          "currency": "CHF",
+          "tariffClass": "REGULAR",
+          "tariffLabel": null,
+          "eligibilityType": "NONE",
+          "eligibilityValue": null,
+          "priceScope": "FULL_OFFER",
+          "billingBasis": "TOTAL",
+          "taxMode": "INCLUDED",
+          "sourceUrl": "https://example.org/training/"
+        }
+      ],
+      "occurrences": [
+        {
+          "id": "CH-DEMO-DJ-001-E1",
+          "startDate": "2027-03-01",
+          "endDate": "2027-03-02",
+          "venue": {
+            "kind": "ONLINE",
+            "label": "Online live",
+            "city": null,
+            "country": null
+          },
+          "availability": "UNKNOWN",
+          "availabilityObservedAt": null,
+          "sourceUrl": "https://example.org/training/"
+        }
+      ],
+      "source": {
+        "url": "https://example.org/training/",
+        "checkedAt": "2026-11-05",
+        "verifiedFields": [
+          "provider",
+          "title",
+          "focus",
+          "access",
+          "duration",
+          "delivery",
+          "price",
+          "availability"
+        ]
+      }
+    }
+  ]
+}
