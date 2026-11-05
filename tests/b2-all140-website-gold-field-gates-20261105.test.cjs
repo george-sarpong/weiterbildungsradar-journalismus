@@ -81,7 +81,9 @@ assert.deepEqual(matrix.data.filter(x=>x.scheduled_date_alignment==="NO_SPECIFIC
 assert.equal(matrix.data.filter(x=>x.structured_numeric_price_eligible==="true").length,95);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("STRUCTURED_PRICE_BUDGET_UNVERIFIED")).length,45);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="NOT_PUBLISHED").length,32);
-assert.equal(matrix.data.filter(x=>x.venue_data_state==="MULTIPLE_OPTIONS_OR_AMBIGUOUS").length,51);
+assert.equal(matrix.data.filter(x=>x.venue_data_state==="MULTIPLE_OPTIONS_OR_AMBIGUOUS").length,39);
+assert.equal(matrix.data.filter(x=>x.venue_data_state==="REMOTE_ONLY_DISPLAY_NOT_OCCURRENCE_GOLD").length,37);
+assert.equal(matrix.data.filter(x=>x.venue_data_state==="SINGLE_DISPLAY_LOCATION_UNPROVEN").length,32);
 assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,115);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("OWNER_SCOPE_REVIEW")).length,10);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD")).length,20);
