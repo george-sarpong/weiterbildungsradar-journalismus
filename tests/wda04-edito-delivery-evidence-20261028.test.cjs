@@ -86,7 +86,8 @@ yes(["V78-01","V78-02","V78-03"].every(id=>byId[id]?.delivery?.sourceText?.inclu
 yes(["OFFER-DJA-003","OFFER-DJA-005","OFFER-DJA-009","OFFER-DJA-012"].every(id=>byId[id]?.delivery?.evidenceTier==="VERIFIED" && byId[id]?.delivery?.structure==="SINGLE_CHANNEL" && byId[id]?.delivery?.variants?.[0]?.temporalMode==="ASYNCHRONOUS"),"B2 source-proven DJA online study design missing");
 yes(["V82-DAWAN-010","V82-DAWAN-011","V82-DAWAN-013","V82-DAWAN-014"].every(id=>byId[id]?.delivery?.evidenceTier==="PROVISIONAL" && byId[id]?.delivery?.structure==="MODE_CHOICE" && byId[id]?.delivery?.variants?.length===1 && byId[id]?.delivery?.variants?.[0]?.attendanceChannels?.join(",")==="REMOTE" && byId[id]?.priceEligible===false),"B2 Dawan exact remote session must not become whole-offer verified or price eligible");
 yes(["CAD-003","V78-05"].every(id=>byId[id]?.delivery?.evidenceTier==="VERIFIED" && byId[id]?.delivery?.structure==="MODE_CHOICE" && byId[id]?.delivery?.variants?.length===2),"B2 CAD and ITTA source-backed two-mode delivery fields missing");
-yes(tiers.VERIFIED === 160 && tiers.PROVISIONAL === 399 && tiers.UNKNOWN === 793,
+yes(["OFFER-DJA-002","OFFER-DJA-004","OFFER-DJA-006","OFFER-DJA-007","OFFER-DJA-008","OFFER-DJA-010","OFFER-DJA-022"].every(id=>byId[id]?.delivery?.evidenceTier==="VERIFIED"&&byId[id]?.delivery?.structure==="SINGLE_CHANNEL"&&byId[id]?.delivery?.variants?.[0]?.temporalMode==="ASYNCHRONOUS"&&byId[id]?.delivery?.materialisationStatus?.includes("INTAKE_AND_CAMPUS_HOLD")),"DJA seven exact online programme proofs must retain intake restrictions");
+yes(tiers.VERIFIED === 167 && tiers.PROVISIONAL === 399 && tiers.UNKNOWN === 786,
     "Global evidence tiers outside authorised B2 CAD-005/ifage changes: " + JSON.stringify(tiers));
 console.log("WDA04_EDITO_SOURCE_VERIFIED_4_OF_4_PASS");
 console.log("WDA04_ONLINE_VARIANT_AND_PRICE_GUARDS_PASS");
