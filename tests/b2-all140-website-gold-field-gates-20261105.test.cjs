@@ -94,7 +94,7 @@ assert.equal(matrix.data.filter(x=>x.venue_data_state==="REMOTE_ONLY_DISPLAY_NOT
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="SINGLE_DISPLAY_LOCATION_UNPROVEN").length,32);
 assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,55);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("OWNER_SCOPE_REVIEW")).length,10);
-assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD")).length,18);
+assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD")).length,17);
 assert.ok(!get("OFFER-MAZ-146").field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
 assert.ok(!get("OFFER-MAZ-163").field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
 assert.equal(get("OFFER-CFJM-018").source_recheck_state,"PRIMARY_PROVIDER_CATALOG_EXACT_DATE_TITLE");
@@ -544,6 +544,19 @@ assert.equal(get("OFFER-CFJM-019").delivery_evidence_tier,"PROVISIONAL");
 assert.ok(get("OFFER-CFJM-019").field_gap_tags.includes("DELIVERY_NOT_VERIFIED"));
 assert.equal(side.byId["OFFER-CFJM-019"].priceOptions[0].amountType,"NOT_PUBLISHED");
 
+
+// EVT241: preserve 2026-10 cached individual course as historical; current CFJM exact detail independently matches scheduled 26 Nov 2026 course.
+const cfjmAuteur=get("OFFER-CFJM-020"),cfjmAuteurQ=backlog.data.find(x=>x.offer_id==="OFFER-CFJM-020");
+assert.equal(cfjmAuteur.next_start,"2026-11-26");
+assert.ok(cfjmAuteur.source_decision.includes("HOLD_INDEX_DETAIL_DATE_VERSION_AND_SEAT"),"Frozen 39/101 source decision remains auditable");
+assert.ok(cfjmAuteur.source_observation_freshness.includes("CURRENT_HEADER_RECHECKED"));
+assert.ok(!cfjmAuteur.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
+assert.ok(cfjmAuteur.field_gap_tags.includes("DELIVERY_NOT_VERIFIED"));
+assert.ok(cfjmAuteur.field_gap_tags.includes("BOOKING_OR_INTAKE_NOT_PROVEN"));
+assert.equal(cfjmAuteur.website_gold_gate,"NOT_PROVEN");
+assert.equal(cfjmAuteur.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
+assert.equal(cfjmAuteurQ.unresolved_field_gaps,cfjmAuteur.field_gap_tags);
+
 const original63=rows("docs/b2/evt237-all63-parallel-delivery-source-review-20261105.tsv");
 assert.equal(original63.header.length,27);
 assert.equal(original63.data.length,63);
@@ -553,6 +566,7 @@ assert.deepEqual(new Set(original63.data.filter(x=>x.review_disposition==="FIELD
 const delta238=new Set(["PCC-P11","PCC-P19","V82-DAWAN-020"]);
 const delta239=new Set(["PCC-P41"]);
 const delta240=new Set(["PCC-P29","PCC-P31"]);
+const delta241Source=new Set(["OFFER-CFJM-020"]);
 const dueCurrentlyNotVerified=new Set(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").map(x=>x.offer_id));
 assert.equal(dueCurrentlyNotVerified.size,55);
 assert.deepEqual(new Set([...dueCurrentlyNotVerified,...delta237,...delta238,...delta239,...delta240]),new Set(original63.data.map(x=>x.offer_id)));
@@ -568,10 +582,15 @@ for(const x of original63.data) {
  assert.equal(x.provider,row.provider);
  assert.equal(x.title,row.catalogue_title);
  assert.equal(x.canonical_primary_url,row.catalogue_source_url);
- if(!delta238.has(x.offer_id)&&!delta239.has(x.offer_id)&&!delta240.has(x.offer_id)) {
+ if(!delta238.has(x.offer_id)&&!delta239.has(x.offer_id)&&!delta240.has(x.offer_id)&&!delta241Source.has(x.offer_id)) {
   assert.equal(x.current_delivery_tier_evt237,row.delivery_evidence_tier);
   assert.equal(x.delivery_variant_count,String(sc.delivery.variants.length));
   assert.equal(x.full_field_gaps,row.field_gap_tags);
+ } else if(delta241Source.has(x.offer_id)) {
+  assert.equal(x.current_delivery_tier_evt237,row.delivery_evidence_tier);
+  assert.ok(x.full_field_gaps.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
+  assert.ok(!row.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
+  assert.equal(x.full_field_gaps.replace("|SOURCE_VERSION_OR_IDENTITY_GUARD",""),row.field_gap_tags);
  } else {
   assert.notEqual(x.current_delivery_tier_evt237,"VERIFIED");
   assert.equal(row.delivery_evidence_tier,"VERIFIED");
