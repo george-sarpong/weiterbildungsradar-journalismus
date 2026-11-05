@@ -158,6 +158,12 @@ function project(batch){
     duration,start:earliest?earliest.startDate:(variants.some(v=>v.mode==="ON_DEMAND")?"Selbstlernend – Start beim Anbieter prüfen":"Nächster Termin nicht publiziert"),
     startDate:earliest?.startDate||"",endDate:earliest?.endDate||"",region:location||"NOT_PUBLISHED",
     providerCountry:o.provider.country,deliveryCountry:actualVenue,
+    deliveryLocations:[...new Map([
+      ...variants.map(v=>({...v.location,sourceUrl:v.sourceUrl})),
+      ...(o.occurrences||[]).map(s=>({...s.venue,sourceUrl:s.sourceUrl}))
+    ].filter(loc=>loc.kind==="IN_PERSON"&&loc.city&&loc.country)
+      .map(loc=>[String(loc.city).toLowerCase()+"|"+loc.country,
+        {...loc,status:ready?"VERIFIED":"UNKNOWN"}])).values()],
     accessModel:o.access,learningTime:o.learningTime,
     sourceEvidence:{url:o.source.url,checkedAt:o.source.checkedAt,verifiedFields:o.source.verifiedFields},
     release_origin:"B3_IMPORT_"+batch.batchId,

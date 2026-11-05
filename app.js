@@ -79,6 +79,8 @@
     language: document.querySelector("#languageFilter"),
     country: document.querySelector("#countryFilter"),
     level: document.querySelector("#levelFilter"),
+    access: document.querySelector("#accessFilter"),
+    venue: document.querySelector("#venueFilter"),
     sort: document.querySelector("#sortSelect"),
     reset: document.querySelector("#resetFilters"),
     filterStatus: document.querySelector("#filterStatus"),
@@ -588,7 +590,9 @@
     format: el.format,
     language: el.language,
     country: el.country,
-    level: el.level
+    level: el.level,
+    access: el.access,
+    venue: el.venue
   };
 
   const hasOption = (select, value) => [...select.options].some(option => option.value === value);
@@ -618,6 +622,8 @@
     if (filter.language) params.set("language", filter.language);
     if (filter.country) params.set("country", filter.country);
     if (filter.level) params.set("level", filter.level);
+    if (filter.access) params.set("access", filter.access);
+    if (filter.venue) params.set("venue", filter.venue);
     if (el.sort.value !== "APPROVED") params.set("sort", el.sort.value);
 
     const query = params.toString();
@@ -700,6 +706,11 @@
   const SMART_DATA = window.MEDIA_SKILLS_SMART_DATA && window.MEDIA_SKILLS_SMART_DATA.byId
     ? window.MEDIA_SKILLS_SMART_DATA
     : { meta: {}, byId: {} };
+  const VIEW_MODEL = window.MEDIA_SKILLS_OFFER_VIEW;
+  const CATALOG_VIEW = VIEW_MODEL.build(allOffers, SMART_DATA.byId, DURATION_MODEL);
+  // 1,352 old offers are typed without modifying their original evidence or data.
+  // Legacy access and city remain UNKNOWN until explicitly field-sourced.
+
 
   const SMART_FREE_TOKEN_RE = /^(?:gratis|kostenlos(?:e(?:n|r|s|m)?)?|kostenfrei(?:e(?:n|r|s|m)?)?)$/;
   const SMART_FREE_INTENT_RE = /\b(?:gratis|kostenlos(?:e(?:n|r|s|m)?)?|kostenfrei(?:e(?:n|r|s|m)?)?)\b/;
@@ -868,6 +879,7 @@
     const excludeEnglish = SMART_NO_ENGLISH_RE.test(input);
     SMART_NO_ENGLISH_RE.lastIndex = 0;
     const budget = parseSmartBudget(raw);
+    const accessFromCH = /\b(?:aus der schweiz|von der schweiz aus|teilnahme aus der schweiz)\b/.test(input);
     const semantic = extractSmartConstraints(input);
     const durationClauses = semantic.clauses.filter(c => c.kind !== "PRICE_EXCLUSION");
     const maxClause = durationClauses.find(c => c.kind === "DAYS"
@@ -877,6 +889,7 @@
     SMART_NEGATED_FREE_INTENT_RE.lastIndex = 0;
     const freeOnly = !excludesFree && SMART_FREE_INTENT_RE.test(semantic.remaining);
     let tokenSource = semantic.remaining
+      .replace(/\b(?:aus der schweiz|von der schweiz aus|teilnahme aus der schweiz)\b/g," ")
       .replace(SMART_NEGATED_FREE_INTENT_RE, " ")
       .replace(/\bnicht\s+mehr\s+als\b/g, " ")
       .replace(SMART_NO_ENGLISH_RE, " ")
@@ -906,6 +919,7 @@
       excludeEnglish,
       freeOnly,
       excludesFree,
+      accessFromCH,
       tokens: [...new Set(tokens)]
     };
   };
@@ -1292,6 +1306,8 @@
     if (parsed.deliveryIntents.length) {
       if (delivery.outcome !== "MATCH" || delivery.evidenceTier !== "VERIFIED") return null;
     }
+    const audienceAccess = CATALOG_VIEW.byId[offer.id]?.audienceAccess.chEligibility || "UNKNOWN";
+    if(parsed.accessFromCH && audienceAccess==="NO")return null;
     const free = parsed.freeOnly
       ? resolveFreeOption(record, delivery, parsed.deliveryIntents.length > 0)
       : null;
@@ -1301,7 +1317,7 @@
     if (parsed.deliveryIntents.length) score += 6;
     if (offer.startDate) score += 1;
     const durationFit = DURATION_MODEL.classify(offer, parsed.maxDays, parsed.approximateDays);
-    return { offer, record, delivery, budget, free, durationFit, score };
+    return { offer, record, delivery, budget, free, durationFit, audienceAccess, score };
   };
 
   // Das allgemeine Angebotsformat ist ein Hinweis, kein verifizierter Delivery-Nachweis.
@@ -1452,6 +1468,9 @@
               ? "Die publizierte Dauer reicht über das Zeitbudget hinaus."
               : "Die Zahl der benötigten Kurstage ist nicht eindeutig belegt."} Bitte Kursdauer beim Anbieter prüfen.</p>`
           : ""}
+        ${parsed.accessFromCH && item.audienceAccess !== "YES"
+          ? `<p class="smart-budget"><strong>CH-Zugang nicht bestätigt:</strong> Der vorliegende strukturierte Nachweis reicht nicht für eine definitive Zusage. Bitte Zulassung beim Anbieter prüfen.</p>`
+          : ""}
         ${item.alternativeReason === "FORMAT"
           ? `<p class="smart-budget"><strong>Ob dieser Kurs in der gewünschten Form stattfindet, ist noch offen.</strong> In unserem Katalog steht: ${escapeHtml(humanizeTokens(offer.format, labels.format))}. Bitte beim Kursanbieter nachfragen.</p>`
           : item.alternativeReason === "PREIS"
@@ -1547,7 +1566,7 @@
       + moreDirect
       + (alternativeShown.length
         ? `<section class="smart-alternatives" aria-labelledby="smartAlternativeTitle"><h3 id="smartAlternativeTitle">Weitere Kurse, die passen könnten</h3>
-           <p>Bei diesen Kursen sind noch Fragen zum Preis, zur Kursdauer, zur Kursform oder zu einem möglichen Späteinstieg offen. Bitte beim Kursanbieter nachfragen.</p>
+           <p>Bei diesen Kursen sind noch Fragen zum Preis, zum Zugang aus der Schweiz, zur Kursdauer, zur Kursform oder zu einem möglichen Späteinstieg offen. Bitte beim Kursanbieter nachfragen.</p>
            <div class="smart-alternative-cards">${alternativeShown.map((item, index) => smartCard(item, parsed, index)).join("")}</div>${moreAlternatives}</section>`
         : "");
     el.smartStatus.textContent = confirmedText + progressText + alternativeText
@@ -1578,30 +1597,40 @@
     const formatMatches = offers.map(offer => smartEvaluate(offer, parsed)).filter(Boolean);
     const durationDirect = item => parsed.maxDays == null || item.durationFit.status === "FIT";
     const evaluated = parsed.budget
-      ? formatMatches.filter(item => durationDirect(item) && !bookingStatusUnconfirmed(item.offer)
-          && item.budget.status === "DIRECT_FIT")
-      : formatMatches.filter(item => durationDirect(item) && !bookingStatusUnconfirmed(item.offer));
+      ? formatMatches.filter(item => durationDirect(item) && (!parsed.accessFromCH || item.audienceAccess==="YES")
+          && !bookingStatusUnconfirmed(item.offer) && item.budget.status === "DIRECT_FIT")
+      : formatMatches.filter(item => durationDirect(item) && (!parsed.accessFromCH || item.audienceAccess==="YES")
+        && !bookingStatusUnconfirmed(item.offer));
     const priceAlternatives = parsed.budget && parsed.tokens.length
-      ? formatMatches.filter(item => durationDirect(item) && !bookingStatusUnconfirmed(item.offer)
+      ? formatMatches.filter(item => durationDirect(item) && (!parsed.accessFromCH || item.audienceAccess==="YES")
+          && !bookingStatusUnconfirmed(item.offer)
           && ["TARGET_GROUP_FIT", "CONDITIONAL_FIT", "POSSIBLE_FIT"].includes(item.budget.status))
         .map(item => ({ ...item, isAlternative: true, alternativeReason: "PREIS" }))
       : [];
     const bookingAlternatives = parsed.tokens.length
-      ? formatMatches.filter(item => durationDirect(item) && bookingStatusUnconfirmed(item.offer)
+      ? formatMatches.filter(item => durationDirect(item) && (!parsed.accessFromCH || item.audienceAccess==="YES")
+          && bookingStatusUnconfirmed(item.offer)
           && (!parsed.budget || ["DIRECT_FIT", "TARGET_GROUP_FIT", "CONDITIONAL_FIT", "POSSIBLE_FIT"].includes(item.budget.status)))
         .map(item => ({ ...item, isAlternative: true, alternativeReason: "BOOKING" }))
       : [];
     const durationAlternatives = parsed.maxDays != null && parsed.tokens.length
-      ? formatMatches.filter(item => ["UNKNOWN", "POSSIBLE", "NEAR"].includes(item.durationFit.status)
+      ? formatMatches.filter(item => (!parsed.accessFromCH || item.audienceAccess==="YES")
+          && ["UNKNOWN", "POSSIBLE", "NEAR"].includes(item.durationFit.status)
           && (!parsed.budget || ["DIRECT_FIT", "TARGET_GROUP_FIT", "CONDITIONAL_FIT", "POSSIBLE_FIT"].includes(item.budget.status)))
         .map(item => ({ ...item, isAlternative: true, alternativeReason: "DAUER" }))
+      : [];
+    const accessAlternatives = parsed.accessFromCH && parsed.tokens.length
+      ? formatMatches.filter(item => item.audienceAccess!=="YES"
+          && (parsed.maxDays==null || item.durationFit.status!=="OVER")
+          && (!parsed.budget || ["DIRECT_FIT","TARGET_GROUP_FIT","CONDITIONAL_FIT","POSSIBLE_FIT"].includes(item.budget.status)))
+        .map(item => ({...item,isAlternative:true,alternativeReason:"ZUGANG"}))
       : [];
     const formatAlternatives = parsed.deliveryIntents.length
       ? offers.map(offer => smartAlternative(offer, parsed)).filter(Boolean)
       : [];
-    const candidates = [...priceAlternatives, ...bookingAlternatives, ...durationAlternatives, ...formatAlternatives];
+    const candidates = [...accessAlternatives, ...priceAlternatives, ...bookingAlternatives, ...durationAlternatives, ...formatAlternatives];
     const alternatives = [...new Map(candidates.map(item => [item.offer.id, item])).values()];
-    const alternativeOrder = { PREIS: 0, BOOKING: 1, DAUER: 2, FORMAT: 3 };
+    const alternativeOrder = { ZUGANG: 0, PREIS: 1, BOOKING: 2, DAUER: 3, FORMAT: 4 };
     alternatives.sort((a, b) =>
       (alternativeOrder[a.alternativeReason] ?? 4) - (alternativeOrder[b.alternativeReason] ?? 4)
       || (budgetStatusRank[a.budget.status] ?? 99) - (budgetStatusRank[b.budget.status] ?? 99)
@@ -1630,6 +1659,7 @@
     if (parsed.freeOnly) chips.push("Nur kostenlose Kurse");
     if (parsed.excludesFree) chips.push("Keine Gratisangebote · erkannt, nicht angewendet");
     if (parsed.excludeEnglish) chips.push("Keine englischsprachigen Kurse");
+    if (parsed.accessFromCH) chips.push("Zugang: Teilnahme aus der Schweiz");
 
     el.smartUnderstood.innerHTML = `<span class="smart-understood-label">Verstanden:</span>${chips.length ? chips.map(chip => `<span class="smart-chip">${escapeHtml(chip)}</span>`).join("") : '<span class="smart-chip">Suchbegriffe aus deinem Satz</span>'}`;
     smartResultState = { parsed, evaluated, alternatives, directLimit: 3, alternativeLimit: 3 };
@@ -1653,7 +1683,9 @@
     format: el.format.value,
     language: el.language.value,
     country: el.country.value,
-    level: el.level.value
+    level: el.level.value,
+    access: el.access.value,
+    venue: el.venue.value
   });
 
   const matches = (offer, filter) => {
@@ -1682,7 +1714,9 @@
       && (!filter.format || splitTokens(offer.format).includes(filter.format))
       && (!filter.language || splitTokens(offer.language, /\s*[|/]\s*/).includes(filter.language))
       && (!filter.country || countryDisplay(offer.country) === filter.country)
-      && (!filter.level || offer.level === filter.level);
+      && (!filter.level || offer.level === filter.level)
+      && VIEW_MODEL.matchAccess(CATALOG_VIEW.byId[offer.id],filter.access)
+      && VIEW_MODEL.matchCity(CATALOG_VIEW.byId[offer.id],filter.venue);
   };
 
   const activeFilterCount = filter => [
@@ -1694,6 +1728,8 @@
     filter.language,
     filter.country,
     filter.level,
+    filter.access,
+    filter.venue,
     el.sort.value !== "APPROVED",
     favoritesOnly
   ].filter(Boolean).length;
@@ -1754,7 +1790,7 @@
   };
 
   const reset = () => {
-    [el.search, el.focus, el.type, el.price, el.format, el.language, el.country, el.level]
+    [el.search, el.focus, el.type, el.price, el.format, el.language, el.country, el.level, el.access, el.venue]
       .forEach(node => { node.value = ""; });
     el.sort.value = "APPROVED";
     favoritesOnly = false;
@@ -1782,13 +1818,17 @@
   addOptions(el.language, tokenValues("language", ["DE", "FR", "IT", "EN", "NOT_PUBLISHED"], /\s*[|/]\s*/), value => labels.language[value] ?? value);
   addOptions(el.country, countryValues(preferredOrder.country));
   addOptions(el.level, orderedValues("level", preferredOrder.level), value => labels.level[value] ?? value);
+  addOptions(el.venue,CATALOG_VIEW.cityOptions.map(city=>city.key),
+    key => CATALOG_VIEW.cityOptions.find(city=>city.key===key)?.label || key);
+  // Unknown/unverified legacy city text is not offered as a proven place facet.
+  el.venue.disabled=CATALOG_VIEW.cityOptions.length===0;
 
   const scheduleSearchRender = () => {
     if (searchRenderTimer !== null) clearTimeout(searchRenderTimer);
     searchRenderTimer = setTimeout(render, 180);
   };
   el.search.addEventListener("input", scheduleSearchRender);
-  [el.focus, el.type, el.price, el.format, el.language, el.country, el.level]
+  [el.focus, el.type, el.price, el.format, el.language, el.country, el.level, el.access, el.venue]
     .forEach(node => node.addEventListener("input", render));
   el.sort.addEventListener("change", render);
   el.moreCourses.addEventListener("click", () => {

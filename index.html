@@ -154,6 +154,19 @@
             <span>Erfahrungsniveau</span>
             <select id="levelFilter"><option value="">Alle Niveaus</option></select>
           </label>
+          <label class="field">
+            <span>Zugang aus der Schweiz</span>
+            <select id="accessFilter">
+              <option value="">Alle Zugangsstände</option>
+              <option value="YES">CH-Teilnahme belegt</option>
+              <option value="CONDITIONAL">CH-Teilnahme mit Bedingungen</option>
+              <option value="UNKNOWN">Noch nicht strukturiert geprüft</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Belegter Durchführungsort</span>
+            <select id="venueFilter"><option value="">Alle Veranstaltungsorte</option></select>
+          </label>
         </div>
 
         <details class="classification-help">
@@ -261,6 +274,7 @@
   <script src="data.js"></script>
   <script src="smart-search-data.js"></script>
   <script src="duration-model.js"></script>
+  <script src="offer-search-view-v1.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
