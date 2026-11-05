@@ -1154,7 +1154,30 @@
         candidates.push({ status: "PRICE_UNKNOWN", option, amount: null });
         continue;
       }
-      if (calc.kind === "FROM" || calc.kind === "RANGE" || calc.kind === "POSSIBLE") {
+      // A bounded whole-offer RANGE can fit financially even when prices vary
+      // by instalment plan. The known upper bound is used conservatively.
+      // NEVER promote conditional tariffs, variant-only prices, excluded tax,
+      // unknown mandatory costs, or unbounded/from-only ranges to direct fit.
+      if (calc.kind === "RANGE") {
+        const min = calc.amount;
+        const max = calc.maxAmount;
+        const safeBound = Number.isFinite(min) && min >= 0
+          && Number.isFinite(max) && max >= min
+          && option.priceScope === "FULL_OFFER"
+          && option.billingBasis === "TOTAL"
+          && option.eligibilityType === "NONE"
+          && option.taxMode !== "EXCLUDED"
+          && (!Array.isArray(option.deliveryVariantRefs) || option.deliveryVariantRefs.length === 0)
+          && (!Array.isArray(option.components) || option.components.length === 0);
+        if (safeBound && max <= parsed.budget.amount) {
+          candidates.push({ status: "DIRECT_FIT", option, amount: max });
+        } else {
+          candidates.push({ status: min != null && min > parsed.budget.amount
+            ? "OVER_BUDGET" : "POSSIBLE_FIT", option, amount: min });
+        }
+        continue;
+      }
+      if (calc.kind === "FROM" || calc.kind === "POSSIBLE") {
         const min = calc.amount;
         candidates.push({ status: min != null && min > parsed.budget.amount ? "OVER_BUDGET" : "POSSIBLE_FIT", option, amount: min });
         continue;
@@ -1230,6 +1253,12 @@
       if (option.eligibilityType === "SUBSCRIPTION") return "Für Abonnent:innen kostenlos · Berechtigung prüfen";
       if (option.eligibilityType === "PROFESSION") return "Für bestimmte Berufsgruppen kostenlos · Berechtigung prüfen";
       return "Kostenlos unter Bedingungen · Anspruch prüfen";
+    }
+    if (option.amountType === "RANGE" && option.currency
+        && Number.isFinite(option.minAmount) && Number.isFinite(option.maxAmount)) {
+      const range = `${option.currency} ${option.minAmount.toLocaleString("de-CH")}–${option.maxAmount.toLocaleString("de-CH")}`;
+      const qualified = option.taxMode === "EXCLUDED" ? `${range} · Steuern separat` : range;
+      return option.tariffLabel ? `${qualified} · ${option.tariffLabel}` : qualified;
     }
     if (amount != null && option.currency) {
       const label = `${option.currency} ${amount.toLocaleString("de-CH")}`;
@@ -1368,6 +1397,9 @@
         return `Der Preis liegt bei unserem 1:1-Vergleich in Ihrem Budget.${eligibility} Den tatsächlichen Betrag vor der Anmeldung in Ihre Währung umrechnen.`;
       }
       const rest = Math.max(0, parsed.budget.amount - item.budget.amount);
+      if (status === "DIRECT_FIT" && item.budget.option?.amountType === "RANGE") {
+        return `Auch die bekannte Preisobergrenze passt ins Planungsbudget. Je nach Zahlungsplan bleiben mindestens ${parsed.budget.currency} ${rest.toLocaleString("de-CH")}. Buchbarkeit separat prüfen.`;
+      }
       const prefix = status === "TARGET_GROUP_FIT" ? "Beim Journalist:innen-Tarif" : "Bei diesem Preis";
       return `${prefix} bleiben ${parsed.budget.currency} ${rest.toLocaleString("de-CH")}.${eligibility}`;
     }
