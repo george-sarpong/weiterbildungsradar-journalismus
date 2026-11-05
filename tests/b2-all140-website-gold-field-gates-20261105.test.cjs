@@ -79,13 +79,13 @@ const pending=matrix.data.filter(x=>x.primary_field_evidence_class!=="BOUNDED_PR
 assert.equal(n.length,139);assert.deepEqual(pending.map(x=>x.offer_id),["OFFER-HELIAS-014"]);
 assert.deepEqual(matrix.data.filter(x=>x.scheduled_date_alignment==="MATCHES_EXISTING_START_OR_SESSION").length,109);
 assert.deepEqual(matrix.data.filter(x=>x.scheduled_date_alignment==="NO_SPECIFIC_DUE_START").length,31);
-assert.equal(matrix.data.filter(x=>x.structured_numeric_price_eligible==="true").length,102);
-assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("STRUCTURED_PRICE_BUDGET_UNVERIFIED")).length,38);
+assert.equal(matrix.data.filter(x=>x.structured_numeric_price_eligible==="true").length,106);
+assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("STRUCTURED_PRICE_BUDGET_UNVERIFIED")).length,34);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="NOT_PUBLISHED").length,32);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="MULTIPLE_OPTIONS_OR_AMBIGUOUS").length,39);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="REMOTE_ONLY_DISPLAY_NOT_OCCURRENCE_GOLD").length,37);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="SINGLE_DISPLAY_LOCATION_UNPROVEN").length,32);
-assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,107);
+assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,105);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("OWNER_SCOPE_REVIEW")).length,10);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD")).length,18);
 assert.ok(!get("OFFER-MAZ-146").field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
@@ -187,8 +187,38 @@ for(const [id,amounts] of Object.entries(cfjmTariffIds)){
  assert.equal(prices[0].eligibilityType,"NONE");
  assert.equal(prices[3].eligibilityValue,id==="OFFER-CFJM-009"?"IMPRESSUM_AND_50_PERCENT_FREELANCE":"IMPRESSUM");
 }
+const priceBatchNext={"OFFER-CFJM-017":[1770,1200,900,390,0],"V78-05":[2350,2500],"CAD-003":[500,250],"OFFER-MAZ-151":[990,650]};
+for(const [id,amounts] of Object.entries(priceBatchNext)){
+ const row=get(id),sc=side.byId[id],bl=backlog.data.find(x=>x.offer_id===id);
+ assert.deepEqual(sc.priceOptions.map(p=>p.amount),amounts,id+" source matched prices");
+ assert.equal(row.structured_numeric_price_eligible,"true");
+ assert.equal(row.structured_price_option_count,String(amounts.length));
+ assert.equal(bl.price_numeric_eligible,"true");
+ assert.equal(bl.unresolved_field_gaps,row.field_gap_tags);
+ assert.ok(!row.field_gap_tags.includes("STRUCTURED_PRICE_BUDGET_UNVERIFIED"));
+ assert.equal(row.website_gold_gate,"NOT_PROVEN");
+ assert.equal(row.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
+ if(id==="CAD-003"||id==="V78-05"){
+  assert.equal(row.delivery_evidence_tier,"VERIFIED");
+  assert.equal(sc.delivery.structure,"MODE_CHOICE");
+  assert.deepEqual(sc.delivery.variants.map(x=>x.deliveryVariantId),["A","B"]);
+  assert.equal(row.delivery_variant_count,"2");
+  assert.ok(!row.field_gap_tags.includes("DELIVERY_NOT_VERIFIED"));
+  assert.ok(sc.delivery.materialisationStatus.includes("HOLD"));
+ }
+ if(id==="OFFER-CFJM-017")assert.equal(sc.priceOptions[4].eligibilityValue,"CFJM_FC_COTISANT");
+ if(id==="CAD-003"){
+   assert.equal(sc.priceOptions[1].components.find(x=>x.componentType==="CERTIFICATION_FEE").amount,150);
+   assert.equal(sc.priceOptions[1].components.find(x=>x.componentType==="CERTIFICATION_FEE").requirementStatus,"OPTIONAL");
+ }
+ if(id==="OFFER-MAZ-151"){
+   assert.ok(row.field_gap_tags.includes("OWNER_SCOPE_REVIEW"));
+   assert.equal(row.scope_gate,"OWNER_REVIEW_REQUIRED");
+   assert.equal(sc.priceOptions[1].eligibilityValue,"JOURNALIST");
+ }
+}
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
- all:140,sourceBounded:139,sourcePending:1,numericEligible:102,
- priceGap:38,venueUnpublished:32,venueAmbiguous:51,
- deliveryUnverified:107,ownerScopeFlags:10,publicationApproved:0
+ all:140,sourceBounded:139,sourcePending:1,numericEligible:106,
+ priceGap:34,venueUnpublished:32,venueAmbiguous:51,
+ deliveryUnverified:105,ownerScopeFlags:10,publicationApproved:0
 }));
