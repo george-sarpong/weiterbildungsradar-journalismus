@@ -85,7 +85,7 @@ assert.equal(matrix.data.filter(x=>x.venue_data_state==="NOT_PUBLISHED").length,
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="MULTIPLE_OPTIONS_OR_AMBIGUOUS").length,39);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="REMOTE_ONLY_DISPLAY_NOT_OCCURRENCE_GOLD").length,37);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="SINGLE_DISPLAY_LOCATION_UNPROVEN").length,32);
-assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,88);
+assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,84);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("OWNER_SCOPE_REVIEW")).length,10);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD")).length,18);
 assert.ok(!get("OFFER-MAZ-146").field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
@@ -254,8 +254,26 @@ for(const id of lastDjaTen){
  assert.equal(row.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
 }
 assert.ok(side.byId["OFFER-DJA-013"].delivery.sourceText.includes("/nachhaltigkeitsjournalismus/"),"DJA013 existing original URL slug preserved despite Klimajournalismus title");
+const microwinExtra=["MW-P08","MW-P07","MW-P09","MW-P03"];
+for(const id of microwinExtra){
+ const row=get(id),rec=side.byId[id],bl=backlog.data.find(b=>b.offer_id===id);
+ assert.equal(rec.delivery.evidenceTier,"VERIFIED",id+" teaching format");
+ assert.equal(rec.delivery.structure,"MODE_CHOICE");
+ assert.deepEqual(rec.delivery.variants.map(v=>v.deliveryVariantId),["A","B"]);
+ assert.deepEqual(rec.delivery.variants[0].attendanceChannels,["IN_PERSON"]);
+ assert.deepEqual(rec.delivery.variants[1].attendanceChannels,["REMOTE"]);
+ assert.equal(row.delivery_evidence_tier,"VERIFIED");
+ assert.equal(row.delivery_variant_count,"2");
+ assert.equal(bl.delivery_tier,"VERIFIED");
+ assert.equal(bl.unresolved_field_gaps,row.field_gap_tags);
+ assert.ok(row.field_gap_tags.includes("CURRENTNESS_REVIEW_DUE"));
+ assert.equal(row.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
+ assert.ok(rec.delivery.materialisationStatus.includes("CAPACITY_CURRENTNESS_HOLD"));
+}
+assert.ok(side.byId["MW-P09"].delivery.sourceText.includes("Flash/DHTML"),"WEBDA syllabus currentness flag required");
+assert.ok(side.byId["MW-P07"].delivery.sourceText.includes("INDF not INDE"),"Microwin exact course code identity");
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
  all:140,sourceBounded:139,sourcePending:1,numericEligible:106,
  priceGap:34,venueUnpublished:32,venueAmbiguous:51,
- deliveryUnverified:88,ownerScopeFlags:10,publicationApproved:0
+ deliveryUnverified:84,ownerScopeFlags:10,publicationApproved:0
 }));
