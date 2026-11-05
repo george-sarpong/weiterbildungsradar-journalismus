@@ -268,3 +268,23 @@ Der Projektverantwortliche hat den regulären MAZ-Durchführungsort ausdrücklic
 **Explizite Ausnahme:** `OFFER-MAZ-100` («MAZ-Thementagung: KI im Journalismus – Was kommt 2027?») ist nach der offiziellen MAZ-Kursseite vom 18.11.2026 an der NZZ, Falkenstrasse 11, 8008 **Zürich** angesetzt. Ein allgemeiner Luzern-Default darf eine konkrete Veranstaltungsquelle nicht überschreiben. https://www.maz.ch/kurs/maz-thementagung-ki-im-journalismus
 
 **Gates:** Der Owner-Default belegt ausschliesslich die **Stadt Luzern**, nicht den spezifischen Raum, ein belegtes edition-specific Datum, tatsächliche Durchführung, Sitzplatz, vollständigen Teilnehmerzugang oder Preis. Deshalb bleiben `VENUE_NOT_PUBLISHED` (exakte Venue-Details), `DELIVERY_NOT_VERIFIED` und alle bestehenden Source-, Booking-, Owner-Scope-, Website-Gold- und Publication-Holds bestehen. Keine Master-, Main- oder Hosting-Änderung, keine Gold-/E4-/E5-/G3-Freigabe. Quelle für das MAZ-Kurszentrum: https://www.maz.ch/hinweise_kursteilnehmende ; https://www.maz.ch/kontakt .
+
+
+## EVT236 – 05.11.2026: zehn genaue PC-COLLEGE-Unterrichtsmodelle verifiziert
+**Supersedes only the EVT235 delivery counters, not earlier audit history.** Die zehn bestehenden IDs PCC-P40, PCC-P10, PCC-P06, PCC-P01, PCC-P04, PCC-P09, PCC-P39, PCC-P07, PCC-P12, PCC-P30 sind mit ihrer **eigenen** offiziellen Kursseite und dem eigenen Kurzcode (BP1, INA, PRE, AFT, IND, ILA, BP2, AFA, PRF, PSK) abgeglichen worden. Jede Seite erlaubt als **Produktformat** wahlweise Live-Online-Training (synchron) oder Präsenzseminar mit Auswahl Basel/Bern/Zürich. Es handelt sich nicht um eine durchgeführte Buchung; konkrete Termin-/Standortkombination, Anmeldekapazität, genaue Raumadresse und Schweizer Brutto-Endpreis wurden NICHT vollverifiziert. Die source-gedeckten FROM-EUR-Beträge und die deutsch ausgewiesene MwSt. wurden nicht als Schweizer Endpreis übernommen. SOURCE_VERSION/ALIAS, CURRENTNESS, CH_FINAL_FEE und BOOKING/HOLDs bleiben unverändert.
+
+Die zehn Sidecars wechseln nur in `delivery` von UNKNOWN zu VERIFIED (Source-Beweis für das angebotene **Wahlmodell**, nicht den individuellen Termin); zwei Varianten REMOTE synchron und IN_PERSON synchron. 140er-Matrix/Backlog entfernen ausschliesslich deren `DELIVERY_NOT_VERIFIED`-Tag. 1352 Sidecars bleiben; global **200 VERIFIED / 396 PROVISIONAL / 756 UNKNOWN**. Innerhalb der 140er-Queue **65 delivery nicht VERIFIED** (vorher 75), **107 parser-eligible price** / **33 parser gaps**, **18** bestehende Source-Guards, **10** Owner-Scope-Signale, **0** neue E4/E5/G3 oder Website-Gold. Der Zahlenwert 107 bedeutet *Parser Eligibility* und ist kein Nachweis für 107 Schweizer Brutto-Endpreise; 19 FROM, 2 NOT_PUBLISHED und 1 NOT_APPLICABLE gehören dazu. Die 116 geschlossenen QA09-Fälle, data.js, frozen source-differentials und der Produktionstand sind unverändert.
+
+Prüfquellen (pro-ID):
+- `PCC-P40` / BP1: https://www.pc-college.ch/seminare-schulungen-kurse/barrierefreie-pdf/barrierefreie-pdfs-dokumente-mit-ms-word-und-adobe-acrobat-professional-bp1.php
+- `PCC-P10` / INA: https://www.pc-college.ch/seminare-schulungen-kurse/indesign/adobe-indesign-aufbaukurs-ina.php
+- `PCC-P06` / PRE: https://www.pc-college.ch/seminare-schulungen-kurse/premiere/adobe-premiere-pro-grundkurs-pre.php
+- `PCC-P01` / AFT: https://www.pc-college.ch/seminare-schulungen-kurse/after-effects/adobe-after-effects-grundkurs-aft.php
+- `PCC-P04` / IND: https://www.pc-college.ch/seminare-schulungen-kurse/indesign/adobe-indesign-grundkurs-ind.php
+- `PCC-P09` / ILA: https://www.pc-college.ch/seminare-schulungen-kurse/illustrator/adobe-illustrator-aufbaukurs-ila.php
+- `PCC-P39` / BP2: https://www.pc-college.ch/seminare-schulungen-kurse/barrierefreie-pdf/barrierefreie-pdfs-dokumente-mit-adobe-indesign-und-adobe-acrobat-professional-bp2.php
+- `PCC-P07` / AFA: https://www.pc-college.ch/seminare-schulungen-kurse/after-effects/adobe-after-effects-aufbaukurs-afa.php
+- `PCC-P12` / PRF: https://www.pc-college.ch/seminare-schulungen-kurse/premiere/adobe-premiere-pro-aufbaukurs-prf.php
+- `PCC-P30` / PSK: https://www.pc-college.ch/seminare-schulungen-kurse/photoshop/adobe-photoshop-ki-funktionen-psk.php
+
+Separater Quellenversion-Guard: die derzeit über die Webrecherche exponierten CFJM-Detailseiten zu `OFFER-CFJM-005/011/012/013/014/015/020` zeigen ältere konkrete **2026er** Durchführungen, obwohl der eingefrorene Katalog für sechs dieser Kurse spätere **2027er** Termine und für `020` den 26.11.2026 nennt. Daher sind diese Seiten aktuell **kein** unabhängiger Beleg für die späteren Katalogeditionen. Nicht aus alten 2026-Details auf spätere 2027er Buchung/Preisgültigkeit schliessen. Separater Crosswalk im EVT236-Auditfile. Keine Stornierung/Entfernung aus blossem Editionskonflikt.
