@@ -92,7 +92,7 @@ assert.ok(matrix.data.filter(x=>x.venue_data_state==="OWNER_CONFIRMED_CITY_LUZER
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="MULTIPLE_OPTIONS_OR_AMBIGUOUS").length,39);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="REMOTE_ONLY_DISPLAY_NOT_OCCURRENCE_GOLD").length,37);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="SINGLE_DISPLAY_LOCATION_UNPROVEN").length,32);
-assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,63);
+assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,61);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("OWNER_SCOPE_REVIEW")).length,10);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD")).length,18);
 assert.ok(!get("OFFER-MAZ-146").field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
@@ -451,8 +451,36 @@ for (const id of pccBatch236) {
  assert.ok(sc.priceOptions.every(p=>p.amountType==="FROM" && p.taxMode==="EXCLUDED"),id+" original from-price untouched");
 }
 
+
+const evt237SourceProofs=[
+ {id:"CAD-026", structure:"SINGLE_CHANNEL", channels:["IN_PERSON"], note:"Cours en présentiel",hold:"CACHED_OCCURRENCE_VERSION_SCOPE_TAX_SEAT_CURRENTNESS_HOLD"},
+ {id:"AT-PROD-OFFER-022",structure:"HYBRID_COMBINED",channels:["IN_PERSON","REMOTE"],note:"25 required in-person days",hold:"FUTURE_INTAKE_ADMISSION_TAX_CURRENTNESS_HOLD"}
+];
+for(const spec of evt237SourceProofs) {
+ const row=get(spec.id),sc=side.byId[spec.id],b=backlog.data.find(x=>x.offer_id===spec.id);
+ assert.equal(sc.delivery.evidenceTier,"VERIFIED");
+ assert.equal(sc.delivery.structure,spec.structure);
+ assert.deepEqual(sc.delivery.channels,spec.channels);
+ assert.equal(sc.delivery.variants.length,1);
+ assert.equal(sc.delivery.variants[0].scheduleMode,"FIXED");
+ assert.ok(sc.delivery.sourceText.includes(spec.note));
+ assert.ok(sc.delivery.materialisationStatus.includes(spec.hold));
+ assert.equal(row.delivery_evidence_tier,"VERIFIED");
+ assert.equal(row.delivery_variant_count,"1");
+ assert.ok(!row.field_gap_tags.includes("DELIVERY_NOT_VERIFIED"));
+ assert.equal(row.website_gold_gate,"NOT_PROVEN");
+ assert.equal(row.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
+ assert.equal(b.delivery_tier,"VERIFIED");
+ assert.equal(b.unresolved_field_gaps,row.field_gap_tags);
+ assert.equal(sc.priceEligible,true);
+ assert.equal(row.scope_gate, spec.id==="CAD-026"?"OWNER_REVIEW_REQUIRED":"NOT_FULLY_REVIEWED_FOR_SCOPE");
+}
+assert.ok(get("CAD-026").source_decision.includes("HOLD_2026_11_25_EDITION_NOT_PROVEN"),
+ "Original frozen observation is intentionally retained; newer version evidence in EVT237");
+assert.ok(side.byId["AT-PROD-OFFER-022"].delivery.sourceText.includes("NOT choice"));
+
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
  all:140,sourceBounded:139,sourcePending:1,numericEligible:107,
  priceGap:33,venueUnpublishedInCanonical:32,ownerConfirmedCityLuzern:20,venueCityUnassigned:12,venueAmbiguous:51,
- deliveryUnverified:63,ownerScopeFlags:10,publicationApproved:0
+ deliveryUnverified:61,ownerScopeFlags:10,publicationApproved:0
 }));
