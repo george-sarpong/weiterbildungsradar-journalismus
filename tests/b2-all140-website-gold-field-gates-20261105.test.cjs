@@ -86,7 +86,9 @@ assert.equal(matrix.data.filter(x=>x.venue_data_state==="REMOTE_ONLY_DISPLAY_NOT
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="SINGLE_DISPLAY_LOCATION_UNPROVEN").length,32);
 assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,115);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("OWNER_SCOPE_REVIEW")).length,10);
-assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD")).length,20);
+assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD")).length,18);
+assert.ok(!get("OFFER-MAZ-146").field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
+assert.ok(!get("OFFER-MAZ-163").field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
 assert.ok(get("OFFER-CFJM-018").source_recheck_state.includes("INDEX"));
 assert.ok(get("PCC-P41").source_decision.includes("HOLD_EXACT_COURSE_CODE"));
 assert.ok(get("PCC-P31").source_decision.includes("HOLD_PSF_VS_PS3_ALIAS"));
