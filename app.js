@@ -1166,6 +1166,13 @@
       }
       // Vereinbarte Planungsregel: CHF/EUR/USD 1:1, keine echte Umrechnung.
       // Andere Währungen nur gegen dieselbe Währung vergleichen; kostenlos bleibt 0.
+      // A periodic tuition amount without a verified number of billing periods
+      // is not a whole-course budget. Never show it as POSSIBLE_FIT.
+      if (option.billingBasis !== "TOTAL"
+          && !(Number.isFinite(Number(option.billingCount)) && Number(option.billingCount) > 0)) {
+        candidates.push({ status: "PRICE_UNKNOWN", option, amount: null });
+        continue;
+      }
       const calc = amountWithRequiredComponents(option);
       if (calc.kind === "UNKNOWN") {
         candidates.push({ status: "PRICE_UNKNOWN", option, amount: null });
