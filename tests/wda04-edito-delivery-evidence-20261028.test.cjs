@@ -122,6 +122,18 @@ yes(["PCC-P29","PCC-P31"].every(id=>byId[id]?.delivery?.evidenceTier==="VERIFIED
 yes(byId["OFFER-CFJM-019"]?.delivery?.evidenceTier==="PROVISIONAL"&&byId["OFFER-CFJM-019"]?.delivery?.variants?.[0]?.temporalMode==="SYNCHRONOUS"&&byId["OFFER-CFJM-019"]?.delivery?.materialisationStatus?.includes("PROVISIONAL_PRICE_SEAT_HOLD"),"CFJM JRI in-person core verified but optional advanced module remains provisional");
 yes(tiers.VERIFIED === 210 && tiers.PROVISIONAL === 393 && tiers.UNKNOWN === 749,
     "Global evidence tiers outside authorised B2 CAD-005/ifage changes: " + JSON.stringify(tiers));
+// P0 budget safety: semester prices without a proven count must not be treated
+// as even a possible whole-course budget fit. Use the actual production guard.
+const periodGuard = app.match(/if \(option\.billingBasis !== "TOTAL"\s*&& !\(Number\.isFinite\(Number\(option\.billingCount\)\) && Number\(option\.billingCount\) > 0\)\) \{\s*candidates\.push\(\{ status: "PRICE_UNKNOWN", option, amount: null \}\);\s*continue;\s*\}/);
+yes(Boolean(periodGuard), "Missing production guard for unbounded periodic tuition");
+const fj = byId["AT-PROD-OFFER-022"];
+yes(fj.priceOptions[0].billingBasis === "SEMESTER" && fj.priceOptions[0].billingCount === null,
+  "FH Joanneum programme must retain unknown semester count, not a fabricated total");
+const boundedPeriod = o => o.billingBasis === "TOTAL" ||
+  (Number.isFinite(Number(o.billingCount)) && Number(o.billingCount) > 0);
+yes(!boundedPeriod(fj.priceOptions[0]), "Unbounded semester fee must be PRICE_UNKNOWN for budget");
+yes(boundedPeriod({billingBasis:"SEMESTER",billingCount:2}), "A verified two-semester fixture may be calculated");
+yes(boundedPeriod({billingBasis:"TOTAL",billingCount:null}), "True whole-course fees remain valid");
 console.log("WDA04_EDITO_SOURCE_VERIFIED_4_OF_4_PASS");
 console.log("WDA04_ONLINE_VARIANT_AND_PRICE_GUARDS_PASS");
 console.log("WDA04_ROSTER_1352_PARITY_PASS");
