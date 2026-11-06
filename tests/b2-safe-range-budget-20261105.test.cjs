@@ -46,7 +46,7 @@ assert.equal(match(800,{...base,taxMode:"EXCLUDED"}).status,"POSSIBLE_FIT","Excl
 assert.equal(match(800,{...base,eligibilityType:"MEMBERSHIP"}).status,"POSSIBLE_FIT","Conditional tariff");
 assert.equal(match(800,{...base,priceScope:"VARIANT"}).status,"POSSIBLE_FIT","Variant-only tariff");
 assert.equal(match(800,{...base,billingBasis:"MONTHLY"}).status,"PRICE_UNKNOWN","Unbounded non-total billing");
-assert.equal(match(800,{...base,billingBasis:"MONTHLY",billingCount:2}).status,"POSSIBLE_FIT","Known count still needs bounded range evaluation");
+assert.equal(match(800,{...base,billingBasis:"MONTHLY",billingCount:2}).status,"OVER_BUDGET","Known count must multiply two periods before budget classification");
 const jo=prices.byId["AT-PROD-OFFER-022"];
 assert.equal(jo.priceOptions[0].billingBasis,"SEMESTER");
 assert.equal(jo.priceOptions[0].billingCount,null);
