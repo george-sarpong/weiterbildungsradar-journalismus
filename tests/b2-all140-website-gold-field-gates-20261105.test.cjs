@@ -635,6 +635,33 @@ for(const x of original63.data) {
  assert.equal(p.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
 }
 
+
+// EVT245: the current 140-way handoff/execution register MUST agree with the
+// canonical working matrix and backlog after every future source-backed patch.
+// Historical frozen source decisions are not silently rewritten.
+{
+ const live=rows("docs/b2/evt245-active-140-execution-register-20261106.tsv");
+ assert.equal(live.data.length,140,"Current case-state registry lost IDs");
+ assert.equal(new Set(live.data.map(x=>x.offer_id)).size,140);
+ assert.deepEqual(new Set(live.data.map(x=>x.offer_id)),new Set(matrix.data.map(x=>x.offer_id)));
+ const backById=new Map(backlog.data.map(x=>[x.offer_id,x]));
+ for(const record of live.data){
+  const current=get(record.offer_id),queue=backById.get(record.offer_id);
+  assert.ok(current&&queue,record.offer_id+" unresolved lineage");
+  assert.equal(record.remaining_fields,current.field_gap_tags,record.offer_id+" current holds drifted");
+  assert.equal(record.current_queue_priority,queue.priority,record.offer_id+" priority drifted");
+  assert.equal(record.one_next_action,current.next_evidence_action,record.offer_id+" stale next step");
+  assert.equal(record.original_primary_source,current.source_url,record.offer_id+" source drifted");
+  assert.equal(record.website_gold_gate,current.website_gold_gate);
+  assert.equal(record.publication_gate,current.publication_gate);
+  assert.ok(record.concrete_next_trigger.length>12);
+  assert.equal(record.no_rediscovery_guard,"NO_REPEAT_ALREADY_VERIFIED_FIELDS_UNLESS_SOURCE_VERSION_CHANGES");
+ }
+ const resolved=live.data.filter(x=>x.closed_field_evt245==="SOURCE_VERSION_OR_IDENTITY_GUARD");
+ assert.deepEqual(resolved.map(x=>x.offer_id),["PCC-P40"]);
+ assert.equal(resolved[0].current_case_state,"IDENTITY_CLOSED_PRICE_VENUE_SEAT_HOLDS_OPEN");
+}
+
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
  all:140,sourceBounded:139,sourcePending:1,numericEligible:107,
  priceGap:33,venueUnpublishedInCanonical:32,ownerConfirmedCityLuzern:20,venueCityUnassigned:12,venueAmbiguous:51,
