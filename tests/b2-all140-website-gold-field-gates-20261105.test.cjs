@@ -94,7 +94,7 @@ assert.equal(matrix.data.filter(x=>x.venue_data_state==="REMOTE_ONLY_DISPLAY_NOT
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="SINGLE_DISPLAY_LOCATION_UNPROVEN").length,32);
 assert.equal(matrix.data.filter(x=>x.delivery_evidence_tier!=="VERIFIED").length,55);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("OWNER_SCOPE_REVIEW")).length,10);
-assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD")).length,17);
+assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD")).length,16);
 assert.ok(!get("OFFER-MAZ-146").field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
 assert.ok(!get("OFFER-MAZ-163").field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
 assert.equal(get("OFFER-CFJM-018").source_recheck_state,"PRIMARY_PROVIDER_CATALOG_EXACT_DATE_TITLE");
@@ -120,7 +120,7 @@ for(const r of backlog.data){
  assert.equal(r.owner_release_required,"YES");
  assert.equal(r.status,"QUEUE_NOT_GOLD");
 }
-assert.deepEqual(priority,{P0_SOURCE_IDENTITY_SCOPE:28,P1_PRICE_ACCESS_VENUE:85,P2_OCCURRENCE_DELIVERY:18,P3_CURRENTNESS_AND_CLOSURE:9});
+assert.deepEqual(priority,{P0_SOURCE_IDENTITY_SCOPE:27,P1_PRICE_ACCESS_VENUE:86,P2_OCCURRENCE_DELIVERY:18,P3_CURRENTNESS_AND_CLOSURE:9});
 assert.ok(backlog.data.every((r,i)=>i===0||backlog.data[i-1].priority<=r.priority));
 const corrected=["MW-P06","V78-01","V78-02","V78-03"];
 for(const id of corrected){
@@ -614,6 +614,25 @@ for(const x of original63.data) {
   assert.ok(x.full_field_gaps.includes("DELIVERY_NOT_VERIFIED"));
   assert.ok(x.control_plane_write_kind.includes("REPORT_ONLY"));
  }
+}
+
+
+/* EVT245: P40 BP1 261123 exact two official source paths, matching course code and edition.
+ Historical frozen source_decision remains unchanged as an auditable earlier HOLD.
+ Source version guard closed at current successor; all price/city/seat/currentness holds survive. */
+{
+ const p=get("PCC-P40"),b=backlog.data.find(x=>x.offer_id==="PCC-P40");
+ assert.ok(p.source_decision.includes("HOLD_ORIGINAL_URL_ALIAS"),"Frozen historical observation drifted");
+ assert.ok(!p.field_gap_tags.includes("SOURCE_VERSION_OR_IDENTITY_GUARD"));
+ assert.equal(p.field_gap_tags,"CH_FINAL_FEE_NOT_PROVEN|BOOKING_OR_INTAKE_NOT_PROVEN|CURRENTNESS_REVIEW_DUE|VENUE_FORMAT_SESSION_CROSSWALK");
+ assert.equal(p.next_evidence_action,"VERIFY_CH_TOTAL_FEE_SELECTED_DELIVERY_VENUE_AND_SEAT");
+ assert.equal(b.priority,"P1_PRICE_ACCESS_VENUE");
+ assert.equal(b.full_differential_action,p.next_evidence_action);
+ assert.equal(b.unresolved_field_gaps,p.field_gap_tags);
+ assert.equal(p.delivery_evidence_tier,"VERIFIED");
+ assert.equal(p.booking_gate,"NOT_PROVEN_FOR_INDIVIDUAL_SEAT");
+ assert.equal(p.website_gold_gate,"NOT_PROVEN");
+ assert.equal(p.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
 }
 
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
