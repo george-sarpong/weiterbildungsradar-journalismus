@@ -45,7 +45,12 @@ assert.equal(match(800,{...base,maxAmount:400}).status,"POSSIBLE_FIT","Inverted 
 assert.equal(match(800,{...base,taxMode:"EXCLUDED"}).status,"POSSIBLE_FIT","Excluded tax");
 assert.equal(match(800,{...base,eligibilityType:"MEMBERSHIP"}).status,"POSSIBLE_FIT","Conditional tariff");
 assert.equal(match(800,{...base,priceScope:"VARIANT"}).status,"POSSIBLE_FIT","Variant-only tariff");
-assert.equal(match(800,{...base,billingBasis:"MONTHLY"}).status,"POSSIBLE_FIT","Non-total billing");
+assert.equal(match(800,{...base,billingBasis:"MONTHLY"}).status,"PRICE_UNKNOWN","Unbounded non-total billing");
+assert.equal(match(800,{...base,billingBasis:"MONTHLY",billingCount:2}).status,"POSSIBLE_FIT","Known count still needs bounded range evaluation");
+const jo=prices.byId["AT-PROD-OFFER-022"];
+assert.equal(jo.priceOptions[0].billingBasis,"SEMESTER");
+assert.equal(jo.priceOptions[0].billingCount,null);
+assert.equal(match(8000,jo.priceOptions[0],"EUR",jo).status,"PRICE_UNKNOWN","Unknown whole-programme semester count must not become POSSIBLE_FIT");
 assert.equal(match(800,{...base,deliveryVariantRefs:["ONLINE"]}).status,"POSSIBLE_FIT","Unbound delivery variant");
 assert.equal(match(800,{...base,components:[{componentType:"ENROLLMENT_FEE",requirementStatus:"REQUIRED",amountType:"EXACT",amount:25}]}).status,"POSSIBLE_FIT","Mandatory component");
 assert.equal(match(800,{...base,validThrough:"2026-11-04"}).status,"PRICE_UNKNOWN","Expired price");
