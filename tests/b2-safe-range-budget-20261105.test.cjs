@@ -46,7 +46,7 @@ assert.equal(match(800,{...base,taxMode:"EXCLUDED"}).status,"POSSIBLE_FIT","Excl
 assert.equal(match(800,{...base,eligibilityType:"MEMBERSHIP"}).status,"POSSIBLE_FIT","Conditional tariff");
 assert.equal(match(800,{...base,priceScope:"VARIANT"}).status,"POSSIBLE_FIT","Variant-only tariff");
 assert.equal(match(800,{...base,billingBasis:"MONTHLY"}).status,"PRICE_UNKNOWN","Unbounded non-total billing");
-assert.equal(match(800,{...base,billingBasis:"MONTHLY",billingCount:2}).status,"POSSIBLE_FIT","Bounded periodic RANGE remains conservative, never a direct fit");
+assert.equal(match(800,{...base,billingBasis:"MONTHLY",billingCount:2}).status,"PRICE_UNKNOWN","A billing count without a sourced whole-course total cannot establish fit");
 const jo=prices.byId["AT-PROD-OFFER-022"];
 assert.equal(jo.priceOptions[0].billingBasis,"SEMESTER");
 assert.equal(jo.priceOptions[0].billingCount,null);
