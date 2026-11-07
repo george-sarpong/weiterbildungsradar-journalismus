@@ -23,6 +23,14 @@ assert.ok(!cells[5].includes("'HTTP_403','FETCH_FAILED'"),"Never escalate 403 to
 assert.ok(cells[5].includes("Widersprüchliche bezahlte Firecrawl-Reservation"),
  "Paid reservations must reject conflicting replays");
 assert.ok(cells[4].includes("max(newer)>273"),"Later successor must be reviewed with source SHA");
+assert.ok(cells[3].includes("len(archive_ids)!=191"),"Full historical archive guard must cover 191, not only 95 due");
+assert.ok(cells[3].includes("additional_archived_no_reopen"),"96 non-due historical archives remain blocked");
+assert.ok(cells[4].includes("EVT257_191_ARCHIVE_116_QA09_CONTRACT_DRIFT"),
+ "Historical archive and QA09 source identity must be verified");
+assert.ok(cells[4].includes("ARCHIVED_OFFER_SENT_TO_NETWORK_QUEUE"),
+ "Never re-fetch a protected archive offer");
+assert.ok(cells[4].includes("archive_ids,TODAY.isoformat()"),
+ "Source planner must receive the exact protected archive roster");
 assert.ok(cells[4].includes("Geschützter B2-Fall versehentlich in Research-Queue"),
  "Protected B2 no-reopen contract missing");
 assert.ok(cells[5].includes("if MODUS=='MIT_FIRECRAWL'"));
