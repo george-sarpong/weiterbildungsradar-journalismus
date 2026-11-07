@@ -615,7 +615,8 @@ for(const x of original63.data) {
   assert.ok(x.full_field_gaps.includes("DELIVERY_NOT_VERIFIED"));
  }
  assert.equal(x.venue_evidence_state,row.venue_data_state);
- assert.equal(x.price_parser_eligible,String(sc.priceEligible));
+ assert.equal(x.price_parser_eligible,frozenMatrix.data.find(o=>o.offer_id===x.offer_id).structured_numeric_price_eligible);
+ assert.equal(row.structured_numeric_price_eligible,String(sc.priceEligible));
  assert.equal(x.booking_gate,"NOT_PROVEN_FOR_INDIVIDUAL_SEAT");
  assert.equal(x.website_gold_gate,"NOT_PROVEN");
  assert.equal(x.publication_gate,"HOLD_NO_AUTOMATIC_RELEASE");
