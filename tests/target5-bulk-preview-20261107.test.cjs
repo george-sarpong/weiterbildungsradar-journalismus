@@ -58,6 +58,36 @@ try{
  assert.deepEqual(m.dataHashes,repeat.dataHashes,"Non-deterministic source hashes");
  assert.equal(repeat.counts.sourceWorkpacks,m.counts.sourceWorkpacks);
  assert.equal(fs.readdirSync(path.join(dir,"offers")).length,1352);
+ // A future source-approved B3 addition must not break this pipeline merely
+ // because the September baseline contained 1352 offers.
+ const nextRoot=path.join(base,"expanded-input");
+ for(const p of ["data.js","smart-search-data.js",
+  "data/staging/target5-de-usa-wave1-r4-20260915.json",
+  "data/staging/usa-owner-evidence-crosswalk-20261107.jsonl",
+  "docs/b2/evt264-active-140-website-gold-field-gates-20261107.tsv"]){
+   fs.mkdirSync(path.dirname(path.join(nextRoot,p)),{recursive:true});
+   fs.copyFileSync(p,path.join(nextRoot,p));
+ }
+ const raw=fs.readFileSync(path.join(nextRoot,"data.js"),"utf8");
+ const start=raw.indexOf("["),end=raw.lastIndexOf("]");
+ const existing=JSON.parse(raw.slice(start,end+1));
+ const extra={...existing[0],id:"TEST-FUTURE-ADD-2026",title:"Synthetic future course for build test"};
+ fs.writeFileSync(path.join(nextRoot,"data.js"),raw.slice(0,start)+JSON.stringify([...existing,extra])+raw.slice(end+1));
+ const sc=fs.readFileSync(path.join(nextRoot,"smart-search-data.js"),"utf8");
+ const side=JSON.parse(sc.slice(sc.indexOf("{"),sc.lastIndexOf("}")+1));
+ side.byId[extra.id]={...side.byId[existing[0].id]};
+ if(side.meta?.rosterCount!=null)side.meta.rosterCount=1353;
+ fs.writeFileSync(path.join(nextRoot,"smart-search-data.js"),
+  "window.MEDIA_SKILLS_SMART_DATA = "+JSON.stringify(side)+";\n");
+ const expandedDir=path.join(base,"expanded-output");
+ const newManifest=run(expandedDir,{inputRoot:nextRoot});
+ assert.equal(newManifest.counts.catalogue,1353);
+ assert.equal(newManifest.counts.combinedSourceRows,3819);
+ assert.equal(newManifest.counts.previewPages,1353);
+ assert.equal(newManifest.counts.reviewHolds,140);
+ assert.equal(fs.readdirSync(path.join(expandedDir,"offers")).length,1353);
+ assert.ok(fs.readFileSync(path.join(expandedDir,"index.html"),"utf8").includes("1353 Katalogangebote"));
+
  console.log("TARGET5_BULK_PREVIEW_3818_ROWS_1352_DETAIL_PAGES_140_GROUPED_HOLDS_PASS "+
   JSON.stringify({manifest:m.counts,firstHost:packs[0].host}));
 }finally{fs.rmSync(base,{recursive:true,force:true})}
