@@ -83,7 +83,8 @@ jobs:
         run: node tests/target5-source-snapshot-20261107.test.cjs
       - name: Fetch grouped primary-source signals on explicit source-snapshot commit
         run: |
-          if git log -1 --pretty=%B | grep -q '\[source-snapshot\]'; then
+          git fetch --no-tags --depth=1 origin ${{ github.event.pull_request.head.sha }}
+          if git show -s --format=%B ${{ github.event.pull_request.head.sha }} | grep -q '\[source-snapshot\]'; then
             node scripts/target5-source-snapshot-v1.cjs --live \
               --workpacks out/target5-preview/source-workpacks.json \
               --out out/target5-source-snapshot
