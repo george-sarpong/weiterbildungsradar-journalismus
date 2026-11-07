@@ -53,7 +53,7 @@ try{
  const index=fs.readFileSync(path.join(dir,"index.html"),"utf8");
  assert.ok(index.includes('noindex,nofollow'));
  assert.ok(index.includes("3818")===false,"Source count is split by source authority");
- assert.ok(index.includes("1’352")&&index.includes("2’355"));
+ assert.ok(index.includes("1352 Katalogangebote")&&index.includes("2’355"));
  const repeat=run(dir);
  assert.deepEqual(m.dataHashes,repeat.dataHashes,"Non-deterministic source hashes");
  assert.equal(repeat.counts.sourceWorkpacks,m.counts.sourceWorkpacks);
