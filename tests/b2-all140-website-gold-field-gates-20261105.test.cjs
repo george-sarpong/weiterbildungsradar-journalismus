@@ -94,7 +94,7 @@ const pending=matrix.data.filter(x=>x.primary_field_evidence_class!=="BOUNDED_PR
 assert.equal(n.length,139);assert.deepEqual(pending.map(x=>x.offer_id),["OFFER-HELIAS-014"]);
 assert.deepEqual(matrix.data.filter(x=>x.scheduled_date_alignment==="MATCHES_EXISTING_START_OR_SESSION").length,109);
 assert.deepEqual(matrix.data.filter(x=>x.scheduled_date_alignment==="NO_SPECIFIC_DUE_START").length,31);
-assert.equal(matrix.data.filter(x=>x.structured_numeric_price_eligible==="true").length,106);
+assert.equal(matrix.data.filter(x=>x.structured_numeric_price_eligible==="true").length,105);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("STRUCTURED_PRICE_BUDGET_UNVERIFIED")).length,33);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="NOT_PUBLISHED").length,12);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="OWNER_CONFIRMED_CITY_LUZERN_EXACT_VENUE_UNVERIFIED").length,20);
@@ -558,6 +558,9 @@ assert.ok(cfjmJri.materialisationStatus.includes("PROVISIONAL_PRICE_SEAT_HOLD"))
 assert.equal(get("OFFER-CFJM-019").delivery_evidence_tier,"PROVISIONAL");
 assert.ok(get("OFFER-CFJM-019").field_gap_tags.includes("DELIVERY_NOT_VERIFIED"));
 assert.equal(side.byId["OFFER-CFJM-019"].priceOptions[0].amountType,"NOT_PUBLISHED");
+assert.equal(side.byId["OFFER-CFJM-019"].priceEligible,false,"Unpublished price cannot be numeric budget eligible");
+assert.equal(get("OFFER-CFJM-019").structured_numeric_price_eligible,"false");
+assert.equal(get("OFFER-CFJM-019").structured_price_parser_status,"NEEDS_REVIEW");
 
 
 // EVT241: preserve 2026-10 cached individual course as historical; current CFJM exact detail independently matches scheduled 26 Nov 2026 course.
@@ -700,7 +703,7 @@ for(const x of original63.data) {
 }
 
 console.log("B2_ALL140_FIELD_GATE_MATRIX_PASS",JSON.stringify({
- all:140,sourceBounded:139,sourcePending:1,numericEligible:107,
+ all:140,sourceBounded:139,sourcePending:1,numericEligible:105,
  priceGap:33,venueUnpublishedInCanonical:32,ownerConfirmedCityLuzern:20,venueCityUnassigned:12,venueAmbiguous:51,
  deliveryUnverified:55,ownerScopeFlags:10,publicationApproved:0
 }));
