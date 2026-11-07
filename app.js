@@ -1168,8 +1168,11 @@
       // Andere Währungen nur gegen dieselbe Währung vergleichen; kostenlos bleibt 0.
       // A periodic tuition amount without a verified number of billing periods
       // is not a whole-course budget. Never show it as POSSIBLE_FIT.
-      if (option.billingBasis !== "TOTAL"
-          && !(Number.isFinite(Number(option.billingCount)) && Number(option.billingCount) > 0)) {
+      // A billing count alone does not prove total cost: the resolver does
+      // not multiply recurring amounts and cannot certify mandatory extras.
+      // Until a sourced FULL_OFFER/TOTAL price is materialised, never claim
+      // that a per-semester/module/month/day fee fits a whole-course budget.
+      if (option.billingBasis !== "TOTAL") {
         candidates.push({ status: "PRICE_UNKNOWN", option, amount: null });
         continue;
       }
