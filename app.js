@@ -1132,7 +1132,10 @@
   };
 
   const classifyEligibility = option => {
-    if (option.eligibilityType === "NONE") return "DIRECT_FIT";
+    // A promotional or conditional price is not universally available
+    // merely because its eligibilityType was left as NONE.
+    if (option.eligibilityType === "NONE")
+      return option.tariffClass === "REGULAR" ? "DIRECT_FIT" : "POSSIBLE_FIT";
     if (option.eligibilityType === "PROFESSION" && option.eligibilityValue === "JOURNALIST") return "TARGET_GROUP_FIT";
     if (option.eligibilityType === "UNKNOWN") return "POSSIBLE_FIT";
     return "CONDITIONAL_FIT";
@@ -1249,6 +1252,7 @@
 
   const isUnconditionallyFreeOption = option =>
     option.amountType === "FREE"
+      && option.tariffClass === "REGULAR"
       && option.eligibilityType === "NONE"
       && option.priceScope === "FULL_OFFER"
       && option.billingBasis === "TOTAL"
