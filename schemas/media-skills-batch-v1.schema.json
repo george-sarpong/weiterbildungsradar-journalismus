@@ -231,7 +231,8 @@
             "FREE",
             "FROM",
             "ON_REQUEST",
-            "NOT_PUBLISHED"
+            "NOT_PUBLISHED",
+            "NOT_APPLICABLE"
           ]
         },
         "amount": {
@@ -263,7 +264,8 @@
         "tariffClass": {
           "enum": [
             "REGULAR",
-            "CONDITIONAL"
+            "CONDITIONAL",
+            "PROMOTIONAL"
           ]
         },
         "tariffLabel": {
@@ -278,7 +280,11 @@
             "MEMBERSHIP",
             "PROFESSION",
             "STUDENT",
-            "OTHER"
+            "OTHER",
+            "UNKNOWN",
+            "SUBSCRIPTION",
+            "ALUMNI",
+            "STUDENT_STATUS"
           ]
         },
         "eligibilityValue": {
@@ -291,7 +297,8 @@
           "enum": [
             "FULL_OFFER",
             "PARTIAL",
-            "UNKNOWN"
+            "UNKNOWN",
+            "MODULE"
           ]
         },
         "billingBasis": {
@@ -299,7 +306,11 @@
             "TOTAL",
             "PER_DAY",
             "PER_SEMESTER",
-            "UNKNOWN"
+            "UNKNOWN",
+            "SEMESTER",
+            "MODULE",
+            "MONTH",
+            "HALF_DAY"
           ]
         },
         "taxMode": {
@@ -327,6 +338,13 @@
         "sourceUrl": {
           "type": "string",
           "pattern": "^https://"
+        },
+        "billingCount": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
         }
       }
     },
