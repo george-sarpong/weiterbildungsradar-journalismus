@@ -34,6 +34,62 @@ hold.offers[0].access.chEligibility="UNKNOWN";
 assert.deepEqual(validate(hold),[]);
 assert.equal(project(hold)[0].offer.publicationStatus,"HOLD");
 assert.equal(project(hold)[0].sidecar.priceEligible,false);
+// Real legacy vocabulary must be accepted by the B3 import contract without
+// downgrading SEMESTER/MODULE, conditional tariffs or price non-publication.
+const schema=require("../schemas/media-skills-batch-v1.schema.json");
+const sideRaw=fs.readFileSync("smart-search-data.js","utf8");
+const sideFull=JSON.parse(sideRaw.slice(sideRaw.indexOf("{"),sideRaw.lastIndexOf("}")+1));
+let checkedLegacyPrices=0;
+for(const record of Object.values(sideFull.byId)){
+  for(const price of record.priceOptions||[]){
+    for(const field of ["amountType","tariffClass","eligibilityType","priceScope","billingBasis"]){
+      assert.ok(schema.definitions.price.properties[field].enum.includes(price[field]),
+        "B3 vocabulary would silently lose an existing "+field+"="+price[field]);
+    }
+    checkedLegacyPrices++;
+  }
+}
+assert.ok(checkedLegacyPrices>1000,"Expected real price-option vocabulary census");
+const priceBatch=patch=>{
+  const batch=structuredClone(input);
+  batch.offers[0].prices=[{...input.offers[0].prices[0],...patch}];
+  return batch;
+};
+const fromOnly=priceBatch({amountType:"FROM",amount:null,minAmount:240});
+assert.deepEqual(validate(fromOnly),[]);
+const fromProjected=project(fromOnly)[0];
+assert.equal(fromProjected.sidecar.priceOptions[0].minAmount,240);
+assert.ok(fromProjected.offer.priceDisplay.includes("ab 240"));
+const semester=priceBatch({amount:363.36,currency:"EUR",
+  billingBasis:"SEMESTER",billingCount:2});
+assert.deepEqual(validate(semester),[]);
+const periodProjected=project(semester)[0];
+assert.equal(periodProjected.sidecar.priceOptions[0].billingBasis,"SEMESTER");
+assert.equal(periodProjected.sidecar.priceOptions[0].billingCount,2);
+assert.equal(periodProjected.sidecar.priceEligible,false,
+  "Period rate must not establish whole-course budget eligibility");
+assert.ok(periodProjected.offer.priceDisplay.includes("pro Semester"));
+const moduleTariff=priceBatch({amount:250,billingBasis:"MODULE",priceScope:"MODULE",
+  tariffClass:"PROMOTIONAL",eligibilityType:"STUDENT_STATUS"});
+assert.deepEqual(validate(moduleTariff),[]);
+assert.equal(project(moduleTariff)[0].sidecar.priceEligible,false);
+assert.ok(project(moduleTariff)[0].offer.priceDisplay.includes("pro Modul"));
+const notApplicable=priceBatch({amountType:"NOT_APPLICABLE",amount:null,
+  currency:null,priceScope:"UNKNOWN"});
+assert.deepEqual(validate(notApplicable),[]);
+assert.equal(project(notApplicable)[0].sidecar.priceEligible,false);
+assert.equal(project(notApplicable)[0].offer.priceCategory,"NOT_APPLICABLE");
+assert.equal(project(notApplicable)[0].offer.priceDisplay,"Preis nicht anwendbar");
+const conditionalFree=priceBatch({amountType:"FREE",amount:0,
+  tariffClass:"CONDITIONAL",eligibilityType:"NONE"});
+assert.deepEqual(validate(conditionalFree),[]);
+assert.equal(project(conditionalFree)[0].sidecar.priceEligible,false);
+assert.notEqual(project(conditionalFree)[0].offer.priceCategory,"KOSTENLOS");
+assert.match(project(conditionalFree)[0].offer.priceDisplay,/Bedingungen/);
+const promotional=priceBatch({amount:399,tariffClass:"PROMOTIONAL"});
+assert.deepEqual(validate(promotional),[]);
+assert.equal(project(promotional)[0].sidecar.priceEligible,false);
+console.log("B3_LEGACY_PRICE_VOCABULARY_AND_SAFE_PERIOD_IMPORT_PASS "+checkedLegacyPrices);
 const dir=fs.mkdtempSync(path.join(os.tmpdir(),"b3-import-test-"));
 const data=path.join(dir,"data.js"),side=path.join(dir,"smart-search-data.js");
 try{
