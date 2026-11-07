@@ -6,7 +6,7 @@ assert.equal(nb.nbformat,4);
 assert.equal(nb.cells.length,7);
 const cells=nb.cells.map(x=>Array.isArray(x.source)?x.source.join(""):x.source);
 assert.ok(cells[1].includes('MODUS = "GROSSLAUF_KOSTENLOS"'));
-assert.ok(cells[4].includes("max(newer)<272"));
+assert.ok(cells[4].includes("max(newer)<273"));
 assert.ok(!cells[4].includes("max(newer)>271"),"Regression: stale EVT271 freeze blocks current Control Plane");
 assert.ok(cells[4].includes("SFJ_GROSSLAUF_TARGET5_"));
 assert.ok(cells[4].includes("len(all_3818)==3818"));
@@ -15,6 +15,16 @@ assert.ok(cells[5].includes("MAX_FREE_URLS"));
 assert.ok(cells[5].includes("robot_allowed(url)"));
 assert.ok(cells[5].includes("ROBOT_HOST_LOCKS"));
 assert.ok(cells[5].includes("PAID_RESERVED_UNCERTAIN_NO_AUTO_RETRY"));
+assert.ok(cells[5].includes("z.testzip() is not None"),"Corrupt Drive checkpoint must fail");
+assert.ok(cells[5].includes("sha(body)!=rec['body_sha256']"),"Restore checkpoint source fingerprint");
+assert.ok(cells[5].includes("allow_redirects=False"),"Redirects must be inspected individually");
+assert.ok(cells[5].includes("REDIRECT_ROBOTS_NOT_ALLOWED"),"Redirect robots gate missing");
+assert.ok(!cells[5].includes("'HTTP_403','FETCH_FAILED'"),"Never escalate 403 to Firecrawl");
+assert.ok(cells[5].includes("Widersprüchliche bezahlte Firecrawl-Reservation"),
+ "Paid reservations must reject conflicting replays");
+assert.ok(cells[4].includes("max(newer)>273"),"Later successor must be reviewed with source SHA");
+assert.ok(cells[4].includes("Geschützter B2-Fall versehentlich in Research-Queue"),
+ "Protected B2 no-reopen contract missing");
 assert.ok(cells[5].includes("if MODUS=='MIT_FIRECRAWL'"));
 assert.ok(cells[5].includes("'formats':['markdown']"));
 assert.ok(!cells.slice(3).join("\n").includes("EVT-BIBEL-20261106-247"));
