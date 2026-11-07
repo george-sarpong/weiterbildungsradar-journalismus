@@ -27,6 +27,7 @@ on:
       - 'docs/b2/**'
       - 'docs/b3/**'
       - 'docs/b4/**'
+      - 'notebooks/**'
   workflow_dispatch:
 permissions:
   contents: read
@@ -69,6 +70,8 @@ jobs:
         run: node tests/b3-duration-model-20261105.test.cjs
       - name: Verify B3 mass-research typed import, preview and atomic local append
         run: node tests/b3-mass-import-contract-20261105.test.cjs
+      - name: Verify Colab one-click 3818 full-batch source contract and notebook syntax
+        run: node tests/sfj-colab-grosslauf-20261107.test.cjs
       - name: Verify B3 existing-offer refresh, source/hash guards and archived sessions
         run: node tests/b3-refresh-existing-20261107.test.cjs
       - name: Verify DE111 USA2355 owner staging lineage without unsupported Website-Gold claims
