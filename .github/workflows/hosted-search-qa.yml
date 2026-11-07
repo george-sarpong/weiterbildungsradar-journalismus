@@ -72,6 +72,8 @@ jobs:
         run: node tests/b3-refresh-existing-20261107.test.cjs
       - name: Verify DE111 USA2355 owner staging lineage without unsupported Website-Gold claims
         run: node tests/target5-de-usa-owner-stage-20261107.test.cjs
+      - name: Verify 2355 USA owner-evidence lineage, 2290+58+7 exact joins
+        run: node tests/target5-usa-owner-evidence-20261107.test.cjs
       - name: Verify B4 1352 typed read-only view, CH access and venue facets
         run: node tests/b4-typed-view-20261105.test.cjs
       - name: Verify B4 scale 250 unique researcher records into the typed site model
