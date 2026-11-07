@@ -77,12 +77,23 @@ function validate(batch,existingIds=new Set(),existingFingerprints=new Set()){
   if(!Array.isArray(o.prices))add(id,"prices array missing");
   for(const p of o.prices||[]){
     checkKeys(p,Object.keys(schema.definitions.price.properties),id,"price",add);
-    if(!known(p.amountType,["EXACT","RANGE","FREE","FROM","ON_REQUEST","NOT_PUBLISHED"]))add(id,"invalid amountType");
-    if(!known(p.tariffClass,["REGULAR","CONDITIONAL"])||!known(p.eligibilityType,["NONE","MEMBERSHIP","PROFESSION","STUDENT","OTHER"]))add(id,"tariff eligibility missing");
-    if(!known(p.priceScope,["FULL_OFFER","PARTIAL","UNKNOWN"])||!known(p.billingBasis,["TOTAL","PER_DAY","PER_SEMESTER","UNKNOWN"]))add(id,"scope/basis missing");
+    // The JSON schema is the single vocabulary authority. Do not silently
+    // coerce a legacy SEMESTER/MODULE or conditional tariff into TOTAL.
+    const priceProps=schema.definitions.price.properties;
+    if(!known(p.amountType,priceProps.amountType.enum))add(id,"invalid amountType");
+    if(!known(p.tariffClass,priceProps.tariffClass.enum)
+      ||!known(p.eligibilityType,priceProps.eligibilityType.enum))add(id,"tariff eligibility missing");
+    if(!known(p.priceScope,priceProps.priceScope.enum)
+      ||!known(p.billingBasis,priceProps.billingBasis.enum))add(id,"scope/basis missing");
     if(!known(p.taxMode,["INCLUDED","EXCLUDED","NOT_APPLICABLE","UNSPECIFIED"]))add(id,"tax mode missing");
     if(!HTTPS.test(p.sourceUrl||""))add(id,"price evidence URL missing");
-    if(["EXACT","FROM"].includes(p.amountType)&&(!Number.isFinite(p.amount)||p.amount<0||!known(p.currency,["CHF","EUR","USD"])))add(id,"invalid priced amount");
+    const numericAmount=p.amountType==="FROM"
+      ?(Number.isFinite(p.minAmount)?p.minAmount:p.amount):p.amount;
+    if(["EXACT","FROM"].includes(p.amountType)
+      &&(!Number.isFinite(numericAmount)||numericAmount<0||!known(p.currency,["CHF","EUR","USD"])))
+      add(id,"invalid priced amount");
+    if(p.billingCount!=null&&(!Number.isInteger(p.billingCount)||p.billingCount<=0))
+      add(id,"invalid billingCount");
     if(p.amountType==="RANGE"&&(!Number.isFinite(p.minAmount)||!Number.isFinite(p.maxAmount)||p.minAmount<0||p.maxAmount<p.minAmount||!known(p.currency,["CHF","EUR","USD"])))add(id,"invalid priced range");
     if(p.amountType==="FREE"&&p.eligibilityType!=="NONE"&&p.tariffClass!=="CONDITIONAL")add(id,"conditional free must not look unconditional");
     if(p.validThrough&&!validDate(p.validThrough))add(id,"invalid price validity");
@@ -115,18 +126,29 @@ function priceCategory(prices){
  if(!prices.length)return "PREIS_NICHT_PUBLIZIERT";
  if(prices.length>1)return "MEHRERE_TARIFE";
  const p=prices[0];
- if(p.amountType==="FREE"&&p.eligibilityType==="NONE"&&p.priceScope==="FULL_OFFER")return "KOSTENLOS";
+ if(p.amountType==="FREE"&&p.tariffClass==="REGULAR"
+   &&p.eligibilityType==="NONE"&&p.priceScope==="FULL_OFFER"&&p.billingBasis==="TOTAL")return "KOSTENLOS";
+ if(p.amountType==="NOT_APPLICABLE")return "NOT_APPLICABLE";
  if(p.amountType==="ON_REQUEST")return "PREIS_AUF_ANFRAGE";
  if(p.amountType==="NOT_PUBLISHED")return "PREIS_NICHT_PUBLIZIERT";
- if(p.amountType!=="EXACT"||p.priceScope!=="FULL_OFFER"||p.billingBasis!=="TOTAL"||p.eligibilityType!=="NONE"||p.taxMode==="EXCLUDED")return "MEHRERE_TARIFE";
+ if(p.amountType!=="EXACT"||p.priceScope!=="FULL_OFFER"||p.billingBasis!=="TOTAL"
+   ||p.tariffClass!=="REGULAR"||p.eligibilityType!=="NONE"||p.taxMode==="EXCLUDED")
+   return "MEHRERE_TARIFE";
  return p.amount<=500?"BIS_500":p.amount<=2000?"501_2000":"UEBER_2000";
 }
 function displayPrice(p){
- if(p.amountType==="FREE")return p.eligibilityType==="NONE"?"Kostenlos":"Gratis bei Berechtigung";
+ if(p.amountType==="FREE")return p.eligibilityType==="NONE"&&p.tariffClass==="REGULAR"
+   ?"Kostenlos":"Kostenlos unter Bedingungen – Berechtigung prüfen";
  if(p.amountType==="NOT_PUBLISHED")return "Preis nicht publiziert";
+ if(p.amountType==="NOT_APPLICABLE")return "Preis nicht anwendbar";
  if(p.amountType==="ON_REQUEST")return "Preis auf Anfrage";
- const value=p.amountType==="RANGE"?p.minAmount+"–"+p.maxAmount:p.amount;
- return (p.currency||"")+" "+(p.amountType==="FROM"?"ab ":"")+value+
+ const amount=p.amountType==="FROM"?(p.minAmount??p.amount):p.amount;
+ const value=p.amountType==="RANGE"?p.minAmount+"–"+p.maxAmount:amount;
+ const basisLabels={PER_DAY:" pro Tag",PER_SEMESTER:" pro Semester",
+   SEMESTER:" pro Semester",MODULE:" pro Modul",MONTH:" pro Monat",
+   HALF_DAY:" pro Halbtag",UNKNOWN:" (Preisbezug ungeklärt)"};
+ const basis=basisLabels[p.billingBasis]||(p.priceScope==="MODULE"?" pro Modul":"");
+ return (p.currency||"")+" "+(p.amountType==="FROM"?"ab ":"")+value+basis+
   (p.tariffLabel?" · "+p.tariffLabel:"")+(p.taxMode==="EXCLUDED"?" exkl. Steuer":"");
 }
 function project(batch){
@@ -152,8 +174,12 @@ function project(batch){
   const accessText={YES:"Zugang aus der Schweiz bestätigt",CONDITIONAL:"Zugang aus der Schweiz mit Bedingungen",
     NO:"Zugang aus der Schweiz nicht nachgewiesen / ausgeschlossen",UNKNOWN:"Zugang aus der Schweiz unklar"}[o.access.chEligibility];
   const duration=o.learningTime.raw;
+  // Price existence is not proof of an entire-course budget. All non-total
+  // rates stay visible as source text but must not make this offer priceEligible.
   const hasPriceEvidence=o.prices.some(p=>
-    ["EXACT","RANGE","FREE","FROM"].includes(p.amountType));
+    ["EXACT","RANGE","FREE","FROM"].includes(p.amountType)
+    &&p.priceScope==="FULL_OFFER"&&p.billingBasis==="TOTAL"
+    &&p.tariffClass!=="PROMOTIONAL"&&p.eligibilityType!=="UNKNOWN");
   const record={
     id:o.id,provider:o.provider.name,title:o.title,description:o.description,
     access:accessText+(o.access.conditions?" – "+o.access.conditions:""),
@@ -192,10 +218,12 @@ function project(batch){
     parserStatus:ready&&hasPriceEvidence?"AUTO_ACCEPT":"NEEDS_REVIEW",
     priceEligible:ready&&hasPriceEvidence,
     priceOptions:o.prices.map(p=>({
-      amountType:p.amountType,amount:p.amount??null,minAmount:p.minAmount??null,maxAmount:p.maxAmount??null,
+      amountType:p.amountType,amount:p.amount??null,
+      minAmount:p.amountType==="FROM"?(p.minAmount??p.amount??null):(p.minAmount??null),
+      maxAmount:p.maxAmount??null,
       currency:p.currency??null,tariffClass:p.tariffClass,tariffLabel:p.tariffLabel??null,
       eligibilityType:p.eligibilityType,eligibilityValue:p.eligibilityValue??null,
-      billingBasis:p.billingBasis,billingCount:null,priceScope:p.priceScope,
+      billingBasis:p.billingBasis,billingCount:p.billingCount??null,priceScope:p.priceScope,
       taxMode:p.taxMode,taxRate:null,validFrom:null,validThrough:p.validThrough??null,components:[],
       deliveryVariantRefs:p.deliveryVariantRefs||[],
       sourceEvidenceUrl:p.sourceUrl
