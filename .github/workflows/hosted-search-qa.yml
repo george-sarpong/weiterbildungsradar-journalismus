@@ -79,6 +79,17 @@ jobs:
         run: |
           node tests/target5-bulk-preview-20261107.test.cjs
           node scripts/target5-bulk-preview-v1.cjs --out out/target5-preview
+      - name: Materialize EVT271 source-guarded 3818 field bridges and protect historical queues
+        run: |
+          node tests/target5-evidence-bridge-20261107.test.cjs
+          node scripts/target5-evidence-bridge-v1.cjs --out out/target5-evidence-bridge
+      - name: Store EVT271 typed evidence bridges, 117 currentness and 21 city-only facts
+        uses: actions/upload-artifact@v4
+        with:
+          name: target5-evt271-field-bridges
+          path: out/target5-evidence-bridge/
+          retention-days: 14
+          if-no-files-found: error
       - name: Verify bounded and deduplicated source-evidence fetching
         run: node tests/target5-source-snapshot-20261107.test.cjs
       - name: Fetch grouped primary-source signals on explicit source-snapshot commit
