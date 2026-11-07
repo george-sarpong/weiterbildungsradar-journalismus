@@ -75,6 +75,17 @@ jobs:
         run: node tests/target5-de-usa-owner-stage-20261107.test.cjs
       - name: Verify 2355 USA owner-evidence lineage, 2290+58+7 exact joins
         run: node tests/target5-usa-owner-evidence-20261107.test.cjs
+      - name: Build all five TARGET5 sources, 1352 safe website previews and grouped evidence batches
+        run: |
+          node tests/target5-bulk-preview-20261107.test.cjs
+          node scripts/target5-bulk-preview-v1.cjs --out out/target5-preview
+      - name: Store bulk website preview and evidence workpacks (not a release)
+        uses: actions/upload-artifact@v4
+        with:
+          name: target5-review-preview
+          path: out/target5-preview/
+          retention-days: 14
+          if-no-files-found: error
       - name: Verify B4 1352 typed read-only view, CH access and venue facets
         run: node tests/b4-typed-view-20261105.test.cjs
       - name: Verify B4 scale 250 unique researcher records into the typed site model
