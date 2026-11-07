@@ -1,0 +1,14 @@
+"use strict";
+const fs=require("node:fs"),assert=require("node:assert/strict"),cp=require("node:child_process");
+const out=cp.execFileSync(process.execPath,["scripts/b2-parallel-workblock.cjs","--as-of=2026-11-05","--assert-locked"],{encoding:"utf8"});
+assert.match(out,/B2_PARALLEL_140_WORKBLOCK_PASS/);
+const csv=fs.readFileSync("docs/b2/parallel-review-140-20261105.tsv","utf8").trim().split(/\r?\n/);
+assert.equal(csv.length,141);
+const rows=csv.slice(1).map(x=>x.split("\t"));
+assert.ok(rows.every(x=>x.length===9&&x[1]&&x[8].startsWith("https://")),"bad row contract");
+assert.equal(new Set(rows.map(r=>r[1])).size,140);
+assert.equal(rows.filter(r=>r[0].startsWith("N")).length,39);
+assert.equal(rows.filter(r=>r[0]==="R01_DJA").length,21);
+assert.ok(rows.find(r=>r[1]==="OFFER-MAZ-149"&&r[7]==="journalistic_scope"));
+const hold=rows.find(r=>r[1]==="IF-G06");assert.ok(hold&&hold[6].includes("HOLD"));
+console.log("B2_PARALLEL_140_EXCLUSIVE_10_LANES_LOCKED_PASS");

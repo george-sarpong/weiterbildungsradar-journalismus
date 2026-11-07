@@ -8,6 +8,7 @@
   --card: #ffffff;
   --line: #d8dee5;
   --accent: #b74732;
+  --accent-text: #993626;
   --focus-ring: #ac7824;
   --journalism-bg: #17334f;
   --journalism-ink: #ffffff;
@@ -117,6 +118,9 @@ h2 { margin-bottom: 0; font-size: clamp(1.65rem, 3vw, 2.25rem); letter-spacing: 
 .results-section { padding: 54px 0 76px; }
 .result-count { margin: 0; color: var(--muted); font-weight: 700; }
 .cards { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 22px; }
+.catalog-more { display: block; min-height: 48px; max-width: 100%; margin: 28px auto 0; padding: 10px 22px; border: 1px solid var(--navy); border-radius: 999px; background: #fff; color: var(--navy); font-weight: 800; overflow-wrap: anywhere; }
+.catalog-more:hover { background: var(--blue-soft); }
+.catalog-more[hidden] { display: none; }
 .card { display: flex; flex-direction: column; min-height: 100%; padding: 26px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: 0 8px 24px rgba(23,51,79,.05); }
 .card-topline { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
 .provider { margin: 4px 0 0; color: var(--blue); font-size: .9rem; font-weight: 800; }
@@ -198,6 +202,23 @@ h2 { margin-bottom: 0; font-size: clamp(1.65rem, 3vw, 2.25rem); letter-spacing: 
   display: flex;
   align-items: center;
   gap: 14px;
+}
+/* MS-48: Tablet-Ergebnisleiste ohne abgeschnittene Favoriten */
+@media (min-width: 721px) and (max-width: 900px) {
+  .results-header { flex-direction: column; align-items: stretch; }
+  .results-actions { flex-wrap: wrap; }
+  .card-topline, .card-footer { flex-wrap: wrap; }
+  .card h3, .card-description, .fact-item dd { overflow-wrap: anywhere; }
+}
+/* MS-48 follow-up: prevent long category labels and headings from causing
+   horizontal scrolling when visitors enlarge their browser's text. */
+@media (max-width: 1100px) {
+  .provider, .card h3, .card-description, .fact-item dd,
+  .badges .badge { overflow-wrap: anywhere; }
+  .badges .badge { max-width: 100%; }
+}
+@media (max-width: 720px) {
+  .hero h1, .results-header h2 { overflow-wrap: anywhere; }
 }
 .favorites-toggle,
 .favorite-button {
@@ -547,6 +568,30 @@ code { padding: 2px 5px; border-radius: 4px; background: #edf0f3; font-size: .92
 .smart-summary strong { color: var(--navy); }
 .smart-summary p { margin: 0; color: var(--muted); }
 .smart-results { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.smart-alternatives { grid-column: 1 / -1; min-width: 0; }
+.smart-alternatives > h3 { margin: 8px 0; font-size: 1.1rem; }
+.smart-alternatives > p { margin: 0 0 14px; color: var(--muted); }
+.smart-alternative-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+
+/* Smart Search: progressive disclosure, distinct from the main catalogue filters. */
+.smart-more {
+  grid-column: 1 / -1;
+  justify-self: start;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 10px 16px;
+  border: 1px solid var(--navy);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--navy);
+  font-weight: 800;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.smart-more:hover { background: var(--blue-soft); }
+.smart-alternatives > .smart-more { margin-top: 14px; }
+
 .smart-result-card { display: flex; flex-direction: column; min-width: 0; border: 1px solid var(--line); border-radius: 13px; padding: 18px; background: #fbfcfd; }
 .smart-result-rank { margin: 0 0 7px; color: var(--blue); font-size: .72rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
 .smart-result-card h3 { margin-bottom: 6px; font-size: 1.08rem; }
@@ -572,6 +617,7 @@ code { padding: 2px 5px; border-radius: 4px; background: #edf0f3; font-size: .92
 .price-band-note { grid-column: 2; margin: -7px 0 0; color: var(--muted); font-size: .75rem; }
 @media (max-width: 900px) {
   .smart-results { grid-template-columns: 1fr; }
+  .smart-alternative-cards { grid-template-columns: 1fr; }
   .smart-price-panel { grid-template-columns: 1fr; }
   .price-band-note { grid-column: 1; }
 }
@@ -588,3 +634,57 @@ code { padding: 2px 5px; border-radius: 4px; background: #edf0f3; font-size: .92
   .smart-output, .smart-result-card, .smart-bundle, .price-band { box-shadow: none !important; background: #fff !important; }
   .smart-examples, .smart-submit, .smart-actions { display: none !important; }
 }
+
+/* V33: MS-50--MS-52; scoped word wrapping with no change to layout dimensions. */
+/* MS-50: long words on the Methodik page at enlarged text sizes. */
+@media (max-width: 720px) {
+  .static-shell h1, .static-shell .lead,
+  .content-section h2, .content-section p,
+  .content-list li, .static-shell .text-link { overflow-wrap: anywhere; }
+}
+/* MS-51: fact labels must remain inside their fact boxes. */
+.fact-item dt { overflow-wrap: anywhere; }
+/* At the 721px boundary, enlarged filter labels can independently enlarge
+   the viewport after the fact captions are fixed. Preserve normal layout. */
+@media (min-width: 721px) and (max-width: 900px) {
+  .filter-grid .field span { overflow-wrap: anywhere; }
+}
+/* MS-52: long Smart Search result titles must remain inside their cards. */
+.smart-result-card h3 { overflow-wrap: anywhere; }
+
+
+/* V34: MS-53 and MS-54, precise word wrapping only. */
+/* MS-53: prevent lengthy single-word search terms from expanding chips/cards. */
+.smart-chip { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+.smart-fit { overflow-wrap: anywhere; }
+/* MS-54: static Methodik section heading at 200% browser text size. */
+#method-title { overflow-wrap: anywhere; }
+
+/* V35 MS-55: 320px viewport, enlarged text; wrap only the two proven overflow sources. */
+.hero .lead { overflow-wrap: anywhere; }
+.section-link .source-link { overflow-wrap: anywhere; min-width: 0; max-width: 100%; }
+
+
+/* V36 MS-56: Keep results actions and sort select inside the header when enlarged. */
+@media (min-width: 901px) {
+  .results-header { flex-wrap: wrap; }
+  .results-actions { flex-wrap: wrap; min-width: 0; max-width: 100%; }
+  .sort-control { min-width: 0; }
+  .sort-control select { min-width: 0; max-width: 100%; }
+}
+
+/* V36 MS-57: Preserve card text and action boundaries beyond the 1100px threshold. */
+@media (min-width: 1101px) {
+  .provider, .card h3, .card-description, .fact-item dd,
+  .badges .badge { overflow-wrap: anywhere; }
+  .badges .badge { max-width: 100%; }
+  .card-topline { flex-wrap: wrap; }
+  .card-topline .provider { min-width: 0; }
+  .card-actions { min-width: 0; max-width: 100%; flex-wrap: wrap; }
+  .card-labels { min-width: 0; }
+  .card-labels .badge { max-width: 100%; overflow-wrap: anywhere; }
+}
+
+
+/* MS-58 candidate only: preserve footer wrap with enlarged default text */
+@media (min-width: 901px) { .card-footer { flex-wrap: wrap; } }
