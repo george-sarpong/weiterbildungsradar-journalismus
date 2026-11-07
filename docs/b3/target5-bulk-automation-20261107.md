@@ -14,3 +14,5 @@ Die 140 Review-Fälle werden automatisch nach offizieller Quellendomain gruppier
 Alle Runs erzeugen GitHub Actions Artefakte: `target5-review-preview` und bei explizitem Snapshot `target5-official-source-signals`. Quellensignale müssen vor einer Änderung anhand des vorhandenen Provider-/Feldkontrakts geprüft werden. Freigegebene B3-Pakete können über die bestehenden add-only-/Refresh-Schreiber verarbeitet werden. Für einen produktiven Drive-Masterwrite, Main-Merge oder Website-Deploy ist weiterhin die separate Owner-/Release-Gate-Freigabe notwendig.
 
 **Tests:** `node tests/target5-bulk-preview-20261107.test.cjs`; `node tests/target5-source-snapshot-20261107.test.cjs`. Die PR-CI führt beides automatisch aus. Nicht über die prüfbaren Daten hinaus behaupten: 3’818 Quellen-/Katalogzeilen sind nicht 3’818 Website-Gold-Angebote.
+
+**Quellenlauf R2:** Der Signalparser verwirft einen Datumsstring wie `€ 07.11.2026` explizit als Preis. Ein erfolgreicher HTTP-Abruf ist keine Quelle für einen automatisch freigegebenen Preis. PDF-Quellen und HTTP 403/404 bleiben explizite technische Sonderfälle bis zur passenden Extraktion oder nachvollziehbaren Quellenermittlung.
