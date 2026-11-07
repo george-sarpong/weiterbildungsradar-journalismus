@@ -32,8 +32,10 @@ assert.equal(joanneum.startDate, "2027-10-04");
 assert.match(joanneum.start, /04\.10\.2027/);
 assert.match(joanneum.start, /22\.03\.2027/);
 assert.match(joanneum.start, /Aufnahmeentscheid vorbehalten/);
-// Date updates are not permission to alter price, eligibility or other offer fields.
-assert.equal(joanneum.priceCategory, "PREIS_NICHT_PUBLIZIERT");
+// EVT262: the separate, source-proven CH semester fee is now visible; intake/date guards are unchanged.
+assert.equal(joanneum.priceCategory, "UEBER_2000");
+assert.match(joanneum.priceDisplay, /363,36.*Semester/);
+assert.match(joanneum.priceDisplay, /ÖH-Beitrag separat/);
 for (const id of vienna) assert.equal(byId.get(id).priceCategory, "BIS_500");
 assert.equal(offers.reduce((n, o) => n + (o.sessions?.length || 0), 0), 325);
 // USTP official intake (2027/28), no invented September study date.
