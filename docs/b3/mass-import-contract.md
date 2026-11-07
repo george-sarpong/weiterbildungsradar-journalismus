@@ -31,7 +31,17 @@ Gespeicherter Kurs: **Datenjournalismus, CHF 750, 2 Kurstage**, Quelle geprüft,
 
 Der v1-Adapter erhält die bestehende `data.js`-/Sidecar-Darstellung. Beim Übergang zu einem serverbasierten Backend wird die API aus den typisierten Provider-, Offer-, Occurrence-, Price- und Evidence-Entitäten generiert, ohne die Suchlogik neu zu schreiben. Für künftige Quellenfunde pro Provider eine Batchdatei und ein konsolidiertes atomisches Writer-Commit; Nutzeroberfläche liest weiterhin allein validierte Angebote.
 
-Nicht gelöst durch diesen Importvertrag: alle vorbestehenden Freitextfelder der 1’352 Angebote automatisch auf Gold-Niveau normalisieren, neue API/Backend, Hosted E5/G3, geografische Suchanfragen oder tatsächliche Platzverfügbarkeit.
+## Quellengesicherte Aktualisierung bestehender Angebote (B3 Refresh, 07.11.2026)
+
+Auch bestehende Stable Offers können inzwischen ohne Neuanlage und ohne automatischen Release aktualisiert werden:
+
+`node scripts/catalogue-refresh-v1.cjs --input verified-existing-batch.json --data-file data.js --sidecar-file smart-search-data.js --expected-existing-offers 1352`
+
+Das ist standardmässig **PREVIEW_ONLY**. Für einen lokalen Draft-Write müssen zusätzlich `--apply` sowie die **vorher verifizierten** `--expected-data-sha256` und `--expected-sidecar-sha256` gesetzt sein. Nur bereits existierende Offer-IDs sind zulässig. Das neue B3-Batch muss vollständig quellengeprüft sein; stabiler Anbietername und Angebotstitel bleiben ohne gesonderte Owner-Freigabe unverändert. Frühere Occurrences werden nicht gelöscht. Eine vollständig leer übergebene Preisliste kann vorhandene Preisoptionen nicht still entfernen. Der Writer erhält alle unberührten `data.js`-Angebotsobjekte bytegleich und prüft beide neuen Dateien nach einem lokalen Schreiben. Der aktualisierte Datensatz erhält **publicationStatus=HOLD** und erfordert vor Live-Übernahme weiterhin die separate Owner-/E4-/E5-Freigabe.
+
+Der synthetische End-to-End-Test `node tests/b3-refresh-existing-20261107.test.cjs` prüft Preview ohne Mutation, geänderten Preis, einen zusätzlichen Termin, Erhalt früherer Termine, nicht berührte Fremdzeilen, abgewiesene Identitätswechsel, Quellenregression und veraltete Hash-Leases. **Das ist keine Bestätigung eines produktiven Drive-Master-Updates.**
+
+Nicht gelöst durch diesen Datenvertrag: alle vorbestehenden Freitextfelder der 1’352 Angebote automatisch auf Gold-Niveau normalisieren, neue API/Backend, Hosted E5/G3, geografische Suchanfragen oder tatsächliche Platzverfügbarkeit. Ebenso fehlt noch die freigegebene Übertragung eines lokal geprüften Refreshs in den autoritativen Drive-Master.
 
 ### Zusätzliche Datenintegrität
 
