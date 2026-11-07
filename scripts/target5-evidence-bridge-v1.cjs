@@ -17,7 +17,16 @@ const tsv=text=>{
   return Object.fromEntries(heads.map((k,j)=>[k,row[j]]));
  });
 };
-const validUrl=s=>typeof s==="string"&&/^https:\/\/[^\s]+$/.test(s);
+const validUrl=s=>typeof s==="string"&&/^https:\/\/[^\s;|]+$/.test(s);
+const sourceReference=raw=>{
+ const input=String(raw??"");
+ if(validUrl(input))return {status:"SINGLE_SOURCE_URL_UNVERIFIED",raw:input,urls:[input],unparsed:[]};
+ const parts=input.split(/\s*(?:;|\|)\s*|\s+\+\s+/).map(x=>x.trim()).filter(Boolean);
+ const urls=parts.filter(validUrl),unparsed=parts.filter(x=>!validUrl(x));
+ if(!urls.length)throw Error("SOURCE_REFERENCE_HAS_NO_SAFE_URL");
+ return {status:unparsed.length?"COMPOSITE_URL_AND_NOTE_HOLD":"MULTI_URL_OFFER_IDENTITY_HOLD",
+  raw:input,urls,unparsed};
+};
 const cityEvidence=(r,o)=>{
  if(r.venue_data_state==="OWNER_CONFIRMED_CITY_LUZERN_EXACT_VENUE_UNVERIFIED"){
   if(o.region!=="NOT_PUBLISHED"||r.catalogue_region!=="NOT_PUBLISHED")
@@ -99,20 +108,24 @@ function run(outDir,{inputRoot=root,asOf="2026-11-07"}={}){
    }
   }
  }
- const byStage=new Set(),deUs=[],stageMarkets={DE:0,USA:0},occurrenceOnly=[];
+ const byStage=new Set(),deUs=[],stageMarkets={DE:0,USA:0},occurrenceOnly=[],compositeSourceIds=[];
  for(const item of staged){
   const key=item.country+"/"+item.record_id;
-  if(byStage.has(key)||!["DE","USA"].includes(item.country)||!validUrl(item.source_url))
+  if(byStage.has(key)||!["DE","USA"].includes(item.country)||!sourceReference(item.source_url).urls.length)
    throw Error("STAGED_ID_SOURCE_DRIFT "+key);
   byStage.add(key);stageMarkets[item.country]++;
   const owner=item.country==="USA"?usOwnerIds.get(item.record_id):null;
   if(item.country==="USA"&&(!owner||owner.programmeReleaseUrl!==item.source_url))
    throw Error("USA_OWNER_EXACT_URL_DRIFT "+key);
+  const source=sourceReference(item.source_url);
+  if(source.status!=="SINGLE_SOURCE_URL_UNVERIFIED")compositeSourceIds.push(key);
   const isOccurrence=/^OCCURRENCE_ONLY/.test(item.object_type||"");
   if(isOccurrence)occurrenceOnly.push(key);
   deUs.push({market:item.country,id:item.record_id,objectType:item.object_type,
    kind:isOccurrence?"OCCURRENCE_ONLY_DO_NOT_PROMOTE":"SOURCE_STAGED_STABLE_PARENT_OR_ROUTE",
-   provider:item.provider,title:item.title,url:item.source_url,
+   provider:item.provider,title:item.title,url:source.urls.length===1&&source.unparsed.length===0?source.urls[0]:null,
+   rawSourceUrl:source.raw,sourceUrlCandidates:source.urls,
+   sourceUrlStatus:source.status,unparsedSourceNotes:source.unparsed,
    r4Status:item.release_status,sourceClass:item.source_publication_class,
    sourceOwnerType:owner?.ownerEvidenceClass||"NOT_APPLICABLE_DE",
    ownerEvidenceUrl:validUrl(owner?.ownerPrimarySource)?owner.ownerPrimarySource:null,
@@ -126,10 +139,12 @@ function run(outDir,{inputRoot=root,asOf="2026-11-07"}={}){
  if(active.length!==1352||due.length!==117||protectedDue.length!==145
    ||cities.length!==21||new Set(cities.map(x=>x.id)).size!==21
    ||stageMarkets.DE!==111||stageMarkets.USA!==2355||occurrenceOnly.length!==2
+   ||compositeSourceIds.length!==30
    ||hostGroups.size!==25)
   throw Error("EVT270_SOURCE_CONTRACT_DRIFT "+JSON.stringify({
    catalogue:active.length,due:due.length,protected:protectedDue.length,
    cities:cities.length,stageMarkets,occurrences:occurrenceOnly.length,
+   compositeSourceIds:compositeSourceIds.length,
    hosts:hostGroups.size}));
  if(due.filter(x=>x.reviewPolicy==="B2_EXISTING_EVIDENCE_FIRST").length!==111
    ||due.filter(x=>x.reviewPolicy==="SIX_EXCEPTION_EXISTING_EVIDENCE_FIRST").length!==6)
@@ -155,13 +170,14 @@ function run(outDir,{inputRoot=root,asOf="2026-11-07"}={}){
     combinedRows:active.length+deUs.length,dueCurrentness:due.length,
     protectedDue:protectedDue.length,dueB2:111,dueOutsideB2:6,
     cityOnlyOwnerFacts:cities.length,uniqueHosts:hostGroups.size,
-    occurrenceOnly:occurrenceOnly.length},
+    occurrenceOnly:occurrenceOnly.length,compositeSourceHolds:compositeSourceIds.length},
    sources:Object.fromEntries(Object.entries(originals).map(([k,v])=>[k,hash(v)])),
    outputs:Object.fromEntries(files.map(k=>[k,hash(fs.readFileSync(path.join(temp,k)))])),
    caveats:["Never infer Swiss eligibility from historical owner text",
     "City-only evidence never establishes in-person modality or available seat",
     "This is a website-gold field pipeline, NOT a product release",
-    "No protected historical source is scheduled for refetch"]};
+    "No protected historical source is scheduled for refetch",
+    "Composite R4 USA source URLs are preserved and quarantined, never treated as offer-specific exact link"]};
  fs.writeFileSync(path.join(temp,"manifest.json"),JSON.stringify(manifest,null,2)+"\n");
  fs.rmSync(out,{recursive:true,force:true});fs.renameSync(temp,out);
  return manifest;
