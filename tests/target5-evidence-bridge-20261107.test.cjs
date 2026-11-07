@@ -14,7 +14,7 @@ try{
  assert.deepEqual(m.counts,{
    catalogue:1352,stagedDE:111,stagedUSA:2355,combinedRows:3818,
    dueCurrentness:117,protectedDue:145,dueB2:111,dueOutsideB2:6,
-   cityOnlyOwnerFacts:21,uniqueHosts:25,occurrenceOnly:2});
+   cityOnlyOwnerFacts:21,uniqueHosts:25,occurrenceOnly:2,compositeSourceHolds:30});
  const catalogue=jsonl(one,"catalogue-field-bridge-1352.jsonl");
  const deUs=jsonl(one,"de-usa-owner-product-bridge-2466.jsonl");
  const due=jsonl(one,"unprotected-currentness-117.jsonl");
@@ -39,6 +39,13 @@ try{
  assert.ok(city.every(r=>r.deliveryFormat==="NOT_PROVEN_BY_CITY_EVIDENCE"
    &&r.websiteGold===false&&r.status==="OWNER_CONFIRMED_CITY_ONLY"));
  assert.equal(deUs.filter(r=>r.kind==="OCCURRENCE_ONLY_DO_NOT_PROMOTE").length,2);
+ const composite=deUs.filter(r=>r.sourceUrlStatus!=="SINGLE_SOURCE_URL_UNVERIFIED");
+ assert.equal(composite.length,30);
+ assert.ok(composite.every(r=>r.url===null&&r.sourceUrlCandidates.length>=1
+    &&r.rawSourceUrl.startsWith("https://")));
+ assert.equal(composite.filter(r=>r.unparsedSourceNotes.length).length,1);
+ assert.ok(deUs.every(r=>r.sourceUrlCandidates.length>=1));
+ assert.ok(deUs.some(r=>r.id==="USR-3561"&&r.sourceUrlStatus==="COMPOSITE_URL_AND_NOTE_HOLD"));
  assert.ok(deUs.every(r=>r.websiteGold==="NOT_PROVEN"
    &&r.publicationGate==="HOLD_NO_AUTOMATIC_RELEASE"
    &&r.chAccess==="UNKNOWN_NOT_INFERRED_FROM_R4_OR_OWNER"
