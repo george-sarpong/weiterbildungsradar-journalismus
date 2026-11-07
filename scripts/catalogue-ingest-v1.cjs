@@ -179,7 +179,8 @@ function project(batch){
   const hasPriceEvidence=o.prices.some(p=>
     ["EXACT","RANGE","FREE","FROM"].includes(p.amountType)
     &&p.priceScope==="FULL_OFFER"&&p.billingBasis==="TOTAL"
-    &&p.tariffClass!=="PROMOTIONAL"&&p.eligibilityType!=="UNKNOWN");
+    &&p.tariffClass!=="PROMOTIONAL"&&p.eligibilityType!=="UNKNOWN"
+    &&!(p.tariffClass==="CONDITIONAL"&&p.eligibilityType==="NONE"));
   const record={
     id:o.id,provider:o.provider.name,title:o.title,description:o.description,
     access:accessText+(o.access.conditions?" – "+o.access.conditions:""),
