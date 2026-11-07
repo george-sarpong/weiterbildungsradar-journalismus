@@ -10,7 +10,7 @@ assert.equal(header.sourceOwnerDrive,"10K0QvTljMwxWPGRIa7wNbB5mpO2Px0u70QuimUwGF
 const row=lines.map(x=>JSON.parse(x)),usa=stage.records.filter(r=>r.country==="USA");
 assert.equal(row.length,2355);assert.equal(usa.length,2355);
 const by=new Map(usa.map(x=>[x.record_id,x]));
-const seen=new Set(),groups={},noteCount={access:0,programme:0},urls=0;
+const seen=new Set(),groups={},noteCount={access:0,programme:0};let urls=0;
 for(const record of row){
  assert.ok(by.has(record.record_id),"Owner row outside USA R4: "+record.record_id);
  assert.ok(!seen.has(record.record_id),"Duplicate owner evidence ID: "+record.record_id);seen.add(record.record_id);
