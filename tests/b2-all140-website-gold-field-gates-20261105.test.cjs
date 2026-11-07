@@ -17,7 +17,8 @@ function parseWindow(file,open,close){
 const freeze=rows("docs/b2/parallel-review-140-20261105.tsv");
 const near=rows("docs/b2/near-term-39-source-differential-20261105.tsv");
 const rest=rows("docs/b2/remainder-101-source-differential-20261105.tsv");
-const matrix=rows("docs/b2/all-140-website-gold-field-gates-20261105.tsv");
+const frozenMatrix=rows("docs/b2/all-140-website-gold-field-gates-20261105.tsv");
+const matrix=rows("docs/b2/evt262-active-140-website-gold-field-gates-20261107.tsv");
 const backlog=rows("docs/b2/all-140-priority-evidence-backlog-20261105.tsv");
 const offers=parseWindow("data.js","[","]");
 const side=parseWindow("smart-search-data.js","{","}");
@@ -25,6 +26,20 @@ assert.equal(offers.length,1352);
 assert.equal(Object.keys(side.byId).length,1352);
 assert.equal(freeze.data.length,140);assert.equal(near.data.length,39);assert.equal(rest.data.length,101);
 assert.equal(matrix.header.length,57);assert.equal(matrix.data.length,140);
+assert.equal(frozenMatrix.data.length,140);
+// Parent is immutable; exactly five derived AT021 field-projection cells changed.
+const allowed262 = [
+  "catalogue_price_text", "structured_price_parser_status",
+  "structured_numeric_price_eligible", "structured_price_option_count",
+  "structured_price_tax_modes"
+].sort();
+for (let i=0;i<140;i++) {
+  const oldRow=frozenMatrix.data[i],newRow=matrix.data[i];
+  assert.equal(newRow.offer_id,oldRow.offer_id);
+  const delta=Object.keys(newRow).filter(k=>newRow[k]!==oldRow[k]).sort();
+  assert.deepEqual(delta,newRow.offer_id==="AT-PROD-OFFER-021"?allowed262:[],
+    "EVT262 must not rewrite any unrelated frozen matrix field");
+}
 assert.equal(new Set(matrix.data.map(r=>r.offer_id)).size,140);
 const prev=new Map([...near.data,...rest.data].map(x=>[x.offer_id,x]));
 const obj=new Map(offers.map(x=>[x.id,x]));
@@ -79,7 +94,7 @@ const pending=matrix.data.filter(x=>x.primary_field_evidence_class!=="BOUNDED_PR
 assert.equal(n.length,139);assert.deepEqual(pending.map(x=>x.offer_id),["OFFER-HELIAS-014"]);
 assert.deepEqual(matrix.data.filter(x=>x.scheduled_date_alignment==="MATCHES_EXISTING_START_OR_SESSION").length,109);
 assert.deepEqual(matrix.data.filter(x=>x.scheduled_date_alignment==="NO_SPECIFIC_DUE_START").length,31);
-assert.equal(matrix.data.filter(x=>x.structured_numeric_price_eligible==="true").length,107);
+assert.equal(matrix.data.filter(x=>x.structured_numeric_price_eligible==="true").length,106);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("STRUCTURED_PRICE_BUDGET_UNVERIFIED")).length,33);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="NOT_PUBLISHED").length,12);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="OWNER_CONFIRMED_CITY_LUZERN_EXACT_VENUE_UNVERIFIED").length,20);
