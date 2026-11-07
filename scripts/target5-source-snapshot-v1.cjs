@@ -67,7 +67,13 @@ async function download(url,{fetchImpl=fetch,timeoutMs=11000,maxBytes=350000}={}
   }
   const fields=tags(body);
   const bodyHash=hash(body);
-  const priceMentions=(tidy(body).match(/(?:CHF|EUR|USD|€|\$)\s*[0-9][0-9.,']*/gi)||[]).slice(0,8);
+  const priceMentions=(tidy(body).match(/(?:CHF|EUR|USD|€|\$)\s*[0-9][0-9.,']*/gi)||[])
+   .filter(signal=>{
+    const value=signal.replace(/^(?:CHF|EUR|USD|€|\$)\s*/i,"").trim();
+    // E.g. "€ 07.11.2026" is a date, never a fee. This is only a signal,
+    // not a source-verified price even when the shape is plausible.
+    return !/^\d{1,2}[.\/-]\d{1,2}[.\/-]20\d{2}$/.test(value);
+   }).slice(0,8);
   const dateMentions=(tidy(body).match(/\b(?:20\d{2}[-/.]\d{1,2}[-/.]\d{1,2}|\d{1,2}[-/.]\d{1,2}[-/.]20\d{2})\b/g)||[]).slice(0,12);
   return {state:"SOURCE_FETCHED_NOT_FIELD_VERIFIED",status:response.status,
    finalUrl:finalUrl.toString(),contentType:type||null,bytes:size,truncated,bodySha256:bodyHash,
