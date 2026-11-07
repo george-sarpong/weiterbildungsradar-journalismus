@@ -42,7 +42,7 @@ assert.equal(cfjm.priceOptions[0].amountType,"NOT_PUBLISHED");
 // The active 140-row review register must reflect the same current sidecar;
 // existing field-specific holds and release gates remain untouched.
 const lines=fs.readFileSync(
- "docs/b2/evt262-active-140-website-gold-field-gates-20261107.tsv","utf8"
+ "docs/b2/evt264-active-140-website-gold-field-gates-20261107.tsv","utf8"
 ).trim().split(/\r?\n/);
 const headers=lines.shift().split("\t");
 const at=key=>{const i=headers.indexOf(key);assert.ok(i>=0,key);return i};
