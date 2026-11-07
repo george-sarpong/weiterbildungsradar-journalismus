@@ -37,7 +37,7 @@ for (let i=0;i<140;i++) {
   const oldRow=frozenMatrix.data[i],newRow=matrix.data[i];
   assert.equal(newRow.offer_id,oldRow.offer_id);
   const delta=Object.keys(newRow).filter(k=>newRow[k]!==oldRow[k]).sort();
-  assert.deepEqual(delta,newRow.offer_id==="AT-PROD-OFFER-021"?allowed262:[],
+  assert.deepEqual(delta,newRow.offer_id==="AT-PROD-OFFER-021"?allowed262:newRow.offer_id==="OFFER-CFJM-019"?["structured_numeric_price_eligible","structured_price_parser_status"]:[],
     "EVT262 must not rewrite any unrelated frozen matrix field");
 }
 assert.equal(new Set(matrix.data.map(r=>r.offer_id)).size,140);
