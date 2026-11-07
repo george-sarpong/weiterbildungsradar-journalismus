@@ -23,6 +23,7 @@ on:
       - 'scripts/**'
       - 'schemas/**'
       - 'tests/**'
+      - 'data/staging/**'
       - 'docs/b2/**'
       - 'docs/b3/**'
       - 'docs/b4/**'
