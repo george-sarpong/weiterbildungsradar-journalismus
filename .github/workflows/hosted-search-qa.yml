@@ -82,6 +82,7 @@ jobs:
       - name: Materialize EVT271 source-guarded 3818 field bridges and protect historical queues
         run: |
           node tests/target5-evidence-bridge-20261107.test.cjs
+          node tests/target5-no-reopen-policy-20261107.test.cjs
           node scripts/target5-evidence-bridge-v1.cjs --out out/target5-evidence-bridge
       - name: Store EVT271 typed evidence bridges, 117 currentness and 21 city-only facts
         uses: actions/upload-artifact@v4
@@ -98,6 +99,7 @@ jobs:
           if git show -s --format=%B ${{ github.event.pull_request.head.sha }} | grep -q '\[source-snapshot\]'; then
             node scripts/target5-source-snapshot-v1.cjs --live \
               --workpacks out/target5-preview/source-workpacks.json \
+              --policy data/staging/evt270-currentness-policy-20261107.json \
               --out out/target5-source-snapshot
           else
             echo "SOURCE_SNAPSHOT_NOT_REQUESTED_FOR_THIS_COMMIT"
