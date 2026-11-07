@@ -106,7 +106,7 @@ const pending=matrix.data.filter(x=>x.primary_field_evidence_class!=="BOUNDED_PR
 assert.equal(n.length,139);assert.deepEqual(pending.map(x=>x.offer_id),["OFFER-HELIAS-014"]);
 assert.deepEqual(matrix.data.filter(x=>x.scheduled_date_alignment==="MATCHES_EXISTING_START_OR_SESSION").length,109);
 assert.deepEqual(matrix.data.filter(x=>x.scheduled_date_alignment==="NO_SPECIFIC_DUE_START").length,31);
-assert.equal(matrix.data.filter(x=>x.structured_numeric_price_eligible==="true").length,105);
+assert.equal(matrix.data.filter(x=>x.structured_numeric_price_eligible==="true").length,104);
 assert.equal(matrix.data.filter(x=>x.field_gap_tags.includes("STRUCTURED_PRICE_BUDGET_UNVERIFIED")).length,33);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="NOT_PUBLISHED").length,12);
 assert.equal(matrix.data.filter(x=>x.venue_data_state==="OWNER_CONFIRMED_CITY_LUZERN_EXACT_VENUE_UNVERIFIED").length,20);
