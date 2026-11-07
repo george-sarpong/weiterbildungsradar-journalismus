@@ -96,6 +96,21 @@ function jobs(packs,{limit=140}={}){
  return [...urls.values()].map(v=>({url:v.url,host:v.host,offerIds:[...v.offerIds].sort(),fieldTags:[...v.fields].sort()}))
    .sort((a,b)=>a.host.localeCompare(b.host)||a.url.localeCompare(b.url));
 }
+function excludeProtected(packs,policy){
+ if(!Array.isArray(packs)||!Array.isArray(policy?.protectedB2)
+   ||policy.protectedB2.length!==29||policy.origin?.protectedDue!==145)
+  throw Error("EVT270_NO_REOPEN_POLICY_REQUIRED_29");
+ const blocked=new Set(policy.protectedB2.map(x=>x.offerId));
+ if(blocked.size!==29)throw Error("PROTECTION_POLICY_DUPLICATE");
+ const before=packs.flatMap(x=>x.items||[]);
+ const filtered=packs.map(p=>({...p,items:(p.items||[]).filter(x=>!blocked.has(x.id))}))
+   .filter(p=>p.items.length);
+ const after=filtered.flatMap(x=>x.items);
+ if(before.length!==140||after.length!==111||after.some(x=>blocked.has(x.id))
+   ||!before.every(x=>x.id&&x.sourceUrl))
+   throw Error("PROTECTED_RESEARCH_SCOPE_DRIFT");
+ return filtered;
+}
 async function snapshot(packs,outDir,{fetchImpl=fetch,limit=140,concurrency=5,delayMs=800,timeoutMs=11000,now=()=>new Date().toISOString()}={}){
  const tasks=jobs(packs,{limit});
  if(!Number.isInteger(concurrency)||concurrency<1||concurrency>8)throw Error("Concurrency 1..8");
@@ -134,9 +149,13 @@ async function cli(){
  if(!args.includes("--live"))throw Error("Read-only source access requires explicit --live");
  const source=arg("--workpacks"),out=arg("--out");
  if(!source||!out)throw Error("Provide --workpacks JSON and --out directory");
+ const policyPath=arg("--policy");
+ if(!policyPath)throw Error("NO_REOPEN_POLICY_REQUIRED_FOR_LIVE_FETCH");
  const packs=JSON.parse(fs.readFileSync(source,"utf8"));
- const result=await snapshot(packs,out);
+ const policy=JSON.parse(fs.readFileSync(policyPath,"utf8"));
+ const permitted=excludeProtected(packs,policy);
+ const result=await snapshot(permitted,out);
  console.log(JSON.stringify(result));
 }
 if(require.main===module)cli().catch(e=>{console.error(e.stack||e);process.exitCode=1});
-module.exports={jobs,download,snapshot,tags};
+module.exports={jobs,download,snapshot,tags,excludeProtected};
