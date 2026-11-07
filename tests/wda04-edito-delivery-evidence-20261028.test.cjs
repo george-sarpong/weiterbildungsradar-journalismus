@@ -125,7 +125,7 @@ yes(tiers.VERIFIED === 210 && tiers.PROVISIONAL === 393 && tiers.UNKNOWN === 749
 // P0 budget safety: the production resolver currently has no verified
 // period-to-total calculation. Even a known count must not become a direct
 // whole-course budget claim until multiplication and mandatory costs are proven.
-const periodGuard = app.match(/if \\(option\\.billingBasis !== "TOTAL"\\) \\{\\s*candidates\\.push\\(\\{ status: "PRICE_UNKNOWN", option, amount: null \\}\\);\\s*continue;\\s*\\}/);
+const periodGuard = app.match(/if \(option\.billingBasis !== "TOTAL"\) \{\s*candidates\.push\(\{ status: "PRICE_UNKNOWN", option, amount: null \}\);\s*continue;\s*\}/);
 yes(Boolean(periodGuard), "Missing strict production guard for periodic tuition");
 const fj = byId["AT-PROD-OFFER-022"];
 yes(fj.priceOptions[0].billingBasis === "SEMESTER" && fj.priceOptions[0].billingCount === null,
