@@ -18,7 +18,8 @@ const freeze=rows("docs/b2/parallel-review-140-20261105.tsv");
 const near=rows("docs/b2/near-term-39-source-differential-20261105.tsv");
 const rest=rows("docs/b2/remainder-101-source-differential-20261105.tsv");
 const frozenMatrix=rows("docs/b2/all-140-website-gold-field-gates-20261105.tsv");
-const matrix=rows("docs/b2/evt262-active-140-website-gold-field-gates-20261107.tsv");
+const evt262=rows("docs/b2/evt262-active-140-website-gold-field-gates-20261107.tsv");
+const matrix=rows("docs/b2/evt264-active-140-website-gold-field-gates-20261107.tsv");
 const backlog=rows("docs/b2/all-140-priority-evidence-backlog-20261105.tsv");
 const offers=parseWindow("data.js","[","]");
 const side=parseWindow("smart-search-data.js","{","}");
@@ -34,11 +35,22 @@ const allowed262 = [
   "structured_price_tax_modes"
 ].sort();
 for (let i=0;i<140;i++) {
-  const oldRow=frozenMatrix.data[i],newRow=matrix.data[i];
+  const oldRow=frozenMatrix.data[i],newRow=evt262.data[i];
   assert.equal(newRow.offer_id,oldRow.offer_id);
   const delta=Object.keys(newRow).filter(k=>newRow[k]!==oldRow[k]).sort();
   assert.deepEqual(delta,newRow.offer_id==="AT-PROD-OFFER-021"?allowed262:newRow.offer_id==="OFFER-CFJM-019"?["structured_numeric_price_eligible","structured_price_parser_status"]:[],
     "EVT262 must not rewrite any unrelated frozen matrix field");
+}
+// EVT264 is an exact derived successor: only LI-REG-003 price eligibility
+// changes from true to false because the employment route's price is
+// NOT_APPLICABLE. Historical EVT262 remains byte-for-byte untouched.
+assert.equal(evt262.data.length,140);
+for(let i=0;i<140;i++){
+  const oldRow=evt262.data[i],newRow=matrix.data[i];
+  assert.equal(newRow.offer_id,oldRow.offer_id);
+  const delta=Object.keys(newRow).filter(k=>newRow[k]!==oldRow[k]).sort();
+  assert.deepEqual(delta,newRow.offer_id==="LI-REG-003"
+    ?["structured_numeric_price_eligible"]:[],newRow.offer_id+" EVT264 unexpected drift");
 }
 assert.equal(new Set(matrix.data.map(r=>r.offer_id)).size,140);
 const prev=new Map([...near.data,...rest.data].map(x=>[x.offer_id,x]));
