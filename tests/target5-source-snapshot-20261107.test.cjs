@@ -29,6 +29,14 @@ async function main(){
  assert.deepEqual(result.priceSignals,["CHF 400"]);
  assert.deepEqual(result.dateSignals,["2026-12-12"]);
  assert.equal(result.bodySha256.length,64);
+ const dateAsFeeHtml='<html><title>Source</title><body>€ 07.11.2026 / EUR 1250</body></html>';
+ const dateAsFee=await download("https://example.edu/courses/a",{
+  fetchImpl:async()=>new Response(dateAsFeeHtml,{status:200,headers:{"content-type":"text/html"}})
+ });
+ assert.ok(!dateAsFee.priceSignals.includes("€ 07.11.2026"),
+   "A formatted date prefixed by EUR symbol must never be extracted as a fee");
+ assert.ok(dateAsFee.priceSignals.some(x=>x.includes("1250")));
+
  const invalid=await download("http://localhost:8080/secret",{fetchImpl});
  assert.equal(invalid.state,"INVALID_SOURCE_URL");assert.equal(calls,1);
  const tmp=fs.mkdtempSync(path.join(os.tmpdir(),"ms-source-crawl-"));
