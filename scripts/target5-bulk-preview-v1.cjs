@@ -58,15 +58,16 @@ function renderCourse(offer,typed,blocked){
   '<dt>Datenstatus</dt><dd>'+escapeHtml(evidence)+'</dd></dl>'+
   '<p>Kein Nachweis über freie Plätze oder aktuelle Buchbarkeit.</p></main></body></html>\n';
 }
-function run(outDir){
+function run(outDir,{inputRoot=root}={}){
+ const read=p=>fs.readFileSync(path.join(inputRoot,p),"utf8");
  const raw=read("data.js"),sideRaw=read("smart-search-data.js");
  const offers=jsonWindow(raw,"[","]"),side=jsonWindow(sideRaw,"{","}");
  const staged=JSON.parse(read("data/staging/target5-de-usa-wave1-r4-20260915.json"));
  const owners=read("data/staging/usa-owner-evidence-crosswalk-20261107.jsonl").trim().split(/\r?\n/).map(x=>JSON.parse(x));
  const matrix=csvRows(read("docs/b2/evt264-active-140-website-gold-field-gates-20261107.tsv"));
  const typed=require("../offer-search-view-v1.js").build(offers,side.byId,require("../duration-model.js"));
- if(offers.length!==1352||staged.records.length!==2466||matrix.records.length!==140
-  ||owners.length!==2356||typed.summary.offers!==1352)
+ if(offers.length<1352||staged.records.length!==2466||matrix.records.length!==140
+  ||owners.length!==2356||typed.summary.offers!==offers.length)
    throw Error("Target5 denominator or join drift");
  const ownerIds=new Set(owners.slice(1).map(x=>x.record_id));
  const usa=staged.records.filter(r=>r.country==="USA"),de=staged.records.filter(r=>r.country==="DE");
@@ -111,8 +112,8 @@ function run(outDir){
   items:g.items.sort((a,b)=>a.priority.localeCompare(b.priority)||a.id.localeCompare(b.id))}))
  .sort((a,b)=>b.offerCount-a.offerCount||a.host.localeCompare(b.host));
  const manifest={type:"TARGET5_DETERMINISTIC_BULK_PREVIEW",status:"NOINDEX_UNRELEASED_NOT_WEBSITE_GOLD",
-  source:"CURRENT_GITHUB_PR_DRAFT",counts:{catalogue:1352,stagedDE:111,stagedUSA:2355,
-    combinedSourceRows:3818,reviewHolds:140,sourceWorkpacks:packs.length,
+  source:"CURRENT_GITHUB_PR_DRAFT",counts:{catalogue:offers.length,stagedDE:111,stagedUSA:2355,
+    combinedSourceRows:offers.length+staged.records.length,reviewHolds:140,sourceWorkpacks:packs.length,
     previewPages:siteRows.length},
   dataHashes:{data:sha(raw),sidecar:sha(sideRaw),ownerStaging:sha(read("data/staging/target5-de-usa-wave1-r4-20260915.json")),
    ownerCrosswalk:sha(read("data/staging/usa-owner-evidence-crosswalk-20261107.jsonl")),
@@ -134,12 +135,12 @@ function run(outDir){
  const html='<!doctype html><html lang="de-CH"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow">'+
    '<title>Media Skills – nicht veröffentlichte TARGET5-Vorschau</title></head><body><main>'+
    '<h1>Media Skills – CI-Vorschau, keine Veröffentlichung</h1>'+
-   '<p>1’352 Katalogangebote; 111 DE- und 2’355 USA-Quellenzeilen sind zusätzlich nur staged.</p>'+
+   '<p>'+offers.length+' Katalogangebote; 111 DE- und 2’355 USA-Quellenzeilen sind zusätzlich nur staged.</p>'+
    '<p>140 offene B2-Feldprüfungen in '+packs.length+' hostbasierten Arbeitsgruppen.</p>'+
    '<ul>'+card+'</ul></main></body></html>';
  fs.writeFileSync(path.join(temp,"index.html"),html);
  const files=fs.readdirSync(path.join(temp,"offers"));
- if(files.length!==1352||!fs.readFileSync(path.join(temp,"index.html"),"utf8").includes('noindex,nofollow'))
+ if(files.length!==offers.length||!fs.readFileSync(path.join(temp,"index.html"),"utf8").includes('noindex,nofollow'))
   throw Error("Preview page coverage or index safety drift");
  fs.rmSync(folder,{recursive:true,force:true});
  fs.renameSync(temp,folder);
