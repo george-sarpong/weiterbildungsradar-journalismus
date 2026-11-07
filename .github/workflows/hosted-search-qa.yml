@@ -79,6 +79,24 @@ jobs:
         run: |
           node tests/target5-bulk-preview-20261107.test.cjs
           node scripts/target5-bulk-preview-v1.cjs --out out/target5-preview
+      - name: Verify bounded and deduplicated source-evidence fetching
+        run: node tests/target5-source-snapshot-20261107.test.cjs
+      - name: Fetch grouped primary-source signals on explicit source-snapshot commit
+        run: |
+          if git log -1 --pretty=%B | grep -q '\[source-snapshot\]'; then
+            node scripts/target5-source-snapshot-v1.cjs --live \
+              --workpacks out/target5-preview/source-workpacks.json \
+              --out out/target5-source-snapshot
+          else
+            echo "SOURCE_SNAPSHOT_NOT_REQUESTED_FOR_THIS_COMMIT"
+          fi
+      - name: Store source signals separately from Gold fields (not a release)
+        uses: actions/upload-artifact@v4
+        with:
+          name: target5-official-source-signals
+          path: out/target5-source-snapshot/
+          retention-days: 14
+          if-no-files-found: ignore
       - name: Store bulk website preview and evidence workpacks (not a release)
         uses: actions/upload-artifact@v4
         with:
