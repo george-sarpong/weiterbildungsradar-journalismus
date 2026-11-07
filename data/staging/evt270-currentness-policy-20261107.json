@@ -1,0 +1,141 @@
+{
+  "_type": "EVT270_READ_ONLY_CURRENTNESS_POLICY_PROJECTION",
+  "origin": {
+    "driveAuditZipId": "1I6gKhrqB3hYRgETQorlyOT5GAypfXOsT",
+    "driveProjectBible": "EVT-BIBEL-20261107-270",
+    "asOf": "2026-11-07",
+    "originalDue": 262,
+    "protectedDue": 145,
+    "unprotectedDue": 117,
+    "originalB2": 140,
+    "protectedB2": 29,
+    "unprotectedB2": 111
+  },
+  "protectedB2": [
+    {
+      "offerId": "OFFER-MAZ-070",
+      "policy": "ARCHIVE_NO_AUTO_RESCAN"
+    },
+    {
+      "offerId": "OFFER-MAZ-075",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "OFFER-MAZ-113",
+      "policy": "ARCHIVE_NO_AUTO_RESCAN"
+    },
+    {
+      "offerId": "OFFER-MAZ-176",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "OFFER-CFJM-013",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "OFFER-CFJM-014",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "OFFER-CFJM-015",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "OFFER-ORSYS-069",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "OFFER-ORSYS-137",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "IF-G04",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "IF-P03",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "IF-P08",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "IF-P10",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "IF-W03",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "V58-S1-07",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "V78-04",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "PCC-P02",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "PCC-P03",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "PCC-P05",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "PCC-P16",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "PCC-P28",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "CAD-002",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "CAD-018",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "CAD-025",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "PCC-P23",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "V82-DAWAN-029",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "V82-DAWAN-037",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "V82-DAWAN-039",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    },
+    {
+      "offerId": "AT-PROD-OFFER-003",
+      "policy": "QA09_FROZEN_RECONCILIATION_ONLY"
+    }
+  ],
+  "unprotectedOutsideB2": [
+    "OFFER-MAZ-034",
+    "OFFER-MAZ-038",
+    "OFFER-MAZ-079",
+    "OFFER-MAZ-178",
+    "V82-DAWAN-065",
+    "AT-PROD-OFFER-173"
+  ],
+  "enforcement": "NO_REOPEN_OR_REFETCH_29; REUSE_OLD_SNAPSHOT_READ_ONLY; NO_AUTOMATIC_WEBSITE_GOLD; NO_REVIEWAFTER_AUTO_BUMP"
+}
