@@ -18,6 +18,14 @@ on:
       - data.js
       - smart-search-data.js
       - styles.css
+      - duration-model.js
+      - offer-search-view-v1.js
+      - 'scripts/**'
+      - 'schemas/**'
+      - 'tests/**'
+      - 'docs/b2/**'
+      - 'docs/b3/**'
+      - 'docs/b4/**'
   workflow_dispatch:
 permissions:
   contents: read
@@ -155,7 +163,7 @@ jobs:
             'Smart price bands disagree with display-filter projection: '+JSON.stringify(bandCounts));
           console.log('PRICE_CATEGORY_PROJECTION_BANDS_PASS');
           const makeOption=(overrides={})=>({
-            amountType:'EXACT',amount:100,currency:'CHF',
+            amountType:'EXACT',amount:100,currency:'CHF',tariffClass:'REGULAR',
             eligibilityType:'NONE',billingBasis:'TOTAL',priceScope:'FULL_OFFER',
             taxMode:'UNSPECIFIED',components:[],...overrides
           });
@@ -181,6 +189,13 @@ jobs:
             'Budget resolver missed price on first valid day');
           assert(budget(makeOption({validThrough:'2026-10-26'}),100).status==='PRICE_UNKNOWN',
             'Budget resolver kept expired price');
+          assert(budget(makeOption({amount:390,billingBasis:'SEMESTER',billingCount:2}),800).status
+            ==='PRICE_UNKNOWN','Recurring semester fee without sourced total misclassified as CHF 800 fit');
+          assert(budget(makeOption({amountType:'FREE',amount:0,tariffClass:'CONDITIONAL'}),0).status
+            !=='DIRECT_FIT','Conditional zero-fee tier treated as universally free');
+          assert(budget(makeOption({amount:99,tariffClass:'PROMOTIONAL'}),100).status
+            !=='DIRECT_FIT','Promotional tier treated as unconditional price');
+          console.log('B3_PERIOD_TARIFF_AND_CONDITIONAL_GUARDS_PASS');
           console.log('PRICE_VALIDITY_BOUNDARY_PASS');
           const changedSession={id:'TEST-EVERGREEN',format:'PRÄSENZ | ONLINE SELBSTLERNEN',
             sessions:[{startDate:'2026-10-26',endDate:'2026-10-26'}]};
