@@ -70,6 +70,8 @@ jobs:
         run: node tests/b3-mass-import-contract-20261105.test.cjs
       - name: Verify B3 existing-offer refresh, source/hash guards and archived sessions
         run: node tests/b3-refresh-existing-20261107.test.cjs
+      - name: Verify DE111 USA2355 owner staging lineage without unsupported Website-Gold claims
+        run: node tests/target5-de-usa-owner-stage-20261107.test.cjs
       - name: Verify B4 1352 typed read-only view, CH access and venue facets
         run: node tests/b4-typed-view-20261105.test.cjs
       - name: Verify B4 scale 250 unique researcher records into the typed site model
