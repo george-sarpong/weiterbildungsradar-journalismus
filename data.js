@@ -539,7 +539,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "url": "https://www.maz.ch/kurs/grundlagen-der-interviewfuehrung-workshop",
     "approved": "2026-08-09",
     "reviewAfter": "2026-10-29",
-    "focus": "MANAGEMENT",
+    "focus": "JOURNALISMUS",
     "offerType": "KURS",
     "priceDisplay": "CHF 990.00 (CHF 650.00 Kurspreis Journalist:innen) Weitere Infos finden Sie bei den Durchführungen mit Klick auf «Jetzt buchen».",
     "priceCategory": "MEHRERE_TARIFE",
@@ -1905,7 +1905,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "level": "EINSTIEG",
     "language": "DE",
     "country": "Schweiz",
-    "url": "https://www.maz.ch/kurs/recherche-in-oeffentlichen-registern",
+    "url": "https://www.maz.ch/kurs/recherche-in-oeffentlichen-registern-j",
     "approved": "2026-08-09",
     "reviewAfter": "2026-10-28",
     "focus": "JOURNALISMUS",
@@ -2418,9 +2418,68 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "NICHT_PUBLIZIERT",
     "duration": "3 Tage",
-    "start": "27.10.2026",
+    "start": "27.10.–17.11.2026 (0 freie Plätze; Anmeldung am 26.10.2026 als Abgelaufen markiert); neue Ausgabe 07.–27.10.2027 (Anmeldung am 26.10.2026 möglich; aktuelle Verfügbarkeit prüfen)",
     "startDate": "2026-10-27",
     "endDate": "2026-11-17",
+    "sessions": [
+      {
+        "startDate": "2026-10-27",
+        "endDate": "2026-11-17",
+        "label": "27.10.–17.11.2026 (3 Tage; Anmeldung am 26.10.2026 als «Abgelaufen» ausgewiesen)",
+        "availabilityStatus": "SOLD_OUT",
+        "availablePlacesObserved": 0,
+        "statusObservedAt": "2026-10-26",
+        "statusEvidenceUrl": "https://my.maz.ch/public/Ereignis/PublicList?angebote=18226768-b325-4fdb-9319-dd7f22bb57cd"
+      },
+      {
+        "startDate": "2027-10-07",
+        "endDate": "2027-10-27",
+        "label": "07.–27.10.2027 · Unterricht 07., 08. und 27.10.2027, jeweils 09:15–16:45 (Verfügbarkeit beim MAZ prüfen)",
+        "availablePlacesObserved": 9,
+        "bookingStatusObserved": "ANMELDUNG",
+        "statusObservedAt": "2026-10-26",
+        "statusEvidenceUrl": "https://my.maz.ch/public/Ereignis/PublicList?angebote=18226768-b325-4fdb-9319-dd7f22bb57cd",
+        "region": "MAZ, Luzern (Raum nicht ausgewiesen)",
+        "courseEditionId": "23352",
+        "courseEditionLabel": "2027/28",
+        "registrationDeadline": "2027-09-06",
+        "teachingDays": [
+          {
+            "date": "2027-10-07",
+            "startTime": "09:15",
+            "endTime": "16:45",
+            "instructor": "Katharina Deuber"
+          },
+          {
+            "date": "2027-10-08",
+            "startTime": "09:15",
+            "endTime": "16:45",
+            "instructor": "Katharina Deuber"
+          },
+          {
+            "date": "2027-10-27",
+            "startTime": "09:15",
+            "endTime": "16:45",
+            "instructor": "Katharina Deuber"
+          }
+        ],
+        "editionPrices": [
+          {
+            "tariffClass": "REGULAR",
+            "amount": 2970,
+            "currency": "CHF",
+            "label": "Kurspreis G-Kurs 3 Tage"
+          },
+          {
+            "tariffClass": "CONDITIONAL",
+            "eligibility": "JOURNALIST",
+            "amount": 1950,
+            "currency": "CHF",
+            "label": "Kurspreis Journalist:innen G-Kurs 3 Tage"
+          }
+        ]
+      }
+    ],
     "region": "NOT_PUBLISHED",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
@@ -2664,7 +2723,19 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-09-28",
     "endDate": "2026-10-02",
     "region": "NOT_PUBLISHED",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "sessions": [
+      {
+        "startDate": "2026-09-28",
+        "endDate": "2026-10-02",
+        "label": "28.09.–02.10.2026 · historische Durchführung"
+      },
+      {
+        "startDate": "2027-03-01",
+        "endDate": "2027-03-05",
+        "label": "01.–05.03.2027 · Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "OFFER-CFJM-006",
@@ -2761,7 +2832,24 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-08",
     "endDate": "2026-10-08",
     "region": "NOT_PUBLISHED",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "sessions": [
+      {
+        "startDate": "2026-10-08",
+        "endDate": "2026-10-08",
+        "label": "08.10.2026 · CFJM · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-06-03",
+        "endDate": "2027-06-03",
+        "label": "03.06.2027 · CFJM · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-10-28",
+        "endDate": "2027-10-28",
+        "label": "28.10.2027 · CFJM · Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "OFFER-CFJM-010",
@@ -2809,7 +2897,24 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-16",
     "endDate": "2026-10-23",
     "region": "NOT_PUBLISHED",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "sessions": [
+      {
+        "startDate": "2026-10-16",
+        "endDate": "2026-10-23",
+        "label": "16.10.2026–23.10.2026 · CFJM · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-04-23",
+        "endDate": "2027-04-30",
+        "label": "23.04.2027–30.04.2027 · CFJM · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-10-29",
+        "endDate": "2027-11-05",
+        "label": "29.10.2027–05.11.2027 · CFJM · Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "OFFER-CFJM-012",
@@ -2833,7 +2938,24 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-19",
     "endDate": "2026-10-23",
     "region": "NOT_PUBLISHED",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "sessions": [
+      {
+        "startDate": "2026-10-19",
+        "endDate": "2026-10-23",
+        "label": "19.–23.10.2026 · historische Durchführung"
+      },
+      {
+        "startDate": "2027-04-26",
+        "endDate": "2027-04-30",
+        "label": "26.–30.04.2027 · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-11-01",
+        "endDate": "2027-11-05",
+        "label": "01.–05.11.2027 · Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "OFFER-CFJM-013",
@@ -2878,10 +3000,26 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "NICHT_PUBLIZIERT",
     "duration": "1 Tag, 09:00–17:00",
-    "start": "22.10.2026 (Kursdetail); weitere Katalogausgabe 26.05.2027 (Plätze/Format/Ort nicht gesondert bestätigt)",
+    "start": "22.10.2026 (historisch); weitere separate Katalogausgaben 26.05.2027 und 27.10.2027 (Plätze, Format und Ort nicht separat bestätigt)",
     "startDate": "2026-10-22",
     "endDate": "2026-10-22",
-    "sessions": [{"startDate":"2026-10-22","endDate":"2026-10-22","label":"22.10.2026 (Kursdetail)"},{"startDate":"2027-05-26","endDate":"2027-05-26","label":"26.05.2027 (CFJM-Katalog; Plätze nicht bestätigt)"}],
+    "sessions": [
+      {
+        "startDate": "2026-10-22",
+        "endDate": "2026-10-22",
+        "label": "22.10.2026 (Kursdetail)"
+      },
+      {
+        "startDate": "2027-05-26",
+        "endDate": "2027-05-26",
+        "label": "26.05.2027 (CFJM-Katalog; Plätze nicht bestätigt)"
+      },
+      {
+        "startDate": "2027-10-27",
+        "endDate": "2027-10-27",
+        "label": "27.10.2027 (CFJM-Katalog; Plätze, Unterrichtsort und Format nicht bestätigt)"
+      }
+    ],
     "region": "NOT_PUBLISHED",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
@@ -2903,10 +3041,26 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "NICHT_PUBLIZIERT",
     "duration": "5 Tage, 09:00–17:00",
-    "start": "26.–30.10.2026 (Kursdetail); weitere Katalogausgabe 24.–28.05.2027 (Plätze/Format/Ort nicht gesondert bestätigt)",
+    "start": "26.–30.10.2026; 24.–28.05.2027; 27.09.–01.10.2027 (separate CFJM-Ausgaben; Plätze, Lehrort und Unterrichtsformat nicht bestätigt)",
     "startDate": "2026-10-26",
     "endDate": "2026-10-30",
-    "sessions": [{"startDate":"2026-10-26","endDate":"2026-10-30","label":"26.–30.10.2026 (Kursdetail)"},{"startDate":"2027-05-24","endDate":"2027-05-28","label":"24.–28.05.2027 (CFJM-Katalog; Plätze nicht bestätigt)"}],
+    "sessions": [
+      {
+        "startDate": "2026-10-26",
+        "endDate": "2026-10-30",
+        "label": "26.–30.10.2026 (Kursdetail)"
+      },
+      {
+        "startDate": "2027-05-24",
+        "endDate": "2027-05-28",
+        "label": "24.–28.05.2027 (CFJM-Katalog; Plätze nicht bestätigt)"
+      },
+      {
+        "startDate": "2027-09-27",
+        "endDate": "2027-10-01",
+        "label": "27.09.–01.10.2027 (CFJM-Katalog; Plätze nicht bestätigt)"
+      }
+    ],
     "region": "NOT_PUBLISHED",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
   },
@@ -3000,11 +3154,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "PREIS_NICHT_PUBLIZIERT",
     "format": "NICHT_PUBLIZIERT",
     "duration": "3 Wochen Intensivmodul; optionales Vertiefungsmodul innerhalb der folgenden 3 Monate",
-    "start": "09.11.2026–27.11.2026",
+    "start": "09.–27.11.2026; weitere bestätigte Katalogedition 01.–19.03.2027 (Kursort und freie Plätze nicht separat bestätigt)",
     "startDate": "2026-11-09",
     "endDate": "2026-11-27",
     "region": "NOT_PUBLISHED",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "sessions": [
+      {
+        "startDate": "2026-11-09",
+        "endDate": "2026-11-27",
+        "label": "09.–27.11.2026 · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-03-01",
+        "endDate": "2027-03-19",
+        "label": "01.–19.03.2027 · CFJM-Katalog; Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "OFFER-CFJM-020",
@@ -3024,11 +3190,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "NICHT_PUBLIZIERT",
     "duration": "2 Tage, 09:00–17:00",
-    "start": "25.11.2026–26.11.2026",
-    "startDate": "2026-11-25",
-    "endDate": "2026-11-26",
+    "start": "26.–27.11.2026; weitere Durchführung 26.–27.04.2027 gemäss sessions[]; Plätze nicht bestätigt",
+    "startDate": "2026-11-26",
+    "endDate": "2026-11-27",
     "region": "NOT_PUBLISHED",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "sessions": [
+      {
+        "startDate": "2026-11-26",
+        "endDate": "2026-11-27",
+        "label": "26.11.2026–27.11.2026 · CFJM · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-04-26",
+        "endDate": "2027-04-27",
+        "label": "26.04.2027–27.04.2027 · CFJM · Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "OFFER-CORSO-002",
@@ -15964,8 +16142,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "reviewAfter": "2026-11-14",
     "focus": "JOURNALISMUS",
     "offerType": "KURS",
-    "priceDisplay": "Preis nicht publiziert",
-    "priceCategory": "PREIS_NICHT_PUBLIZIERT",
+    "priceDisplay": "CHF 1'150 (Privatseminar; Termin beim Anbieter erfragen)",
+    "priceCategory": "501_2000",
     "format": "ON_REQUEST_FORMAT",
     "duration": "NOT_PUBLISHED",
     "start": "Termin nach Vereinbarung",
@@ -15988,8 +16166,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "reviewAfter": "2026-11-14",
     "focus": "JOURNALISMUS",
     "offerType": "KURS",
-    "priceDisplay": "Preis nicht publiziert",
-    "priceCategory": "PREIS_NICHT_PUBLIZIERT",
+    "priceDisplay": "CHF 1'150 (Privatseminar; Termin beim Anbieter erfragen)",
+    "priceCategory": "501_2000",
     "format": "ON_REQUEST_FORMAT",
     "duration": "NOT_PUBLISHED",
     "start": "Termin nach Vereinbarung",
@@ -16132,8 +16310,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "reviewAfter": "2026-11-14",
     "focus": "JOURNALISMUS",
     "offerType": "KURS",
-    "priceDisplay": "Preis nicht publiziert",
-    "priceCategory": "PREIS_NICHT_PUBLIZIERT",
+    "priceDisplay": "CHF 1'150 (Privatseminar; Termin beim Anbieter erfragen)",
+    "priceCategory": "501_2000",
     "format": "ON_REQUEST_FORMAT",
     "duration": "NOT_PUBLISHED",
     "start": "Termin nach Vereinbarung",
@@ -16252,8 +16430,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "reviewAfter": "2026-11-14",
     "focus": "MEDIENPRAXIS",
     "offerType": "KURS",
-    "priceDisplay": "Preis nicht publiziert",
-    "priceCategory": "PREIS_NICHT_PUBLIZIERT",
+    "priceDisplay": "CHF 1'150 (Privatseminar; Termin beim Anbieter erfragen)",
+    "priceCategory": "501_2000",
     "format": "ON_REQUEST_FORMAT",
     "duration": "NOT_PUBLISHED",
     "start": "Termin nach Vereinbarung",
@@ -16276,8 +16454,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "reviewAfter": "2026-11-14",
     "focus": "JOURNALISMUS",
     "offerType": "KURS",
-    "priceDisplay": "Preis nicht publiziert",
-    "priceCategory": "PREIS_NICHT_PUBLIZIERT",
+    "priceDisplay": "CHF 1'150 (Privatseminar; Termin beim Anbieter erfragen)",
+    "priceCategory": "501_2000",
     "format": "ON_REQUEST_FORMAT",
     "duration": "NOT_PUBLISHED",
     "start": "Termin nach Vereinbarung",
@@ -16324,8 +16502,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "reviewAfter": "2026-11-14",
     "focus": "MEDIENPRAXIS",
     "offerType": "KURS",
-    "priceDisplay": "Preis nicht publiziert",
-    "priceCategory": "PREIS_NICHT_PUBLIZIERT",
+    "priceDisplay": "CHF 1'150 (Privatseminar; Termin beim Anbieter erfragen)",
+    "priceCategory": "501_2000",
     "format": "ON_REQUEST_FORMAT",
     "duration": "NOT_PUBLISHED",
     "start": "Termin nach Vereinbarung",
@@ -16348,8 +16526,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "reviewAfter": "2026-11-14",
     "focus": "MEDIENPRAXIS",
     "offerType": "KURS",
-    "priceDisplay": "Preis nicht publiziert",
-    "priceCategory": "PREIS_NICHT_PUBLIZIERT",
+    "priceDisplay": "CHF 1'150 (Privatseminar; Termin beim Anbieter erfragen)",
+    "priceCategory": "501_2000",
     "format": "ON_REQUEST_FORMAT",
     "duration": "NOT_PUBLISHED",
     "start": "Termin nach Vereinbarung",
@@ -16372,8 +16550,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "reviewAfter": "2026-11-14",
     "focus": "JOURNALISMUS",
     "offerType": "KURS",
-    "priceDisplay": "Preis nicht publiziert",
-    "priceCategory": "PREIS_NICHT_PUBLIZIERT",
+    "priceDisplay": "CHF 1'150 (Privatseminar; Termin beim Anbieter erfragen)",
+    "priceCategory": "501_2000",
     "format": "ON_REQUEST_FORMAT",
     "duration": "NOT_PUBLISHED",
     "start": "Termin nach Vereinbarung",
@@ -16588,8 +16766,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "reviewAfter": "2026-11-14",
     "focus": "JOURNALISMUS",
     "offerType": "KURS",
-    "priceDisplay": "Preis nicht publiziert",
-    "priceCategory": "PREIS_NICHT_PUBLIZIERT",
+    "priceDisplay": "CHF 1'150 (Privatseminar; Termin beim Anbieter erfragen)",
+    "priceCategory": "501_2000",
     "format": "ON_REQUEST_FORMAT",
     "duration": "NOT_PUBLISHED",
     "start": "Termin nach Vereinbarung",
@@ -16612,8 +16790,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "reviewAfter": "2026-11-14",
     "focus": "JOURNALISMUS",
     "offerType": "KURS",
-    "priceDisplay": "Preis nicht publiziert",
-    "priceCategory": "PREIS_NICHT_PUBLIZIERT",
+    "priceDisplay": "CHF 1'150 (Privatseminar; Termin beim Anbieter erfragen)",
+    "priceCategory": "501_2000",
     "format": "ON_REQUEST_FORMAT",
     "duration": "NOT_PUBLISHED",
     "start": "Termin nach Vereinbarung",
@@ -16732,8 +16910,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "reviewAfter": "2026-11-14",
     "focus": "MEDIENPRAXIS",
     "offerType": "KURS",
-    "priceDisplay": "Preis nicht publiziert",
-    "priceCategory": "PREIS_NICHT_PUBLIZIERT",
+    "priceDisplay": "CHF 1'150 (Privatseminar; Termin beim Anbieter erfragen)",
+    "priceCategory": "501_2000",
     "format": "ON_REQUEST_FORMAT",
     "duration": "NOT_PUBLISHED",
     "start": "Termin nach Vereinbarung",
@@ -16780,8 +16958,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "reviewAfter": "2026-11-14",
     "focus": "JOURNALISMUS",
     "offerType": "KURS",
-    "priceDisplay": "Preis nicht publiziert",
-    "priceCategory": "PREIS_NICHT_PUBLIZIERT",
+    "priceDisplay": "CHF 1'150 (Privatseminar; Termin beim Anbieter erfragen)",
+    "priceCategory": "501_2000",
     "format": "ON_REQUEST_FORMAT",
     "duration": "NOT_PUBLISHED",
     "start": "Termin nach Vereinbarung",
@@ -17620,8 +17798,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "reviewAfter": "2026-11-14",
     "focus": "MEDIENPRAXIS",
     "offerType": "KURS",
-    "priceDisplay": "Preis nicht publiziert",
-    "priceCategory": "PREIS_NICHT_PUBLIZIERT",
+    "priceDisplay": "CHF 1'150 (Privatseminar; Termin beim Anbieter erfragen)",
+    "priceCategory": "501_2000",
     "format": "ON_REQUEST_FORMAT",
     "duration": "NOT_PUBLISHED",
     "start": "Termin nach Vereinbarung",
@@ -17716,8 +17894,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "reviewAfter": "2026-11-14",
     "focus": "MANAGEMENT",
     "offerType": "KURS",
-    "priceDisplay": "Preis nicht publiziert",
-    "priceCategory": "PREIS_NICHT_PUBLIZIERT",
+    "priceDisplay": "CHF 1'150 (Privatseminar; Termin beim Anbieter erfragen)",
+    "priceCategory": "501_2000",
     "format": "ON_REQUEST_FORMAT",
     "duration": "NOT_PUBLISHED",
     "start": "Termin nach Vereinbarung",
@@ -18211,7 +18389,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "provider": "Zürcher Hochschule der Künste (ZHdK)",
     "title": "MA Film – Dokumentarfilm",
     "description": "Weiterbildungsangebot «MA Film – Dokumentarfilm» von Zürcher Hochschule der Künste (ZHdK).",
-    "access": "Öffentliche Master-Bewerbung; Zulassung gemäss ZHdK-Aufnahmeverfahren",
+    "access": "Öffentliches MA-Film-Zulassungsverfahren mit Portfolio und Eignungsprüfung. Offizielle Bewerbungsschlussangabe 09.02.2027; Öffnungsdatum auf derselben ZHdK-Seite widersprüchlich (19.11.2027). Zulassung und tatsächliche Bewerbungsöffnung separat bestätigen.",
     "level": "BERUFSERFAHRUNG",
     "language": "DE",
     "country": "Schweiz",
@@ -18224,8 +18402,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "NICHT_PUBLIZIERT",
     "duration": "4 Semester; 90/120 Credits",
-    "start": "Herbstsemester; Bewerbungsfrist 2026 abgelaufen, nächste Runde noch nicht publiziert",
-    "startDate": "",
+    "start": "Studienbeginn 20.09.2027 (Lehrveranstaltungen ab 30.08.2027); Bewerbungsfrist 09.02.2027. Offiziell genanntes Öffnungsdatum 19.11.2027 widerspricht der Frist; beim Anbieter klären.",
+    "startDate": "2027-09-20",
     "endDate": "",
     "region": "NOT_PUBLISHED",
     "release_origin": "V98_R2_EXISTING_PRODUCT"
@@ -18968,11 +19146,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "NICHT_PUBLIZIERT",
     "duration": "1 jour, de 9h à 17h",
-    "start": "Keine aktuelle/künftige Durchführung in der geprüften Evidenz",
+    "start": "12.03.2027 und 29.10.2027 gemäss sessions[]; Plätze nicht bestätigt",
     "startDate": "",
     "endDate": "",
     "region": "NOT_PUBLISHED",
-    "release_origin": "V98_R2_EXISTING_PRODUCT"
+    "release_origin": "V98_R2_EXISTING_PRODUCT",
+    "sessions": [
+      {
+        "startDate": "2027-03-12",
+        "endDate": "2027-03-12",
+        "label": "12.03.2027 · CFJM · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-10-29",
+        "endDate": "2027-10-29",
+        "label": "29.10.2027 · CFJM · Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "OFFER-CFJM-004",
@@ -20808,7 +20998,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "level": "EINSTIEG",
     "language": "DE",
     "country": "Schweiz",
-    "url": "https://www.sae.edu/che/graphic-design-ausbildung-und-studium/",
+    "url": "https://www.sae.edu/che/courses/visual-motion-design/",
     "approved": "2026-09-26",
     "reviewAfter": "2027-03-26",
     "focus": "MEDIENPRAXIS",
@@ -23365,7 +23555,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "level": "EINSTIEG",
     "language": "FR",
     "country": "Schweiz",
-    "url": "https://www.ifage.ch/formation/tic/graphisme-infographie/",
+    "url": "https://www.ifage.ch/formation/tic/formations-cao-dao-pao/indesign-niveau-1/",
     "approved": "2026-09-27",
     "reviewAfter": "2026-10-19",
     "focus": "MEDIENPRAXIS",
@@ -23374,11 +23564,24 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "PRÄSENZ",
     "duration": "15 h / 5 jours",
-    "start": "09.11.2026–13.11.2026 / inscriptions ouvertes; additional 2027 session published",
+    "start": "09.–13.11.2026 ausgebucht (S-03213); weitere Durchführung 20.04.–04.05.2027 (S-03280), Buchbarkeit separat prüfen",
     "startDate": "2026-11-09",
     "endDate": "2026-11-13",
     "region": "ifage Montbrillant, Genève",
-    "release_origin": "V98_RESTORE_W1_39"
+    "release_origin": "V98_RESTORE_W1_39",
+    "sessions": [
+      {
+        "startDate": "2026-11-09",
+        "endDate": "2026-11-13",
+        "label": "09.–13.11.2026 · ifage Montbrillant · ausgebucht",
+        "availabilityStatus": "SOLD_OUT"
+      },
+      {
+        "startDate": "2027-04-20",
+        "endDate": "2027-05-04",
+        "label": "20.04.–04.05.2027 · ifage Montbrillant · Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "IF-G09",
@@ -23461,7 +23664,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "level": "NICHT_PUBLIZIERT",
     "language": "FR",
     "country": "Schweiz",
-    "url": "https://www.ifage.ch/formation/tic/graphisme-infographie/",
+    "url": "https://www.ifage.ch/formation/tic/graphisme-infographie/mise-en-page-et-maquettage/",
     "approved": "2026-09-27",
     "reviewAfter": "2026-10-26",
     "focus": "MEDIENPRAXIS",
@@ -23470,11 +23673,23 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "PRÄSENZ",
     "duration": "15 h / 5 jours",
-    "start": "16.11.2026–25.11.2026 / inscriptions ouvertes; additional 2027 session published",
+    "start": "16.–25.11.2026 (S-03214); weitere Durchführung 11.–25.05.2027 (S-03281), Buchbarkeit separat prüfen",
     "startDate": "2026-11-16",
     "endDate": "2026-11-25",
     "region": "ifage Montbrillant, Genève",
-    "release_origin": "V98_RESTORE_W1_39"
+    "release_origin": "V98_RESTORE_W1_39",
+    "sessions": [
+      {
+        "startDate": "2026-11-16",
+        "endDate": "2026-11-25",
+        "label": "16.–25.11.2026 · ifage Montbrillant · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-11",
+        "endDate": "2027-05-25",
+        "label": "11.–25.05.2027 · ifage Montbrillant · Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "IF-P03",
@@ -23768,7 +23983,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "id": "IF-W03",
     "provider": "ifage – Fondation pour la formation des adultes",
     "title": "Wordpress: créer son site internet facilement",
-    "description": "Präsenzkurs zur praktischen Erstellung einer Website mit WordPress.",
+    "description": "WordPress-Praxiskurs in Genf. Laut offizieller Kursbeschreibung ist gleichzeitige Teilnahme vor Ort und per Videokonferenz vorgesehen. Die Kursausgaben nennen ifage Augustins; eine editionsspezifische Online-Buchungsoption ist bislang nicht belegt.",
     "access": "Öffentliche Anmeldung möglich.",
     "level": "NICHT_PUBLIZIERT",
     "language": "FR",
@@ -23883,7 +24098,31 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-09",
     "endDate": "2026-11-11",
     "region": "Studio 1, Wallisellen",
-    "release_origin": "V98_RESTORE_W1_39"
+    "release_origin": "V98_RESTORE_W1_39",
+    "sessions": [
+      {
+        "startDate": "2026-11-09",
+        "endDate": "2026-11-11",
+        "label": "09.–11.11.2026 · Wallisellen (ausgebucht)",
+        "availabilityStatus": "SOLD_OUT",
+        "statusEvidenceUrl": "https://www.studioeins.ch/kurse/davinci-resolve/"
+      },
+      {
+        "startDate": "2027-03-08",
+        "endDate": "2027-03-10",
+        "label": "08.–10.03.2027 · Wallisellen (Plätze nicht bestätigt)"
+      },
+      {
+        "startDate": "2027-06-14",
+        "endDate": "2027-06-16",
+        "label": "14.–16.06.2027 · Wallisellen (Plätze nicht bestätigt)"
+      },
+      {
+        "startDate": "2027-10-25",
+        "endDate": "2027-10-27",
+        "label": "25.–27.10.2027 · Wallisellen (Plätze nicht bestätigt)"
+      }
+    ]
   },
   {
     "id": "V58-S1-06",
@@ -23927,10 +24166,34 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "PRÄSENZ",
     "duration": "3 Tage",
-    "start": "02.11.2026–04.11.2026; further 2027 dates bookable",
+    "start": "02.–04.11.2026 ausgebucht laut Anbieter (Stand 25.10.2026); weitere einzelne Ausgaben ab 08.02.2027 gelistet, Plätze je Ausgabe prüfen.",
     "startDate": "2026-11-02",
     "endDate": "",
-    "sessions": [{"startDate":"2026-11-02","endDate":"2026-11-04","label":"02.–04.11.2026 · Wallisellen"},{"startDate":"2027-02-08","endDate":"2027-02-10","label":"08.–10.02.2027 · Wallisellen"},{"startDate":"2027-06-21","endDate":"2027-06-23","label":"21.–23.06.2027 · Wallisellen"},{"startDate":"2027-10-04","endDate":"2027-10-06","label":"04.–06.10.2027 · Wallisellen"}],
+    "sessions": [
+      {
+        "startDate": "2026-11-02",
+        "endDate": "2026-11-04",
+        "label": "02.–04.11.2026 · Wallisellen",
+        "availabilityStatus": "SOLD_OUT",
+        "statusObservedAt": "2026-10-25",
+        "statusEvidenceUrl": "https://www.studioeins.ch/"
+      },
+      {
+        "startDate": "2027-02-08",
+        "endDate": "2027-02-10",
+        "label": "08.–10.02.2027 · Wallisellen"
+      },
+      {
+        "startDate": "2027-06-21",
+        "endDate": "2027-06-23",
+        "label": "21.–23.06.2027 · Wallisellen"
+      },
+      {
+        "startDate": "2027-10-04",
+        "endDate": "2027-10-06",
+        "label": "04.–06.10.2027 · Wallisellen"
+      }
+    ],
     "region": "Studio 1, Wallisellen",
     "release_origin": "V98_RESTORE_W1_39"
   },
@@ -24031,6 +24294,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "19.10.2026–20.10.2026 Genève + virtuel; 23.11.2026–24.11.2026 Lausanne + virtuel",
     "startDate": "2026-10-19",
     "endDate": "2026-10-20",
+    "sessions": [
+      {"startDate": "2026-10-19", "endDate": "2026-10-20", "label": "19.–20.10.2026 · Genève oder virtuell", "region": "Genève oder classe virtuelle; Durchführungsort beim Anbieter prüfen"},
+      {"startDate": "2026-11-23", "endDate": "2026-11-24", "label": "23.–24.11.2026 · Lausanne oder virtuell; Verfügbarkeit prüfen", "region": "Lausanne oder classe virtuelle; Durchführungsort beim Anbieter prüfen"}
+    ],
     "region": "Genève, Route des Jeunes 35 / Lausanne, Av. Mon-Repos 24 / classe virtuelle",
     "release_origin": "V98_RESTORE_W1_39"
   },
@@ -24121,13 +24388,13 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "sessions": [
       {
         "startDate": "2026-11-23",
-        "endDate": "2026-11-24",
-        "label": "23.–24.11.2026"
+        "endDate": "2026-11-25",
+        "label": "23.–25.11.2026"
       },
       {
         "startDate": "2026-12-14",
-        "endDate": "2026-12-15",
-        "label": "14.–15.12.2026"
+        "endDate": "2026-12-16",
+        "label": "14.–16.12.2026"
       },
       {
         "startDate": "2027-01-04",
@@ -24143,7 +24410,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "provider": "PC-COLLEGE Training GmbH (DE legal provider; CH delivery surface)",
     "title": "Adobe FrameMaker - Grundkurs",
     "description": "Grundkurs zu Adobe FrameMaker für Desktop Publishing und lange technische Crossmedia-Dokumente. Der Kurs behandelt die Erstellung und Bearbeitung von Dokumenten für Print, PDF, XML und weitere digitale Ausgabeformate.",
-    "access": "Öffentlich buchbar in Basel, Bern, Zürich oder als Live-Online-Training.",
+    "access": "Öffentliches Kursangebot mit Präsenzoptionen Basel, Bern und Zürich oder Live-Online. Konkreten Präsenzort, Terminbuchbarkeit und freie Plätze für die gewählte Durchführung beim Anbieter prüfen.",
     "level": "EINSTIEG",
     "language": "DE",
     "country": "Schweiz",
@@ -24184,7 +24451,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "21.10.2026–23.10.2026 next future; further Nov/Dec sessions published",
     "startDate": "2026-10-21",
     "endDate": "",
-    "sessions": [{"startDate":"2026-10-21","endDate":"2026-10-23","label":"21.–23.10.2026"},{"startDate":"2026-11-18","endDate":"2026-11-20","label":"18.–20.11.2026"},{"startDate":"2026-12-16","endDate":"2026-12-18","label":"16.–18.12.2026"},{"startDate":"2027-01-06","endDate":"2027-01-08","label":"06.–08.01.2027"}],
+    "sessions": [{"startDate":"2026-10-21","endDate":"2026-10-23","label":"21.–23.10.2026"},{"startDate":"2026-11-18","endDate":"2026-11-20","label":"18.–20.11.2026"},{"startDate":"2026-12-16","endDate":"2026-12-18","label":"16.–18.12.2026"},{"startDate":"2027-01-06","endDate":"2027-01-08","label":"06.–08.01.2027"},{"startDate":"2027-02-03","endDate":"2027-02-05","label":"03.02.2027–05.02.2027 · PC-COLLEGE ILL 270203 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-03-03","endDate":"2027-03-05","label":"03.03.2027–05.03.2027 · PC-COLLEGE ILL 270303 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-03-31","endDate":"2027-04-02","label":"31.03.2027–02.04.2027 · PC-COLLEGE ILL 270331 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-04-28","endDate":"2027-04-30","label":"28.04.2027–30.04.2027 · PC-COLLEGE ILL 270428 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-05-26","endDate":"2027-05-28","label":"26.05.2027–28.05.2027 · PC-COLLEGE ILL 270526 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-06-23","endDate":"2027-06-25","label":"23.06.2027–25.06.2027 · PC-COLLEGE ILL 270623 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-07-21","endDate":"2027-07-23","label":"21.07.2027–23.07.2027 · PC-COLLEGE ILL 270721 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-08-18","endDate":"2027-08-20","label":"18.08.2027–20.08.2027 · PC-COLLEGE ILL 270818 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-09-15","endDate":"2027-09-17","label":"15.09.2027–17.09.2027 · PC-COLLEGE ILL 270915 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-10-13","endDate":"2027-10-15","label":"13.10.2027–15.10.2027 · PC-COLLEGE ILL 271013 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-11-10","endDate":"2027-11-12","label":"10.11.2027–12.11.2027 · PC-COLLEGE ILL 271110 · Live-Online laut Anbieter · Plätze nicht bestätigt"}],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
@@ -24229,6 +24496,111 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
         "startDate": "2026-12-21",
         "endDate": "2026-12-23",
         "label": "21.–23.12.2026"
+      },
+      {
+        "startDate": "2027-01-18",
+        "endDate": "2027-01-20",
+        "label": "IND270118 · 2027-01-18–2027-01-20 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-02-01",
+        "endDate": "2027-02-03",
+        "label": "IND270201 · 2027-02-01–2027-02-03 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-02-08",
+        "endDate": "2027-02-10",
+        "label": "IND270208 · 2027-02-08–2027-02-10 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-02-22",
+        "endDate": "2027-02-24",
+        "label": "IND270222 · 2027-02-22–2027-02-24 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-03-15",
+        "endDate": "2027-03-17",
+        "label": "IND270315 · 2027-03-15–2027-03-17 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-03-31",
+        "endDate": "2027-04-02",
+        "label": "IND270331 · 2027-03-31–2027-04-02 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-04-05",
+        "endDate": "2027-04-07",
+        "label": "IND270405 · 2027-04-05–2027-04-07 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-04-19",
+        "endDate": "2027-04-21",
+        "label": "IND270419 · 2027-04-19–2027-04-21 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-10",
+        "endDate": "2027-05-12",
+        "label": "IND270510 · 2027-05-10–2027-05-12 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-24",
+        "endDate": "2027-05-26",
+        "label": "IND270524 · 2027-05-24–2027-05-26 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-31",
+        "endDate": "2027-06-02",
+        "label": "IND270531 · 2027-05-31–2027-06-02 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-06-14",
+        "endDate": "2027-06-16",
+        "label": "IND270614 · 2027-06-14–2027-06-16 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-05",
+        "endDate": "2027-07-07",
+        "label": "IND270705 · 2027-07-05–2027-07-07 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-19",
+        "endDate": "2027-07-21",
+        "label": "IND270719 · 2027-07-19–2027-07-21 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-26",
+        "endDate": "2027-07-28",
+        "label": "IND270726 · 2027-07-26–2027-07-28 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-08-09",
+        "endDate": "2027-08-11",
+        "label": "IND270809 · 2027-08-09–2027-08-11 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-08-30",
+        "endDate": "2027-09-01",
+        "label": "IND270830 · 2027-08-30–2027-09-01 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-09-13",
+        "endDate": "2027-09-15",
+        "label": "IND270913 · 2027-09-13–2027-09-15 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-09-20",
+        "endDate": "2027-09-22",
+        "label": "IND270920 · 2027-09-20–2027-09-22 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-10-04",
+        "endDate": "2027-10-06",
+        "label": "IND271004 · 2027-10-04–2027-10-06 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-10-25",
+        "endDate": "2027-10-27",
+        "label": "IND271025 · 2027-10-25–2027-10-27 · Plätze / Präsenzort nicht bestätigt"
       }
     ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
@@ -24255,7 +24627,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "21.10.2026–23.10.2026 next future; further Oct/Nov/Dec sessions published",
     "startDate": "2026-10-21",
     "endDate": "",
-    "sessions": [{"startDate":"2026-10-21","endDate":"2026-10-23","label":"21.–23.10.2026"},{"startDate":"2026-10-26","endDate":"2026-10-28","label":"26.–28.10.2026 · Live-Online"},{"startDate":"2026-11-18","endDate":"2026-11-20","label":"18.–20.11.2026"},{"startDate":"2026-12-01","endDate":"2026-12-03","label":"01.–03.12.2026 · Live-Online"},{"startDate":"2026-12-16","endDate":"2026-12-18","label":"16.–18.12.2026"},{"startDate":"2027-01-06","endDate":"2027-01-08","label":"06.–08.01.2027"}],
+    "sessions": [{"startDate":"2026-10-21","endDate":"2026-10-23","label":"21.–23.10.2026"},{"startDate":"2026-10-26","endDate":"2026-10-28","label":"26.–28.10.2026 · Live-Online"},{"startDate":"2026-11-18","endDate":"2026-11-20","label":"18.–20.11.2026"},{"startDate":"2026-12-01","endDate":"2026-12-03","label":"01.–03.12.2026 · Live-Online"},{"startDate":"2026-12-16","endDate":"2026-12-18","label":"16.–18.12.2026"},{"startDate":"2027-01-06","endDate":"2027-01-08","label":"06.–08.01.2027"},{"startDate":"2027-01-11","endDate":"2027-01-13","label":"11.01.2027–13.01.2027 · PC-COLLEGE PSG 270111 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-02-03","endDate":"2027-02-05","label":"03.02.2027–05.02.2027 · PC-COLLEGE PSG 270203 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-03-03","endDate":"2027-03-05","label":"03.03.2027–05.03.2027 · PC-COLLEGE PSG 270303 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-03-31","endDate":"2027-04-02","label":"31.03.2027–02.04.2027 · PC-COLLEGE PSG 270331 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-04-28","endDate":"2027-04-30","label":"28.04.2027–30.04.2027 · PC-COLLEGE PSG 270428 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-05-24","endDate":"2027-05-26","label":"24.05.2027–26.05.2027 · PC-COLLEGE PSG 270524 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-05-26","endDate":"2027-05-28","label":"26.05.2027–28.05.2027 · PC-COLLEGE PSG 270526 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-06-23","endDate":"2027-06-25","label":"23.06.2027–25.06.2027 · PC-COLLEGE PSG 270623 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-07-21","endDate":"2027-07-23","label":"21.07.2027–23.07.2027 · PC-COLLEGE PSG 270721 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-08-18","endDate":"2027-08-20","label":"18.08.2027–20.08.2027 · PC-COLLEGE PSG 270818 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-09-15","endDate":"2027-09-17","label":"15.09.2027–17.09.2027 · PC-COLLEGE PSG 270915 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-10-13","endDate":"2027-10-15","label":"13.10.2027–15.10.2027 · PC-COLLEGE PSG 271013 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-11-10","endDate":"2027-11-12","label":"10.11.2027–12.11.2027 · PC-COLLEGE PSG 271110 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-12-08","endDate":"2027-12-10","label":"08.12.2027–10.12.2027 · PC-COLLEGE PSG 271208 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-12-13","endDate":"2027-12-15","label":"13.12.2027–15.12.2027 · PC-COLLEGE PSG 271213 · Live-Online laut Anbieter · Plätze nicht bestätigt"}],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
@@ -24280,23 +24652,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "05.10.2026–07.10.2026 next future; further Nov/Dec sessions published",
     "startDate": "2026-10-05",
     "endDate": "2026-10-07",
-    "sessions": [
-      {
-        "startDate": "2026-11-09",
-        "endDate": "2026-11-11",
-        "label": "09.–11.11.2026"
-      },
-      {
-        "startDate": "2026-11-30",
-        "endDate": "2026-12-02",
-        "label": "30.11.2026–02.12.2026"
-      },
-      {
-        "startDate": "2027-01-25",
-        "endDate": "2027-01-27",
-        "label": "25.–27.01.2027"
-      }
-    ],
+    "sessions": [{"startDate":"2026-11-09","endDate":"2026-11-11","label":"09.–11.11.2026"},{"startDate":"2026-11-30","endDate":"2026-12-02","label":"30.11.2026–02.12.2026"},{"startDate":"2027-01-25","endDate":"2027-01-27","label":"25.–27.01.2027"},{"startDate":"2027-02-15","endDate":"2027-02-17","label":"15.02.2027–17.02.2027 · PC-COLLEGE PRE 270215 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-03-22","endDate":"2027-03-24","label":"22.03.2027–24.03.2027 · PC-COLLEGE PRE 270322 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-04-12","endDate":"2027-04-14","label":"12.04.2027–14.04.2027 · PC-COLLEGE PRE 270412 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-05-18","endDate":"2027-05-20","label":"18.05.2027–20.05.2027 · PC-COLLEGE PRE 270518 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-06-07","endDate":"2027-06-09","label":"07.06.2027–09.06.2027 · PC-COLLEGE PRE 270607 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-07-12","endDate":"2027-07-14","label":"12.07.2027–14.07.2027 · PC-COLLEGE PRE 270712 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-08-02","endDate":"2027-08-04","label":"02.08.2027–04.08.2027 · PC-COLLEGE PRE 270802 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-09-06","endDate":"2027-09-08","label":"06.09.2027–08.09.2027 · PC-COLLEGE PRE 270906 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-09-27","endDate":"2027-09-29","label":"27.09.2027–29.09.2027 · PC-COLLEGE PRE 270927 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-10-27","endDate":"2027-10-29","label":"27.10.2027–29.10.2027 · PC-COLLEGE PRE 271027 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-11-22","endDate":"2027-11-24","label":"22.11.2027–24.11.2027 · PC-COLLEGE PRE 271122 · Live-Online laut Anbieter · Plätze nicht bestätigt"},{"startDate":"2027-12-20","endDate":"2027-12-22","label":"20.12.2027–22.12.2027 · PC-COLLEGE PRE 271220 · Live-Online laut Anbieter · Plätze nicht bestätigt"}],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
     "release_origin": "V98_RESTORE_W2_PCC10"
   },
@@ -24336,6 +24692,61 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
         "startDate": "2027-01-11",
         "endDate": "2027-01-12",
         "label": "11.–12.01.2027"
+      },
+      {
+        "startDate": "2027-02-11",
+        "endDate": "2027-02-12",
+        "label": "AFA270211 · 2027-02-11–2027-02-12 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-03-08",
+        "endDate": "2027-03-09",
+        "label": "AFA270308 · 2027-03-08–2027-03-09 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-03-09",
+        "endDate": "2027-03-10",
+        "label": "AFA270309 · 2027-03-09–2027-03-10 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-03",
+        "endDate": "2027-05-04",
+        "label": "AFA270503 · 2027-05-03–2027-05-04 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-06-03",
+        "endDate": "2027-06-04",
+        "label": "AFA270603 · 2027-06-03–2027-06-04 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-06-28",
+        "endDate": "2027-06-29",
+        "label": "AFA270628 · 2027-06-28–2027-06-29 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-29",
+        "endDate": "2027-07-30",
+        "label": "AFA270729 · 2027-07-29–2027-07-30 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-08-23",
+        "endDate": "2027-08-24",
+        "label": "AFA270823 · 2027-08-23–2027-08-24 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-09-23",
+        "endDate": "2027-09-24",
+        "label": "AFA270923 · 2027-09-23–2027-09-24 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-10-18",
+        "endDate": "2027-10-19",
+        "label": "AFA271018 · 2027-10-18–2027-10-19 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-11-18",
+        "endDate": "2027-11-19",
+        "label": "AFA271118 · 2027-11-18–2027-11-19 · Plätze / Präsenzort nicht bestätigt"
       }
     ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
@@ -24346,7 +24757,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "provider": "PC-COLLEGE Training GmbH (DE legal provider; CH delivery surface)",
     "title": "Adobe FrameMaker - Aufbaukurs",
     "description": "Aufbaukurs für fortgeschrittene FrameMaker-Anwender:innen. Im Zentrum stehen typografische und gestalterische Fragen, anspruchsvolle technische Dokumente, Druck- und PDF-Aufbereitung sowie die Optimierung des eigenen Workflows.",
-    "access": "Öffentlich buchbar in Basel, Bern, Zürich oder als Live-Online-Training.",
+    "access": "Schweizer FrameMaker-Kategorie am 26.10.2026 ohne gelistete Schulung; aktuell buchbare Schweizer Aufbaukurs-Ausgabe (FRA), Standortwahl und Live-Online-Platz nicht bestätigt.",
     "level": "BERUFSERFAHRUNG",
     "language": "DE",
     "country": "Schweiz",
@@ -24359,10 +24770,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "PREIS_AUF_ANFRAGE",
     "format": "PRÄSENZ|ONLINE LIVE",
     "duration": "2 Tage",
-    "start": "29.10.2026–30.10.2026 next future; further Dec session published",
-    "startDate": "2026-10-29",
+    "start": "CH-FrameMaker-Kategorie am 26.10.2026 ohne gelistete Schulung. Ausländische FRA-Termine 29.–30.10. und 21.–22.12.2026 nicht als Schweizer Buchung nachgewiesen.",
+    "startDate": "",
     "endDate": "",
-    "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
+    "region": "Allgemeine frühere CH-Optionen Basel/Bern/Zürich/Live-Online; tatsächlicher Kursort der aktuell nicht nachgewiesenen Schweizer FRA-Ausgabe offen",
     "release_origin": "V98_RESTORE_W2_PCC10",
     "publicationStatus": "HOLD"
   },
@@ -24402,6 +24813,61 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
         "startDate": "2027-01-14",
         "endDate": "2027-01-15",
         "label": "14.–15.01.2027"
+      },
+      {
+        "startDate": "2027-02-11",
+        "endDate": "2027-02-12",
+        "label": "ILA270211 · 2027-02-11–2027-02-12 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-04-08",
+        "endDate": "2027-04-09",
+        "label": "ILA270408 · 2027-04-08–2027-04-09 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-03",
+        "endDate": "2027-05-04",
+        "label": "ILA270503 · 2027-05-03–2027-05-04 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-06-03",
+        "endDate": "2027-06-04",
+        "label": "ILA270603 · 2027-06-03–2027-06-04 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-01",
+        "endDate": "2027-07-02",
+        "label": "ILA270701 · 2027-07-01–2027-07-02 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-29",
+        "endDate": "2027-07-30",
+        "label": "ILA270729 · 2027-07-29–2027-07-30 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-08-26",
+        "endDate": "2027-08-27",
+        "label": "ILA270826 · 2027-08-26–2027-08-27 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-09-23",
+        "endDate": "2027-09-24",
+        "label": "ILA270923 · 2027-09-23–2027-09-24 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-10-21",
+        "endDate": "2027-10-22",
+        "label": "ILA271021 · 2027-10-21–2027-10-22 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-11-18",
+        "endDate": "2027-11-19",
+        "label": "ILA271118 · 2027-11-18–2027-11-19 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-12-16",
+        "endDate": "2027-12-17",
+        "label": "ILA271216 · 2027-12-16–2027-12-17 · Plätze / Präsenzort nicht bestätigt"
       }
     ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
@@ -24425,7 +24891,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "PRÄSENZ|ONLINE LIVE",
     "duration": "2 Tage",
-    "start": "05.10.2026–06.10.2026 next future; further Nov sessions published",
+    "start": "Vergangene Durchführung 05.–06.10.2026; weitere 2026/2027-Termine gemäss sessions[]; Plätze und Veranstaltungsort prüfen",
     "startDate": "2026-10-05",
     "endDate": "2026-10-06",
     "sessions": [
@@ -24448,6 +24914,56 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
         "startDate": "2026-11-30",
         "endDate": "2026-12-01",
         "label": "30.11.2026–01.12.2026"
+      },
+      {
+        "startDate": "2027-01-25",
+        "endDate": "2027-01-26",
+        "label": "25.01.2027–26.01.2027 · PC-COLLEGE INA 270125 · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-02-15",
+        "endDate": "2027-02-16",
+        "label": "15.02.2027–16.02.2027 · PC-COLLEGE INA 270215 · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-03-22",
+        "endDate": "2027-03-23",
+        "label": "22.03.2027–23.03.2027 · PC-COLLEGE INA 270322 · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-04-12",
+        "endDate": "2027-04-13",
+        "label": "12.04.2027–13.04.2027 · PC-COLLEGE INA 270412 · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-06-07",
+        "endDate": "2027-06-08",
+        "label": "07.06.2027–08.06.2027 · PC-COLLEGE INA 270607 · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-08-02",
+        "endDate": "2027-08-03",
+        "label": "02.08.2027–03.08.2027 · PC-COLLEGE INA 270802 · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-09-06",
+        "endDate": "2027-09-07",
+        "label": "06.09.2027–07.09.2027 · PC-COLLEGE INA 270906 · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-09-27",
+        "endDate": "2027-09-28",
+        "label": "27.09.2027–28.09.2027 · PC-COLLEGE INA 270927 · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-11-02",
+        "endDate": "2027-11-03",
+        "label": "02.11.2027–03.11.2027 · PC-COLLEGE INA 271102 · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-11-22",
+        "endDate": "2027-11-23",
+        "label": "22.11.2027–23.11.2027 · PC-COLLEGE INA 271122 · Plätze nicht bestätigt"
       }
     ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
@@ -24489,6 +25005,66 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
         "startDate": "2026-11-26",
         "endDate": "2026-11-27",
         "label": "26.–27.11.2026"
+      },
+      {
+        "startDate": "2027-01-14",
+        "endDate": "2027-01-15",
+        "label": "PSA270114 · 2027-01-14–2027-01-15 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-02-11",
+        "endDate": "2027-02-12",
+        "label": "PSA270211 · 2027-02-11–2027-02-12 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-04-08",
+        "endDate": "2027-04-09",
+        "label": "PSA270408 · 2027-04-08–2027-04-09 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-03",
+        "endDate": "2027-05-04",
+        "label": "PSA270503 · 2027-05-03–2027-05-04 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-06-03",
+        "endDate": "2027-06-04",
+        "label": "PSA270603 · 2027-06-03–2027-06-04 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-01",
+        "endDate": "2027-07-02",
+        "label": "PSA270701 · 2027-07-01–2027-07-02 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-29",
+        "endDate": "2027-07-30",
+        "label": "PSA270729 · 2027-07-29–2027-07-30 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-08-26",
+        "endDate": "2027-08-27",
+        "label": "PSA270826 · 2027-08-26–2027-08-27 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-09-23",
+        "endDate": "2027-09-24",
+        "label": "PSA270923 · 2027-09-23–2027-09-24 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-10-21",
+        "endDate": "2027-10-22",
+        "label": "PSA271021 · 2027-10-21–2027-10-22 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-11-18",
+        "endDate": "2027-11-19",
+        "label": "PSA271118 · 2027-11-18–2027-11-19 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-12-16",
+        "endDate": "2027-12-17",
+        "label": "PSA271216 · 2027-12-16–2027-12-17 · Plätze / Präsenzort nicht bestätigt"
       }
     ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
@@ -24530,6 +25106,51 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
         "startDate": "2027-02-01",
         "endDate": "2027-02-02",
         "label": "01.–02.02.2027"
+      },
+      {
+        "startDate": "2027-02-22",
+        "endDate": "2027-02-23",
+        "label": "PRF270222 · 2027-02-22–2027-02-23 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-03-30",
+        "endDate": "2027-03-31",
+        "label": "PRF270330 · 2027-03-30–2027-03-31 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-04-19",
+        "endDate": "2027-04-20",
+        "label": "PRF270419 · 2027-04-19–2027-04-20 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-24",
+        "endDate": "2027-05-25",
+        "label": "PRF270524 · 2027-05-24–2027-05-25 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-06-14",
+        "endDate": "2027-06-15",
+        "label": "PRF270614 · 2027-06-14–2027-06-15 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-19",
+        "endDate": "2027-07-20",
+        "label": "PRF270719 · 2027-07-19–2027-07-20 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-08-09",
+        "endDate": "2027-08-10",
+        "label": "PRF270809 · 2027-08-09–2027-08-10 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-10-04",
+        "endDate": "2027-10-05",
+        "label": "PRF271004 · 2027-10-04–2027-10-05 · Plätze / Präsenzort nicht bestätigt"
+      },
+      {
+        "startDate": "2027-11-04",
+        "endDate": "2027-11-05",
+        "label": "PRF271104 · 2027-11-04–2027-11-05 · Plätze / Präsenzort nicht bestätigt"
       }
     ],
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
@@ -24540,7 +25161,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "provider": "PC-COLLEGE Training GmbH (DE legal provider; CH delivery surface)",
     "title": "Adobe Bridge - Kompaktkurs",
     "description": "Kompaktkurs zur zentralen Verwaltung von Bildern und Dateien mit Adobe Bridge. Behandelt werden Organisation, Suche, Vorschau, Archivierung, Präsentation und Farbverwaltung innerhalb von Adobe-Workflows.",
-    "access": "Öffentlich buchbar in Basel, Bern, Zürich oder als Live-Online-Training.",
+    "access": "Öffentliches Kursangebot mit Präsenzoptionen Basel, Bern und Zürich oder Live-Online. Konkreten Präsenzort, Terminbuchbarkeit und freie Plätze für die gewählte Durchführung beim Anbieter prüfen.",
     "level": "NICHT_PUBLIZIERT",
     "language": "DE",
     "country": "Schweiz",
@@ -24600,7 +25221,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "level": "NICHT_PUBLIZIERT",
     "language": "DE",
     "country": "Schweiz",
-    "url": "https://www.pc-college.ch/seminare-schulungen-kurse/indesign-und-xml/adobe-indesign-und-xml-xml-workflow-mit-adobe-indesign-ixm.php",
+    "url": "https://www.pc-college.ch/seminar/programmieren-fuer-anfaenger/adobe-indesign-und-xml-seminar-schulung-ixm.php",
     "approved": "2026-09-27",
     "reviewAfter": "2026-10-15",
     "focus": "MEDIENPRAXIS",
@@ -24609,11 +25230,78 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "PRÄSENZ|ONLINE LIVE",
     "duration": "2 Tage",
-    "start": "05.11.2026–06.11.2026 next future",
+    "start": "05.–06.11.2026; weitere direkt veröffentlichte 2027-Termine gemäss sessions[], Plätze und Modus je Durchführung prüfen",
     "startDate": "2026-11-05",
     "endDate": "2026-11-06",
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
-    "release_origin": "V98_RESTORE_W3_PCC13"
+    "release_origin": "V98_RESTORE_W3_PCC13",
+    "sessions": [
+      {
+        "startDate": "2026-11-05",
+        "endDate": "2026-11-06",
+        "label": "05.11.–06.11.2026 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-01-18",
+        "endDate": "2027-01-19",
+        "label": "18.01.–19.01.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-02-15",
+        "endDate": "2027-02-16",
+        "label": "15.02.–16.02.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-03-18",
+        "endDate": "2027-03-19",
+        "label": "18.03.–19.03.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-04-15",
+        "endDate": "2027-04-16",
+        "label": "15.04.–16.04.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-10",
+        "endDate": "2027-05-11",
+        "label": "10.05.–11.05.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-06-07",
+        "endDate": "2027-06-08",
+        "label": "07.06.–08.06.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-08",
+        "endDate": "2027-07-09",
+        "label": "08.07.–09.07.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-08-05",
+        "endDate": "2027-08-06",
+        "label": "05.08.–06.08.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-08-30",
+        "endDate": "2027-08-31",
+        "label": "30.08.–31.08.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-09-27",
+        "endDate": "2027-09-28",
+        "label": "27.09.–28.09.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-10-28",
+        "endDate": "2027-10-29",
+        "label": "28.10.–29.10.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-11-25",
+        "endDate": "2027-11-26",
+        "label": "25.11.–26.11.2027 · Durchführung gemäss PC-COLLEGE; Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "PCC-P29",
@@ -24732,7 +25420,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "region": "Konkreter Durchführungsort einer nächsten PSP-Ausgabe nicht bestätigt; allgemeine Anbieterstandorte sind keine Kursort-Zusage.",
     "release_origin": "V98_RESTORE_W3_PCC13",
     "publicationStatus": "HOLD",
-    "publicationReason": "PCC-P32: kein funktionierender aktueller kursgenauer PSP-Buchungslink; 02.–03.11.2026 und Durchführungsmodalität nicht verifiziert. Anbieter-Katalogeintrag allein genügt nicht zur Buchbarkeitsbehauptung."
+    "publicationReason": "QA09 R2_063 (19.10.2026): FACHLICH OUT_OF_SCOPE – Adobe Photoshop Professionelle Porträt-Retusche (PSP) behandelt Werbe-/Beauty- und Modelretusche statt journalistisch-redaktioneller Bildproduktion. Redaktionsentscheid abgeschlossen, im 116er-Roster nur historisch behalten und nicht publizieren. KEINE weitere CH-Termin-, Preis-, Ort- oder Buchbarkeitsrecherche. Reopen ausschliesslich bei neuer expliziter redaktioneller Scope-Entscheidung. Der ältere PSP-Link-/Session-Hold ist historisch, kein aktiver Quellenarbeitsauftrag."
   },
   {
     "id": "PCC-P33",
@@ -24757,7 +25445,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "endDate": "",
     "publicationStatus": "HOLD",
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
-    "release_origin": "V98_RESTORE_W3_PCC13"
+    "release_origin": "V98_RESTORE_W3_PCC13",
+    "publicationReason": "QA09 Nutzerentscheid 20.10.2026: ARCHIV__DERZEIT_KEINE_DURCHFUEHRUNG – zurzeit kein aktuelles PC-COLLEGE-Angebot für diesen PAE-Umsteigerkurs. Frühere 2026-Termine nur historischer Kontext und NICHT als aktuell buchbar darstellen; keine routinemässige Termin-/Preis-/Ort-Nachrecherche. Reopen erst bei neuer kursidentischer offizieller Ausschreibung mit tatsächlicher Buchungsoption oder expliziter Nutzerentscheidung."
   },
   {
     "id": "PCC-P38",
@@ -24964,7 +25653,59 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-06",
     "endDate": "",
     "region": "CH-Basel / CH-Bern / CH-Zürich / Live-Online",
-    "release_origin": "V98_RESTORE_W4_PCC9"
+    "release_origin": "V98_RESTORE_W4_PCC9",
+    "sessions": [
+      {
+        "startDate": "2026-11-06",
+        "endDate": "2026-11-06",
+        "label": "06.11.2026 · PC-COLLEGE ADE 261106 · Live-Online laut Anbieter; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-01-18",
+        "endDate": "2027-01-18",
+        "label": "18.01.2027 · PC-COLLEGE ADE 270118 · Live-Online laut Anbieter; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-02-15",
+        "endDate": "2027-02-15",
+        "label": "15.02.2027 · PC-COLLEGE ADE 270215 · Live-Online laut Anbieter; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-03-19",
+        "endDate": "2027-03-19",
+        "label": "19.03.2027 · PC-COLLEGE ADE 270319 · Live-Online laut Anbieter; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-04-16",
+        "endDate": "2027-04-16",
+        "label": "16.04.2027 · PC-COLLEGE ADE 270416 · Live-Online laut Anbieter; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-14",
+        "endDate": "2027-05-14",
+        "label": "14.05.2027 · PC-COLLEGE ADE 270514 · Live-Online laut Anbieter; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-06-11",
+        "endDate": "2027-06-11",
+        "label": "11.06.2027 · PC-COLLEGE ADE 270611 · Live-Online laut Anbieter; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-09",
+        "endDate": "2027-07-09",
+        "label": "09.07.2027 · PC-COLLEGE ADE 270709 · Live-Online laut Anbieter; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-08-06",
+        "endDate": "2027-08-06",
+        "label": "06.08.2027 · PC-COLLEGE ADE 270806 · Live-Online laut Anbieter; Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-09-03",
+        "endDate": "2027-09-03",
+        "label": "03.09.2027 · PC-COLLEGE ADE 270903 · Live-Online laut Anbieter; Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "PCC-P20",
@@ -25097,7 +25838,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "level": "NICHT_PUBLIZIERT",
     "language": "DE",
     "country": "Schweiz",
-    "url": "https://schreibszene.ch/kurse/",
+    "url": "https://schreibszene.ch/das-gelungene-interview/",
     "approved": "2026-09-28",
     "reviewAfter": "2026-10-27",
     "focus": "JOURNALISMUS",
@@ -25181,6 +25922,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "15.10.2026 and 20.11.2026 bookable",
     "startDate": "2026-10-15",
     "endDate": "2026-11-20",
+    "sessions": [
+      {"startDate": "2026-10-15", "endDate": "2026-10-15", "label": "15.10.2026 · Luins", "region": "Leman Studio, Chemin du Vernay 19A, 1184 Luins VD"},
+      {"startDate": "2026-11-20", "endDate": "2026-11-20", "label": "20.11.2026 · Genève; Verfügbarkeit prüfen", "region": "Downtown Studio, Rue des Vieux-Grenadiers 10, 1205 Genève GE"}
+    ],
     "region": "15.10.2026: Leman Studio, Chemin du Vernay 19A, 1184 Luins VD / 20.11.2026: Downtown Studio, Rue des Vieux-Grenadiers 10, 1205 Genève GE",
     "release_origin": "V98_RESTORE_W5_REMAINING17"
   },
@@ -25381,6 +26126,11 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
         "startDate": "2027-07-05",
         "endDate": "2027-07-06",
         "label": "05.–06.07.2027 · Wallisellen oder LiveStream"
+      },
+      {
+        "startDate": "2027-10-04",
+        "endDate": "2027-10-05",
+        "label": "2027-10-04–2027-10-05 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
       }
     ],
     "region": "Wallisellen / LiveStream",
@@ -25408,7 +26158,44 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-11",
     "endDate": "",
     "region": "Wallisellen / LiveStream",
-    "release_origin": "V98_RESTORE_W5_REMAINING17"
+    "release_origin": "V98_RESTORE_W5_REMAINING17",
+    "sessions": [
+      {
+        "startDate": "2026-11-11",
+        "endDate": "2026-11-11",
+        "label": "2026-11-11–2026-11-11 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-01-11",
+        "endDate": "2027-01-11",
+        "label": "2027-01-11–2027-01-11 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-03-10",
+        "endDate": "2027-03-10",
+        "label": "2027-03-10–2027-03-10 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-10",
+        "endDate": "2027-05-10",
+        "label": "2027-05-10–2027-05-10 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-07-09",
+        "endDate": "2027-07-09",
+        "label": "2027-07-09–2027-07-09 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-09-10",
+        "endDate": "2027-09-10",
+        "label": "2027-09-10–2027-09-10 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-11-10",
+        "endDate": "2027-11-10",
+        "label": "2027-11-10–2027-11-10 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "MW-P09",
@@ -25432,7 +26219,34 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-23",
     "endDate": "2026-11-24",
     "region": "Wallisellen / LiveStream",
-    "release_origin": "V98_RESTORE_W5_REMAINING17"
+    "release_origin": "V98_RESTORE_W5_REMAINING17",
+    "sessions": [
+      {
+        "startDate": "2026-11-23",
+        "endDate": "2026-11-24",
+        "label": "2026-11-23–2026-11-24 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-02-22",
+        "endDate": "2027-02-23",
+        "label": "2027-02-22–2027-02-23 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-18",
+        "endDate": "2027-05-19",
+        "label": "2027-05-18–2027-05-19 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-08-23",
+        "endDate": "2027-08-24",
+        "label": "2027-08-23–2027-08-24 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-11-04",
+        "endDate": "2027-11-05",
+        "label": "2027-11-04–2027-11-05 · Wallisellen oder LiveStream · Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "CAD-001",
@@ -25477,11 +26291,25 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "PRÄSENZ | ONLINE SELBSTLERNEN",
     "duration": "15 hours",
-    "start": "26.–27.10.2026 (Lausanne, Präsenz); weitere Präsenzdurchführung kursgenau nicht bestätigt; Selbstlernvariante ohne fixen Termin",
+    "start": "26.–27.10.2026 und 23.–24.11.2026 (Lausanne, getrennte Präsenztermine); CHF 250 Selbstlernvariante ohne fixen Termin",
     "startDate": "2026-10-26",
     "endDate": "2026-10-27",
     "region": "Lausanne (Präsenzdurchführungen) / selbstgesteuertes E-Learning",
-    "release_origin": "V98_W6_CAD26_CONTROLLED_MATERIALISATION"
+    "release_origin": "V98_W6_CAD26_CONTROLLED_MATERIALISATION",
+    "sessions": [
+      {
+        "startDate": "2026-10-26",
+        "endDate": "2026-10-27",
+        "label": "26.–27.10.2026 · Lausanne · Präsenz",
+        "region": "Lausanne"
+      },
+      {
+        "startDate": "2026-11-23",
+        "endDate": "2026-11-24",
+        "label": "23.–24.11.2026 · Lausanne · Präsenz",
+        "region": "Lausanne"
+      }
+    ]
   },
   {
     "id": "CAD-003",
@@ -25758,7 +26586,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "level": "BERUFSERFAHRUNG",
     "language": "FR",
     "country": "Schweiz",
-    "url": "https://www.cadschool.ch/formation/midjourney/",
+    "url": "https://www.cadschool.ch/formation/midjourney/perfectionnement-a-midjourney/",
     "approved": "2026-09-28",
     "reviewAfter": "2026-12-27",
     "focus": "MEDIENPRAXIS",
@@ -25866,7 +26694,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "start": "2026-11-03–2026-12-01 / FUTURE_BOOKABLE",
     "startDate": "2026-11-03",
     "endDate": "2026-12-01",
-    "region": "Genève or Lausanne",
+    "region": "Genève – Salle GF02, Route de Frontenex 62, 1207 Genève (Ausgabe 03.11.–01.12.2026)",
     "release_origin": "V98_W6_CAD26_CONTROLLED_MATERIALISATION"
   },
   {
@@ -26007,10 +26835,53 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "PRÄSENZ",
     "duration": "45 hours",
-    "start": "Offiziell gelistete getrennte 6-Tage-Präsenzausgaben: 27.10.–10.11., 03.–17.11., 02.–16.12.2026 sowie 15.–26.02.2027; erste Ausgabe Lausanne/Dendreo, übrige Kursorte und Platzstatus nicht editionsscharf bestätigt.",
+    "start": "Sieben getrennte 6-Tage-Präsenzausgaben, je 45h und CHF 1'950 (Dendreo): 27.10.–10.11.2026 Lausanne LR22; 03.–17.11.2026 Genf GF05; 02.–16.12.2026 Genf GF00; 15.–26.02., 12.–23.04., 07.–18.06. und 11.–22.10.2027 Lausanne LR22. Durchführungsorte pro Ausgabe belegt; freie Plätze nicht transaktional bestätigt.",
     "startDate": "2026-10-27",
     "endDate": "2026-11-10",
-    "sessions": [{"startDate":"2026-10-27","endDate":"2026-11-10","label":"27.10.–10.11.2026 · Präsenz Lausanne","region":"Salle LR22 – VD / PC, Lausanne (editionsbelegt)"},{"startDate":"2026-11-03","endDate":"2026-11-17","label":"03.–17.11.2026 · Präsenz (Katalog)","region":"Durchführungsort dieser Ausgabe nicht editionsscharf bestätigt"},{"startDate":"2026-12-02","endDate":"2026-12-16","label":"02.–16.12.2026 · Präsenz (Katalog)","region":"Durchführungsort dieser Ausgabe nicht editionsscharf bestätigt"},{"startDate":"2027-02-15","endDate":"2027-02-26","label":"15.–26.02.2027 · Präsenz (Katalog)","region":"Durchführungsort dieser Ausgabe nicht editionsscharf bestätigt"}],
+    "sessions": [
+      {
+        "startDate": "2026-10-27",
+        "endDate": "2026-11-10",
+        "label": "27.10.–10.11.2026 · Präsenz Lausanne",
+        "region": "Salle LR22 – VD / PC, Lausanne (editionsbelegt)"
+      },
+      {
+        "startDate": "2026-11-03",
+        "endDate": "2026-11-17",
+        "label": "03.–17.11.2026 · Präsenz Genf GF05",
+        "region": "Salle GF05 – GE / MAC, Route de Frontenex 62, 1207 Genève (Dendreo, editionsbelegt)"
+      },
+      {
+        "startDate": "2026-12-02",
+        "endDate": "2026-12-16",
+        "label": "02.–16.12.2026 · Präsenz Genf GF00",
+        "region": "Salle GF00 – GE / PC, Route de Frontenex 62, 1207 Genève (Dendreo, editionsbelegt)"
+      },
+      {
+        "startDate": "2027-02-15",
+        "endDate": "2027-02-26",
+        "label": "15.–26.02.2027 · Präsenz Lausanne LR22",
+        "region": "Salle LR22 – VD / PC, Avenue de la Rasude 2, 1006 Lausanne (Dendreo, editionsbelegt)"
+      },
+      {
+        "startDate": "2027-04-12",
+        "endDate": "2027-04-23",
+        "label": "12.–23.04.2027 · Präsenz Lausanne LR22",
+        "region": "Salle LR22 – VD / PC, Avenue de la Rasude 2, 1006 Lausanne (Dendreo, editionsbelegt)"
+      },
+      {
+        "startDate": "2027-06-07",
+        "endDate": "2027-06-18",
+        "label": "07.–18.06.2027 · Präsenz Lausanne LR22",
+        "region": "Salle LR22 – VD / PC, Avenue de la Rasude 2, 1006 Lausanne (Dendreo, editionsbelegt)"
+      },
+      {
+        "startDate": "2027-10-11",
+        "endDate": "2027-10-22",
+        "label": "11.–22.10.2027 · Präsenz Lausanne LR22",
+        "region": "Salle LR22 – VD / PC, Avenue de la Rasude 2, 1006 Lausanne (Dendreo, editionsbelegt)"
+      }
+    ],
     "region": "Genève or Lausanne",
     "release_origin": "V98_W6_CAD26_CONTROLLED_MATERIALISATION"
   },
@@ -26205,6 +27076,20 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-22",
     "endDate": "2026-10-23",
     "region": "ONLINE / Distance",
+    "sessions": [
+      {
+        "startDate": "2026-11-26",
+        "endDate": "2026-11-27",
+        "label": "2026-11-26–2026-11-27 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      },
+      {
+        "startDate": "2026-12-03",
+        "endDate": "2026-12-04",
+        "label": "2026-12-03–2026-12-04 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V98_W8_DAWAN8_CONTROLLED_MATERIALISATION"
   },
   {
@@ -26229,6 +27114,32 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-16",
     "endDate": "2026-11-18",
     "region": "ONLINE / Distance",
+    "sessions": [
+      {
+        "startDate": "2026-11-16",
+        "endDate": "2026-11-18",
+        "label": "16.–18.11.2026 · Dawan FOAD bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      },
+      {
+        "startDate": "2026-11-30",
+        "endDate": "2026-12-02",
+        "label": "30.11.–02.12.2026 · Dawan FOAD gemäss aktueller offizieller Liste 05.11.2026 bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      },
+      {
+        "startDate": "2026-12-07",
+        "endDate": "2026-12-09",
+        "label": "07.–09.12.2026 · Dawan FOAD bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      },
+      {
+        "startDate": "2026-12-14",
+        "endDate": "2026-12-16",
+        "label": "14.–16.12.2026 · Dawan FOAD bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V98_W8_DAWAN8_CONTROLLED_MATERIALISATION"
   },
   {
@@ -26253,6 +27164,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "",
     "endDate": "",
     "region": "Genève / Distance",
+    "sessions": [
+      {
+        "startDate": "2026-12-07",
+        "endDate": "2026-12-11",
+        "label": "2026-12-07–2026-12-11 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V98_W8_DAWAN8_CONTROLLED_MATERIALISATION"
   },
   {
@@ -26373,6 +27292,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-15",
     "endDate": "2026-10-16",
     "region": "ONLINE / Distance",
+    "sessions": [
+      {
+        "startDate": "2026-11-19",
+        "endDate": "2026-11-20",
+        "label": "2026-11-19–2026-11-20 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V98_W9_DAWAN1_CONTROLLED_MATERIALISATION"
   },
   {
@@ -26437,14 +27364,33 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "reviewAfter": "2026-10-22",
     "focus": "MEDIENPRAXIS",
     "offerType": "KURS",
-    "priceDisplay": "CHF 1'575 Präsenz / CHF 1'260 Distanz",
+    "priceDisplay": "CHF 1'575 Präsenz / CHF 1'260 Distanz (jeweils exkl. Steuer; formatgebundene Tarife)",
     "priceCategory": "MEHRERE_TARIFE",
     "format": "PRÄSENZ|ONLINE LIVE",
     "duration": "3 Tage / 21 Stunden",
-    "start": "Live-Online-Ausgaben 26.–28.10.2026 und 30.11.–02.12.2026 (getrennte Durchführungen; Plätze nicht bestätigt).",
+    "start": "Live-Online: 26.–28.10.2026, 30.11.–02.12.2026 sowie 25.–27.01.2027 (drei getrennte Ausgaben; freie Plätze nicht bestätigt).",
     "startDate": "2026-10-26",
     "endDate": "2026-10-28",
-    "sessions": [{"startDate":"2026-10-26","endDate":"2026-10-28","label":"26.–28.10.2026 · Live-Online","region":"ONLINE / Distance"},{"startDate":"2026-11-30","endDate":"2026-12-02","label":"30.11.–02.12.2026 · Live-Online","region":"ONLINE / Distance"}],
+    "sessions": [
+      {
+        "startDate": "2026-10-26",
+        "endDate": "2026-10-28",
+        "label": "26.–28.10.2026 · Live-Online",
+        "region": "ONLINE / Distance"
+      },
+      {
+        "startDate": "2026-11-30",
+        "endDate": "2026-12-02",
+        "label": "30.11.–02.12.2026 · Live-Online",
+        "region": "ONLINE / Distance"
+      },
+      {
+        "startDate": "2027-01-25",
+        "endDate": "2027-01-27",
+        "label": "25.–27.01.2027 · Live-Online (Anbieter-Distanzliste)",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "region": "ONLINE / Distance",
     "release_origin": "V98_W11_DAWAN2_CONTROLLED_MATERIALISATION"
   },
@@ -26586,11 +27532,28 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "MEHRERE_TARIFE",
     "format": "NICHT_PUBLIZIERT",
     "duration": "2 jours, de 9h à 17h",
-    "start": "Letzte belegte Durchführung 24.–25.09.2026; aktuell kein künftiger Termin publiziert",
+    "start": "Vergangene Durchführung 24.–25.09.2026; weitere 24.–25.05. und 27.–28.09.2027 gemäss sessions[]; Plätze nicht bestätigt",
     "startDate": "",
     "endDate": "",
     "region": "NOT_PUBLISHED",
-    "release_origin": "V98_R18_SDBB_CFJM_RESTORATION"
+    "release_origin": "V98_R18_SDBB_CFJM_RESTORATION",
+    "sessions": [
+      {
+        "startDate": "2026-09-24",
+        "endDate": "2026-09-25",
+        "label": "24.09.2026–25.09.2026 · CFJM · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-05-24",
+        "endDate": "2027-05-25",
+        "label": "24.05.2027–25.05.2027 · CFJM · Plätze nicht bestätigt"
+      },
+      {
+        "startDate": "2027-09-27",
+        "endDate": "2027-09-28",
+        "label": "27.09.2027–28.09.2027 · CFJM · Plätze nicht bestätigt"
+      }
+    ]
   },
   {
     "id": "OFFER-CFJM-031",
@@ -27023,6 +27986,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-09-28",
     "endDate": "2026-09-30",
     "region": "ONLINE / Distance",
+    "sessions": [
+      {
+        "startDate": "2026-12-07",
+        "endDate": "2026-12-09",
+        "label": "2026-12-07–2026-12-09 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
   },
   {
@@ -27047,6 +28018,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-01",
     "endDate": "2026-10-02",
     "region": "ONLINE / Distance",
+    "sessions": [
+      {
+        "startDate": "2026-12-10",
+        "endDate": "2026-12-11",
+        "label": "2026-12-10–2026-12-11 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
   },
   {
@@ -27096,6 +28075,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-11-16",
     "endDate": "2026-11-18",
     "region": "ONLINE / Distance",
+    "sessions": [
+      {
+        "startDate": "2026-12-07",
+        "endDate": "2026-12-09",
+        "label": "2026-12-07–2026-12-09 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
   },
   {
@@ -27120,6 +28107,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-12",
     "endDate": "2026-10-14",
     "region": "ONLINE / Distance",
+    "sessions": [
+      {
+        "startDate": "2026-12-14",
+        "endDate": "2026-12-16",
+        "label": "2026-12-14–2026-12-16 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
   },
   {
@@ -27361,6 +28356,26 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-09-28",
     "endDate": "2026-10-02",
     "region": "ONLINE / Distance",
+    "sessions": [
+      {
+        "startDate": "2026-11-23",
+        "endDate": "2026-11-27",
+        "label": "2026-11-23–2026-11-27 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      },
+      {
+        "startDate": "2026-11-30",
+        "endDate": "2026-12-04",
+        "label": "2026-11-30–2026-12-04 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      },
+      {
+        "startDate": "2026-12-14",
+        "endDate": "2026-12-18",
+        "label": "2026-12-14–2026-12-18 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
   },
   {
@@ -27385,6 +28400,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-09-28",
     "endDate": "2026-09-30",
     "region": "ONLINE / Distance",
+    "sessions": [
+      {
+        "startDate": "2026-11-30",
+        "endDate": "2026-12-02",
+        "label": "2026-11-30–2026-12-02 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
   },
   {
@@ -27746,6 +28769,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-05",
     "endDate": "2026-10-07",
     "region": "ONLINE / Distance",
+    "sessions": [
+      {
+        "startDate": "2026-12-14",
+        "endDate": "2026-12-16",
+        "label": "2026-12-14–2026-12-16 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
   },
   {
@@ -27818,6 +28849,26 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-10-01",
     "endDate": "2026-10-02",
     "region": "ONLINE / Distance",
+    "sessions": [
+      {
+        "startDate": "2026-11-19",
+        "endDate": "2026-11-20",
+        "label": "2026-11-19–2026-11-20 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      },
+      {
+        "startDate": "2026-12-03",
+        "endDate": "2026-12-04",
+        "label": "2026-12-03–2026-12-04 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      },
+      {
+        "startDate": "2026-12-10",
+        "endDate": "2026-12-11",
+        "label": "2026-12-10–2026-12-11 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
   },
   {
@@ -28563,6 +29614,14 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "startDate": "2026-09-28",
     "endDate": "2026-09-30",
     "region": "Genève current occurrence",
+    "sessions": [
+      {
+        "startDate": "2026-11-30",
+        "endDate": "2026-12-02",
+        "label": "2026-11-30–2026-12-02 · Dawan FOAD vom Anbieter bestätigt; Plätze nicht bestätigt",
+        "region": "ONLINE / Distance"
+      }
+    ],
     "release_origin": "V99_DAWAN_R8_PRICE_CLOSURE_20260929"
   },
   {
@@ -29904,7 +30963,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "BIS_500",
     "format": "PRÄSENZ",
     "duration": "6 Semester / 180 ECTS",
-    "start": "Nächste Durchführung nicht publiziert.",
+    "start": "Studienstart Herbst 2027 (genauer Tag nicht publiziert); Bewerbungsphase 07.01.–30.03.2027, bei Abschlussdokumenten aus Drittstaaten bis 09.03.2027. Aufnahmeentscheid vorbehalten.",
     "startDate": "",
     "endDate": "",
     "region": "Wien",
@@ -29928,7 +30987,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "BIS_500",
     "format": "PRÄSENZ",
     "duration": "6 Semester / 180 ECTS",
-    "start": "Nächste Durchführung nicht publiziert.",
+    "start": "Studienstart Herbst 2027 (genauer Tag nicht publiziert); Bewerbungsphase 07.01.–30.03.2027, bei Abschlussdokumenten aus Drittstaaten bis 09.03.2027. Aufnahmeentscheid vorbehalten.",
     "startDate": "",
     "endDate": "",
     "region": "Wien",
@@ -29952,7 +31011,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "BIS_500",
     "format": "PRÄSENZ",
     "duration": "4 Semester / 120 ECTS",
-    "start": "Nächste Durchführung nicht publiziert.",
+    "start": "Studienstart Herbst 2027 (genauer Tag nicht publiziert); Bewerbungsphase 07.01.–30.03.2027, bei Abschlussdokumenten aus Drittstaaten bis 09.03.2027. Aufnahmeentscheid vorbehalten.",
     "startDate": "",
     "endDate": "",
     "region": "Wien",
@@ -29963,7 +31022,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "provider": "FH Wiener Neustadt",
     "title": "BA Journalismus & Unternehmenskommunikation",
     "description": "Vollzeit-Bachelor mit journalistischem Schreiben, Recherche, Radio/TV/Podcast und drei Pflichtpraktika.",
-    "access": "Öffentliche Bewerbung; aktuelle Bewerbungsphase geschlossen. Schweizer Zugang: grundsätzlich offen/positiv belegt.",
+    "access": "Schweizer:innen laut offizieller FH-Wiener-Neustadt-Seite als EU/EWR/CH-Tarif- und Bewerbungsgruppe zugelassen; Bewerbungsfrist für den Studienstart September 2027: 15.05.2027, für Nicht-EU 31.03.2027. Persönliche Zulassung und freie Studienplätze nicht garantiert.",
     "level": "NICHT_PUBLIZIERT",
     "language": "DE",
     "country": "Österreich",
@@ -29976,10 +31035,10 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "BIS_500",
     "format": "PRÄSENZ",
     "duration": "6 Semester / 180 ECTS",
-    "start": "Studienstart September; Bewerbungsfrist 2026 bereits abgelaufen",
+    "start": "Studienbeginn September 2027 (genauer Tag nicht publiziert); Bewerbungsfrist für EU/EWR/Schweiz 15.05.2027, für Nicht-EU 31.03.2027; Aufnahmeentscheid separat",
     "startDate": "",
     "endDate": "",
-    "region": "Wiener Neustadt",
+    "region": "City Campus Wiener Neustadt",
     "release_origin": "AT_KLUGSCHEISSER_REDTEAM_R3_20260930 / AT_SCOPE_REMEDIATION_R1_20260930 / MEDIASKILLS_AT_OWNER_DATA_FREEZE_FINALIZED_2026-09-04"
   },
   {
@@ -29996,12 +31055,12 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "reviewAfter": "2026-10-31",
     "focus": "JOURNALISMUS",
     "offerType": "STUDIUM",
-    "priceDisplay": "NICHT_PUBLIZIERT",
-    "priceCategory": "PREIS_NICHT_PUBLIZIERT",
+    "priceDisplay": "EUR 363,36 Studienbeitrag je Semester für CH/EU/EWR (6 Semester; ÖH-Beitrag separat)",
+    "priceCategory": "UEBER_2000",
     "format": "PRÄSENZ",
     "duration": "6 Semester / 180 ECTS",
-    "start": "Wintersemester 2026/27",
-    "startDate": "",
+    "start": "Studienstart 04.10.2027 (Wintersemester 2027/28); Bewerbung ab November 2026 bis 22.03.2027. Aufnahmeentscheid vorbehalten.",
+    "startDate": "2027-10-04",
     "endDate": "",
     "region": "Graz",
     "release_origin": "AT_KLUGSCHEISSER_REDTEAM_R3_20260930 / AT_SCOPE_REMEDIATION_R1_20260930 / MEDIASKILLS_AT_OWNER_DATA_FREEZE_FINALIZED_2026-09-04"
@@ -30035,7 +31094,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "provider": "USTP – University of Applied Sciences St. Pölten",
     "title": "BA Medienmanagement",
     "description": "Medienmanagement-Bachelor mit journalistischen Grundkompetenzen und Praxislaboren für Print, TV/Video, Radio/Podcast und Online.",
-    "access": "Öffentliche Bewerbung bei nächster Ausschreibung. Schweizer Zugang: grundsätzlich offen/positiv belegt.",
+    "access": "Öffentliche Bewerbung für das Wintersemester 2027/28 seit 01.10.2026 möglich, regulär bis 31.05.2027; Drittstaatsangehörige bis 01.02.2027. Schweizer Zugang grundsätzlich möglich, Zulassung und Aufnahmetest vorbehalten.",
     "level": "NICHT_PUBLIZIERT",
     "language": "DE",
     "country": "Österreich",
@@ -30048,7 +31107,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "BIS_500",
     "format": "PRÄSENZ",
     "duration": "6 Semester",
-    "start": "Studienbeginn Kalenderwoche 37; nächste Bewerbung WS 2027/28 ab Oktober 2026",
+    "start": "Studienbeginn Wintersemester 2027/28 (genauer Tag nicht publiziert); Bewerbungsfrist 01.10.2026–31.05.2027, für Drittstaatsangehörige bis 01.02.2027. Aufnahmeentscheid vorbehalten.",
     "startDate": "",
     "endDate": "",
     "region": "St. Pölten",
@@ -30659,7 +31718,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "provider": "WIFI Wien",
     "title": "Podcasts – entwickeln, umsetzen, vermarkten",
     "description": "Praxisprogramm von Podcast-Konzeption über Produktion bis Vermarktung.",
-    "access": "Öffentlich buchbar. Schweizer Zugang: grundsätzlich offen/positiv belegt.",
+    "access": "Öffentliches Präsenzangebot in Wien; Teilnehmende aus der Schweiz grundsätzlich zugelassen. Stand 04.11.2026: keine aktuell buchbare Durchführung; bei nächster Ausgabe erneut prüfen.",
     "level": "NICHT_PUBLIZIERT",
     "language": "DE",
     "country": "Österreich",
@@ -30672,9 +31731,9 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "501_2000",
     "format": "PRÄSENZ",
     "duration": "56 Lehreinheiten",
-    "start": "Nächste Durchführung nicht publiziert.",
-    "startDate": "",
-    "endDate": "",
+    "start": "Letzte Durchführung 23.09.–20.10.2026 (abgeschlossen); aktuell keine Termine verfügbar, neue Durchführung erst in Planung.",
+    "startDate": "2026-09-23",
+    "endDate": "2026-10-20",
     "region": "Wien",
     "release_origin": "AT_KLUGSCHEISSER_REDTEAM_R3_20260930 / AT_SCOPE_REMEDIATION_R1_20260930 / MEDIASKILLS_AT_OWNER_DATA_FREEZE_FINALIZED_2026-09-04"
   },
@@ -30740,8 +31799,8 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "reviewAfter": "2027-02-01",
     "focus": "JOURNALISMUS",
     "offerType": "STUDIUM",
-    "priceDisplay": "Studienbeitrag nach Universitätsrecht",
-    "priceCategory": "PREIS_NICHT_PUBLIZIERT",
+    "priceDisplay": "Für CH: bis inkl. 8. Semester kein Studienbeitrag; ÖH EUR 26,20 je Semester. Ab 9. Semester zusätzlich EUR 363,36 Studienbeitrag",
+    "priceCategory": "MEHRERE_TARIFE",
     "format": "PRÄSENZ",
     "duration": "6 Semester / 180 ECTS",
     "start": "Bachelorprogramm aktiv; Aufnahmeverfahren 2026 abgeschlossen",
@@ -30816,7 +31875,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "priceCategory": "PREIS_NICHT_PUBLIZIERT",
     "format": "PRÄSENZ",
     "duration": "4 Semester / 120 ECTS",
-    "start": "Nächste Durchführung nicht publiziert.",
+    "start": "Sommersemester 2027: Zulassungsfrist für Masterstudien 08.01.–31.03.2027. Fachlich einschlägiger Bachelorabschluss und Deutsch C1 erforderlich; keine Aufnahmeprüfung. Exakter Studien- und Unterrichtsbeginn nicht publiziert; Zulassung vorbehalten.",
     "startDate": "",
     "endDate": "",
     "region": "Klagenfurt",
@@ -31115,7 +32174,7 @@ window.WEITERBILDUNGSRADAR_OFFERS = [
     "provider": "Johannes Kepler Universität Linz (JKU)",
     "title": "Erweiterungsstudium Journalismus und Wissenschaftskommunikation",
     "description": "Erweiterungsstudium Journalismus und Wissenschaftskommunikation der JKU, co-developed mit OÖ. Journalismusakademie.",
-    "access": "Institutionell auf JKU-Zielgruppe beschränkt. Schweizer Zugang: grundsätzlich offen/positiv belegt.",
+    "access": "Zugang nur bei laufendem oder abgeschlossenem Bachelor-, Master- oder Diplomstudium an der JKU Linz. Ohne Abschluss sind Studienfortschritte erforderlich: Bachelor mindestens 120 ECTS, Master mindestens 80 ECTS oder erster Diplomstudienabschnitt. Schweizer Staatsangehörigkeit allein genügt nicht; individuelle Zulassung vorbehalten.",
     "level": "NICHT_PUBLIZIERT",
     "language": "DE",
     "country": "Österreich",
