@@ -35,7 +35,7 @@ DE (#5, #6, #7): 317 ist ein historischer Research-Zähler («not recomputed in 
 CH (#2a): 1'223 = CH-Release-Angebote R43. Die Zahl 641 kommt im R43-QA-Blatt als Anzahl **leerer startDate-Felder** vor; die gleichlautende Zahl «641 Foundation-Routen» (Bericht 02.09., Drive 1wsHAyFejslTHmBnW_c2bRiaxUlfiigXF) wurde in Paket 1 nicht geöffnet. Verschiedene Einheiten, keine Teilmenge.
 Offen: CH-641-Foundation-Bericht in Paket 2 lesen, nur falls die Foundation-Routen für die Beta gebraucht werden.
 
-## W4 – «Master V120» nicht auffindbar → GEKLÄRT (als Label)
+## W4 – «Master V120» nicht auffindbar → GEKLÄRT und vom Owner abgeschlossen (09.11.)
 
 Drive-Titelsuche «V120»: 0 Treffer. «V120» erscheint nur als Statuszeile in Kontrolldokumenten, z. B. DE-Dokument 03.09.: «V96 / V120 = UNCHANGED». Nachfolger für die Website sind CH R43, AT R3, LI R1 (30.09.) und R4 (15.09.). V120 ist damit kein Datenbestand, der in die Harmonisierung einfliesst.
 
@@ -47,7 +47,7 @@ Alle 13 fehlenden IDs (OFFER-MAZ-145, OFFER-FHNW-010, OFFER-DIGICOMP-055, OFFER-
 
 Target5 nennt «SFJ_AT_R3_FINAL_DATA_GOLD_124_20260930 / … R3 overlay/control 1mtLbV9ec…». Die Datei mit dieser ID heisst tatsächlich `SFJ_AT_SCOPE_R1_20260930` und enthält die R3-Blätter (`AT_R3_FINAL_GATE` usw.). Laut Target5 gibt es kein einzelnes Drive-Blatt mit den 124 Zeilen: «Drive canonical is parent+overlay because raw XLSX import was unavailable». Die 124 AT-Zeilen in `data.js` sind vollständig in R4-AT enthalten (Crosswalk 124/124).
 
-## W7 – Feld `country` mischt Markt, Anbieterland und Ort → TEILWEISE (Regel besteht, Umsetzung offen)
+## W7 – Feld `country` mischt Markt, Anbieterland und Ort → GEKLÄRT (Owner 09.11.: Vier-Felder-Modell), Umsetzung Paket 2
 
 Befund: In `data.js` tragen 19 CH-Release-Angebote von «Ateliers de l’image et du son» (CH-V33-A01 bis A19, region «Suisse romande / Ort nach Vereinbarung») «Frankreich» und 2 Angebote von MiTech (V79-01/02, region «ONLINE») den Freitext «CH_ACCESS / operational presence Chiasso». Die Website filtert über `countryDisplay()` nach diesem Feld.
 
@@ -68,7 +68,7 @@ Anbieterland der Ateliers (19) und MiTech (2) ist noch nicht belegt und kommt in
 
 227 = 124 + 76 OUT + 27 HOLD (30.09.). R4 (15.09.) enthält 224 AT-Zeilen, davon 124 auf der Website, 100 nicht. 103 OUT/HOLD stehen 100 Nicht-Website-Zeilen gegenüber: Drei AT-Objekte sind zwischen 15.09. und 30.09. hinzugekommen oder anders gezählt. Klärung im Paket 2 über die physische Parent-Tabelle R2 (1Vg42tEtZXhqcPdVJsBbYO4GEJmoeCUcK).
 
-## W9 – «Alle vorhandenen Daten in die Beta» vs. dokumentierte OUT/HOLD-Zeilen → OWNER-ENTSCHEID
+## W9 – «Alle vorhandenen Daten in die Beta» vs. dokumentierte OUT/HOLD-Zeilen → GEKLÄRT (Owner 09.11.)
 
 Owner-Entscheid 4 (09.11.) verlangt alle vorhandenen Daten in der Beta. Die Quellen enthalten aber auch bewusst ausgeschlossene Zeilen: AT 76 OUT + 27 HOLD, LI 1 OUT + 1 HOLD + 1 abgelaufen, CH 220 R4-Zeilen nicht in R43 (u. a. 133 Scope-Ausschlüsse vom 30.09.).
 
@@ -77,8 +77,8 @@ Owner-Entscheid 4 (09.11.) verlangt alle vorhandenen Daten in der Beta. Die Quel
 ## Owner-Entscheide 09.11. zu Paket 1 (Nachtrag)
 - W1: Die Live-Dateien (Paket A: `index.html`, `app-v33.js`, `data-a1-86ff68ddc9ac.js`, `smart-search-data-a1-a38a2a2b2391.js`, `styles-v24.css`) sind massgeblich. Fehlender Paket-A-Freigabebericht ist damit kein Blocker.
 - W9: OUT- und HOLD-Zeilen → Nachrecherche-Warteschlange, nicht sichtbar.
-- W7: Owner verweist auf die frühere Klärung mit ChatGPT und auf Ländercodes; Vier-Felder-Vorschlag oben zur Bestätigung offen.
-- W4 (V120 schliessen): noch keine Antwort.
+- W7: Vier-Felder-Modell (`release_markt`, `anbieter_land`, `durchfuehrungsort` mit Sicherheitsgrad, `ch_zugang`) mit ISO-3166-1-Ländercodes vom Owner bestätigt (09.11.). Umsetzung im Master in Paket 2; Anbieterland Ateliers (19) und MiTech (2) → Nachrecherche-Warteschlange.
+- W4: V120 vom Owner als erledigt abgeschlossen (09.11.) → Erledigt-Liste, nicht wieder öffnen.
 
 ---
 
