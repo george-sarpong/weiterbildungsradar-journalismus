@@ -57,6 +57,10 @@ Rechenidentitäten (geprüft): 1'223 + 124 + 5 = 1'352 · 1'352 + 111 + 2'355 = 
 - Datei mit «V120» im Titel: Drive-Titelsuche 0 Treffer (siehe W4).
 - Freigabe- oder Abnahmebericht für «Paket A» (app-v33.js, data-a1): Volltextsuche nach `app-v33.js` findet nur das Live-ZIP vom 09.11. (siehe W1).
 
+## 5a. Noch nicht gelesen (Priorität 2 laut STATUS Abschnitt 4)
+
+Auftrag Paket 1 umfasste nur Priorität 1. Ungelesen: Project Core CP01 (1sBd9_4o5FOk2hjrP7tDo2AyFVkOPo1WW0mw2GzWQgyg), End-to-End-Audit 28.10. (1mv4fmYveqPsBw849T5w_NbEq-22xubTxZwrltCWZiFE), Handoff Phase A (1xal-qeanjwiAds-C1l0azZ9X7XKJCGrHiZVEEE7cMuE), Claim-Register (1bBDP8Nm0uY5Sr1b7SiKfhV1kPhJEk8IkFWX-YMTYbh0). Aus Bibel Band 01/02 nur die Passagen zum Durchführungsort (W7) gelesen.
+
 ## 6. Reproduktion
 
 Zeilenzählungen und Crosswalks: Skript `claude-work/paket1/paket1_crosswalk.py` (liest Sheets-Exporte und Repo-Dateien; Exporte nicht eingecheckt, weil per Google-Sheets-API jederzeit neu abrufbar).
