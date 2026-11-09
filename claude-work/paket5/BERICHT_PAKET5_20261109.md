@@ -64,5 +64,5 @@ Abgleich mit `master_3818.csv` am 09.11.: alle 46 Zeilen mit `beta_sichtbar` NEI
 Geändert wurden nur HOLD-Filter und `sessions`-Auswertung (§5 Punkt 6). Unberührt: Live-Regel ohne `sessions`, Sortieroptionen (§5 Punkt 2), Währungshinweis (§5 Punkt 1), `country` (§5 Punkt 5), Methodik-Text, PR10-Funktionen, `main`, Release.
 
 ## 9. Offen
-- Push des Arbeitszweigs: in dieser Sitzung ohne Schreibrecht auf das Repo; Commits liegen lokal bzw. als Patch vor.
+- Gepusht am 09.11. auf `claude/datenharmonisierung`: `5222bf6` (Umsetzung) und `dde33a4` (Fassung 2); Inhalt identisch mit den lokalen Vorgängern 31aad3a/e34c01e. Kein Merge nach `main`.
 - Für eine Veröffentlichung: `index.html` auf `app-v34.js` umstellen, `data.js` und `smart-search-data.js` aus dem Kandidaten erzeugen, Release-Paket mit Rollback (Projektregel 7, E040).
