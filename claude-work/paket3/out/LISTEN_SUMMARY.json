@@ -22,14 +22,24 @@
   "D:GITHUB": 46,
   "E:GITHUB": 700
  },
- "warteschlange": 860,
+ "owner_entscheid": {
+  "A:GITHUB": 6,
+  "B:GITHUB": 11,
+  "B:LIVE": 7,
+  "C:LIVE": 29,
+  "D:OFFEN": 24,
+  "D:GITHUB": 22,
+  "E:GITHUB": 700
+ },
+ "owner_offen_felder": 24,
+ "owner_offen_angebote": 24,
+ "warteschlange": 720,
  "warteschlange_je_auftrag": {
   "Paket 3 Punkt 4": 354,
-  "Zusatz aus Master/Merge (E034)": 506
+  "Zusatz aus Master/Merge (E034)": 366
  },
  "warteschlange_je_regel": {
   "§6 WDA-05": 1,
-  "E008 Deduplizierung": 5,
   "E029/E031 Quellenidentität": 30,
   "E042 AT CONTROLLED_HOLD": 27,
   "E042 AT nur im Owner-Sheet (W8)": 3,
@@ -40,15 +50,16 @@
   "§6/E055 FAM05-C04": 1,
   "§6/E055 FAM14-C05": 2,
   "E014/E015 R4-Aktualität": 295,
-  "E029 Objektklasse": 175,
+  "E029 Objektklasse": 24,
   "E042 AT OUT_SCOPE": 73,
   "E042 CH nicht im Release": 220,
   "E042 LI nicht im Release": 3,
+  "E063 HOLD übernommen": 16,
   "§6 WDA-04 (Sammelzeile)": 1
  },
  "warteschlange_je_prio": {
   "1": 1,
-  "2": 92,
-  "3": 767
+  "2": 87,
+  "3": 632
  }
 }

@@ -6,6 +6,9 @@ Owner-Liste: nur Fälle, die der Owner entscheidet (E035): echte Konflikte, Grup
 Warteschlange: OUT/HOLD-Zeilen ausserhalb der 3'818 (E042), Nachrecherche-Fälle aus GESAMTWISSENSSTAND §6, E043, E055
 sowie die in Paket 3 entstandenen Prüffälle (Deduplizierung E008, Objektklasse E029, Merge).
 
+Paket 4 (09.11.2026): Owner-Liste trägt die Owner-Entscheide (Spalten entscheid_owner, register_id, status; E060–E064);
+offene Fälle bleiben mit leerem Entscheid stehen. Warteschlange berücksichtigt E063 und E067–E070.
+
 Aufruf: python3 -I paket3_listen.py --out DIR --r4 JSON --at CSV --stichtag YYYY-MM-DD
 """
 import argparse, csv, collections, json, pathlib, re
@@ -36,7 +39,8 @@ for n, e in enumerate(owner, 1):
     rows.append(dict(fall=f'O{n:04d}', kategorie=NAME[e['klasse']], datei=e['datei'], id=e['id'], anbieter=m['anbieter'], titel=m['titel'],
                      feld=e['feld'], schutz_307=e['schutz_307'], live_wert=lw, github_main_wert=e['github_main_wert'],
                      pr10_wert=e['pr10_wert'] if e['pr10_weicht_von_main_ab'] == 'JA' else '(= main)', basis_wert_11_10=e['basis_wert'],
-                     vorschlag=e['vorschlag'], begruendung=e['begruendung'], entscheid_owner=''))
+                     vorschlag=e['vorschlag'], begruendung=e['begruendung'], entscheid_owner=e['owner_entscheid'],
+                     register_id=e['owner_register_id'], status=e['owner_status']))
 cols = list(rows[0])
 with open(OUT / 'owner_liste.csv', 'w', newline='', encoding='utf-8-sig') as fh:
     w = csv.DictWriter(fh, fieldnames=cols); w.writeheader(); w.writerows(rows)
@@ -85,11 +89,12 @@ for r in BY_ID.values():
     if roh == 'Frankreich': legacy('E043 Anbieterland', 2, r['id'], 'country-Rohwert «Frankreich» (Ateliers): Anbietersitz belegen', 'E043; WIDERSPRUECHE W7')
     elif 'Chiasso' in roh: legacy('E043 Anbieterland', 2, r['id'], 'country-Rohwert «CH_ACCESS / operational presence Chiasso» (MiTech): Anbietersitz und CH-Zugang belegen', 'E043; WIDERSPRUECHE W7')
 for e in ENT:
-    if e['owner_entscheid_noetig'] == 'JA' and e['vorschlag'] == 'NACHRECHERCHE':
+    if e['owner_status'] == 'OFFEN' and e['vorschlag'] == 'NACHRECHERCHE':
         legacy('Merge ' + e['klasse'], 2, e['id'], f"Feld {e['feld']}: Live und main nicht vereinbar, Kombination nicht belegt", 'merge_feldentscheide.csv')
     if e['id'] == 'CAD-002' and e['feld'] == 'start' and e['datei'] == 'data':
         legacy('Merge PR10-Zweitquelle', 2, 'CAD-002', 'PR10 nennt Präsenztermin 23.–24.11.2026, main nicht: Termin beim Anbieter belegen', 'main_vs_pr10_zweite_quelle.csv')
 for d in DEDUPE:
+    if d['owner_entscheid']: continue  # von Owner entschieden (E070), keine Nachrecherche
     m = MASTER[(d['market'], d['id'])]
     q('E008 Deduplizierung', 2, d['market'], d['id'], d['anbieter'], d['titel'], d['url'], f"{d['status']} → {d['referenz']}", 'dedupe_de_usa.csv', m['beta_sichtbar'])
 for r in MASTER.values():
@@ -98,7 +103,10 @@ for r in MASTER.values():
           'Keine eindeutige Angebots-URL (mehrere URLs bzw. Text im R4-Quellenfeld): eine Angebots-URL bestimmen', 'R4 PUBLICATION_ROWS; früher SOURCE_IDENTITY_HOLD (30)', r['beta_sichtbar'])
     if 'R4 currentness' in r['beta_grund']:
         q('E014/E015 R4-Aktualität', 3, r['market'], r['id'], r['anbieter'], r['titel'], r['url'],
-          r['beta_grund'].split(': ')[0] + ': aktuelles Angebot belegen oder archivieren (nach Owner-Grundsatzentscheid)', 'R4 PUBLICATION_ROWS', r['beta_sichtbar'])
+          r['beta_grund'].split(': ')[0] + ': archiviert bis Beleg (E067) – aktuelles Angebot belegen', 'R4 PUBLICATION_ROWS; E067', r['beta_sichtbar'])
+    if r['beta_grund'].startswith('HOLD aus main übernommen (E063)'):
+        q('E063 HOLD übernommen', 3, r['market'], r['id'], r['anbieter'], r['titel'], r['url'],
+          'HOLD aus main übernommen: Folgetermin bzw. aktuelle Durchführung belegen', 'owner_liste.csv Kat. D; E063', r['beta_sichtbar'])
 for r in MASTER.values():
     if r['objektklasse'].startswith('UNKLAR'):
         q('E029 Objektklasse', 3, r['market'], r['id'], r['anbieter'], r['titel'], r['url'],
@@ -116,44 +124,49 @@ def k(v, n=110):
     v = (v or '').replace('|', '/').replace('\n', ' ').strip()
     return v if len(v) <= n else v[:n - 1] + '…'
 VOR = {'GITHUB': 'main übernehmen', 'LIVE': 'Live behalten', 'NACHRECHERCHE': 'Nachrecherche'}
+ENTS = lambda r: f"{VOR[r['entscheid_owner']]} ({r['register_id']})" if r['entscheid_owner'] else '**offen**'
 md = [f'# Owner-Entscheide Paket 3 – Übersicht (Stand {ST})', '',
-      'Vollständige Werte: `owner_liste.csv` (Spalte `entscheid_owner` zum Ausfüllen). Hier gekürzt auf ca. 110 Zeichen.',
-      'Bis zum Entscheid gilt in jedem Fall der Live-Wert (keine stille Überschreibung).', '']
+      'Vollständige Werte: `owner_liste.csv` (Spalten `entscheid_owner`, `register_id`, `status`). Hier gekürzt auf ca. 110 Zeichen.',
+      'Entscheide: `paket3/config/owner_entscheide.csv` (Register E060–E064). Offene Fälle: Live-Wert gilt weiter (keine stille Überschreibung).',
+      f"Stand: {sum(r['status'] == 'ENTSCHIEDEN' for r in rows)} Felder entschieden, {sum(r['status'] == 'OFFEN' for r in rows)} offen "
+      f"({len({r['id'] for r in rows if r['status'] == 'OFFEN'})} Angebote).", '']
 def tabelle(prefix, titel, extra=''):
     rs = [r for r in rows if r['kategorie'].startswith(prefix)]
     md.extend([f'## {titel} ({len(rs)} Felder, {len({r["id"] for r in rs})} Angebote)', extra, '',
-               '| Fall | Angebot | Feld | Live-Wert | GitHub (main) | Vorschlag | Begründung |', '|---|---|---|---|---|---|---|'])
+               '| Fall | Angebot | Feld | Live-Wert | GitHub (main) | Vorschlag | Entscheid | Begründung |', '|---|---|---|---|---|---|---|---|'])
     for r in rs:
         md.append(f"| {r['fall']} | {r['id']} ({k(r['anbieter'], 30)}) | {r['datei']}.{r['feld']} | {k(r['live_wert'])} | {k(r['github_main_wert'])} | "
-                  f"{VOR[r['vorschlag']]} | {k(r['begruendung'], 160)} |")
+                  f"{VOR[r['vorschlag']]} | {ENTS(r)} | {k(r['begruendung'], 160)} |")
     md.append('')
 tabelle('A', 'A Echte Konflikte', 'Live und main haben dasselbe Feld verschieden geändert. Alle sechs betreffen Schutz-IDs; alle Termine liegen vor dem Stichtag.')
 tabelle('B', 'B Gruppenkonflikte', 'Live hat ein Feld der Gruppe Termin geändert, main ein anderes derselben Gruppe.')
 tabelle('C', 'C Live-Änderungen an Schutz-IDs')
 rs = [r for r in rows if r['kategorie'].startswith('D')]
-md.extend([f'## D HOLD-Sperren aus main, die live fehlen ({len(rs)})', 'GitHub-Wert jeweils `publicationStatus = HOLD`; PR10 identisch. Vorschlag in allen Fällen: HOLD übernehmen (E042).', '',
-           '| Fall | Angebot | Anbieter | Titel | live sichtbar heute | Vorschlag |', '|---|---|---|---|---|---|'])
+md.extend([f'## D HOLD-Sperren aus main, die live fehlen ({len(rs)})', 'GitHub-Wert jeweils `publicationStatus = HOLD`; PR10 identisch. Vorschlag in allen Fällen: HOLD übernehmen (E042). '
+           'Owner 09.11.: Gruppe 1 und 2 übernommen (E063); Gruppe 3 (NobleProg/ORSYS) und AT-PROD-OFFER-154, PCC-P38 offen.', '',
+           '| Fall | Angebot | Anbieter | Titel | live sichtbar heute | Vorschlag | Entscheid |', '|---|---|---|---|---|---|---|'])
 for r in rs:
-    md.append(f"| {r['fall']} | {r['id']} | {k(r['anbieter'], 35)} | {k(r['titel'], 50)} | {r['live_wert'].split(': ')[-1]} | {VOR[r['vorschlag']]} |")
+    md.append(f"| {r['fall']} | {r['id']} | {k(r['anbieter'], 35)} | {k(r['titel'], 50)} | {r['live_wert'].split(': ')[-1]} | {VOR[r['vorschlag']]} | {ENTS(r)} |")
 rs = [r for r in rows if r['kategorie'].startswith('E')]
 fc = collections.Counter(f"{r['datei']}.{r['feld']}" for r in rs)
 md.extend(['', f'## E GitHub-Änderungen an Schutz-IDs ({len(rs)} Felder, {len({r["id"] for r in rs})} Angebote)',
            'Stammen aus den 49 main-Commits vom 17.–24.10.2026 (86868e0..5f09e07, überwiegend QA09); live läuft noch der Datenstand vom 11.10. '
-           'Vorschlag: als Block übernehmen; Ausnahmen einzeln in `owner_liste.csv` markieren.', '',
+           f"Vorschlag: als Block übernehmen. Owner 09.11.: als Block übernommen (E064), {sum(r['status'] == 'ENTSCHIEDEN' for r in rs)} von {len(rs)} Feldern.", '',
            'Felder: ' + ', '.join(f'{f} {n}' for f, n in fc.most_common()), '',
            'Angebote: ' + ', '.join(sorted({r['id'] for r in rs})), ''])
 C0 = collections.Counter
 ms = list(MASTER.values())
 n_kand = sum(r['anbieter_land_kandidat'] != 'nicht erfasst' and r['anbieter_land'] == 'nicht erfasst' for r in ms if r['kohorte'] == 'WEBSITE_1352')
-n_chort = sum('Durchführungsort CH genannt' in r['ch_zugang_hinweis'] for r in ms)
-md.extend(['## F Zusatz: Grundsatzfragen aus der Master-Tabelle (keine Einzelfälle, nicht in owner_liste.csv)', '',
-           '| Nr. | Frage | betrifft | Vorschlag |', '|---|---|---|---|',
-           f"| F1 | Darf der Rohwert `country` als Anbieterland gelten, wo kein Gegenbefund besteht? | {n_kand} Website-Angebote | Nein ohne Beleg; Kandidat bleibt sichtbar in Spalte `anbieter_land_kandidat` |",
-           f"| F2 | Gilt «Durchführungsort in der Schweiz genannt» als Beleg für CH-Zugang (E030)? | {n_chort} Angebote | Nein: CH-Ort als Hinweis «Durchführung in der Schweiz» zeigen, CH-Zugang bleibt «nicht erfasst», bis Teilnahmebedingungen belegt sind (E030, E036) |",
-           f"| F3 | DE/USA-Zeilen mit R4-Vermerk archiviert/abgelaufen/geschlossen: in der Beta zeigen (E036) oder archivieren (E014/E015)? | {sum(r['beta_sichtbar'] == 'OFFEN_AKTUALITAET' for r in ms)} Zeilen | archivieren, bis aktuelles Angebot belegt |",
-           f"| F4 | DE/USA-Zeilen ohne eindeutige Angebots-URL (mehrere URLs bzw. Text im Quellenfeld) | {sum(r['beta_sichtbar'] == 'OFFEN_QUELLE' for r in ms)} Zeilen | nicht zeigen, bis eine Angebots-URL bestimmt ist |",
-           f"| F5 | Objektklassen-Regeln (`objektklassen_zuordnung.csv`) bestätigen; Sammelobjekte (PARENT/FAMILY) | {sum(r['objektklasse'] == 'UNKLAR_SAMMELOBJEKT' for r in ms)} Sammelobjekte, {sum(r['objektklasse'] == 'UNKLAR' for r in ms)} unklar | Sammelobjekte als Programm führen, Teilangebote später |",
-           f"| F6 | Dedupe-Verdacht (DJA DE↔CH, gleiches Programm an mehreren Colleges) | {sum(r['beta_sichtbar'] == 'OFFEN_DEDUPE' for r in ms)} Zeilen | DJA: CH-Datensatz behalten, DE-Zeile als Dublette markieren (nicht sichtbar); Colleges: je Anbieter behalten |",
+n_chort = sum(r['ch_zugang'] == 'JA' for r in ms)
+n_f3 = sum('(E067)' in r['beta_grund'] for r in ms); n_f4 = sum('(E068)' in r['beta_grund'] for r in ms)
+md.extend(['## F Grundsatzfragen aus der Master-Tabelle (Owner-Entscheide 09.11.2026)', '',
+           '| Nr. | Frage | betrifft (nach Anwendung) | Owner-Entscheid |', '|---|---|---|---|',
+           f"| F1 | Darf der Rohwert `country` als Anbieterland gelten? | {n_kand} Website-Angebote mit Kandidat | Nein ohne Beleg; Kandidat bleibt sichtbar (E065) |",
+           f"| F2 | Gilt «Durchführungsort in der Schweiz genannt» als Beleg für CH-Zugang? | {n_chort} Angebote mit ch_zugang = JA | Ja (E066) |",
+           f"| F3 | DE/USA-Zeilen mit R4-Vermerk archiviert/abgelaufen/geschlossen | {n_f3} Zeilen nicht sichtbar | archivieren bis Beleg (E067) |",
+           f"| F4 | DE/USA-Zeilen ohne eindeutige Angebots-URL | {n_f4} Zeilen nicht sichtbar | nicht zeigen, bis URL bestimmt (E068) |",
+           f"| F5 | Objektklassen-Regeln; Sammelobjekte | {sum(r['sammelobjekt'] == 'JA' for r in ms)} Sammelobjekte als Programm, {sum(r['objektklasse'] == 'UNKLAR' for r in ms)} unklar | bestätigt, Sammelobjekte = Programm (E069) |",
+           f"| F6 | Dedupe-Verdacht DJA / Maricopa | {sum(r['dedupe_status'] == 'DUBLETTE_BESTAND_OWNER' for r in ms)} Dubletten, {sum(r['dedupe_status'] == 'EIGENSTAENDIG_ANDERER_ANBIETER_OWNER' for r in ms)} eigenständig | wie vorgeschlagen (E070) |",
            ''])
 (OUT / 'owner_liste_uebersicht.md').write_text('\n'.join(md), 'utf-8')
 
@@ -161,6 +174,8 @@ C = collections.Counter
 zus = dict(owner_faelle=len(rows), owner_je_kategorie=dict(C(r['kategorie'] for r in rows)),
            owner_angebote_je_kategorie={k: len({r['id'] for r in rows if r['kategorie'] == k}) for k in NAME.values()},
            owner_vorschlag=dict(C((r['kategorie'][0], r['vorschlag']) for r in rows).items()),
+           owner_entscheid={f"{a}:{b}": n for (a, b), n in C((r['kategorie'][0], r['entscheid_owner'] or 'OFFEN') for r in rows).items()},
+           owner_offen_felder=sum(r['status'] == 'OFFEN' for r in rows), owner_offen_angebote=len({r['id'] for r in rows if r['status'] == 'OFFEN'}),
            warteschlange=len(Q), warteschlange_je_auftrag=dict(C(x['auftrag'] for x in Q)), warteschlange_je_regel=dict(C(x['regel'] for x in Q)), warteschlange_je_prio=dict(C(x['prioritaet'] for x in Q)))
 zus['owner_vorschlag'] = {f'{k[0]}:{k[1]}': v for k, v in zus['owner_vorschlag'].items()}
 (OUT / 'LISTEN_SUMMARY.json').write_text(json.dumps(zus, ensure_ascii=False, indent=1), 'utf-8')

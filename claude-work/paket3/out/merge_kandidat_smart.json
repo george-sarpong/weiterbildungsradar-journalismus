@@ -962,9 +962,48 @@
 }
 },
 "OFFER-MAZ-045": {
-"parserStatus": "NEEDS_REVIEW",
-"priceEligible": false,
-"priceOptions": [],
+"parserStatus": "AUTO_ACCEPT",
+"priceEligible": true,
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 1980,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "Regulärer Kurspreis",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 1300,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Journalist:innen-Tarif",
+"eligibilityType": "PROFESSION",
+"eligibilityValue": "JOURNALIST",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "UNKNOWN",
 "structure": "UNKNOWN",
@@ -1443,9 +1482,48 @@
 }
 },
 "OFFER-MAZ-075": {
-"parserStatus": "NEEDS_REVIEW",
-"priceEligible": false,
-"priceOptions": [],
+"parserStatus": "AUTO_ACCEPT",
+"priceEligible": true,
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 6800,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "Regulärer Kurspreis",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 5850,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Journalist:innen-Tarif",
+"eligibilityType": "PROFESSION",
+"eligibilityValue": "JOURNALIST",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "UNKNOWN",
 "structure": "UNKNOWN",
@@ -3857,8 +3935,28 @@
 },
 "OFFER-MAZ-168": {
 "parserStatus": "AUTO_ACCEPT",
-"priceEligible": false,
-"priceOptions": [],
+"priceEligible": true,
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 650,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Kurspreis für Journalist:innen",
+"eligibilityType": "PROFESSION",
+"eligibilityValue": "JOURNALIST",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "UNKNOWN",
 "structure": "",
@@ -4414,9 +4512,105 @@
 }
 },
 "OFFER-CFJM-007": {
-"parserStatus": "NEEDS_REVIEW",
+"parserStatus": "AUTO_ACCEPT",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 590,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "Tarif hors médias",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 400,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Médias non-partenaires",
+"eligibilityType": "PROFESSION",
+"eligibilityValue": "MEDIA_NON_PARTNER",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 300,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Médias partenaires non-cotisants",
+"eligibilityType": "MEMBERSHIP",
+"eligibilityValue": "CFJM_MEDIA_PARTNER",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 130,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Journalistes indépendants membres impressum",
+"eligibilityType": "MEMBERSHIP",
+"eligibilityValue": "IMPRESSUM",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "FREE",
+"amount": 0,
+"minAmount": null,
+"maxAmount": null,
+"currency": null,
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Cotisants FC (frais d'annulation éventuels CHF 100)",
+"eligibilityType": "MEMBERSHIP",
+"eligibilityValue": "CFJM_FC_COTISANT",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "UNKNOWN",
 "structure": "UNKNOWN",
@@ -4429,9 +4623,105 @@
 }
 },
 "OFFER-CFJM-008": {
-"parserStatus": "NEEDS_REVIEW",
+"parserStatus": "AUTO_ACCEPT",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 590,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "Tarif hors médias",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 400,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Médias non-partenaires",
+"eligibilityType": "PROFESSION",
+"eligibilityValue": "MEDIA_NON_PARTNER",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 300,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Médias partenaires non-cotisants",
+"eligibilityType": "MEMBERSHIP",
+"eligibilityValue": "CFJM_MEDIA_PARTNER",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 130,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Journalistes indépendants membres impressum",
+"eligibilityType": "MEMBERSHIP",
+"eligibilityValue": "IMPRESSUM",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "FREE",
+"amount": 0,
+"minAmount": null,
+"maxAmount": null,
+"currency": null,
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Cotisants FC (frais d'annulation éventuels CHF 100)",
+"eligibilityType": "MEMBERSHIP",
+"eligibilityValue": "CFJM_FC_COTISANT",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "UNKNOWN",
 "structure": "UNKNOWN",
@@ -4504,9 +4794,105 @@
 }
 },
 "OFFER-CFJM-013": {
-"parserStatus": "NEEDS_REVIEW",
-"priceEligible": false,
-"priceOptions": [],
+"parserStatus": "AUTO_ACCEPT",
+"priceEligible": true,
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 1180,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "Tarif hors médias",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 800,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Médias non-partenaires",
+"eligibilityType": "PROFESSION",
+"eligibilityValue": "MEDIA_NON_PARTNER",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 600,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Médias partenaires non-cotisants",
+"eligibilityType": "MEMBERSHIP",
+"eligibilityValue": "CFJM_MEDIA_PARTNER",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 260,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Journalistes indépendants membres impressum",
+"eligibilityType": "MEMBERSHIP",
+"eligibilityValue": "IMPRESSUM",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "FREE",
+"amount": 0,
+"minAmount": null,
+"maxAmount": null,
+"currency": null,
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Cotisants FC (frais d'annulation éventuels CHF 100)",
+"eligibilityType": "MEMBERSHIP",
+"eligibilityValue": "CFJM_FC_COTISANT",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "UNKNOWN",
 "structure": "UNKNOWN",
@@ -4519,9 +4905,105 @@
 }
 },
 "OFFER-CFJM-014": {
-"parserStatus": "NEEDS_REVIEW",
-"priceEligible": false,
-"priceOptions": [],
+"parserStatus": "AUTO_ACCEPT",
+"priceEligible": true,
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 590,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "Tarif hors médias",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 400,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Médias non-partenaires",
+"eligibilityType": "PROFESSION",
+"eligibilityValue": "MEDIA_NON_PARTNER",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 300,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Médias partenaires non-cotisants",
+"eligibilityType": "MEMBERSHIP",
+"eligibilityValue": "CFJM_MEDIA_PARTNER",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 130,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Journalistes indépendants membres impressum",
+"eligibilityType": "MEMBERSHIP",
+"eligibilityValue": "IMPRESSUM",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "FREE",
+"amount": 0,
+"minAmount": null,
+"maxAmount": null,
+"currency": null,
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Cotisants FC (frais d'annulation éventuels CHF 100)",
+"eligibilityType": "MEMBERSHIP",
+"eligibilityValue": "CFJM_FC_COTISANT",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "UNKNOWN",
 "structure": "UNKNOWN",
@@ -4534,9 +5016,105 @@
 }
 },
 "OFFER-CFJM-015": {
-"parserStatus": "NEEDS_REVIEW",
-"priceEligible": false,
-"priceOptions": [],
+"parserStatus": "AUTO_ACCEPT",
+"priceEligible": true,
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 2950,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "Tarif hors médias",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 2000,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Médias non-partenaires",
+"eligibilityType": "PROFESSION",
+"eligibilityValue": "MEDIA_NON_PARTNER",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 1500,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Médias partenaires non-cotisants",
+"eligibilityType": "MEMBERSHIP",
+"eligibilityValue": "CFJM_MEDIA_PARTNER",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 650,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Journalistes indépendants membres impressum",
+"eligibilityType": "MEMBERSHIP",
+"eligibilityValue": "IMPRESSUM",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "FREE",
+"amount": 0,
+"minAmount": null,
+"maxAmount": null,
+"currency": null,
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Cotisants FC (frais d'annulation éventuels CHF 100)",
+"eligibilityType": "MEMBERSHIP",
+"eligibilityValue": "CFJM_FC_COTISANT",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "UNKNOWN",
 "structure": "UNKNOWN",
@@ -4549,18 +5127,126 @@
 }
 },
 "OFFER-CFJM-016": {
-"parserStatus": "NEEDS_REVIEW",
-"priceEligible": false,
-"priceOptions": [],
+"parserStatus": "AUTO_ACCEPT",
+"priceEligible": true,
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 150,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "Tarif hors médias",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 100,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Médias non-partenaires",
+"eligibilityType": "PROFESSION",
+"eligibilityValue": "MEDIA_NON_PARTNER",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 75,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Médias partenaires non-cotisants",
+"eligibilityType": "MEMBERSHIP",
+"eligibilityValue": "CFJM_MEDIA_PARTNER",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 35,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Journalistes indépendants membres impressum",
+"eligibilityType": "MEMBERSHIP",
+"eligibilityValue": "IMPRESSUM",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "FREE",
+"amount": 0,
+"minAmount": null,
+"maxAmount": null,
+"currency": null,
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Cotisants FC (2h, frais d'annulation éventuels CHF 100)",
+"eligibilityType": "MEMBERSHIP",
+"eligibilityValue": "CFJM_FC_COTISANT",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online | Evidence=QUELLENGESTUETZT | Course=https://www.cfjm.ch/model/formation-continue/fc-le-droit-d-auteur-des-journalistes-13 | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-CFJM-017": {
@@ -5184,7 +5870,7 @@
 },
 "OFFER-EBU-014": {
 "parserStatus": "AUTO_ACCEPT",
-"priceEligible": true,
+"priceEligible": false,
 "priceOptions": [
 {
 "amountType": "EXACT",
@@ -5207,20 +5893,71 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "Live Online, three 2-hour synchronous sessions 12, 15, 22 October 2026; by-request organizational variant separate. Source: https://academy.ebu.ch/courses/how-to-create-and-measure-value-for-public-service-media",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-EBU-015": {
-"parserStatus": "NEEDS_REVIEW",
+"parserStatus": "AUTO_ACCEPT",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 4295,
+"minAmount": null,
+"maxAmount": null,
+"currency": "EUR",
+"tariffClass": "REGULAR",
+"tariffLabel": "Non-member, editions Sep/Oct 2026",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 3750,
+"minAmount": null,
+"maxAmount": null,
+"currency": "EUR",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "EBU Member, editions Sep/Oct 2026",
+"eligibilityType": "MEMBERSHIP",
+"eligibilityValue": "EBU_MEMBER",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "VERIFIED",
 "structure": "SINGLE_CHANNEL",
@@ -5365,11 +6102,50 @@
 }
 },
 "OFFER-EBU-019": {
-"parserStatus": "NEEDS_REVIEW",
+"parserStatus": "AUTO_ACCEPT",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 1125,
+"minAmount": null,
+"maxAmount": null,
+"currency": "EUR",
+"tariffClass": "REGULAR",
+"tariffLabel": "Non-EBU/AMWA member, Porto 22–23 Oct 2026",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 750,
+"minAmount": null,
+"maxAmount": null,
+"currency": "EUR",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "EBU & AMWA member rate, Porto 22–23 Oct 2026",
+"eligibilityType": "MEMBERSHIP",
+"eligibilityValue": "EBU_AMWA_MEMBER_VERIFY",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
-"evidenceTier": "PROVISIONAL",
+"evidenceTier": "VERIFIED",
 "structure": "SINGLE_CHANNEL",
 "channels": [
 "IN_PERSON"
@@ -5380,15 +6156,15 @@
 "attendanceChannels": [
 "IN_PERSON"
 ],
-"temporalMode": "UNKNOWN",
-"scheduleMode": "UNKNOWN",
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
 "instructionFormats": []
 }
 ],
-"scheduleSummary": "UNKNOWN",
-"temporalSummary": "UNKNOWN",
-"sourceText": "",
-"materialisationStatus": "PROVISIONAL_LEGACY_DERIVED"
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "In Person, 22-23 October 2026 in Porto, Portugal. Source: https://academy.ebu.ch/courses/networked-media-open-specifications-handson-workshop",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-EBU-020": {
@@ -13424,9 +14200,48 @@
 }
 },
 "OFFER-NOBLE-004": {
-"parserStatus": "NEEDS_REVIEW",
+"parserStatus": "AUTO_ACCEPT",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 8680,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "NobleProg Online Live – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 9930,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "NobleProg Classroom / Präsenz – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "VERIFIED",
 "structure": "MODE_CHOICE",
@@ -13456,7 +14271,7 @@
 ],
 "scheduleSummary": "UNKNOWN",
 "temporalSummary": "UNKNOWN",
-"sourceText": "CHF 8'680 (Online); CHF 9'930 (Classroom)",
+"sourceText": "CHF 8'680 (Online); CHF 9'930 (Classroom) | Primäre per-Format-Tarifanzeige auf bestehender Kurs-URL: Online CHF8680, Classroom CHF9930. Offene Gruppen >=5 Personen; angebotene Termine unter Vorbehalt der Verfügbarkeit. Kein unqualifizierter Budget-Treffer, bevor Preis und gewählte Unterrichtsvariante gemeinsam gebunden sind.",
 "materialisationStatus": "AUTO_MATERIALISED_HIGH_CONFIDENCE"
 }
 },
@@ -13498,9 +14313,48 @@
 }
 },
 "OFFER-NOBLE-006": {
-"parserStatus": "NEEDS_REVIEW",
+"parserStatus": "AUTO_ACCEPT",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 3472,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "NobleProg Online Live – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 3972,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "NobleProg Classroom / Präsenz – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "VERIFIED",
 "structure": "MODE_CHOICE",
@@ -13530,7 +14384,7 @@
 ],
 "scheduleSummary": "UNKNOWN",
 "temporalSummary": "UNKNOWN",
-"sourceText": "CHF 3'472 (Online); CHF 3'972 (Classroom)",
+"sourceText": "CHF 3'472 (Online); CHF 3'972 (Classroom) | Primäre per-Format-Tarifanzeige auf bestehender Kurs-URL: Online CHF3472, Classroom CHF3972. Offene Gruppen >=5 Personen; angebotene Termine unter Vorbehalt der Verfügbarkeit. Kein unqualifizierter Budget-Treffer, bevor Preis und gewählte Unterrichtsvariante gemeinsam gebunden sind.",
 "materialisationStatus": "AUTO_MATERIALISED_HIGH_CONFIDENCE"
 }
 },
@@ -13572,9 +14426,48 @@
 }
 },
 "OFFER-NOBLE-008": {
-"parserStatus": "NEEDS_REVIEW",
+"parserStatus": "AUTO_ACCEPT",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 3472,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "NobleProg Online Live – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 3972,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "NobleProg Classroom / Präsenz – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "VERIFIED",
 "structure": "MODE_CHOICE",
@@ -13604,7 +14497,7 @@
 ],
 "scheduleSummary": "UNKNOWN",
 "temporalSummary": "UNKNOWN",
-"sourceText": "CHF 3'472 (Online); CHF 3'972 (Classroom)",
+"sourceText": "CHF 3'472 (Online); CHF 3'972 (Classroom) | Primäre per-Format-Tarifanzeige auf bestehender Kurs-URL: Online CHF3472, Classroom CHF3972. Offene Gruppen >=5 Personen; angebotene Termine unter Vorbehalt der Verfügbarkeit. Kein unqualifizierter Budget-Treffer, bevor Preis und gewählte Unterrichtsvariante gemeinsam gebunden sind.",
 "materialisationStatus": "AUTO_MATERIALISED_HIGH_CONFIDENCE"
 }
 },
@@ -13720,9 +14613,48 @@
 }
 },
 "OFFER-NOBLE-013": {
-"parserStatus": "NEEDS_REVIEW",
+"parserStatus": "AUTO_ACCEPT",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 5208,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "NobleProg Online Live – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 5958,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "NobleProg Classroom / Präsenz – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "VERIFIED",
 "structure": "MODE_CHOICE",
@@ -13752,14 +14684,53 @@
 ],
 "scheduleSummary": "UNKNOWN",
 "temporalSummary": "UNKNOWN",
-"sourceText": "CHF 5'208 (Online); CHF 5'958 (Classroom)",
+"sourceText": "CHF 5'208 (Online); CHF 5'958 (Classroom) | Primäre per-Format-Tarifanzeige auf bestehender Kurs-URL: Online CHF5208, Classroom CHF5958. Offene Gruppen >=5 Personen; angebotene Termine unter Vorbehalt der Verfügbarkeit. Kein unqualifizierter Budget-Treffer, bevor Preis und gewählte Unterrichtsvariante gemeinsam gebunden sind.",
 "materialisationStatus": "AUTO_MATERIALISED_HIGH_CONFIDENCE"
 }
 },
 "OFFER-NOBLE-014": {
-"parserStatus": "NEEDS_REVIEW",
+"parserStatus": "AUTO_ACCEPT",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 3472,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "NobleProg Online Live – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 3972,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "NobleProg Classroom / Präsenz – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "VERIFIED",
 "structure": "MODE_CHOICE",
@@ -13789,7 +14760,7 @@
 ],
 "scheduleSummary": "UNKNOWN",
 "temporalSummary": "UNKNOWN",
-"sourceText": "CHF 3'472 (Online); CHF 3'972 (Classroom)",
+"sourceText": "CHF 3'472 (Online); CHF 3'972 (Classroom) | Primäre per-Format-Tarifanzeige auf bestehender Kurs-URL: Online CHF3472, Classroom CHF3972. Offene Gruppen >=5 Personen; angebotene Termine unter Vorbehalt der Verfügbarkeit. Kein unqualifizierter Budget-Treffer, bevor Preis und gewählte Unterrichtsvariante gemeinsam gebunden sind.",
 "materialisationStatus": "AUTO_MATERIALISED_HIGH_CONFIDENCE"
 }
 },
@@ -13831,9 +14802,48 @@
 }
 },
 "OFFER-NOBLE-016": {
-"parserStatus": "NEEDS_REVIEW",
+"parserStatus": "AUTO_ACCEPT",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 3472,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "NobleProg Online Live – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 3972,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "NobleProg Classroom / Präsenz – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "VERIFIED",
 "structure": "MODE_CHOICE",
@@ -13863,14 +14873,53 @@
 ],
 "scheduleSummary": "UNKNOWN",
 "temporalSummary": "UNKNOWN",
-"sourceText": "CHF 3'472 (Online); CHF 3'972 (Classroom)",
+"sourceText": "CHF 3'472 (Online); CHF 3'972 (Classroom) | Primäre per-Format-Tarifanzeige auf bestehender Kurs-URL: Online CHF3472, Classroom CHF3972. Offene Gruppen >=5 Personen; angebotene Termine unter Vorbehalt der Verfügbarkeit. Kein unqualifizierter Budget-Treffer, bevor Preis und gewählte Unterrichtsvariante gemeinsam gebunden sind.",
 "materialisationStatus": "AUTO_MATERIALISED_HIGH_CONFIDENCE"
 }
 },
 "OFFER-NOBLE-020": {
-"parserStatus": "NEEDS_REVIEW",
+"parserStatus": "AUTO_ACCEPT",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 8680,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "NobleProg Online Live – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 9930,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "NobleProg Classroom / Präsenz – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "VERIFIED",
 "structure": "MODE_CHOICE",
@@ -13900,14 +14949,53 @@
 ],
 "scheduleSummary": "UNKNOWN",
 "temporalSummary": "UNKNOWN",
-"sourceText": "CHF 8'680 (Online); CHF 9'930 (Classroom)",
+"sourceText": "CHF 8'680 (Online); CHF 9'930 (Classroom) | Primäre per-Format-Tarifanzeige auf bestehender Kurs-URL: Online CHF8680, Classroom CHF9930. Offene Gruppen >=5 Personen; angebotene Termine unter Vorbehalt der Verfügbarkeit. Kein unqualifizierter Budget-Treffer, bevor Preis und gewählte Unterrichtsvariante gemeinsam gebunden sind.",
 "materialisationStatus": "AUTO_MATERIALISED_HIGH_CONFIDENCE"
 }
 },
 "OFFER-NOBLE-021": {
-"parserStatus": "NEEDS_REVIEW",
+"parserStatus": "AUTO_ACCEPT",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 3472,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "NobleProg Online Live – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 3972,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "NobleProg Classroom / Präsenz – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "VERIFIED",
 "structure": "MODE_CHOICE",
@@ -13937,7 +15025,7 @@
 ],
 "scheduleSummary": "UNKNOWN",
 "temporalSummary": "UNKNOWN",
-"sourceText": "CHF 3'472 (Online); CHF 3'972 (Classroom)",
+"sourceText": "CHF 3'472 (Online); CHF 3'972 (Classroom) | Primäre per-Format-Tarifanzeige auf bestehender Kurs-URL: Online CHF3472, Classroom CHF3972. Offene Gruppen >=5 Personen; angebotene Termine unter Vorbehalt der Verfügbarkeit. Kein unqualifizierter Budget-Treffer, bevor Preis und gewählte Unterrichtsvariante gemeinsam gebunden sind.",
 "materialisationStatus": "AUTO_MATERIALISED_HIGH_CONFIDENCE"
 }
 },
@@ -14179,9 +15267,48 @@
 }
 },
 "OFFER-NOBLE-033": {
-"parserStatus": "NEEDS_REVIEW",
+"parserStatus": "AUTO_ACCEPT",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 1736,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "NobleProg Online Live – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 1986,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "NobleProg Classroom / Präsenz – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "VERIFIED",
 "structure": "MODE_CHOICE",
@@ -14211,7 +15338,7 @@
 ],
 "scheduleSummary": "UNKNOWN",
 "temporalSummary": "UNKNOWN",
-"sourceText": "CHF 1'736 (Online); CHF 1'986 (Classroom)",
+"sourceText": "CHF 1'736 (Online); CHF 1'986 (Classroom) | Primäre per-Format-Tarifanzeige auf bestehender Kurs-URL: Online CHF1736, Classroom CHF1986. Offene Gruppen >=5 Personen; angebotene Termine unter Vorbehalt der Verfügbarkeit. Kein unqualifizierter Budget-Treffer, bevor Preis und gewählte Unterrichtsvariante gemeinsam gebunden sind.",
 "materialisationStatus": "AUTO_MATERIALISED_HIGH_CONFIDENCE"
 }
 },
@@ -14253,9 +15380,48 @@
 }
 },
 "OFFER-NOBLE-035": {
-"parserStatus": "NEEDS_REVIEW",
+"parserStatus": "AUTO_ACCEPT",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 3472,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "NobleProg Online Live – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 3972,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "NobleProg Classroom / Präsenz – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "VERIFIED",
 "structure": "MODE_CHOICE",
@@ -14285,7 +15451,7 @@
 ],
 "scheduleSummary": "UNKNOWN",
 "temporalSummary": "UNKNOWN",
-"sourceText": "CHF 3'472 (Online); CHF 3'972 (Classroom)",
+"sourceText": "CHF 3'472 (Online); CHF 3'972 (Classroom) | Primäre per-Format-Tarifanzeige auf bestehender Kurs-URL: Online CHF3472, Classroom CHF3972. Offene Gruppen >=5 Personen; angebotene Termine unter Vorbehalt der Verfügbarkeit. Kein unqualifizierter Budget-Treffer, bevor Preis und gewählte Unterrichtsvariante gemeinsam gebunden sind.",
 "materialisationStatus": "AUTO_MATERIALISED_HIGH_CONFIDENCE"
 }
 },
@@ -14327,9 +15493,48 @@
 }
 },
 "OFFER-NOBLE-037": {
-"parserStatus": "NEEDS_REVIEW",
+"parserStatus": "AUTO_ACCEPT",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 3472,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "NobleProg Online Live – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 3972,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "NobleProg Classroom / Präsenz – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "VERIFIED",
 "structure": "MODE_CHOICE",
@@ -14359,7 +15564,7 @@
 ],
 "scheduleSummary": "UNKNOWN",
 "temporalSummary": "UNKNOWN",
-"sourceText": "CHF 3'472 (Online); CHF 3'972 (Classroom)",
+"sourceText": "CHF 3'472 (Online); CHF 3'972 (Classroom) | Primäre per-Format-Tarifanzeige auf bestehender Kurs-URL: Online CHF3472, Classroom CHF3972. Offene Gruppen >=5 Personen; angebotene Termine unter Vorbehalt der Verfügbarkeit. Kein unqualifizierter Budget-Treffer, bevor Preis und gewählte Unterrichtsvariante gemeinsam gebunden sind.",
 "materialisationStatus": "AUTO_MATERIALISED_HIGH_CONFIDENCE"
 }
 },
@@ -14549,9 +15754,48 @@
 }
 },
 "OFFER-NOBLE-044": {
-"parserStatus": "NEEDS_REVIEW",
+"parserStatus": "AUTO_ACCEPT",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 3472,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "NobleProg Online Live – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 3972,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "NobleProg Classroom / Präsenz – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "VERIFIED",
 "structure": "MODE_CHOICE",
@@ -14581,7 +15825,7 @@
 ],
 "scheduleSummary": "UNKNOWN",
 "temporalSummary": "UNKNOWN",
-"sourceText": "CHF 3'472 (Online); CHF 3'972 (Classroom)",
+"sourceText": "CHF 3'472 (Online); CHF 3'972 (Classroom) | Primäre per-Format-Tarifanzeige auf bestehender Kurs-URL: Online CHF3472, Classroom CHF3972. Offene Gruppen >=5 Personen; angebotene Termine unter Vorbehalt der Verfügbarkeit. Kein unqualifizierter Budget-Treffer, bevor Preis und gewählte Unterrichtsvariante gemeinsam gebunden sind.",
 "materialisationStatus": "AUTO_MATERIALISED_HIGH_CONFIDENCE"
 }
 },
@@ -14971,9 +16215,48 @@
 }
 },
 "OFFER-NOBLE-057": {
-"parserStatus": "NEEDS_REVIEW",
+"parserStatus": "AUTO_ACCEPT",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 5208,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "NobleProg Online Live – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 5958,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "NobleProg Classroom / Präsenz – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "VERIFIED",
 "structure": "MODE_CHOICE",
@@ -15003,7 +16286,7 @@
 ],
 "scheduleSummary": "UNKNOWN",
 "temporalSummary": "UNKNOWN",
-"sourceText": "CHF 5'208 (Online); CHF 5'958 (Classroom)",
+"sourceText": "CHF 5'208 (Online); CHF 5'958 (Classroom) | Primäre per-Format-Tarifanzeige auf bestehender Kurs-URL: Online CHF5208, Classroom CHF5958. Offene Gruppen >=5 Personen; angebotene Termine unter Vorbehalt der Verfügbarkeit. Kein unqualifizierter Budget-Treffer, bevor Preis und gewählte Unterrichtsvariante gemeinsam gebunden sind.",
 "materialisationStatus": "AUTO_MATERIALISED_HIGH_CONFIDENCE"
 }
 },
@@ -15193,9 +16476,48 @@
 }
 },
 "OFFER-NOBLE-064": {
-"parserStatus": "NEEDS_REVIEW",
+"parserStatus": "AUTO_ACCEPT",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 3472,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "NobleProg Online Live – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 3972,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "NobleProg Classroom / Präsenz – pro Teilnehmer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "VERIFIED",
 "structure": "MODE_CHOICE",
@@ -15225,7 +16547,7 @@
 ],
 "scheduleSummary": "UNKNOWN",
 "temporalSummary": "UNKNOWN",
-"sourceText": "CHF 3'472 (Online); CHF 3'972 (Classroom)",
+"sourceText": "CHF 3'472 (Online); CHF 3'972 (Classroom) | Primäre per-Format-Tarifanzeige auf bestehender Kurs-URL: Online CHF3472, Classroom CHF3972. Offene Gruppen >=5 Personen; angebotene Termine unter Vorbehalt der Verfügbarkeit. Kein unqualifizierter Budget-Treffer, bevor Preis und gewählte Unterrichtsvariante gemeinsam gebunden sind.",
 "materialisationStatus": "AUTO_MATERIALISED_HIGH_CONFIDENCE"
 }
 },
@@ -15269,7 +16591,27 @@
 "OFFER-NOBLE-067": {
 "parserStatus": "NEEDS_REVIEW",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "NOT_PUBLISHED",
+"amount": null,
+"minAmount": null,
+"maxAmount": null,
+"currency": null,
+"tariffClass": "REGULAR",
+"tariffLabel": "Gruppen-/Formatpreis erst nach Variantenwahl bzw. Offerte",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "VERIFIED",
 "structure": "MODE_CHOICE",
@@ -15299,8 +16641,8 @@
 ],
 "scheduleSummary": "UNKNOWN",
 "temporalSummary": "UNKNOWN",
-"sourceText": "CHF 3'472 (Online); CHF 3'972 (Classroom)",
-"materialisationStatus": "AUTO_MATERIALISED_HIGH_CONFIDENCE"
+"sourceText": "Nicht als allgemeiner Kurs-/Einzelpreis verwenden: Anbieterbuchungsmaske vom 18.10.2026 zeigte bei 4 Teilnehmenden online CHF 1'519 p.P. exkl. MWST, Präsenz Basel CHF 1'794 p.P. exkl. MWST; bei 5 Teilnehmenden Offertanfrage. Frühere CHF 3'472/3'972 stammen aus anderer Konfiguration ohne Bindung an Teilnehmerzahl und konkrete Ausgabe. Aktuellen Endpreis und Verfügbarkeit bei gewählter Variante bestätigen; kein harter Budgettreffer.",
+"materialisationStatus": "SOURCE_CONDITIONED_PRICE_HOLD"
 }
 },
 "OFFER-NOBLE-069": {
@@ -15618,14 +16960,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Präsenz oder Online-Liveunterricht; Kursort und Termin je gebuchter Durchführung | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-adobe-illustrator-perfectionnement | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-007": {
@@ -15653,19 +17007,31 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Präsenz oder Online-Liveunterricht; Kursort und Termin je gebuchter Durchführung | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-adobe-illustrator-prise-en-main | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-008": {
 "parserStatus": "AUTO_ACCEPT",
-"priceEligible": true,
+"priceEligible": false,
 "priceOptions": [
 {
 "amountType": "EXACT",
@@ -15688,14 +17054,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"IN_PERSON"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"IN_PERSON"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "UNKNOWN",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "UNKNOWN",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Präsenzveranstaltung; genauer Veranstaltungsort und Termin nicht publiziert; Inhouse/Distanz nur auf Anfrage | Evidence=PRAESENZ_QUELLENGESTUETZT__KURSORT_NICHT_PUBLIZIERT | Course=https://www.orsys.fr/suisse/formation/formation-adobe-indesign-perfectionnement | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-009": {
@@ -15723,14 +17101,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Präsenz oder Online-Liveunterricht; Kursort und Termin je gebuchter Durchführung | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-adobe-indesign-prise-en-main | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-010": {
@@ -15809,7 +17199,7 @@
 "priceOptions": [
 {
 "amountType": "EXACT",
-"amount": 1540.0,
+"amount": 1570,
 "minAmount": null,
 "maxAmount": null,
 "currency": "CHF",
@@ -15828,14 +17218,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Präsenz oder Online-Liveunterricht je gebuchter Durchführung | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-adobe-photoshop-prise-en-main | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-013": {
@@ -15898,14 +17300,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online-Liveunterricht (Klasse à distance), 10.–11.12.2026 | Evidence=SESSION_APN_20261210_11_CLASSE_A_DISTANCE_BESTAETIGT | Course=https://www.orsys.fr/suisse/formation/Adobe-premiere-pro-techniques-avancees-de-montage-postproduction | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-018": {
@@ -15980,11 +17394,11 @@
 },
 "OFFER-ORSYS-020": {
 "parserStatus": "AUTO_ACCEPT",
-"priceEligible": true,
+"priceEligible": false,
 "priceOptions": [
 {
 "amountType": "EXACT",
-"amount": 2320.0,
+"amount": 2360,
 "minAmount": null,
 "maxAmount": null,
 "currency": "CHF",
@@ -16003,14 +17417,36 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "MODE_CHOICE",
+"channels": [
+"IN_PERSON",
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"IN_PERSON"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "UNKNOWN",
+"instructionFormats": []
+},
+{
+"deliveryVariantId": "B",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "UNKNOWN",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "UNKNOWN",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Präsenzkurs; tatsächlicher Kursort erst anhand der gewählten Durchführung festlegen | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-after-effects-perfectionnement | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-021": {
@@ -16369,7 +17805,7 @@
 "priceOptions": [
 {
 "amountType": "EXACT",
-"amount": 1590.0,
+"amount": 1620,
 "minAmount": null,
 "maxAmount": null,
 "currency": "CHF",
@@ -16388,14 +17824,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Präsenz oder Online-Liveunterricht je gebuchter Durchführung | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-concevoir-des-contenus-web-et-editoriaux-accessibles | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-041": {
@@ -16404,12 +17852,12 @@
 "priceOptions": [
 {
 "amountType": "EXACT",
-"amount": 1610.0,
+"amount": 1640,
 "minAmount": null,
 "maxAmount": null,
 "currency": "CHF",
 "tariffClass": "REGULAR",
-"tariffLabel": null,
+"tariffLabel": "INTER · offener Live-Online-Kurs",
 "eligibilityType": "NONE",
 "eligibilityValue": null,
 "billingBasis": "TOTAL",
@@ -16419,18 +17867,43 @@
 "taxRate": null,
 "validFrom": null,
 "validThrough": null,
-"components": []
+"components": [],
+"deliveryVariantRefs": [
+"B"
+]
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "MODE_CHOICE",
+"channels": [
+"IN_PERSON",
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"IN_PERSON"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+},
+{
+"deliveryVariantId": "B",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (Classe à distance) oder Präsenz je Termin; konkreter Präsenzort nicht für jeden Termin publiziert | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-construire-des-documents-metier-orientes-contenu-DOCS | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-042": {
@@ -16458,14 +17931,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Präsenz oder Online-Liveunterricht; Kursort und Termin je gebuchter Durchführung | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-creer-vos-publications-avec-indesign-photoshop-illustrator | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-043": {
@@ -16773,14 +18258,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (Classe à distance; konkrete Durchführung gemäss Kurskalender) | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-davinci-resolve-maitrise-de-l-etalonnage-couleur | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-052": {
@@ -16878,14 +18375,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "ORSYS Schweiz Ref DAL: 03.12.2026 ausdrücklich CLASSE À DISTANCE; keine physische Schweizer Kursadresse für diese datierte Durchführung. https://www.orsys.fr/suisse/formation/formation-digital-analytics-strategie-bonnes-pratiques . Andere Präsenz-Editionen separat, Buchbarkeit nicht geprüft.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-055": {
@@ -16948,14 +18457,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (Live-Fernunterricht / Classe à distance; konkret nach Termin) | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-drupal-7-creer-administrer-un-site-gestion-contenu | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-058": {
@@ -17018,14 +18539,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "Offizielle ORSYS-Schweiz Kursseite DIH: Session 17.–20.11.2026, Classe à distance; kein Präsenzort für diese Edition. URL https://www.orsys.fr/suisse/formation/formation-developper-un-site-web-dynamique-avec-ia . Keine Aussage über andere zukünftige Kursvarianten/Platzverfügbarkeit.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-064": {
@@ -17228,14 +18761,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "Fact-checking FCK: online live (Classe à distance), 23-25 November 2026; Paris La Défense is separate 16-18 November in-person edition. Source: https://www.orsys.fr/formation/fck",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-070": {
@@ -17263,14 +18808,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "ORSYS Schweiz Ref FGM: 22.02.2027 ausdrücklich CLASSE À DISTANCE; keine physische Schweizer Kursadresse für diese datierte Durchführung. https://www.orsys.fr/suisse/formation/formation-figma-concevoir-des-interfaces-d-applications-web-et-mobiles . Andere Präsenz-Editionen separat, Buchbarkeit nicht geprüft.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-071": {
@@ -17438,14 +18995,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "ORSYS Schweiz Ref LYT: 10.12.2026 ausdrücklich CLASSE À DISTANCE; keine physische Schweizer Kursadresse für diese datierte Durchführung. https://www.orsys.fr/suisse/formation/formation-maitriser-google-analytics . Andere Präsenz-Editionen separat, Buchbarkeit nicht geprüft.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-076": {
@@ -17473,14 +19042,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "ORSYS Schweiz Ref CMR: 03.12.2026 ausdrücklich CLASSE À DISTANCE; keine physische Schweizer Kursadresse für diese datierte Durchführung. https://www.orsys.fr/suisse/formation/formation-gerer-sa-visibilite-sa-reputation-numerique . Andere Präsenz-Editionen separat, Buchbarkeit nicht geprüft.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-078": {
@@ -17508,14 +19089,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "ORSYS Schweiz Ref HTM: 18.11.2026 ausdrücklich CLASSE À DISTANCE; keine physische Schweizer Kursadresse für diese datierte Durchführung. https://www.orsys.fr/suisse/formation/formation-html5-css3-maitriser-creation-vos-pages-web . Andere Präsenz-Editionen separat, Buchbarkeit nicht geprüft.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-079": {
@@ -17648,14 +19241,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (Live-Fernunterricht / Classe à distance; Termin siehe Kursseite) | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-ia-geo-strategie-contenus | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-083": {
@@ -17683,14 +19288,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (Live-Fernunterricht / Classe à distance; Termin siehe Kursseite) | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-joomla-creer-administrer-un-site-web | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-084": {
@@ -17788,14 +19405,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (Live-Fernunterricht / Classe à distance; Termin siehe Kursseite) | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-ecrire-a-maniere-journalistique | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-089": {
@@ -17893,14 +19522,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (Live-Fernunterricht; konkrete Durchführung gemäss Kursseite) | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-ia-contenus-texte-image-video | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-095": {
@@ -17963,14 +19604,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (Live-Fernunterricht; konkrete Durchführung gemäss Kursseite) | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-communiquer-strategie-tiktok | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-100": {
@@ -18068,14 +19721,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (Live-Fernunterricht; konkrete Durchführung gemäss Kursseite) | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-osint-investigation-en-source | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-104": {
@@ -18290,7 +19955,7 @@
 },
 "OFFER-ORSYS-115": {
 "parserStatus": "AUTO_ACCEPT",
-"priceEligible": true,
+"priceEligible": false,
 "priceOptions": [
 {
 "amountType": "EXACT",
@@ -18313,14 +19978,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"IN_PERSON"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"IN_PERSON"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "UNKNOWN",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "UNKNOWN",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Präsenzveranstaltung; genauer Veranstaltungsort und Termin nicht publiziert; Inhouse/Distanz nur auf Anfrage | Evidence=PRAESENZ_QUELLENGESTUETZT__KURSORT_NICHT_PUBLIZIERT | Course=https://www.orsys.fr/suisse/formation/formation-realiser-des-videos-pour-web | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-116": {
@@ -18399,7 +20076,7 @@
 "priceOptions": [
 {
 "amountType": "EXACT",
-"amount": 1830.0,
+"amount": 1860,
 "minAmount": null,
 "maxAmount": null,
 "currency": "CHF",
@@ -18418,14 +20095,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Präsenz oder Online-Liveunterricht je gebuchter Durchführung; konkreter Präsenzort terminabhängig | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-realiser-un-site-web-pour-non-informaticiens | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-119": {
@@ -18488,14 +20177,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (Live-Fernunterricht; konkrete Durchführung gemäss Kursseite) | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-redaction-journalistique-ia | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-121": {
@@ -18558,14 +20259,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (Live-Fernunterricht; konkrete Durchführung gemäss Kursseite) | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-rediger-pour-web | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-123": {
@@ -18873,14 +20586,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (Live-Fernunterricht; konkrete Durchführung gemäss Kursseite) | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-user-experience-etat-art-tendances-en-ergonomie-ihm | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-138": {
@@ -18908,14 +20633,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (Live-Fernunterricht / Classe à distance; konkret nach Termin) | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-ux-design-et-ergonomie-pour-tablettes-et-smartphone | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-139": {
@@ -18943,14 +20680,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (Live-Fernunterricht / Classe à distance; konkret nach Termin) | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-campus-atlas-ux-design-et-ergonomie-des-sites-web | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-140": {
@@ -19013,14 +20762,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (Live-Fernunterricht / Classe à distance; konkret nach Termin) | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-campus-atlas-ux-design-et-ergonomie-pour-tablettes-et-smartphones | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-142": {
@@ -19083,14 +20844,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (Live-Fernunterricht / Classe à distance; konkret nach Termin) | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-ux-pm-certification-user-experience-niveau1 | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-144": {
@@ -19118,14 +20891,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (Live-Fernunterricht / Classe à distance; konkret nach Termin) | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-ux-pm-certification-user-experience-niveau2 | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-146": {
@@ -19153,14 +20938,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (Live-Fernunterricht / Classe à distance; konkret nach Termin) | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-ux-ui-ia-generer-structurer-piloter-des-interfaces-intelligentes | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-148": {
@@ -19293,14 +21090,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (Live-Fernunterricht / Classe à distance; konkret nach Termin) | Evidence=QUELLENGESTUETZT__ONLINE_ODER_SESSION_VARIABEL | Course=https://www.orsys.fr/suisse/formation/formation-wordpress-perfectionnement | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ORSYS-152": {
@@ -19786,7 +21595,7 @@
 },
 "OFFER-IFC-005": {
 "parserStatus": "AUTO_ACCEPT",
-"priceEligible": true,
+"priceEligible": false,
 "priceOptions": [
 {
 "amountType": "EXACT",
@@ -19809,7 +21618,7 @@
 }
 ],
 "delivery": {
-"evidenceTier": "PROVISIONAL",
+"evidenceTier": "VERIFIED",
 "structure": "SINGLE_CHANNEL",
 "channels": [
 "IN_PERSON"
@@ -19820,15 +21629,15 @@
 "attendanceChannels": [
 "IN_PERSON"
 ],
-"temporalMode": "UNKNOWN",
-"scheduleMode": "UNKNOWN",
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
 "instructionFormats": []
 }
 ],
-"scheduleSummary": "UNKNOWN",
-"temporalSummary": "UNKNOWN",
-"sourceText": "",
-"materialisationStatus": "PROVISIONAL_LEGACY_DERIVED"
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "One in-person session on 3 Oct 2026 at Studio fotografico Residenza 3544 in Lumino, concluded. Source: https://www.ifc.ti.ch/corsi/tutti-i-corsi/dettaglio/2627acre0880011_fotografia-con-lo-smartphone",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-IFC-006": {
@@ -19836,19 +21645,31 @@
 "priceEligible": false,
 "priceOptions": [],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "R11_FROZEN_UNLABELED"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"IN_PERSON"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"IN_PERSON"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "IFC official course detail 26/27A-CRE-088-0010: two fixed attendance lessons 11.10.2026 and 12.11.2026, venue Centro scolastico per le industrie artistiche (CSIA), Via G. Brentani 18, 6900 Lugano. In-person variant supported by exact classroom venue; course fully booked, no additional public session inferred. https://www.ifc.ti.ch/corsi/tutti-i-corsi/dettaglio/id/2627ACRE0880010",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-IFC-007": {
 "parserStatus": "AUTO_ACCEPT",
-"priceEligible": true,
+"priceEligible": false,
 "priceOptions": [
 {
 "amountType": "EXACT",
@@ -19895,13 +21716,13 @@
 },
 "OFFER-IFC-008": {
 "parserStatus": "AUTO_ACCEPT",
-"priceEligible": true,
+"priceEligible": false,
 "priceOptions": [
 {
-"amountType": "RANGE",
-"amount": null,
-"minAmount": 215.0,
-"maxAmount": 225.0,
+"amountType": "EXACT",
+"amount": 225,
+"minAmount": null,
+"maxAmount": null,
 "currency": "CHF",
 "tariffClass": "REGULAR",
 "tariffLabel": null,
@@ -19918,7 +21739,7 @@
 }
 ],
 "delivery": {
-"evidenceTier": "PROVISIONAL",
+"evidenceTier": "VERIFIED",
 "structure": "SINGLE_CHANNEL",
 "channels": [
 "IN_PERSON"
@@ -19929,15 +21750,15 @@
 "attendanceChannels": [
 "IN_PERSON"
 ],
-"temporalMode": "UNKNOWN",
-"scheduleMode": "UNKNOWN",
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
 "instructionFormats": []
 }
 ],
-"scheduleSummary": "UNKNOWN",
-"temporalSummary": "UNKNOWN",
-"sourceText": "",
-"materialisationStatus": "PROVISIONAL_LEGACY_DERIVED"
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "Presenza in aula / esterni; IFC Ala Munda 41 Camorino / Aula A104. Source: https://www.ifc.ti.ch/corsi/tutti-i-corsi/dettaglio/2627acre0880008_fotografia-corso-di-base",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-IFC-010": {
@@ -20036,7 +21857,7 @@
 },
 "OFFER-IFC-012": {
 "parserStatus": "AUTO_ACCEPT",
-"priceEligible": true,
+"priceEligible": false,
 "priceOptions": [
 {
 "amountType": "EXACT",
@@ -20130,7 +21951,7 @@
 },
 "OFFER-IFC-014": {
 "parserStatus": "AUTO_ACCEPT",
-"priceEligible": true,
+"priceEligible": false,
 "priceOptions": [
 {
 "amountType": "EXACT",
@@ -20153,7 +21974,7 @@
 }
 ],
 "delivery": {
-"evidenceTier": "PROVISIONAL",
+"evidenceTier": "VERIFIED",
 "structure": "SINGLE_CHANNEL",
 "channels": [
 "IN_PERSON"
@@ -20164,15 +21985,15 @@
 "attendanceChannels": [
 "IN_PERSON"
 ],
-"temporalMode": "UNKNOWN",
-"scheduleMode": "UNKNOWN",
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
 "instructionFormats": []
 }
 ],
-"scheduleSummary": "UNKNOWN",
-"temporalSummary": "UNKNOWN",
-"sourceText": "",
-"materialisationStatus": "PROVISIONAL_LEGACY_DERIVED"
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "In-person lessons at Zoo al Maglio (11 Oct 2026) and CSIA Lugano (12 Nov 2026). Source: https://www.ifc.ti.ch/corsi/tutti-i-corsi/dettaglio/id/2627ACRE0880005",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-IFC-015": {
@@ -20318,7 +22139,7 @@
 },
 "OFFER-IFC-020": {
 "parserStatus": "AUTO_ACCEPT",
-"priceEligible": true,
+"priceEligible": false,
 "priceOptions": [
 {
 "amountType": "EXACT",
@@ -20341,14 +22162,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "UNKNOWN",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "UNKNOWN",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online | Evidence=QUELLENGESTUETZT | Course=https://www.ifc.ti.ch/corsi/tutti-i-corsi/dettaglio/2627amd1430001_wordpress-crea-il-tuo-sito-web | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ATED-001": {
@@ -28812,7 +30645,7 @@
 },
 "PJ-V16-07": {
 "parserStatus": "AUTO_ACCEPT",
-"priceEligible": true,
+"priceEligible": false,
 "priceOptions": [
 {
 "amountType": "EXACT",
@@ -29479,7 +31312,7 @@
 },
 "OFFER-MAZ-058": {
 "parserStatus": "AUTO_ACCEPT",
-"priceEligible": true,
+"priceEligible": false,
 "priceOptions": [
 {
 "amountType": "EXACT",
@@ -30249,18 +32082,69 @@
 }
 },
 "OFFER-HKB-001": {
-"parserStatus": "NEEDS_REVIEW",
+"parserStatus": "AUTO_ACCEPT",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 850,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "Studiengebühr je Semester, normaler Tarif; zusätzliche Prüfungs-/Material- und einmalige Anmeldegebühren NICHT eingeschlossen",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "SEMESTER",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 2550,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Je Semester bei ausländischer Staatsangehörigkeit UND Aufenthalt zu Studienzwecken bei Studienbeginn, Zusatzgebühren separat",
+"eligibilityType": "STUDENT_STATUS",
+"eligibilityValue": "FOREIGN_CITIZEN_STUDY_RESIDENCE_START",
+"billingBasis": "SEMESTER",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"IN_PERSON"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"IN_PERSON"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: HKB, Bern | Evidence=QUELLENGESTUETZT | Course=https://www.hkb.bfh.ch/de/studium/master/multimedia-communication-publishing/ | Session/date dependent; only confirmed course modality, not seat availability. | Echte Studienadresse Holzikofenweg 8, 3007 Bern. Studienbeginn 20.09.2027, Studium 3 Semester Vollzeit oder 5–6 Semester Teilzeit. Betrag CHF850/2550 ist nur SEMESTERGEBÜHR, keine komplette Masterprogramm-Totalgebühr: CHF250 Anmeldung, CHF100 Immatrikulation (auf Anmeldung angerechnet), pro Semester CHF80 Prüfung + CHF24 Infrastruktur + CHF15 Studierendenverband, Material/Exkursionen separat. Darum budget-matching weiterhin gesperrt.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-ZHDK-016": {
@@ -30306,18 +32190,72 @@
 }
 },
 "OFFER-FERNUNI-002": {
-"parserStatus": "NEEDS_REVIEW",
+"parserStatus": "AUTO_ACCEPT",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 1300,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "Standardpreis pro Modul",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 1170,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "10 % Alumni-Rabatt",
+"eligibilityType": "ALUMNI",
+"eligibilityValue": "UNIDISTANCE",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "MIXED",
+"scheduleMode": "UNKNOWN",
+"instructionFormats": [
+"E_LEARNING",
+"SELF_STUDY"
+]
+}
+],
+"scheduleSummary": "UNKNOWN",
+"temporalSummary": "MIXED",
+"sourceText": "Online four-week module incl. two scheduled 90-minute virtual classrooms and self-study (~12h per week); source https://fernuni.ch/droit/formation-continue/formation-courte-histoire-des-fakes-news-et-des-medias-une-perspective-croisee; no future intake confirmed. | Primärquelle 2026 bestätigt CHF1300 für 4-Wochen-Modul / 2 ECTS; CHF1170 für Alumni (10% Rabatt). Ausgabe 21.09.–18.10.2026, Frist 06.09.2026 abgelaufen; nächste Durchführung NICHT publiziert, gewöhnlich alle zwei Jahre ohne garantierten Termin. priceEligible=false.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-FERNUNI-003": {
@@ -36037,7 +37975,7 @@
 }
 ],
 "delivery": {
-"evidenceTier": "PROVISIONAL",
+"evidenceTier": "VERIFIED",
 "structure": "SINGLE_CHANNEL",
 "channels": [
 "IN_PERSON"
@@ -36048,15 +37986,15 @@
 "attendanceChannels": [
 "IN_PERSON"
 ],
-"temporalMode": "UNKNOWN",
-"scheduleMode": "UNKNOWN",
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
 "instructionFormats": []
 }
 ],
-"scheduleSummary": "UNKNOWN",
-"temporalSummary": "UNKNOWN",
-"sourceText": "",
-"materialisationStatus": "PROVISIONAL_LEGACY_DERIVED"
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "Présentiel at ifage Montbrillant; 26-30 October 2026, 13:30-16:30. Source: https://www.ifage.ch/formation/tic/formations-cao-dao-pao/photoshop-niveau-1/",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "IF-G05": {
@@ -36460,7 +38398,7 @@
 }
 ],
 "delivery": {
-"evidenceTier": "PROVISIONAL",
+"evidenceTier": "VERIFIED",
 "structure": "SINGLE_CHANNEL",
 "channels": [
 "IN_PERSON"
@@ -36471,15 +38409,15 @@
 "attendanceChannels": [
 "IN_PERSON"
 ],
-"temporalMode": "UNKNOWN",
-"scheduleMode": "UNKNOWN",
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
 "instructionFormats": []
 }
 ],
-"scheduleSummary": "UNKNOWN",
-"temporalSummary": "UNKNOWN",
-"sourceText": "",
-"materialisationStatus": "PROVISIONAL_LEGACY_DERIVED"
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "Offizieller ifage-Sessionkalender S-05006: Präsenzausgabe 03.11., 05.11., 10.11., 12.11. und 17.11.2026, 18:00–21:00; echter Unterrichtsort ifage Montbrillant (nicht bloss Anbieter-Firmensitz); 5 Tage / 15h, CHF 620. Gilt für diese konkrete Edition. https://www.ifage.ch/formation/tic/photographie-audiovisuel/",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "IF-P04": {
@@ -36695,7 +38633,7 @@
 }
 ],
 "delivery": {
-"evidenceTier": "PROVISIONAL",
+"evidenceTier": "VERIFIED",
 "structure": "SINGLE_CHANNEL",
 "channels": [
 "IN_PERSON"
@@ -36706,15 +38644,15 @@
 "attendanceChannels": [
 "IN_PERSON"
 ],
-"temporalMode": "UNKNOWN",
-"scheduleMode": "UNKNOWN",
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
 "instructionFormats": []
 }
 ],
-"scheduleSummary": "UNKNOWN",
-"temporalSummary": "UNKNOWN",
-"sourceText": "",
-"materialisationStatus": "PROVISIONAL_LEGACY_DERIVED"
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "Offizieller ifage-Sessionkalender S-03471: Präsenzausgabe 27.10., 29.10., 05.11., 12.11. und 26.11.2026, 18:00–21:00; echter Unterrichtsort ifage Montbrillant (nicht bloss Anbieter-Firmensitz); 5 Tage / 15h, CHF 550. Gilt für diese konkrete Edition. https://www.ifage.ch/formation/tic/photographie-audiovisuel/les-bases-techniques-de-la-photograpie/",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "IF-P09": {
@@ -36789,7 +38727,7 @@
 }
 ],
 "delivery": {
-"evidenceTier": "PROVISIONAL",
+"evidenceTier": "VERIFIED",
 "structure": "SINGLE_CHANNEL",
 "channels": [
 "IN_PERSON"
@@ -36800,15 +38738,15 @@
 "attendanceChannels": [
 "IN_PERSON"
 ],
-"temporalMode": "UNKNOWN",
-"scheduleMode": "UNKNOWN",
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
 "instructionFormats": []
 }
 ],
-"scheduleSummary": "UNKNOWN",
-"temporalSummary": "UNKNOWN",
-"sourceText": "",
-"materialisationStatus": "PROVISIONAL_LEGACY_DERIVED"
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "Présentiel, ifage Geneva; S-03475 on 3 Nov, 3 Dec 2026, 2 Feb and 23 Feb 2027; building not published. Source: https://www.ifage.ch/formation/tic/photographie-audiovisuel/la-lumiere-en-photographie/",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "IF-P11": {
@@ -37024,7 +38962,7 @@
 }
 ],
 "delivery": {
-"evidenceTier": "PROVISIONAL",
+"evidenceTier": "VERIFIED",
 "structure": "SINGLE_CHANNEL",
 "channels": [
 "IN_PERSON"
@@ -37035,15 +38973,15 @@
 "attendanceChannels": [
 "IN_PERSON"
 ],
-"temporalMode": "UNKNOWN",
-"scheduleMode": "UNKNOWN",
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
 "instructionFormats": []
 }
 ],
-"scheduleSummary": "UNKNOWN",
-"temporalSummary": "UNKNOWN",
-"sourceText": "",
-"materialisationStatus": "PROVISIONAL_LEGACY_DERIVED"
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "Offizielles ifage-Kursprogramm: WordPress S-05247, S-05999 und S-06000 sämtlich Présentiel am Unterrichtsort ifage Augustins, Genève (26.–30.10.2026, 01.–05.02.2027 und 14.–28.04.2027). Kurs-URL: https://www.ifage.ch/formation/tic/formations-cms-developpement-web/wordpress-creer-son-site-internet-facilement/ . Die allgemeine Hybrid-Option belegt keine Online-Ausgabe dieser drei konkreten Sessions.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "IF-W04": {
@@ -37362,18 +39300,85 @@
 }
 },
 "V78-04": {
-"parserStatus": "NEEDS_REVIEW",
-"priceEligible": false,
-"priceOptions": [],
+"parserStatus": "AUTO_ACCEPT",
+"priceEligible": true,
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 1300,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "Classe virtuelle (2 jours)",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": [],
+"deliveryVariantRefs": [
+"A"
+]
+},
+{
+"amountType": "EXACT",
+"amount": 1400,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "Présentiel (2 jours)",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": [],
+"deliveryVariantRefs": [
+"B"
+]
+}
+],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "R11_FROZEN_UNLABELED"
+"evidenceTier": "VERIFIED",
+"structure": "MODE_CHOICE",
+"channels": [
+"REMOTE",
+"IN_PERSON"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+},
+{
+"deliveryVariantId": "B",
+"attendanceChannels": [
+"IN_PERSON"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "ITTA ADBAE-02: sessions virtuel ou Genève/Lausanne, 29–30.10.2026 et 03–04.12.2026",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "V78-05": {
@@ -37427,73 +39432,77 @@
 }
 },
 "PCC-P02": {
-"parserStatus": "AUTO_ACCEPT",
-"priceEligible": true,
-"priceOptions": [
+"parserStatus": "NEEDS_REVIEW",
+"priceEligible": false,
+"priceOptions": [],
+"delivery": {
+"evidenceTier": "VERIFIED",
+"structure": "MODE_CHOICE",
+"channels": [
+"IN_PERSON",
+"REMOTE"
+],
+"variants": [
 {
-"amountType": "FROM",
-"amount": null,
-"minAmount": 990.0,
-"maxAmount": null,
-"currency": "EUR",
-"tariffClass": "REGULAR",
-"tariffLabel": null,
-"eligibilityType": "NONE",
-"eligibilityValue": null,
-"billingBasis": "TOTAL",
-"billingCount": null,
-"priceScope": "FULL_OFFER",
-"taxMode": "EXCLUDED",
-"taxRate": null,
-"validFrom": null,
-"validThrough": null,
-"components": []
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"IN_PERSON"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+},
+{
+"deliveryVariantId": "B",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
 }
 ],
-"delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: CH-Basel / CH-Bern / CH-Zürich / Live-Online | Evidence=ORTE_UND_LIVE_ONLINE_QUELLENGESTUETZT__2026_SESSION_OFFEN | Course=https://www.pc-college.ch/seminare-schulungen-kurse/framemaker/adobe-framemaker-grundkurs-frg.php | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "PCC-P03": {
-"parserStatus": "AUTO_ACCEPT",
-"priceEligible": true,
-"priceOptions": [
+"parserStatus": "NEEDS_REVIEW",
+"priceEligible": false,
+"priceOptions": [],
+"delivery": {
+"evidenceTier": "VERIFIED",
+"structure": "MODE_CHOICE",
+"channels": [
+"IN_PERSON",
+"REMOTE"
+],
+"variants": [
 {
-"amountType": "FROM",
-"amount": null,
-"minAmount": 990.0,
-"maxAmount": null,
-"currency": "EUR",
-"tariffClass": "REGULAR",
-"tariffLabel": null,
-"eligibilityType": "NONE",
-"eligibilityValue": null,
-"billingBasis": "TOTAL",
-"billingCount": null,
-"priceScope": "FULL_OFFER",
-"taxMode": "EXCLUDED",
-"taxRate": null,
-"validFrom": null,
-"validThrough": null,
-"components": []
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"IN_PERSON"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+},
+{
+"deliveryVariantId": "B",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
 }
 ],
-"delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Präsenz- oder Live-Online-Training (laut Angebotsseite); konkrete Präsenzadresse erst nach Auswahl der Durchführung | Evidence=MODALITAET_QUELLENGESTUETZT__SESSIONORT_VARIABEL | Course=https://www.pc-college.ch/seminare-schulungen-kurse/illustrator/adobe-illustrator-grundkurs-ill.php | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "PCC-P04": {
@@ -37532,38 +39541,40 @@
 }
 },
 "PCC-P05": {
-"parserStatus": "AUTO_ACCEPT",
-"priceEligible": true,
-"priceOptions": [
+"parserStatus": "NEEDS_REVIEW",
+"priceEligible": false,
+"priceOptions": [],
+"delivery": {
+"evidenceTier": "VERIFIED",
+"structure": "MODE_CHOICE",
+"channels": [
+"IN_PERSON",
+"REMOTE"
+],
+"variants": [
 {
-"amountType": "FROM",
-"amount": null,
-"minAmount": 990.0,
-"maxAmount": null,
-"currency": "EUR",
-"tariffClass": "REGULAR",
-"tariffLabel": null,
-"eligibilityType": "NONE",
-"eligibilityValue": null,
-"billingBasis": "TOTAL",
-"billingCount": null,
-"priceScope": "FULL_OFFER",
-"taxMode": "EXCLUDED",
-"taxRate": null,
-"validFrom": null,
-"validThrough": null,
-"components": []
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"IN_PERSON"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+},
+{
+"deliveryVariantId": "B",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
 }
 ],
-"delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Präsenz- oder Live-Online-Training (laut Angebotsseite); konkrete Präsenzadresse erst nach Auswahl der Durchführung | Evidence=MODALITAET_QUELLENGESTUETZT__SESSIONORT_VARIABEL | Course=https://www.pc-college.ch/seminare-schulungen-kurse/photoshop/adobe-photoshop-grundkurs-psg.php | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "PCC-P06": {
@@ -37637,38 +39648,40 @@
 }
 },
 "PCC-P08": {
-"parserStatus": "AUTO_ACCEPT",
-"priceEligible": true,
-"priceOptions": [
+"parserStatus": "NEEDS_REVIEW",
+"priceEligible": false,
+"priceOptions": [],
+"delivery": {
+"evidenceTier": "VERIFIED",
+"structure": "MODE_CHOICE",
+"channels": [
+"IN_PERSON",
+"REMOTE"
+],
+"variants": [
 {
-"amountType": "FROM",
-"amount": null,
-"minAmount": 1090.0,
-"maxAmount": null,
-"currency": "EUR",
-"tariffClass": "REGULAR",
-"tariffLabel": null,
-"eligibilityType": "NONE",
-"eligibilityValue": null,
-"billingBasis": "TOTAL",
-"billingCount": null,
-"priceScope": "FULL_OFFER",
-"taxMode": "EXCLUDED",
-"taxRate": null,
-"validFrom": null,
-"validThrough": null,
-"components": []
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"IN_PERSON"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+},
+{
+"deliveryVariantId": "B",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
 }
 ],
-"delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Präsenz- oder Live-Online-Training (laut Angebotsseite); konkrete Präsenzadresse erst nach Auswahl der Durchführung | Evidence=MODALITAET_QUELLENGESTUETZT__SESSIONORT_VARIABEL | Course=https://www.pc-college.ch/seminare-schulungen-kurse/framemaker/adobe-framemaker-aufbaukurs-fra.php | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "PCC-P09": {
@@ -37812,38 +39825,40 @@
 }
 },
 "PCC-P16": {
-"parserStatus": "AUTO_ACCEPT",
-"priceEligible": true,
-"priceOptions": [
+"parserStatus": "NEEDS_REVIEW",
+"priceEligible": false,
+"priceOptions": [],
+"delivery": {
+"evidenceTier": "VERIFIED",
+"structure": "MODE_CHOICE",
+"channels": [
+"IN_PERSON",
+"REMOTE"
+],
+"variants": [
 {
-"amountType": "FROM",
-"amount": null,
-"minAmount": 590.0,
-"maxAmount": null,
-"currency": "EUR",
-"tariffClass": "REGULAR",
-"tariffLabel": null,
-"eligibilityType": "NONE",
-"eligibilityValue": null,
-"billingBasis": "TOTAL",
-"billingCount": null,
-"priceScope": "FULL_OFFER",
-"taxMode": "EXCLUDED",
-"taxRate": null,
-"validFrom": null,
-"validThrough": null,
-"components": []
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"IN_PERSON"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+},
+{
+"deliveryVariantId": "B",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
 }
 ],
-"delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Präsenz- oder Live-Online-Training (laut Angebotsseite); konkrete Präsenzadresse erst nach Auswahl der Durchführung | Evidence=MODALITAET_QUELLENGESTUETZT__SESSIONORT_VARIABEL | Course=https://www.pc-college.ch/seminare-schulungen-kurse/bridge/adobe-bridge-kompaktkurs-bri.php | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "PCC-P26": {
@@ -38022,73 +40037,77 @@
 }
 },
 "PCC-P32": {
-"parserStatus": "AUTO_ACCEPT",
-"priceEligible": true,
-"priceOptions": [
+"parserStatus": "NEEDS_REVIEW",
+"priceEligible": false,
+"priceOptions": [],
+"delivery": {
+"evidenceTier": "PROVISIONAL",
+"structure": "MODE_CHOICE",
+"channels": [
+"IN_PERSON",
+"REMOTE"
+],
+"variants": [
 {
-"amountType": "FROM",
-"amount": null,
-"minAmount": 990.0,
-"maxAmount": null,
-"currency": "EUR",
-"tariffClass": "REGULAR",
-"tariffLabel": null,
-"eligibilityType": "NONE",
-"eligibilityValue": null,
-"billingBasis": "TOTAL",
-"billingCount": null,
-"priceScope": "FULL_OFFER",
-"taxMode": "EXCLUDED",
-"taxRate": null,
-"validFrom": null,
-"validThrough": null,
-"components": []
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"IN_PERSON"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "UNKNOWN",
+"instructionFormats": []
+},
+{
+"deliveryVariantId": "B",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "UNKNOWN",
+"instructionFormats": []
 }
 ],
-"delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"scheduleSummary": "UNKNOWN",
+"temporalSummary": "UNKNOWN",
+"sourceText": "PC-COLLEGE QA09 source register lists Swiss city teaching location options (Basel/Bern/Zürich) and live-online; actual in-person session venue not yet confirmed. For source URL see data.js for this offer; exact site/session selection required, no venue invented.",
+"materialisationStatus": "SOURCE_QUALIFIED_PARTIAL"
 }
 },
 "PCC-P33": {
-"parserStatus": "AUTO_ACCEPT",
-"priceEligible": true,
-"priceOptions": [
+"parserStatus": "NEEDS_REVIEW",
+"priceEligible": false,
+"priceOptions": [],
+"delivery": {
+"evidenceTier": "PROVISIONAL",
+"structure": "MODE_CHOICE",
+"channels": [
+"IN_PERSON",
+"REMOTE"
+],
+"variants": [
 {
-"amountType": "FROM",
-"amount": null,
-"minAmount": 990.0,
-"maxAmount": null,
-"currency": "EUR",
-"tariffClass": "REGULAR",
-"tariffLabel": null,
-"eligibilityType": "NONE",
-"eligibilityValue": null,
-"billingBasis": "TOTAL",
-"billingCount": null,
-"priceScope": "FULL_OFFER",
-"taxMode": "EXCLUDED",
-"taxRate": null,
-"validFrom": null,
-"validThrough": null,
-"components": []
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"IN_PERSON"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "UNKNOWN",
+"instructionFormats": []
+},
+{
+"deliveryVariantId": "B",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "UNKNOWN",
+"instructionFormats": []
 }
 ],
-"delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"scheduleSummary": "UNKNOWN",
+"temporalSummary": "UNKNOWN",
+"sourceText": "PC-COLLEGE QA09 source register lists Swiss city teaching location options (Basel/Bern/Zürich) and live-online; actual in-person session venue not yet confirmed. For source URL see data.js for this offer; exact site/session selection required, no venue invented.",
+"materialisationStatus": "SOURCE_QUALIFIED_PARTIAL"
 }
 },
 "PCC-P38": {
@@ -38477,46 +40496,87 @@
 }
 },
 "PCC-P28": {
+"parserStatus": "NEEDS_REVIEW",
+"priceEligible": false,
+"priceOptions": [],
+"delivery": {
+"evidenceTier": "VERIFIED",
+"structure": "MODE_CHOICE",
+"channels": [
+"IN_PERSON",
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"IN_PERSON"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+},
+{
+"deliveryVariantId": "B",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Präsenz- oder Live-Online-Training (laut Angebotsseite); konkrete Präsenzadresse erst nach Auswahl der Durchführung | Evidence=MODALITAET_QUELLENGESTUETZT__SESSIONORT_VARIABEL | Course=https://www.pc-college.ch/seminare-schulungen-kurse/lightroom/adobe-lightroom-kompaktkurs-lig.php | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
+}
+},
+"V52-MEEL-INSTAGRAM": {
 "parserStatus": "AUTO_ACCEPT",
-"priceEligible": true,
+"priceEligible": false,
 "priceOptions": [
 {
-"amountType": "FROM",
-"amount": null,
-"minAmount": 790.0,
+"amountType": "EXACT",
+"amount": 91,
+"minAmount": null,
 "maxAmount": null,
-"currency": "EUR",
+"currency": "CHF",
 "tariffClass": "REGULAR",
-"tariffLabel": null,
+"tariffLabel": "Regulärer Tarif",
 "eligibilityType": "NONE",
 "eligibilityValue": null,
 "billingBasis": "TOTAL",
 "billingCount": null,
 "priceScope": "FULL_OFFER",
-"taxMode": "EXCLUDED",
+"taxMode": "UNSPECIFIED",
 "taxRate": null,
 "validFrom": null,
-"validThrough": null,
+"validThrough": "2026-10-09",
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 83,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "MEEL-Mitglieder",
+"eligibilityType": "MEMBERSHIP",
+"eligibilityValue": "MEEL_MEMBER",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": "2026-10-09",
 "components": []
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
-}
-},
-"V52-MEEL-INSTAGRAM": {
-"parserStatus": "NEEDS_REVIEW",
-"priceEligible": false,
-"priceOptions": [],
-"delivery": {
-"evidenceTier": "PROVISIONAL",
+"evidenceTier": "VERIFIED",
 "structure": "SINGLE_CHANNEL",
 "channels": [
 "IN_PERSON"
@@ -38527,15 +40587,15 @@
 "attendanceChannels": [
 "IN_PERSON"
 ],
-"temporalMode": "UNKNOWN",
-"scheduleMode": "UNKNOWN",
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
 "instructionFormats": []
 }
 ],
-"scheduleSummary": "UNKNOWN",
-"temporalSummary": "UNKNOWN",
-"sourceText": "",
-"materialisationStatus": "PROVISIONAL_LEGACY_DERIVED"
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "Primärquellenledger MEEL: einmalige in-person Instagram Toolbox-Ausgabe 09.10.2026 14:00–16:30, MEEL Rue du Château 7, 1870 Monthey (VS); CHF91 regulär, CHF83 Mitgliedertarif, eigener Datums-Guard validThrough 2026-10-09, bereits abgelaufen und kein neuer Kurs publiziert. Quelle https://www.meel.ch/activite/les-boites-a-outils-du-vendredi-instagram/. Web-Quelle in diesem Lauf nicht erneut erreichbar; belegte frühere Quellenerfassung genutzt, ohne neue aktuelle Buchung zu behaupten.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED_WITH_PAST_OCCURRENCE"
 }
 },
 "V59-SZ01": {
@@ -38754,14 +40814,26 @@
 "priceEligible": false,
 "priceOptions": [],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "UNKNOWN",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "UNKNOWN",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: ONLINE | Evidence=ONLINE_DURCHFUEHRUNG_BELEGT_20261013 | Course=https://www.mitech.education/Promozioni/Index/55 | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "MW-P02": {
@@ -39045,14 +41117,60 @@
 }
 },
 "CAD-002": {
-"parserStatus": "NEEDS_REVIEW",
-"priceEligible": false,
-"priceOptions": [],
+"parserStatus": "AUTO_ACCEPT",
+"priceEligible": true,
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 500,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "E-Learning tutoré avec séances présentielles",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": [],
+"deliveryVariantRefs": [
+"A"
+]
+},
+{
+"amountType": "EXACT",
+"amount": 250,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "REGULAR",
+"tariffLabel": "E-Learning autonome (sans certification)",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": [],
+"deliveryVariantRefs": [
+"B"
+]
+}
+],
 "delivery": {
 "evidenceTier": "VERIFIED",
-"structure": "MULTI_VARIANT",
+"structure": "MODE_CHOICE",
 "channels": [
-"IN_PERSON"
+"IN_PERSON",
+"REMOTE"
 ],
 "variants": [
 {
@@ -39069,7 +41187,9 @@
 },
 {
 "deliveryVariantId": "B",
-"attendanceChannels": [],
+"attendanceChannels": [
+"REMOTE"
+],
 "temporalMode": "ASYNCHRONOUS",
 "scheduleMode": "UNKNOWN",
 "instructionFormats": [
@@ -39546,7 +41666,7 @@
 }
 ],
 "delivery": {
-"evidenceTier": "PROVISIONAL",
+"evidenceTier": "VERIFIED",
 "structure": "SINGLE_CHANNEL",
 "channels": [
 "IN_PERSON"
@@ -39557,15 +41677,15 @@
 "attendanceChannels": [
 "IN_PERSON"
 ],
-"temporalMode": "UNKNOWN",
-"scheduleMode": "UNKNOWN",
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
 "instructionFormats": []
 }
 ],
-"scheduleSummary": "UNKNOWN",
-"temporalSummary": "UNKNOWN",
-"sourceText": "",
-"materialisationStatus": "PROVISIONAL_LEGACY_DERIVED"
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "Offizielle Cadschool-Kurs- und Anmeldeseite: 120 Unterrichtsstunden an 16 Kurstagen, Präsenzunterricht (Kursausgabe 03.11.–01.12.2026), Kursort Genève/Lausanne je gebuchter Durchführung; keine Online-Sitzung aus digitalen Lernunterlagen ableiten. https://www.cadschool.ch/formation/after-effects-motion-design/",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "CAD-019": {
@@ -39796,7 +41916,7 @@
 }
 ],
 "delivery": {
-"evidenceTier": "PROVISIONAL",
+"evidenceTier": "VERIFIED",
 "structure": "SINGLE_CHANNEL",
 "channels": [
 "IN_PERSON"
@@ -39807,15 +41927,15 @@
 "attendanceChannels": [
 "IN_PERSON"
 ],
-"temporalMode": "UNKNOWN",
-"scheduleMode": "UNKNOWN",
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
 "instructionFormats": []
 }
 ],
-"scheduleSummary": "UNKNOWN",
-"temporalSummary": "UNKNOWN",
-"sourceText": "",
-"materialisationStatus": "PROVISIONAL_LEGACY_DERIVED"
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "Offizielle Cadschool-Kurs- und Anmeldeseite: 45 Unterrichtsstunden an 6 Kurstagen, Präsenzunterricht (Kursausgabe 27.10.–10.11.2026; weitere Editionen separat), Kursort Genève/Lausanne je gebuchter Durchführung; keine Online-Sitzung aus digitalen Lernunterlagen ableiten. https://www.cadschool.ch/formation/wordpress-base-intermediaire/",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "CAD-026": {
@@ -39901,38 +42021,30 @@
 }
 },
 "PCC-P23": {
-"parserStatus": "AUTO_ACCEPT",
-"priceEligible": true,
-"priceOptions": [
+"parserStatus": "NEEDS_REVIEW",
+"priceEligible": false,
+"priceOptions": [],
+"delivery": {
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
 {
-"amountType": "FROM",
-"amount": null,
-"minAmount": 590.0,
-"maxAmount": null,
-"currency": "EUR",
-"tariffClass": "REGULAR",
-"tariffLabel": null,
-"eligibilityType": "NONE",
-"eligibilityValue": null,
-"billingBasis": "TOTAL",
-"billingCount": null,
-"priceScope": "FULL_OFFER",
-"taxMode": "UNSPECIFIED",
-"taxRate": null,
-"validFrom": null,
-"validThrough": null,
-"components": []
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
 }
 ],
-"delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "Offizielle PC-COLLEGE Schweizer InDesign CC Garantieterminliste, Kennung INF261030, Freitag 30.10.2026 ist ausdrücklich Live-Online-Training (1 Tag). Präsenz in CH-Basel/CH-Bern/CH-Zürich bleibt allgemeiner Provider-Optionsweg, NICHT die belegte 30.10-Edition. Preisanzeige EUR590, CH-Endpreis/Steuerbasis und Platzverfügbarkeit weiterhin ungeklärt. https://www.pc-college.ch/seminar/indesign-cc/index.php",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "PCC-P24": {
@@ -40078,9 +42190,48 @@
 }
 },
 "V82-DAWAN-029": {
-"parserStatus": "NEEDS_REVIEW",
+"parserStatus": "AUTO_ACCEPT",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 1375,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Präsenzvariante, CHF 1375 exkl. Steuer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "EXCLUDED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 1100,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Distanzvariante, CHF 1100 exkl. Steuer",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "EXCLUDED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
 "evidenceTier": "VERIFIED",
 "structure": "MODE_CHOICE",
@@ -40110,7 +42261,7 @@
 ],
 "scheduleSummary": "UNKNOWN",
 "temporalSummary": "UNKNOWN",
-"sourceText": "CHF 1,375 present / CHF 1,100 distance",
+"sourceText": "CHF 1,375 present / CHF 1,100 distance | Preis-Edition: Präsenz CHF1375 excl., Distanz CHF1100 excl., Variante bei Bestellung wählen; keine Budgetfilter-Freigabe. https://www.dawan.ch/formations/audiovisuel/davinci/davinci-resolve-multicam",
 "materialisationStatus": "AUTO_MATERIALISED_HIGH_CONFIDENCE"
 }
 },
@@ -40362,16 +42513,83 @@
 "V82-DAWAN-037": {
 "parserStatus": "NEEDS_REVIEW",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 1575,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "INTER Präsenz, CHF 1'575 exkl. Steuer (3 Tage)",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "EXCLUDED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": [],
+"deliveryVariantRefs": [
+"A"
+]
+},
+{
+"amountType": "EXACT",
+"amount": 1260,
+"minAmount": null,
+"maxAmount": null,
+"currency": "CHF",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "INTER Distanz / synchron, CHF 1'260 exkl. Steuer (3 Tage)",
+"eligibilityType": "NONE",
+"eligibilityValue": null,
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "EXCLUDED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": [],
+"deliveryVariantRefs": [
+"B"
+]
+}
+],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "MODE_CHOICE",
+"channels": [
+"IN_PERSON",
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"IN_PERSON"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+},
+{
+"deliveryVariantId": "B",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (synchroner Distanzunterricht); Präsenzoption abhängig von Kursdurchführung, konkreter Präsenzraum nicht publiziert | Evidence=MODALITAET_ANBIETERBELEGT__PRAESENZORT_TBD | Course=https://www.dawan.ch/formations/pao/premiers-pas-en-creation-graphique/graphiste-adobe-initiation.pdf | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "OFFER-RSS-001": {
@@ -41061,14 +43279,36 @@
 "priceEligible": false,
 "priceOptions": [],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "MODE_CHOICE",
+"channels": [
+"IN_PERSON",
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"IN_PERSON"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+},
+{
+"deliveryVariantId": "B",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (synchroner Distanzunterricht); Präsenzoption abhängig von Kursdurchführung, konkreter Präsenzraum nicht publiziert | Evidence=MODALITAET_ANBIETERBELEGT__PRAESENZORT_TBD | Course=https://www.dawan.ch/formations/audiovisuel/premiere-pro/premiere-pro-techniques-de-montage-avance | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "V82-DAWAN-013": {
@@ -41136,14 +43376,36 @@
 "priceEligible": false,
 "priceOptions": [],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "MODE_CHOICE",
+"channels": [
+"IN_PERSON",
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"IN_PERSON"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+},
+{
+"deliveryVariantId": "B",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (synchroner Distanzunterricht); Präsenzoption abhängig von Kursdurchführung, konkreter Präsenzraum nicht publiziert | Evidence=MODALITAET_ANBIETERBELEGT__PRAESENZORT_TBD | Course=https://www.dawan.ch/formations/audiovisuel/after-effects/after-effects-avance-duik | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "V82-DAWAN-018": {
@@ -41376,14 +43638,36 @@
 "priceEligible": false,
 "priceOptions": [],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "MODE_CHOICE",
+"channels": [
+"IN_PERSON",
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"IN_PERSON"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+},
+{
+"deliveryVariantId": "B",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (synchroner Distanzunterricht); Präsenzoption abhängig von Kursdurchführung, konkreter Präsenzraum nicht publiziert | Evidence=MODALITAET_ANBIETERBELEGT__PRAESENZORT_TBD | Course=https://www.dawan.ch/formations/pao/premiers-pas-en-creation-graphique/ia-premiers-pas-pour-les-graphistes | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "V82-DAWAN-040": {
@@ -41976,14 +44260,36 @@
 "priceEligible": false,
 "priceOptions": [],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "MODE_CHOICE",
+"channels": [
+"IN_PERSON",
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"IN_PERSON"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+},
+{
+"deliveryVariantId": "B",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (synchroner Distanzunterricht); Präsenzoption abhängig von Kursdurchführung, konkreter Präsenzraum nicht publiziert | Evidence=MODALITAET_ANBIETERBELEGT__PRAESENZORT_TBD | Course=https://www.dawan.ch/formations/sites-web/accessibilite/accessibilite-concevoir-des-contenus-web-et-editoriaux-accessibles | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "V82-DAWAN-100": {
@@ -43979,18 +46285,90 @@
 }
 },
 "AT-PROD-OFFER-003": {
-"parserStatus": "NEEDS_REVIEW",
+"parserStatus": "AUTO_ACCEPT",
 "priceEligible": false,
-"priceOptions": [],
+"priceOptions": [
+{
+"amountType": "EXACT",
+"amount": 4500,
+"minAmount": null,
+"maxAmount": null,
+"currency": "EUR",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Mitarbeiter:innen sonstiger Unternehmen",
+"eligibilityType": "PROFESSION",
+"eligibilityValue": "OTHER_COMPANY_EMPLOYEE",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 3500,
+"minAmount": null,
+"maxAmount": null,
+"currency": "EUR",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Journalist:innen / Medienhäuser",
+"eligibilityType": "PROFESSION",
+"eligibilityValue": "JOURNALIST_OR_MEDIA_HOUSE",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+},
+{
+"amountType": "EXACT",
+"amount": 1500,
+"minAmount": null,
+"maxAmount": null,
+"currency": "EUR",
+"tariffClass": "CONDITIONAL",
+"tariffLabel": "Freie Journalist:innen",
+"eligibilityType": "PROFESSION",
+"eligibilityValue": "FREELANCE_JOURNALIST",
+"billingBasis": "TOTAL",
+"billingCount": null,
+"priceScope": "FULL_OFFER",
+"taxMode": "UNSPECIFIED",
+"taxRate": null,
+"validFrom": null,
+"validThrough": null,
+"components": []
+}
+],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "HYBRID_COMBINED",
+"channels": [
+"IN_PERSON",
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"IN_PERSON",
+"REMOTE"
+],
+"temporalMode": "MIXED",
+"scheduleMode": "FIXED",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "FIXED",
+"temporalSummary": "MIXED",
+"sourceText": "AI-Media-Academy official programme: required in-person workshops in Vienna (4–6 Nov 2026, 18 Nov 2026, 21–22 Jan 2027) plus remote Zoom coaching sessions on 24 Nov 2026, 4 Dec 2026 and 11 Jan 2027. https://www.fjum-wien.at/programm/ai-media-academy | Veranstaltungsort belegbar: fjum Seminarraum Otto-Bauer-Gasse 6/2 1060 Wien (Kickoff/Code/Hackathon/Abschluss), Remote Zoom Feedback; Bewerbungsfrist 01.10.2026 23:59 abgelaufen, 2026er Bewerbung nicht mehr normal offen. Offizielle Angaben teilweise Tippfehler Jan 2026, kohärente Agenda endet 22.01.2027.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "AT-PROD-OFFER-008": {
@@ -46771,7 +49149,7 @@
 },
 "AT-PROD-OFFER-168": {
 "parserStatus": "AUTO_ACCEPT",
-"priceEligible": true,
+"priceEligible": false,
 "priceOptions": [
 {
 "amountType": "EXACT",
@@ -46794,14 +49172,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "PROVISIONAL",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"IN_PERSON"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"IN_PERSON"
+],
+"temporalMode": "UNKNOWN",
+"scheduleMode": "UNKNOWN",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "UNKNOWN",
+"temporalSummary": "UNKNOWN",
+"sourceText": "University Salzburg confirms physical teaching venue Universitäts- und Landessportzentrum Rif, Hallein-Rif; hybrid/remote model is NOT confirmed, so cannot classify as hybrid. https://www.plus.ac.at/postgraduale-weiterbildung/universitaetslehrgaenge-plus/sportjournalismus/",
+"materialisationStatus": "SOURCE_QUALIFIED_PARTIAL"
 }
 },
 "AT-PROD-OFFER-169": {
@@ -47994,14 +50384,26 @@
 }
 ],
 "delivery": {
-"evidenceTier": "UNKNOWN",
-"structure": "UNKNOWN",
-"channels": [],
-"variants": [],
-"scheduleSummary": "",
-"temporalSummary": "",
-"sourceText": "",
-"materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+"evidenceTier": "VERIFIED",
+"structure": "SINGLE_CHANNEL",
+"channels": [
+"REMOTE"
+],
+"variants": [
+{
+"deliveryVariantId": "A",
+"attendanceChannels": [
+"REMOTE"
+],
+"temporalMode": "SYNCHRONOUS",
+"scheduleMode": "UNKNOWN",
+"instructionFormats": []
+}
+],
+"scheduleSummary": "UNKNOWN",
+"temporalSummary": "SYNCHRONOUS",
+"sourceText": "QA09 existing official-source register: Online (Zoom); Veranstaltung vom 29.09.2026 ist vergangen | Evidence=QUELLENGESTUETZT__ONLINE_ZOOM__KEIN_WIEN_KURSORT | Course=https://www.fjum-wien.at/workshops/notion-2024-2-2 | Session/date dependent; only confirmed course modality, not seat availability.",
+"materialisationStatus": "GOLD_SOURCE_VERIFIED"
 }
 },
 "AT-PROD-OFFER-212": {

@@ -1,0 +1,800 @@
+﻿fall_p3,kategorie,datei,id,feld,entscheid,register_id,bemerkung,pruefwert
+O0001,A Echter Konflikt,data,CAD-002,start,GITHUB,E060,wie vorgeschlagen,de52b5c0ece57ee0
+O0002,A Echter Konflikt,data,OFFER-UZHDSI-001,region,GITHUB,E060,wie vorgeschlagen,ae78aa4a658a399c
+O0003,A Echter Konflikt,data,PCC-P02,start,GITHUB,E060,wie vorgeschlagen,511b0175f2452881
+O0004,A Echter Konflikt,data,PCC-P16,start,GITHUB,E060,wie vorgeschlagen,ef785d71e20d6ac2
+O0005,A Echter Konflikt,data,PCC-P32,start,GITHUB,E060,wie vorgeschlagen,84780b7e0ba4cadc
+O0006,A Echter Konflikt,data,PCC-P33,start,GITHUB,E060,wie vorgeschlagen,ceaf45f9a26dccc3
+O0007,B Gruppenkonflikt,data,MW-P06,sessions,GITHUB,E061,wie vorgeschlagen,81a21f52d0777957
+O0008,B Gruppenkonflikt,data,MW-P06,start,LIVE,E061,wie vorgeschlagen,7e4b09f445f4cb03
+O0009,B Gruppenkonflikt,data,PCC-P03,endDate,GITHUB,E061,wie vorgeschlagen,0e4abd48c90da4e7
+O0010,B Gruppenkonflikt,data,PCC-P03,sessions,GITHUB,E061,wie vorgeschlagen,1381e7e8444cffb3
+O0011,B Gruppenkonflikt,data,PCC-P03,start,LIVE,E061,wie vorgeschlagen,4b7f8d862bdebcd5
+O0012,B Gruppenkonflikt,data,PCC-P05,endDate,GITHUB,E061,wie vorgeschlagen,0e4abd48c90da4e7
+O0013,B Gruppenkonflikt,data,PCC-P05,sessions,GITHUB,E061,wie vorgeschlagen,61348936578ae21f
+O0014,B Gruppenkonflikt,data,PCC-P05,start,LIVE,E061,wie vorgeschlagen,1bf4b356a4afabdb
+O0015,B Gruppenkonflikt,data,PCC-P08,endDate,GITHUB,E061,wie vorgeschlagen,9dcb3e1ca6a097f0
+O0016,B Gruppenkonflikt,data,PCC-P08,start,LIVE,E061,wie vorgeschlagen,1f6523481e541ff4
+O0017,B Gruppenkonflikt,data,PCC-P28,endDate,GITHUB,E061,wie vorgeschlagen,0e4abd48c90da4e7
+O0018,B Gruppenkonflikt,data,PCC-P28,sessions,GITHUB,E061,wie vorgeschlagen,5afe04506049d14a
+O0019,B Gruppenkonflikt,data,PCC-P28,start,LIVE,E061,wie vorgeschlagen,c43cf69d813a03be
+O0020,B Gruppenkonflikt,data,PCC-P29,sessions,GITHUB,E061,wie vorgeschlagen,7a91cde3c77400d3
+O0021,B Gruppenkonflikt,data,PCC-P29,start,LIVE,E061,wie vorgeschlagen,c4b5dab9e8d1f3e8
+O0022,B Gruppenkonflikt,data,V58-S1-07,endDate,GITHUB,E061,wie vorgeschlagen,aae4a5be4bd359ee
+O0023,B Gruppenkonflikt,data,V58-S1-07,sessions,GITHUB,E061,wie vorgeschlagen,2190c2628f5ea54e
+O0024,B Gruppenkonflikt,data,V58-S1-07,start,LIVE,E061,wie vorgeschlagen,b2cfea30bce277f7
+O0025,C Live-Änderung an Schutz-ID,data,CAD-018,region,LIVE,E062,Live bestätigt,7e704e88dbce62aa
+O0026,C Live-Änderung an Schutz-ID,data,CAD-023,region,LIVE,E062,Live bestätigt,7e704e88dbce62aa
+O0027,C Live-Änderung an Schutz-ID,data,CAD-025,region,LIVE,E062,Live bestätigt,7e704e88dbce62aa
+O0028,C Live-Änderung an Schutz-ID,data,MW-P05,region,LIVE,E062,Live bestätigt,e4b3bcdc2550c869
+O0029,C Live-Änderung an Schutz-ID,smart,MW-P05,priceOptions,LIVE,E062,Live bestätigt,b6fad8af67a3f1bc
+O0030,C Live-Änderung an Schutz-ID,smart,OFFER-EBU-013,priceOptions,LIVE,E062,Live bestätigt,b14ce2d9787de482
+O0031,C Live-Änderung an Schutz-ID,data,PCC-P02,provider,LIVE,E062,Live bestätigt,8c5f65321a9fac7a
+O0032,C Live-Änderung an Schutz-ID,data,PCC-P03,provider,LIVE,E062,Live bestätigt,8c5f65321a9fac7a
+O0033,C Live-Änderung an Schutz-ID,data,PCC-P05,provider,LIVE,E062,Live bestätigt,8c5f65321a9fac7a
+O0034,C Live-Änderung an Schutz-ID,data,PCC-P08,provider,LIVE,E062,Live bestätigt,8c5f65321a9fac7a
+O0035,C Live-Änderung an Schutz-ID,data,PCC-P14,endDate,LIVE,E062,Live bestätigt,da0ffbf9cbfb0d36
+O0036,C Live-Änderung an Schutz-ID,data,PCC-P14,provider,LIVE,E062,Live bestätigt,8c5f65321a9fac7a
+O0037,C Live-Änderung an Schutz-ID,data,PCC-P14,start,LIVE,E062,Live bestätigt,771bb2edca93d282
+O0038,C Live-Änderung an Schutz-ID,data,PCC-P14,startDate,LIVE,E062,Live bestätigt,dc00f4eb44c3d004
+O0039,C Live-Änderung an Schutz-ID,data,PCC-P14,url,LIVE,E062,Live bestätigt,e47158b67b749f50
+O0040,C Live-Änderung an Schutz-ID,data,PCC-P15,provider,LIVE,E062,Live bestätigt,8c5f65321a9fac7a
+O0041,C Live-Änderung an Schutz-ID,data,PCC-P15,start,LIVE,E062,Live bestätigt,3b4ab0fc97f2621a
+O0042,C Live-Änderung an Schutz-ID,data,PCC-P16,provider,LIVE,E062,Live bestätigt,8c5f65321a9fac7a
+O0043,C Live-Änderung an Schutz-ID,data,PCC-P18,provider,LIVE,E062,Live bestätigt,8c5f65321a9fac7a
+O0044,C Live-Änderung an Schutz-ID,data,PCC-P18,start,LIVE,E062,Live bestätigt,9cdb5f6df88280ed
+O0045,C Live-Änderung an Schutz-ID,data,PCC-P21,endDate,LIVE,E062,Live bestätigt,9dcb3e1ca6a097f0
+O0046,C Live-Änderung an Schutz-ID,data,PCC-P21,provider,LIVE,E062,Live bestätigt,8c5f65321a9fac7a
+O0047,C Live-Änderung an Schutz-ID,data,PCC-P21,start,LIVE,E062,Live bestätigt,e0d74b5dfb76bb1a
+O0048,C Live-Änderung an Schutz-ID,data,PCC-P21,startDate,LIVE,E062,Live bestätigt,c3c537f7246ce440
+O0049,C Live-Änderung an Schutz-ID,data,PCC-P21,url,LIVE,E062,Live bestätigt,c957870989ba31cb
+O0050,C Live-Änderung an Schutz-ID,data,PCC-P23,provider,LIVE,E062,Live bestätigt,8c5f65321a9fac7a
+O0051,C Live-Änderung an Schutz-ID,data,PCC-P28,provider,LIVE,E062,Live bestätigt,8c5f65321a9fac7a
+O0052,C Live-Änderung an Schutz-ID,data,PCC-P32,provider,LIVE,E062,Live bestätigt,8c5f65321a9fac7a
+O0053,C Live-Änderung an Schutz-ID,data,PCC-P33,provider,LIVE,E062,Live bestätigt,8c5f65321a9fac7a
+O0054,D HOLD-Sperre fehlt live,data,AT-PROD-OFFER-154,publicationStatus,,,"offen: Einzelfall, nicht beantwortet",779641e4489b5db5
+O0055,D HOLD-Sperre fehlt live,data,AT-PROD-OFFER-168,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5
+O0056,D HOLD-Sperre fehlt live,data,OFFER-CFJM-008,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 1 (E016/E017/E050)",779641e4489b5db5
+O0057,D HOLD-Sperre fehlt live,data,OFFER-CORSO-001,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 1 (E016/E017/E050)",779641e4489b5db5
+O0058,D HOLD-Sperre fehlt live,data,OFFER-EBU-014,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5
+O0059,D HOLD-Sperre fehlt live,data,OFFER-EBU-019,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5
+O0060,D HOLD-Sperre fehlt live,data,OFFER-FERNUNI-002,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 1 (E016/E017/E050)",779641e4489b5db5
+O0061,D HOLD-Sperre fehlt live,data,OFFER-IFC-006,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5
+O0062,D HOLD-Sperre fehlt live,data,OFFER-IFC-007,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5
+O0063,D HOLD-Sperre fehlt live,data,OFFER-IFC-012,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5
+O0064,D HOLD-Sperre fehlt live,data,OFFER-IFC-014,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5
+O0065,D HOLD-Sperre fehlt live,data,OFFER-IFC-020,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5
+O0066,D HOLD-Sperre fehlt live,data,OFFER-MAZ-107,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5
+O0067,D HOLD-Sperre fehlt live,data,OFFER-MAZ-181,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5
+O0068,D HOLD-Sperre fehlt live,data,OFFER-MAZ-182,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5
+O0069,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-004,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
+O0070,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-013,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
+O0071,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-014,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
+O0072,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-020,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
+O0073,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-033,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
+O0074,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-035,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
+O0075,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-037,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
+O0076,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-044,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
+O0077,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-054,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
+O0078,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-057,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
+O0079,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-063,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
+O0080,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-076,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
+O0081,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-078,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
+O0082,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-082,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
+O0083,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-083,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
+O0084,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-099,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
+O0085,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-118,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
+O0086,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-139,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
+O0087,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-141,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
+O0088,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-143,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
+O0089,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-144,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
+O0090,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-151,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
+O0091,D HOLD-Sperre fehlt live,data,OFFER-UZHDSI-001,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5
+O0092,D HOLD-Sperre fehlt live,data,PCC-P08,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 1 (E016/E017/E050)",779641e4489b5db5
+O0093,D HOLD-Sperre fehlt live,data,PCC-P32,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 1 (E016/E017/E050)",779641e4489b5db5
+O0094,D HOLD-Sperre fehlt live,data,PCC-P33,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 1 (E016/E017/E050)",779641e4489b5db5
+O0095,D HOLD-Sperre fehlt live,data,PCC-P38,publicationStatus,,,"offen: Einzelfall, nicht beantwortet",779641e4489b5db5
+O0096,D HOLD-Sperre fehlt live,data,V52-MEEL-INSTAGRAM,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5
+O0097,D HOLD-Sperre fehlt live,data,V82-DAWAN-012,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5
+O0098,D HOLD-Sperre fehlt live,data,V82-DAWAN-017,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5
+O0099,D HOLD-Sperre fehlt live,data,V82-DAWAN-094,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5
+O0100,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-003,access,GITHUB,E064,Block,f46cc3ce73d88a62
+O0101,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-003,description,GITHUB,E064,Block,11a844a8d9f4f235
+O0102,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-003,region,GITHUB,E064,Block,e739e1ee764191e2
+O0103,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-003,reviewAfter,GITHUB,E064,Block,03645faaebc99b1c
+O0104,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-003,start,GITHUB,E064,Block,8a8e52a44f631e3e
+O0105,E GitHub-Änderung an Schutz-ID,smart,AT-PROD-OFFER-003,delivery,GITHUB,E064,Block,3bad297bfa221af0
+O0106,E GitHub-Änderung an Schutz-ID,smart,AT-PROD-OFFER-003,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0107,E GitHub-Änderung an Schutz-ID,smart,AT-PROD-OFFER-003,priceOptions,GITHUB,E064,Block,884c5b6872a2022f
+O0108,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-154,access,GITHUB,E064,Block,eeea6bc22efdf4d7
+O0109,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-154,priceCategory,GITHUB,E064,Block,3df42c91f8e5fce3
+O0110,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-154,region,GITHUB,E064,Block,83c206f6fb34728b
+O0111,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-154,reviewAfter,GITHUB,E064,Block,7b8cb68f42f6e342
+O0112,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-154,start,GITHUB,E064,Block,aa5bd646cc8a0c3e
+O0113,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-154,startDate,GITHUB,E064,Block,272d181b0a03c62e
+O0114,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-168,format,GITHUB,E064,Block,8ad5efb6a96f7ae4
+O0115,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-168,region,GITHUB,E064,Block,0b54058b14ad5358
+O0116,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-168,start,GITHUB,E064,Block,d2200a49bfd35340
+O0117,E GitHub-Änderung an Schutz-ID,smart,AT-PROD-OFFER-168,delivery,GITHUB,E064,Block,ce78be966fd68ff5
+O0118,E GitHub-Änderung an Schutz-ID,smart,AT-PROD-OFFER-168,priceEligible,GITHUB,E064,Block,55624b0eaa7be1b8
+O0119,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-172,endDate,GITHUB,E064,Block,6d1dc4fd6dde26c1
+O0120,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-172,reviewAfter,GITHUB,E064,Block,7222eb58454a60ba
+O0121,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-209,endDate,GITHUB,E064,Block,0ecd92dd19a5eaa1
+O0122,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-209,region,GITHUB,E064,Block,45ad67cfd25c3eed
+O0123,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-209,reviewAfter,GITHUB,E064,Block,7222eb58454a60ba
+O0124,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-209,start,GITHUB,E064,Block,0642327056ce1206
+O0125,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-211,endDate,GITHUB,E064,Block,474bd8ac6d82e8e3
+O0126,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-211,format,GITHUB,E064,Block,28c619e23b7803b6
+O0127,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-211,region,GITHUB,E064,Block,ff5c1d137f84b2dc
+O0128,E GitHub-Änderung an Schutz-ID,data,AT-PROD-OFFER-211,reviewAfter,GITHUB,E064,Block,dcb59d184914c8d4
+O0129,E GitHub-Änderung an Schutz-ID,smart,AT-PROD-OFFER-211,delivery,GITHUB,E064,Block,ffd842f8019f4af7
+O0130,E GitHub-Änderung an Schutz-ID,data,CAD-001,sessions,GITHUB,E064,Block,29f7f3ef47a91355
+O0131,E GitHub-Änderung an Schutz-ID,data,CAD-002,format,GITHUB,E064,Block,4ea83dfb86e46365
+O0132,E GitHub-Änderung an Schutz-ID,data,CAD-002,region,GITHUB,E064,Block,4eb4108159aeaf7f
+O0133,E GitHub-Änderung an Schutz-ID,data,CAD-002,reviewAfter,GITHUB,E064,Block,10d564ca2b96cd2d
+O0134,E GitHub-Änderung an Schutz-ID,smart,CAD-002,delivery,GITHUB,E064,Block,2c66d676a4cc526f
+O0135,E GitHub-Änderung an Schutz-ID,smart,CAD-002,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0136,E GitHub-Änderung an Schutz-ID,smart,CAD-002,priceEligible,GITHUB,E064,Block,220e0ac08879cc96
+O0137,E GitHub-Änderung an Schutz-ID,smart,CAD-002,priceOptions,GITHUB,E064,Block,37736578cfb60c41
+O0138,E GitHub-Änderung an Schutz-ID,data,CAD-006,start,GITHUB,E064,Block,bab8ec2390174f7d
+O0139,E GitHub-Änderung an Schutz-ID,data,CAD-006,url,GITHUB,E064,Block,d437cc2a880aafc5
+O0140,E GitHub-Änderung an Schutz-ID,data,CAD-018,reviewAfter,GITHUB,E064,Block,9ddd1f6ea88696b3
+O0141,E GitHub-Änderung an Schutz-ID,smart,CAD-018,delivery,GITHUB,E064,Block,0bd1a933caa4fd60
+O0142,E GitHub-Änderung an Schutz-ID,data,CAD-025,reviewAfter,GITHUB,E064,Block,631c061d20248296
+O0143,E GitHub-Änderung an Schutz-ID,data,CAD-025,sessions,GITHUB,E064,Block,f26351141dec864d
+O0144,E GitHub-Änderung an Schutz-ID,data,CAD-025,start,GITHUB,E064,Block,393dfae26199ba8b
+O0145,E GitHub-Änderung an Schutz-ID,smart,CAD-025,delivery,GITHUB,E064,Block,121c335d90a8d00f
+O0146,E GitHub-Änderung an Schutz-ID,data,IF-G04,reviewAfter,GITHUB,E064,Block,10d564ca2b96cd2d
+O0147,E GitHub-Änderung an Schutz-ID,data,IF-G04,sessions,GITHUB,E064,Block,036fd229b16cf152
+O0148,E GitHub-Änderung an Schutz-ID,data,IF-G04,start,GITHUB,E064,Block,afe5a9f0f55c9674
+O0149,E GitHub-Änderung an Schutz-ID,data,IF-G04,url,GITHUB,E064,Block,de58f1e849fb5c98
+O0150,E GitHub-Änderung an Schutz-ID,smart,IF-G04,delivery,GITHUB,E064,Block,ddadcc7e6a55d733
+O0151,E GitHub-Änderung an Schutz-ID,data,IF-P03,reviewAfter,GITHUB,E064,Block,9ddd1f6ea88696b3
+O0152,E GitHub-Änderung an Schutz-ID,smart,IF-P03,delivery,GITHUB,E064,Block,a48672cdb94d87ed
+O0153,E GitHub-Änderung an Schutz-ID,data,IF-P08,reviewAfter,GITHUB,E064,Block,631c061d20248296
+O0154,E GitHub-Änderung an Schutz-ID,data,IF-P08,url,GITHUB,E064,Block,b3b4e0c06501f07b
+O0155,E GitHub-Änderung an Schutz-ID,smart,IF-P08,delivery,GITHUB,E064,Block,3264473271f06bfe
+O0156,E GitHub-Änderung an Schutz-ID,data,IF-P10,reviewAfter,GITHUB,E064,Block,9ddd1f6ea88696b3
+O0157,E GitHub-Änderung an Schutz-ID,data,IF-P10,start,GITHUB,E064,Block,b41fee2326b42e8f
+O0158,E GitHub-Änderung an Schutz-ID,data,IF-P10,url,GITHUB,E064,Block,44523c01c02d8144
+O0159,E GitHub-Änderung an Schutz-ID,smart,IF-P10,delivery,GITHUB,E064,Block,fe8badf93fc5554b
+O0160,E GitHub-Änderung an Schutz-ID,data,IF-W03,reviewAfter,GITHUB,E064,Block,10d564ca2b96cd2d
+O0161,E GitHub-Änderung an Schutz-ID,data,IF-W03,sessions,GITHUB,E064,Block,6ef5dd2337ac1015
+O0162,E GitHub-Änderung an Schutz-ID,data,IF-W03,start,GITHUB,E064,Block,89c86c75bfd130ba
+O0163,E GitHub-Änderung an Schutz-ID,data,IF-W03,url,GITHUB,E064,Block,c43a6ddbe00371ff
+O0164,E GitHub-Änderung an Schutz-ID,smart,IF-W03,delivery,GITHUB,E064,Block,649e99e26d34f1a3
+O0165,E GitHub-Änderung an Schutz-ID,data,OFFER-CFJM-007,endDate,GITHUB,E064,Block,35077b14b81f06cc
+O0166,E GitHub-Änderung an Schutz-ID,data,OFFER-CFJM-007,reviewAfter,GITHUB,E064,Block,7b8cb68f42f6e342
+O0167,E GitHub-Änderung an Schutz-ID,data,OFFER-CFJM-007,start,GITHUB,E064,Block,fca23b9894a70d10
+O0168,E GitHub-Änderung an Schutz-ID,data,OFFER-CFJM-007,startDate,GITHUB,E064,Block,35077b14b81f06cc
+O0169,E GitHub-Änderung an Schutz-ID,smart,OFFER-CFJM-007,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0170,E GitHub-Änderung an Schutz-ID,smart,OFFER-CFJM-007,priceOptions,GITHUB,E064,Block,c9e3532631dfefcb
+O0171,E GitHub-Änderung an Schutz-ID,data,OFFER-CFJM-008,reviewAfter,GITHUB,E064,Block,c7949ab79d32900d
+O0172,E GitHub-Änderung an Schutz-ID,smart,OFFER-CFJM-008,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0173,E GitHub-Änderung an Schutz-ID,smart,OFFER-CFJM-008,priceOptions,GITHUB,E064,Block,c9e3532631dfefcb
+O0174,E GitHub-Änderung an Schutz-ID,data,OFFER-CFJM-013,reviewAfter,GITHUB,E064,Block,0e31e787421b3b42
+O0175,E GitHub-Änderung an Schutz-ID,data,OFFER-CFJM-013,sessions,GITHUB,E064,Block,051608e1407f16c0
+O0176,E GitHub-Änderung an Schutz-ID,data,OFFER-CFJM-013,start,GITHUB,E064,Block,24a829b096d472f6
+O0177,E GitHub-Änderung an Schutz-ID,smart,OFFER-CFJM-013,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0178,E GitHub-Änderung an Schutz-ID,smart,OFFER-CFJM-013,priceEligible,GITHUB,E064,Block,220e0ac08879cc96
+O0179,E GitHub-Änderung an Schutz-ID,smart,OFFER-CFJM-013,priceOptions,GITHUB,E064,Block,ad759d06d0c88ea8
+O0180,E GitHub-Änderung an Schutz-ID,data,OFFER-CFJM-014,reviewAfter,GITHUB,E064,Block,0e31e787421b3b42
+O0181,E GitHub-Änderung an Schutz-ID,data,OFFER-CFJM-014,sessions,GITHUB,E064,Block,f4a3c8cb0a85d32d
+O0182,E GitHub-Änderung an Schutz-ID,data,OFFER-CFJM-014,start,GITHUB,E064,Block,bf8c131761a39a2f
+O0183,E GitHub-Änderung an Schutz-ID,smart,OFFER-CFJM-014,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0184,E GitHub-Änderung an Schutz-ID,smart,OFFER-CFJM-014,priceEligible,GITHUB,E064,Block,220e0ac08879cc96
+O0185,E GitHub-Änderung an Schutz-ID,smart,OFFER-CFJM-014,priceOptions,GITHUB,E064,Block,c9e3532631dfefcb
+O0186,E GitHub-Änderung an Schutz-ID,data,OFFER-CFJM-015,reviewAfter,GITHUB,E064,Block,10d564ca2b96cd2d
+O0187,E GitHub-Änderung an Schutz-ID,data,OFFER-CFJM-015,sessions,GITHUB,E064,Block,dc68a456cfed3b1c
+O0188,E GitHub-Änderung an Schutz-ID,data,OFFER-CFJM-015,start,GITHUB,E064,Block,a521740bdfa468d5
+O0189,E GitHub-Änderung an Schutz-ID,smart,OFFER-CFJM-015,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0190,E GitHub-Änderung an Schutz-ID,smart,OFFER-CFJM-015,priceEligible,GITHUB,E064,Block,220e0ac08879cc96
+O0191,E GitHub-Änderung an Schutz-ID,smart,OFFER-CFJM-015,priceOptions,GITHUB,E064,Block,2ac01dead4b318ab
+O0192,E GitHub-Änderung an Schutz-ID,data,OFFER-CFJM-016,reviewAfter,GITHUB,E064,Block,d162594b56807534
+O0193,E GitHub-Änderung an Schutz-ID,smart,OFFER-CFJM-016,delivery,GITHUB,E064,Block,2899b6edd4a64b4a
+O0194,E GitHub-Änderung an Schutz-ID,smart,OFFER-CFJM-016,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0195,E GitHub-Änderung an Schutz-ID,smart,OFFER-CFJM-016,priceEligible,GITHUB,E064,Block,220e0ac08879cc96
+O0196,E GitHub-Änderung an Schutz-ID,smart,OFFER-CFJM-016,priceOptions,GITHUB,E064,Block,186e2b8d12812c78
+O0197,E GitHub-Änderung an Schutz-ID,data,OFFER-CORSO-001,priceCategory,GITHUB,E064,Block,7d6ab5cf66cb7831
+O0198,E GitHub-Änderung an Schutz-ID,data,OFFER-EBU-013,reviewAfter,GITHUB,E064,Block,77d2eaf57a1f83bd
+O0199,E GitHub-Änderung an Schutz-ID,data,OFFER-EBU-013,url,GITHUB,E064,Block,4352a157d3a80e79
+O0200,E GitHub-Änderung an Schutz-ID,data,OFFER-EBU-014,reviewAfter,GITHUB,E064,Block,77d2eaf57a1f83bd
+O0201,E GitHub-Änderung an Schutz-ID,data,OFFER-EBU-014,start,GITHUB,E064,Block,cdd6e5c45791128a
+O0202,E GitHub-Änderung an Schutz-ID,data,OFFER-EBU-014,url,GITHUB,E064,Block,75dec443a632bca3
+O0203,E GitHub-Änderung an Schutz-ID,smart,OFFER-EBU-014,delivery,GITHUB,E064,Block,3ebcdf13465d3a38
+O0204,E GitHub-Änderung an Schutz-ID,smart,OFFER-EBU-014,priceEligible,GITHUB,E064,Block,55624b0eaa7be1b8
+O0205,E GitHub-Änderung an Schutz-ID,data,OFFER-EBU-015,reviewAfter,GITHUB,E064,Block,77d2eaf57a1f83bd
+O0206,E GitHub-Änderung an Schutz-ID,data,OFFER-EBU-015,url,GITHUB,E064,Block,9e958bf0a8390b41
+O0207,E GitHub-Änderung an Schutz-ID,smart,OFFER-EBU-015,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0208,E GitHub-Änderung an Schutz-ID,smart,OFFER-EBU-015,priceOptions,GITHUB,E064,Block,8e023c765a7a9361
+O0209,E GitHub-Änderung an Schutz-ID,data,OFFER-EBU-019,reviewAfter,GITHUB,E064,Block,0e31e787421b3b42
+O0210,E GitHub-Änderung an Schutz-ID,data,OFFER-EBU-019,url,GITHUB,E064,Block,b8bdd08c2ba556e9
+O0211,E GitHub-Änderung an Schutz-ID,smart,OFFER-EBU-019,delivery,GITHUB,E064,Block,1edafa0f51daea78
+O0212,E GitHub-Änderung an Schutz-ID,smart,OFFER-EBU-019,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0213,E GitHub-Änderung an Schutz-ID,smart,OFFER-EBU-019,priceOptions,GITHUB,E064,Block,819b65a6b91e7baa
+O0214,E GitHub-Änderung an Schutz-ID,data,OFFER-FERNUNI-002,priceDisplay,GITHUB,E064,Block,b9469cafd3ecb294
+O0215,E GitHub-Änderung an Schutz-ID,data,OFFER-FERNUNI-002,start,GITHUB,E064,Block,b5b1111596b4a281
+O0216,E GitHub-Änderung an Schutz-ID,data,OFFER-FERNUNI-002,startDate,GITHUB,E064,Block,00c976c4a694f2ad
+O0217,E GitHub-Änderung an Schutz-ID,smart,OFFER-FERNUNI-002,delivery,GITHUB,E064,Block,4596ed08ba435d31
+O0218,E GitHub-Änderung an Schutz-ID,smart,OFFER-FERNUNI-002,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0219,E GitHub-Änderung an Schutz-ID,smart,OFFER-FERNUNI-002,priceOptions,GITHUB,E064,Block,0daf5b51e4ffeb4a
+O0220,E GitHub-Änderung an Schutz-ID,data,OFFER-HKB-001,priceDisplay,GITHUB,E064,Block,cf4940ad22eb2867
+O0221,E GitHub-Änderung an Schutz-ID,data,OFFER-HKB-001,region,GITHUB,E064,Block,b0909513bcc7280b
+O0222,E GitHub-Änderung an Schutz-ID,data,OFFER-HKB-001,reviewAfter,GITHUB,E064,Block,d713792a5a39b5bb
+O0223,E GitHub-Änderung an Schutz-ID,data,OFFER-HKB-001,start,GITHUB,E064,Block,a5f80c3ccbe2d67b
+O0224,E GitHub-Änderung an Schutz-ID,data,OFFER-HKB-001,startDate,GITHUB,E064,Block,abd2b9e4679737ff
+O0225,E GitHub-Änderung an Schutz-ID,smart,OFFER-HKB-001,delivery,GITHUB,E064,Block,0a9070803776f916
+O0226,E GitHub-Änderung an Schutz-ID,smart,OFFER-HKB-001,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0227,E GitHub-Änderung an Schutz-ID,smart,OFFER-HKB-001,priceOptions,GITHUB,E064,Block,4ee448e81b8b14fe
+O0228,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-005,endDate,GITHUB,E064,Block,a0237517b97cb770
+O0229,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-005,region,GITHUB,E064,Block,8165e48016adfa88
+O0230,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-005,start,GITHUB,E064,Block,e575501344fb4da9
+O0231,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-005,startDate,GITHUB,E064,Block,33bb07f4845eebb2
+O0232,E GitHub-Änderung an Schutz-ID,smart,OFFER-IFC-005,delivery,GITHUB,E064,Block,60e62d48a999d4ab
+O0233,E GitHub-Änderung an Schutz-ID,smart,OFFER-IFC-005,priceEligible,GITHUB,E064,Block,55624b0eaa7be1b8
+O0234,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-006,endDate,GITHUB,E064,Block,ead9fbd9a617f2c7
+O0235,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-006,region,GITHUB,E064,Block,d1a2fc5e92c76035
+O0236,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-006,start,GITHUB,E064,Block,67c325fdc6873d08
+O0237,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-006,startDate,GITHUB,E064,Block,b0d624d0b6993460
+O0238,E GitHub-Änderung an Schutz-ID,smart,OFFER-IFC-006,delivery,GITHUB,E064,Block,0f7ff3d720c953c7
+O0239,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-007,endDate,GITHUB,E064,Block,56c001dfa85383b7
+O0240,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-007,region,GITHUB,E064,Block,d1a2fc5e92c76035
+O0241,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-007,start,GITHUB,E064,Block,5cf2262d907fdce4
+O0242,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-007,startDate,GITHUB,E064,Block,17e3a8f4a3a5d7fe
+O0243,E GitHub-Änderung an Schutz-ID,smart,OFFER-IFC-007,priceEligible,GITHUB,E064,Block,55624b0eaa7be1b8
+O0244,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-008,priceCategory,GITHUB,E064,Block,760608f5a42a4cdb
+O0245,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-008,priceDisplay,GITHUB,E064,Block,ad3a99bd5a8918c2
+O0246,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-008,region,GITHUB,E064,Block,104801340ca7e4ab
+O0247,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-008,reviewAfter,GITHUB,E064,Block,e1b4091a3519c1c6
+O0248,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-008,start,GITHUB,E064,Block,6296ac4eace4db87
+O0249,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-008,startDate,GITHUB,E064,Block,02d5dbd5adbbc743
+O0250,E GitHub-Änderung an Schutz-ID,smart,OFFER-IFC-008,delivery,GITHUB,E064,Block,8e87340d367a9bcb
+O0251,E GitHub-Änderung an Schutz-ID,smart,OFFER-IFC-008,priceEligible,GITHUB,E064,Block,55624b0eaa7be1b8
+O0252,E GitHub-Änderung an Schutz-ID,smart,OFFER-IFC-008,priceOptions,GITHUB,E064,Block,259de9537830c963
+O0253,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-012,start,GITHUB,E064,Block,5c14517fc7918ff5
+O0254,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-012,startDate,GITHUB,E064,Block,128ea625507e292d
+O0255,E GitHub-Änderung an Schutz-ID,smart,OFFER-IFC-012,priceEligible,GITHUB,E064,Block,55624b0eaa7be1b8
+O0256,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-014,endDate,GITHUB,E064,Block,ead9fbd9a617f2c7
+O0257,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-014,region,GITHUB,E064,Block,7b295b749d4fb211
+O0258,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-014,start,GITHUB,E064,Block,e1ae9ed53d5d70c7
+O0259,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-014,startDate,GITHUB,E064,Block,b0d624d0b6993460
+O0260,E GitHub-Änderung an Schutz-ID,smart,OFFER-IFC-014,delivery,GITHUB,E064,Block,d374be58782d5bb5
+O0261,E GitHub-Änderung an Schutz-ID,smart,OFFER-IFC-014,priceEligible,GITHUB,E064,Block,55624b0eaa7be1b8
+O0262,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-020,reviewAfter,GITHUB,E064,Block,e1b4091a3519c1c6
+O0263,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-020,start,GITHUB,E064,Block,feb7f8a2e3a4cdb2
+O0264,E GitHub-Änderung an Schutz-ID,data,OFFER-IFC-020,startDate,GITHUB,E064,Block,843e5cba544c7b68
+O0265,E GitHub-Änderung an Schutz-ID,smart,OFFER-IFC-020,delivery,GITHUB,E064,Block,36e8d00e5c53bf50
+O0266,E GitHub-Änderung an Schutz-ID,smart,OFFER-IFC-020,priceEligible,GITHUB,E064,Block,55624b0eaa7be1b8
+O0267,E GitHub-Änderung an Schutz-ID,data,OFFER-MAZ-005,reviewAfter,GITHUB,E064,Block,9636effa206afdf4
+O0268,E GitHub-Änderung an Schutz-ID,data,OFFER-MAZ-005,url,GITHUB,E064,Block,66d95b653db7ce66
+O0269,E GitHub-Änderung an Schutz-ID,data,OFFER-MAZ-045,priceDisplay,GITHUB,E064,Block,9e2359fcc91cb3de
+O0270,E GitHub-Änderung an Schutz-ID,data,OFFER-MAZ-045,reviewAfter,GITHUB,E064,Block,9636effa206afdf4
+O0271,E GitHub-Änderung an Schutz-ID,smart,OFFER-MAZ-045,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0272,E GitHub-Änderung an Schutz-ID,smart,OFFER-MAZ-045,priceEligible,GITHUB,E064,Block,220e0ac08879cc96
+O0273,E GitHub-Änderung an Schutz-ID,smart,OFFER-MAZ-045,priceOptions,GITHUB,E064,Block,60c160c17ae1ecc7
+O0274,E GitHub-Änderung an Schutz-ID,data,OFFER-MAZ-058,duration,GITHUB,E064,Block,7da9816679832f38
+O0275,E GitHub-Änderung an Schutz-ID,data,OFFER-MAZ-058,reviewAfter,GITHUB,E064,Block,fa89dec1b32b9c6e
+O0276,E GitHub-Änderung an Schutz-ID,smart,OFFER-MAZ-058,priceEligible,GITHUB,E064,Block,55624b0eaa7be1b8
+O0277,E GitHub-Änderung an Schutz-ID,data,OFFER-MAZ-075,priceDisplay,GITHUB,E064,Block,f8fe2d59447c59db
+O0278,E GitHub-Änderung an Schutz-ID,data,OFFER-MAZ-075,reviewAfter,GITHUB,E064,Block,9636effa206afdf4
+O0279,E GitHub-Änderung an Schutz-ID,data,OFFER-MAZ-075,url,GITHUB,E064,Block,c0107d823a6ed94e
+O0280,E GitHub-Änderung an Schutz-ID,smart,OFFER-MAZ-075,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0281,E GitHub-Änderung an Schutz-ID,smart,OFFER-MAZ-075,priceEligible,GITHUB,E064,Block,220e0ac08879cc96
+O0282,E GitHub-Änderung an Schutz-ID,smart,OFFER-MAZ-075,priceOptions,GITHUB,E064,Block,6676ae507c5930ae
+O0283,E GitHub-Änderung an Schutz-ID,data,OFFER-MAZ-107,reviewAfter,GITHUB,E064,Block,631c061d20248296
+O0284,E GitHub-Änderung an Schutz-ID,data,OFFER-MAZ-107,url,GITHUB,E064,Block,36e1cc8edcddc7db
+O0285,E GitHub-Änderung an Schutz-ID,data,OFFER-MAZ-168,priceDisplay,GITHUB,E064,Block,7d9793764a28ed4c
+O0286,E GitHub-Änderung an Schutz-ID,data,OFFER-MAZ-168,reviewAfter,GITHUB,E064,Block,5513f91fc6a38575
+O0287,E GitHub-Änderung an Schutz-ID,smart,OFFER-MAZ-168,priceEligible,GITHUB,E064,Block,220e0ac08879cc96
+O0288,E GitHub-Änderung an Schutz-ID,smart,OFFER-MAZ-168,priceOptions,GITHUB,E064,Block,bea817f78a97b8b5
+O0289,E GitHub-Änderung an Schutz-ID,data,OFFER-MAZ-176,reviewAfter,GITHUB,E064,Block,631c061d20248296
+O0290,E GitHub-Änderung an Schutz-ID,data,OFFER-MAZ-181,reviewAfter,GITHUB,E064,Block,d5b4ff2daf662b3a
+O0291,E GitHub-Änderung an Schutz-ID,data,OFFER-MAZ-182,reviewAfter,GITHUB,E064,Block,9636effa206afdf4
+O0292,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-004,duration,GITHUB,E064,Block,c05139cfd9e8d484
+O0293,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-004,format,GITHUB,E064,Block,daba06512b49cf7a
+O0294,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-004,region,GITHUB,E064,Block,df26df9697b25183
+O0295,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-004,reviewAfter,GITHUB,E064,Block,42c67bf8724df63e
+O0296,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-004,start,GITHUB,E064,Block,13713d80bc23ef00
+O0297,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-004,startDate,GITHUB,E064,Block,8c81f082f820eeb4
+O0298,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-004,delivery,GITHUB,E064,Block,404e0014cd64ddc0
+O0299,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-004,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0300,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-004,priceOptions,GITHUB,E064,Block,13990e7b8a415573
+O0301,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-006,format,GITHUB,E064,Block,daba06512b49cf7a
+O0302,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-006,region,GITHUB,E064,Block,55e013e485376ea5
+O0303,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-006,reviewAfter,GITHUB,E064,Block,42c67bf8724df63e
+O0304,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-006,start,GITHUB,E064,Block,b0acc9a1a4fb35eb
+O0305,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-006,startDate,GITHUB,E064,Block,1d9373f396f25a9d
+O0306,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-006,delivery,GITHUB,E064,Block,2b1ea0cfacaea636
+O0307,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-006,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0308,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-006,priceOptions,GITHUB,E064,Block,7e56fbfb20c64d93
+O0309,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-008,format,GITHUB,E064,Block,daba06512b49cf7a
+O0310,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-008,region,GITHUB,E064,Block,df26df9697b25183
+O0311,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-008,reviewAfter,GITHUB,E064,Block,fecec0042df0a0ab
+O0312,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-008,start,GITHUB,E064,Block,4860f0817e61cd4d
+O0313,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-008,startDate,GITHUB,E064,Block,cd63d8153a9bcbb5
+O0314,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-008,delivery,GITHUB,E064,Block,2b1ea0cfacaea636
+O0315,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-008,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0316,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-008,priceOptions,GITHUB,E064,Block,7e56fbfb20c64d93
+O0317,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-013,format,GITHUB,E064,Block,daba06512b49cf7a
+O0318,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-013,region,GITHUB,E064,Block,59aa932c27a9384e
+O0319,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-013,reviewAfter,GITHUB,E064,Block,42c67bf8724df63e
+O0320,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-013,start,GITHUB,E064,Block,871e4c38e09677ef
+O0321,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-013,startDate,GITHUB,E064,Block,891539148ea74640
+O0322,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-013,delivery,GITHUB,E064,Block,2397af1155abdc87
+O0323,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-013,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0324,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-013,priceOptions,GITHUB,E064,Block,7aef4d962ecfbdea
+O0325,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-014,duration,GITHUB,E064,Block,b614fd33950e7d82
+O0326,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-014,format,GITHUB,E064,Block,daba06512b49cf7a
+O0327,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-014,region,GITHUB,E064,Block,59aa932c27a9384e
+O0328,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-014,reviewAfter,GITHUB,E064,Block,42c67bf8724df63e
+O0329,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-014,start,GITHUB,E064,Block,b0acc9a1a4fb35eb
+O0330,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-014,startDate,GITHUB,E064,Block,1d9373f396f25a9d
+O0331,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-014,delivery,GITHUB,E064,Block,2b1ea0cfacaea636
+O0332,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-014,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0333,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-014,priceOptions,GITHUB,E064,Block,7e56fbfb20c64d93
+O0334,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-016,duration,GITHUB,E064,Block,af72c927042e7063
+O0335,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-016,format,GITHUB,E064,Block,daba06512b49cf7a
+O0336,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-016,region,GITHUB,E064,Block,0a758d5436d630bf
+O0337,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-016,reviewAfter,GITHUB,E064,Block,f92afcb11f5118d4
+O0338,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-016,start,GITHUB,E064,Block,8a9d112bf75c28f3
+O0339,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-016,startDate,GITHUB,E064,Block,62c19e464fb9f83f
+O0340,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-016,delivery,GITHUB,E064,Block,2b1ea0cfacaea636
+O0341,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-016,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0342,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-016,priceOptions,GITHUB,E064,Block,7e56fbfb20c64d93
+O0343,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-020,format,GITHUB,E064,Block,daba06512b49cf7a
+O0344,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-020,region,GITHUB,E064,Block,0a758d5436d630bf
+O0345,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-020,reviewAfter,GITHUB,E064,Block,42c67bf8724df63e
+O0346,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-020,start,GITHUB,E064,Block,b0acc9a1a4fb35eb
+O0347,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-020,startDate,GITHUB,E064,Block,1d9373f396f25a9d
+O0348,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-020,delivery,GITHUB,E064,Block,404e0014cd64ddc0
+O0349,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-020,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0350,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-020,priceOptions,GITHUB,E064,Block,13990e7b8a415573
+O0351,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-021,format,GITHUB,E064,Block,84c78cca49e95a42
+O0352,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-021,region,GITHUB,E064,Block,78585c9a2f9951fc
+O0353,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-021,reviewAfter,GITHUB,E064,Block,26a41ec88e7c0155
+O0354,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-021,start,GITHUB,E064,Block,4f49aea731a580fa
+O0355,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-021,startDate,GITHUB,E064,Block,bbc78c0b02ef9a2a
+O0356,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-021,delivery,GITHUB,E064,Block,2b1ea0cfacaea636
+O0357,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-021,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0358,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-021,priceOptions,GITHUB,E064,Block,7e56fbfb20c64d93
+O0359,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-033,duration,GITHUB,E064,Block,f3a23cafeebab41b
+O0360,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-033,format,GITHUB,E064,Block,daba06512b49cf7a
+O0361,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-033,region,GITHUB,E064,Block,59aa932c27a9384e
+O0362,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-033,reviewAfter,GITHUB,E064,Block,f92afcb11f5118d4
+O0363,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-033,start,GITHUB,E064,Block,8a9d112bf75c28f3
+O0364,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-033,startDate,GITHUB,E064,Block,62c19e464fb9f83f
+O0365,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-033,delivery,GITHUB,E064,Block,75402e3ca8c343b9
+O0366,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-033,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0367,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-033,priceOptions,GITHUB,E064,Block,5b3f1a0a73e088b2
+O0368,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-035,format,GITHUB,E064,Block,daba06512b49cf7a
+O0369,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-035,region,GITHUB,E064,Block,0a758d5436d630bf
+O0370,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-035,reviewAfter,GITHUB,E064,Block,42c67bf8724df63e
+O0371,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-035,start,GITHUB,E064,Block,b0acc9a1a4fb35eb
+O0372,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-035,startDate,GITHUB,E064,Block,1d9373f396f25a9d
+O0373,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-035,delivery,GITHUB,E064,Block,2b1ea0cfacaea636
+O0374,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-035,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0375,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-035,priceOptions,GITHUB,E064,Block,7e56fbfb20c64d93
+O0376,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-037,format,GITHUB,E064,Block,84c78cca49e95a42
+O0377,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-037,region,GITHUB,E064,Block,df26df9697b25183
+O0378,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-037,reviewAfter,GITHUB,E064,Block,285f0f5f7bfc557b
+O0379,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-037,start,GITHUB,E064,Block,a5846814da957134
+O0380,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-037,startDate,GITHUB,E064,Block,cf5be7ad29ffe990
+O0381,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-037,delivery,GITHUB,E064,Block,2b1ea0cfacaea636
+O0382,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-037,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0383,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-037,priceOptions,GITHUB,E064,Block,7e56fbfb20c64d93
+O0384,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-044,duration,GITHUB,E064,Block,b614fd33950e7d82
+O0385,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-044,format,GITHUB,E064,Block,daba06512b49cf7a
+O0386,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-044,region,GITHUB,E064,Block,df26df9697b25183
+O0387,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-044,reviewAfter,GITHUB,E064,Block,42c67bf8724df63e
+O0388,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-044,start,GITHUB,E064,Block,13713d80bc23ef00
+O0389,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-044,startDate,GITHUB,E064,Block,8c81f082f820eeb4
+O0390,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-044,delivery,GITHUB,E064,Block,2b1ea0cfacaea636
+O0391,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-044,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0392,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-044,priceOptions,GITHUB,E064,Block,7e56fbfb20c64d93
+O0393,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-057,access,GITHUB,E064,Block,2af0d6946bb56eff
+O0394,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-057,description,GITHUB,E064,Block,c55ee3b6a6e73495
+O0395,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-057,format,GITHUB,E064,Block,daba06512b49cf7a
+O0396,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-057,priceDisplay,GITHUB,E064,Block,e7a23903d560cf6c
+O0397,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-057,region,GITHUB,E064,Block,d01e13b6a1cd1d9e
+O0398,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-057,reviewAfter,GITHUB,E064,Block,42c67bf8724df63e
+O0399,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-057,start,GITHUB,E064,Block,871e4c38e09677ef
+O0400,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-057,startDate,GITHUB,E064,Block,891539148ea74640
+O0401,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-057,url,GITHUB,E064,Block,c5113f617a8cd069
+O0402,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-057,delivery,GITHUB,E064,Block,2397af1155abdc87
+O0403,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-057,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0404,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-057,priceOptions,GITHUB,E064,Block,7aef4d962ecfbdea
+O0405,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-064,format,GITHUB,E064,Block,daba06512b49cf7a
+O0406,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-064,region,GITHUB,E064,Block,df26df9697b25183
+O0407,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-064,reviewAfter,GITHUB,E064,Block,42c67bf8724df63e
+O0408,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-064,start,GITHUB,E064,Block,13713d80bc23ef00
+O0409,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-064,startDate,GITHUB,E064,Block,8c81f082f820eeb4
+O0410,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-064,delivery,GITHUB,E064,Block,2b1ea0cfacaea636
+O0411,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-064,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0412,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-064,priceOptions,GITHUB,E064,Block,7e56fbfb20c64d93
+O0413,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-067,format,GITHUB,E064,Block,daba06512b49cf7a
+O0414,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-067,priceDisplay,GITHUB,E064,Block,8e26a79e5841b285
+O0415,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-067,region,GITHUB,E064,Block,ce393fe3c50f7757
+O0416,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-067,reviewAfter,GITHUB,E064,Block,3f78f48deacc15ac
+O0417,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-067,sessions,GITHUB,E064,Block,99ad5967555de6eb
+O0418,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-067,start,GITHUB,E064,Block,ac3da86ef93e036b
+O0419,E GitHub-Änderung an Schutz-ID,data,OFFER-NOBLE-067,startDate,GITHUB,E064,Block,bbc78c0b02ef9a2a
+O0420,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-067,delivery,GITHUB,E064,Block,670d7006d4759411
+O0421,E GitHub-Änderung an Schutz-ID,smart,OFFER-NOBLE-067,priceOptions,GITHUB,E064,Block,1f11dd485e53e6a9
+O0422,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-005,description,GITHUB,E064,Block,44521e637741d20c
+O0423,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-006,access,GITHUB,E064,Block,04d46555c3ebc9de
+O0424,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-006,description,GITHUB,E064,Block,cf7570ca733912e5
+O0425,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-006,reviewAfter,GITHUB,E064,Block,c3834941f21a0329
+O0426,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-006,start,GITHUB,E064,Block,ad42073369ac55c4
+O0427,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-006,startDate,GITHUB,E064,Block,6d5ff185fd09389e
+O0428,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-006,delivery,GITHUB,E064,Block,80fd0fd9b4165293
+O0429,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-007,access,GITHUB,E064,Block,04d46555c3ebc9de
+O0430,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-007,description,GITHUB,E064,Block,1c4eee5822c18f70
+O0431,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-007,reviewAfter,GITHUB,E064,Block,84a5b87010024de4
+O0432,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-007,start,GITHUB,E064,Block,519a72504059cc77
+O0433,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-007,startDate,GITHUB,E064,Block,e1d56fa9aef0bcc5
+O0434,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-007,delivery,GITHUB,E064,Block,32f79aade07e01f0
+O0435,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-008,access,GITHUB,E064,Block,04d46555c3ebc9de
+O0436,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-008,description,GITHUB,E064,Block,0047c1fb4b8f0fd7
+O0437,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-008,format,GITHUB,E064,Block,4033fd844f95ebe0
+O0438,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-008,region,GITHUB,E064,Block,14138b9a4ddeb409
+O0439,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-008,start,GITHUB,E064,Block,5e5c4610e072e1f0
+O0440,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-008,startDate,GITHUB,E064,Block,4e1dbf22f2433569
+O0441,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-008,delivery,GITHUB,E064,Block,3e13a58b7a66ff99
+O0442,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-008,priceEligible,GITHUB,E064,Block,55624b0eaa7be1b8
+O0443,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-009,access,GITHUB,E064,Block,04d46555c3ebc9de
+O0444,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-009,description,GITHUB,E064,Block,cd5564201d6b9747
+O0445,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-009,reviewAfter,GITHUB,E064,Block,43caad3b9eb9ace0
+O0446,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-009,start,GITHUB,E064,Block,dd431df21ce002c0
+O0447,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-009,startDate,GITHUB,E064,Block,f74548c7fb5d9a38
+O0448,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-009,delivery,GITHUB,E064,Block,0418abebc12913ac
+O0449,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-012,description,GITHUB,E064,Block,2bcf5f893fa58f86
+O0450,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-012,priceDisplay,GITHUB,E064,Block,84e12594591fa064
+O0451,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-012,reviewAfter,GITHUB,E064,Block,27399c525d23f844
+O0452,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-012,start,GITHUB,E064,Block,f4d3a9ca08e93e7b
+O0453,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-012,startDate,GITHUB,E064,Block,7bc682059a05120c
+O0454,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-012,delivery,GITHUB,E064,Block,ead0ef32820dd76c
+O0455,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-012,priceOptions,GITHUB,E064,Block,80f59f0f5ead0c40
+O0456,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-014,description,GITHUB,E064,Block,8366e836c8a058e4
+O0457,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-014,reviewAfter,GITHUB,E064,Block,c14f570245083916
+O0458,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-014,start,GITHUB,E064,Block,7f8222c409aa2560
+O0459,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-014,startDate,GITHUB,E064,Block,b46013a3cb37a0a6
+O0460,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-014,delivery,GITHUB,E064,Block,a54c9e1afbf642f7
+O0461,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-020,access,GITHUB,E064,Block,bedd534328026c04
+O0462,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-020,description,GITHUB,E064,Block,d0962e133bd672e3
+O0463,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-020,format,GITHUB,E064,Block,4033fd844f95ebe0
+O0464,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-020,priceDisplay,GITHUB,E064,Block,c50c79784847c425
+O0465,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-020,region,GITHUB,E064,Block,8f78d6222507a973
+O0466,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-020,start,GITHUB,E064,Block,7a9c4bcd3acd398d
+O0467,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-020,startDate,GITHUB,E064,Block,112d94e04dcba655
+O0468,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-020,delivery,GITHUB,E064,Block,5dd4424176620783
+O0469,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-020,priceEligible,GITHUB,E064,Block,55624b0eaa7be1b8
+O0470,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-020,priceOptions,GITHUB,E064,Block,e2248187dc96125e
+O0471,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-022,description,GITHUB,E064,Block,9d8e5a735b7adbc4
+O0472,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-026,region,GITHUB,E064,Block,efdd040f9f4f44c7
+O0473,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-039,description,GITHUB,E064,Block,208e314afb8bd9e5
+O0474,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-039,priceDisplay,GITHUB,E064,Block,30c1a9767f69d6b6
+O0475,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-039,reviewAfter,GITHUB,E064,Block,d597f4185e837334
+O0476,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-039,start,GITHUB,E064,Block,c5b94959d7708ce0
+O0477,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-039,startDate,GITHUB,E064,Block,677f56d96805f6dd
+O0478,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-039,delivery,GITHUB,E064,Block,fbc3e2769560e73e
+O0479,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-039,priceOptions,GITHUB,E064,Block,cf1fe6e8366dc1eb
+O0480,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-041,duration,GITHUB,E064,Block,0850a354a797760b
+O0481,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-041,endDate,GITHUB,E064,Block,585e66cd4676b81b
+O0482,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-041,priceCategory,GITHUB,E064,Block,350f1d4392e89d84
+O0483,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-041,priceDisplay,GITHUB,E064,Block,81dfddd240c88b05
+O0484,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-041,region,GITHUB,E064,Block,3b414d1b2a7a7e55
+O0485,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-041,reviewAfter,GITHUB,E064,Block,b3e91c5f250b60cb
+O0486,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-041,sessions,GITHUB,E064,Block,4054c8a68b678ece
+O0487,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-041,start,GITHUB,E064,Block,f5ade723d583d022
+O0488,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-041,startDate,GITHUB,E064,Block,8cdc3c86ea49c14b
+O0489,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-041,delivery,GITHUB,E064,Block,aae6151c6f3ac1dc
+O0490,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-041,priceOptions,GITHUB,E064,Block,383b2e4dffc554ba
+O0491,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-042,access,GITHUB,E064,Block,04d46555c3ebc9de
+O0492,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-042,description,GITHUB,E064,Block,e5e7f6389a55092a
+O0493,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-042,reviewAfter,GITHUB,E064,Block,5d247747ff771084
+O0494,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-042,start,GITHUB,E064,Block,26024fbdc5ee6742
+O0495,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-042,startDate,GITHUB,E064,Block,c8f81d4b5dec10b3
+O0496,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-042,delivery,GITHUB,E064,Block,7edc4b5c7fc08f2b
+O0497,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-045,region,GITHUB,E064,Block,efdd040f9f4f44c7
+O0498,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-048,region,GITHUB,E064,Block,efdd040f9f4f44c7
+O0499,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-051,description,GITHUB,E064,Block,291ead9250f08feb
+O0500,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-051,reviewAfter,GITHUB,E064,Block,44aa15be38fdc330
+O0501,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-051,start,GITHUB,E064,Block,f74c7b8ea3efd287
+O0502,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-051,startDate,GITHUB,E064,Block,f2667c79c2b257f1
+O0503,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-051,delivery,GITHUB,E064,Block,d169dbdd77e71e71
+O0504,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-054,format,GITHUB,E064,Block,211b7b9994afdc76
+O0505,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-054,region,GITHUB,E064,Block,fdae9baae32a5a61
+O0506,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-054,reviewAfter,GITHUB,E064,Block,437c7922799d79d9
+O0507,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-054,start,GITHUB,E064,Block,367c4380b4ca62bc
+O0508,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-054,startDate,GITHUB,E064,Block,865150b1c197b143
+O0509,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-054,delivery,GITHUB,E064,Block,3b7e79befe3be3c7
+O0510,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-057,description,GITHUB,E064,Block,30ae00a4b2f99951
+O0511,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-057,reviewAfter,GITHUB,E064,Block,d89d7fa6b51e6263
+O0512,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-057,start,GITHUB,E064,Block,b94766fbd5734abd
+O0513,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-057,startDate,GITHUB,E064,Block,f071772989a6aa88
+O0514,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-057,delivery,GITHUB,E064,Block,39ed5a5b0f05f907
+O0515,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-058,description,GITHUB,E064,Block,b158bfb021e0f380
+O0516,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-063,endDate,GITHUB,E064,Block,44bc91120888e7a8
+O0517,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-063,format,GITHUB,E064,Block,211b7b9994afdc76
+O0518,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-063,region,GITHUB,E064,Block,9aa79f6f775d7d63
+O0519,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-063,reviewAfter,GITHUB,E064,Block,13c48e97d03d1812
+O0520,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-063,start,GITHUB,E064,Block,12aa7d01b9fca49e
+O0521,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-063,startDate,GITHUB,E064,Block,59cfcbd89db4a685
+O0522,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-063,delivery,GITHUB,E064,Block,efa6b8b0bc5aadb7
+O0523,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-064,region,GITHUB,E064,Block,efdd040f9f4f44c7
+O0524,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-066,description,GITHUB,E064,Block,3e4b458d4b639c79
+O0525,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-069,description,GITHUB,E064,Block,e61017833536cfcd
+O0526,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-069,reviewAfter,GITHUB,E064,Block,8dad95e13f85e078
+O0527,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-069,start,GITHUB,E064,Block,4e0ad2937b3b4e60
+O0528,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-069,startDate,GITHUB,E064,Block,73306865d1c6ea8b
+O0529,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-069,delivery,GITHUB,E064,Block,9e772eabe54d25d7
+O0530,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-070,format,GITHUB,E064,Block,211b7b9994afdc76
+O0531,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-070,region,GITHUB,E064,Block,fc8230109289165e
+O0532,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-070,reviewAfter,GITHUB,E064,Block,945ec43656aaf8ca
+O0533,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-070,start,GITHUB,E064,Block,0bc6106b73c63be4
+O0534,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-070,startDate,GITHUB,E064,Block,7a534d1b1b739045
+O0535,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-070,delivery,GITHUB,E064,Block,b2ece1d58d73fd21
+O0536,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-075,format,GITHUB,E064,Block,211b7b9994afdc76
+O0537,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-075,region,GITHUB,E064,Block,ed045755b1acb592
+O0538,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-075,reviewAfter,GITHUB,E064,Block,767896374ae72712
+O0539,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-075,start,GITHUB,E064,Block,6b991804d45691d8
+O0540,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-075,startDate,GITHUB,E064,Block,372b13c532ca12ac
+O0541,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-075,delivery,GITHUB,E064,Block,e2c2a46aa4b9cd91
+O0542,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-076,format,GITHUB,E064,Block,211b7b9994afdc76
+O0543,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-076,region,GITHUB,E064,Block,fdae9baae32a5a61
+O0544,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-076,reviewAfter,GITHUB,E064,Block,437c7922799d79d9
+O0545,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-076,start,GITHUB,E064,Block,e3fa2de0015de84d
+O0546,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-076,startDate,GITHUB,E064,Block,6811709caa766bc5
+O0547,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-076,delivery,GITHUB,E064,Block,ac0f4777be71ffc6
+O0548,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-078,format,GITHUB,E064,Block,211b7b9994afdc76
+O0549,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-078,region,GITHUB,E064,Block,f5dea43936735956
+O0550,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-078,reviewAfter,GITHUB,E064,Block,82a91daf668af465
+O0551,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-078,start,GITHUB,E064,Block,c5c220e2d54d3e0d
+O0552,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-078,startDate,GITHUB,E064,Block,88356411662928e1
+O0553,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-078,delivery,GITHUB,E064,Block,25643860e09d8aea
+O0554,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-079,region,GITHUB,E064,Block,efdd040f9f4f44c7
+O0555,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-082,description,GITHUB,E064,Block,5c1a882273e95016
+O0556,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-082,reviewAfter,GITHUB,E064,Block,c14f570245083916
+O0557,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-082,start,GITHUB,E064,Block,631127c76b1ddc08
+O0558,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-082,startDate,GITHUB,E064,Block,2deda6a12cf77aa7
+O0559,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-082,delivery,GITHUB,E064,Block,fa75bde6158a1acd
+O0560,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-083,description,GITHUB,E064,Block,9e1e6f3edafff928
+O0561,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-083,reviewAfter,GITHUB,E064,Block,b67de6577924b7f6
+O0562,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-083,start,GITHUB,E064,Block,dc33125ec2d16cf6
+O0563,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-083,startDate,GITHUB,E064,Block,5f9d907607194bb7
+O0564,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-083,delivery,GITHUB,E064,Block,7c14019d226c6d71
+O0565,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-088,description,GITHUB,E064,Block,9937ee42da6a408f
+O0566,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-088,reviewAfter,GITHUB,E064,Block,6124ad3f946d6024
+O0567,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-088,start,GITHUB,E064,Block,aff936685e76d631
+O0568,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-088,startDate,GITHUB,E064,Block,e18ff8ebaa78e591
+O0569,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-088,delivery,GITHUB,E064,Block,f047b3e19b42ecbb
+O0570,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-094,description,GITHUB,E064,Block,b1ed94b001652a35
+O0571,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-094,reviewAfter,GITHUB,E064,Block,3c3d2f81f48d1c1b
+O0572,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-094,start,GITHUB,E064,Block,84f9cb026cec39e2
+O0573,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-094,startDate,GITHUB,E064,Block,9a2a70553d06e04c
+O0574,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-094,delivery,GITHUB,E064,Block,8c750368bb59f8b1
+O0575,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-099,description,GITHUB,E064,Block,8400fa26e636e15f
+O0576,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-099,reviewAfter,GITHUB,E064,Block,c14f570245083916
+O0577,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-099,start,GITHUB,E064,Block,48c17e39f634ef74
+O0578,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-099,startDate,GITHUB,E064,Block,372b13c532ca12ac
+O0579,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-099,delivery,GITHUB,E064,Block,c1a368e1e2ceb954
+O0580,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-103,description,GITHUB,E064,Block,669e085a0e3aa957
+O0581,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-103,reviewAfter,GITHUB,E064,Block,43caad3b9eb9ace0
+O0582,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-103,start,GITHUB,E064,Block,7e8b9fcddc29d029
+O0583,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-103,startDate,GITHUB,E064,Block,2302224068280570
+O0584,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-103,delivery,GITHUB,E064,Block,22ffd99297e5c17c
+O0585,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-107,description,GITHUB,E064,Block,02f96ef263d04f5f
+O0586,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-108,description,GITHUB,E064,Block,ad6a4e574bd703dc
+O0587,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-108,region,GITHUB,E064,Block,efdd040f9f4f44c7
+O0588,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-115,description,GITHUB,E064,Block,78f023cb516bea89
+O0589,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-115,format,GITHUB,E064,Block,4033fd844f95ebe0
+O0590,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-115,region,GITHUB,E064,Block,14138b9a4ddeb409
+O0591,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-115,start,GITHUB,E064,Block,9af98996e75d276e
+O0592,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-115,startDate,GITHUB,E064,Block,112d94e04dcba655
+O0593,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-115,delivery,GITHUB,E064,Block,df30306dc9acccb2
+O0594,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-115,priceEligible,GITHUB,E064,Block,55624b0eaa7be1b8
+O0595,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-116,region,GITHUB,E064,Block,efdd040f9f4f44c7
+O0596,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-118,description,GITHUB,E064,Block,d8e9b819a75aff95
+O0597,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-118,priceDisplay,GITHUB,E064,Block,5e54b787d889dc38
+O0598,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-118,reviewAfter,GITHUB,E064,Block,006f913312247bb6
+O0599,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-118,start,GITHUB,E064,Block,794085d72e3e8f2f
+O0600,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-118,startDate,GITHUB,E064,Block,f36d4983e64ad91c
+O0601,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-118,delivery,GITHUB,E064,Block,627872f701b05b0b
+O0602,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-118,priceOptions,GITHUB,E064,Block,c120b41c3f5bbaf0
+O0603,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-119,description,GITHUB,E064,Block,150b9ced1fad45c7
+O0604,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-119,region,GITHUB,E064,Block,efdd040f9f4f44c7
+O0605,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-120,description,GITHUB,E064,Block,36c399248422910e
+O0606,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-120,reviewAfter,GITHUB,E064,Block,49e200c5e90a7f7f
+O0607,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-120,start,GITHUB,E064,Block,3da598c07d68bc66
+O0608,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-120,startDate,GITHUB,E064,Block,c0bc1408977b9454
+O0609,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-120,delivery,GITHUB,E064,Block,faf511f89447b435
+O0610,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-122,description,GITHUB,E064,Block,43a99e70a6c021fb
+O0611,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-122,reviewAfter,GITHUB,E064,Block,c14f570245083916
+O0612,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-122,start,GITHUB,E064,Block,48c17e39f634ef74
+O0613,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-122,startDate,GITHUB,E064,Block,372b13c532ca12ac
+O0614,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-122,delivery,GITHUB,E064,Block,027c52fb5c5fa794
+O0615,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-129,region,GITHUB,E064,Block,efdd040f9f4f44c7
+O0616,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-135,description,GITHUB,E064,Block,b5e729b05314ab32
+O0617,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-137,description,GITHUB,E064,Block,b7e57391b4e55645
+O0618,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-137,reviewAfter,GITHUB,E064,Block,6068687903a85b64
+O0619,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-137,start,GITHUB,E064,Block,1439c16a4db34a2a
+O0620,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-137,startDate,GITHUB,E064,Block,4ab612067b109ac5
+O0621,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-137,delivery,GITHUB,E064,Block,6df595139d27680e
+O0622,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-138,description,GITHUB,E064,Block,445600d901254244
+O0623,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-138,reviewAfter,GITHUB,E064,Block,b67de6577924b7f6
+O0624,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-138,start,GITHUB,E064,Block,a323c1f139342e1e
+O0625,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-138,startDate,GITHUB,E064,Block,e1d56fa9aef0bcc5
+O0626,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-138,delivery,GITHUB,E064,Block,7c3ebb55437ca503
+O0627,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-139,description,GITHUB,E064,Block,aca4c17b41e9bd04
+O0628,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-139,reviewAfter,GITHUB,E064,Block,27399c525d23f844
+O0629,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-139,start,GITHUB,E064,Block,46e98aa9b24245bf
+O0630,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-139,startDate,GITHUB,E064,Block,de598e776b69fe17
+O0631,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-139,delivery,GITHUB,E064,Block,18f316a04d3e1750
+O0632,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-141,description,GITHUB,E064,Block,b7cef2986c28849d
+O0633,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-141,reviewAfter,GITHUB,E064,Block,78ced38dec3c5d92
+O0634,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-141,start,GITHUB,E064,Block,995279e047f5e3de
+O0635,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-141,startDate,GITHUB,E064,Block,5609f7368fc59b77
+O0636,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-141,delivery,GITHUB,E064,Block,b9e31bd562c50d90
+O0637,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-143,description,GITHUB,E064,Block,c67bc0b9b6a7b687
+O0638,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-143,reviewAfter,GITHUB,E064,Block,84a5b87010024de4
+O0639,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-143,start,GITHUB,E064,Block,c882ceb99c0d1093
+O0640,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-143,startDate,GITHUB,E064,Block,163933abc57d85b3
+O0641,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-143,delivery,GITHUB,E064,Block,585a01136a7fadd8
+O0642,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-144,description,GITHUB,E064,Block,0c7a3d13f7caa9f3
+O0643,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-144,reviewAfter,GITHUB,E064,Block,08def10ae8791bb3
+O0644,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-144,start,GITHUB,E064,Block,53d5eb5d1145444b
+O0645,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-144,startDate,GITHUB,E064,Block,8fbf1de7e62d2457
+O0646,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-144,delivery,GITHUB,E064,Block,ab44ab30fa6d3ac2
+O0647,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-146,description,GITHUB,E064,Block,40ce4a812b66b2f4
+O0648,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-146,reviewAfter,GITHUB,E064,Block,4dedf0f812b06727
+O0649,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-146,start,GITHUB,E064,Block,caa2cf8b5fdb2faa
+O0650,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-146,startDate,GITHUB,E064,Block,b5da4cebe2f37cae
+O0651,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-146,delivery,GITHUB,E064,Block,f5864b7a7971c47f
+O0652,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-151,description,GITHUB,E064,Block,829bb1e2dae86aae
+O0653,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-151,reviewAfter,GITHUB,E064,Block,96a79abcd7bdb39d
+O0654,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-151,start,GITHUB,E064,Block,9ac12a64e2fdaea1
+O0655,E GitHub-Änderung an Schutz-ID,data,OFFER-ORSYS-151,startDate,GITHUB,E064,Block,569ebefb762e9c84
+O0656,E GitHub-Änderung an Schutz-ID,smart,OFFER-ORSYS-151,delivery,GITHUB,E064,Block,cc9bc723ff130043
+O0657,E GitHub-Änderung an Schutz-ID,data,OFFER-UZHDSI-001,access,GITHUB,E064,Block,c63a49b2abaafa30
+O0658,E GitHub-Änderung an Schutz-ID,data,OFFER-UZHDSI-001,endDate,GITHUB,E064,Block,3bb98d1ddc57057f
+O0659,E GitHub-Änderung an Schutz-ID,data,OFFER-UZHDSI-001,start,GITHUB,E064,Block,befea5cd06faf15e
+O0660,E GitHub-Änderung an Schutz-ID,data,PCC-P02,priceCategory,GITHUB,E064,Block,be18c965f1ad6177
+O0661,E GitHub-Änderung an Schutz-ID,data,PCC-P02,priceDisplay,GITHUB,E064,Block,31a4992c524cb4e1
+O0662,E GitHub-Änderung an Schutz-ID,data,PCC-P02,reviewAfter,GITHUB,E064,Block,0e31e787421b3b42
+O0663,E GitHub-Änderung an Schutz-ID,data,PCC-P02,sessions,GITHUB,E064,Block,a924db7481ae30e7
+O0664,E GitHub-Änderung an Schutz-ID,smart,PCC-P02,delivery,GITHUB,E064,Block,50cda15cb8a60b0f
+O0665,E GitHub-Änderung an Schutz-ID,smart,PCC-P02,parserStatus,GITHUB,E064,Block,d6f3733636ea86f2
+O0666,E GitHub-Änderung an Schutz-ID,smart,PCC-P02,priceEligible,GITHUB,E064,Block,55624b0eaa7be1b8
+O0667,E GitHub-Änderung an Schutz-ID,smart,PCC-P02,priceOptions,GITHUB,E064,Block,a5dad37e11fe86b3
+O0668,E GitHub-Änderung an Schutz-ID,data,PCC-P03,priceCategory,GITHUB,E064,Block,be18c965f1ad6177
+O0669,E GitHub-Änderung an Schutz-ID,data,PCC-P03,priceDisplay,GITHUB,E064,Block,31a4992c524cb4e1
+O0670,E GitHub-Änderung an Schutz-ID,data,PCC-P03,reviewAfter,GITHUB,E064,Block,d5b4ff2daf662b3a
+O0671,E GitHub-Änderung an Schutz-ID,smart,PCC-P03,delivery,GITHUB,E064,Block,20cfd04cd8889f76
+O0672,E GitHub-Änderung an Schutz-ID,smart,PCC-P03,parserStatus,GITHUB,E064,Block,d6f3733636ea86f2
+O0673,E GitHub-Änderung an Schutz-ID,smart,PCC-P03,priceEligible,GITHUB,E064,Block,55624b0eaa7be1b8
+O0674,E GitHub-Änderung an Schutz-ID,smart,PCC-P03,priceOptions,GITHUB,E064,Block,a5dad37e11fe86b3
+O0675,E GitHub-Änderung an Schutz-ID,data,PCC-P05,priceCategory,GITHUB,E064,Block,be18c965f1ad6177
+O0676,E GitHub-Änderung an Schutz-ID,data,PCC-P05,priceDisplay,GITHUB,E064,Block,31a4992c524cb4e1
+O0677,E GitHub-Änderung an Schutz-ID,data,PCC-P05,reviewAfter,GITHUB,E064,Block,d5b4ff2daf662b3a
+O0678,E GitHub-Änderung an Schutz-ID,smart,PCC-P05,delivery,GITHUB,E064,Block,6a4fe5ac2d38776c
+O0679,E GitHub-Änderung an Schutz-ID,smart,PCC-P05,parserStatus,GITHUB,E064,Block,d6f3733636ea86f2
+O0680,E GitHub-Änderung an Schutz-ID,smart,PCC-P05,priceEligible,GITHUB,E064,Block,55624b0eaa7be1b8
+O0681,E GitHub-Änderung an Schutz-ID,smart,PCC-P05,priceOptions,GITHUB,E064,Block,a5dad37e11fe86b3
+O0682,E GitHub-Änderung an Schutz-ID,data,PCC-P08,priceCategory,GITHUB,E064,Block,be18c965f1ad6177
+O0683,E GitHub-Änderung an Schutz-ID,data,PCC-P08,priceDisplay,GITHUB,E064,Block,fa8b23429a12382a
+O0684,E GitHub-Änderung an Schutz-ID,data,PCC-P08,reviewAfter,GITHUB,E064,Block,d162594b56807534
+O0685,E GitHub-Änderung an Schutz-ID,smart,PCC-P08,delivery,GITHUB,E064,Block,8b2021e320a0584f
+O0686,E GitHub-Änderung an Schutz-ID,smart,PCC-P08,parserStatus,GITHUB,E064,Block,d6f3733636ea86f2
+O0687,E GitHub-Änderung an Schutz-ID,smart,PCC-P08,priceEligible,GITHUB,E064,Block,55624b0eaa7be1b8
+O0688,E GitHub-Änderung an Schutz-ID,smart,PCC-P08,priceOptions,GITHUB,E064,Block,f71f8c15a833bc2c
+O0689,E GitHub-Änderung an Schutz-ID,data,PCC-P16,priceCategory,GITHUB,E064,Block,be18c965f1ad6177
+O0690,E GitHub-Änderung an Schutz-ID,data,PCC-P16,priceDisplay,GITHUB,E064,Block,8ccd0f583cf5eeb2
+O0691,E GitHub-Änderung an Schutz-ID,data,PCC-P16,reviewAfter,GITHUB,E064,Block,03645faaebc99b1c
+O0692,E GitHub-Änderung an Schutz-ID,data,PCC-P16,sessions,GITHUB,E064,Block,69e18ab2ad0fe88f
+O0693,E GitHub-Änderung an Schutz-ID,smart,PCC-P16,delivery,GITHUB,E064,Block,d25f053ec5ec8783
+O0694,E GitHub-Änderung an Schutz-ID,smart,PCC-P16,parserStatus,GITHUB,E064,Block,d6f3733636ea86f2
+O0695,E GitHub-Änderung an Schutz-ID,smart,PCC-P16,priceEligible,GITHUB,E064,Block,55624b0eaa7be1b8
+O0696,E GitHub-Änderung an Schutz-ID,smart,PCC-P16,priceOptions,GITHUB,E064,Block,c4d2241a8f3ba899
+O0697,E GitHub-Änderung an Schutz-ID,data,PCC-P23,format,GITHUB,E064,Block,211b7b9994afdc76
+O0698,E GitHub-Änderung an Schutz-ID,data,PCC-P23,priceCategory,GITHUB,E064,Block,be18c965f1ad6177
+O0699,E GitHub-Änderung an Schutz-ID,data,PCC-P23,priceDisplay,GITHUB,E064,Block,23ea12456e4aa771
+O0700,E GitHub-Änderung an Schutz-ID,data,PCC-P23,region,GITHUB,E064,Block,58f888cb4a65142e
+O0701,E GitHub-Änderung an Schutz-ID,data,PCC-P23,reviewAfter,GITHUB,E064,Block,f62fe5bc95737f33
+O0702,E GitHub-Änderung an Schutz-ID,data,PCC-P23,sessions,GITHUB,E064,Block,948b82e0e22283bd
+O0703,E GitHub-Änderung an Schutz-ID,data,PCC-P23,start,GITHUB,E064,Block,71ad4c52cc4aa837
+O0704,E GitHub-Änderung an Schutz-ID,data,PCC-P23,url,GITHUB,E064,Block,360e6a9fba96323e
+O0705,E GitHub-Änderung an Schutz-ID,smart,PCC-P23,delivery,GITHUB,E064,Block,2f694aa0c8a9b522
+O0706,E GitHub-Änderung an Schutz-ID,smart,PCC-P23,parserStatus,GITHUB,E064,Block,d6f3733636ea86f2
+O0707,E GitHub-Änderung an Schutz-ID,smart,PCC-P23,priceEligible,GITHUB,E064,Block,55624b0eaa7be1b8
+O0708,E GitHub-Änderung an Schutz-ID,smart,PCC-P23,priceOptions,GITHUB,E064,Block,0122832bba1c62ae
+O0709,E GitHub-Änderung an Schutz-ID,data,PCC-P28,priceCategory,GITHUB,E064,Block,be18c965f1ad6177
+O0710,E GitHub-Änderung an Schutz-ID,data,PCC-P28,priceDisplay,GITHUB,E064,Block,19d8585f8236a8a8
+O0711,E GitHub-Änderung an Schutz-ID,data,PCC-P28,reviewAfter,GITHUB,E064,Block,0e31e787421b3b42
+O0712,E GitHub-Änderung an Schutz-ID,smart,PCC-P28,delivery,GITHUB,E064,Block,d84851fe8f73b80e
+O0713,E GitHub-Änderung an Schutz-ID,smart,PCC-P28,parserStatus,GITHUB,E064,Block,d6f3733636ea86f2
+O0714,E GitHub-Änderung an Schutz-ID,smart,PCC-P28,priceEligible,GITHUB,E064,Block,55624b0eaa7be1b8
+O0715,E GitHub-Änderung an Schutz-ID,smart,PCC-P28,priceOptions,GITHUB,E064,Block,f68cd6c8f82b8ab7
+O0716,E GitHub-Änderung an Schutz-ID,data,PCC-P32,access,GITHUB,E064,Block,c26b0ba8e2034f0a
+O0717,E GitHub-Änderung an Schutz-ID,data,PCC-P32,endDate,GITHUB,E064,Block,8cf641a7f489bf3b
+O0718,E GitHub-Änderung an Schutz-ID,data,PCC-P32,format,GITHUB,E064,Block,d42bfd7d1a615899
+O0719,E GitHub-Änderung an Schutz-ID,data,PCC-P32,priceCategory,GITHUB,E064,Block,be18c965f1ad6177
+O0720,E GitHub-Änderung an Schutz-ID,data,PCC-P32,priceDisplay,GITHUB,E064,Block,31a4992c524cb4e1
+O0721,E GitHub-Änderung an Schutz-ID,data,PCC-P32,publicationReason,GITHUB,E064,Block,0d2c0dc99a2bf363
+O0722,E GitHub-Änderung an Schutz-ID,data,PCC-P32,region,GITHUB,E064,Block,55079cb5f8305575
+O0723,E GitHub-Änderung an Schutz-ID,data,PCC-P32,reviewAfter,GITHUB,E064,Block,9636effa206afdf4
+O0724,E GitHub-Änderung an Schutz-ID,data,PCC-P32,startDate,GITHUB,E064,Block,c13762dee869eeec
+O0725,E GitHub-Änderung an Schutz-ID,data,PCC-P32,url,GITHUB,E064,Block,2cccb0b41ddd919f
+O0726,E GitHub-Änderung an Schutz-ID,smart,PCC-P32,delivery,GITHUB,E064,Block,dddbde1e9006fbe7
+O0727,E GitHub-Änderung an Schutz-ID,smart,PCC-P32,parserStatus,GITHUB,E064,Block,d6f3733636ea86f2
+O0728,E GitHub-Änderung an Schutz-ID,smart,PCC-P32,priceEligible,GITHUB,E064,Block,55624b0eaa7be1b8
+O0729,E GitHub-Änderung an Schutz-ID,smart,PCC-P32,priceOptions,GITHUB,E064,Block,a5dad37e11fe86b3
+O0730,E GitHub-Änderung an Schutz-ID,data,PCC-P33,access,GITHUB,E064,Block,5b6cac7566b463fa
+O0731,E GitHub-Änderung an Schutz-ID,data,PCC-P33,endDate,GITHUB,E064,Block,9dcb3e1ca6a097f0
+O0732,E GitHub-Änderung an Schutz-ID,data,PCC-P33,format,GITHUB,E064,Block,ecf872b22c732e57
+O0733,E GitHub-Änderung an Schutz-ID,data,PCC-P33,priceCategory,GITHUB,E064,Block,be18c965f1ad6177
+O0734,E GitHub-Änderung an Schutz-ID,data,PCC-P33,priceDisplay,GITHUB,E064,Block,31a4992c524cb4e1
+O0735,E GitHub-Änderung an Schutz-ID,data,PCC-P33,reviewAfter,GITHUB,E064,Block,d162594b56807534
+O0736,E GitHub-Änderung an Schutz-ID,smart,PCC-P33,delivery,GITHUB,E064,Block,dddbde1e9006fbe7
+O0737,E GitHub-Änderung an Schutz-ID,smart,PCC-P33,parserStatus,GITHUB,E064,Block,d6f3733636ea86f2
+O0738,E GitHub-Änderung an Schutz-ID,smart,PCC-P33,priceEligible,GITHUB,E064,Block,55624b0eaa7be1b8
+O0739,E GitHub-Änderung an Schutz-ID,smart,PCC-P33,priceOptions,GITHUB,E064,Block,a5dad37e11fe86b3
+O0740,E GitHub-Änderung an Schutz-ID,data,PJ-V16-07,access,GITHUB,E064,Block,1921ce935fbb56ab
+O0741,E GitHub-Änderung an Schutz-ID,data,PJ-V16-07,description,GITHUB,E064,Block,bde132cf51d3ebd6
+O0742,E GitHub-Änderung an Schutz-ID,data,PJ-V16-07,duration,GITHUB,E064,Block,e35cfe17660922f9
+O0743,E GitHub-Änderung an Schutz-ID,data,PJ-V16-07,endDate,GITHUB,E064,Block,b5ecc9f2da2cd627
+O0744,E GitHub-Änderung an Schutz-ID,data,PJ-V16-07,region,GITHUB,E064,Block,be244a5490df7066
+O0745,E GitHub-Änderung an Schutz-ID,data,PJ-V16-07,reviewAfter,GITHUB,E064,Block,324512a255c3741b
+O0746,E GitHub-Änderung an Schutz-ID,data,PJ-V16-07,start,GITHUB,E064,Block,83a4d5260605a892
+O0747,E GitHub-Änderung an Schutz-ID,data,PJ-V16-07,startDate,GITHUB,E064,Block,d12c43acab25ac6b
+O0748,E GitHub-Änderung an Schutz-ID,data,PJ-V16-07,url,GITHUB,E064,Block,84a8b77711a9d552
+O0749,E GitHub-Änderung an Schutz-ID,smart,PJ-V16-07,priceEligible,GITHUB,E064,Block,55624b0eaa7be1b8
+O0750,E GitHub-Änderung an Schutz-ID,data,V52-MEEL-INSTAGRAM,endDate,GITHUB,E064,Block,60cc2c6d41ba9368
+O0751,E GitHub-Änderung an Schutz-ID,data,V52-MEEL-INSTAGRAM,priceDisplay,GITHUB,E064,Block,e3305216a86d5178
+O0752,E GitHub-Änderung an Schutz-ID,data,V52-MEEL-INSTAGRAM,region,GITHUB,E064,Block,14769aaf9faded76
+O0753,E GitHub-Änderung an Schutz-ID,data,V52-MEEL-INSTAGRAM,start,GITHUB,E064,Block,6fb3b070cb1cfe34
+O0754,E GitHub-Änderung an Schutz-ID,data,V52-MEEL-INSTAGRAM,startDate,GITHUB,E064,Block,565d73d0539e5ca8
+O0755,E GitHub-Änderung an Schutz-ID,data,V52-MEEL-INSTAGRAM,url,GITHUB,E064,Block,5cded2dcaced0055
+O0756,E GitHub-Änderung an Schutz-ID,smart,V52-MEEL-INSTAGRAM,delivery,GITHUB,E064,Block,e5e04090bbb660d2
+O0757,E GitHub-Änderung an Schutz-ID,smart,V52-MEEL-INSTAGRAM,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0758,E GitHub-Änderung an Schutz-ID,smart,V52-MEEL-INSTAGRAM,priceOptions,GITHUB,E064,Block,d6e47d7beb8264d2
+O0759,E GitHub-Änderung an Schutz-ID,data,V58-S1-07,reviewAfter,GITHUB,E064,Block,9636effa206afdf4
+O0760,E GitHub-Änderung an Schutz-ID,data,V78-04,description,GITHUB,E064,Block,1ebdba886e82c459
+O0761,E GitHub-Änderung an Schutz-ID,data,V78-04,duration,GITHUB,E064,Block,712ac5792a8aba5f
+O0762,E GitHub-Änderung an Schutz-ID,data,V78-04,endDate,GITHUB,E064,Block,4024f6c8826047eb
+O0763,E GitHub-Änderung an Schutz-ID,data,V78-04,region,GITHUB,E064,Block,dc5c988a58367a23
+O0764,E GitHub-Änderung an Schutz-ID,data,V78-04,reviewAfter,GITHUB,E064,Block,5513f91fc6a38575
+O0765,E GitHub-Änderung an Schutz-ID,data,V78-04,sessions,GITHUB,E064,Block,a9d4d87e0a2f8296
+O0766,E GitHub-Änderung an Schutz-ID,data,V78-04,start,GITHUB,E064,Block,18fbba4e8f41b11f
+O0767,E GitHub-Änderung an Schutz-ID,data,V78-04,startDate,GITHUB,E064,Block,d791ec62e4e9cdf2
+O0768,E GitHub-Änderung an Schutz-ID,smart,V78-04,delivery,GITHUB,E064,Block,906145cf62a686c1
+O0769,E GitHub-Änderung an Schutz-ID,smart,V78-04,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0770,E GitHub-Änderung an Schutz-ID,smart,V78-04,priceEligible,GITHUB,E064,Block,220e0ac08879cc96
+O0771,E GitHub-Änderung an Schutz-ID,smart,V78-04,priceOptions,GITHUB,E064,Block,d31d814ab604e17f
+O0772,E GitHub-Änderung an Schutz-ID,data,V79-02,access,GITHUB,E064,Block,92f1db75c6eb0bd2
+O0773,E GitHub-Änderung an Schutz-ID,data,V79-02,description,GITHUB,E064,Block,06dc904def335c4b
+O0774,E GitHub-Änderung an Schutz-ID,data,V79-02,endDate,GITHUB,E064,Block,556e43d63caa2ec1
+O0775,E GitHub-Änderung an Schutz-ID,data,V79-02,priceCategory,GITHUB,E064,Block,be18c965f1ad6177
+O0776,E GitHub-Änderung an Schutz-ID,data,V79-02,priceDisplay,GITHUB,E064,Block,3157c7b0f0efa6a2
+O0777,E GitHub-Änderung an Schutz-ID,data,V79-02,start,GITHUB,E064,Block,7d6bbb1bef49d81e
+O0778,E GitHub-Änderung an Schutz-ID,data,V79-02,startDate,GITHUB,E064,Block,de71fa091b9f1a72
+O0779,E GitHub-Änderung an Schutz-ID,data,V79-02,url,GITHUB,E064,Block,8a76a062fb477151
+O0780,E GitHub-Änderung an Schutz-ID,smart,V79-02,delivery,GITHUB,E064,Block,99aac447686039f5
+O0781,E GitHub-Änderung an Schutz-ID,data,V82-DAWAN-012,reviewAfter,GITHUB,E064,Block,9636effa206afdf4
+O0782,E GitHub-Änderung an Schutz-ID,smart,V82-DAWAN-012,delivery,GITHUB,E064,Block,b366620b05657af4
+O0783,E GitHub-Änderung an Schutz-ID,data,V82-DAWAN-017,reviewAfter,GITHUB,E064,Block,10d564ca2b96cd2d
+O0784,E GitHub-Änderung an Schutz-ID,smart,V82-DAWAN-017,delivery,GITHUB,E064,Block,ffe86ffb58970c5d
+O0785,E GitHub-Änderung an Schutz-ID,data,V82-DAWAN-029,reviewAfter,GITHUB,E064,Block,0e31e787421b3b42
+O0786,E GitHub-Änderung an Schutz-ID,smart,V82-DAWAN-029,delivery,GITHUB,E064,Block,e08ae00ecca0ebae
+O0787,E GitHub-Änderung an Schutz-ID,smart,V82-DAWAN-029,parserStatus,GITHUB,E064,Block,e5fad0e5d8b14169
+O0788,E GitHub-Änderung an Schutz-ID,smart,V82-DAWAN-029,priceOptions,GITHUB,E064,Block,de185ccb12c125fd
+O0789,E GitHub-Änderung an Schutz-ID,data,V82-DAWAN-037,reviewAfter,GITHUB,E064,Block,10d564ca2b96cd2d
+O0790,E GitHub-Änderung an Schutz-ID,data,V82-DAWAN-037,sessions,GITHUB,E064,Block,70b5c54513664ea4
+O0791,E GitHub-Änderung an Schutz-ID,data,V82-DAWAN-037,start,GITHUB,E064,Block,f81fe694bdf175f0
+O0792,E GitHub-Änderung an Schutz-ID,smart,V82-DAWAN-037,delivery,GITHUB,E064,Block,e5dd248456f68c0e
+O0793,E GitHub-Änderung an Schutz-ID,smart,V82-DAWAN-037,priceOptions,GITHUB,E064,Block,6b3d5e527b1fc1d8
+O0794,E GitHub-Änderung an Schutz-ID,data,V82-DAWAN-039,reviewAfter,GITHUB,E064,Block,9636effa206afdf4
+O0795,E GitHub-Änderung an Schutz-ID,data,V82-DAWAN-039,sessions,GITHUB,E064,Block,f31bb99c6e41781d
+O0796,E GitHub-Änderung an Schutz-ID,data,V82-DAWAN-039,start,GITHUB,E064,Block,3ae0478ca7f4955b
+O0797,E GitHub-Änderung an Schutz-ID,smart,V82-DAWAN-039,delivery,GITHUB,E064,Block,0b1496c1aaa18044
+O0798,E GitHub-Änderung an Schutz-ID,data,V82-DAWAN-094,reviewAfter,GITHUB,E064,Block,5513f91fc6a38575
+O0799,E GitHub-Änderung an Schutz-ID,smart,V82-DAWAN-094,delivery,GITHUB,E064,Block,e0e958d1eb512f5f

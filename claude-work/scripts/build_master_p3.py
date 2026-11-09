@@ -8,9 +8,12 @@ Dreiwege-Merge (merge3.py). build_master.py bleibt unverändert; es braucht die 
 
 Je Feld: Wert («nicht erfasst», wenn leer oder Platzhalter, E036) + Herkunftscode h_<feld>.
 Herkunftscodes: LIVE (unverändert seit Basis) · LIVE_GEAENDERT · MAIN (per Merge übernommen) · LIVE_OWNER_OFFEN
-(Live-Wert vorläufig, Owner-Entscheid offen) · R4 (Owner-Publikation 15.09.) · KATALOG_XLSX · REGEL (abgeleitet,
-Regel in Spalte *_regel) · AUDIT (Beleg im Audit 28.10.) · LEER.
-Keine Netzwerkaufrufe. Nichts wird erfunden: CH-Zugang bleibt «nicht erfasst» (E030, E036).
+(Live-Wert vorläufig, Owner-Entscheid offen) · MAIN_OWNER / LIVE_OWNER (per Owner-Entscheid, Register E060–E064) ·
+R4 (Owner-Publikation 15.09.) · KATALOG_XLSX · REGEL (abgeleitet, Regel in Spalte *_regel) · AUDIT (Beleg im Audit 28.10.) · LEER.
+Keine Netzwerkaufrufe. Nichts wird erfunden.
+Paket 4 (Owner-Grundsatzentscheide 09.11.2026): F1 Anbieterland nur mit Beleg (E065) · F2 CH-Durchführungsort = CH-Zugang JA
+(E066) · F3 R4 archiviert/abgelaufen = nicht sichtbar bis Beleg (E067) · F4 ohne eindeutige URL = nicht sichtbar (E068) ·
+F5 Sammelobjekte als Programm (E069) · F6 DJA-DE-Dubletten nicht sichtbar, Maricopa je Anbieter (E070, nur diese 5 Zeilen).
 
 Aufruf: python3 -I build_master_p3.py --merge DIR --katalog XLSX --r4 JSON --usowner JSONL --stichtag YYYY-MM-DD --out DIR
 """
@@ -177,7 +180,9 @@ SMART_FELDER = [('preis_parser_status', 'parserStatus'), ('preis_budgetfaehig', 
 def herkunft(datei, i, f):
     e = ENT_BY.get((datei, i, f))
     if not e: return 'LIVE'
-    if e['owner_entscheid_noetig'] == 'JA': return 'LIVE_OWNER_OFFEN'
+    if e['owner_entscheid_noetig'] == 'JA':
+        if e['owner_status'] != 'ENTSCHIEDEN': return 'LIVE_OWNER_OFFEN'
+        return 'MAIN_OWNER' if e['owner_entscheid'] == 'GITHUB' else 'LIVE_OWNER'
     return 'MAIN' if e['merge_wert_quelle'] == 'MAIN' else 'LIVE_GEAENDERT'
 
 master, lang, objmap = [], [], collections.Counter()
@@ -188,7 +193,7 @@ def setf(rec, m, i, col, val, h, quelle):
 
 owner_ids = collections.defaultdict(set)
 for e in ENT:
-    if e['owner_entscheid_noetig'] == 'JA': owner_ids[e['id']].add(e['klasse'])
+    if e['owner_status'] == 'OFFEN': owner_ids[e['id']].add(e['klasse'])
 
 for r in KAT:
     m, i = r['Land'], r['Offer ID']; legacy = (m, i) in legacy_keys
@@ -221,6 +226,8 @@ for r in KAT:
         roh = x.get('object_type'); rid_country = None
     # Objektklasse
     k, regel = objektklasse(roh, i); objmap[(rec['kohorte'], str(roh), k)] += 1
+    rec['sammelobjekt'] = 'JA' if k == 'UNKLAR_SAMMELOBJEKT' else 'NEIN'
+    if k == 'UNKLAR_SAMMELOBJEKT': k, regel = 'PROGRAMM', regel + '; Sammelobjekt vorerst als Programm, Teilangebote später (E069)'
     rec['objektklasse'], rec['objektklasse_regel'], rec['h_objektklasse'] = k, regel, 'REGEL'
     # Vier-Felder-Modell (E043)
     rec['release_markt'] = ISO[m]; rec['h_release_markt'] = 'KATALOG_XLSX'
@@ -231,7 +238,7 @@ for r in KAT:
         rec['anbieter_land'], rec['h_anbieter_land'], rec['anbieter_land_beleg'] = NE, 'LEER', NE
     kand = COUNTRY_ROH.get(rid_country) if legacy else ISO[m]
     rec['anbieter_land_kandidat'] = kand or NE
-    rec['anbieter_land_kandidat_quelle'] = ('Rohfeld country (mischt Markt/Sitz/Ort, E043) – nicht übernommen' if legacy else
+    rec['anbieter_land_kandidat_quelle'] = ('Rohfeld country (mischt Markt/Sitz/Ort, E043) – ohne Beleg nicht übernommen (E065)' if legacy else
                                             'Recherchemarkt R4 – nicht übernommen') if kand else NE
     if legacy:
         land, txt, grad = ort(DATA[i].get('region'))
@@ -239,9 +246,12 @@ for r in KAT:
         land, txt, grad = NE, NE, 'NICHT_ERFASST'
     rec['durchfuehrungsort_land'], rec['durchfuehrungsort_sicherheit'] = land, grad
     rec['h_durchfuehrungsort_land'] = 'REGEL' if land != NE else 'LEER'
-    rec['ch_zugang'], rec['h_ch_zugang'] = NE, 'LEER'
+    if legacy and land == 'CH':
+        rec['ch_zugang'], rec['h_ch_zugang'] = 'JA', 'REGEL'
+        rec['ch_zugang_regel'] = f'Durchführungsort CH genannt (E066), Sicherheitsgrad Ort: {grad}'
+    else:
+        rec['ch_zugang'], rec['h_ch_zugang'], rec['ch_zugang_regel'] = NE, 'LEER', NE
     hinweise = []
-    if legacy and land == 'CH': hinweise.append('Durchführungsort CH genannt (kein Zugangsbeleg)')
     if legacy and 'Chiasso' in str(rid_country or ''): hinweise.append('Rohwert country: CH_ACCESS / operational presence Chiasso')
     if not legacy:
         a = R4K[(m, i)].get('access_status'); hinweise.append('R4 access_status: ' + (a or 'leer'))
@@ -255,15 +265,17 @@ for r in KAT:
     rec['owner_offen'] = '|'.join(sorted(oc)) if oc else ''
     if legacy:
         if i in DISPO: sb, gr = DISPO[i]
+        elif DATA[i].get('publicationStatus') == 'HOLD' and herkunft('data', i, 'publicationStatus') == 'MAIN_OWNER':
+            sb, gr = 'NEIN', 'HOLD aus main übernommen (E063): Folgetermin bzw. Aktualität in Nachrecherche'
         elif DATA[i].get('publicationStatus') == 'HOLD': sb, gr = 'NEIN', 'HOLD (publicationStatus)'
         elif 'HOLD_SPERRE' in oc: sb, gr = 'OFFEN_OWNER', 'HOLD aus main, live ohne Sperre – Owner-Entscheid'
         else: sb, gr = 'JA', 'Release 30.09. (E007)'
     else:
         x = R4K[(m, i)]
         if R4_KRITISCH.search(x['currentness'] or ''):
-            sb, gr = 'OFFEN_AKTUALITAET', f"R4 currentness «{x['currentness']}»: archiviert/abgelaufen/geschlossen – E036 vs. E014/E015, Owner-Entscheid"
+            sb, gr = 'NEIN', f"R4 currentness «{x['currentness']}»: archiviert/abgelaufen/geschlossen – archiviert bis Beleg (E067)"
         elif not r['Offizielle URL']:
-            sb, gr = 'OFFEN_QUELLE', 'Keine eindeutige Angebots-URL (Katalog ohne offizielle URL; R4-Quellenfeld mit mehreren URLs/Text): Angebotsidentität offen (E029, E031)'
+            sb, gr = 'NEIN', 'Keine eindeutige Angebots-URL (Katalog ohne offizielle URL; R4-Quellenfeld mit mehreren URLs/Text): nicht sichtbar bis URL bestimmt (E068)'
         else:
             sb, gr = 'JA', 'Beta mit DE/USA (E036)'
     rec['beta_sichtbar'], rec['beta_grund'] = sb, gr
@@ -284,6 +296,13 @@ for x in R4:
     if x['country'] in ('FR', 'IT'):
         bestand[('url', norm_url(x['source_url']))].append(f"{x['country']}:{x['record_id']}")
         bestand[('pt', norm(x['provider']) + '|' + norm(x['title']))].append(f"{x['country']}:{x['record_id']}")
+# Owner-Entscheid E070: gilt nur für genau diese 5 Verdachtsfälle; neue Verdachtsfälle bleiben offen.
+F6 = {('DE', 'V112-47'): ('VERDACHT_BESTAND_ANBIETER_TITEL', 'OFFER-DJA-012', 'DUBLETTE_BESTAND_OWNER'),
+      ('DE', 'V112-48'): ('VERDACHT_BESTAND_ANBIETER_TITEL', 'OFFER-DJA-010', 'DUBLETTE_BESTAND_OWNER'),
+      ('USA', 'USR-785'): ('VERDACHT_INTERN_GLEICHES_PROGRAMM_ANDERER_ANBIETER', None, 'EIGENSTAENDIG_ANDERER_ANBIETER_OWNER'),
+      ('USA', 'USR-788'): ('VERDACHT_INTERN_GLEICHES_PROGRAMM_ANDERER_ANBIETER', None, 'EIGENSTAENDIG_ANDERER_ANBIETER_OWNER'),
+      ('USA', 'USR-793'): ('VERDACHT_INTERN_GLEICHES_PROGRAMM_ANDERER_ANBIETER', None, 'EIGENSTAENDIG_ANDERER_ANBIETER_OWNER')}
+F6_GENUTZT = set()
 dedupe, gesehen = [], {}
 for rec in master:
     if rec['kohorte'] != 'DE_USA_R4_2466': rec['dedupe_status'] = 'BESTAND'; continue
@@ -298,12 +317,18 @@ for rec in master:
         st, ref = 'VERDACHT_INTERN_GLEICHES_PROGRAMM_ANDERER_ANBIETER', gesehen[(u, norm(x['title']))]
     gesehen.setdefault((u, norm(x['title']), norm(x['provider'])), f"{rec['market']}:{rec['id']}")
     gesehen.setdefault((u, norm(x['title'])), f"{rec['market']}:{rec['id']}")
+    erkannt = st
+    f6 = F6.get((rec['market'], rec['id']))
+    if f6:
+        assert f6[0] == st and (f6[1] is None or f6[1] == ref), f'E070-Fall verändert: {rec["id"]} {st} {ref}'
+        st = f6[2]; F6_GENUTZT.add((rec['market'], rec['id']))
     rec['dedupe_status'], rec['dedupe_referenz'] = st, ref
     vorher = '' if rec['beta_sichtbar'] == 'JA' else ' | zusätzlich: ' + rec['beta_grund']
-    if st.startswith('DUBLETTE'): rec['beta_sichtbar'], rec['beta_grund'] = 'NEIN', f'{st} → {ref} (E008, E029)' + vorher
+    if st.startswith('DUBLETTE'): rec['beta_sichtbar'], rec['beta_grund'] = 'NEIN', f'{st} → {ref} (E008, E029' + (', E070' if f6 else '') + ')' + vorher
     elif st.startswith('VERDACHT'): rec['beta_sichtbar'], rec['beta_grund'] = 'OFFEN_DEDUPE', f'{st} → {ref} (E008)' + vorher
     if st != 'EINDEUTIG': dedupe.append(dict(market=rec['market'], id=rec['id'], anbieter=x['provider'], titel=x['title'], url=x['source_url'],
-                                             status=st, referenz=ref))
+                                             status=st, referenz=ref, erkannt=erkannt, owner_entscheid='E070' if f6 else ''))
+assert F6_GENUTZT == set(F6), f'E070-Fälle nicht gefunden: {set(F6) - F6_GENUTZT}'
 
 # ---------- Ausgaben ----------
 cols = []
@@ -321,7 +346,7 @@ wcsv('dedupe_de_usa.csv', dedupe)
 wcsv('objektklassen_zuordnung.csv', [dict(kohorte=k[0], typ_roh=k[1], objektklasse=k[2], anzahl=n) for k, n in sorted(objmap.items(), key=lambda x: (-x[1], x[0]))])
 C = collections.Counter
 zus = dict(stichtag=STICHTAG, zeilen=len(master), markt=dict(C(r['market'] for r in master)),
-           objektklasse=dict(C(r['objektklasse'] for r in master)),
+           objektklasse=dict(C(r['objektklasse'] for r in master)), sammelobjekte=sum(r['sammelobjekt'] == 'JA' for r in master),
            objektklasse_je_kohorte={k: dict(C(r['objektklasse'] for r in master if r['kohorte'] == k)) for k in ('WEBSITE_1352', 'DE_USA_R4_2466')},
            beta_sichtbar=dict(C(r['beta_sichtbar'] for r in master)), dedupe=dict(C(r['dedupe_status'] for r in master)),
            durchfuehrungsort_land=dict(C(r['durchfuehrungsort_land'] for r in master if r['kohorte'] == 'WEBSITE_1352')),

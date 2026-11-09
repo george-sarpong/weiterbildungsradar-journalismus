@@ -8,7 +8,10 @@ Grundlage: E034, E035. Arbeitszweig `claude/datenharmonisierung`. Kein Website-C
 1. `scripts/merge3.py` – Dreiwege-Merge `data.js` und `smart-search-data.js`: Basis 86868e0, Live-Snapshot, main 5f09e078; PR10 82bb95f9 nur als Vergleichsliste.
 2. `scripts/build_master_p3.py` – Master 3'818 market+id mit Herkunft je Feld, Vier-Felder-Modell (E043), Objektklasse (E029), Schutz-IDs, Deduplizierung DE/USA (E008), «nicht erfasst» (E036).
 3. `scripts/paket3_listen.py` – Owner-Liste und Nachrecherche-Warteschlange.
-4. `scripts/test_paket3.py` – 41 Tests inkl. 4 Manipulationstests (Stand 09.11.2026: 41/41 PASS).
+4. `scripts/test_paket3.py` – 51 Tests inkl. 6 Manipulationstests (Stand Paket 4, 09.11.2026: 51/51 PASS).
+
+Paket 4 (09.11.2026): Owner-Entscheide E060–E070 angewendet. Eingabe `config/owner_entscheide.csv` (775 entschieden, 24 offen;
+einmalig erzeugt mit `scripts/paket4_owner_entscheide.py`). Bericht: `BERICHT_PAKET4_20261109.md`. Register: `ENTSCHEIDUNGSREGISTER.csv`.
 
 ## Eingaben (`eingaben/`)
 - `Arbeitskatalog_3818_V288_20261108.xlsx` – Drive `1IDwc5qM-sbZu2HOKq6Ba7x3mqAjk12b7` (3'818 Zeilen, 307 Schutz-IDs). Ersatz für die Teil-ZIPs aus Übergabe V4.1 (Drive `1qZvJHIm…`, 14,8 MB, über dem 10-MB-Limit des Drive-Connectors).
@@ -19,12 +22,12 @@ Grundlage: E034, E035. Arbeitszweig `claude/datenharmonisierung`. Kein Website-C
 | Datei | Inhalt |
 |---|---|
 | `owner_liste_uebersicht.md` | Lesbare Owner-Liste (A Konflikte, B Gruppenkonflikte, C Live-Änderungen an Schutz-IDs, D HOLD, E Block GitHub-Änderungen an Schutz-IDs) plus F Grundsatzfragen |
-| `owner_liste.csv` | Dieselben 799 Fälle mit vollen Werten, Spalte `entscheid_owner` |
-| `nachrecherche_warteschlange.csv` | 860 Zeilen, Priorität 1–3; Spalte `auftrag` trennt Auftrag Punkt 4 (354) von Zusatz aus Master/Merge (506) |
+| `owner_liste.csv` | Dieselben 799 Fälle mit vollen Werten, Spalten `entscheid_owner`, `register_id`, `status` (Paket 4) |
+| `nachrecherche_warteschlange.csv` | 720 Zeilen (Paket 4), Priorität 1–3; Spalte `auftrag` trennt Auftrag Punkt 4 (354) von Zusatz aus Master/Merge (366) |
 | `master_3818.csv` | Master-Tabelle, Spalten `h_*` = Herkunft je Feld |
 | `master_herkunft_lang.csv.gz` | Langformat: ein Datensatz je Angebot und Feld mit Rohwert, Herkunft, Quelle |
 | `merge_feldentscheide.csv` | jede Abweichung von der Basis mit Klasse und Vorschlag |
-| `merge_kandidat_data.json`, `merge_kandidat_smart.json` | Merge-Ergebnis (offene Owner-Fälle = Live-Wert). Kein Website-Asset |
+| `merge_kandidat_data.json`, `merge_kandidat_smart.json` | Merge-Ergebnis mit Owner-Entscheiden (offene Owner-Fälle = Live-Wert). Kein Website-Asset |
 | `main_vs_pr10_zweite_quelle.csv` | Abweichungen main ↔ PR10, nicht übernommen |
 | `dedupe_de_usa.csv`, `objektklassen_zuordnung.csv` | Prüflisten E008, E029 |
 | `*_SUMMARY.json` | Zählungen und SHA-256 der Eingaben |

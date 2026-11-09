@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """Tests Paket 3: Dreiwege-Merge, Master 3'818, Owner-Liste, Warteschlange. Offline. Positiv + Manipulationstests.
+Paket 4 (09.11.2026): Tests P01–P08 und A05–A06 für die Owner-Entscheide E060–E070; M05–M07, X04, X09, X18, Q06 angepasst.
 
 Aufruf: python3 -I test_paket3.py --base DIR --live DIR --main DIR --pr10 DIR --eingaben DIR --usowner JSONL --out DIR --scripts DIR
 """
 import argparse, csv, json, pathlib, re, shutil, subprocess, sys, tempfile
 
 AP = argparse.ArgumentParser()
-for a in ('base', 'live', 'main', 'pr10', 'eingaben', 'usowner', 'out', 'scripts'): AP.add_argument('--' + a, required=True)
+for a in ('base', 'live', 'main', 'pr10', 'eingaben', 'usowner', 'out', 'scripts', 'owner'): AP.add_argument('--' + a, required=True)
 A = AP.parse_args(); OUT = pathlib.Path(A.out); SC = pathlib.Path(A.scripts); EIN = pathlib.Path(A.eingaben)
 res = []
 def t(name, cond, info=''):
@@ -42,14 +43,17 @@ bad = 0
 for datei, Lx, Gx, Kx in (('data', L, G, KD), ('smart', LS, GS, KS)):
     for i in Lx:
         for f in set(Lx[i]) | set(Gx[i]) | set(Kx[i]):
-            e = ent.get((datei, i, f)); exp = Gx[i].get(f) if e and e['klasse'] == 'NUR_GITHUB' else Lx[i].get(f)
+            e = ent.get((datei, i, f)); exp = Gx[i].get(f) if e and (e['klasse'] == 'NUR_GITHUB' or e['owner_entscheid'] == 'GITHUB') else Lx[i].get(f)
             bad += Kx[i].get(f) != exp
-t('M05 Kandidat = Live, ausser automatisch übernommene NUR_GITHUB-Felder (= main)', bad == 0, bad)
-offen = [e for e in ENT if e['owner_entscheid_noetig'] == 'JA']
-t('M06 keine stille Überschreibung: alle Owner-Fälle tragen im Kandidaten den Live-Wert',
+t('M05 Kandidat = Live, ausser NUR_GITHUB-Feldern und Owner-Entscheiden GITHUB (= main)', bad == 0, bad)
+offen = [e for e in ENT if e['owner_status'] == 'OFFEN']
+t('M06 keine stille Überschreibung: alle offenen Owner-Fälle tragen im Kandidaten den Live-Wert',
   all((KD if e['datei'] == 'data' else KS)[e['id']].get(e['feld']) == (L if e['datei'] == 'data' else LS)[e['id']].get(e['feld']) for e in offen))
 prot = {r['id'] for r in MASTER if r['schutz_307'] == 'JA'}
-t('M07 Schutz-IDs im Kandidaten unverändert gegenüber live (data + smart)', all(KD[i] == L[i] and KS[i] == LS[i] for i in prot))
+gh_owner = {(e['datei'], e['id'], e['feld']) for e in ENT if e['owner_entscheid'] == 'GITHUB'}
+t('M07 Schutz-IDs im Kandidaten nur per Owner-Entscheid GITHUB verändert (data + smart)',
+  all(Kx[i].get(f) == (Gx if (d, i, f) in gh_owner else Lx)[i].get(f) for d, Lx, Gx, Kx in (('data', L, G, KD), ('smart', LS, GS, KS))
+      for i in prot for f in set(Lx[i]) | set(Gx[i]) | set(Kx[i])))
 BS = obj(f'{A.base}/smart-search-data.js')['byId']
 t('M08 jede Abweichung von der Basis ist protokolliert (data + smart)', all(((d, i, f) in ent) for d, Bx, Lx, Gx in (('data', B, L, G), ('smart', BS, LS, GS))
                                                                          for i in Bx for f in set(Bx[i]) | set(Lx[i]) | set(Gx[i])
@@ -72,7 +76,10 @@ t('X01 3818 eindeutige market+id, Marktverteilung', len(set(keys)) == 3818 and {
 t('X02 307 Schutz-IDs markiert, alle im Website-Bestand', len(prot) == 307 and all(r['kohorte'] == 'WEBSITE_1352' for r in MASTER if r['schutz_307'] == 'JA'))
 t('X03 Vier-Felder-Modell vorhanden, release_markt ISO-3166-1', all(r['release_markt'] in ('CH', 'AT', 'LI', 'DE', 'US') and all(c in r for c in
   ('anbieter_land', 'durchfuehrungsort_land', 'durchfuehrungsort_sicherheit', 'ch_zugang')) for r in MASTER))
-t('X04 CH-Zugang nie geraten (E030/E036): überall «nicht erfasst»', all(r['ch_zugang'] == 'nicht erfasst' for r in MASTER))
+t('X04 CH-Zugang nur aus genanntem CH-Durchführungsort (E066), sonst «nicht erfasst»; nie aus Anbieterland',
+  all((r['ch_zugang'] == 'JA') == (r['kohorte'] == 'WEBSITE_1352' and r['durchfuehrungsort_land'] == 'CH') for r in MASTER)
+  and all(r['h_ch_zugang'] == 'REGEL' and 'E066' in r['ch_zugang_regel'] for r in MASTER if r['ch_zugang'] == 'JA')
+  and {r['ch_zugang'] for r in MASTER} <= {'JA', 'nicht erfasst'})
 t('X05 Anbieterland nur mit Beleg (22 DJA laut Audit), sonst «nicht erfasst»', sum(r['anbieter_land'] != 'nicht erfasst' for r in MASTER) == 22
   and all(r['h_anbieter_land'] == 'AUDIT' for r in MASTER if r['anbieter_land'] != 'nicht erfasst'))
 iso = {'CH', 'AT', 'LI', 'DE', 'FR', 'BE', 'NO', 'SE', 'PT', 'US', 'nicht erfasst'}
@@ -80,7 +87,7 @@ t('X06 Durchführungsort-Land nur ISO-Codes oder «nicht erfasst»', all(set(r['
 FELDER = ('anbieter', 'titel', 'beschreibung', 'url', 'sprache', 'preis_text', 'termin_text', 'ort_text', 'format', 'dauer')
 t('X07 keine leeren Anzeigewerte (fehlend = «nicht erfasst», E036)', all(r[c].strip() for r in MASTER for c in FELDER))
 t('X08 Objektklassen nur aus E029-Menge', {r['objektklasse'] for r in MASTER} <= {'STABLE_OFFER', 'PROGRAMM', 'EVENT', 'SERVICE', 'DURCHFUEHRUNG', 'UNKLAR', 'UNKLAR_SAMMELOBJEKT'})
-t('X09 Herkunftscode je Feld gesetzt und gültig', all(v in {'LIVE', 'LIVE_GEAENDERT', 'MAIN', 'LIVE_OWNER_OFFEN', 'R4', 'KATALOG_XLSX', 'REGEL', 'AUDIT', 'LEER'}
+t('X09 Herkunftscode je Feld gesetzt und gültig', all(v in {'LIVE', 'LIVE_GEAENDERT', 'MAIN', 'LIVE_OWNER_OFFEN', 'MAIN_OWNER', 'LIVE_OWNER', 'R4', 'KATALOG_XLSX', 'REGEL', 'AUDIT', 'LEER'}
                                                       for r in MASTER for k, v in r.items() if k.startswith('h_')))
 t('X10 Legacy-Werte = Merge-Kandidat (Titel, URL)', all(r['titel'] == KD[r['id']]['title'] and r['url'] == KD[r['id']]['url'] for r in MASTER if r['kohorte'] == 'WEBSITE_1352'))
 r4 = {(x['country'], x['record_id']): x for x in json.loads((EIN / 'R4_PUBLICATION_ROWS_20260915.json').read_text('utf-8'))}
@@ -97,7 +104,8 @@ t('X16 «Zürich, Bern» = mehrere Orte, «Zürich»/«Zurich» = ein Ort', {r['
   and {r['durchfuehrungsort_sicherheit'] for r in MASTER if r['ort_text'] in ('Zürich', 'Zurich')} == {'ORT_GENANNT'})
 t('X17 R4 archiviert/abgelaufen und Mehrfach-URL nicht automatisch sichtbar', not any(r['beta_sichtbar'] == 'JA' for r in MASTER if r['kohorte'] == 'DE_USA_R4_2466'
   and (re.search(r'ARCHIV|ELAPSED|CLOSED|SUPPRESS', r['r4_aktualitaet']) or r['url_identitaet'] == 'OFFEN')))
-t('X18 gleiches Programm bei verschiedenen Anbietern = Verdacht, nicht verworfen', all(r['beta_sichtbar'] != 'NEIN' for r in MASTER if r['dedupe_status'].startswith('VERDACHT')))
+t('X18 gleiches Programm bei verschiedenen Anbietern = Verdacht oder eigenständig, nicht verworfen',
+  all(r['beta_sichtbar'] != 'NEIN' for r in MASTER if r['dedupe_status'].startswith(('VERDACHT', 'EIGENSTAENDIG'))))
 # --- Warteschlange ---
 qr = lambda pre: [x for x in Q if x['regel'].startswith(pre)]
 at = qr('E042 AT')
@@ -110,7 +118,44 @@ t('Q04 E043: 19 Ateliers + 2 MiTech', len(qr('E043')) == 21)
 t('Q05 alle 30 Zeilen ohne eindeutige URL (frühere SOURCE_IDENTITY_HOLD) markiert und in der Warteschlange', len(qr('E029/E031')) == 30 == sum(r['url_identitaet'] == 'OFFEN' for r in MASTER))
 t('Q06 jede nicht sichtbare oder offene Master-Zeile hat einen Owner- oder Warteschlangenfall',
   all(r['owner_offen'] or (r['market'], r['id']) in {(x['market'], x['id']) for x in Q} or r['beta_grund'].startswith(('OUT_SCOPE', 'ARCHIV', 'CH-HOLD'))
+      or 'E070' in r['beta_grund']
       for r in MASTER if r['beta_sichtbar'] != 'JA'))
+
+# --- Paket 4: Owner-Entscheide E060–E070 ---
+OE = rcsv(A.owner); OEK = {(x['datei'], x['id'], x['feld']): x for x in OE}
+D_OFFEN = {'OFFER-NOBLE-004', 'OFFER-NOBLE-013', 'OFFER-NOBLE-014', 'OFFER-NOBLE-020', 'OFFER-NOBLE-033', 'OFFER-NOBLE-035', 'OFFER-NOBLE-037',
+           'OFFER-NOBLE-044', 'OFFER-ORSYS-054', 'OFFER-ORSYS-057', 'OFFER-ORSYS-063', 'OFFER-ORSYS-076', 'OFFER-ORSYS-078', 'OFFER-ORSYS-082',
+           'OFFER-ORSYS-083', 'OFFER-ORSYS-099', 'OFFER-ORSYS-118', 'OFFER-ORSYS-139', 'OFFER-ORSYS-141', 'OFFER-ORSYS-143', 'OFFER-ORSYS-144',
+           'OFFER-ORSYS-151', 'AT-PROD-OFFER-154', 'PCC-P38'}
+from collections import Counter
+t('P01 799 Owner-Fälle: 775 entschieden (A 6, B 11+7, C 29, D 22, E 700), 24 offen = D Gruppe 3 + AT-PROD-OFFER-154 + PCC-P38',
+  len(OWN) == 799 and Counter((r['kategorie'][0], r['entscheid_owner'] or 'OFFEN') for r in OWN) == {('A', 'GITHUB'): 6, ('B', 'GITHUB'): 11,
+  ('B', 'LIVE'): 7, ('C', 'LIVE'): 29, ('D', 'GITHUB'): 22, ('D', 'OFFEN'): 24, ('E', 'GITHUB'): 700}
+  and {r['id'] for r in OWN if r['status'] == 'OFFEN'} == D_OFFEN)
+t('P02 owner_liste.csv: entscheid_owner = Entscheiddatei, Register-ID passt zur Kategorie (A E060 · B E061 · C E062 · D E063 · E E064)',
+  all(r['entscheid_owner'] == OEK[(r['datei'], r['id'], r['feld'])]['entscheid'] and
+      r['register_id'] == ({'A': 'E060', 'B': 'E061', 'C': 'E062', 'D': 'E063', 'E': 'E064'}[r['kategorie'][0]] if r['entscheid_owner'] else '') for r in OWN))
+t('P03 Kandidat folgt dem Entscheid: GITHUB = main-Wert, LIVE = Live-Wert',
+  all((KD if e['datei'] == 'data' else KS)[e['id']].get(e['feld']) == ((G if e['datei'] == 'data' else GS) if e['owner_entscheid'] == 'GITHUB'
+      else (L if e['datei'] == 'data' else LS))[e['id']].get(e['feld']) for e in ENT if e['owner_status'] == 'ENTSCHIEDEN'))
+MI = {r['id']: r for r in MASTER if r['kohorte'] == 'WEBSITE_1352'}
+t('P04 E063: 22 HOLD im Kandidaten, nicht sichtbar; 24 offene ohne Sperre, OFFEN_OWNER',
+  {i for i in hold_main if KD[i].get('publicationStatus') == 'HOLD'} == hold_main - D_OFFEN and len(hold_main - D_OFFEN) == 22
+  and all(MI[i]['beta_sichtbar'] == 'NEIN' for i in hold_main - D_OFFEN)
+  and all(MI[i]['beta_sichtbar'] == 'OFFEN_OWNER' and not KD[i].get('publicationStatus') for i in D_OFFEN))
+t('P05 E067/E068: 295 R4-archiviert und 30 ohne eindeutige URL nicht sichtbar und in der Warteschlange',
+  sum('(E067)' in r['beta_grund'] and r['beta_sichtbar'] == 'NEIN' for r in MASTER) == 295 == len(qr('E014/E015'))
+  and sum('(E068)' in r['beta_grund'] and r['beta_sichtbar'] == 'NEIN' for r in MASTER) == 30 == len(qr('E029/E031')))
+t('P06 E069: 151 Sammelobjekte als Programm, keine Klasse UNKLAR_SAMMELOBJEKT, 24 unklar in Warteschlange',
+  sum(r['sammelobjekt'] == 'JA' for r in MASTER) == 151 and all(r['objektklasse'] == 'PROGRAMM' for r in MASTER if r['sammelobjekt'] == 'JA')
+  and not any(r['objektklasse'] == 'UNKLAR_SAMMELOBJEKT' for r in MASTER) and len(qr('E029 Objektklasse')) == 24 == sum(r['objektklasse'] == 'UNKLAR' for r in MASTER))
+MK = {(r['market'], r['id']): r for r in MASTER}
+t('P07 E070: DJA V112-47/-48 Dublette nicht sichtbar, Maricopa USR-785/-788/-793 sichtbar; keine offenen Dedupe-Fälle',
+  all(MK[('DE', i)]['beta_sichtbar'] == 'NEIN' and MK[('DE', i)]['dedupe_status'] == 'DUBLETTE_BESTAND_OWNER' for i in ('V112-47', 'V112-48'))
+  and all(MK[('USA', i)]['beta_sichtbar'] == 'JA' for i in ('USR-785', 'USR-788', 'USR-793')) and not qr('E008'))
+t('P08 E065: Anbieterland weiterhin nur mit Beleg (22 DJA), Rohwert nur als Kandidat mit Verweis E065',
+  sum(r['anbieter_land'] != 'nicht erfasst' for r in MASTER) == 22
+  and all('E065' in r['anbieter_land_kandidat_quelle'] for r in MASTER if r['kohorte'] == 'WEBSITE_1352' and r['anbieter_land_kandidat'] != 'nicht erfasst'))
 
 # --- Manipulationstests ---
 def run(cmd): return subprocess.run([sys.executable, '-I'] + [str(c) for c in cmd], capture_output=True, text=True)
@@ -142,4 +187,16 @@ with tempfile.TemporaryDirectory() as td:
     r = merge_mit(lv2, mn, td / 'o4'); k4 = {o['id']: o for o in json.loads((td / 'o4/merge_kandidat_data.json').read_text('utf-8'))}
     e4 = {(e['id'], e['feld']): e for e in rcsv(td / 'o4/merge_feldentscheide.csv')}
     t('A04 eingeschleuster Konflikt -> KONFLIKT, Kandidat behält Live-Wert', e4[(nid, 'region')]['klasse'] == 'KONFLIKT' and k4[nid]['region'] == 'LIVE-X')
+    oe = rcsv(A.owner); cols = list(oe[0])
+    def owner_mit(rows, name):
+        pth = td / name
+        with open(pth, 'w', newline='', encoding='utf-8-sig') as fh:
+            w = csv.DictWriter(fh, fieldnames=cols); w.writeheader(); w.writerows(rows)
+        return run([SC / 'merge3.py', '--base', A.base, '--live', A.live, '--main', A.main, '--pr10', A.pr10, '--katalog', EIN / 'Arbeitskatalog_3818_V288_20261108.xlsx',
+                    '--policy', f'{A.pr10}/data/staging/evt270-currentness-policy-20261107.json', '--vorschlaege', SC.parent / 'paket3/config/konflikt_vorschlaege.json',
+                    '--out', td / ('o' + name), '--owner', pth])
+    alt = [dict(x) for x in oe]; alt[0]['pruefwert'] = '0000000000000000'
+    t('A05 veralteter Owner-Entscheid (Live- oder main-Wert seither geändert) -> Merge bricht ab', owner_mit(alt, 'o5.csv').returncode != 0)
+    fremd = [dict(x) for x in oe] + [dict(oe[0], id='OFFER-MAZ-001', feld='title')]
+    t('A06 Owner-Entscheid ohne passenden Owner-Fall -> Merge bricht ab', owner_mit(fremd, 'o6.csv').returncode != 0)
 n = sum(res); print(f'{n}/{len(res)} PASS'); sys.exit(0 if n == len(res) else 1)

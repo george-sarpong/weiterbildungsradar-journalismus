@@ -19,14 +19,19 @@ Regeln je (Datei, Angebot, Top-Level-Feld):
                      geändert -> automatische main-Übernahme in dieser Gruppe ausgesetzt, Live bleibt, Owner entscheidet
 Nichts wird still überschrieben: jede Abweichung von der Basis steht in merge_feldentscheide.csv.
 
+Paket 4 (09.11.2026): optional --owner CSV (paket3/config/owner_entscheide.csv, Register E060–E064). Je Owner-Fall
+GITHUB = main-Wert übernehmen, LIVE = Live-Wert behalten, leer = offen (Live-Wert gilt weiter). Abbruch, wenn ein Entscheid
+keinem Owner-Fall entspricht oder sich Live- bzw. main-Wert seit dem Entscheid geändert haben (Prüfwert).
+
 Aufruf:
-  python3 -I merge3.py --base DIR --live DIR --main DIR --pr10 DIR --katalog XLSX --policy JSON --vorschlaege JSON --out DIR
+  python3 -I merge3.py --base DIR --live DIR --main DIR --pr10 DIR --katalog XLSX --policy JSON --vorschlaege JSON --out DIR [--owner CSV]
 """
 import argparse, csv, collections, hashlib, json, pathlib, sys
 
 AP = argparse.ArgumentParser()
 for a in ('base', 'live', 'main', 'pr10', 'katalog', 'policy', 'vorschlaege', 'out'):
     AP.add_argument('--' + a, required=True)
+AP.add_argument('--owner', default=None)
 A = AP.parse_args()
 OUT = pathlib.Path(A.out); OUT.mkdir(parents=True, exist_ok=True)
 HASH = {}
@@ -69,6 +74,20 @@ PROT_KAT = {x['offerId']: ('ARCHIV' if x['policy'] == 'ARCHIVE_NO_AUTO_RESCAN' e
 assert set(PROT_KAT) <= PROT
 
 VORSCHLAG = {(x['datei'], x['id'], x['feld']): x for x in json.loads(rd(A.vorschlaege))['faelle']}
+OWNER = {}
+if A.owner:
+    rd(A.owner)
+    for x in csv.DictReader(open(A.owner, encoding='utf-8-sig')):
+        k = (x['datei'], x['id'], x['feld'])
+        assert k not in OWNER, f'Owner-Entscheid doppelt: {k}'
+        assert x['entscheid'] in ('GITHUB', 'LIVE', ''), f'ungültiger Owner-Entscheid {x["entscheid"]!r} bei {k}'
+        assert (x['entscheid'] == '') == (x['register_id'] == ''), f'Owner-Entscheid ohne Register-ID: {k}'
+        OWNER[k] = x
+OWNER_GENUTZT = set()
+
+def pruefwert(vl, vg):
+    # wie in merge_feldentscheide.csv: fehlender Wert = leerer Text
+    return hashlib.sha256(json.dumps([ser(vl) or '', ser(vg) or ''], ensure_ascii=False).encode()).hexdigest()[:16]
 GRUPPEN = {'data': {'TERMIN': {'start', 'startDate', 'endDate', 'sessions'}, 'PREIS': {'priceDisplay', 'priceCategory'},
                     'ORT': {'region'}},
            'smart': {'PREIS': {'priceOptions', 'priceEligible', 'parserStatus'}, 'TERMIN': {'delivery'}}}
@@ -127,12 +146,17 @@ for datei, X in (('data', D), ('smart', S)):
                 k = 'SCHUTZ_LIVE'
             elif i in PROT and k == 'NUR_GITHUB':
                 k = 'SCHUTZ_GITHUB'
-            uebernehmen_github = k == 'NUR_GITHUB'
+            owner = k in ('KONFLIKT', 'SCHUTZ_LIVE', 'SCHUTZ_GITHUB', 'HOLD_SPERRE', 'GRUPPENKONFLIKT')
+            oe = OWNER.get((datei, i, f)) if owner else None
+            if oe:
+                assert oe['pruefwert'] == pruefwert(vl, vg), f'Owner-Entscheid veraltet (Live- oder main-Wert geändert): {(datei, i, f)}'
+                OWNER_GENUTZT.add((datei, i, f))
+            o_ent = oe['entscheid'] if oe else ''
+            uebernehmen_github = k == 'NUR_GITHUB' or o_ent == 'GITHUB'
             if uebernehmen_github:
                 if f in g: neu[f] = vg          # Feld fehlt in main -> entfällt auch im Kandidaten
             elif f in l:
                 neu[f] = vl
-            owner = k in ('KONFLIKT', 'SCHUTZ_LIVE', 'SCHUTZ_GITHUB', 'HOLD_SPERRE', 'GRUPPENKONFLIKT')
             if k == 'UNVERAENDERT': continue
             v = VORSCHLAG.get((datei, i, f))
             if v: vor, begr = v['vorschlag'], v['begruendung']
@@ -154,9 +178,13 @@ for datei, X in (('data', D), ('smart', S)):
                                    schutz_kategorie=PROT_KAT.get(i, 'nicht erfasst') if i in PROT else '',
                                    owner_entscheid_noetig='JA' if owner else 'NEIN', merge_wert_quelle='MAIN' if uebernehmen_github else 'LIVE',
                                    basis_wert=ser(vb), live_wert=ser(vl), github_main_wert=ser(vg), pr10_wert=ser(p.get(f)),
-                                   pr10_weicht_von_main_ab='JA' if p.get(f) != vg else 'NEIN', vorschlag=vor, begruendung=begr))
+                                   pr10_weicht_von_main_ab='JA' if p.get(f) != vg else 'NEIN', vorschlag=vor, begruendung=begr,
+                                   owner_status=('ENTSCHIEDEN' if o_ent else 'OFFEN') if owner else '',
+                                   owner_entscheid=o_ent, owner_register_id=oe['register_id'] if oe else ''))
         # Feldreihenfolge: wie live, neue Felder hinten
         merged[datei][i] = neu
+fremd = set(OWNER) - OWNER_GENUTZT
+assert not fremd, f'Owner-Entscheide ohne passenden Owner-Fall: {sorted(fremd)[:5]}'
 
 # Kreuzprüfung data <-> smart: Preisgruppe darf nicht aus verschiedenen Quellen stammen
 quelle = collections.defaultdict(set)
@@ -197,6 +225,9 @@ zus = dict(
                           for k in sorted({e['klasse'] for e in entscheide})} for d in ('data', 'smart')},
     owner_faelle_felder=sum(e['owner_entscheid_noetig'] == 'JA' for e in entscheide),
     owner_faelle_angebote=len({e['id'] for e in entscheide if e['owner_entscheid_noetig'] == 'JA'}),
+    owner_entscheide=dict(collections.Counter(f"{e['klasse']}:{e['owner_entscheid'] or 'OFFEN'}" for e in entscheide if e['owner_entscheid_noetig'] == 'JA')),
+    owner_offen_felder=sum(e['owner_status'] == 'OFFEN' for e in entscheide),
+    owner_offen_angebote=len({e['id'] for e in entscheide if e['owner_status'] == 'OFFEN'}),
     kreuzpruefung_preis_quellen_gemischt=kreuz,
     main_vs_pr10={'felder': len(m_p), 'angebote_data': len({x['id'] for x in m_p if x['datei'] == 'data'}),
                   'angebote_smart': len({x['id'] for x in m_p if x['datei'] == 'smart'})},
