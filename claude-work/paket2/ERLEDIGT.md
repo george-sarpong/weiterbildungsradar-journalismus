@@ -56,7 +56,7 @@ Nicht live. PR10 ist Quellenmaterial (E033). Über die Übernahme entscheidet de
 | Katalog: 30 Karten, «Weitere 30 Angebote anzeigen» | CP01 CP-01J [GELESEN] |
 | Standardsortierung «Zuletzt geprüft», Methodik-Text ohne «redaktionelle Auswahl» (E020) | CP01 CP-01K [GELESEN] |
 | CI-Rauchtests (lokal Chromium; gehostete Tests übersprungen) | CP01 CP-01H [GELESEN] |
-| WDA-03 «unbedingt kostenlos» und WDA-05 Preiskarten-Schutz (nur Code-Entwurf) | Handoff §3.5, §9.5 B1-D03 [GELESEN] |
+| WDA-03 Gratis-Trennung (Bezeichnungen gemäss E057 anpassen) und WDA-05 Preiskarten-Schutz (nur Code-Entwurf) | Handoff §3.5, §9.5 B1-D03 [GELESEN] |
 | Hinweistext Währung 1:1 (auch in main) | STATUS §1.5 [GEPRÜFT] |
 | Preiskorrekturen Mediencampus (14) und zwei Hochschulangebote (EVT262/264) | Übergabe §D1 [CHATGPT] |
 

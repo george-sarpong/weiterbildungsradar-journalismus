@@ -75,7 +75,7 @@ Was PR10 zusätzlich kann: `ERLEDIGT.md` Abschnitt D.
 | ID | Befund | Stand | Beleg |
 |---|---|---|---|
 | WDA-01 | Budget mit Preisspanne: liegt die Obergrenze im Budget, wird trotzdem nur «möglich» gezeigt (z. B. OFFER-DJA-009, EUR 480–512 bei CHF 800); 18 Kandidaten | Regel entschieden (E051), Umsetzung offen | Audit 28.10. B [GELESEN] |
-| WDA-03 | «Kostenlos» meint in Filter und Smart-Suche Verschiedenes (22 vs. 15 ohne Bedingung) | Trennung entschieden (E052), Bezeichnungen offen; Code-Entwurf in PR10 | Audit 28.10. D [GELESEN] |
+| WDA-03 | «Kostenlos» meint in Filter und Smart-Suche Verschiedenes (22 vs. 15 ohne Bedingung) | Trennung und Bezeichnungen entschieden (E052, E057); Code-Entwurf in PR10 | Audit 28.10. D [GELESEN] |
 | WDA-04 | Online/On-Demand: 428 Angebote, nur 90 mit VERIFIED-Kursform | Abdeckungslücke, kein Bug | Audit 28.10. E [GELESEN] |
 | WDA-05 | AT-PROD-OFFER-208 zeigt vergangene Gratis-Septembertermine als Preis | Einzelfall, Nachrecherche | Audit 28.10. F [GELESEN] |
 | W3 | CH 641 Foundation-Bericht ungelesen | nur lesen, falls für Beta nötig | WIDERSPRUECHE |
