@@ -10,5 +10,5 @@ Eigener Arbeitszweig von Claude für die Daten- und Wissensharmonisierung von me
 - `scripts/test_master.py` – 21 Tests inkl. 3 Manipulationstests (Stand 09.11.2026: 21/21 PASS).
 - `scripts/cmp_main_pr10.py` – Feldvergleich data.js main vs. PR10.
 - `paket1/` – Quellenverzeichnis und Widersprüche (09.11.2026).
-- `paket3/` – Dreiwege-Merge, Master 3'818, Owner-Liste, Nachrecherche-Warteschlange (09.11.2026); Skripte `scripts/merge3.py`, `build_master_p3.py`, `paket3_listen.py`, `test_paket3.py` (35/35 PASS), Lauf `scripts/run_paket3.sh`. `build_master.py` bleibt unverändert (braucht Übergabe-ZIP V4.1).
+- `paket3/` – Dreiwege-Merge, Master 3'818, Owner-Liste, Nachrecherche-Warteschlange (09.11.2026); Skripte `scripts/merge3.py`, `build_master_p3.py`, `paket3_listen.py`, `test_paket3.py` (41/41 PASS), Lauf `scripts/run_paket3.sh`. `build_master.py` bleibt unverändert (braucht Übergabe-ZIP V4.1).
 - `paket2/` – Entwurf Gesamtwissensstand, Entscheidungsregister (CSV), Erledigt-Liste (09.11.2026, Owner-Abnahme ausstehend).

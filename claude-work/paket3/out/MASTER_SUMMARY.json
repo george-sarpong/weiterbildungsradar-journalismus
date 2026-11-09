@@ -9,11 +9,11 @@
   "USA": 2355
  },
  "objektklasse": {
-  "PROGRAMM": 1554,
+  "PROGRAMM": 1535,
   "STABLE_OFFER": 1996,
   "EVENT": 104,
+  "UNKLAR": 24,
   "UNKLAR_SAMMELOBJEKT": 151,
-  "UNKLAR": 5,
   "SERVICE": 5,
   "DURCHFUEHRUNG": 3
  },
@@ -25,45 +25,54 @@
   },
   "DE_USA_R4_2466": {
    "STABLE_OFFER": 829,
-   "PROGRAMM": 1381,
+   "PROGRAMM": 1362,
+   "UNKLAR": 24,
    "UNKLAR_SAMMELOBJEKT": 151,
-   "UNKLAR": 5,
    "EVENT": 92,
    "SERVICE": 5,
    "DURCHFUEHRUNG": 3
   }
  },
  "beta_sichtbar": {
-  "JA": 3767,
+  "JA": 3442,
   "OFFEN_OWNER": 40,
-  "NEIN": 9,
-  "OFFEN_DEDUPE": 2
+  "NEIN": 6,
+  "OFFEN_AKTUALITAET": 295,
+  "OFFEN_DEDUPE": 5,
+  "OFFEN_QUELLE": 30
  },
  "dedupe": {
   "BESTAND": 1352,
   "EINDEUTIG": 2461,
   "VERDACHT_BESTAND_ANBIETER_TITEL": 2,
-  "DUBLETTE_INTERN_URL_TITEL": 3
+  "VERDACHT_INTERN_GLEICHES_PROGRAMM_ANDERER_ANBIETER": 3
  },
  "durchfuehrungsort_land": {
-  "AT": 74,
-  "nicht erfasst": 518,
-  "CH": 747,
-  "AT|CH": 2,
+  "AT": 78,
+  "nicht erfasst": 523,
+  "CH": 735,
   "AT|DE": 1,
+  "BE": 2,
+  "BE|CH": 1,
+  "NO|SE": 1,
   "DE": 5,
+  "PT": 1,
   "CH|DE": 1,
   "LI": 4
  },
  "durchfuehrungsort_sicherheit": {
-  "ORT_GENANNT": 356,
-  "ORT_GENANNT_MIT_ONLINE": 18,
-  "NUR_ONLINE": 279,
-  "UNKLAR_KEIN_LAND_ERKANNT": 28,
-  "ORT_ALTERNATIV_ODER_UNSCHARF_MIT_ONLINE": 317,
+  "ORT_GENANNT": 339,
+  "ORT_GENANNT_MIT_ONLINE": 16,
+  "NUR_ONLINE": 298,
+  "NUR_LAND_ODER_REGION_MIT_ONLINE": 148,
+  "ORT_ALTERNATIV_ODER_UNSCHARF_MIT_ONLINE": 38,
+  "NUR_LAND_ODER_REGION": 37,
+  "ORT_ALTERNATIV_ODER_UNSCHARF": 67,
   "MEHRERE_LAENDER": 4,
-  "ORT_ALTERNATIV_ODER_UNSCHARF": 139,
   "NICHT_PUBLIZIERT": 155,
+  "MEHRERE_ORTE": 60,
+  "MEHRERE_ORTE_MIT_ONLINE": 120,
+  "UNKLAR_KEIN_LAND_ERKANNT": 14,
   "AUF_ANFRAGE": 56,
   "NICHT_ERFASST": 2466
  },
@@ -113,9 +122,9 @@
  },
  "herkunft_je_code": {
   "LIVE": 29301,
-  "LEER": 90260,
-  "REGEL": 4652,
-  "KATALOG_XLSX": 3818,
+  "LEER": 90265,
+  "REGEL": 4647,
+  "KATALOG_XLSX": 7636,
   "LIVE_OWNER_OFFEN": 799,
   "MAIN": 109,
   "LIVE_GEAENDERT": 47,
@@ -127,7 +136,7 @@
  "eingaben_sha256": {
   "paket3/out/merge_kandidat_data.json": "57467ad17ec1d0e233ce81164dc6189a4e60e7c07459c32579b87f899ce7b089",
   "paket3/out/merge_kandidat_smart.json": "88e106cfeba7cf669507fc03323632250e11c3d29ab8383d46525063359f7a2c",
-  "paket3/out/merge_feldentscheide.csv": "6312f11b9867ee7012b518a1f67d7e43942a20f5afabd2ca804e99e8a32f9241",
+  "paket3/out/merge_feldentscheide.csv": "126d725dba01d1d0f19bd828ca6bef5271de9cc83d8639019edc363d474bf70f",
   "paket3/eingaben/Arbeitskatalog_3818_V288_20261108.xlsx": "3ec4448f76c58388c4517221c7e969ad0f185aef4a5795545b008fe7195bd85b",
   "paket3/eingaben/R4_PUBLICATION_ROWS_20260915.json": "313d7fb2a2eb695740c28566882cc9a53eae1d53a3a273e1fc26b4e6a8f1ab8d",
   "/home/claude/git/pr10/data/staging/usa-owner-evidence-crosswalk-20261107.jsonl": "9d6afa8cc76de316bc8da9248b85739c54c72361b0f3daccee39bc502ed63b58"

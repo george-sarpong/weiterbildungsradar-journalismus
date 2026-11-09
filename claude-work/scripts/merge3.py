@@ -75,8 +75,9 @@ GRUPPEN = {'data': {'TERMIN': {'start', 'startDate', 'endDate', 'sessions'}, 'PR
 
 import re
 def nur_umformulierung(b, l):
-    """Live-Änderung ohne neue Zahlen (gleiche Ziffernfolge) = Umformulierung/Eindeutschung."""
-    z = lambda v: re.findall(r'\d+', ser(v) or '')
+    """Live-Änderung ohne neue oder entfallene Zahlen (gleiche Zahlenmenge) = Umformulierung/Eindeutschung.
+    Menge statt Folge, damit «07.12–08.12» und «07.–08.12» als gleich gelten (Prüfbefund 09.11., PCC-P29)."""
+    z = lambda v: {x.lstrip('0') or '0' for x in re.findall(r'\d+', ser(v) or '')}
     return isinstance(b, str) and isinstance(l, str) and z(b) == z(l)
 
 def ser(v):
@@ -145,7 +146,7 @@ for datei, X in (('data', D), ('smart', S)):
                 vor = 'GITHUB' if kl[f] == 'NUR_GITHUB' else 'LIVE'
                 begr = ('Gruppe Termin: Live hat nur umformuliert (gleiche Zahlen), main ergänzt strukturierte Durchführungen. '
                         'Vorschlag: main-Felder der Gruppe übernehmen, Live-Wortlaut im Textfeld behalten; Gesamtbild nach Übernahme prüfen.')
-            elif k == 'SCHUTZ_GITHUB': vor, begr = 'GITHUB', 'main-Änderung aus der QA09-Konsolidierung (auf main publiziert, beedf06 23.10.2026); Live-Wert ist der Stand vom 11.10.'
+            elif k == 'SCHUTZ_GITHUB': vor, begr = 'GITHUB', 'main-Änderung aus den 49 main-Commits 17.–24.10.2026 (86868e0..5f09e07, überwiegend QA09, u. a. beedf06); Live-Wert ist der Stand vom 11.10.'
             elif k == 'GRUPPENKONFLIKT': vor, begr = 'NACHRECHERCHE', 'Live und main haben verschiedene Felder derselben Gruppe geändert; Kombination nicht belegt. Bis zum Entscheid gilt die Live-Gruppe.'
             elif k == 'KONFLIKT': vor, begr = 'NACHRECHERCHE', 'Kein kuratierter Vorschlag hinterlegt.'
             else: vor, begr = ('GITHUB' if uebernehmen_github else 'LIVE'), 'automatisch nach Merge-Regel'
@@ -202,6 +203,12 @@ zus = dict(
     priceEligible={k: sum(1 for o in S[k].values() if o.get('priceEligible')) for k in S} |
                   {'merge_kandidat': sum(1 for o in merged['smart'].values() if o.get('priceEligible'))},
     schutz_307=len(PROT), schutz_kategorie_bekannt=dict(collections.Counter(PROT_KAT.values())),
+    # Schema-Hinweis für die spätere Website-Arbeit (kein Code-Eingriff in diesem Paket):
+    kandidat_neue_felder_ggue_live={f: sum(1 for o in merged['data'].values() if f in o)
+                                    for f in sorted({f for o in merged['data'].values() for f in o} - {f for o in D['live'].values() for f in o})},
+    kandidat_entfallene_felder_ggue_live={f: sum(1 for i, o in merged['data'].items() if f in D['live'][i] and f not in o)
+                                          for f in sorted({f for o in D['live'].values() for f in o})
+                                          if any(f in D['live'][i] and f not in o for i, o in merged['data'].items())},
     eingaben_sha256=HASH)
 (OUT / 'MERGE_SUMMARY.json').write_text(json.dumps(zus, ensure_ascii=False, indent=1), 'utf-8')
 print(json.dumps({k: v for k, v in zus.items() if k != 'eingaben_sha256'}, ensure_ascii=False, indent=1))

@@ -80,7 +80,7 @@ OBJ_REGELN = [
     ('UNKLAR_SAMMELOBJEKT', r'PARENT|FAMIL(Y|IES)|PACKAGE_AND_COMPONENTS|AND_CURRENT_COURSES|PROGRAMME_AND_CORE|ON_DEMAND_AND_STANDING|STANDING_TRAINING'),
     ('PROGRAMM', r'DEGREE|BACHELOR|MASTER|(^|_)(BA|BS|MS|MA|MFA|BFA|AA|AAS|AS|CP|BJ|BAJMC)($|_)|DOCTOR|ASSOCIATE|MAJOR|CONCENTRATION|EMPHASIS|TRACK|CERTIFICATE|DIPLOMA|'
                  r'CREDENTIAL|PROGRAM|ROUTE|FELLOWSHIP|INTERNSHIP|APPRENTICESHIP|ACADEMY|INSTITUTE|CAMP|(^|_)LAB($|_)|CURRICULUM|'
-                 r'^STUDIUM$|LEHRGANG|^CAS$|^MAS$|^DAS$|STUDY_GROUP|ACCELERATOR|INCUBATOR|CORPS|NETWORK|COMMUNITY$|CPD'),
+                 r'^STUDIUM$|LEHRGANG|^CAS$|^MAS$|^DAS$|STUDY_GROUP|ACCELERATOR|INCUBATOR|CORPS|NETWORK|COMMUNITY$'),
     ('STABLE_OFFER', r'COURSE|^KURS$|WORKSHOP|SEMINAR|WEBINAR|TRAINING|STABLE_OFFER|MODULE|LIBRARY|PRODUCT|SERIES|REPLAY|INTENSIVE|HEFAT|CERTIFICATION'),
 ]
 def objektklasse(roh, rid=''):
@@ -92,28 +92,63 @@ def objektklasse(roh, rid=''):
     return 'UNKLAR', 'kein Muster'
 
 # ---------- Ort -> Land (E043, ISO-3166-1) ----------
+# Je Land: Orte (Städte/Gemeinden), Institutionen (Ort nur indirekt) und Land/Region. Alle Muster mit Wortgrenzen
+# (Prüfbefund 09.11.: «Klagenfurt» enthielt «genf»).
+B = lambda *w: r'\b(?:' + '|'.join(w) + r')\b'
 ORTE = {
-    'CH': r'schweiz|suisse|svizzera|switzerland|\bch-|z[uü]rich|zurich|\bbern\b|basel|luzern|gen[eè]ve|genf|geneva|lausanne|lugano|st\.? ?gallen|aarau|winterthur|wallisellen|'
-          r'\bbaden\b|camorino|riazzino|chiasso|neuch[aâ]tel|\bsion\b|olten|\bzug\b|\bchur\b|\bbiel\b|\bthun\b|valais|wallis|tessin|ticino|romandie|suisse romande|ostschweiz|'
-          r'fribourg|yverdon|montreux|vevey|sierre|bellinzona|locarno|schaffhausen|frauenfeld|solothurn|uster|d[uü]bendorf|kloten|unil|epfl|zhaw|zhdk|uzh|eth\b|hes-so|toni-areal|predigerplatz|digicomp',
-    'AT': r'österreich|oesterreich|austria|\bwien\b|vienna|graz|salzburg|\blinz\b|innsbruck|klagenfurt|krems|st\.? ?p[oö]lten|dornbirn|vorarlberg|tirol|kärnten|steiermark|eisenstadt',
-    'LI': r'liechtenstein|vaduz|schaan',
-    'DE': r'deutschland|germany|berlin|hamburg|m[uü]nchen|k[oö]ln|frankfurt|stuttgart|leipzig|dresden|d[uü]sseldorf',
-    'FR': r'\bfrance\b|frankreich|paris|\blyon\b|annemasse|annecy',
+    'CH': B('z[uü]rich', 'zurich', 'bern', 'basel', 'b[aâ]le', 'luzern', 'lucerne', 'gen[eè]ve', 'genf', 'geneva', 'lausanne', 'lugano', 'luganese',
+            r'st\.? ?-?gallen', 'saint-gall', 'aarau', 'winterthur', 'wallisellen', 'baden', 'camorino', 'riazzino', 'chiasso', r'neuch[aâ]tel', 'sion',
+            'olten', 'zug', 'chur', 'biel', 'thun', 'fribourg', 'freiburg', 'yverdon(?:-les-bains)?', 'montreux', 'vevey', 'sierre', 'bellinzona', 'locarno',
+            'schaffhausen', 'frauenfeld', 'solothurn', 'uster', r'd[uü]bendorf', 'kloten', 'nyon', 'davos', 'stettlen', r'emmenbr[uü]cke', 'rotkreuz',
+            'payerne', 'sainte-croix', 'vernier', 'luins', 'anzonico', 'faido', 'lumino', 'sonvico', 'magliaso', 'burgdorf', 'brugg', 'windisch',
+            'monthey', r'm[uü]rren', r'sch[oö]nenwerd', 'buchs sg', 'looren'),
+    'AT': B('wien', 'vienna', 'graz', 'salzburg', 'linz', 'innsbruck', 'klagenfurt', 'krems', r'st\.? ?p[oö]lten', 'dornbirn', 'eisenstadt', 'schwarzach',
+            'wiener neustadt', r'm[oö]dling'),
+    'LI': B('vaduz', 'schaan'),
+    'DE': B('berlin', 'hamburg', r'm[uü]nchen', r'k[oö]ln', 'frankfurt', 'stuttgart', 'leipzig', 'dresden', r'd[uü]sseldorf', 'weeze'),
+    'FR': B('paris', 'lyon', 'annemasse', 'annecy'),
+    'BE': B(r'br[uü]ssel', 'brussels', 'louvain-la-neuve'), 'NO': B('oslo'), 'SE': B('stockholm'), 'PT': B('porto'),
 }
-ONLINE = r'online|distance|virtual|livestream|live-?stream|zoom|e-?learning|selbstlern|on.?demand|remote'
+INSTITUTION = {'CH': B('unil', 'epfl', 'zhaw', 'zhdk', 'uzh', 'eth', 'hes-so', 'toni-areal', 'predigerplatz', 'fhnw', 'hgk', 'hkb')}
+LAND_REGION = {
+    'CH': B('schweiz', 'suisse', 'svizzera', 'switzerland', 'ch', 'valais', 'wallis', 'tessin', 'ticino', 'romandie', 'suisse romande', 'ostschweiz',
+            'vs', 'zh', 'vd', 'sg', 'vaud'),
+    'AT': B(r'[oö]sterreich', 'oesterreich', 'austria', 'vorarlberg', 'tirol', r'k[aä]rnten', 'steiermark', r'ober[oö]sterreich'),
+    'LI': B('liechtenstein'), 'DE': B('deutschland', 'germany'), 'FR': B('france', 'frankreich'), 'BE': B('belgien', 'belgium'),
+    'NO': B('norway', 'norwegen'), 'SE': B('sweden', 'schweden'), 'PT': B('portugal'),
+}
+ONLINE = r'online|distance|virtu|livestream|live-?stream|zoom|teams|skype|e-?learning|selbstlern|on.?demand|remote|classe virtuelle|à distance'
+UNSCHARF = (r'\boder\b|\bor\b|/|nach (vereinbarung|absprache|ausschreibung)|beim (kunden|auftraggeber|unternehmen)|je (durchf|session|nach)|'
+            r'nicht (publiziert|bestätigt|ausgewiesen|separat)|not published|weitere|praxisorte|redaktionen|extern|\bzb\b|noch zu klären|on location|'
+            r'auf anfrage|individuell|flexibel|client company|in azienda|varianten|standorte')
+SYNONYM = [('zuerich', r'z[uü]rich|zurich'), ('genf', r'gen[eè]ve|genf|geneva'), ('basel', r'basel|b[aâ]le'), ('luzern', r'luzern|lucerne'),
+           ('stgallen', r'st\.? ?-?gallen|saint-gall'), ('lugano', r'lugan'), ('wien', r'wien$|vienna'), ('fribourg', r'fribourg|freiburg'),
+           ('neuchatel', r'neuch')]
+def kanon(x):
+    for name, rx in SYNONYM:
+        if re.match(rx, x): return name
+    return re.sub(r'[^a-z]', '', x)
+
 def ort(region):
+    """Ortstext -> (Land ISO-3166-1, Text, Sicherheitsgrad). Regel, kein Beleg."""
     s = str(region or '').strip()
     if not s or SENT.match(s): return NE, NE, 'NICHT_PUBLIZIERT'
     if re.fullmatch(r'ON_REQUEST\w*', s, re.I): return NE, s, 'AUF_ANFRAGE'
-    t = s.lower(); laender = sorted(k for k, rx in ORTE.items() if re.search(rx, t)); onl = bool(re.search(ONLINE, t))
+    t = s.lower(); onl = bool(re.search(ONLINE, t)); suf = '_MIT_ONLINE' if onl else ''
+    staedte = {k: set(re.findall(rx, t)) for k, rx in ORTE.items()}
+    inst = {k: bool(re.search(rx, t)) for k, rx in INSTITUTION.items()}
+    reg = {k: bool(re.search(rx, t)) for k, rx in LAND_REGION.items()}
+    laender = sorted({k for k, v in staedte.items() if v} | {k for k, v in inst.items() if v} | {k for k, v in reg.items() if v})
     if not laender: return (NE, s, 'NUR_ONLINE') if onl else (NE, s, 'UNKLAR_KEIN_LAND_ERKANNT')
     if len(laender) > 1: return '|'.join(laender), s, 'MEHRERE_LAENDER'
-    grad = 'ORT_GENANNT' + ('_MIT_ONLINE' if onl else '')
-    if re.search(r'\boder\b|\bor\b|/|nach (vereinbarung|absprache|ausschreibung)|beim (kunden|auftraggeber|unternehmen)|je durchf|je session|nicht (publiziert|bestätigt|ausgewiesen)', t):
-        grad = 'ORT_ALTERNATIV_ODER_UNSCHARF' + ('_MIT_ONLINE' if onl else '')
-    return laender[0], s, grad
+    k = laender[0]; n = len({kanon(x) for x in staedte.get(k, set())})
+    if n == 0: grad = 'INSTITUTION_GENANNT' if inst.get(k) else 'NUR_LAND_ODER_REGION'
+    elif n > 1: grad = 'MEHRERE_ORTE'
+    else: grad = 'ORT_GENANNT'
+    if grad in ('ORT_GENANNT', 'INSTITUTION_GENANNT') and re.search(UNSCHARF, t): grad = 'ORT_ALTERNATIV_ODER_UNSCHARF'
+    return k, s, grad + suf
 
+R4_KRITISCH = re.compile(r'ARCHIV|ELAPSED|CLOSED|SUPPRESS|ENDED|EXPIRED', re.I)
 ISO = {'CH': 'CH', 'AT': 'AT', 'LI': 'LI', 'DE': 'DE', 'USA': 'US'}
 COUNTRY_ROH = {'Schweiz': 'CH', 'Österreich': 'AT', 'Liechtenstein': 'LI', 'Frankreich': 'FR'}
 
@@ -224,8 +259,16 @@ for r in KAT:
         elif 'HOLD_SPERRE' in oc: sb, gr = 'OFFEN_OWNER', 'HOLD aus main, live ohne Sperre – Owner-Entscheid'
         else: sb, gr = 'JA', 'Release 30.09. (E007)'
     else:
-        sb, gr = 'JA', 'Beta mit DE/USA (E036)'
+        x = R4K[(m, i)]
+        if R4_KRITISCH.search(x['currentness'] or ''):
+            sb, gr = 'OFFEN_AKTUALITAET', f"R4 currentness «{x['currentness']}»: archiviert/abgelaufen/geschlossen – E036 vs. E014/E015, Owner-Entscheid"
+        elif not r['Offizielle URL']:
+            sb, gr = 'OFFEN_QUELLE', 'Keine eindeutige Angebots-URL (Katalog ohne offizielle URL; R4-Quellenfeld mit mehreren URLs/Text): Angebotsidentität offen (E029, E031)'
+        else:
+            sb, gr = 'JA', 'Beta mit DE/USA (E036)'
     rec['beta_sichtbar'], rec['beta_grund'] = sb, gr
+    rec['url_identitaet'] = 'OFFEN' if not r['Offizielle URL'] else 'EINDEUTIG'
+    rec['h_url_identitaet'] = 'KATALOG_XLSX'
     g = GEP.get((m, i)); rec['v288_geprueft'] = 'JA' if g else 'NEIN'; rec['v288_resultat'] = (g or {}).get('Resultat') or NE
     rec['gold'] = 'NEIN'
     master.append(rec)
@@ -250,11 +293,15 @@ for rec in master:
     if set(hu) & set(hpt): st, ref = 'DUBLETTE_BESTAND', '|'.join(sorted(set(hu) & set(hpt)))
     elif hpt: st, ref = 'VERDACHT_BESTAND_ANBIETER_TITEL', '|'.join(hpt)
     elif hu: st, ref = 'VERDACHT_BESTAND_URL', '|'.join(hu)
-    elif (u, norm(x['title'])) in gesehen: st, ref = 'DUBLETTE_INTERN_URL_TITEL', gesehen[(u, norm(x['title']))]
+    elif (u, norm(x['title']), norm(x['provider'])) in gesehen: st, ref = 'DUBLETTE_INTERN_URL_TITEL_ANBIETER', gesehen[(u, norm(x['title']), norm(x['provider']))]
+    elif (u, norm(x['title'])) in gesehen:  # gleiches Programm, anderer Anbieter (z. B. Bezirksprogramm an mehreren Colleges): E029, nicht still verwerfen
+        st, ref = 'VERDACHT_INTERN_GLEICHES_PROGRAMM_ANDERER_ANBIETER', gesehen[(u, norm(x['title']))]
+    gesehen.setdefault((u, norm(x['title']), norm(x['provider'])), f"{rec['market']}:{rec['id']}")
     gesehen.setdefault((u, norm(x['title'])), f"{rec['market']}:{rec['id']}")
     rec['dedupe_status'], rec['dedupe_referenz'] = st, ref
-    if st.startswith('DUBLETTE'): rec['beta_sichtbar'], rec['beta_grund'] = 'NEIN', f'{st} → {ref} (E008, E029)'
-    elif st.startswith('VERDACHT'): rec['beta_sichtbar'], rec['beta_grund'] = 'OFFEN_DEDUPE', f'{st} → {ref} (E008)'
+    vorher = '' if rec['beta_sichtbar'] == 'JA' else ' | zusätzlich: ' + rec['beta_grund']
+    if st.startswith('DUBLETTE'): rec['beta_sichtbar'], rec['beta_grund'] = 'NEIN', f'{st} → {ref} (E008, E029)' + vorher
+    elif st.startswith('VERDACHT'): rec['beta_sichtbar'], rec['beta_grund'] = 'OFFEN_DEDUPE', f'{st} → {ref} (E008)' + vorher
     if st != 'EINDEUTIG': dedupe.append(dict(market=rec['market'], id=rec['id'], anbieter=x['provider'], titel=x['title'], url=x['source_url'],
                                              status=st, referenz=ref))
 

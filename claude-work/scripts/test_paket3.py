@@ -50,8 +50,10 @@ t('M06 keine stille Überschreibung: alle Owner-Fälle tragen im Kandidaten den 
   all((KD if e['datei'] == 'data' else KS)[e['id']].get(e['feld']) == (L if e['datei'] == 'data' else LS)[e['id']].get(e['feld']) for e in offen))
 prot = {r['id'] for r in MASTER if r['schutz_307'] == 'JA'}
 t('M07 Schutz-IDs im Kandidaten unverändert gegenüber live (data + smart)', all(KD[i] == L[i] and KS[i] == LS[i] for i in prot))
-t('M08 jede Abweichung von der Basis ist protokolliert', all((('data', i, f) in ent) for i in B for f in set(B[i]) | set(L[i]) | set(G[i])
-                                                            if not (B[i].get(f) == L[i].get(f) == G[i].get(f))))
+BS = obj(f'{A.base}/smart-search-data.js')['byId']
+t('M08 jede Abweichung von der Basis ist protokolliert (data + smart)', all(((d, i, f) in ent) for d, Bx, Lx, Gx in (('data', B, L, G), ('smart', BS, LS, GS))
+                                                                         for i in Bx for f in set(Bx[i]) | set(Lx[i]) | set(Gx[i])
+                                                                         if not (Bx[i].get(f) == Lx[i].get(f) == Gx[i].get(f))))
 # --- Owner-Liste ---
 kat = lambda k: [r for r in OWN if r['kategorie'].startswith(k)]
 hold_main = {i for i, o in G.items() if o.get('publicationStatus') == 'HOLD'}
@@ -73,7 +75,7 @@ t('X03 Vier-Felder-Modell vorhanden, release_markt ISO-3166-1', all(r['release_m
 t('X04 CH-Zugang nie geraten (E030/E036): überall «nicht erfasst»', all(r['ch_zugang'] == 'nicht erfasst' for r in MASTER))
 t('X05 Anbieterland nur mit Beleg (22 DJA laut Audit), sonst «nicht erfasst»', sum(r['anbieter_land'] != 'nicht erfasst' for r in MASTER) == 22
   and all(r['h_anbieter_land'] == 'AUDIT' for r in MASTER if r['anbieter_land'] != 'nicht erfasst'))
-iso = {'CH', 'AT', 'LI', 'DE', 'FR', 'US', 'nicht erfasst'}
+iso = {'CH', 'AT', 'LI', 'DE', 'FR', 'BE', 'NO', 'SE', 'PT', 'US', 'nicht erfasst'}
 t('X06 Durchführungsort-Land nur ISO-Codes oder «nicht erfasst»', all(set(r['durchfuehrungsort_land'].split('|')) <= iso for r in MASTER))
 FELDER = ('anbieter', 'titel', 'beschreibung', 'url', 'sprache', 'preis_text', 'termin_text', 'ort_text', 'format', 'dauer')
 t('X07 keine leeren Anzeigewerte (fehlend = «nicht erfasst», E036)', all(r[c].strip() for r in MASTER for c in FELDER))
@@ -88,6 +90,14 @@ t('X12 Dubletten nicht sichtbar, Verdacht offen (E008)', all(r['beta_sichtbar'] 
   and all(r['beta_sichtbar'] == 'OFFEN_DEDUPE' for r in MASTER if r['dedupe_status'].startswith('VERDACHT')))
 t('X13 HOLD-Fälle nicht automatisch sichtbar', all(r['beta_sichtbar'] in ('OFFEN_OWNER', 'NEIN') for r in MASTER if r['id'] in hold_main))
 t('X14 0 Gold, 0 freigegebene Writes', all(r['gold'] == 'NEIN' for r in MASTER))
+ortfall = lambda txt: {r['durchfuehrungsort_land'] for r in MASTER if r['ort_text'] == txt}
+t('X15 Ortsregel mit Wortgrenzen: Klagenfurt = AT (nicht CH), Wiener Neustadt = AT, Brüssel = BE', ortfall('Klagenfurt') == {'AT'}
+  and ortfall('Wiener Neustadt') == {'AT'} and ortfall('Brüssel, Belgien') == {'BE'})
+t('X16 «Zürich, Bern» = mehrere Orte, «Zürich»/«Zurich» = ein Ort', {r['durchfuehrungsort_sicherheit'] for r in MASTER if r['ort_text'] == 'Zürich, Bern'} == {'MEHRERE_ORTE'}
+  and {r['durchfuehrungsort_sicherheit'] for r in MASTER if r['ort_text'] in ('Zürich', 'Zurich')} == {'ORT_GENANNT'})
+t('X17 R4 archiviert/abgelaufen und Mehrfach-URL nicht automatisch sichtbar', not any(r['beta_sichtbar'] == 'JA' for r in MASTER if r['kohorte'] == 'DE_USA_R4_2466'
+  and (re.search(r'ARCHIV|ELAPSED|CLOSED|SUPPRESS', r['r4_aktualitaet']) or r['url_identitaet'] == 'OFFEN')))
+t('X18 gleiches Programm bei verschiedenen Anbietern = Verdacht, nicht verworfen', all(r['beta_sichtbar'] != 'NEIN' for r in MASTER if r['dedupe_status'].startswith('VERDACHT')))
 # --- Warteschlange ---
 qr = lambda pre: [x for x in Q if x['regel'].startswith(pre)]
 at = qr('E042 AT')
@@ -97,6 +107,10 @@ t('Q02 keine Warteschlangenzeile E042 ist im Master (nicht sichtbar)', not any((
 t('Q03 §6/E055 vollständig: WDA-05, CAD-005, CFJM-013/-015, FAM04-C07, FAM05-C04, WDA-04', {x['regel'] for x in Q} >= {'§6 WDA-05', '§6 CAD-005', '§6/E055 FAM14-C05',
   '§6/E055 FAM04-C07', '§6/E055 FAM05-C04', '§6 WDA-04 (Sammelzeile)'} and {x['id'] for x in qr('§6/E055 FAM14')} == {'OFFER-CFJM-013', 'OFFER-CFJM-015'})
 t('Q04 E043: 19 Ateliers + 2 MiTech', len(qr('E043')) == 21)
+t('Q05 alle 30 Zeilen ohne eindeutige URL (frühere SOURCE_IDENTITY_HOLD) markiert und in der Warteschlange', len(qr('E029/E031')) == 30 == sum(r['url_identitaet'] == 'OFFEN' for r in MASTER))
+t('Q06 jede nicht sichtbare oder offene Master-Zeile hat einen Owner- oder Warteschlangenfall',
+  all(r['owner_offen'] or (r['market'], r['id']) in {(x['market'], x['id']) for x in Q} or r['beta_grund'].startswith(('OUT_SCOPE', 'ARCHIV', 'CH-HOLD'))
+      for r in MASTER if r['beta_sichtbar'] != 'JA'))
 
 # --- Manipulationstests ---
 def run(cmd): return subprocess.run([sys.executable, '-I'] + [str(c) for c in cmd], capture_output=True, text=True)

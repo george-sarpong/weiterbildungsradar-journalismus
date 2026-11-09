@@ -93,12 +93,21 @@ for d in DEDUPE:
     m = MASTER[(d['market'], d['id'])]
     q('E008 Deduplizierung', 2, d['market'], d['id'], d['anbieter'], d['titel'], d['url'], f"{d['status']} → {d['referenz']}", 'dedupe_de_usa.csv', m['beta_sichtbar'])
 for r in MASTER.values():
+    if r['url_identitaet'] == 'OFFEN':
+        q('E029/E031 Quellenidentität', 2, r['market'], r['id'], r['anbieter'], r['titel'], r['url'],
+          'Keine eindeutige Angebots-URL (mehrere URLs bzw. Text im R4-Quellenfeld): eine Angebots-URL bestimmen', 'R4 PUBLICATION_ROWS; früher SOURCE_IDENTITY_HOLD (30)', r['beta_sichtbar'])
+    if 'R4 currentness' in r['beta_grund']:
+        q('E014/E015 R4-Aktualität', 3, r['market'], r['id'], r['anbieter'], r['titel'], r['url'],
+          r['beta_grund'].split(': ')[0] + ': aktuelles Angebot belegen oder archivieren (nach Owner-Grundsatzentscheid)', 'R4 PUBLICATION_ROWS', r['beta_sichtbar'])
+for r in MASTER.values():
     if r['objektklasse'].startswith('UNKLAR'):
         q('E029 Objektklasse', 3, r['market'], r['id'], r['anbieter'], r['titel'], r['url'],
           f"Objektklasse {r['objektklasse']} (Rohtyp {r['angebotsart_roh']}): Klasse bestimmen", 'objektklassen_zuordnung.csv', r['beta_sichtbar'])
+for x in Q:
+    x['auftrag'] = 'Paket 3 Punkt 4' if x['regel'].startswith(('E042', '§6', 'E043')) else 'Zusatz aus Master/Merge (E034)'
 Q.sort(key=lambda x: (x['prioritaet'], x['regel'], x['market'], x['id']))
 for n, x in enumerate(Q, 1): x['nr'] = f'N{n:04d}'
-qcols = ['nr', 'prioritaet', 'regel', 'market', 'id', 'anbieter', 'titel', 'url', 'grund', 'beleg', 'beta_sichtbar']
+qcols = ['nr', 'prioritaet', 'auftrag', 'regel', 'market', 'id', 'anbieter', 'titel', 'url', 'grund', 'beleg', 'beta_sichtbar']
 with open(OUT / 'nachrecherche_warteschlange.csv', 'w', newline='', encoding='utf-8-sig') as fh:
     w = csv.DictWriter(fh, fieldnames=qcols); w.writeheader(); w.writerows(Q)
 
@@ -129,17 +138,30 @@ for r in rs:
 rs = [r for r in rows if r['kategorie'].startswith('E')]
 fc = collections.Counter(f"{r['datei']}.{r['feld']}" for r in rs)
 md.extend(['', f'## E GitHub-Änderungen an Schutz-IDs ({len(rs)} Felder, {len({r["id"] for r in rs})} Angebote)',
-           'Stammen aus der QA09-Konsolidierung auf main (beedf06, 23.10.2026); live läuft noch der Stand vom 11.10. '
+           'Stammen aus den 49 main-Commits vom 17.–24.10.2026 (86868e0..5f09e07, überwiegend QA09); live läuft noch der Datenstand vom 11.10. '
            'Vorschlag: als Block übernehmen; Ausnahmen einzeln in `owner_liste.csv` markieren.', '',
            'Felder: ' + ', '.join(f'{f} {n}' for f, n in fc.most_common()), '',
            'Angebote: ' + ', '.join(sorted({r['id'] for r in rs})), ''])
+C0 = collections.Counter
+ms = list(MASTER.values())
+n_kand = sum(r['anbieter_land_kandidat'] != 'nicht erfasst' and r['anbieter_land'] == 'nicht erfasst' for r in ms if r['kohorte'] == 'WEBSITE_1352')
+n_chort = sum('Durchführungsort CH genannt' in r['ch_zugang_hinweis'] for r in ms)
+md.extend(['## F Zusatz: Grundsatzfragen aus der Master-Tabelle (keine Einzelfälle, nicht in owner_liste.csv)', '',
+           '| Nr. | Frage | betrifft | Vorschlag |', '|---|---|---|---|',
+           f"| F1 | Darf der Rohwert `country` als Anbieterland gelten, wo kein Gegenbefund besteht? | {n_kand} Website-Angebote | Nein ohne Beleg; Kandidat bleibt sichtbar in Spalte `anbieter_land_kandidat` |",
+           f"| F2 | Gilt «Durchführungsort in der Schweiz genannt» als Beleg für CH-Zugang (E030)? | {n_chort} Angebote | Nein: CH-Ort als Hinweis «Durchführung in der Schweiz» zeigen, CH-Zugang bleibt «nicht erfasst», bis Teilnahmebedingungen belegt sind (E030, E036) |",
+           f"| F3 | DE/USA-Zeilen mit R4-Vermerk archiviert/abgelaufen/geschlossen: in der Beta zeigen (E036) oder archivieren (E014/E015)? | {sum(r['beta_sichtbar'] == 'OFFEN_AKTUALITAET' for r in ms)} Zeilen | archivieren, bis aktuelles Angebot belegt |",
+           f"| F4 | DE/USA-Zeilen ohne eindeutige Angebots-URL (mehrere URLs bzw. Text im Quellenfeld) | {sum(r['beta_sichtbar'] == 'OFFEN_QUELLE' for r in ms)} Zeilen | nicht zeigen, bis eine Angebots-URL bestimmt ist |",
+           f"| F5 | Objektklassen-Regeln (`objektklassen_zuordnung.csv`) bestätigen; Sammelobjekte (PARENT/FAMILY) | {sum(r['objektklasse'] == 'UNKLAR_SAMMELOBJEKT' for r in ms)} Sammelobjekte, {sum(r['objektklasse'] == 'UNKLAR' for r in ms)} unklar | Sammelobjekte als Programm führen, Teilangebote später |",
+           f"| F6 | Dedupe-Verdacht (DJA DE↔CH, gleiches Programm an mehreren Colleges) | {sum(r['beta_sichtbar'] == 'OFFEN_DEDUPE' for r in ms)} Zeilen | DJA: CH-Datensatz behalten, DE-Zeile als Dublette markieren (nicht sichtbar); Colleges: je Anbieter behalten |",
+           ''])
 (OUT / 'owner_liste_uebersicht.md').write_text('\n'.join(md), 'utf-8')
 
 C = collections.Counter
 zus = dict(owner_faelle=len(rows), owner_je_kategorie=dict(C(r['kategorie'] for r in rows)),
            owner_angebote_je_kategorie={k: len({r['id'] for r in rows if r['kategorie'] == k}) for k in NAME.values()},
            owner_vorschlag=dict(C((r['kategorie'][0], r['vorschlag']) for r in rows).items()),
-           warteschlange=len(Q), warteschlange_je_regel=dict(C(x['regel'] for x in Q)), warteschlange_je_prio=dict(C(x['prioritaet'] for x in Q)))
+           warteschlange=len(Q), warteschlange_je_auftrag=dict(C(x['auftrag'] for x in Q)), warteschlange_je_regel=dict(C(x['regel'] for x in Q)), warteschlange_je_prio=dict(C(x['prioritaet'] for x in Q)))
 zus['owner_vorschlag'] = {f'{k[0]}:{k[1]}': v for k, v in zus['owner_vorschlag'].items()}
 (OUT / 'LISTEN_SUMMARY.json').write_text(json.dumps(zus, ensure_ascii=False, indent=1), 'utf-8')
 print(json.dumps(zus, ensure_ascii=False, indent=1))

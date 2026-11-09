@@ -140,6 +140,10 @@
   "ARCHIV": 2,
   "QA09": 27
  },
+ "kandidat_neue_felder_ggue_live": {
+  "sessions": 20
+ },
+ "kandidat_entfallene_felder_ggue_live": {},
  "eingaben_sha256": {
   "/home/claude/git/base/data.js": "c3937e30f5e7e7ca0771b4a64a7aef4fb7e52a167ba8da176a61143d057ed15f",
   "live-snapshot-20261109/data-a1-86ff68ddc9ac.js": "86ff68ddc9ac36208d09b8bc92bf4c6c4960654107428956fabbbba28febada8",
