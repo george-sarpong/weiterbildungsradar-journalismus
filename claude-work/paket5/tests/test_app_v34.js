@@ -85,14 +85,18 @@ check("K02", "Kein HOLD-Angebot im Katalog", hold.every(o => !shown.has(o.id)));
   const n = hold.filter(o => s33.has(o.id)).length;
   check("K03", "Gegenprobe: app-v33 zeigt HOLD-Angebote (Test ist trennscharf)", n > 0, `${n} HOLD unter v33 sichtbar`);
 }
-{
-  const bad = [];
-  for (const o of sess.filter(o => shown.has(o.id))) {
-    const c = cc.find(x => x.id === o.id), s = next(o);
+const sessionCardErrors = list => {
+  const ids = new Set(list.map(c => c.id)), bad = [];
+  for (const o of sess.filter(o => ids.has(o.id) && next(o))) {
+    const c = list.find(x => x.id === o.id), s = next(o);
     const wantStart = s.label || s.startDate.split("-").reverse().join(".");
     if (c.start !== wantStart) bad.push(`${o.id} Start «${c.start}» statt «${wantStart}»`);
     if (s.region && !c.place.includes(s.region)) bad.push(`${o.id} Ort «${c.place}» ohne Termin-Region «${s.region}»`);
   }
+  return bad;
+};
+{
+  const bad = sessionCardErrors(cc);
   const vis = sess.filter(o => shown.has(o.id)).length;
   check("K04", "sessions: Karte zeigt nächsten Termin und dessen Region", bad.length === 0, bad.slice(0, 3).join("; ") || `${vis} von 41 sichtbar, ${41 - vis} ohne künftigen Termin ausgeblendet`);
 }
@@ -104,15 +108,23 @@ check("K02", "Kein HOLD-Angebot im Katalog", hold.every(o => !shown.has(o.id)));
     info.every(i => i.ok && i.endDate === ""), info.map(i => `${i.id}: ${i.start || "ausgeblendet"}`).join(" | "));
 }
 check("K06", "PCC-P08 (HOLD, leeres endDate) nicht sichtbar", !shown.has("PCC-P08"));
-{
-  const S = load(APP34, dataJs(CAND), smartJs(CAND_SMART), "START");
-  const byId = Object.fromEntries(CAND.map(o => [o.id, o]));
+const byId = Object.fromEntries(CAND.map(o => [o.id, o]));
+const startSortOk = app => {
+  const S = load(app, dataJs(CAND), smartJs(CAND_SMART), "START");
   const dates = cards(S).map(c => { const o = byId[c.id]; return (next(o) || {}).startDate || iso(o.startDate) || ""; });
   const fut = dates.filter(d => d && d >= today);
   const firstNonFuture = dates.findIndex(d => !(d && d >= today));
   const sortedFut = fut.every((d, i) => i === 0 || fut[i - 1] <= d);
   const block = firstNonFuture === -1 || dates.slice(firstNonFuture).every(d => !(d && d >= today));
-  check("K07", "Sortierung «Nächster Start» nutzt nächsten Termin aus sessions", sortedFut && block, `${fut.length} künftige Starts aufsteigend`);
+  return { ok: sortedFut && block, n: fut.length };
+};
+{
+  const r = startSortOk(APP34);
+  check("K07", "Sortierung «Nächster Start» nutzt nächsten Termin aus sessions", r.ok, `${r.n} künftige Starts aufsteigend`);
+  const C33 = cards(load(APP33, dataJs(CAND), smartJs(CAND_SMART)));
+  const g = sessionCardErrors(C33).length;
+  check("K10", "Gegenprobe: app-v33 zeigt bei sessions-Angeboten nicht den nächsten Termin", g > 0, `${g} Abweichungen unter v33`);
+  check("K11", "Gegenprobe: app-v33 sortiert «Nächster Start» nicht nach sessions", !startSortOk(APP33).ok);
 }
 {
   const B33 = load(APP33, dataJs(CAND), smartJs(CAND_SMART)), B34 = load(APP34, dataJs(CAND), smartJs(CAND_SMART));
@@ -136,6 +148,17 @@ check("M03", "Session ohne gültiges startDate wird ignoriert", !vis(mk({ sessio
 check("M04", "Ohne sessions: vergangener Start, kein endDate bleibt wie live sichtbar (89b9a1a / §5 Punkt 3 nicht portiert)",
   vis(mk({ startDate: "2026-10-01", endDate: "" })));
 check("M05", "Andere publicationStatus-Werte blenden nicht aus (nur HOLD wirkt, wie main)", vis(mk({ publicationStatus: "PUBLISH" })));
+{
+  const w = load(APP34, dataJs(mk({ sessions: [{ startDate: today, endDate: today, label: "heute" }] })), smartJs(CAND_SMART));
+  check("M06", "Grenzfall: Termin mit Start am Stichtag zählt als künftig", cards(w).length === 1 && cards(w)[0].start === "heute");
+  const v = load(APP34, dataJs(mk({ sessions: [{ startDate: "2027-03-05", endDate: "2027-03-06" }] })), smartJs(CAND_SMART));
+  check("M07", "Termin ohne Label: Datum als TT.MM.JJJJ", cards(v)[0]?.start === "05.03.2027", cards(v)[0]?.start);
+}
+{
+  const cp = require("child_process"), tmp = require("os").tmpdir() + "/app-v34-repro.js";
+  cp.execFileSync("python3", ["-I", path.join(ROOT, "claude-work/paket5/scripts/port_app_v34.py"), path.join(SNAP, "app-v33.js"), tmp]);
+  check("D02", "Port-Skript erzeugt app-v34.js byte-identisch neu", fs.readFileSync(tmp, "utf8") === APP34);
+}
 {
   const a = load(APP34, dataJs(CAND), smartJs(CAND_SMART)).document.querySelector("#cards").innerHTML;
   const b = load(APP34, dataJs(CAND), smartJs(CAND_SMART)).document.querySelector("#cards").innerHTML;
