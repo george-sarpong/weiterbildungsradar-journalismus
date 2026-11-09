@@ -1,0 +1,18 @@
+{
+  "_zweck": "Von Claude formulierte Vorschläge für echte Dreiwege-Konflikte (Live ≠ main ≠ Basis). Kein Entscheid; Owner entscheidet (E035). Stand 09.11.2026.",
+  "_werte": "vorschlag: GITHUB = main-Wert übernehmen · LIVE = Live-Wert behalten · NACHRECHERCHE = keiner der Werte gesichert",
+  "faelle": [
+    {"datei": "data", "id": "OFFER-UZHDSI-001", "feld": "region", "vorschlag": "GITHUB",
+     "begruendung": "main nennt konkreten Raum (KO2) aus QA09-Quelle; Live ist nur eingedeutschte Fassung von «Raum tbd»."},
+    {"datei": "data", "id": "PCC-P02", "feld": "start", "vorschlag": "GITHUB",
+     "begruendung": "main belegt zweite Durchführung 14.–15.12.2026 mit Produktcode; Live nennt nur den vergangenen Termin 22.–23.10.2026 (E014)."},
+    {"datei": "data", "id": "PCC-P16", "feld": "start", "vorschlag": "GITHUB",
+     "begruendung": "main nennt Folgetermine 20.11. und 18.12.2026; Live nur vergangenen Termin 23.10.2026 (E014)."},
+    {"datei": "data", "id": "PCC-P32", "feld": "start", "vorschlag": "GITHUB",
+     "begruendung": "main hält fest, dass der Termin nicht nachgewiesen ist; Live zeigt ihn als erfassten Termin. Angebot ist OUT_SCOPE (E016) und ohnehin nicht sichtbar."},
+    {"datei": "data", "id": "PCC-P33", "feld": "start", "vorschlag": "GITHUB",
+     "begruendung": "main: keine aktuelle Durchführung; deckt sich mit ARCHIV-Entscheid (E017, E050)."},
+    {"datei": "data", "id": "CAD-002", "feld": "start", "vorschlag": "GITHUB",
+     "begruendung": "main übernehmen (zweiter Präsenztermin nicht bestätigt). PR10 nennt 23.–24.11.2026 als Termin: nicht übernehmen, sondern in die Nachrecherche (zweite Quelle)."}
+  ]
+}

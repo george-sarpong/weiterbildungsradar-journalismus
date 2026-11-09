@@ -1,0 +1,155 @@
+{
+ "stand": "2026-11-09",
+ "basis": "86868e085d35bffb0da8e655a0580ec1d80fa0ac",
+ "github_main": "5f09e0789c42eeceef0661c47434b87ba369927d",
+ "pr10": "82bb95f948efe66075216c9a8e3e5b385697b546",
+ "live": [
+  "data-a1-86ff68ddc9ac.js",
+  "smart-search-data-a1-a38a2a2b2391.js"
+ ],
+ "kontrolle_rohzaehlung": {
+  "data_github=pr10 (Methode §4)": {
+   "NUR_GITHUB": {
+    "felder": 764,
+    "angebote": 274
+   },
+   "NUR_LIVE": {
+    "felder": 77,
+    "angebote": 59
+   },
+   "BEIDE_GLEICH": {
+    "felder": 0,
+    "angebote": 0
+   },
+   "KONFLIKT": {
+    "felder": 10,
+    "angebote": 10
+   },
+   "NUR_LIVE_SCHUTZ_angebote": 16
+  },
+  "data_github=main (Auftrag)": {
+   "NUR_GITHUB": {
+    "felder": 655,
+    "angebote": 215
+   },
+   "NUR_LIVE": {
+    "felder": 81,
+    "angebote": 61
+   },
+   "BEIDE_GLEICH": {
+    "felder": 0,
+    "angebote": 0
+   },
+   "KONFLIKT": {
+    "felder": 6,
+    "angebote": 6
+   },
+   "NUR_LIVE_SCHUTZ_angebote": 18
+  },
+  "smart_github=pr10": {
+   "NUR_GITHUB": {
+    "felder": 609,
+    "angebote": 429
+   },
+   "NUR_LIVE": {
+    "felder": 0,
+    "angebote": 0
+   },
+   "BEIDE_GLEICH": {
+    "felder": 2,
+    "angebote": 2
+   },
+   "KONFLIKT": {
+    "felder": 0,
+    "angebote": 0
+   },
+   "NUR_LIVE_SCHUTZ_angebote": 0
+  },
+  "smart_github=main": {
+   "NUR_GITHUB": {
+    "felder": 211,
+    "angebote": 104
+   },
+   "NUR_LIVE": {
+    "felder": 0,
+    "angebote": 0
+   },
+   "BEIDE_GLEICH": {
+    "felder": 2,
+    "angebote": 2
+   },
+   "KONFLIKT": {
+    "felder": 0,
+    "angebote": 0
+   },
+   "NUR_LIVE_SCHUTZ_angebote": 0
+  }
+ },
+ "klassen": {
+  "data": {
+   "SCHUTZ_GITHUB": 489,
+   "HOLD_SPERRE": 46,
+   "NUR_LIVE": 47,
+   "NUR_GITHUB": 109,
+   "KONFLIKT": 6,
+   "GRUPPENKONFLIKT": 18,
+   "SCHUTZ_LIVE": 27
+  },
+  "smart": {
+   "SCHUTZ_GITHUB": 211,
+   "SCHUTZ_LIVE": 2
+  }
+ },
+ "klassen_angebote": {
+  "data": {
+   "GRUPPENKONFLIKT": 7,
+   "HOLD_SPERRE": 46,
+   "KONFLIKT": 6,
+   "NUR_GITHUB": 79,
+   "NUR_LIVE": 42,
+   "SCHUTZ_GITHUB": 133,
+   "SCHUTZ_LIVE": 17
+  },
+  "smart": {
+   "GRUPPENKONFLIKT": 0,
+   "HOLD_SPERRE": 0,
+   "KONFLIKT": 0,
+   "NUR_GITHUB": 0,
+   "NUR_LIVE": 0,
+   "SCHUTZ_GITHUB": 104,
+   "SCHUTZ_LIVE": 2
+  }
+ },
+ "owner_faelle_felder": 799,
+ "owner_faelle_angebote": 142,
+ "kreuzpruefung_preis_quellen_gemischt": [],
+ "main_vs_pr10": {
+  "felder": 534,
+  "angebote_data": 85,
+  "angebote_smart": 326
+ },
+ "priceEligible": {
+  "base": 996,
+  "live": 996,
+  "main": 983,
+  "pr10": 757,
+  "merge_kandidat": 996
+ },
+ "schutz_307": 307,
+ "schutz_kategorie_bekannt": {
+  "ARCHIV": 2,
+  "QA09": 27
+ },
+ "eingaben_sha256": {
+  "/home/claude/git/base/data.js": "c3937e30f5e7e7ca0771b4a64a7aef4fb7e52a167ba8da176a61143d057ed15f",
+  "live-snapshot-20261109/data-a1-86ff68ddc9ac.js": "86ff68ddc9ac36208d09b8bc92bf4c6c4960654107428956fabbbba28febada8",
+  "/home/claude/git/main/data.js": "77dc5ebf5252b083f82720c0d58fbb4a8293420dff9784e3d7ab1ef03caeac59",
+  "/home/claude/git/pr10/data.js": "ab3902170b1f358457735bbe4dd3b7d1671d1122588bf27a87d969faf5afd6c0",
+  "/home/claude/git/base/smart-search-data.js": "28f3a8c479e2ef9c0296468c888636424d74aa02124d2c5e3fe680fec3e77af5",
+  "live-snapshot-20261109/smart-search-data-a1-a38a2a2b2391.js": "a38a2a2b2391d2e394508a7b54d92ef9ab6167b688a29540cd8423c4277d6a56",
+  "/home/claude/git/main/smart-search-data.js": "6f94094e97aaee0f0541ed0c67cb6327e676130aba3e73008f43ffb6d2ca4715",
+  "/home/claude/git/pr10/smart-search-data.js": "f4bc821fca5d87c3460be7fd0d92d5eff91e85c1230b733ee62b68e43efd0558",
+  "/home/claude/git/pr10/data/staging/evt270-currentness-policy-20261107.json": "476a21bff50d39fe96d5f490f47bd0f8c6ddda7e408d3f588df4e7659258d461",
+  "paket3/config/konflikt_vorschlaege.json": "b8de2b77edbb51fea08572bebee8ae7aec41683b292b702a26e2cfe7f34dbbda"
+ }
+}
