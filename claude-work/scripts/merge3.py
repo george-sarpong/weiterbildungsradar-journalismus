@@ -19,7 +19,7 @@ Regeln je (Datei, Angebot, Top-Level-Feld):
                      geändert -> automatische main-Übernahme in dieser Gruppe ausgesetzt, Live bleibt, Owner entscheidet
 Nichts wird still überschrieben: jede Abweichung von der Basis steht in merge_feldentscheide.csv.
 
-Paket 4 (09.11.2026): optional --owner CSV (paket3/config/owner_entscheide.csv, Register E060–E064). Je Owner-Fall
+Paket 4 (09.11.2026): optional --owner CSV (paket3/config/owner_entscheide.csv, Register E060–E064, E071). Je Owner-Fall
 GITHUB = main-Wert übernehmen, LIVE = Live-Wert behalten, leer = offen (Live-Wert gilt weiter). Abbruch, wenn ein Entscheid
 keinem Owner-Fall entspricht oder sich Live- bzw. main-Wert seit dem Entscheid geändert haben (Prüfwert).
 

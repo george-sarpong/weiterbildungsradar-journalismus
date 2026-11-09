@@ -6,7 +6,7 @@ Owner-Liste: nur Fälle, die der Owner entscheidet (E035): echte Konflikte, Grup
 Warteschlange: OUT/HOLD-Zeilen ausserhalb der 3'818 (E042), Nachrecherche-Fälle aus GESAMTWISSENSSTAND §6, E043, E055
 sowie die in Paket 3 entstandenen Prüffälle (Deduplizierung E008, Objektklasse E029, Merge).
 
-Paket 4 (09.11.2026): Owner-Liste trägt die Owner-Entscheide (Spalten entscheid_owner, register_id, status; E060–E064);
+Paket 4 (09.11.2026): Owner-Liste trägt die Owner-Entscheide (Spalten entscheid_owner, register_id, status; E060–E064, E071);
 offene Fälle bleiben mit leerem Entscheid stehen. Warteschlange berücksichtigt E063 und E067–E070.
 
 Aufruf: python3 -I paket3_listen.py --out DIR --r4 JSON --at CSV --stichtag YYYY-MM-DD

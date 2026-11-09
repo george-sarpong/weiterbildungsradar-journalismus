@@ -8,7 +8,7 @@ Dreiwege-Merge (merge3.py). build_master.py bleibt unverändert; es braucht die 
 
 Je Feld: Wert («nicht erfasst», wenn leer oder Platzhalter, E036) + Herkunftscode h_<feld>.
 Herkunftscodes: LIVE (unverändert seit Basis) · LIVE_GEAENDERT · MAIN (per Merge übernommen) · LIVE_OWNER_OFFEN
-(Live-Wert vorläufig, Owner-Entscheid offen) · MAIN_OWNER / LIVE_OWNER (per Owner-Entscheid, Register E060–E064) ·
+(Live-Wert vorläufig, Owner-Entscheid offen) · MAIN_OWNER / LIVE_OWNER (per Owner-Entscheid, Register E060–E064, E071) ·
 R4 (Owner-Publikation 15.09.) · KATALOG_XLSX · REGEL (abgeleitet, Regel in Spalte *_regel) · AUDIT (Beleg im Audit 28.10.) · LEER.
 Keine Netzwerkaufrufe. Nichts wird erfunden.
 Paket 4 (Owner-Grundsatzentscheide 09.11.2026): F1 Anbieterland nur mit Beleg (E065) · F2 CH-Durchführungsort = CH-Zugang JA

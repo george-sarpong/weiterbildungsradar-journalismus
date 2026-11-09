@@ -10,7 +10,7 @@ Grundlage: E034, E035. Arbeitszweig `claude/datenharmonisierung`. Kein Website-C
 3. `scripts/paket3_listen.py` – Owner-Liste und Nachrecherche-Warteschlange.
 4. `scripts/test_paket3.py` – 51 Tests inkl. 6 Manipulationstests (Stand Paket 4, 09.11.2026: 51/51 PASS).
 
-Paket 4 (09.11.2026): Owner-Entscheide E060–E070 angewendet. Eingabe `config/owner_entscheide.csv` (775 entschieden, 24 offen;
+Paket 4 (09.11.2026): Owner-Entscheide E060–E071 angewendet. Eingabe `config/owner_entscheide.csv` (alle 799 Fälle entschieden;
 einmalig erzeugt mit `scripts/paket4_owner_entscheide.py`). Bericht: `BERICHT_PAKET4_20261109.md`. Register: `ENTSCHEIDUNGSREGISTER.csv`.
 
 ## Eingaben (`eingaben/`)

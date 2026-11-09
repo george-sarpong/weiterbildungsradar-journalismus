@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Tests Paket 3: Dreiwege-Merge, Master 3'818, Owner-Liste, Warteschlange. Offline. Positiv + Manipulationstests.
-Paket 4 (09.11.2026): Tests P01–P08 und A05–A06 für die Owner-Entscheide E060–E070; M05–M07, X04, X09, X18, Q06 angepasst.
+Paket 4 (09.11.2026): Tests P01–P08 und A05–A06 für die Owner-Entscheide E060–E071; M05–M07, X04, X09, X18, Q06 angepasst.
 
 Aufruf: python3 -I test_paket3.py --base DIR --live DIR --main DIR --pr10 DIR --eingaben DIR --usowner JSONL --out DIR --scripts DIR
 """
@@ -132,7 +132,7 @@ t('P01 799 Owner-Fälle alle entschieden (A 6, B 11+7, C 29, D 46, E 700); D Gru
   len(OWN) == 799 and Counter((r['kategorie'][0], r['entscheid_owner'] or 'OFFEN') for r in OWN) == {('A', 'GITHUB'): 6, ('B', 'GITHUB'): 11,
   ('B', 'LIVE'): 7, ('C', 'LIVE'): 29, ('D', 'GITHUB'): 46, ('E', 'GITHUB'): 700}
   and {r['id'] for r in OWN if r['register_id'] == 'E071'} == D_OFFEN)
-t('P02 owner_liste.csv: entscheid_owner = Entscheiddatei, Register-ID passt zur Kategorie (A E060 · B E061 · C E062 · D E063 · E E064)',
+t('P02 owner_liste.csv: entscheid_owner = Entscheiddatei, Register-ID passt zur Kategorie (A E060 · B E061 · C E062 · D E063/E071 · E E064)',
   all(r['entscheid_owner'] == OEK[(r['datei'], r['id'], r['feld'])]['entscheid'] and
       r['register_id'] == ({'A': 'E060', 'B': 'E061', 'C': 'E062', 'D': 'E071' if r['id'] in D_OFFEN else 'E063', 'E': 'E064'}[r['kategorie'][0]] if r['entscheid_owner'] else '') for r in OWN))
 t('P03 Kandidat folgt dem Entscheid: GITHUB = main-Wert, LIVE = Live-Wert',
