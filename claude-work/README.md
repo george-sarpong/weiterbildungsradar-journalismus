@@ -9,3 +9,5 @@ Eigener Arbeitszweig von Claude für die Daten- und Wissensharmonisierung von me
 - `scripts/build_master.py` – baut die lokale, unveröffentlichte Master-Datensicht (3'818 market+id) mit Feldherkunft, Konflikt- und Fehlstellenreport. Liest nur Übergabe-ZIP und Git-Stände, keine Netzwerkaufrufe.
 - `scripts/test_master.py` – 21 Tests inkl. 3 Manipulationstests (Stand 09.11.2026: 21/21 PASS).
 - `scripts/cmp_main_pr10.py` – Feldvergleich data.js main vs. PR10.
+- `paket1/` – Quellenverzeichnis und Widersprüche (09.11.2026).
+- `paket2/` – Entwurf Gesamtwissensstand, Entscheidungsregister (CSV), Erledigt-Liste (09.11.2026, Owner-Abnahme ausstehend).
