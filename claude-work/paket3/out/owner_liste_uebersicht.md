@@ -1,8 +1,8 @@
 # Owner-Entscheide Paket 3 – Übersicht (Stand 2026-11-09)
 
 Vollständige Werte: `owner_liste.csv` (Spalten `entscheid_owner`, `register_id`, `status`). Hier gekürzt auf ca. 110 Zeichen.
-Entscheide: `paket3/config/owner_entscheide.csv` (Register E060–E064). Offene Fälle: Live-Wert gilt weiter (keine stille Überschreibung).
-Stand: 775 Felder entschieden, 24 offen (24 Angebote).
+Entscheide: `paket3/config/owner_entscheide.csv` (Register E060–E064, E071). Offene Fälle: Live-Wert gilt weiter (keine stille Überschreibung).
+Stand: 799 Felder entschieden, 0 offen (0 Angebote).
 
 ## A Echte Konflikte (6 Felder, 6 Angebote)
 Live und main haben dasselbe Feld verschieden geändert. Alle sechs betreffen Schutz-IDs; alle Termine liegen vor dem Stichtag.
@@ -76,11 +76,11 @@ Live hat ein Feld der Gruppe Termin geändert, main ein anderes derselben Gruppe
 | O0053 | PCC-P33 (PC-COLLEGE Training GmbH) | data.provider | PC-COLLEGE Training GmbH | PC-COLLEGE Training GmbH (DE legal provider; CH delivery surface) | Live behalten | Live behalten (E062) | Live ist Basis (E035); Live-Änderung ist reine Umformulierung (gleiche Zahlen). |
 
 ## D HOLD-Sperren aus main, die live fehlen (46)
-GitHub-Wert jeweils `publicationStatus = HOLD`; PR10 identisch. Vorschlag in allen Fällen: HOLD übernehmen (E042). Owner 09.11.: Gruppe 1 und 2 übernommen (E063); Gruppe 3 (NobleProg/ORSYS) und AT-PROD-OFFER-154, PCC-P38 offen.
+GitHub-Wert jeweils `publicationStatus = HOLD`; PR10 identisch. Vorschlag in allen Fällen: HOLD übernehmen (E042). Owner 09.11.: Gruppe 1 und 2 übernommen (E063, Folgetermin in Nachrecherche); Gruppe 3 (NobleProg/ORSYS), AT-PROD-OFFER-154 und PCC-P38 wie main (E071, keine Nachrecherche).
 
 | Fall | Angebot | Anbieter | Titel | live sichtbar heute | Vorschlag | Entscheid |
 |---|---|---|---|---|---|---|
-| O0054 | AT-PROD-OFFER-154 | Russmedia | Traineeprogramm Redaktion | ja | main übernehmen | **offen** |
+| O0054 | AT-PROD-OFFER-154 | Russmedia | Traineeprogramm Redaktion | ja | main übernehmen | main übernehmen (E071) |
 | O0055 | AT-PROD-OFFER-168 | Paris Lodron Universität Salzburg … | Universitätslehrgang Sportjournalismus | ja | main übernehmen | main übernehmen (E063) |
 | O0056 | OFFER-CFJM-008 | CFJM – Centre de formation au jour… | Fondamentaux / Le droit à l'image des journalistes | ja | main übernehmen | main übernehmen (E063) |
 | O0057 | OFFER-CORSO-001 | Corso di giornalismo della Svizzer… | Corso per Giornalisti – Diploma cantonale di Gior… | ja | main übernehmen | main übernehmen (E063) |
@@ -95,33 +95,33 @@ GitHub-Wert jeweils `publicationStatus = HOLD`; PR10 identisch. Vorschlag in all
 | O0066 | OFFER-MAZ-107 | MAZ – Institut für Journalismus un… | Medienlandschaft, Medienethik und Medienrecht – G… | nein (Enddatum vorbei) | main übernehmen | main übernehmen (E063) |
 | O0067 | OFFER-MAZ-181 | MAZ – Institut für Journalismus un… | Wirkungsvoll auftreten | nein (Enddatum vorbei) | main übernehmen | main übernehmen (E063) |
 | O0068 | OFFER-MAZ-182 | MAZ – Institut für Journalismus un… | Wirtschaft – Grundlagen von Aktien bis Zinsen | nein (Enddatum vorbei) | main übernehmen | main übernehmen (E063) |
-| O0069 | OFFER-NOBLE-004 | NobleProg Schweiz | Adobe Creative Cloud for Academic and Institution… | ja | main übernehmen | **offen** |
-| O0070 | OFFER-NOBLE-013 | NobleProg Schweiz | Advanced Stable Diffusion: Deep Learning for Text… | ja | main übernehmen | **offen** |
-| O0071 | OFFER-NOBLE-014 | NobleProg Schweiz | AI-Powered Audio Enhancement and Noise Reduction | ja | main übernehmen | **offen** |
-| O0072 | OFFER-NOBLE-020 | NobleProg Schweiz | Blockchain and Cryptocurrency Investigation Maste… | ja | main übernehmen | **offen** |
-| O0073 | OFFER-NOBLE-033 | NobleProg Schweiz | Contentful Headless CMS | ja | main übernehmen | **offen** |
-| O0074 | OFFER-NOBLE-035 | NobleProg Schweiz | DeepSeek for Automated Content Creation | ja | main übernehmen | **offen** |
-| O0075 | OFFER-NOBLE-037 | NobleProg Schweiz | Designing Personal Knowledge Bases with Notion | ja | main übernehmen | **offen** |
-| O0076 | OFFER-NOBLE-044 | NobleProg Schweiz | Google Gemini AI for Content Creation | ja | main übernehmen | **offen** |
-| O0077 | OFFER-ORSYS-054 | ORSYS Training Schweiz | Digital analytics, stratégie et bonnes pratiques | ja | main übernehmen | **offen** |
-| O0078 | OFFER-ORSYS-057 | ORSYS Training Schweiz | Drupal 7, gérer son CMS | ja | main übernehmen | **offen** |
-| O0079 | OFFER-ORSYS-063 | ORSYS Training Schweiz | Développer un site web dynamique grâce à l'IA | ja | main übernehmen | **offen** |
-| O0080 | OFFER-ORSYS-076 | ORSYS Training Schweiz | Gérer sa visibilité et sa réputation numérique | ja | main übernehmen | **offen** |
-| O0081 | OFFER-ORSYS-078 | ORSYS Training Schweiz | HTML5 & CSS3, maîtriser la création de ses pages … | ja | main übernehmen | **offen** |
-| O0082 | OFFER-ORSYS-082 | ORSYS Training Schweiz | Intégrer l’IA et le GEO dans sa stratégie de cont… | ja | main übernehmen | **offen** |
-| O0083 | OFFER-ORSYS-083 | ORSYS Training Schweiz | Joomla!, créer et administrer un site Web | ja | main übernehmen | **offen** |
-| O0084 | OFFER-ORSYS-099 | ORSYS Training Schweiz | Mettre en œuvre sa stratégie sur TikTok | ja | main übernehmen | **offen** |
-| O0085 | OFFER-ORSYS-118 | ORSYS Training Schweiz | Réaliser un site Web, pour non-informaticiens | ja | main übernehmen | **offen** |
-| O0086 | OFFER-ORSYS-139 | ORSYS Training Schweiz | UX design et ergonomie des sites web | ja | main übernehmen | **offen** |
-| O0087 | OFFER-ORSYS-141 | ORSYS Training Schweiz | UX design et ergonomie pour tablettes et smartpho… | ja | main übernehmen | **offen** |
-| O0088 | OFFER-ORSYS-143 | ORSYS Training Schweiz | UX-PM, niveau 1 : adoption de l'UX, certification… | ja | main übernehmen | **offen** |
-| O0089 | OFFER-ORSYS-144 | ORSYS Training Schweiz | UX-PM, niveau 2 : exécution de l'UX, certificatio… | ja | main übernehmen | **offen** |
-| O0090 | OFFER-ORSYS-151 | ORSYS Training Schweiz | WordPress, perfectionnement | ja | main übernehmen | **offen** |
+| O0069 | OFFER-NOBLE-004 | NobleProg Schweiz | Adobe Creative Cloud for Academic and Institution… | ja | main übernehmen | main übernehmen (E071) |
+| O0070 | OFFER-NOBLE-013 | NobleProg Schweiz | Advanced Stable Diffusion: Deep Learning for Text… | ja | main übernehmen | main übernehmen (E071) |
+| O0071 | OFFER-NOBLE-014 | NobleProg Schweiz | AI-Powered Audio Enhancement and Noise Reduction | ja | main übernehmen | main übernehmen (E071) |
+| O0072 | OFFER-NOBLE-020 | NobleProg Schweiz | Blockchain and Cryptocurrency Investigation Maste… | ja | main übernehmen | main übernehmen (E071) |
+| O0073 | OFFER-NOBLE-033 | NobleProg Schweiz | Contentful Headless CMS | ja | main übernehmen | main übernehmen (E071) |
+| O0074 | OFFER-NOBLE-035 | NobleProg Schweiz | DeepSeek for Automated Content Creation | ja | main übernehmen | main übernehmen (E071) |
+| O0075 | OFFER-NOBLE-037 | NobleProg Schweiz | Designing Personal Knowledge Bases with Notion | ja | main übernehmen | main übernehmen (E071) |
+| O0076 | OFFER-NOBLE-044 | NobleProg Schweiz | Google Gemini AI for Content Creation | ja | main übernehmen | main übernehmen (E071) |
+| O0077 | OFFER-ORSYS-054 | ORSYS Training Schweiz | Digital analytics, stratégie et bonnes pratiques | ja | main übernehmen | main übernehmen (E071) |
+| O0078 | OFFER-ORSYS-057 | ORSYS Training Schweiz | Drupal 7, gérer son CMS | ja | main übernehmen | main übernehmen (E071) |
+| O0079 | OFFER-ORSYS-063 | ORSYS Training Schweiz | Développer un site web dynamique grâce à l'IA | ja | main übernehmen | main übernehmen (E071) |
+| O0080 | OFFER-ORSYS-076 | ORSYS Training Schweiz | Gérer sa visibilité et sa réputation numérique | ja | main übernehmen | main übernehmen (E071) |
+| O0081 | OFFER-ORSYS-078 | ORSYS Training Schweiz | HTML5 & CSS3, maîtriser la création de ses pages … | ja | main übernehmen | main übernehmen (E071) |
+| O0082 | OFFER-ORSYS-082 | ORSYS Training Schweiz | Intégrer l’IA et le GEO dans sa stratégie de cont… | ja | main übernehmen | main übernehmen (E071) |
+| O0083 | OFFER-ORSYS-083 | ORSYS Training Schweiz | Joomla!, créer et administrer un site Web | ja | main übernehmen | main übernehmen (E071) |
+| O0084 | OFFER-ORSYS-099 | ORSYS Training Schweiz | Mettre en œuvre sa stratégie sur TikTok | ja | main übernehmen | main übernehmen (E071) |
+| O0085 | OFFER-ORSYS-118 | ORSYS Training Schweiz | Réaliser un site Web, pour non-informaticiens | ja | main übernehmen | main übernehmen (E071) |
+| O0086 | OFFER-ORSYS-139 | ORSYS Training Schweiz | UX design et ergonomie des sites web | ja | main übernehmen | main übernehmen (E071) |
+| O0087 | OFFER-ORSYS-141 | ORSYS Training Schweiz | UX design et ergonomie pour tablettes et smartpho… | ja | main übernehmen | main übernehmen (E071) |
+| O0088 | OFFER-ORSYS-143 | ORSYS Training Schweiz | UX-PM, niveau 1 : adoption de l'UX, certification… | ja | main übernehmen | main übernehmen (E071) |
+| O0089 | OFFER-ORSYS-144 | ORSYS Training Schweiz | UX-PM, niveau 2 : exécution de l'UX, certificatio… | ja | main übernehmen | main übernehmen (E071) |
+| O0090 | OFFER-ORSYS-151 | ORSYS Training Schweiz | WordPress, perfectionnement | ja | main übernehmen | main übernehmen (E071) |
 | O0091 | OFFER-UZHDSI-001 | Universität Zürich / Digital Socie… | Open Source Intelligence (OSINT) – DSI Wahlpflich… | ja | main übernehmen | main übernehmen (E063) |
 | O0092 | PCC-P08 | PC-COLLEGE Training GmbH | Adobe FrameMaker - Aufbaukurs | ja | main übernehmen | main übernehmen (E063) |
 | O0093 | PCC-P32 | PC-COLLEGE Training GmbH | Adobe Photoshop - Professionelle Porträt - Retusc… | ja | main übernehmen | main übernehmen (E063) |
 | O0094 | PCC-P33 | PC-COLLEGE Training GmbH | Adobe Premiere + Adobe After Effects - Umsteiger … | ja | main übernehmen | main übernehmen (E063) |
-| O0095 | PCC-P38 | PC-COLLEGE Training GmbH (DE legal… | Adobe XD - Kompaktkurs | nein (Enddatum vorbei) | main übernehmen | **offen** |
+| O0095 | PCC-P38 | PC-COLLEGE Training GmbH (DE legal… | Adobe XD - Kompaktkurs | nein (Enddatum vorbei) | main übernehmen | main übernehmen (E071) |
 | O0096 | V52-MEEL-INSTAGRAM | Association MEEL | Les boîtes à outils du vendredi – Instagram | nein (Enddatum vorbei) | main übernehmen | main übernehmen (E063) |
 | O0097 | V82-DAWAN-012 | Dawan | Premiere Pro : techniques de montage Avancé | nein (Enddatum vorbei) | main übernehmen | main übernehmen (E063) |
 | O0098 | V82-DAWAN-017 | Dawan | After Effects Avancé : Duik | nein (Enddatum vorbei) | main übernehmen | main übernehmen (E063) |

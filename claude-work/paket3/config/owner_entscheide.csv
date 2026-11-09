@@ -52,7 +52,7 @@ O0050,C Live-Änderung an Schutz-ID,data,PCC-P23,provider,LIVE,E062,Live bestät
 O0051,C Live-Änderung an Schutz-ID,data,PCC-P28,provider,LIVE,E062,Live bestätigt,8c5f65321a9fac7a
 O0052,C Live-Änderung an Schutz-ID,data,PCC-P32,provider,LIVE,E062,Live bestätigt,8c5f65321a9fac7a
 O0053,C Live-Änderung an Schutz-ID,data,PCC-P33,provider,LIVE,E062,Live bestätigt,8c5f65321a9fac7a
-O0054,D HOLD-Sperre fehlt live,data,AT-PROD-OFFER-154,publicationStatus,,,"offen: Einzelfall, nicht beantwortet",779641e4489b5db5
+O0054,D HOLD-Sperre fehlt live,data,AT-PROD-OFFER-154,publicationStatus,GITHUB,E071,"HOLD wie main, Einzelfall; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
 O0055,D HOLD-Sperre fehlt live,data,AT-PROD-OFFER-168,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5
 O0056,D HOLD-Sperre fehlt live,data,OFFER-CFJM-008,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 1 (E016/E017/E050)",779641e4489b5db5
 O0057,D HOLD-Sperre fehlt live,data,OFFER-CORSO-001,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 1 (E016/E017/E050)",779641e4489b5db5
@@ -67,33 +67,33 @@ O0065,D HOLD-Sperre fehlt live,data,OFFER-IFC-020,publicationStatus,GITHUB,E063,
 O0066,D HOLD-Sperre fehlt live,data,OFFER-MAZ-107,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5
 O0067,D HOLD-Sperre fehlt live,data,OFFER-MAZ-181,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5
 O0068,D HOLD-Sperre fehlt live,data,OFFER-MAZ-182,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5
-O0069,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-004,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
-O0070,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-013,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
-O0071,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-014,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
-O0072,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-020,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
-O0073,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-033,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
-O0074,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-035,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
-O0075,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-037,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
-O0076,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-044,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
-O0077,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-054,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
-O0078,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-057,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
-O0079,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-063,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
-O0080,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-076,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
-O0081,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-078,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
-O0082,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-082,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
-O0083,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-083,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
-O0084,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-099,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
-O0085,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-118,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
-O0086,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-139,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
-O0087,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-141,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
-O0088,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-143,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
-O0089,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-144,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
-O0090,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-151,publicationStatus,,,"offen: Gruppe 3 NobleProg/ORSYS, nicht beantwortet",779641e4489b5db5
+O0069,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-004,publicationStatus,GITHUB,E071,"HOLD wie main, Gruppe 3 NobleProg/ORSYS; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
+O0070,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-013,publicationStatus,GITHUB,E071,"HOLD wie main, Gruppe 3 NobleProg/ORSYS; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
+O0071,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-014,publicationStatus,GITHUB,E071,"HOLD wie main, Gruppe 3 NobleProg/ORSYS; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
+O0072,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-020,publicationStatus,GITHUB,E071,"HOLD wie main, Gruppe 3 NobleProg/ORSYS; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
+O0073,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-033,publicationStatus,GITHUB,E071,"HOLD wie main, Gruppe 3 NobleProg/ORSYS; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
+O0074,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-035,publicationStatus,GITHUB,E071,"HOLD wie main, Gruppe 3 NobleProg/ORSYS; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
+O0075,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-037,publicationStatus,GITHUB,E071,"HOLD wie main, Gruppe 3 NobleProg/ORSYS; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
+O0076,D HOLD-Sperre fehlt live,data,OFFER-NOBLE-044,publicationStatus,GITHUB,E071,"HOLD wie main, Gruppe 3 NobleProg/ORSYS; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
+O0077,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-054,publicationStatus,GITHUB,E071,"HOLD wie main, Gruppe 3 NobleProg/ORSYS; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
+O0078,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-057,publicationStatus,GITHUB,E071,"HOLD wie main, Gruppe 3 NobleProg/ORSYS; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
+O0079,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-063,publicationStatus,GITHUB,E071,"HOLD wie main, Gruppe 3 NobleProg/ORSYS; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
+O0080,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-076,publicationStatus,GITHUB,E071,"HOLD wie main, Gruppe 3 NobleProg/ORSYS; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
+O0081,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-078,publicationStatus,GITHUB,E071,"HOLD wie main, Gruppe 3 NobleProg/ORSYS; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
+O0082,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-082,publicationStatus,GITHUB,E071,"HOLD wie main, Gruppe 3 NobleProg/ORSYS; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
+O0083,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-083,publicationStatus,GITHUB,E071,"HOLD wie main, Gruppe 3 NobleProg/ORSYS; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
+O0084,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-099,publicationStatus,GITHUB,E071,"HOLD wie main, Gruppe 3 NobleProg/ORSYS; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
+O0085,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-118,publicationStatus,GITHUB,E071,"HOLD wie main, Gruppe 3 NobleProg/ORSYS; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
+O0086,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-139,publicationStatus,GITHUB,E071,"HOLD wie main, Gruppe 3 NobleProg/ORSYS; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
+O0087,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-141,publicationStatus,GITHUB,E071,"HOLD wie main, Gruppe 3 NobleProg/ORSYS; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
+O0088,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-143,publicationStatus,GITHUB,E071,"HOLD wie main, Gruppe 3 NobleProg/ORSYS; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
+O0089,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-144,publicationStatus,GITHUB,E071,"HOLD wie main, Gruppe 3 NobleProg/ORSYS; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
+O0090,D HOLD-Sperre fehlt live,data,OFFER-ORSYS-151,publicationStatus,GITHUB,E071,"HOLD wie main, Gruppe 3 NobleProg/ORSYS; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
 O0091,D HOLD-Sperre fehlt live,data,OFFER-UZHDSI-001,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5
 O0092,D HOLD-Sperre fehlt live,data,PCC-P08,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 1 (E016/E017/E050)",779641e4489b5db5
 O0093,D HOLD-Sperre fehlt live,data,PCC-P32,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 1 (E016/E017/E050)",779641e4489b5db5
 O0094,D HOLD-Sperre fehlt live,data,PCC-P33,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 1 (E016/E017/E050)",779641e4489b5db5
-O0095,D HOLD-Sperre fehlt live,data,PCC-P38,publicationStatus,,,"offen: Einzelfall, nicht beantwortet",779641e4489b5db5
+O0095,D HOLD-Sperre fehlt live,data,PCC-P38,publicationStatus,GITHUB,E071,"HOLD wie main, Einzelfall; Ergebnis frühere Prüfung, keine Nachrecherche",779641e4489b5db5
 O0096,D HOLD-Sperre fehlt live,data,V52-MEEL-INSTAGRAM,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5
 O0097,D HOLD-Sperre fehlt live,data,V82-DAWAN-012,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5
 O0098,D HOLD-Sperre fehlt live,data,V82-DAWAN-017,publicationStatus,GITHUB,E063,"HOLD übernehmen, Gruppe 2 (Termin vorbei/Kurs begonnen)",779641e4489b5db5

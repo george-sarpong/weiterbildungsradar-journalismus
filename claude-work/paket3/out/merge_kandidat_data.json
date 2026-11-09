@@ -8943,7 +8943,8 @@
 "startDate": "2026-11-30",
 "endDate": "",
 "region": "Lausanne (Präsenzoption); Online-Durchführung je Termin",
-"release_origin": "V98_R2_EXISTING_PRODUCT"
+"release_origin": "V98_R2_EXISTING_PRODUCT",
+"publicationStatus": "HOLD"
 },
 {
 "id": "OFFER-NOBLE-005",
@@ -9135,7 +9136,8 @@
 "startDate": "2026-11-30",
 "endDate": "",
 "region": "Basel (Präsenzoption); Online-Durchführung je Termin",
-"release_origin": "V98_R2_EXISTING_PRODUCT"
+"release_origin": "V98_R2_EXISTING_PRODUCT",
+"publicationStatus": "HOLD"
 },
 {
 "id": "OFFER-NOBLE-014",
@@ -9159,7 +9161,8 @@
 "startDate": "2026-11-30",
 "endDate": "",
 "region": "Basel (Präsenzoption); Online-Durchführung je Termin",
-"release_origin": "V98_R2_EXISTING_PRODUCT"
+"release_origin": "V98_R2_EXISTING_PRODUCT",
+"publicationStatus": "HOLD"
 },
 {
 "id": "OFFER-NOBLE-015",
@@ -9231,7 +9234,8 @@
 "startDate": "2026-11-30",
 "endDate": "",
 "region": "Geneva (Präsenzoption); Online-Durchführung je Termin",
-"release_origin": "V98_R2_EXISTING_PRODUCT"
+"release_origin": "V98_R2_EXISTING_PRODUCT",
+"publicationStatus": "HOLD"
 },
 {
 "id": "OFFER-NOBLE-021",
@@ -9447,7 +9451,8 @@
 "startDate": "2026-11-27",
 "endDate": "",
 "region": "Basel (Präsenzoption); Online-Durchführung je Termin",
-"release_origin": "V98_R2_EXISTING_PRODUCT"
+"release_origin": "V98_R2_EXISTING_PRODUCT",
+"publicationStatus": "HOLD"
 },
 {
 "id": "OFFER-NOBLE-034",
@@ -9495,7 +9500,8 @@
 "startDate": "2026-11-30",
 "endDate": "",
 "region": "Geneva (Präsenzoption); Online-Durchführung je Termin",
-"release_origin": "V98_R2_EXISTING_PRODUCT"
+"release_origin": "V98_R2_EXISTING_PRODUCT",
+"publicationStatus": "HOLD"
 },
 {
 "id": "OFFER-NOBLE-036",
@@ -9543,7 +9549,8 @@
 "startDate": "2026-11-24",
 "endDate": "",
 "region": "Lausanne (Präsenzoption); Online-Durchführung je Termin",
-"release_origin": "V98_R2_EXISTING_PRODUCT"
+"release_origin": "V98_R2_EXISTING_PRODUCT",
+"publicationStatus": "HOLD"
 },
 {
 "id": "OFFER-NOBLE-038",
@@ -9687,7 +9694,8 @@
 "startDate": "2026-11-30",
 "endDate": "",
 "region": "Lausanne (Präsenzoption); Online-Durchführung je Termin",
-"release_origin": "V98_R2_EXISTING_PRODUCT"
+"release_origin": "V98_R2_EXISTING_PRODUCT",
+"publicationStatus": "HOLD"
 },
 {
 "id": "OFFER-NOBLE-045",
@@ -11299,7 +11307,8 @@
 "startDate": "2026-12-03",
 "endDate": "",
 "region": "Online – Classe à distance (Ausgabe 03.12.2026; kein physischer Kursort)",
-"release_origin": "V98_R2_EXISTING_PRODUCT"
+"release_origin": "V98_R2_EXISTING_PRODUCT",
+"publicationStatus": "HOLD"
 },
 {
 "id": "OFFER-ORSYS-055",
@@ -11347,7 +11356,8 @@
 "startDate": "2026-12-09",
 "endDate": "",
 "region": "Online",
-"release_origin": "V98_R2_EXISTING_PRODUCT"
+"release_origin": "V98_R2_EXISTING_PRODUCT",
+"publicationStatus": "HOLD"
 },
 {
 "id": "OFFER-ORSYS-058",
@@ -11395,7 +11405,8 @@
 "startDate": "2026-11-17",
 "endDate": "2026-11-20",
 "region": "Online – Classe à distance (17.–20.11.2026; kein physischer Kursort für diese Ausgabe)",
-"release_origin": "V98_R2_EXISTING_PRODUCT"
+"release_origin": "V98_R2_EXISTING_PRODUCT",
+"publicationStatus": "HOLD"
 },
 {
 "id": "OFFER-ORSYS-064",
@@ -11707,7 +11718,8 @@
 "startDate": "2026-12-03",
 "endDate": "",
 "region": "Online – Classe à distance (Ausgabe 03.12.2026; kein physischer Kursort)",
-"release_origin": "V98_R2_EXISTING_PRODUCT"
+"release_origin": "V98_R2_EXISTING_PRODUCT",
+"publicationStatus": "HOLD"
 },
 {
 "id": "OFFER-ORSYS-078",
@@ -11731,7 +11743,8 @@
 "startDate": "2026-11-18",
 "endDate": "",
 "region": "Online – Classe à distance (Ausgabe 18.11.2026; kein physischer Kursort)",
-"release_origin": "V98_R2_EXISTING_PRODUCT"
+"release_origin": "V98_R2_EXISTING_PRODUCT",
+"publicationStatus": "HOLD"
 },
 {
 "id": "OFFER-ORSYS-079",
@@ -11827,7 +11840,8 @@
 "startDate": "2026-12-10",
 "endDate": "",
 "region": "Online",
-"release_origin": "V98_R2_EXISTING_PRODUCT"
+"release_origin": "V98_R2_EXISTING_PRODUCT",
+"publicationStatus": "HOLD"
 },
 {
 "id": "OFFER-ORSYS-083",
@@ -11851,7 +11865,8 @@
 "startDate": "2026-12-02",
 "endDate": "",
 "region": "Online",
-"release_origin": "V98_R2_EXISTING_PRODUCT"
+"release_origin": "V98_R2_EXISTING_PRODUCT",
+"publicationStatus": "HOLD"
 },
 {
 "id": "OFFER-ORSYS-084",
@@ -12043,7 +12058,8 @@
 "startDate": "2026-12-10",
 "endDate": "",
 "region": "Online",
-"release_origin": "V98_R2_EXISTING_PRODUCT"
+"release_origin": "V98_R2_EXISTING_PRODUCT",
+"publicationStatus": "HOLD"
 },
 {
 "id": "OFFER-ORSYS-100",
@@ -12355,7 +12371,8 @@
 "startDate": "2027-05-10",
 "endDate": "",
 "region": "Online",
-"release_origin": "V98_R2_EXISTING_PRODUCT"
+"release_origin": "V98_R2_EXISTING_PRODUCT",
+"publicationStatus": "HOLD"
 },
 {
 "id": "OFFER-ORSYS-119",
@@ -12715,7 +12732,8 @@
 "startDate": "2027-03-22",
 "endDate": "",
 "region": "Online",
-"release_origin": "V98_R2_EXISTING_PRODUCT"
+"release_origin": "V98_R2_EXISTING_PRODUCT",
+"publicationStatus": "HOLD"
 },
 {
 "id": "OFFER-ORSYS-140",
@@ -12763,7 +12781,8 @@
 "startDate": "2027-03-15",
 "endDate": "",
 "region": "Online",
-"release_origin": "V98_R2_EXISTING_PRODUCT"
+"release_origin": "V98_R2_EXISTING_PRODUCT",
+"publicationStatus": "HOLD"
 },
 {
 "id": "OFFER-ORSYS-142",
@@ -12811,7 +12830,8 @@
 "startDate": "2027-02-15",
 "endDate": "",
 "region": "Online",
-"release_origin": "V98_R2_EXISTING_PRODUCT"
+"release_origin": "V98_R2_EXISTING_PRODUCT",
+"publicationStatus": "HOLD"
 },
 {
 "id": "OFFER-ORSYS-144",
@@ -12835,7 +12855,8 @@
 "startDate": "2026-12-03",
 "endDate": "",
 "region": "Online",
-"release_origin": "V98_R2_EXISTING_PRODUCT"
+"release_origin": "V98_R2_EXISTING_PRODUCT",
+"publicationStatus": "HOLD"
 },
 {
 "id": "OFFER-ORSYS-146",
@@ -12955,7 +12976,8 @@
 "startDate": "2026-11-25",
 "endDate": "",
 "region": "Online",
-"release_origin": "V98_R2_EXISTING_PRODUCT"
+"release_origin": "V98_R2_EXISTING_PRODUCT",
+"publicationStatus": "HOLD"
 },
 {
 "id": "OFFER-ORSYS-152",
@@ -24992,7 +25014,8 @@
 "startDate": "2026-10-01",
 "endDate": "2026-10-02",
 "region": "Live-Online current fixed sessions; in-person seminar available by booking",
-"release_origin": "V98_RESTORE_W3_PCC13"
+"release_origin": "V98_RESTORE_W3_PCC13",
+"publicationStatus": "HOLD"
 },
 {
 "id": "PCC-P39",
@@ -31722,7 +31745,8 @@
 "startDate": "",
 "endDate": "",
 "region": "Vorarlberg; Arbeitgebersitz Schwarzach. Tatsächliche Einsatzorte der Rotation durch mehrere Redaktionen nicht einzeln publiziert.",
-"release_origin": "AT_KLUGSCHEISSER_REDTEAM_R3_20260930 / AT_SCOPE_REMEDIATION_R1_20260930 / MEDIASKILLS_AT_OWNER_DATA_FREEZE_FINALIZED_2026-09-04"
+"release_origin": "AT_KLUGSCHEISSER_REDTEAM_R3_20260930 / AT_SCOPE_REMEDIATION_R1_20260930 / MEDIASKILLS_AT_OWNER_DATA_FREEZE_FINALIZED_2026-09-04",
+"publicationStatus": "HOLD"
 },
 {
 "id": "AT-PROD-OFFER-156",

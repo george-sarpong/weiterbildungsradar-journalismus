@@ -124,15 +124,14 @@
  "owner_faelle_angebote": 142,
  "owner_entscheide": {
   "SCHUTZ_GITHUB:GITHUB": 700,
-  "HOLD_SPERRE:GITHUB": 22,
-  "HOLD_SPERRE:OFFEN": 24,
+  "HOLD_SPERRE:GITHUB": 46,
   "KONFLIKT:GITHUB": 6,
   "GRUPPENKONFLIKT:LIVE": 7,
   "GRUPPENKONFLIKT:GITHUB": 11,
   "SCHUTZ_LIVE:LIVE": 29
  },
- "owner_offen_felder": 24,
- "owner_offen_angebote": 24,
+ "owner_offen_felder": 0,
+ "owner_offen_angebote": 0,
  "kreuzpruefung_preis_quellen_gemischt": [],
  "main_vs_pr10": {
   "felder": 534,
@@ -153,7 +152,7 @@
  },
  "kandidat_neue_felder_ggue_live": {
   "publicationReason": 1,
-  "publicationStatus": 22,
+  "publicationStatus": 46,
   "sessions": 41
  },
  "kandidat_entfallene_felder_ggue_live": {},
@@ -168,6 +167,6 @@
   "/home/claude/git/pr10/smart-search-data.js": "f4bc821fca5d87c3460be7fd0d92d5eff91e85c1230b733ee62b68e43efd0558",
   "/home/claude/git/pr10/data/staging/evt270-currentness-policy-20261107.json": "476a21bff50d39fe96d5f490f47bd0f8c6ddda7e408d3f588df4e7659258d461",
   "paket3/config/konflikt_vorschlaege.json": "b8de2b77edbb51fea08572bebee8ae7aec41683b292b702a26e2cfe7f34dbbda",
-  "paket3/config/owner_entscheide.csv": "77894ef8407532911590d2828af2e51a98bce200151ee6e5d0de5ef588266a7d"
+  "paket3/config/owner_entscheide.csv": "9a554cfca6fa1f74ca9fb8a23607572ab6c66cc90aebd5f51116b2eafe3365aa"
  }
 }

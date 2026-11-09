@@ -34,8 +34,7 @@
  },
  "beta_sichtbar": {
   "JA": 3445,
-  "OFFEN_OWNER": 24,
-  "NEIN": 349
+  "NEIN": 373
  },
  "dedupe": {
   "BESTAND": 1352,
@@ -81,7 +80,7 @@
   "JA": 727
  },
  "schutz_307": 307,
- "owner_offen_angebote": 24,
+ "owner_offen_angebote": 0,
  "termin_status": {
   "OHNE_DATUM": 698,
   "ZUKUENFTIG": 407,
@@ -106,7 +105,7 @@
   "preis_text": 2484,
   "preis_kategorie": 2719,
   "zugang_text": 2466,
-  "publikationsstatus": 3796,
+  "publikationsstatus": 3772,
   "publikationsgrund": 3817,
   "geprueft_am": 2466,
   "pruefen_ab": 2466,
@@ -122,8 +121,7 @@
   "LEER": 89579,
   "REGEL": 5364,
   "KATALOG_XLSX": 7636,
-  "MAIN_OWNER": 708,
-  "LIVE_OWNER_OFFEN": 24,
+  "MAIN_OWNER": 732,
   "MAIN": 109,
   "LIVE_GEAENDERT": 47,
   "LIVE_OWNER": 36,
@@ -133,9 +131,9 @@
  "gold": 0,
  "freigegebene_writes": 0,
  "eingaben_sha256": {
-  "paket3/out/merge_kandidat_data.json": "d1ac1de04c3fdc3cf209ae9919a7c84090ff8d081b1794487d2c6d40a50bbe65",
+  "paket3/out/merge_kandidat_data.json": "3d480516180bd866f2f744b21b50cc1ca6facddd74ec08440373b29aa0011783",
   "paket3/out/merge_kandidat_smart.json": "d42629e7b67f6b74420073736deeb949fcefe99376770be506d2fddc82c2e0dc",
-  "paket3/out/merge_feldentscheide.csv": "dcb6469be744448a2854c1463ed7189c56265556e913a49976041d62c6119b01",
+  "paket3/out/merge_feldentscheide.csv": "16a359c1cc5335b9587f647afa607637d30b23cd3ab3f355902ab8fa7f3cd41f",
   "paket3/eingaben/Arbeitskatalog_3818_V288_20261108.xlsx": "3ec4448f76c58388c4517221c7e969ad0f185aef4a5795545b008fe7195bd85b",
   "paket3/eingaben/R4_PUBLICATION_ROWS_20260915.json": "313d7fb2a2eb695740c28566882cc9a53eae1d53a3a273e1fc26b4e6a8f1ab8d",
   "/home/claude/git/pr10/data/staging/usa-owner-evidence-crosswalk-20261107.jsonl": "9d6afa8cc76de316bc8da9248b85739c54c72361b0f3daccee39bc502ed63b58"

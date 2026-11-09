@@ -127,7 +127,7 @@ VOR = {'GITHUB': 'main übernehmen', 'LIVE': 'Live behalten', 'NACHRECHERCHE': '
 ENTS = lambda r: f"{VOR[r['entscheid_owner']]} ({r['register_id']})" if r['entscheid_owner'] else '**offen**'
 md = [f'# Owner-Entscheide Paket 3 – Übersicht (Stand {ST})', '',
       'Vollständige Werte: `owner_liste.csv` (Spalten `entscheid_owner`, `register_id`, `status`). Hier gekürzt auf ca. 110 Zeichen.',
-      'Entscheide: `paket3/config/owner_entscheide.csv` (Register E060–E064). Offene Fälle: Live-Wert gilt weiter (keine stille Überschreibung).',
+      'Entscheide: `paket3/config/owner_entscheide.csv` (Register E060–E064, E071). Offene Fälle: Live-Wert gilt weiter (keine stille Überschreibung).',
       f"Stand: {sum(r['status'] == 'ENTSCHIEDEN' for r in rows)} Felder entschieden, {sum(r['status'] == 'OFFEN' for r in rows)} offen "
       f"({len({r['id'] for r in rows if r['status'] == 'OFFEN'})} Angebote).", '']
 def tabelle(prefix, titel, extra=''):
@@ -143,7 +143,7 @@ tabelle('B', 'B Gruppenkonflikte', 'Live hat ein Feld der Gruppe Termin geänder
 tabelle('C', 'C Live-Änderungen an Schutz-IDs')
 rs = [r for r in rows if r['kategorie'].startswith('D')]
 md.extend([f'## D HOLD-Sperren aus main, die live fehlen ({len(rs)})', 'GitHub-Wert jeweils `publicationStatus = HOLD`; PR10 identisch. Vorschlag in allen Fällen: HOLD übernehmen (E042). '
-           'Owner 09.11.: Gruppe 1 und 2 übernommen (E063); Gruppe 3 (NobleProg/ORSYS) und AT-PROD-OFFER-154, PCC-P38 offen.', '',
+           'Owner 09.11.: Gruppe 1 und 2 übernommen (E063, Folgetermin in Nachrecherche); Gruppe 3 (NobleProg/ORSYS), AT-PROD-OFFER-154 und PCC-P38 wie main (E071, keine Nachrecherche).', '',
            '| Fall | Angebot | Anbieter | Titel | live sichtbar heute | Vorschlag | Entscheid |', '|---|---|---|---|---|---|---|'])
 for r in rs:
     md.append(f"| {r['fall']} | {r['id']} | {k(r['anbieter'], 35)} | {k(r['titel'], 50)} | {r['live_wert'].split(': ')[-1]} | {VOR[r['vorschlag']]} | {ENTS(r)} |")

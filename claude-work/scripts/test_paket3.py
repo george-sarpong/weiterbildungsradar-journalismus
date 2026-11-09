@@ -118,7 +118,7 @@ t('Q04 E043: 19 Ateliers + 2 MiTech', len(qr('E043')) == 21)
 t('Q05 alle 30 Zeilen ohne eindeutige URL (frühere SOURCE_IDENTITY_HOLD) markiert und in der Warteschlange', len(qr('E029/E031')) == 30 == sum(r['url_identitaet'] == 'OFFEN' for r in MASTER))
 t('Q06 jede nicht sichtbare oder offene Master-Zeile hat einen Owner- oder Warteschlangenfall',
   all(r['owner_offen'] or (r['market'], r['id']) in {(x['market'], x['id']) for x in Q} or r['beta_grund'].startswith(('OUT_SCOPE', 'ARCHIV', 'CH-HOLD'))
-      or 'E070' in r['beta_grund']
+      or 'E070' in r['beta_grund'] or '(E071)' in r['beta_grund']
       for r in MASTER if r['beta_sichtbar'] != 'JA'))
 
 # --- Paket 4: Owner-Entscheide E060–E070 ---
@@ -128,21 +128,20 @@ D_OFFEN = {'OFFER-NOBLE-004', 'OFFER-NOBLE-013', 'OFFER-NOBLE-014', 'OFFER-NOBLE
            'OFFER-ORSYS-083', 'OFFER-ORSYS-099', 'OFFER-ORSYS-118', 'OFFER-ORSYS-139', 'OFFER-ORSYS-141', 'OFFER-ORSYS-143', 'OFFER-ORSYS-144',
            'OFFER-ORSYS-151', 'AT-PROD-OFFER-154', 'PCC-P38'}
 from collections import Counter
-t('P01 799 Owner-Fälle: 775 entschieden (A 6, B 11+7, C 29, D 22, E 700), 24 offen = D Gruppe 3 + AT-PROD-OFFER-154 + PCC-P38',
+t('P01 799 Owner-Fälle alle entschieden (A 6, B 11+7, C 29, D 46, E 700); D Gruppe 3 + AT-PROD-OFFER-154 + PCC-P38 = E071',
   len(OWN) == 799 and Counter((r['kategorie'][0], r['entscheid_owner'] or 'OFFEN') for r in OWN) == {('A', 'GITHUB'): 6, ('B', 'GITHUB'): 11,
-  ('B', 'LIVE'): 7, ('C', 'LIVE'): 29, ('D', 'GITHUB'): 22, ('D', 'OFFEN'): 24, ('E', 'GITHUB'): 700}
-  and {r['id'] for r in OWN if r['status'] == 'OFFEN'} == D_OFFEN)
+  ('B', 'LIVE'): 7, ('C', 'LIVE'): 29, ('D', 'GITHUB'): 46, ('E', 'GITHUB'): 700}
+  and {r['id'] for r in OWN if r['register_id'] == 'E071'} == D_OFFEN)
 t('P02 owner_liste.csv: entscheid_owner = Entscheiddatei, Register-ID passt zur Kategorie (A E060 · B E061 · C E062 · D E063 · E E064)',
   all(r['entscheid_owner'] == OEK[(r['datei'], r['id'], r['feld'])]['entscheid'] and
-      r['register_id'] == ({'A': 'E060', 'B': 'E061', 'C': 'E062', 'D': 'E063', 'E': 'E064'}[r['kategorie'][0]] if r['entscheid_owner'] else '') for r in OWN))
+      r['register_id'] == ({'A': 'E060', 'B': 'E061', 'C': 'E062', 'D': 'E071' if r['id'] in D_OFFEN else 'E063', 'E': 'E064'}[r['kategorie'][0]] if r['entscheid_owner'] else '') for r in OWN))
 t('P03 Kandidat folgt dem Entscheid: GITHUB = main-Wert, LIVE = Live-Wert',
   all((KD if e['datei'] == 'data' else KS)[e['id']].get(e['feld']) == ((G if e['datei'] == 'data' else GS) if e['owner_entscheid'] == 'GITHUB'
       else (L if e['datei'] == 'data' else LS))[e['id']].get(e['feld']) for e in ENT if e['owner_status'] == 'ENTSCHIEDEN'))
 MI = {r['id']: r for r in MASTER if r['kohorte'] == 'WEBSITE_1352'}
-t('P04 E063: 22 HOLD im Kandidaten, nicht sichtbar; 24 offene ohne Sperre, OFFEN_OWNER',
-  {i for i in hold_main if KD[i].get('publicationStatus') == 'HOLD'} == hold_main - D_OFFEN and len(hold_main - D_OFFEN) == 22
-  and all(MI[i]['beta_sichtbar'] == 'NEIN' for i in hold_main - D_OFFEN)
-  and all(MI[i]['beta_sichtbar'] == 'OFFEN_OWNER' and not KD[i].get('publicationStatus') for i in D_OFFEN))
+t('P04 E063/E071: alle 46 HOLD im Kandidaten, nicht sichtbar; 16 Nachrecherche (E063), 24 ohne (E071)',
+  all(KD[i].get('publicationStatus') == 'HOLD' and MI[i]['beta_sichtbar'] == 'NEIN' for i in hold_main) and len(hold_main) == 46
+  and len(qr('E063')) == 16 and not ({x['id'] for x in Q} & D_OFFEN) and all('(E071)' in MI[i]['beta_grund'] for i in D_OFFEN))
 t('P05 E067/E068: 295 R4-archiviert und 30 ohne eindeutige URL nicht sichtbar und in der Warteschlange',
   sum('(E067)' in r['beta_grund'] and r['beta_sichtbar'] == 'NEIN' for r in MASTER) == 295 == len(qr('E014/E015'))
   and sum('(E068)' in r['beta_grund'] and r['beta_sichtbar'] == 'NEIN' for r in MASTER) == 30 == len(qr('E029/E031')))

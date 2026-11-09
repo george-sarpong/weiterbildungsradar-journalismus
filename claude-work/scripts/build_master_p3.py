@@ -266,7 +266,10 @@ for r in KAT:
     if legacy:
         if i in DISPO: sb, gr = DISPO[i]
         elif DATA[i].get('publicationStatus') == 'HOLD' and herkunft('data', i, 'publicationStatus') == 'MAIN_OWNER':
-            sb, gr = 'NEIN', 'HOLD aus main übernommen (E063): Folgetermin bzw. Aktualität in Nachrecherche'
+            if ENT_BY[('data', i, 'publicationStatus')]['owner_register_id'] == 'E071':
+                sb, gr = 'NEIN', 'HOLD aus main übernommen (E071): Ergebnis früherer Prüfung, Grund in main nicht dokumentiert; keine Nachrecherche'
+            else:
+                sb, gr = 'NEIN', 'HOLD aus main übernommen (E063): Folgetermin bzw. Aktualität in Nachrecherche'
         elif DATA[i].get('publicationStatus') == 'HOLD': sb, gr = 'NEIN', 'HOLD (publicationStatus)'
         elif 'HOLD_SPERRE' in oc: sb, gr = 'OFFEN_OWNER', 'HOLD aus main, live ohne Sperre – Owner-Entscheid'
         else: sb, gr = 'JA', 'Release 30.09. (E007)'

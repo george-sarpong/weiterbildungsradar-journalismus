@@ -27,12 +27,11 @@
   "B:GITHUB": 11,
   "B:LIVE": 7,
   "C:LIVE": 29,
-  "D:OFFEN": 24,
-  "D:GITHUB": 22,
+  "D:GITHUB": 46,
   "E:GITHUB": 700
  },
- "owner_offen_felder": 24,
- "owner_offen_angebote": 24,
+ "owner_offen_felder": 0,
+ "owner_offen_angebote": 0,
  "warteschlange": 720,
  "warteschlange_je_auftrag": {
   "Paket 3 Punkt 4": 354,
