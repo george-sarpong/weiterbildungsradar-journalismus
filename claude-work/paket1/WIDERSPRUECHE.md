@@ -3,7 +3,7 @@
 Bezug: `claude/STATUS_20261109.md` Abschnitt 3 (W1–W5) plus neue Befunde aus Paket 1 (W6–W9). Belege: Kürzel #n verweisen auf QUELLENVERZEICHNIS.md.
 Status: **GEKLÄRT** = mit Originalbeleg aufgelöst · **TEILWEISE** = Ursache belegt, Rest offen · **OFFEN**.
 
-## W1 – Live lädt `app-v33.js`, laut ChatGPT gingen V33–V36 nie live → TEILWEISE
+## W1 – Live lädt `app-v33.js`, laut ChatGPT gingen V33–V36 nie live → GEKLÄRT (Owner 09.11.: Live-Dateien massgeblich)
 
 Belege:
 - V32-Abnahme 13.10. 15:04 (#13): 11 Dateien, `index.html` SHA ba6d87…, Asset-Referenzen `data.js`, `smart-search-data.js`, `app-v32.js`, `styles-v24.css`.
@@ -47,9 +47,22 @@ Alle 13 fehlenden IDs (OFFER-MAZ-145, OFFER-FHNW-010, OFFER-DIGICOMP-055, OFFER-
 
 Target5 nennt «SFJ_AT_R3_FINAL_DATA_GOLD_124_20260930 / … R3 overlay/control 1mtLbV9ec…». Die Datei mit dieser ID heisst tatsächlich `SFJ_AT_SCOPE_R1_20260930` und enthält die R3-Blätter (`AT_R3_FINAL_GATE` usw.). Laut Target5 gibt es kein einzelnes Drive-Blatt mit den 124 Zeilen: «Drive canonical is parent+overlay because raw XLSX import was unavailable». Die 124 AT-Zeilen in `data.js` sind vollständig in R4-AT enthalten (Crosswalk 124/124).
 
-## W7 – Feld `country` mischt Markt und Durchführungsort → OFFEN (neu)
+## W7 – Feld `country` mischt Markt, Anbieterland und Ort → TEILWEISE (Regel besteht, Umsetzung offen)
 
-In `data.js` tragen 19 CH-Release-Angebote (CH-V33-A01 ff.) «Frankreich» und 2 den Freitext «CH_ACCESS / operational presence Chiasso». Damit filtert die Website nach einem Wert, der weder Release-Markt noch sauberer Ort ist. Für den Master braucht es zwei Felder: Release-Markt (CH/AT/LI/DE/USA) und Durchführungsort.
+Befund: In `data.js` tragen 19 CH-Release-Angebote von «Ateliers de l’image et du son» (CH-V33-A01 bis A19, region «Suisse romande / Ort nach Vereinbarung») «Frankreich» und 2 Angebote von MiTech (V79-01/02, region «ONLINE») den Freitext «CH_ACCESS / operational presence Chiasso». Die Website filtert über `countryDisplay()` nach diesem Feld.
+
+Frühere Klärung mit ChatGPT (Bibel Band 01 und 02, Drive 1Thna9EVLMSrvmxor0mUA056kDzBI05_4J6IW89SuJGI und 1zOTSwhCC8-1IQDxI5HgwpPC__LAc2zGuDXFtM2Pj-Cs, gelesen 09.11.):
+- Regel: «Ort der Durchführung, nicht Firmensitz»; «Orte sind tatsächliche Veranstaltungsorte und nicht Firmensitz. Ortsunsicherheit muss ehrlich angezeigt werden.»
+- Owner-Fallentscheid 18.10.: ORSYS Lausanne und Genf als bewusst ungefähre Durchführungsort-Angabe (59 Angebote).
+- Befund 28.10. (B1-D02): 22 DJA-Angebote haben country «Schweiz», Anbieterbasis ist Berlin. Vorschlag damals: «provider_country=DE, CH_ACCESS und delivery_location separat mappen, keine Duplikatangebote in DE erzeugen» – nicht umgesetzt.
+- Ausdrücklich offen gelassen: «Die anderen 19 CH-Rows mit Rohland Frankreich/2 Chiasso separat konkret entscheiden.»
+
+Daraus folgt für den Master (Vorschlag, Paket 2): vier getrennte Felder statt `country`, Länder als ISO-3166-1-Code (CH, LI, AT, DE, FR, IT, US):
+1. `release_markt` – unter welchem Länderbestand das Angebot geführt wird (CH/LI/AT/DE/US).
+2. `anbieter_land` – Sitz des Anbieters laut Impressum.
+3. `durchfuehrungsort` – tatsächlicher Kursort(e) bzw. «online», mit Sicherheitsgrad (belegt / ungefähr / unbekannt).
+4. `ch_zugang` – Teilnahme aus der Schweiz möglich (belegt / unbekannt), nie geraten.
+Anbieterland der Ateliers (19) und MiTech (2) ist noch nicht belegt und kommt in die Nachrecherche-Warteschlange.
 
 ## W8 – AT 227 Owner-Zeilen vs. 224 R4-Zeilen → OFFEN (neu, klein)
 
@@ -57,7 +70,15 @@ In `data.js` tragen 19 CH-Release-Angebote (CH-V33-A01 ff.) «Frankreich» und 2
 
 ## W9 – «Alle vorhandenen Daten in die Beta» vs. dokumentierte OUT/HOLD-Zeilen → OWNER-ENTSCHEID
 
-Owner-Entscheid 4 (09.11.) verlangt alle vorhandenen Daten in der Beta. Die Quellen enthalten aber auch bewusst ausgeschlossene Zeilen: AT 76 OUT + 27 HOLD, LI 1 OUT + 1 HOLD + 1 abgelaufen, CH 220 R4-Zeilen nicht in R43 (u. a. 133 Scope-Ausschlüsse vom 30.09.). Ohne Entscheid wäre unklar, ob diese Zeilen mitkommen.
+Owner-Entscheid 4 (09.11.) verlangt alle vorhandenen Daten in der Beta. Die Quellen enthalten aber auch bewusst ausgeschlossene Zeilen: AT 76 OUT + 27 HOLD, LI 1 OUT + 1 HOLD + 1 abgelaufen, CH 220 R4-Zeilen nicht in R43 (u. a. 133 Scope-Ausschlüsse vom 30.09.).
+
+**Owner-Entscheid 09.11. (Nachtrag):** Diese Zeilen kommen in die Nachrecherche-Warteschlange und sind in der Beta nicht sichtbar. → GEKLÄRT.
+
+## Owner-Entscheide 09.11. zu Paket 1 (Nachtrag)
+- W1: Die Live-Dateien (Paket A: `index.html`, `app-v33.js`, `data-a1-86ff68ddc9ac.js`, `smart-search-data-a1-a38a2a2b2391.js`, `styles-v24.css`) sind massgeblich. Fehlender Paket-A-Freigabebericht ist damit kein Blocker.
+- W9: OUT- und HOLD-Zeilen → Nachrecherche-Warteschlange, nicht sichtbar.
+- W7: Owner verweist auf die frühere Klärung mit ChatGPT und auf Ländercodes; Vier-Felder-Vorschlag oben zur Bestätigung offen.
+- W4 (V120 schliessen): noch keine Antwort.
 
 ---
 
