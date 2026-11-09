@@ -1,4 +1,4 @@
-# ERLEDIGT mediaskills.ch – nicht wieder öffnen (Entwurf 1, 09.11.2026)
+# ERLEDIGT mediaskills.ch – nicht wieder öffnen (Fassung 1, 09.11.2026)
 
 Regel: Ein Punkt wird nur wieder geöffnet bei **konkretem neuem Auslöser** (Angebots-ID + Feld + Ausgabe/Termin + datierte Quelle) oder auf ausdrückliche Anweisung des Owners (Projektregel 2; Handoff Phase A §5).
 Beleg: **[GELESEN]** = Original am 09.11. gelesen · **[GEPRÜFT]** = von Claude nachgezählt/gerechnet · **[OWNER]** = Entscheid George · **[CHATGPT]** = nur Übergabe, Original nicht gelesen.
@@ -15,7 +15,9 @@ Entscheid-IDs (E…) verweisen auf `ENTSCHEIDUNGSREGISTER.csv`.
 | OUT/HOLD-Zeilen in der Beta | Nicht sichtbar, nur Nachrecherche-Warteschlange (E042) | WIDERSPRUECHE W9 [OWNER] |
 | ORSYS Schweiz Durchführungsort | «Lausanne und Genf» genügt (E013) | CP01 B, Claim FAM13-C01 [GELESEN] |
 | PCC-P32 | OUT_SCOPE (E016) | CP01 B, Claim 0W.14 [GELESEN] |
-| PCC-P33, OFFER-CORSO-001, OFFER-FERNUNI-002, OFFER-CFJM-008 | ARCHIV; PCC-P08 CH-HOLD (E017) | CP01 B [GELESEN] – Owner-Herkunft offen, siehe offene Entscheide |
+| PCC-P33, OFFER-CORSO-001, OFFER-FERNUNI-002, OFFER-CFJM-008 | ARCHIV; PCC-P08 CH-HOLD (E017, bestätigt E050) | CP01 B [GELESEN], Owner 09.11. [OWNER] |
+| Hold FAM15-C04 (August-Importfehler V118/V119) | Geschlossen, betrifft nur archivierte Masterlinie (E055) | Owner 09.11. [OWNER] |
+| Paket-2-Entwürfe | Abgenommen; GESAMTWISSENSSTAND ist Einstieg (E049) | Owner 09.11. [OWNER] |
 | Projektbibel Phase A | Abgenommen mit vier Holds (EVT138, EVT144), heute Archiv (E023) | Handoff §9.4, §9.10 [GELESEN] |
 | Colab-Notebook-Freigabe | Auf «eingeschränkt» gestellt | STATUS §2 [OWNER] |
 

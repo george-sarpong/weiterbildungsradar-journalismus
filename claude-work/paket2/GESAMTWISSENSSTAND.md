@@ -1,6 +1,6 @@
-# GESAMTWISSENSSTAND mediaskills.ch – Entwurf 1, Stand 09.11.2026
+# GESAMTWISSENSSTAND mediaskills.ch – Fassung 1, Stand 09.11.2026
 
-Status: **Entwurf, Owner-Abnahme ausstehend.** Nach Abnahme ersetzt dieses Dokument `claude/STATUS_20261109.md` als Einstieg für jeden neuen Chat.
+Status: **Vom Owner abgenommen 09.11.2026 (E049).** Dieses Dokument ersetzt `claude/STATUS_20261109.md` als Einstieg für jeden neuen Chat.
 Lesereihenfolge: dieses Dokument → `ENTSCHEIDUNGSREGISTER.csv` → `ERLEDIGT.md` → bei Bedarf `QUELLENVERZEICHNIS.md`, `WIDERSPRUECHE.md`.
 Vorrang: jüngster datierter Owner-Entscheid im Register. Alles ältere Material (Projektbibel, Control Plane, MS_S00, Claim-Register, Handoff Phase A, CP01, ChatGPT-Übergabe) ist **Archiv**: Beleg, kein Auftrag.
 Beleg: [OWNER] · [GEPRÜFT] von Claude gezählt/gerechnet · [GELESEN] Original gelesen · [CHATGPT] nur Übergabe · [NOTIZ] frühere Claude-Chats, Original nicht gelesen. E… = Register-ID.
@@ -29,11 +29,12 @@ mediaskills.ch ist ein nicht-kommerzieller Weiterbildungsradar für Schweizer Me
 
 **Preis und Suche**
 - CHF/EUR/USD 1:1 als Rechengrundlage, Originalwährung zeigen, Hinweis «zum Tageskurs nachrechnen»; GBP nicht nominal (E009, E037).
-- Direkter Budgettreffer nur bei vollem unbedingtem Preis inkl. Pflichtgebühren; Tarife (Mitglied, Journalist:in, Freie) sichtbar und als bedingt markiert; unbekannter Preis nie als Treffer (E010, E039).
+- Budget rechnet nur mit Kursgebühren inkl. Pflichtgebühren (E054). Direkter Budgettreffer nur bei vollem unbedingtem Preis; Tarife (Mitglied, Journalist:in, Freie) sichtbar und als bedingt markiert; unbekannter Preis nie als Treffer (E010, E039).
+- Preisspanne: Obergrenze ≤ Budget = direkter Treffer, Untergrenze ≤ Budget < Obergrenze = möglich (E051). Trefferklasse «knapp über Budget» bis 15 % (E053). «Kostenlos» / «Kostenlos mit Bedingung: …» / «Preis unbestätigt» (E052, E057). Merkliste mit Summe und Restbudget nur aus bestätigten Preisen (E059).
 - Bei Budgetsuche 2–3 begründete Alternativen, kein Ranking, keine «Top-Empfehlung» (E039). Keine redaktionelle Rangfolge, Standardsortierung «Zuletzt geprüft» (E020).
 - Kursform/Preis nur bei nachweislich gleicher Variante bzw. Durchführung; bestätigte Kursform nur bei Evidenz VERIFIED (E011).
-- Dauer: kein Hartfilter aus Freitext, «erkannt, nicht angewendet» (E021).
-- Smart-Suche im Browser, kein Speichern des Eingabetexts, kein ausgehendes Tracking (E012).
+- Dauer wie Preis: belegt passend = Treffer, unbekannt = eigene sichtbare Gruppe, länger = Alternative; kein Hartfilter (E021, E058).
+- Smart-Suche im Browser, kein Speichern des Eingabetexts, kein ausgehendes Tracking (E012). Datenschutz hat Vorrang; Messung nur gemäss Schweizer Datenschutzrecht (E056).
 
 ## 3. Datenbestand (Zähleinheiten nie vermischen)
 
@@ -73,17 +74,16 @@ Was PR10 zusätzlich kann: `ERLEDIGT.md` Abschnitt D.
 
 | ID | Befund | Stand | Beleg |
 |---|---|---|---|
-| WDA-01 | Budget mit Preisspanne: liegt die Obergrenze im Budget, wird trotzdem nur «möglich» gezeigt (z. B. OFFER-DJA-009, EUR 480–512 bei CHF 800); 18 Kandidaten | Vorschlag Regeländerung, nicht umgesetzt | Audit 28.10. B [GELESEN] |
-| WDA-03 | «Kostenlos» meint in Filter und Smart-Suche Verschiedenes (22 vs. 15 unbedingt gratis) | Code-Entwurf in PR10 | Audit 28.10. D [GELESEN] |
+| WDA-01 | Budget mit Preisspanne: liegt die Obergrenze im Budget, wird trotzdem nur «möglich» gezeigt (z. B. OFFER-DJA-009, EUR 480–512 bei CHF 800); 18 Kandidaten | Regel entschieden (E051), Umsetzung offen | Audit 28.10. B [GELESEN] |
+| WDA-03 | «Kostenlos» meint in Filter und Smart-Suche Verschiedenes (22 vs. 15 ohne Bedingung) | Trennung entschieden (E052), Bezeichnungen offen; Code-Entwurf in PR10 | Audit 28.10. D [GELESEN] |
 | WDA-04 | Online/On-Demand: 428 Angebote, nur 90 mit VERIFIED-Kursform | Abdeckungslücke, kein Bug | Audit 28.10. E [GELESEN] |
 | WDA-05 | AT-PROD-OFFER-208 zeigt vergangene Gratis-Septembertermine als Preis | Einzelfall, Nachrecherche | Audit 28.10. F [GELESEN] |
 | W3 | CH 641 Foundation-Bericht ungelesen | nur lesen, falls für Beta nötig | WIDERSPRUECHE |
 | W8 | AT 227 Owner-Zeilen vs. 224 R4-Zeilen (3 Objekte) | Klärung über AT-Parent R2 | WIDERSPRUECHE |
 | CAD-005 | Sidecar ohne Preisoptionen, Kursform UNKNOWN | Nachrecherche bzw. Merge | Handoff §9.34 [GELESEN] |
-| Hold FAM04-C07 | CH-V47 NEWSROOM-Geschwisterzeile ohne Owner-Disposition | offen | Handoff §3.3 [GELESEN] |
-| Hold FAM05-C04 | AT oe24: Anbieter-ID-Zuordnung unbewiesen | offen | Handoff §3.3 [GELESEN] |
-| Hold FAM14-C05 | CFJM 2027: -005 und -012 belegt; -013 und -015 ohne Editionsbeleg | teilweise | Handoff §3.3, §9.33 [GELESEN] |
-| Hold FAM15-C04 | August-Importfehler V118/V119: Rollback nicht belegt | betrifft nur archivierte Masterlinie | Handoff §3.3 [GELESEN] |
+| Hold FAM04-C07 | CH-V47 NEWSROOM-Geschwisterzeile ohne Owner-Disposition | Nachrecherche (E055) | Handoff §3.3 [GELESEN] |
+| Hold FAM05-C04 | AT oe24: Anbieter-ID-Zuordnung unbewiesen | Nachrecherche (E055) | Handoff §3.3 [GELESEN] |
+| Hold FAM14-C05 | CFJM 2027: -005 und -012 belegt; -013 und -015 ohne Editionsbeleg | Nachrecherche für -013/-015 (E055) | Handoff §3.3, §9.33 [GELESEN] |
 
 ## 7. Release- und Prüfmodell
 
@@ -95,16 +95,9 @@ Projektbibel Band 01 `1Thna9EVLMSrvmxor0mUA056kDzBI05_4J6IW89SuJGI`, Band 02 `1z
 
 ## 9. Nächster Schritt
 
-Paket 3 laut STATUS §4: Master-Tabelle und Dreiwege-Merge (nicht Teil dieses Pakets). Vorher Owner-Abnahme dieses Entwurfs und der offenen Entscheide (Abschnitt 10).
+Paket 3: Master-Tabelle und Dreiwege-Merge. Die offenen Entscheide in Abschnitt 10 blockieren Paket 3 nicht; sie betreffen die spätere Suchlogik.
 
 ## 10. Offene Owner-Entscheide
 
-1. **Abnahme** dieses Entwurfs, des Registers und der Erledigt-Liste; danach ersetzt dieses Dokument STATUS_20261109 als Einstieg.
-2. **E017 bestätigen:** PCC-P33, OFFER-CORSO-001, OFFER-FERNUNI-002, OFFER-CFJM-008 als ARCHIV und PCC-P08 als CH-HOLD übernehmen? (CP01 weist keine Owner-Herkunft aus.)
-3. **WDA-01 Preisspanne:** Gilt «Obergrenze ≤ Budget» künftig als direkter Budgettreffer (sofern unbedingter Tarif, Gesamtpreis, keine offenen Pflichtgebühren)?
-4. **«Kostenlos» unterscheiden (WDA-03):** Kategorien «unbedingt gratis» / «gratis für Berechtigte» / «Eventpreis unbestätigt» einführen?
-5. **Budget-Trefferklasse «knapp über Budget»** (Vorschlag ca. 15 %, Recherche R2) – ja/nein, welche Schwelle?
-6. **Dauerfilter:** Bleibt es bei E021 (kein Hartfilter), oder soll «2 Tage» künftig angewendet werden, wo Dauer sicher belegt ist?
-7. **Regeln 30.09. [NOTIZ]** (Merkliste mit Gesamtsumme und Restbudget; Budget heisst «Kursgebühr»; Restbetrag nur aus bestätigten Preisen): in den Originalen nicht gefunden – als neuen Entscheid übernehmen?
-8. **Vier historische Holds:** FAM15-C04 schliessen (betrifft nur archivierte Masterlinie, analog V120)? FAM04-C07 (NEWSROOM-Geschwisterzeile) entscheiden oder in Nachrecherche? FAM05-C04 und FAM14-C05 (CFJM-013/-015) in die Nachrecherche-Warteschlange?
-9. **Datenschutz vs. Messung:** E012 (kein ausgehendes Tracking) gegen geplante datenschutzfreundliche Statistik (STATUS §5) – später entscheiden, vor Beta-Start nötig?
+Entschieden am 09.11. (Paket-2-Chat): E049–E059. Noch offen:
+1. **Messung**: konkrete Ausgestaltung gemäss E056 (Schweizer Datenschutzrecht) vor Beta-Start recherchieren und vorlegen.
