@@ -1,0 +1,91 @@
+{
+ "bestanden": 17,
+ "total": 17,
+ "results": [
+  {
+   "id": "T1",
+   "ok": true,
+   "info": "app-v41.js reproduzierbar (aa2ef95029d8)"
+  },
+  {
+   "id": "T2",
+   "ok": true,
+   "info": "übrige Dateien unverändert, index.html nur Script-Name getauscht"
+  },
+  {
+   "id": "T3",
+   "ok": true,
+   "info": "Abnahme-Stand docs/ lädt app-v41.js"
+  },
+  {
+   "id": "A1",
+   "ok": true,
+   "info": "«Führungskurs» → nur Führung, nicht «Durchführung» (9 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.)"
+  },
+  {
+   "id": "A2",
+   "ok": true,
+   "info": "Satz auf Thema + Budget reduziert (Thema: recherche | Budget: CHF 500)"
+  },
+  {
+   "id": "A3",
+   "ok": true,
+   "info": "Französisch verstanden (Thema: video | Durchführung: Online)"
+  },
+  {
+   "id": "A4",
+   "ok": true,
+   "info": "«Präsenzkurs» ist Form, nicht Thema (Thema: fotojournalismus | Durchführung: Präsenz)"
+  },
+  {
+   "id": "B1",
+   "ok": true,
+   "info": "Teiltreffer gekennzeichnet (Kein Angebot passt zu allen Suchwörtern. 14 Angebote passen teilweise (1 von 3 Wörtern). Hier sind 3 Optionen.)"
+  },
+  {
+   "id": "B2",
+   "ok": true,
+   "info": "Nulltreffer mit Hinweis (Keine bestätigten Treffer. Zum Thema allein gibt es 380 Angebote. Lass Ort weg, um sie zu sehen.)"
+  },
+  {
+   "id": "C1",
+   "ok": true,
+   "info": "Basel als Kursort (52 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.)"
+  },
+  {
+   "id": "C2",
+   "ok": true,
+   "info": "Genève = Genf (16 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.)"
+  },
+  {
+   "id": "C3",
+   "ok": true,
+   "info": "Zürich als Kursort (5 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.)"
+  },
+  {
+   "id": "D1",
+   "ok": true,
+   "info": "Faktencheck/Verifikation (15 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.)"
+  },
+  {
+   "id": "D2",
+   "ok": true,
+   "info": "Englisch verstanden (Thema: datenjournalismus | Sprache: Englisch | Durchführung: Online)"
+  },
+  {
+   "id": "R1",
+   "ok": true,
+   "info": "E106 «oder» (21 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.)"
+  },
+  {
+   "id": "R2",
+   "ok": true,
+   "info": "E107 Mediencampus-Preis (2 passende Angebote im aktuellen Bestand. Hier sind 2 Optionen.)"
+  },
+  {
+   "id": "R3",
+   "ok": true,
+   "info": "JS-Fehler: 0"
+  }
+ ]
+}

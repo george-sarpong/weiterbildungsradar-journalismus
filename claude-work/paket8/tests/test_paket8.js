@@ -300,7 +300,8 @@ const MAKER = /^(Adobe|Apple|Google|Microsoft|Meta|Avid|Blackmagic|Autodesk|Canv
   const v = rs.flatMap(([r, b]) => directViolations(r, b).map(t => `${r.q}: ${t}`));
   check("F4a", `«im Budget» nur mit belegtem unbedingtem Preis ≤ Budget (${rs.length} Anfragen)`, v.length === 0, v.length ? list(v, 3) : "");
   const cond = rs.flatMap(([r, b]) => r.res.filter(c => /Tarif im Budget/.test(c.status)).map(c => ({ c, r, b })));
-  const cv = cond.filter(({ c, b }) => !/·/.test(c.meta[0]) || !c.ids.some(id => conditionalOk(id, b))).map(({ c, r }) => `${r.q}: ${c.title}`);
+  // Paket 15: «Kostenlos mit Bedingung: …» (E057) benennt den bedingten Tarif ebenfalls – vorher nie in einer F4-Trefferliste
+  const cv = cond.filter(({ c, b }) => !(/·/.test(c.meta[0]) || /^Kostenlos mit Bedingung: .+/.test(c.meta[0])) || !c.ids.some(id => conditionalOk(id, b))).map(({ c, r }) => `${r.q}: ${c.title}`);
   check("F4b", "Bedingte Tarife nur mit Bezeichnung des Tarifs und belegtem bedingtem Preis ≤ Budget", cv.length === 0, `${cond.length} bedingte Treffer${cv.length ? "; " + list(cv, 2) : ""}`);
   const order = rs.filter(([r]) => { const s = r.res.map(c => c.status); const i = s.indexOf("Journalist:innen-Tarif im Budget"), j = s.indexOf("im Budget"); return i >= 0 && j >= 0 && i < j; }).map(([r]) => r.q);
   results.push({ id: "F4-Hinweis", status: "INFO", detail: `Journalist:innen-Tarif vor unbedingtem Preis gereiht in: ${order.join("; ") || "–"}` });
