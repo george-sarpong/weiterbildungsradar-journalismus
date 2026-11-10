@@ -10,9 +10,9 @@ OUT.mkdir()
 for f in NEED: shutil.copy2(LIVE / f, OUT / f)
 for f in W13.iterdir():
     if f.name != "index.html": shutil.copy2(f, OUT / f.name)
-(OUT / "smart-search-data-p13.js").write_text("window.MEDIA_SKILLS_SMART_DATA = " + (CW / "paket3/out/merge_kandidat_smart.json").read_text(encoding="utf-8") + ";\n", encoding="utf-8")
+(OUT / "smart-search-data-p14.js").write_text("window.MEDIA_SKILLS_SMART_DATA = " + (CW / "paket14/out/smart-search-data-p14.json").read_text(encoding="utf-8") + ";\n", encoding="utf-8")
 idx = (W13 / "index.html").read_text(encoding="utf-8")
-for a, b in [('src="data-a1-86ff68ddc9ac.js"', 'src="data-p13.js"'), ('src="smart-search-data-a1-a38a2a2b2391.js"', 'src="smart-search-data-p13.js"'), ('src="app-v33.js"', 'src="app-v40.js"')]:
+for a, b in [('src="data-a1-86ff68ddc9ac.js"', 'src="data-p14.js"'), ('src="smart-search-data-a1-a38a2a2b2391.js"', 'src="smart-search-data-p14.js"'), ('src="app-v33.js"', 'src="app-v40.js"')]:
     assert idx.count(a) == 1, a; idx = idx.replace(a, b)
 (OUT / "index.html").write_text(idx, encoding="utf-8")
 (OUT / ".nojekyll").write_text("")

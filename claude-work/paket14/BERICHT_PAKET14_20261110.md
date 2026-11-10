@@ -32,3 +32,9 @@ Nicht in diesem Paket: Gestaltung (Owner: «Ästhetik … später, erst die Tech
 
 ## 6. Drift-Prüfung
 Nur E105 und E106 umgesetzt. Keine Gestaltungsänderung, keine Datenänderung.
+
+## 7. Ergänzung 10.11.: Daten OFFER-MEDIENCAMPUS-039 (E107)
+- Owner-Test: «was gibt es für Redaktionsmanagement für 9000 CHF» zeigt «Modernes Redaktionsmanagement» (Mediencampus) ohne Preis. Auftrag: aktualisieren.
+- Anbieterseite https://www.mediencampus.ch/cmf04-modernes-redaktionsmanagement.html, abgerufen 10.11. [GELESEN]: Kursgeld «Fr. 1'150.-, 1 Tag Privatseminar»; Kursdaten «Privatseminar»; MWST, Ort, Termine nicht genannt.
+- Nachgeführt mit Herkunft (`config/korrekturen.csv`, `scripts/build_daten_p14.py`): `data-p14.js` Preis «CHF 1'150», Kategorie 501–2000, Dauer «1 Tag», Prüfdatum 10.11.2026; `out/smart-search-data-p14.json` Preis EXACT 1'150 CHF regulär. Ort, Termin, Format bleiben «auf Anfrage» bzw. «keine Angabe».
+- Tests: `test_paket14.js` 7/7 (neu P07: Kurs erscheint bei «Redaktionsmanagement für 9000 CHF» mit CHF 1'150 «im Budget»); Stufe 1 35 PASS, 0 FAIL, 4 später; Stufe 2 10 PASS, 0 FAIL. `docs/` neu (data-p14, smart-p14). Master: Nachtrag offen (wie E098/E103).

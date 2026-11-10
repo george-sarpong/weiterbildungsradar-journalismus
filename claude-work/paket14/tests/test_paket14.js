@@ -12,16 +12,23 @@ const check = (id, name, ok, detail = "") => { ok ? pass++ : fail++; console.log
 { const files = ["app-v40.js", "methodik.html"], before = files.map(f => sha(read(path.join(W14, f))));
   const r = spawnSync("python3", ["-I", "paket14/scripts/port_p14.py"], { cwd: CW });
   check("P01", "Port-Skript reproduziert app-v40.js und methodik.html byte-identisch", r.status === 0 && files.every((f, i) => sha(read(path.join(W14, f))) === before[i])); }
-{ const same = ["index.html", "datenschutz.html", "impressum.html", "404.html", "data-p13.js"].every(f => sha(read(path.join(W13, f))) === sha(read(path.join(W14, f))));
-  check("P02", "Übrige Dateien und Daten = Paket 13; Methodik = Paket 10 (Satz zu «Laut Anbieter» entfernt, E105)",
-    same && sha(read(path.join(W14, "methodik.html"))) === sha(read(path.join(W10, "methodik.html")))); }
+{ const same = ["index.html", "datenschutz.html", "impressum.html", "404.html"].every(f => sha(read(path.join(W13, f))) === sha(read(path.join(W14, f))));
+  const P = js => JSON.parse(js.slice(js.indexOf("=") + 1).trim().replace(/;$/, ""));
+  const a = P(read(path.join(W13, "data-p13.js"))), b = P(read(path.join(W14, "data-p14.js"))), diffs = [];
+  a.forEach((o, i) => { for (const k of new Set([...Object.keys(o), ...Object.keys(b[i])])) if (JSON.stringify(o[k]) !== JSON.stringify(b[i][k])) diffs.push(`${o.id}.${k}`); });
+  const sa = JSON.parse(read(path.join(CW, "paket3/out/merge_kandidat_smart.json"))).byId, sb = JSON.parse(read(path.join(CW, "paket14/out/smart-search-data-p14.json"))).byId;
+  const sd = Object.keys(sa).filter(k => JSON.stringify(sa[k]) !== JSON.stringify(sb[k]));
+  const r = spawnSync("python3", ["-I", "paket14/scripts/build_daten_p14.py"], { cwd: CW });
+  check("P02", "Übrige Seiten = Paket 13, Methodik = Paket 10 (E105); Daten nur OFFER-MEDIENCAMPUS-039 Preis, Kategorie, Dauer, Prüfdatum mit Herkunft (E107); Skript reproduzierbar",
+    same && sha(read(path.join(W14, "methodik.html"))) === sha(read(path.join(W10, "methodik.html"))) && r.status === 0
+    && diffs.sort().join() === ["approved", "duration", "korrekturen", "priceCategory", "priceDisplay"].map(f => "OFFER-MEDIENCAMPUS-039." + f).join() && sd.join() === "OFFER-MEDIENCAMPUS-039", diffs.join(", ")); }
 
 const app = (appFile) => {
   const dom = new JSDOM(read(path.join(W14, "index.html")).replace(/<script[^>]*src=[^>]*><\/script>/g, ""), { runScripts: "outside-only", url: "https://mediaskills.ch/", pretendToBeVisual: true });
   const w = dom.window, RealDate = w.Date, fixed = new RealDate(`${T}T12:00:00+01:00`).getTime();
   w.Date = class extends RealDate { constructor(...a) { super(...(a.length ? a : [fixed])); } static now() { return fixed; } };
-  w.eval(read(path.join(W13, "data-p13.js")));
-  w.eval(`window.MEDIA_SKILLS_SMART_DATA = ${read(path.join(CW, "paket3/out/merge_kandidat_smart.json"))};`);
+  w.eval(read(path.join(W14, "data-p14.js")));
+  w.eval(`window.MEDIA_SKILLS_SMART_DATA = ${read(path.join(CW, "paket14/out/smart-search-data-p14.json"))};`);
   w.eval(read(appFile));
   const ask = q => { w.document.querySelector("#smartInput").value = q;
     w.document.querySelector("#smartSearchForm").dispatchEvent(new w.Event("submit", { bubbles: true, cancelable: true }));
@@ -39,6 +46,8 @@ const A = app(path.join(W14, "app-v40.js")), B = app(path.join(W13, "app-v39.js"
 { const qs = ["Datenjournalismus, CHF 800", "Video, CHF 500", "Moderation, 1000 Euro", "Podcast produzieren, online", "Mobile Reporting, unter CHF 300", "KI im Journalismus, Zürich", "Datenvisualisierung kostenlos", "500 Euro"];
   const diff = qs.filter(q => { const a = A.ask(q), b = B.ask(q); return a.n !== b.n || a.chips !== b.chips || a.cards.join("|") !== b.cards.join("|"); });
   check("P05", "Ohne «oder» gleiche Treffer, Zahlen und Karten wie Paket 13", diff.length === 0, diff.join(", ")); }
+{ const r = A.ask("was gibt es für Redaktionsmanagement für 9000 CHF"), card = r.cards.find(c => /Modernes Redaktionsmanagement/.test(c)) || "";
+  check("P07", "«Redaktionsmanagement für 9000 CHF»: CMF.04 mit CHF 1'150 im Budget (E107)", /1.150/.test(card) && /im Budget/.test(card), card.slice(0, 200)); }
 { const a = A.ask("Podcast oder Video, online"), p = A.ask("Podcast, online").n, v = A.ask("Video, online").n;
   check("P06", "«oder» mit harter Bedingung: Bedingung gilt für beide Alternativen", a.n > 0 && a.n <= p + v && a.n >= Math.max(p, v), `${a.n} (Podcast ${p}, Video ${v})`); }
 console.log(`\nPaket 14 (${T}): ${pass} PASS, ${fail} FAIL`);

@@ -1,5 +1,5 @@
 {
- "datum": "2026-11-10T12:23:33.079Z",
+ "datum": "2026-11-10T12:33:50.703Z",
  "sichtbar": "1068 von 1068 aktuellen Angeboten",
  "karten": 1068,
  "beispiele": {
@@ -7,10 +7,11 @@
   "LI": "LI-REG-001",
   "Online": "V82-DAWAN-065",
   "AnbDE": "OFFER-DJA-008",
-  "KA": "AT-PROD-OFFER-011",
-  "Mediencampus": "OFFER-MEDIENCAMPUS-048"
+  "KA": "OFFER-MEDIENCAMPUS-039",
+  "Mediencampus": "OFFER-MEDIENCAMPUS-039"
  },
  "laenderBadges": [
+  "Ort: keine Angabe · auf Anfrage | Anbieterland: keine Angabe | CH-Zugang: keine Angabe",
   "Ort: Österreich · Wien | Anbieterland: keine Angabe | CH-Zugang: keine Angabe",
   "Ort: Online · ONLINE / Distance | Anbieterland: keine Angabe | CH-Zugang: keine Angabe",
   "Ort: Schweiz · Fernkurs / Präsenzseminare in der Schweiz | Anbieterland: keine Angabe | CH-Zugang: ja (Ort in der Schweiz)",
@@ -21,8 +22,7 @@
   "Ort: Liechtenstein · Schaan | Anbieterland: keine Angabe | CH-Zugang: keine Angabe",
   "Ort: Online | Anbieterland: keine Angabe | CH-Zugang: keine Angabe",
   "Ort: Liechtenstein · Vaduz | Anbieterland: keine Angabe | CH-Zugang: keine Angabe",
-  "Ort: Schweiz · Yverdon-les-Bains / Sainte-Croix / Payerne / Online | Anbieterland: keine Angabe | CH-Zugang: ja (Ort in der Schweiz)",
-  "Ort: keine Angabe | Anbieterland: keine Angabe | CH-Zugang: keine Angabe"
+  "Ort: Schweiz · Yverdon-les-Bains / Sainte-Croix / Payerne / Online | Anbieterland: keine Angabe | CH-Zugang: ja (Ort in der Schweiz)"
  ],
  "smart": [
   {
@@ -221,7 +221,7 @@
    "id": "S3",
    "name": "Browser: keine Cookies; localStorage erst nach Merken, nur weiterbildungsradar:favorites:v1",
    "status": "PASS",
-   "detail": "Cookies 0 · localStorage vor Merken [] · nach Merken [\"weiterbildungsradar:favorites:v1\"] = {\"weiterbildungsradar:favorites:v1\":\"[\\\"AT-PROD-OFFER-011\\\"]\"}"
+   "detail": "Cookies 0 · localStorage vor Merken [] · nach Merken [\"weiterbildungsradar:favorites:v1\"] = {\"weiterbildungsradar:favorites:v1\":\"[\\\"OFFER-MEDIENCAMPUS-039\\\"]\"}"
   },
   {
    "id": "F11",
@@ -251,7 +251,7 @@
    "id": "LB",
    "name": "Länder-Badges Ort / Anbieterland / CH-Zugang: je Karte genau drei, sichtbar, nicht abgeschnitten (Desktop, Handy hoch/quer, Tablet)",
    "status": "PASS",
-   "detail": "Desktop 1068 Karten; Handy hoch 1068, Handy quer 1068, Tablet hoch 1068 · Befunde 0 · Beispiele: Ort: Österreich · Wien | Anbieterland: keine Angabe | CH-Zugang: keine Angabe ‖ Ort: Online · ONLINE / Distance | Anbieterland: keine Angabe | CH-Zugang: keine Angabe ‖ Ort: Schweiz · Fernkurs / Präsenzseminare in der Schweiz | Anbieterland: keine Angabe | CH-Zugang: ja (Ort in der Schweiz) ‖ Ort: Österreich · Wien + Online | Anbieterland: keine Angabe | CH-Zugang: keine Angabe ‖ Ort: Schweiz · Zürich / einzelne Online-Lektionen | Anbieterland: keine Angabe | CH-Zugang: ja (Ort in der Schweiz) ‖ Ort: Liechtenstein · Vaduz / Universität Liechtenstein | Anbieterland: keine Angabe | CH-Zugang: keine Angabe"
+   "detail": "Desktop 1068 Karten; Handy hoch 1068, Handy quer 1068, Tablet hoch 1068 · Befunde 0 · Beispiele: Ort: keine Angabe · auf Anfrage | Anbieterland: keine Angabe | CH-Zugang: keine Angabe ‖ Ort: Österreich · Wien | Anbieterland: keine Angabe | CH-Zugang: keine Angabe ‖ Ort: Online · ONLINE / Distance | Anbieterland: keine Angabe | CH-Zugang: keine Angabe ‖ Ort: Schweiz · Fernkurs / Präsenzseminare in der Schweiz | Anbieterland: keine Angabe | CH-Zugang: ja (Ort in der Schweiz) ‖ Ort: Österreich · Wien + Online | Anbieterland: keine Angabe | CH-Zugang: keine Angabe ‖ Ort: Schweiz · Zürich / einzelne Online-Lektionen | Anbieterland: keine Angabe | CH-Zugang: ja (Ort in der Schweiz)"
   },
   {
    "id": "S1",

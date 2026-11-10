@@ -18,7 +18,7 @@ function pruefstand() {
   for (const f of fs.readdirSync(LIVE)) if (!/^(SHA256SUMS|README)/.test(f)) fs.copyFileSync(path.join(LIVE, f), path.join(dir, f));
   for (const f of fs.readdirSync(WEB)) if (f !== "index.html" && !/^data-p\d+\.js$/.test(f)) fs.copyFileSync(path.join(WEB, f), path.join(dir, f));
   fs.copyFileSync(DATAFILE, path.join(dir, "data-p7.js"));
-  fs.writeFileSync(path.join(dir, "smart-search-data-p7.js"), `window.MEDIA_SKILLS_SMART_DATA = ${fs.readFileSync(path.join(CW, "paket3/out/merge_kandidat_smart.json"), "utf8")};\n`);
+  fs.writeFileSync(path.join(dir, "smart-search-data-p7.js"), `window.MEDIA_SKILLS_SMART_DATA = ${fs.readFileSync(process.env.SMART ? path.resolve(process.env.SMART) : path.join(CW, "paket3/out/merge_kandidat_smart.json"), "utf8")};\n`);
   const idx = fs.readFileSync(path.join(WEB, "index.html"), "utf8")
     .replace('src="data-a1-86ff68ddc9ac.js"', 'src="data-p7.js"').replace('src="smart-search-data-a1-a38a2a2b2391.js"', 'src="smart-search-data-p7.js"').replace('src="app-v33.js"', `src="${APPNAME}"`);
   if (!idx.includes(`src="${APPNAME}"`) || !/src="data-p7\.js"/.test(idx)) throw new Error("Skript-Verweise im Prüfstand nicht ersetzt");

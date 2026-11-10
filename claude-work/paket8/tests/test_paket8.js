@@ -20,7 +20,7 @@ const read = p => fs.readFileSync(p, "utf8");
 const APP = read(path.join(WEB, APPNAME)), INDEX = read(path.join(WEB, "index.html"));
 const DATA_JS = read(process.env.DATA ? path.resolve(ROOT, process.env.DATA) : path.join(W7, "data-p7.js")); // Paket 13: DATA=claude-work/paket13/website/data-p13.js
 const DATA = JSON.parse(DATA_JS.slice(DATA_JS.indexOf("["), DATA_JS.lastIndexOf("]") + 1));
-const SMART = JSON.parse(read(path.join(P3, "merge_kandidat_smart.json")));
+const SMART = JSON.parse(read(process.env.SMART ? path.resolve(ROOT, process.env.SMART) : path.join(P3, "merge_kandidat_smart.json"))); // Paket 14: SMART=claude-work/paket14/out/smart-search-data-p14.json
 const T = process.env.STICHTAG || "2026-11-09";
 const strip = html => html.replace(/<script src="[^"]+"><\/script>/g, "");
 const dataJs = offers => `window.WEITERBILDUNGSRADAR_OFFERS = ${JSON.stringify(offers)};`;
