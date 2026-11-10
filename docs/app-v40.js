@@ -597,12 +597,6 @@
     return `<a class="source-link" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(label)}: ${escapeHtml(offer.title)} öffnen">${escapeHtml(label)} <span aria-hidden="true">↗</span></a>`;
   };
 
-  // E096 (Owner 10.11.): Beschreibung kurz als Anbietertext kennzeichnen, Link zur Angebotsseite (E038, E089).
-  const descriptionSource = offer => {
-    const href = safeOfferHref(offer.url);
-    if (!href) return '<span class="description-source">Laut Anbieter.</span>';
-    return `<a class="description-source" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer" aria-label="Laut Anbieter: Angebotsseite zu ${escapeHtml(offer.title)} öffnen">Laut Anbieter <span aria-hidden="true">↗</span></a>`;
-  };
   // E100 (Owner 10.11.): Niveau ohne Angabe mit Feldname, wie E093.
   const levelBadge = offer => {
     const label = labels.level[offer.level] ?? offer.level;
@@ -649,7 +643,7 @@
           ${fact("Dauer", neutralMissing(readableCodes(offer.duration), "Dauer"))}
           ${fact("Start", neutralMissing(readableCodes(publicStart(offer)), "Start"))}
         </dl>
-        <p class="card-description">${escapeHtml(offer.description)} ${descriptionSource(offer)}</p>
+        <p class="card-description">${escapeHtml(offer.description)}</p>
         <p class="access"><strong>Zugang:</strong> ${escapeHtml(compactAccess(offer))}</p>
         <div class="badges" aria-label="Angebotsart und weitere Eigenschaften">
           <span class="badge badge-type">${escapeHtml(labels.offerType[offer.offerType] ?? offer.offerType)}</span>
@@ -707,7 +701,9 @@
     "gratis", "kostenlos", "kostenfrei",
     // MS-38: non-topic words in natural-language German questions.
     "gerne", "uber", "interessiere", "welche", "gibt", "es", "was", "bin",
-    "weiterbildungen", "verbessern"
+    "weiterbildungen", "verbessern",
+    // E106 (Owner 10.11.): Füllverben in Sätzen wie «… machen für 2000 CHF»
+    "machen", "besuchen", "belegen", "absolvieren"
   ]);
 
   const smartNumber = raw => {
@@ -882,12 +878,17 @@
       .replace(/\bohne\s+prae?senz\b|\bkein(?:e|en)?\s+prae?senz(?:kurs)?\b/g, " ")
       .replace(/\bnur\s+prae?senz\b|\b100\s*%\s+(?:vor\s+ort|prae?senz)\b|\b(?:ohne|kein(?:e|en)?)\s+online(?:[- ]?anteil)?\b/g, " ")
       .replace(/\blive\s+online\b|\bonline\s+live\b|\bon[- ]?demand\b|\bself[- ]?paced\b|\bself[- ]?study\b|\bim\s+eigenen\s+tempo\b/g, " ");
-    const tokens = tokenSource.split(/[^a-z0-9äöüß]+/i)
+    const topicTokensOf = text => text.split(/[^a-z0-9äöüß]+/i)
       .map(token => token.trim())
       .filter(token => token.length >= 2
         && !SMART_STOPWORDS.has(token)
         && !SMART_FREE_TOKEN_RE.test(token)
         && !/^\d+$/.test(token));
+    const tokens = topicTokensOf(tokenSource);
+    // E106: «oder» trennt Themen-Alternativen; innerhalb einer Alternative müssen alle Wörter passen.
+    const tokenGroups = tokenSource.split(/\boder\b/)
+      .map(part => [...new Set(topicTokensOf(part))])
+      .filter(group => group.length);
     return {
       raw: String(raw ?? "").trim(),
       budget,
@@ -898,7 +899,8 @@
       deliveryOrGroup,
       language,
       freeOnly,
-      tokens: [...new Set(tokens)]
+      tokens: [...new Set(tokens)],
+      tokenGroups: tokenGroups.length > 1 ? tokenGroups : [[...new Set(tokens)]]
     };
   };
 
@@ -915,10 +917,11 @@
     if (!parsed.tokens.length) return { match: true, score: 0 };
     const title = normalize(offer.title);
     const haystack = smartHaystack(offer);
-    const allMatch = parsed.tokens.every(token => topicTokenOccurs(haystack, token));
-    if (!allMatch) return { match: false, score: 0 };
-    const score = parsed.tokens.reduce((sum, token) => sum + (topicTokenOccurs(title, token) ? 8 : 2), 0);
-    return { match: true, score };
+    const groupScores = parsed.tokenGroups
+      .filter(group => group.every(token => topicTokenOccurs(haystack, token)))
+      .map(group => group.reduce((sum, token) => sum + (topicTokenOccurs(title, token) ? 8 : 2), 0));
+    if (!groupScores.length) return { match: false, score: 0 };
+    return { match: true, score: Math.max(...groupScores) };
   };
 
   const getSmartRecord = offer => SMART_DATA.byId[offer.id] || null;
@@ -1316,9 +1319,14 @@
     return { offer, record, delivery, budget, free, score };
   };
 
+  const topicLabel = parsed => parsed.tokenGroups.map(group => group.join(" + ")).join(" oder ");
   const smartWhy = (item, parsed) => {
     const reasons = [];
-    if (parsed.tokens.length) reasons.push(parsed.tokens.join(" + "));
+    if (parsed.tokens.length) {
+      const haystack = smartHaystack(item.offer);
+      const hit = parsed.tokenGroups.find(group => group.every(token => topicTokenOccurs(haystack, token)));
+      reasons.push((hit || parsed.tokens).join(" + "));
+    }
     if (parsed.language) reasons.push(`Sprache: ${SMART_LANGUAGE_LABELS[parsed.language]}`);
     if (parsed.deliveryIntents.length) reasons.push("Durchführungsform verifiziert");
     if (parsed.budget) reasons.push(budgetLabel(item.budget));
@@ -1473,7 +1481,7 @@
     });
 
     const chips = [];
-    if (parsed.tokens.length) chips.push(`Thema: ${parsed.tokens.join(" + ")}`);
+    if (parsed.tokens.length) chips.push(`Thema: ${topicLabel(parsed)}`);
     if (parsed.language) chips.push(`Sprache: ${SMART_LANGUAGE_LABELS[parsed.language]}`);
     if (parsed.budget) chips.push(`Budget: ${parsed.budget.currency} ${parsed.budget.amount.toLocaleString("de-CH")}`);
     if (parsed.unappliedBudget) chips.push(`Budget: EUR ${parsed.unappliedBudget.amount.toLocaleString("de-CH")} · erkannt, nicht angewendet`);

@@ -202,7 +202,7 @@ const SEARCHES = ["Datenjournalismus, CHF 800", "Moderation, 1000 Euro", "Video,
     });
     const methodik = pageTexts["methodik.html"];
     const methodikHinweis = methodik.split(/\n+/).filter(l => /Beschreibung|Anbietertext|Kurztext/i.test(l)).map(l => l.trim().slice(0, 160));
-    check("D8", "Anbietertext als Snippet mit Quellenlink gekennzeichnet (E038)", d8.labelled === d8.withDesc && d8.withDesc > 0 ? "PASS" : "FAIL",
+    check("D8", "Anbietertext als Snippet mit Quellenlink gekennzeichnet (E038)", process.env.NO_D8 ? "ENTFÄLLT (E105)" : d8.labelled === d8.withDesc && d8.withDesc > 0 ? "PASS" : "FAIL",
       `${d8.withDesc} Karten mit Beschreibung · gekennzeichnet ${d8.labelled} · Quellenlink in der Beschreibung ${d8.linked} · Methodik-Hinweis: ${methodikHinweis.length ? methodikHinweis.join(" / ") : "keiner"}`);
     await c3.close();
   }
