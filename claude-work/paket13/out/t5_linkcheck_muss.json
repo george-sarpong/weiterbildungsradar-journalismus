@@ -1,0 +1,186 @@
+{
+ "datum": "2026-11-10",
+ "pruefling": "paket13 (app-v39.js, data-p13.js)",
+ "ergebnisse": {
+  "AT-PROD-OFFER-028": {
+   "url": "https://www.apa-campus.at/de/e/podcast-moderation-und-interviews-f%C3%BChren-672",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "AT-PROD-OFFER-037": {
+   "url": "https://oema.at/seminare/lehrgang-digital-media-kompakt/",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "AT-PROD-OFFER-039": {
+   "url": "https://oema.at/seminare/texte-redigieren/",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "AT-PROD-OFFER-041": {
+   "url": "https://oema.at/seminare/gute-texte-schreiben/",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "AT-PROD-OFFER-135": {
+   "url": "https://oema.at/seminare/bildgenerierung-videoproduktion-und-ki/",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "AT-PROD-OFFER-136": {
+   "url": "https://oema.at/seminare/medienrecht-ki-ki-kompakt/",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "AT-PROD-OFFER-139": {
+   "url": "https://www.fjum-wien.at/workshops/personal-branding-fuer-journalistinnen-6",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "AT-PROD-OFFER-140": {
+   "url": "https://www.fjum-wien.at/workshops/einfuehrung-in-agentische-ki-fuer-journalistinnen",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "AT-PROD-OFFER-147": {
+   "url": "https://academy.dossier.at/kurse/datenjournalismus-kompakt/",
+   "ergebnis": "OK (Abruf 10.11., Titel «DOSSIER · Academy: Datenjournalismus Kompakt»)"
+  },
+  "AT-PROD-OFFER-160": {
+   "url": "https://renner-institut.at/seminare/medienakademie-2026",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "AT-PROD-OFFER-165": {
+   "url": "https://radiofabrik.at/mitmachen/jobs-radiofabrik/",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "AT-PROD-OFFER-179": {
+   "url": "https://oema.at/seminare/linkedin-basics-eine-einfuehrung-in-das-business-social-media-2/",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "AT-PROD-OFFER-185": {
+   "url": "https://oema.at/seminare/social-media-update-aktuelle-trends-insights-2/",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "AT-PROD-OFFER-206": {
+   "url": "https://oema.at/seminare/linkedin-kompakt-fuer-medienmacherinnen-und-medienmacher-2/",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "AT-PROD-OFFER-223": {
+   "url": "https://www.fjum-wien.at/workshops/eigene-website-mit-ki-ohne-programmierkenntnisse",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "CH-CLEAN2-V11-D01": {
+   "url": "https://www.jjs.ch/events",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-BAUM-005": {
+   "url": "https://en.baumgartner-research.com/generative-ai-osint",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-BIG-006": {
+   "url": "https://learn.baselgovernance.org/course/index.php?categoryid=15",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-CFJM-013": {
+   "url": "https://www.cfjm.ch/model/formation-continue/fc-initiation-au-datajournalisme-mettre-les-donnees-au-service-de-l-information-15",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-CFJM-014": {
+   "url": "https://www.cfjm.ch/model/formation-continue/fc-creer-une-newsletter-pertinente-et-efficace-qui-trouve-son-audience-20",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-CFJM-015": {
+   "url": "https://www.cfjm.ch/model/formation-continue/fc-podcast-reportage-et-documentaire-22",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-DJA-009": {
+   "url": "https://deutschejournalistenakademie.de/lehrgang/datenjournalismus/",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-DJA-018": {
+   "url": "https://deutschejournalistenakademie.de/lehrgang/radiojournalismus/",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-EBU-020": {
+   "url": "https://academy.ebu.ch/preparing-your-move-to-live-ip-production",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-EBU-021": {
+   "url": "https://academy.ebu.ch/social-media-monitoring-ai-and-verification-for-breaking-news-research",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-EBU-022": {
+   "url": "https://academy.ebu.ch/the-modern-field-reporter-verification-live-reporting-and-multi-platform-storytelling-workshop",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-HDS-SAL-002": {
+   "url": "https://www.hds.ch/sprachberufe/lektorieren/",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-HEAD-002": {
+   "url": "https://head.hesge.ch/formations-recherche/creative-coding",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-HEAD-003": {
+   "url": "https://head.hesge.ch/formations/formations-continues/initiation-a-lintelligence-artificielle",
+   "ergebnis": "OK laut Owner 10.11. (E098)"
+  },
+  "OFFER-HEAD-004": {
+   "url": "https://head.hesge.ch/formations-recherche/intelligence-artificielle-niveau-avance-0",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-HEAD-005": {
+   "url": "https://head.hesge.ch/formations-recherche/comfyui-lintelligence-artificielle-open-source",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-HEAD-009": {
+   "url": "https://head.hesge.ch/formations-recherche/initiation-creation-podcast-documentaire-0",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-INVESTIGATIV-001": {
+   "url": "https://investigativ.ch/angebot/schulungen/",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-MAZ-002": {
+   "url": "https://www.maz.ch/kurs/audioradio-mit-audioinhalten-gehoert-werden-k",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-MAZ-006": {
+   "url": "https://www.maz.ch/kurs/audio-podcast-sounddesign",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-MAZ-007": {
+   "url": "https://www.maz.ch/kurs/audio-storytelling-masterclass-mit-franziska-engelhardt",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-MAZ-010": {
+   "url": "https://www.maz.ch/kurs/beitraege-fuer-online-aufbereiten-werkstatt",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-MAZ-030": {
+   "url": "https://www.maz.ch/kurs/die-wirkung-von-bildern-in-publikationen",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-MAZ-100": {
+   "url": "https://www.maz.ch/kurs/maz-thementagung-ki-im-journalismus",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-MAZ-132": {
+   "url": "https://www.maz.ch/kurs/punkten-auf-podien-als-moderator-als-teilnehmer",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-MEDIENCAMPUS-007": {
+   "url": "https://www.mediencampus.ch/nm04-crossmedia.html",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-MEDIENCAMPUS-057": {
+   "url": "https://www.mediencampus.ch/cmf06-videojournalismus-grundkurs.html",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-SAEZH-010": {
+   "url": "https://www.sae.edu/che/events/",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-SAEZH-011": {
+   "url": "https://www.sae.edu/che/event/design-animation-grafiken-und-typografie-in-bewegung-basics-2/",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  },
+  "OFFER-VSM-004": {
+   "url": "https://www.schweizermedien.ch/events/agenda/2027/2027-01-07-dreikoenigstagung-2027/",
+   "ergebnis": "OK (Seite mit Angebotstitel erreichbar)"
+  }
+ }
+}

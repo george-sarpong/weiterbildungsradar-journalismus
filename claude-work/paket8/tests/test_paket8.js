@@ -18,7 +18,7 @@ const WEB = path.resolve(ROOT, process.env.WEBSITE || path.join(CW, "paket7/webs
 const OUT = path.join(CW, "paket8/out", WEB === W7 ? "" : path.basename(path.dirname(WEB)));
 const read = p => fs.readFileSync(p, "utf8");
 const APP = read(path.join(WEB, APPNAME)), INDEX = read(path.join(WEB, "index.html"));
-const DATA_JS = read(path.join(W7, "data-p7.js"));
+const DATA_JS = read(process.env.DATA ? path.resolve(ROOT, process.env.DATA) : path.join(W7, "data-p7.js")); // Paket 13: DATA=claude-work/paket13/website/data-p13.js
 const DATA = JSON.parse(DATA_JS.slice(DATA_JS.indexOf("["), DATA_JS.lastIndexOf("]") + 1));
 const SMART = JSON.parse(read(path.join(P3, "merge_kandidat_smart.json")));
 const T = process.env.STICHTAG || "2026-11-09";
@@ -106,7 +106,7 @@ const run = (tid, q, w = W) => { const r = smart(w, q); F1[tid] = F1[tid] || [];
   const M = JSON.parse(execFileSync("python3", ["-I", "-c", `
 import csv,json,sys
 print(json.dumps({x['id']:{'markt':x['market'],'beta':x['beta_sichtbar'],'grund':x['beta_grund'],'pub':x['publikationsstatus']}
-   for x in csv.DictReader(open(sys.argv[1],encoding='utf-8-sig'))}))`, path.join(P3, "master_3818.csv")], { maxBuffer: 1 << 27 }).toString());
+   for x in csv.DictReader(open(sys.argv[1],encoding='utf-8-sig'))}))`, process.env.MASTER ? path.resolve(ROOT, process.env.MASTER) : path.join(P3, "master_3818.csv")], { maxBuffer: 1 << 27 }).toString());
   const vis = new Set(CARDS.map(c => c.id));
   const notInMaster = DATA.filter(o => !M[o.id]);
   const wrongMarket = DATA.filter(o => M[o.id] && !["CH", "AT", "LI"].includes(M[o.id].markt));
