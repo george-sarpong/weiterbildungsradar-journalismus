@@ -149,7 +149,7 @@ const NOT_PUB = /nicht publiziert/i;
   const smRaw = sm.flatMap(r => r.res.flatMap(c => c.meta.filter(m => RAW.test(m)).map(m => `${c.ids[0]} «${m}»`)));
   check("D5c", "Keine Rohcodes in den Smart-Karten (Stichprobe 4 Anfragen)", smRaw.length === 0, smRaw.length ? list(smRaw, 3) : "");
   results.push({ id: "D5-Hinweis", status: "INFO", detail: `«nicht erfasst» vs. «Nicht publiziert»: ` + Object.entries(notPub).map(([k, n]) => `${k} ${n}`).join(", ") });
-  console.log(`INFO D5-Hinweis Fehlende Angaben heissen auf Karten «Nicht publiziert» u. ä., nicht «nicht erfasst»: ${Object.entries(notPub).map(([k, n]) => `${k} ${n}`).join(", ")}`);
+  console.log(`INFO D5-Hinweis Kartenangaben mit «nicht publiziert» (E087, E093): ${Object.entries(notPub).map(([k, n]) => `${k} ${n}`).join(", ")}`);
 }
 
 // ======== F1 Testfragen T01–T20 (Vorlage §2.7, E077) ========
