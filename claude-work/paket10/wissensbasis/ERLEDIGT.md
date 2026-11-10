@@ -29,6 +29,7 @@ Entscheid-IDs (E…) verweisen auf `ENTSCHEIDUNGSREGISTER.csv`.
 | Nachtrag Paket 8 im GESAMTWISSENSSTAND und in K, L | Bestätigt (E085) | Owner 10.11. [OWNER] |
 | Befunde Paket 8 (D5, T14b, B1, Hinweise) | Empfehlungen angenommen: Rohcodes übersetzen, «nicht erfasst», T14b später mit E058, Linknamen, ohne Optionsnummer, kein `?q=`, Reihenfolge Journalist:innen-Tarif bleibt (E086–E092) | Owner 10.11. [OWNER] |
 | Wortlaut fehlender Angaben | Überall «keine Angabe», ausgeschrieben; «X nicht publiziert» → «X: keine Angabe»; löst «nicht erfasst» ab (E093) | Owner 10.11. [OWNER] |
+| Nachträge Paket 9 und 10 im GESAMTWISSENSSTAND und in M, N | Bestätigt (E094) | Owner 10.11. [OWNER] |
 
 ## B. Keine offenen Fehlermengen (historische Zähler, nicht neu abarbeiten)
 
@@ -144,7 +145,7 @@ Nicht live. PR10 ist Quellenmaterial (E033). Über die Übernahme entscheidet de
 | Trefferlisten F1 | erster Lauf festgehalten: `paket8/out/f1_trefferlisten_<Stichtag>.json` (Vorlage §2.7) | [GEPRÜFT] |
 | Nicht ausführbar hier | T5 Linkcheck (Anbieter-Websites aus der Arbeitsumgebung gesperrt) → Stufe 2 | Bericht Paket 8 §2 |
 
-## M. In Paket 9 gebaut (10.11., Claude; Commit 1397ace auf `claude/datenharmonisierung`; Nachtrag, Bestätigung durch Owner ausstehend)
+## M. In Paket 9 gebaut (10.11., Claude; Commit 1397ace auf `claude/datenharmonisierung`; Nachtrag bestätigt, E094)
 
 | Thema | Ergebnis | Beleg |
 |---|---|---|
@@ -152,7 +153,7 @@ Nicht live. PR10 ist Quellenmaterial (E033). Über die Übernahme entscheidet de
 | E089 Linknamen, E090 ohne Nummer, E091 kein `?q=` | app-v37.js; Logo-Link in index, methodik, datenschutz, impressum, 404 (`port_html_p9.py`, je 1 Zeile; Methodik-Satz E087) | Bericht Paket 9 §2 [GEPRÜFT] |
 | Tests | `paket9/tests/test_app_v37.js` 15/15 an beiden Stichtagen (3 Gegenproben); Testsatz Stufe 1 auf Paket 9 35 PASS, 0 FAIL, 4 später; Browser B1 PASS; Pakete 5–7 grün | Bericht Paket 9 §4 [GEPRÜFT] |
 
-## N. In Paket 10 gebaut (10.11., Claude; auf `claude/datenharmonisierung`; Nachtrag, Bestätigung durch Owner ausstehend)
+## N. In Paket 10 gebaut (10.11., Claude; Commit a65fcb0 auf `claude/datenharmonisierung`; Nachtrag bestätigt, E094)
 
 | Thema | Ergebnis | Beleg |
 |---|---|---|

@@ -1,6 +1,6 @@
 # GESAMTWISSENSSTAND mediaskills.ch – Fassung 1 + Nachträge Paket 3 bis 10, Stand 10.11.2026
 
-Status: **Vom Owner abgenommen 09.11.2026 (E049). Nachträge Paket 3 (§3, §4, §5 Punkt 6, §6, §9, §10) und Paket 4 (Owner-Entscheide E060–E071: §2 CH-Zugang, §3, §5 Punkt 4, §9, §10) vom Owner bestätigt 09.11.2026, mit Präzisierungen in §3, §5 Punkt 6 und §9 (E072). Nachträge Paket 5 (§4, §5 Punkt 6, §9, §10) und Paket 6 (§4, §5 Punkte 1–3, §9, §10) vom Owner bestätigt 09.11.2026 (E073).** Nachtrag Paket 7 (§2, §4, §5, §6, §7, §9, §10; Owner-Entscheide E081, E082) **bestätigt 10.11.2026 (E083, an Claude delegiert)**. Nachtrag Paket 8 (§2, §4, §5, §6, §7, §9, §10; E083, E084) **bestätigt 10.11.2026 (E085)**. Nachtrag Paket 9 (§2, §4, §5, §6, §7, §9, §10; E085–E092) vom 10.11.2026 und Nachtrag Paket 10 (§2, §4, §5, §9, §10; E093): **Bestätigung durch den Owner ausstehend** (§10 Punkt 11). Dieses Dokument ersetzt `claude/STATUS_20261109.md` als Einstieg für jeden neuen Chat.
+Status: **Vom Owner abgenommen 09.11.2026 (E049). Nachträge Paket 3 (§3, §4, §5 Punkt 6, §6, §9, §10) und Paket 4 (Owner-Entscheide E060–E071: §2 CH-Zugang, §3, §5 Punkt 4, §9, §10) vom Owner bestätigt 09.11.2026, mit Präzisierungen in §3, §5 Punkt 6 und §9 (E072). Nachträge Paket 5 (§4, §5 Punkt 6, §9, §10) und Paket 6 (§4, §5 Punkte 1–3, §9, §10) vom Owner bestätigt 09.11.2026 (E073).** Nachtrag Paket 7 (§2, §4, §5, §6, §7, §9, §10; Owner-Entscheide E081, E082) **bestätigt 10.11.2026 (E083, an Claude delegiert)**. Nachtrag Paket 8 (§2, §4, §5, §6, §7, §9, §10; E083, E084) **bestätigt 10.11.2026 (E085)**. Nachträge Paket 9 (§2, §4, §5, §6, §7, §9, §10; E085–E092) und Paket 10 (§2, §4, §5, §9, §10; E093) **bestätigt 10.11.2026 (E094)**. Dieses Dokument ersetzt `claude/STATUS_20261109.md` als Einstieg für jeden neuen Chat.
 Lesereihenfolge: dieses Dokument → `ENTSCHEIDUNGSREGISTER.csv` → `ERLEDIGT.md` → `VORLAGE_TESTKRITERIEN_MESSUNG_20261109.md` → `BERICHT_PAKET10_20261110.md` → `BERICHT_PAKET9_20261110.md` → bei Bedarf `BERICHT_PAKET8_20261110.md`, `BERICHT_PAKET7_20261110.md`, `BERICHT_PAKET6_20261109.md`, `BERICHT_PAKET5_20261109.md`, `BERICHT_PAKET4_20261109.md`, `BERICHT_PAKET3_20261109.md`, `QUELLENVERZEICHNIS.md`, `WIDERSPRUECHE.md`.
 Vorrang: jüngster datierter Owner-Entscheid im Register. Alles ältere Material (Projektbibel, Control Plane, MS_S00, Claim-Register, Handoff Phase A, CP01, ChatGPT-Übergabe) ist **Archiv**: Beleg, kein Auftrag.
 Beleg: [OWNER] · [GEPRÜFT] von Claude gezählt/gerechnet · [GELESEN] Original gelesen · [CHATGPT] nur Übergabe · [NOTIZ] frühere Claude-Chats, Original nicht gelesen. E… = Register-ID.
@@ -121,7 +121,7 @@ Bis zur Beta offen (Owner wählt die Reihenfolge): Vorabprüfung im Browser (Stu
 
 ## 10. Offene Owner-Entscheide
 
-Entschieden am 09.11.: E049–E059 (Paket-2-Chat), E060–E071 (Paket-4-Chat), E072 (Nachträge Paket 3 und 4 bestätigt), E073 (Nachträge Paket 5 und 6 bestätigt), E074–E080 (Vorlage O1–O5, Währungshinweis, Restbetrag). Am 10.11.: E081, E082 (Länderfilter nach Durchführungsort, Anbieterland «nicht erfasst»), E083 (Nachtrag Paket 7 bestätigt), E084 (MWST «UNSPECIFIED» bei Spannen); E083 und E084 an Claude delegiert, nachjustierbar; E085 (Nachtrag Paket 8 bestätigt), E086–E092 (Befunde Paket 8, Empfehlungen angenommen), E093 («keine Angabe»). Noch offen:
+Entschieden am 09.11.: E049–E059 (Paket-2-Chat), E060–E071 (Paket-4-Chat), E072 (Nachträge Paket 3 und 4 bestätigt), E073 (Nachträge Paket 5 und 6 bestätigt), E074–E080 (Vorlage O1–O5, Währungshinweis, Restbetrag). Am 10.11.: E081, E082 (Länderfilter nach Durchführungsort, Anbieterland «nicht erfasst»), E083 (Nachtrag Paket 7 bestätigt), E084 (MWST «UNSPECIFIED» bei Spannen); E083 und E084 an Claude delegiert, nachjustierbar; E085 (Nachtrag Paket 8 bestätigt), E086–E092 (Befunde Paket 8, Empfehlungen angenommen), E093 («keine Angabe»), E094 (Nachträge Paket 9 und 10 bestätigt). Noch offen:
 1. erledigt: in der Beta keine Messung, später (E075).
 2. **Übergabe-ZIP V4.1** hier anhängen oder Teil-ZIPs einzeln in Drive (für 191/116-Aufteilung und V288-Provenienz).
 3. erledigt (E073).
@@ -132,4 +132,4 @@ Entschieden am 09.11.: E049–E059 (Paket-2-Chat), E060–E071 (Paket-4-Chat), E
 8. erledigt (E084).
 9. erledigt (E085).
 10. erledigt (E086–E092).
-11. **Nachträge Paket 9 und 10** in diesem Dokument (§2, §4, §5, §6, §7, §9, §10), in `ERLEDIGT.md` A, L, M, N und im Register (E036, E039, E077, E082 Bemerkungen; E087 abgelöst; E085–E093) bestätigen.
+11. erledigt (E094).
