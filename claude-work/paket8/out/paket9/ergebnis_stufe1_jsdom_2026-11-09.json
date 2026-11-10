@@ -1,0 +1,256 @@
+[
+ {
+  "id": "D2a",
+  "name": "Website-Daten = 1'352 Master-Zeilen CH/AT/LI; keine DE/USA-Zeile (E074), also auch keine E067/E068-Zeile",
+  "status": "PASS",
+  "detail": "1352 Zeilen"
+ },
+ {
+  "id": "D2b",
+  "name": "Keine sichtbare Karte mit beta_sichtbar NEIN (u. a. 46 HOLD)",
+  "status": "PASS",
+  "detail": "46 NEIN-Zeilen, alle unsichtbar"
+ },
+ {
+  "id": "D2c",
+  "name": "Keine sichtbare HOLD-Zeile (E063, E071)",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "id": "D2d",
+  "name": "beta_sichtbar JA, aber unsichtbar nur wegen Termin am Stichtag (E014); Referenz unabhängig",
+  "status": "PASS",
+  "detail": "1071 sichtbar, 235 JA-Zeilen wegen vergangenem Termin ausgeblendet"
+ },
+ {
+  "id": "D5a",
+  "name": "Keine Kartenangabe leer, «undefined», «null» oder «NaN» (Fakten, Badges, Zugang)",
+  "status": "PASS",
+  "detail": "1071 Karten"
+ },
+ {
+  "id": "D5b",
+  "name": "Keine Rohcodes (z. B. NOT_PUBLISHED, ON_REQUEST) statt einer lesbaren Angabe auf den Karten",
+  "status": "PASS",
+  "detail": "0 Karten: "
+ },
+ {
+  "id": "D5c",
+  "name": "Keine Rohcodes in den Smart-Karten (Stichprobe 4 Anfragen)",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "id": "D5-Hinweis",
+  "status": "INFO",
+  "detail": "«nicht erfasst» vs. «Nicht publiziert»: Zugang 110, Start 248, Dauer 93, Ort 64, Preis 2"
+ },
+ {
+  "id": "F1/T01",
+  "name": "«Datenjournalismus, CHF 800, 2 Tage»: «im Budget» nur mit belegtem unbedingtem Preis ≤ 800; höchstens 3 Optionen; Dauer erkannt, nicht als Hartfilter",
+  "status": "PASS",
+  "detail": "11 Treffer, gezeigt 3: OFFER-DJA-009 (im Budget), AT-PROD-OFFER-026 (im Budget), OFFER-INVESTIGATIV-001 (im Budget)"
+ },
+ {
+  "id": "F1/T01-Dauer",
+  "name": "Dauer als Trefferklasse, Kurse ohne Dauer als eigene Gruppe (E058)",
+  "status": "SPÄTER",
+  "detail": "E058 nach der Beta (E074)"
+ },
+ {
+  "id": "F1/T02",
+  "name": "Budget CHF 800, OFFER-DJA-009 (EUR 480–512): direkter Treffer mit 1:1-Hinweis (E051, E037)",
+  "status": "PASS",
+  "detail": "Bei der Preisobergrenze bleiben CHF 288. Währungen EUR/CHF/U"
+ },
+ {
+  "id": "F1/T03",
+  "name": "Budget 511 / 512 / 513: «könnte ins Budget passen» / direkt / direkt (E051)",
+  "status": "PASS",
+  "detail": "könnte ins Budget passen / im Budget / im Budget"
+ },
+ {
+  "id": "F1/T04",
+  "name": "«500 Euro»: Budget EUR 500 erkannt, Vergleich 1:1 mit Hinweis; Budgetaussagen belegt",
+  "status": "PASS",
+  "detail": "1071 Treffer; gezeigt: Journalist:innen-Tarif im Budget / Journalist:innen-Tarif im Budget / Journalist:innen-Tarif im Budget"
+ },
+ {
+  "id": "F1/T05",
+  "name": "GBP-Preis: keine Budgetaussage (E009); synthetischer Fall, im Bestand 0 GBP-Preise",
+  "status": "PASS",
+  "detail": "0 GBP im Bestand; Status «Preis nicht sicher vergleichbar»"
+ },
+ {
+  "id": "F1/T06",
+  "name": "«kostenlos»: Bezeichnungen nach E057; «Kostenlos» nur mit unbedingtem Gratis-Tarif",
+  "status": "PASS",
+  "detail": "23 Treffer: Kostenlos / Kostenlos / Kostenlos"
+ },
+ {
+  "id": "F1/T07",
+  "name": "Bedingter Tarif unter, Standardtarif über Budget: kein direkter Treffer, Tarif sichtbar und bezeichnet (E010, E039); 20 Fälle (PROFESSION, MEMBERSHIP, ALUMNI, UNKNOWN)",
+  "status": "PASS",
+  "detail": "Journalist:innen-Tarif im Budget 5, bedingter Tarif im Budget 9, könnte ins Budget passen 6"
+ },
+ {
+  "id": "F1/T08",
+  "name": "Vergangener Start ohne Enddatum: nicht sichtbar (E014)",
+  "status": "PASS",
+  "detail": "26 Fälle im Bestand"
+ },
+ {
+  "id": "F1/T09",
+  "name": "PCC-P08 (HOLD): weder im Katalog noch in der Smart-Suche auffindbar (E017, E050, E063)",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "id": "F1/T10",
+  "name": "DE-Kurs ohne CH-Durchführungsort: CH-Zugang offen",
+  "status": "SPÄTER",
+  "detail": "mit D6 nach der Beta (E074)"
+ },
+ {
+  "id": "F1/T11",
+  "name": "Merkliste mit unbestätigtem Preis",
+  "status": "SPÄTER",
+  "detail": "mit F10 nach der Beta (E074)"
+ },
+ {
+  "id": "F1/T12",
+  "name": "Ohne Parameter und mit altem Link ?sort=EDITORIAL: Sortierung «Zuletzt geprüft» (E020)",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "id": "F1/T13",
+  "name": "Freie «Mobile Reporting, unter CHF 300»: direkter Treffer nur mit Standardpreis ≤ 300; Tarife bezeichnet (E010, E039)",
+  "status": "PASS",
+  "detail": "2 Treffer: EUR 2'699 → Preis nicht sicher vergleichbar / EUR 499 · Mitgliederpreis → über Budget"
+ },
+ {
+  "id": "F1/T14a",
+  "name": "«Podcast produzieren, online»: «online» als bestätigt nur bei Kursform VERIFIED (E011)",
+  "status": "PASS",
+  "detail": "0 gezeigt"
+ },
+ {
+  "id": "F1/T14b",
+  "name": "… übrige Kursformen sichtbar als unbestätigt (Vorlage §2.7)",
+  "status": "SPÄTER",
+  "detail": "E088: später mit E058; heute 0 gezeigt, 2 Angebote zum Thema"
+ },
+ {
+  "id": "F1/T15",
+  "name": "«KI im Journalismus, Zürich»: Treffer mit Ort Schweiz; keine Hersteller-Academy (E004, E066)",
+  "status": "PASS",
+  "detail": "5 Treffer; Hersteller-Anbieter im sichtbaren Bestand: 0"
+ },
+ {
+  "id": "F1/T16",
+  "name": "«Videojournalismus, 3 Tage»: kein harter Dauerfilter (E021); Treffermenge = ohne Dauer",
+  "status": "PASS",
+  "detail": "4 Treffer (ohne Dauer 4)"
+ },
+ {
+  "id": "F1/T17",
+  "name": "«Bildbearbeitung für Fotojournalismus»: keine Werbe-Beautyretusche (PCC-P32), keine Herstellerzertifizierung (E004, E016)",
+  "status": "PASS",
+  "detail": "0 Treffer"
+ },
+ {
+  "id": "F1/T18",
+  "name": "«Social Media und Audience»: kein reines PR/Marketing (E005)",
+  "status": "PASS",
+  "detail": "0 Treffer"
+ },
+ {
+  "id": "F1/T19",
+  "name": "«Moderation, 1000 Euro»: Restbetrag in EUR; bei anderer Währung 1:1-Hinweis (E037, E079, E080)",
+  "status": "PASS",
+  "detail": "18 Treffer: Bei diesem Preis bleiben EUR 10. / Bei der Preisobergrenze bleiben  / Der publizierte Preis könnte ins"
+ },
+ {
+  "id": "F1/T20",
+  "name": "«Datenvisualisierung kostenlos»: nur Bezeichnungen nach E057",
+  "status": "PASS",
+  "detail": "0 Treffer"
+ },
+ {
+  "id": "F4a",
+  "name": "«im Budget» nur mit belegtem unbedingtem Preis ≤ Budget (9 Anfragen)",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "id": "F4b",
+  "name": "Bedingte Tarife nur mit Bezeichnung des Tarifs und belegtem bedingtem Preis ≤ Budget",
+  "status": "PASS",
+  "detail": "16 bedingte Treffer"
+ },
+ {
+  "id": "F4-Hinweis",
+  "status": "INFO",
+  "detail": "Journalist:innen-Tarif vor unbedingtem Preis gereiht in: Video, CHF 500"
+ },
+ {
+  "id": "F9a",
+  "name": "Bis 3 Optionen, bei ≥ 2 Treffern mindestens 2 (16 Anfragen mit Treffern)",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "id": "F9b",
+  "name": "Jede Option begründet («Passt, weil: …»)",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "id": "F9c",
+  "name": "Keine «Top»-, «beste»- oder «Empfehlung»-Bezeichnung in der Smart-Ausgabe",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "id": "F9-Hinweis",
+  "status": "INFO",
+  "detail": "Nummer «Option 1–3»: nein"
+ },
+ {
+  "id": "S2a",
+  "name": "Smart-Suche: Eingabetext nicht in URL, Cookies, localStorage, sessionStorage (E012)",
+  "status": "PASS",
+  "detail": "https://mediaskills.ch/"
+ },
+ {
+  "id": "S2-Hinweis",
+  "status": "INFO",
+  "detail": "Katalogsuche ?q= in der Adresse: nein"
+ },
+ {
+  "id": "S3-Vorprüfung",
+  "name": "Keine Cookies; localStorage leer bis zum aktiven Merken, danach nur Schlüssel weiterbildungsradar:favorites:v1 mit Angebots-ID (jsdom; Endprüfung Stufe 2)",
+  "status": "PASS",
+  "detail": "weiterbildungsradar:favorites:v1 = [\"LI-REG-003\"]"
+ },
+ {
+  "id": "G01",
+  "name": "Gegenprobe D2: HOLD bei terminlich sichtbaren HOLD-Angeboten entfernt → sie würden sichtbar, Referenz D2b/D2c erkennt das",
+  "status": "PASS",
+  "detail": "33 Angebote"
+ },
+ {
+  "id": "G02",
+  "name": "Gegenprobe F4: Journalist:innen-Tarif als direkter Treffer → erkannt",
+  "status": "PASS",
+  "detail": "1 Verstösse erkannt"
+ },
+ {
+  "id": "G03",
+  "name": "Gegenprobe S2: Suchtext in localStorage → erkannt",
+  "status": "PASS",
+  "detail": ""
+ }
+]

@@ -12,16 +12,19 @@ const { spawnSync } = require("child_process");
 const { chromium } = require(process.env.PLAYWRIGHT || "playwright");
 const AXE = require.resolve("axe-core/axe.min.js");
 const CW = path.join(process.cwd(), "claude-work"), LIVE = path.join(CW, "live-snapshot-20261109"), W7 = path.join(CW, "paket7/website");
-const OUT = path.join(CW, "paket8/out");
+const WEB = path.resolve(process.env.WEBSITE || W7), APPNAME = process.env.APP || "app-v36.js";
+const OUT = path.join(CW, "paket8/out", WEB === W7 ? "" : path.basename(path.dirname(WEB)));
 
 function pruefstand() {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "p8-stand-"));
   for (const f of fs.readdirSync(LIVE)) if (!/^(SHA256SUMS|README)/.test(f)) fs.copyFileSync(path.join(LIVE, f), path.join(dir, f));
-  for (const f of ["app-v36.js", "data-p7.js", "methodik.html"]) fs.copyFileSync(path.join(W7, f), path.join(dir, f));
+  fs.copyFileSync(path.join(W7, "data-p7.js"), path.join(dir, "data-p7.js"));
+  // Prüfling: alle Dateien des gewählten Website-Ordners ersetzen die Live-Fassung (Paket 9 auch datenschutz, impressum, 404)
+  for (const f of fs.readdirSync(WEB)) if (f !== "index.html") fs.copyFileSync(path.join(WEB, f), path.join(dir, f));
   fs.writeFileSync(path.join(dir, "smart-search-data-p7.js"), `window.MEDIA_SKILLS_SMART_DATA = ${fs.readFileSync(path.join(CW, "paket3/out/merge_kandidat_smart.json"), "utf8")};\n`);
-  const idx = fs.readFileSync(path.join(W7, "index.html"), "utf8")
-    .replace('src="data-a1-86ff68ddc9ac.js"', 'src="data-p7.js"').replace('src="smart-search-data-a1-a38a2a2b2391.js"', 'src="smart-search-data-p7.js"').replace('src="app-v33.js"', 'src="app-v36.js"');
-  if (!/src="app-v36\.js"/.test(idx) || !/src="data-p7\.js"/.test(idx)) throw new Error("Skript-Verweise im Prüfstand nicht ersetzt");
+  const idx = fs.readFileSync(path.join(WEB, "index.html"), "utf8")
+    .replace('src="data-a1-86ff68ddc9ac.js"', 'src="data-p7.js"').replace('src="smart-search-data-a1-a38a2a2b2391.js"', 'src="smart-search-data-p7.js"').replace('src="app-v33.js"', `src="${APPNAME}"`);
+  if (!idx.includes(`src="${APPNAME}"`) || !/src="data-p7\.js"/.test(idx)) throw new Error("Skript-Verweise im Prüfstand nicht ersetzt");
   fs.writeFileSync(path.join(dir, "index.html"), idx);
   return dir;
 }

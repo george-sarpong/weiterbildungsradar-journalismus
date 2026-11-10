@@ -1,0 +1,747 @@
+{
+ "stichtag": "2026-12-01",
+ "pruefling": "claude-work/paket9/website/app-v37.js + paket7/website/data-p7.js",
+ "T07": [
+  {
+   "id": "OFFER-MAZ-002",
+   "budget": 650,
+   "status": "Journalist:innen-Tarif im Budget",
+   "preis": "CHF 650 · Journalist:innen-Tarif"
+  },
+  {
+   "id": "OFFER-MAZ-006",
+   "budget": 1300,
+   "status": "Journalist:innen-Tarif im Budget",
+   "preis": "CHF 1'300 · Journalist:innen-Tarif"
+  },
+  {
+   "id": "OFFER-MAZ-007",
+   "budget": 1300,
+   "status": "Journalist:innen-Tarif im Budget",
+   "preis": "CHF 1'300 · Journalist:innen-Tarif"
+  },
+  {
+   "id": "OFFER-MAZ-010",
+   "budget": 650,
+   "status": "Journalist:innen-Tarif im Budget",
+   "preis": "CHF 650 · Journalist:innen-Tarif"
+  },
+  {
+   "id": "OFFER-MAZ-030",
+   "budget": 650,
+   "status": "Journalist:innen-Tarif im Budget",
+   "preis": "CHF 650 · Journalist:innen-Tarif"
+  },
+  {
+   "id": "OFFER-CFJM-013",
+   "budget": 260,
+   "status": "bedingter Tarif im Budget",
+   "preis": "Kostenlos mit Bedingung: für Mitglieder"
+  },
+  {
+   "id": "OFFER-CFJM-014",
+   "budget": 130,
+   "status": "bedingter Tarif im Budget",
+   "preis": "Kostenlos mit Bedingung: für Mitglieder"
+  },
+  {
+   "id": "OFFER-CFJM-015",
+   "budget": 650,
+   "status": "bedingter Tarif im Budget",
+   "preis": "Kostenlos mit Bedingung: für Mitglieder"
+  },
+  {
+   "id": "OFFER-EBU-020",
+   "budget": 750,
+   "status": "bedingter Tarif im Budget",
+   "preis": "EUR 750 · Mitgliederpreis"
+  },
+  {
+   "id": "OFFER-EBU-021",
+   "budget": 499,
+   "status": "könnte ins Budget passen",
+   "preis": "EUR 499 · Mitgliederpreis"
+  },
+  {
+   "id": "OFFER-HEAD-002",
+   "budget": 900,
+   "status": "bedingter Tarif im Budget",
+   "preis": "CHF 900 · Alumni-Tarif"
+  },
+  {
+   "id": "OFFER-HEAD-003",
+   "budget": 900,
+   "status": "bedingter Tarif im Budget",
+   "preis": "CHF 900 · Alumni-Tarif"
+  },
+  {
+   "id": "OFFER-HEAD-004",
+   "budget": 700,
+   "status": "bedingter Tarif im Budget",
+   "preis": "CHF 700 · Alumni-Tarif"
+  },
+  {
+   "id": "OFFER-HEAD-005",
+   "budget": 1200,
+   "status": "bedingter Tarif im Budget",
+   "preis": "CHF 1'200 · Alumni-Tarif"
+  },
+  {
+   "id": "OFFER-HEAD-009",
+   "budget": 1200,
+   "status": "bedingter Tarif im Budget",
+   "preis": "CHF 1'200 · Alumni-Tarif"
+  },
+  {
+   "id": "AT-PROD-OFFER-039",
+   "budget": 249,
+   "status": "könnte ins Budget passen",
+   "preis": "EUR 249 · Begünstigter Preis"
+  },
+  {
+   "id": "AT-PROD-OFFER-179",
+   "budget": 119,
+   "status": "könnte ins Budget passen",
+   "preis": "EUR 119 · Begünstigter Preis"
+  },
+  {
+   "id": "AT-PROD-OFFER-185",
+   "budget": 99,
+   "status": "könnte ins Budget passen",
+   "preis": "EUR 99 · Begünstigter Preis"
+  },
+  {
+   "id": "AT-PROD-OFFER-206",
+   "budget": 219,
+   "status": "könnte ins Budget passen",
+   "preis": "EUR 219 · Begünstigter Preis"
+  }
+ ],
+ "D5": [
+  {
+   "q": "Videojournalismus, 3 Tage",
+   "total": 4,
+   "verstanden": "Verstanden:Thema: videojournalismusZeit: 3 Tage · erkannt, nicht angewendet",
+   "gezeigt": [
+    {
+     "id": "OFFER-MEDIENCAMPUS-057",
+     "titel": "Videojournalismus-Grundkurs",
+     "anbieter": "Mediencampus / Medienschule Nordwestschweiz",
+     "preis": "nicht erfasst",
+     "status": "",
+     "budget": ""
+    },
+    {
+     "id": "OFFER-MEDIENCAMPUS-007",
+     "titel": "Crossmedia",
+     "anbieter": "Mediencampus / Medienschule Nordwestschweiz",
+     "preis": "nicht erfasst",
+     "status": "",
+     "budget": ""
+    },
+    {
+     "id": "AT-PROD-OFFER-160",
+     "titel": "Medienakademie 2026",
+     "anbieter": "Medienakademie – Karl-Renner-Institut / Friedrich-Austerlitz-Institut",
+     "preis": "EUR 400",
+     "status": "",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "q": "Video",
+   "total": 126,
+   "verstanden": "Verstanden:Thema: video",
+   "gezeigt": [
+    {
+     "id": "OFFER-SBVV-018",
+     "titel": "Bessere Videos für Instagram",
+     "anbieter": "SBVV – Schweizerischer Buchhändler- und Verleger-Verband",
+     "preis": "nicht erfasst",
+     "status": "",
+     "budget": ""
+    },
+    {
+     "id": "OFFER-ORSYS-052",
+     "titel": "DaVinci Resolve, postproduction vidéo",
+     "anbieter": "ORSYS Training Schweiz",
+     "preis": "CHF 1'660",
+     "status": "",
+     "budget": ""
+    },
+    {
+     "id": "OFFER-KLUBPRO-051",
+     "titel": "Erfolgreiche Videos für Social Media im Unternehmen Modul 4b",
+     "anbieter": "Klubschule Pro. / Genossenschaft Migros Ostschweiz",
+     "preis": "CHF 560",
+     "status": "",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "q": "Podcast",
+   "total": 28,
+   "verstanden": "Verstanden:Thema: podcast",
+   "gezeigt": [
+    {
+     "id": "OFFER-CFJM-015",
+     "titel": "Audio / Intermédiaire / Podcast: reportage et documentaire",
+     "anbieter": "CFJM – Centre de formation au journalisme et aux médias",
+     "preis": "CHF 650",
+     "status": "",
+     "budget": ""
+    },
+    {
+     "id": "OFFER-MAZ-006",
+     "titel": "Audio-Podcast – Sounddesign",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "preis": "CHF 1300",
+     "status": "",
+     "budget": ""
+    },
+    {
+     "id": "OFFER-FF-012",
+     "titel": "How to Podcast",
+     "anbieter": "F+F Schule für Kunst und Design",
+     "preis": "CHF 975",
+     "status": "",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "q": "Journalismus",
+   "total": 331,
+   "verstanden": "Verstanden:Thema: journalismus",
+   "gezeigt": [
+    {
+     "id": "OFFER-MAZ-009",
+     "titel": "Auslandjournalismus – Grundlagen",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "preis": "CHF 1'950",
+     "status": "",
+     "budget": ""
+    },
+    {
+     "id": "OFFER-MAZ-016",
+     "titel": "CAS Journalismus",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "preis": "CHF 9'950",
+     "status": "",
+     "budget": ""
+    },
+    {
+     "id": "OFFER-MAZ-026",
+     "titel": "Datenjournalismus – Grundlagen",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "preis": "CHF 1'300",
+     "status": "",
+     "budget": ""
+    }
+   ]
+  }
+ ],
+ "T01": [
+  {
+   "q": "Datenjournalismus, CHF 800, 2 Tage",
+   "total": 11,
+   "verstanden": "Verstanden:Thema: datenjournalismusBudget: CHF 800Zeit: 2 Tage · erkannt, nicht angewendet",
+   "gezeigt": [
+    {
+     "id": "OFFER-DJA-009",
+     "titel": "Datenjournalismus",
+     "anbieter": "Deutsche Journalisten-Akademie (DJA)",
+     "preis": "EUR 480–512 · Je nach Ratenplan",
+     "status": "im Budget",
+     "budget": "Bei der Preisobergrenze bleiben CHF 288. Währungen EUR/CHF/USD werden für diese Suche vereinfacht 1:1 verglichen; tatsächliche Wechselkurse und Steuern können abweichen."
+    },
+    {
+     "id": "AT-PROD-OFFER-026",
+     "titel": "Lehrgang Datenjournalismus & KI",
+     "anbieter": "APA-Campus",
+     "preis": "Kostenlos",
+     "status": "im Budget",
+     "budget": "Bei diesem Preis bleiben CHF 800."
+    },
+    {
+     "id": "OFFER-INVESTIGATIV-001",
+     "titel": "Workshop: Datenjournalismus für lokale Geschichten",
+     "anbieter": "investigativ.ch",
+     "preis": "Kostenlos",
+     "status": "im Budget",
+     "budget": "Bei diesem Preis bleiben CHF 800."
+    }
+   ]
+  }
+ ],
+ "T02": [
+  {
+   "q": "Datenjournalismus, CHF 800",
+   "total": 1,
+   "verstanden": "Verstanden:Thema: datenjournalismusBudget: CHF 800",
+   "gezeigt": [
+    {
+     "id": "OFFER-DJA-009",
+     "titel": "Datenjournalismus",
+     "anbieter": "Deutsche Journalisten-Akademie (DJA)",
+     "preis": "EUR 480–512 · Je nach Ratenplan",
+     "status": "im Budget",
+     "budget": "Bei der Preisobergrenze bleiben CHF 288. Währungen EUR/CHF/USD werden für diese Suche vereinfacht 1:1 verglichen; tatsächliche Wechselkurse und Steuern können abweichen."
+    }
+   ]
+  }
+ ],
+ "T03": [
+  {
+   "q": "Datenjournalismus, CHF 511",
+   "total": 1,
+   "verstanden": "Verstanden:Thema: datenjournalismusBudget: CHF 511",
+   "gezeigt": [
+    {
+     "id": "OFFER-DJA-009",
+     "titel": "Datenjournalismus",
+     "anbieter": "Deutsche Journalisten-Akademie (DJA)",
+     "preis": "EUR 480–512 · Je nach Ratenplan",
+     "status": "könnte ins Budget passen",
+     "budget": "Der publizierte Preis könnte ins Budget passen, ist aber nicht sicher als Gesamtpreis nutzbar. Währungen EUR/CHF/USD werden für diese Suche vereinfacht 1:1 verglichen; tatsächliche Wechselkurse und Steuern können abweichen."
+    }
+   ]
+  },
+  {
+   "q": "Datenjournalismus, CHF 512",
+   "total": 1,
+   "verstanden": "Verstanden:Thema: datenjournalismusBudget: CHF 512",
+   "gezeigt": [
+    {
+     "id": "OFFER-DJA-009",
+     "titel": "Datenjournalismus",
+     "anbieter": "Deutsche Journalisten-Akademie (DJA)",
+     "preis": "EUR 480–512 · Je nach Ratenplan",
+     "status": "im Budget",
+     "budget": "Bei der Preisobergrenze bleiben CHF 0. Währungen EUR/CHF/USD werden für diese Suche vereinfacht 1:1 verglichen; tatsächliche Wechselkurse und Steuern können abweichen."
+    }
+   ]
+  },
+  {
+   "q": "Datenjournalismus, CHF 513",
+   "total": 1,
+   "verstanden": "Verstanden:Thema: datenjournalismusBudget: CHF 513",
+   "gezeigt": [
+    {
+     "id": "OFFER-DJA-009",
+     "titel": "Datenjournalismus",
+     "anbieter": "Deutsche Journalisten-Akademie (DJA)",
+     "preis": "EUR 480–512 · Je nach Ratenplan",
+     "status": "im Budget",
+     "budget": "Bei der Preisobergrenze bleiben CHF 1. Währungen EUR/CHF/USD werden für diese Suche vereinfacht 1:1 verglichen; tatsächliche Wechselkurse und Steuern können abweichen."
+    }
+   ]
+  }
+ ],
+ "T04": [
+  {
+   "q": "500 Euro",
+   "total": 948,
+   "verstanden": "Verstanden:Budget: EUR 500",
+   "gezeigt": [
+    {
+     "id": "AT-PROD-OFFER-136",
+     "titel": "(Medien)Recht & KI (KI kompakt)",
+     "anbieter": "Österreichische Medienakademie",
+     "preis": "EUR 390 · Journalist:innen-Tarif",
+     "status": "Journalist:innen-Tarif im Budget",
+     "budget": "Beim publizierten Journalist:innen-Tarif bleiben EUR 110."
+    },
+    {
+     "id": "AT-PROD-OFFER-140",
+     "titel": "Einführung in agentische KI für Journalist:innen",
+     "anbieter": "fjum – forum journalismus und medien wien",
+     "preis": "EUR 60 · Journalist:innen-Tarif",
+     "status": "Journalist:innen-Tarif im Budget",
+     "budget": "Beim publizierten Journalist:innen-Tarif bleiben EUR 440."
+    },
+    {
+     "id": "AT-PROD-OFFER-139",
+     "titel": "Personal Branding für Journalist:innen",
+     "anbieter": "fjum – forum journalismus und medien wien",
+     "preis": "EUR 120 · Journalist:innen-Tarif",
+     "status": "Journalist:innen-Tarif im Budget",
+     "budget": "Beim publizierten Journalist:innen-Tarif bleiben EUR 380."
+    }
+   ]
+  }
+ ],
+ "T05": [
+  {
+   "q": "Datenjournalismus, CHF 800",
+   "total": 1,
+   "verstanden": "Verstanden:Thema: datenjournalismusBudget: CHF 800",
+   "gezeigt": [
+    {
+     "id": "OFFER-DJA-009",
+     "titel": "Datenjournalismus",
+     "anbieter": "Deutsche Journalisten-Akademie (DJA)",
+     "preis": "EUR 480–512",
+     "status": "Preis nicht sicher vergleichbar",
+     "budget": "Für dieses Angebot ist keine sichere Budgetaussage möglich. // Originalpreis: EUR 480–512 je nach Ratenplan"
+    }
+   ]
+  }
+ ],
+ "T06": [
+  {
+   "q": "kostenlos",
+   "total": 17,
+   "verstanden": "Verstanden:Nur Angebote mit strukturierter Kostenlos-Option",
+   "gezeigt": [
+    {
+     "id": "OFFER-SAEZH-011",
+     "titel": "Design Animation – Grafiken und Typografie in Bewegung – Basics",
+     "anbieter": "SAE Institute Zürich",
+     "preis": "Kostenlos",
+     "status": "",
+     "budget": ""
+    },
+    {
+     "id": "OFFER-SAEZH-010",
+     "titel": "Graphic Design: Kreative Bildkompositionen – Basics",
+     "anbieter": "SAE Institute Zürich",
+     "preis": "Kostenlos",
+     "status": "",
+     "budget": ""
+    },
+    {
+     "id": "OFFER-BIG-006",
+     "titel": "Data Cleaning and Harvesting",
+     "anbieter": "Basel Institute on Governance",
+     "preis": "Kostenlos",
+     "status": "",
+     "budget": ""
+    }
+   ]
+  }
+ ],
+ "T09": [
+  {
+   "q": "Adobe FrameMaker - Aufbaukurs",
+   "total": 0,
+   "verstanden": "Verstanden:Thema: adobe + framemaker + aufbaukurs",
+   "gezeigt": []
+  }
+ ],
+ "T13": [
+  {
+   "q": "Mobile Reporting, unter CHF 300",
+   "total": 2,
+   "verstanden": "Verstanden:Thema: mobile + reportingBudget: CHF 300",
+   "gezeigt": [
+    {
+     "id": "AT-PROD-OFFER-037",
+     "titel": "Lehrgang Digital Media Kompakt – Herbst 2026",
+     "anbieter": "Österreichische Medienakademie",
+     "preis": "EUR 2'699",
+     "status": "Preis nicht sicher vergleichbar",
+     "budget": "Für dieses Angebot ist keine sichere Budgetaussage möglich. // Originalpreis: EUR 2'699 Journalist:innen / EUR 3'699 Nicht-Journalist:innen; Einzelmodule EUR 620/820"
+    },
+    {
+     "id": "OFFER-EBU-022",
+     "titel": "The Modern Field Reporter: Verification, Live Reporting and Multi-Platform Storytelling Workshop",
+     "anbieter": "EBU Academy – European Broadcasting Union",
+     "preis": "EUR 499 · Mitgliederpreis",
+     "status": "über Budget",
+     "budget": "Der sicher vergleichbare Preis liegt über dem angegebenen Budget. Währungen EUR/CHF/USD werden für diese Suche vereinfacht 1:1 verglichen; tatsächliche Wechselkurse und Steuern können abweichen."
+    }
+   ]
+  }
+ ],
+ "T14": [
+  {
+   "q": "Podcast produzieren, online",
+   "total": 0,
+   "verstanden": "Verstanden:Thema: podcast + produzierenDurchführung: Online",
+   "gezeigt": []
+  }
+ ],
+ "T15": [
+  {
+   "q": "KI im Journalismus, Zürich",
+   "total": 4,
+   "verstanden": "Verstanden:Thema: ki + journalismus + zurich",
+   "gezeigt": [
+    {
+     "id": "OFFER-VSM-004",
+     "titel": "Dreikönigstagung 2027",
+     "anbieter": "Verlegerverband SCHWEIZER MEDIEN (VSM) / MEDIENINSTITUT",
+     "preis": "ab CHF 410",
+     "status": "",
+     "budget": ""
+    },
+    {
+     "id": "OFFER-HDS-SAL-002",
+     "titel": "Lehrgang Lektorieren",
+     "anbieter": "HDS Haus der Sprachen AG – SAL Schule für Angewandte Linguistik",
+     "preis": "CHF 8'910",
+     "status": "",
+     "budget": ""
+    },
+    {
+     "id": "OFFER-BAUM-005",
+     "titel": "Generative AI in the Context of OSINT Investigations",
+     "anbieter": "Baumgartner Research GmbH",
+     "preis": "CHF 1'700",
+     "status": "",
+     "budget": ""
+    }
+   ]
+  }
+ ],
+ "T16": [
+  {
+   "q": "Videojournalismus, 3 Tage",
+   "total": 4,
+   "verstanden": "Verstanden:Thema: videojournalismusZeit: 3 Tage · erkannt, nicht angewendet",
+   "gezeigt": [
+    {
+     "id": "OFFER-MEDIENCAMPUS-057",
+     "titel": "Videojournalismus-Grundkurs",
+     "anbieter": "Mediencampus / Medienschule Nordwestschweiz",
+     "preis": "nicht erfasst",
+     "status": "",
+     "budget": ""
+    },
+    {
+     "id": "OFFER-MEDIENCAMPUS-007",
+     "titel": "Crossmedia",
+     "anbieter": "Mediencampus / Medienschule Nordwestschweiz",
+     "preis": "nicht erfasst",
+     "status": "",
+     "budget": ""
+    },
+    {
+     "id": "AT-PROD-OFFER-160",
+     "titel": "Medienakademie 2026",
+     "anbieter": "Medienakademie – Karl-Renner-Institut / Friedrich-Austerlitz-Institut",
+     "preis": "EUR 400",
+     "status": "",
+     "budget": ""
+    }
+   ]
+  }
+ ],
+ "T17": [
+  {
+   "q": "Bildbearbeitung für Fotojournalismus",
+   "total": 0,
+   "verstanden": "Verstanden:Thema: bildbearbeitung + fotojournalismus",
+   "gezeigt": []
+  }
+ ],
+ "T18": [
+  {
+   "q": "Social Media und Audience",
+   "total": 0,
+   "verstanden": "Verstanden:Thema: social + media + audience",
+   "gezeigt": []
+  }
+ ],
+ "T19": [
+  {
+   "q": "Moderation, 1000 Euro",
+   "total": 17,
+   "verstanden": "Verstanden:Thema: moderationBudget: EUR 1'000",
+   "gezeigt": [
+    {
+     "id": "OFFER-MAZ-132",
+     "titel": "Punkten auf Podien – Als Moderator/in, als Teilnehmer/in",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "preis": "CHF 990",
+     "status": "im Budget",
+     "budget": "Bei diesem Preis bleiben EUR 10. Währungen EUR/CHF/USD werden für diese Suche vereinfacht 1:1 verglichen; tatsächliche Wechselkurse und Steuern können abweichen."
+    },
+    {
+     "id": "OFFER-DJA-018",
+     "titel": "Radiojournalismus",
+     "anbieter": "Deutsche Journalisten-Akademie (DJA)",
+     "preis": "EUR 480–512 · Je nach Ratenplan",
+     "status": "im Budget",
+     "budget": "Bei der Preisobergrenze bleiben EUR 488."
+    },
+    {
+     "id": "AT-PROD-OFFER-165",
+     "titel": "Praktikum Redaktion & Social Media – unerhört!",
+     "anbieter": "Radiofabrik",
+     "preis": "EUR 450.08 pro Monat",
+     "status": "könnte ins Budget passen",
+     "budget": "Der publizierte Preis könnte ins Budget passen, ist aber nicht sicher als Gesamtpreis nutzbar."
+    }
+   ]
+  }
+ ],
+ "T20": [
+  {
+   "q": "Datenvisualisierung kostenlos",
+   "total": 0,
+   "verstanden": "Verstanden:Thema: datenvisualisierungNur Angebote mit strukturierter Kostenlos-Option",
+   "gezeigt": []
+  }
+ ],
+ "F4": [
+  {
+   "q": "Journalismus, CHF 1000",
+   "total": 331,
+   "verstanden": "Verstanden:Thema: journalismusBudget: CHF 1'000",
+   "gezeigt": [
+    {
+     "id": "OFFER-MAZ-063",
+     "titel": "KI im Journalismus - Ein praxisnaher Einstieg",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "preis": "CHF 650 · Journalist:innen-Tarif",
+     "status": "Journalist:innen-Tarif im Budget",
+     "budget": "Beim publizierten Journalist:innen-Tarif bleiben CHF 350."
+    },
+    {
+     "id": "OFFER-MAZ-098",
+     "titel": "MAZ-Lokaljournalismustag",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "preis": "CHF 80 · Journalist:innen-Tarif",
+     "status": "Journalist:innen-Tarif im Budget",
+     "budget": "Beim publizierten Journalist:innen-Tarif bleiben CHF 920."
+    },
+    {
+     "id": "OFFER-MAZ-002",
+     "titel": "Audio / Radio– mit Audioinhalten gehört werden",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "preis": "CHF 650 · Journalist:innen-Tarif",
+     "status": "Journalist:innen-Tarif im Budget",
+     "budget": "Beim publizierten Journalist:innen-Tarif bleiben CHF 350."
+    }
+   ]
+  },
+  {
+   "q": "Video, CHF 500",
+   "total": 126,
+   "verstanden": "Verstanden:Thema: videoBudget: CHF 500",
+   "gezeigt": [
+    {
+     "id": "OFFER-SFGB-001",
+     "titel": "Video Filmen und Schneiden",
+     "anbieter": "Schule für Gestaltung Basel",
+     "preis": "CHF 210",
+     "status": "im Budget",
+     "budget": "Bei diesem Preis bleiben CHF 290."
+    },
+    {
+     "id": "OFFER-IFC-003",
+     "titel": "Creare reel efficaci per Instagram: dalla ripresa al montaggio",
+     "anbieter": "Istituto della formazione continua (IFC Ticino)",
+     "preis": "CHF 100",
+     "status": "im Budget",
+     "budget": "Bei diesem Preis bleiben CHF 400."
+    },
+    {
+     "id": "AT-PROD-OFFER-160",
+     "titel": "Medienakademie 2026",
+     "anbieter": "Medienakademie – Karl-Renner-Institut / Friedrich-Austerlitz-Institut",
+     "preis": "EUR 400",
+     "status": "im Budget",
+     "budget": "Bei diesem Preis bleiben CHF 100. Währungen EUR/CHF/USD werden für diese Suche vereinfacht 1:1 verglichen; tatsächliche Wechselkurse und Steuern können abweichen."
+    }
+   ]
+  },
+  {
+   "q": "Podcast, CHF 2000",
+   "total": 28,
+   "verstanden": "Verstanden:Thema: podcastBudget: CHF 2'000",
+   "gezeigt": [
+    {
+     "id": "OFFER-MAZ-006",
+     "titel": "Audio-Podcast – Sounddesign",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "preis": "CHF 1'300 · Journalist:innen-Tarif",
+     "status": "Journalist:innen-Tarif im Budget",
+     "budget": "Beim publizierten Journalist:innen-Tarif bleiben CHF 700."
+    },
+    {
+     "id": "OFFER-MAZ-121",
+     "titel": "Podcast – mit This Wachter",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "preis": "CHF 1'300 · Journalist:innen-Tarif",
+     "status": "Journalist:innen-Tarif im Budget",
+     "budget": "Beim publizierten Journalist:innen-Tarif bleiben CHF 700."
+    },
+    {
+     "id": "OFFER-MAZ-122",
+     "titel": "Podcast – Packende Gespräche führen",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "preis": "CHF 650 · Journalist:innen-Tarif",
+     "status": "Journalist:innen-Tarif im Budget",
+     "budget": "Beim publizierten Journalist:innen-Tarif bleiben CHF 1'350."
+    }
+   ]
+  },
+  {
+   "q": "Recherche, CHF 700",
+   "total": 79,
+   "verstanden": "Verstanden:Thema: rechercheBudget: CHF 700",
+   "gezeigt": [
+    {
+     "id": "OFFER-MAZ-095",
+     "titel": "Leute zum Reden bringen in Recherchen – Grundlagen",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "preis": "CHF 650 · Journalist:innen-Tarif",
+     "status": "Journalist:innen-Tarif im Budget",
+     "budget": "Beim publizierten Journalist:innen-Tarif bleiben CHF 50."
+    },
+    {
+     "id": "OFFER-MAZ-136",
+     "titel": "Recherche – die Basics",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "preis": "CHF 650 · Journalist:innen-Tarif",
+     "status": "Journalist:innen-Tarif im Budget",
+     "budget": "Beim publizierten Journalist:innen-Tarif bleiben CHF 50."
+    },
+    {
+     "id": "AT-PROD-OFFER-140",
+     "titel": "Einführung in agentische KI für Journalist:innen",
+     "anbieter": "fjum – forum journalismus und medien wien",
+     "preis": "EUR 60 · Journalist:innen-Tarif",
+     "status": "Journalist:innen-Tarif im Budget",
+     "budget": "Beim publizierten Journalist:innen-Tarif bleiben CHF 640. Währungen EUR/CHF/USD werden für diese Suche vereinfacht 1:1 verglichen; tatsächliche Wechselkurse und Steuern können abweichen."
+    }
+   ]
+  },
+  {
+   "q": "KI, EUR 400",
+   "total": 89,
+   "verstanden": "Verstanden:Thema: kiBudget: EUR 400",
+   "gezeigt": [
+    {
+     "id": "AT-PROD-OFFER-136",
+     "titel": "(Medien)Recht & KI (KI kompakt)",
+     "anbieter": "Österreichische Medienakademie",
+     "preis": "EUR 390 · Journalist:innen-Tarif",
+     "status": "Journalist:innen-Tarif im Budget",
+     "budget": "Beim publizierten Journalist:innen-Tarif bleiben EUR 10."
+    },
+    {
+     "id": "AT-PROD-OFFER-140",
+     "titel": "Einführung in agentische KI für Journalist:innen",
+     "anbieter": "fjum – forum journalismus und medien wien",
+     "preis": "EUR 60 · Journalist:innen-Tarif",
+     "status": "Journalist:innen-Tarif im Budget",
+     "budget": "Beim publizierten Journalist:innen-Tarif bleiben EUR 340."
+    },
+    {
+     "id": "OFFER-MAZ-098",
+     "titel": "MAZ-Lokaljournalismustag",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "preis": "CHF 80 · Journalist:innen-Tarif",
+     "status": "Journalist:innen-Tarif im Budget",
+     "budget": "Beim publizierten Journalist:innen-Tarif bleiben EUR 320. Währungen EUR/CHF/USD werden für diese Suche vereinfacht 1:1 verglichen; tatsächliche Wechselkurse und Steuern können abweichen."
+    }
+   ]
+  }
+ ]
+}

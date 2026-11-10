@@ -2,6 +2,7 @@
 // Kriterien: D2, D5, F1 (T01–T20), F4, F9, S2, S3 (Vorprüfung; Endprüfung im Browser, Stufe 2).
 // Prüfling: claude-work/paket7/website (app-v36.js, data-p7.js, index.html) + paket3/out/merge_kandidat_smart.json.
 // Aufruf (im Repo-Root): TZ=Europe/Zurich NODE_PATH=<ordner>/node_modules node claude-work/paket8/tests/test_paket8.js
+// Prüfling wählbar (Paket 9): WEBSITE=claude-work/paket9/website APP=app-v37.js; Daten bleiben paket7/website/data-p7.js.
 // Stichtag fest 2026-11-09 (überschreibbar mit STICHTAG=YYYY-MM-DD). Schreibt Trefferlisten nach paket8/out/.
 // Ergebnisarten: PASS · FAIL · SPÄTER (Kriterium laut E074 nach der Beta). Exit-Code 1 nur bei FAIL.
 "use strict";
@@ -12,9 +13,11 @@ const { JSDOM } = require("jsdom");
 
 const ROOT = process.cwd();
 const CW = path.join(ROOT, "claude-work");
-const P3 = path.join(CW, "paket3/out"), W7 = path.join(CW, "paket7/website"), OUT = path.join(CW, "paket8/out");
+const P3 = path.join(CW, "paket3/out"), W7 = path.join(CW, "paket7/website");
+const WEB = path.resolve(ROOT, process.env.WEBSITE || path.join(CW, "paket7/website")), APPNAME = process.env.APP || "app-v36.js";
+const OUT = path.join(CW, "paket8/out", WEB === W7 ? "" : path.basename(path.dirname(WEB)));
 const read = p => fs.readFileSync(p, "utf8");
-const APP = read(path.join(W7, "app-v36.js")), INDEX = read(path.join(W7, "index.html"));
+const APP = read(path.join(WEB, APPNAME)), INDEX = read(path.join(WEB, "index.html"));
 const DATA_JS = read(path.join(W7, "data-p7.js"));
 const DATA = JSON.parse(DATA_JS.slice(DATA_JS.indexOf("["), DATA_JS.lastIndexOf("]") + 1));
 const SMART = JSON.parse(read(path.join(P3, "merge_kandidat_smart.json")));
@@ -251,8 +254,9 @@ check("F1/T11", "Merkliste mit unbestätigtem Preis", "SPÄTER", "mit F10 nach d
   const r = run("T14", "Podcast produzieren, online");
   const verifiedBad = r.res.filter(c => !c.ids.some(id => SMART.byId[id]?.delivery?.evidenceTier === "VERIFIED"));
   check("F1/T14a", "«Podcast produzieren, online»: «online» als bestätigt nur bei Kursform VERIFIED (E011)", verifiedBad.length === 0, `${r.res.length} gezeigt`);
-  check("F1/T14b", "… übrige Kursformen sichtbar als unbestätigt (Vorlage §2.7)", !(r.res.length === 0 && r.pool > 0),
-    r.res.length === 0 ? `0 gezeigt, ${r.pool} Angebote zum Thema ausgeblendet («Keine bestätigten Treffer»)` : `${r.res.length} gezeigt`);
+  // E088 (Owner 10.11.): Erwartung für die Beta angepasst – harte Kursform-Bedingung bleibt; Gruppe «Kursform unbestätigt» später mit E058.
+  check("F1/T14b", "… übrige Kursformen sichtbar als unbestätigt (Vorlage §2.7)", "SPÄTER",
+    `E088: später mit E058; heute ${r.res.length} gezeigt, ${r.pool} Angebote zum Thema`);
 }
 const MAKER = /^(Adobe|Apple|Google|Microsoft|Meta|Avid|Blackmagic|Autodesk|Canva|Midjourney|OpenAI|Sony|Canon|Nikon)\b/i;
 {
@@ -312,8 +316,9 @@ const MAKER = /^(Adobe|Apple|Google|Microsoft|Meta|Avid|Blackmagic|Autodesk|Canv
   check("F9b", "Jede Option begründet («Passt, weil: …»)", why.length === 0, list(why, 2));
   const top = ALL.filter(r => /\b(Top|beste[nrs]?|Empfehlung|empfohlen)\b/i.test(r.output)).map(r => r.q);
   check("F9c", "Keine «Top»-, «beste»- oder «Empfehlung»-Bezeichnung in der Smart-Ausgabe", top.length === 0, list(top, 3));
-  console.log(`INFO F9-Hinweis Smart-Karten tragen «Option 1–3» und sind nach Budgetklasse und Punktzahl geordnet (Browser-Teil von F9 und Owner-Frage)`);
-  results.push({ id: "F9-Hinweis", status: "INFO", detail: "«Option 1–3», Reihenfolge nach Budgetklasse und Punktzahl" });
+  const numbered = ALL.some(r => /\bOption [1-3]\b/.test(r.output));
+  console.log(`INFO F9-Hinweis Smart-Karten mit Nummer «Option 1–3»: ${numbered ? "ja" : "nein"}; Reihenfolge nach Budgetklasse und Punktzahl (Browser-Teil von F9)`);
+  results.push({ id: "F9-Hinweis", status: "INFO", detail: `Nummer «Option 1–3»: ${numbered ? "ja" : "nein"}` });
 }
 
 // ======== S2 Suchtext nie in URL, Cookies, Storage (E012) – S3 Vorprüfung ========
@@ -356,7 +361,7 @@ const MAKER = /^(Adobe|Apple|Google|Microsoft|Meta|Avid|Blackmagic|Autodesk|Canv
 // ---- Ausgabe
 fs.mkdirSync(OUT, { recursive: true });
 const slim = r => ({ q: r.q, total: r.total, verstanden: r.understood, gezeigt: r.res.map(c => ({ id: c.ids.join("|"), titel: c.title, anbieter: c.provider, preis: c.meta[0], status: c.status, budget: c.budget })) });
-fs.writeFileSync(path.join(OUT, `f1_trefferlisten_${T}.json`), JSON.stringify({ stichtag: T, pruefling: "paket7/website app-v36.js + data-p7.js",
+fs.writeFileSync(path.join(OUT, `f1_trefferlisten_${T}.json`), JSON.stringify({ stichtag: T, pruefling: `${path.relative(ROOT, WEB)}/${APPNAME} + paket7/website/data-p7.js`,
   T07: F1.T07, ...Object.fromEntries(Object.entries(F1).filter(([k]) => k !== "T07").map(([k, v]) => [k, v.map(slim)])) }, null, 1));
 fs.writeFileSync(path.join(OUT, `ergebnis_stufe1_jsdom_${T}.json`), JSON.stringify(results, null, 1));
 const n = s => results.filter(r => r.status === s).length;
