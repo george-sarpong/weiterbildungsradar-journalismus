@@ -14,7 +14,7 @@ python3 -I scripts/merge3.py --base $GIT/base --live $LIVE --main $GIT/main --pr
   --vorschlaege paket3/config/konflikt_vorschlaege.json --owner paket3/config/owner_entscheide.csv --out $OUT > /dev/null
 python3 -I scripts/build_master_p3.py --merge $OUT --katalog $EIN/Arbeitskatalog_3818_V288_20261108.xlsx \
   --r4 $EIN/R4_PUBLICATION_ROWS_20260915.json --usowner $GIT/pr10/data/staging/usa-owner-evidence-crosswalk-20261107.jsonl \
-  --stichtag $ST --out $OUT > /dev/null
+  --v41e4 $EIN/V41_E4_SCHUTZ_1352.csv --v41v288 $EIN/V41_V288_PROVENIENZ_829.csv --stichtag $ST --out $OUT > /dev/null
 python3 -I scripts/paket3_listen.py --out $OUT --r4 $EIN/R4_PUBLICATION_ROWS_20260915.json --at $EIN/AT_OWNER_DISPOSITIONS_R3_20260930.csv --stichtag $ST > /dev/null
 python3 -I scripts/test_paket3.py --base $GIT/base --live $LIVE --main $GIT/main --pr10 $GIT/pr10 --eingaben $EIN \
   --usowner $GIT/pr10/data/staging/usa-owner-evidence-crosswalk-20261107.jsonl --out $OUT --scripts scripts --owner paket3/config/owner_entscheide.csv

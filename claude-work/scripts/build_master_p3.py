@@ -17,11 +17,11 @@ F5 Sammelobjekte als Programm (E069) · F6 DJA-DE-Dubletten nicht sichtbar, Mari
 
 Aufruf: python3 -I build_master_p3.py --merge DIR --katalog XLSX --r4 JSON --usowner JSONL --stichtag YYYY-MM-DD --out DIR
 """
-import argparse, csv, collections, gzip, hashlib, json, pathlib, re, unicodedata
+import argparse, csv, collections, gzip, hashlib, io, json, pathlib, re, unicodedata
 import openpyxl
 
 AP = argparse.ArgumentParser()
-for a in ('merge', 'katalog', 'r4', 'usowner', 'stichtag', 'out'):
+for a in ('merge', 'katalog', 'r4', 'usowner', 'stichtag', 'out', 'v41e4', 'v41v288'):
     AP.add_argument('--' + a, required=True)
 A = AP.parse_args()
 OUT = pathlib.Path(A.out); OUT.mkdir(parents=True, exist_ok=True)
@@ -56,6 +56,13 @@ staged = {k for k in keys if k[0] in ('DE', 'USA')}
 assert staged <= set(R4K), 'DE/USA-Zeile fehlt in R4'
 PROT = {r['Offer ID'] for r in KAT if r['Schutz 307'] == 'JA'}
 assert len(PROT) == 307
+# Paket 11: Übergabe-ZIP V4.1 (paket11/scripts/extrahiere_v41.py) – Schutzgrund aus E4-Rollup, V288-Quellenherkunft
+E4 = {r['offer_id']: r for r in csv.DictReader(io.StringIO(rd(A.v41e4).decode('utf-8')))}
+V288 = {(r['market'], r['id']): r for r in csv.DictReader(io.StringIO(rd(A.v41v288).decode('utf-8')))}
+SCHUTZGRUND = {'ARCHIVE_NO_AUTO_RESCAN': 'ARCHIV', 'QA09_FROZEN_RECONCILIATION_ONLY': 'QA09'}
+assert {i for i, r in E4.items() if r['legacy_policy'] in SCHUTZGRUND} == PROT, 'Schutzmenge V4.1 ≠ Katalog'
+assert collections.Counter(SCHUTZGRUND[E4[i]['legacy_policy']] for i in PROT) == {'ARCHIV': 191, 'QA09': 116}
+assert set(V288) == set(GEP), 'V288-Checkpoints ≠ Katalog Geprueft_829'
 
 SENT = re.compile(r'^(NOT_PUBLISHED|NICHT_PUBLIZIERT|NICHT_VERIFIZIERT\w*|PREIS_NICHT_PUBLIZIERT|NOT_IN_R4_SCHEMA|UNKNOWN|n/?a|-)$', re.I)
 NE = 'nicht erfasst'
@@ -285,6 +292,16 @@ for r in KAT:
     rec['url_identitaet'] = 'OFFEN' if not r['Offizielle URL'] else 'EINDEUTIG'
     rec['h_url_identitaet'] = 'KATALOG_XLSX'
     g = GEP.get((m, i)); rec['v288_geprueft'] = 'JA' if g else 'NEIN'; rec['v288_resultat'] = (g or {}).get('Resultat') or NE
+    e4 = E4.get(i) if m in ('CH', 'AT', 'LI') else None
+    rec['schutz_grund'] = SCHUTZGRUND[e4['legacy_policy']] if i in PROT else 'KEIN_SCHUTZ'
+    rec['e4_legacy_policy'] = e4['legacy_policy'] if e4 else NE
+    rec['h_schutz_grund'] = rec['h_e4_legacy_policy'] = 'V41_E4_ROLLUP' if e4 else 'LEER'
+    v = V288.get((m, i))
+    rec['v288_methode'] = (v or {}).get('verification_method') or NE
+    rec['v288_quelle_url'] = (v or {}).get('source_captured_url') or NE
+    rec['v288_quelle_sha256'] = (v or {}).get('source_captured_sha256') or NE
+    rec['v288_checkpoint'] = (v or {}).get('checkpoint') or NE
+    rec['h_v288_quelle'] = 'V41_V288_CHECKPOINTS' if v else 'LEER'
     rec['gold'] = 'NEIN'
     master.append(rec)
 

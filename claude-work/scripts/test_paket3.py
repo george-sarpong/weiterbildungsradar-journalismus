@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Tests Paket 3: Dreiwege-Merge, Master 3'818, Owner-Liste, Warteschlange. Offline. Positiv + Manipulationstests.
 Paket 4 (09.11.2026): Tests P01–P08 und A05–A06 für die Owner-Entscheide E060–E071; M05–M07, X04, X09, X18, Q06 angepasst.
+Paket 11 (10.11.2026): Tests V01–V05 für die Herkunft aus dem Übergabe-ZIP V4.1; X09 um zwei Herkunftscodes ergänzt.
 
 Aufruf: python3 -I test_paket3.py --base DIR --live DIR --main DIR --pr10 DIR --eingaben DIR --usowner JSONL --out DIR --scripts DIR
 """
@@ -87,8 +88,27 @@ t('X06 Durchführungsort-Land nur ISO-Codes oder «nicht erfasst»', all(set(r['
 FELDER = ('anbieter', 'titel', 'beschreibung', 'url', 'sprache', 'preis_text', 'termin_text', 'ort_text', 'format', 'dauer')
 t('X07 keine leeren Anzeigewerte (fehlend = «nicht erfasst», E036)', all(r[c].strip() for r in MASTER for c in FELDER))
 t('X08 Objektklassen nur aus E029-Menge', {r['objektklasse'] for r in MASTER} <= {'STABLE_OFFER', 'PROGRAMM', 'EVENT', 'SERVICE', 'DURCHFUEHRUNG', 'UNKLAR', 'UNKLAR_SAMMELOBJEKT'})
-t('X09 Herkunftscode je Feld gesetzt und gültig', all(v in {'LIVE', 'LIVE_GEAENDERT', 'MAIN', 'LIVE_OWNER_OFFEN', 'MAIN_OWNER', 'LIVE_OWNER', 'R4', 'KATALOG_XLSX', 'REGEL', 'AUDIT', 'LEER'}
+t('X09 Herkunftscode je Feld gesetzt und gültig', all(v in {'LIVE', 'LIVE_GEAENDERT', 'MAIN', 'LIVE_OWNER_OFFEN', 'MAIN_OWNER', 'LIVE_OWNER', 'R4', 'KATALOG_XLSX', 'REGEL', 'AUDIT', 'LEER', 'V41_E4_ROLLUP', 'V41_V288_CHECKPOINTS'}
                                                       for r in MASTER for k, v in r.items() if k.startswith('h_')))
+# ---------- Paket 11: Übergabe-ZIP V4.1 ----------
+import collections as _c, hashlib as _h
+E4R = {r['offer_id']: r for r in csv.DictReader(open(EIN / 'V41_E4_SCHUTZ_1352.csv', encoding='utf-8'))}
+V2R = {(r['market'], r['id']): r for r in csv.DictReader(open(EIN / 'V41_V288_PROVENIENZ_829.csv', encoding='utf-8'))}
+HK = json.loads((EIN / 'V41_HERKUNFT.json').read_text('utf-8'))
+t('V01 Schutzgrund: 191 ARCHIV + 116 QA09 = genau die 307 Schutz-IDs, sonst KEIN_SCHUTZ',
+  _c.Counter(r['schutz_grund'] for r in MASTER) == {'KEIN_SCHUTZ': 3511, 'ARCHIV': 191, 'QA09': 116}
+  and all((r['schutz_grund'] != 'KEIN_SCHUTZ') == (r['schutz_307'] == 'JA') for r in MASTER))
+t('V02 Schutzgrund und E4-Policy wörtlich aus dem E4-Rollup (1352 Website-Zeilen), DE/USA ohne Quelle',
+  all(r['e4_legacy_policy'] == E4R[r['id']]['legacy_policy'] and r['h_schutz_grund'] == 'V41_E4_ROLLUP' for r in MASTER if r['kohorte'] == 'WEBSITE_1352')
+  and all(r['e4_legacy_policy'] == 'nicht erfasst' and r['h_schutz_grund'] == 'LEER' for r in MASTER if r['kohorte'] != 'WEBSITE_1352'))
+t('V03 V288-Quellenherkunft genau bei den 829 V288-geprüften Zeilen, Werte wörtlich aus den Checkpoints',
+  sum(r['h_v288_quelle'] == 'V41_V288_CHECKPOINTS' for r in MASTER) == 829
+  and all((r['h_v288_quelle'] == 'V41_V288_CHECKPOINTS') == (r['v288_geprueft'] == 'JA') for r in MASTER)
+  and all(r['v288_methode'] == (V2R[(r['market'], r['id'])]['verification_method'] or 'nicht erfasst') and r['v288_checkpoint'] == V2R[(r['market'], r['id'])]['checkpoint']
+          and r['v288_quelle_sha256'] == (V2R[(r['market'], r['id'])]['source_captured_sha256'] or 'nicht erfasst') for r in MASTER if r['v288_geprueft'] == 'JA'))
+t('V04 V4.1 bringt kein Gold und keine Feldwerte: gold NEIN überall, 0 V288-Gold', all(r['gold'] == 'NEIN' for r in MASTER) and HK['zaehlung']['v288_gold'] == 0
+  and all(r['gold'] == 'False' for r in V2R.values()))
+t('V05 Herkunftsdatei nennt ZIP-SHA-256 und die gelesenen Innendateien', len(HK['zip_sha256']) == 64 and len(HK['innen']) == 44)
 t('X10 Legacy-Werte = Merge-Kandidat (Titel, URL)', all(r['titel'] == KD[r['id']]['title'] and r['url'] == KD[r['id']]['url'] for r in MASTER if r['kohorte'] == 'WEBSITE_1352'))
 r4 = {(x['country'], x['record_id']): x for x in json.loads((EIN / 'R4_PUBLICATION_ROWS_20260915.json').read_text('utf-8'))}
 t('X11 DE/USA-Werte = R4 (Titel, Anbieter), keine erfundenen Felder', all(r['titel'] == r4[(r['market'], r['id'])]['title'] and r['beschreibung'] == 'nicht erfasst'
