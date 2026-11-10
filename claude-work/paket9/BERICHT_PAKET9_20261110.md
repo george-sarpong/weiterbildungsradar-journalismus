@@ -28,7 +28,7 @@ Beleg: [GEPRÜFT] per Test gerechnet · [GELESEN] Original gelesen · [OWNER] En
 - Sichtbare Menge und Standardreihenfolge unverändert: 1'071 am 09.11., 948 am 01.12.
 - Am 09.11. ändern sich 492 Karten, nur in den Feldern oben; keine Karte zeigt mehr einen Rohcode (vorher 74).
 - Smart-Suche: gleiche Treffer, Texte und Reihenfolge wie v36 (8 Anfragen), ausser übersetzten Codes und «nicht erfasst».
-- Weiter «nicht publiziert» aus Datentexten (09.11.): Start 248, Zugang 110, Dauer 93, Ort 64, Preis 2.
+- Weiter «nicht publiziert» in lesbaren Texten (Datentexte und die Termin-Hinweise der App aus Paket 6, z. B. «Nächster Termin nicht publiziert»; 09.11.): Start 248, Zugang 110, Dauer 93, Ort 64, Preis 2.
 
 ## 4. Tests [GEPRÜFT]
 | Lauf | 09.11. | 01.12. |
