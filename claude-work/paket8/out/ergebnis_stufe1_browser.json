@@ -1,0 +1,238 @@
+{
+ "results": [
+  {
+   "id": "B1",
+   "name": "axe-core: 0 Befunde «critical» und «serious» auf Startseite, Ergebnisansicht, Methodik, Datenschutz, Impressum",
+   "status": "FAIL",
+   "detail": "5: Startseite: label-content-name-mismatch (serious, 1); Ergebnisansicht: label-content-name-mismatch (serious, 4); Methodik: label-content-name-mismatch (serious, 1); Datenschutz: label-content-name-mismatch (serious, 1); Impressum: label-content-name-mismatch (serious, 1) · davon neu gegenüber live: keine"
+  },
+  {
+   "id": "B3a",
+   "name": "2.5.8 Zielgrösse ≥ 24 × 24 px (axe target-size)",
+   "status": "PASS",
+   "detail": ""
+  },
+  {
+   "id": "B3b",
+   "name": "4.1.3 Trefferzahl als Statusmeldung (Smart: role=status, Katalog: aria-live)",
+   "status": "PASS",
+   "detail": "«11 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.» / «1069 von 1069 aktuellen Angeboten»"
+  },
+  {
+   "id": "S1-Vorprüfung",
+   "name": "Beim Laden und bei der Suche nur Anfragen an die eigene Herkunft (lokaler Prüfstand; Endprüfung Stufe 2)",
+   "status": "PASS",
+   "detail": ""
+  },
+  {
+   "id": "T1",
+   "name": "HTML ohne Fehler im Nu Html Checker (Soll, E076)",
+   "status": "SOLL-OFFEN",
+   "detail": "2 Fehler (live 2): index.html:80 The “aria-label” attribute must not be specified on any “div” element unless the element has a “role” value other than “caption”, “code”, “deletion”, “emphasis”, “generic”, “insertion”, “paragraph”, “presentation”, “strong”, “subscript”, or “superscript”. | index.html:100 The “aria-labelledby” attribute must not be specified on any “div” element unless the element has a “role” value other than “caption”, “code”, “deletion”, “emphasis”, “generic”, “insertion”, “paragraph”, “presentation”, “strong”, “subscript”, or “superscript”."
+  },
+  {
+   "id": "T5",
+   "name": "Linkcheck Anbieterlinks",
+   "status": "SOLL-OFFEN",
+   "detail": "in dieser Umgebung nicht ausführbar: ausgehende Anfragen an Anbieter-Websites sind gesperrt; Lauf in Stufe 2 (Browser)"
+  }
+ ],
+ "axe": {
+  "kandidat": {
+   "label": "Kandidat (Prüfstand)",
+   "pages": {
+    "Startseite": [
+     {
+      "id": "label-content-name-mismatch",
+      "impact": "serious",
+      "tags": [
+       "wcag21a",
+       "wcag253"
+      ],
+      "n": 1,
+      "help": "Elements must have their visible text as part of their accessible name",
+      "beispiel": [
+       ".brand"
+      ]
+     }
+    ],
+    "Ergebnisansicht": [
+     {
+      "id": "label-content-name-mismatch",
+      "impact": "serious",
+      "tags": [
+       "wcag21a",
+       "wcag253"
+      ],
+      "n": 4,
+      "help": "Elements must have their visible text as part of their accessible name",
+      "beispiel": [
+       ".brand",
+       ".smart-result-card:nth-child(1) > .source-link[target=\"_blank\"][rel=\"noopener noreferrer\"]"
+      ]
+     }
+    ],
+    "Methodik": [
+     {
+      "id": "label-content-name-mismatch",
+      "impact": "serious",
+      "tags": [
+       "wcag21a",
+       "wcag253"
+      ],
+      "n": 1,
+      "help": "Elements must have their visible text as part of their accessible name",
+      "beispiel": [
+       ".brand"
+      ]
+     }
+    ],
+    "Datenschutz": [
+     {
+      "id": "label-content-name-mismatch",
+      "impact": "serious",
+      "tags": [
+       "wcag21a",
+       "wcag253"
+      ],
+      "n": 1,
+      "help": "Elements must have their visible text as part of their accessible name",
+      "beispiel": [
+       ".brand"
+      ]
+     }
+    ],
+    "Impressum": [
+     {
+      "id": "label-content-name-mismatch",
+      "impact": "serious",
+      "tags": [
+       "wcag21a",
+       "wcag253"
+      ],
+      "n": 1,
+      "help": "Elements must have their visible text as part of their accessible name",
+      "beispiel": [
+       ".brand"
+      ]
+     }
+    ]
+   },
+   "foreign": [],
+   "status": {
+    "smart": {
+     "role": "status",
+     "live": "polite",
+     "text": "11 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen."
+    },
+    "count": {
+     "live": "polite",
+     "text": "1069 von 1069 aktuellen Angeboten"
+    }
+   }
+  },
+  "live": {
+   "label": "Live-Snapshot Paket A",
+   "pages": {
+    "Startseite": [
+     {
+      "id": "label-content-name-mismatch",
+      "impact": "serious",
+      "tags": [
+       "wcag21a",
+       "wcag253"
+      ],
+      "n": 1,
+      "help": "Elements must have their visible text as part of their accessible name",
+      "beispiel": [
+       ".brand"
+      ]
+     }
+    ],
+    "Ergebnisansicht": [
+     {
+      "id": "label-content-name-mismatch",
+      "impact": "serious",
+      "tags": [
+       "wcag21a",
+       "wcag253"
+      ],
+      "n": 4,
+      "help": "Elements must have their visible text as part of their accessible name",
+      "beispiel": [
+       ".brand",
+       ".smart-result-card:nth-child(1) > .source-link[target=\"_blank\"][rel=\"noopener noreferrer\"]"
+      ]
+     }
+    ],
+    "Methodik": [
+     {
+      "id": "label-content-name-mismatch",
+      "impact": "serious",
+      "tags": [
+       "wcag21a",
+       "wcag253"
+      ],
+      "n": 1,
+      "help": "Elements must have their visible text as part of their accessible name",
+      "beispiel": [
+       ".brand"
+      ]
+     }
+    ],
+    "Datenschutz": [
+     {
+      "id": "label-content-name-mismatch",
+      "impact": "serious",
+      "tags": [
+       "wcag21a",
+       "wcag253"
+      ],
+      "n": 1,
+      "help": "Elements must have their visible text as part of their accessible name",
+      "beispiel": [
+       ".brand"
+      ]
+     }
+    ],
+    "Impressum": [
+     {
+      "id": "label-content-name-mismatch",
+      "impact": "serious",
+      "tags": [
+       "wcag21a",
+       "wcag253"
+      ],
+      "n": 1,
+      "help": "Elements must have their visible text as part of their accessible name",
+      "beispiel": [
+       ".brand"
+      ]
+     }
+    ]
+   },
+   "foreign": [],
+   "status": {
+    "smart": {
+     "role": "status",
+     "live": "polite",
+     "text": "11 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen."
+    },
+    "count": {
+     "live": "polite",
+     "text": "1095 von 1095 aktuellen Angeboten"
+    }
+   }
+  }
+ },
+ "vnu": {
+  "kandidat": [
+   "index.html:80 The “aria-label” attribute must not be specified on any “div” element unless the element has a “role” value other than “caption”, “code”, “deletion”, “emphasis”, “generic”, “insertion”, “paragraph”, “presentation”, “strong”, “subscript”, or “superscript”.",
+   "index.html:100 The “aria-labelledby” attribute must not be specified on any “div” element unless the element has a “role” value other than “caption”, “code”, “deletion”, “emphasis”, “generic”, “insertion”, “paragraph”, “presentation”, “strong”, “subscript”, or “superscript”."
+  ],
+  "live": [
+   "index.html:80 The “aria-label” attribute must not be specified on any “div” element unless the element has a “role” value other than “caption”, “code”, “deletion”, “emphasis”, “generic”, “insertion”, “paragraph”, “presentation”, “strong”, “subscript”, or “superscript”.",
+   "index.html:100 The “aria-labelledby” attribute must not be specified on any “div” element unless the element has a “role” value other than “caption”, “code”, “deletion”, “emphasis”, “generic”, “insertion”, “paragraph”, “presentation”, “strong”, “subscript”, or “superscript”."
+  ]
+ }
+}
