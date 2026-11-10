@@ -1,0 +1,30 @@
+{
+ "offen_auslaendische_gesellschaft": {
+  "NobleProg Schweiz": "NobleProg Limited, Adresse im Footer nicht genannt",
+  "ORSYS Training Schweiz": "Gruppe ORSYS (Frankreich), Zentrum ORSYS Suisse in Genf, orsys.fr",
+  "Ateliers de l’image et du son / Jérémie Gandin": "Rohwert country «Frankreich» trotz .ch-Domain; schon in der Nachrecherche (E043)",
+  "Laudius GmbH / Akademie für Fernstudien": "Postfach Zürich, Handelsregister Kleve (Deutschland), Impressum laudius.ch",
+  "PC-COLLEGE Training GmbH (DE legal provider; CH delivery surface)": "deutsche GmbH laut Datensatz",
+  "PC-COLLEGE Training GmbH": "deutsche GmbH laut Datensatz",
+  "Dawan": "DAWAN SARL, Nantes (Frankreich), Mentions légales dawan.ch"
+ },
+ "ohne_landes_domain": {
+  "SAWI – Academy for Marketing and Communication SA": "com",
+  "Compass Security Schweiz AG": "com",
+  "Baumgartner Research GmbH": "com",
+  "Swiss Creator Academy": "com",
+  "SAE Institute Zürich": "edu",
+  "ASF – Apprentissages sans frontières Genève": "org",
+  "Association Suisse de Presse et Photographie (ASPP) / Académie ASPP": "media",
+  "Swiss Photo Club Sàrl": "com",
+  "Basel Institute on Governance": "org",
+  "Basel Institute on Governance + University of Basel": "org",
+  "Julien Matthey": "com",
+  "ITTA": "net",
+  "MiTech": "education",
+  "Microwin AG": "com",
+  "décadréE": "com",
+  "LIK Akademie für Foto und Design": "com",
+  "Russmedia": "com"
+ }
+}
