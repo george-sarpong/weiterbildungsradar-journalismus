@@ -19,9 +19,16 @@ const check = (id, name, ok, detail = "") => { ok ? pass++ : fail++; console.log
   const sa = JSON.parse(read(path.join(CW, "paket3/out/merge_kandidat_smart.json"))).byId, sb = JSON.parse(read(path.join(CW, "paket14/out/smart-search-data-p14.json"))).byId;
   const sd = Object.keys(sa).filter(k => JSON.stringify(sa[k]) !== JSON.stringify(sb[k]));
   const r = spawnSync("python3", ["-I", "paket14/scripts/build_daten_p14.py"], { cwd: CW });
-  check("P02", "Übrige Seiten = Paket 13, Methodik = Paket 10 (E105); Daten nur OFFER-MEDIENCAMPUS-039 Preis, Kategorie, Dauer, Prüfdatum mit Herkunft (E107); Skript reproduzierbar",
+  check("P02", "Übrige Seiten = Paket 13, Methodik = Paket 10 (E105); Daten nur Mediencampus Preis, Kategorie, Dauer, Prüfdatum mit Herkunft (E107, E109); Skript reproduzierbar",
     same && sha(read(path.join(W14, "methodik.html"))) === sha(read(path.join(W10, "methodik.html"))) && r.status === 0
-    && diffs.sort().join() === ["approved", "duration", "korrekturen", "priceCategory", "priceDisplay"].map(f => "OFFER-MEDIENCAMPUS-039." + f).join() && sd.join() === "OFFER-MEDIENCAMPUS-039", diffs.join(", ")); }
+    && diffs.every(d => /^OFFER-MEDIENCAMPUS-\d+\.(approved|duration|korrekturen|priceCategory|priceDisplay)$/.test(d))
+    && sd.length === b.filter(o => o.priceDisplay === "CHF 1'150" && /MEDIENCAMPUS/.test(o.id) && o.korrekturen).length && sd.every(id => /MEDIENCAMPUS/.test(id)),
+    `${new Set(diffs.map(d => d.split(".")[0])).size} Angebote, ${diffs.length} Felder, Smart ${sd.length}`); }
+{ const P = js => JSON.parse(js.slice(js.indexOf("=") + 1).trim().replace(/;$/, ""));
+  const mc = P(read(path.join(W14, "data-p14.js"))).filter(o => /MEDIENCAMPUS/.test(o.id) && o.publicationStatus !== "HOLD");
+  const ohne = mc.filter(o => o.priceCategory === "PREIS_NICHT_PUBLIZIERT").map(o => o.id).sort();
+  check("P08", "Mediencampus: alle Kurse mit Preis ausser den 3 Lehrgängen ohne Preis auf der Anbieterseite (E109)",
+    ohne.join() === "OFFER-MEDIENCAMPUS-010,OFFER-MEDIENCAMPUS-030,OFFER-MEDIENCAMPUS-043" && mc.filter(o => o.priceDisplay === "CHF 1'150").length === 51, `${mc.length} Kurse, ohne Preis: ${ohne.join(", ")}`); }
 
 const app = (appFile) => {
   const dom = new JSDOM(read(path.join(W14, "index.html")).replace(/<script[^>]*src=[^>]*><\/script>/g, ""), { runScripts: "outside-only", url: "https://mediaskills.ch/", pretendToBeVisual: true });

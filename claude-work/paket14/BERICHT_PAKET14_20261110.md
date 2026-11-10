@@ -39,3 +39,12 @@ Nur E105 und E106 umgesetzt. Keine Gestaltungsänderung, keine Datenänderung.
 - Nachgeführt mit Herkunft (`config/korrekturen.csv`, `scripts/build_daten_p14.py`): `data-p14.js` Preis «CHF 1'150», Kategorie 501–2000, Dauer «1 Tag», Prüfdatum 10.11.2026; `out/smart-search-data-p14.json` Preis EXACT 1'150 CHF regulär. Ort, Termin, Format bleiben «auf Anfrage» bzw. «keine Angabe».
 - Tests: `test_paket14.js` 7/7 (neu P07: Kurs erscheint bei «Redaktionsmanagement für 9000 CHF» mit CHF 1'150 «im Budget»); Stufe 1 35 PASS, 0 FAIL, 4 später; Stufe 2 10 PASS, 0 FAIL. `docs/` neu (data-p14, smart-p14). Master: Nachtrag offen (wie E098/E103).
 - **E108 (Owner 10.11.):** «Ohne Hinweis ist die Mehrwertsteuer enthalten.» Das entspricht dem heutigen Verhalten: Preise ohne MWST-Angabe (`taxMode` UNSPECIFIED, 995 Preisoptionen) rechnen im Budget ohne Zuschlag, wie E084 es schon für Spannen festhält; nur «exkl. MWST» (EXCLUDED, 182) wird gesondert behandelt. Keine Code- oder Datenänderung nötig; Bemerkung in `korrekturen.csv` angepasst.
+
+## 8. Ergänzung 10.11.: alle Mediencampus-Kurse ohne Preis (E109)
+- Owner: «ja, natürlich» auf die Frage, die übrigen 53 Mediencampus-Kurse ohne Preis von den Anbieterseiten nachzutragen.
+- 53 Seiten einzeln abgerufen (WebFetch, kostenlos), Kursgeld und Kursdaten wörtlich in `out/mediencampus_abruf.tsv` [GELESEN].
+- 50 Seiten nennen CHF 1'150 («1150.--», «CHF 1'150.-», «Fr. 1'150.-», teils «inkl. Kursunterlagen», teils «1 Tag Privatseminar»); Kursdaten überall «Privatseminar» bzw. «Privatkurs/Mediencoaching», keine Termine.
+- 3 Lehrgänge ohne Betrag auf der Seite: OFFER-MEDIENCAMPUS-010 (Crossmedia-Manager), -030 (Medienkorrektorat), -043 (Dipl. Lektor/in MNS); bleiben «keine Angabe», Nachrecherche.
+- Nachgeführt mit Herkunft je Feld (`config/korrekturen.csv`): Preis «CHF 1'150», Kategorie 501–2000, Prüfdatum 10.11.2026 bei 50 Angeboten; Dauer «1 Tag» nur bei den 33, deren Seite «1 Tag» nennt; Smart-Preis EXACT 1'150 CHF regulär. MWST nach E108 inkl.
+- Mediencampus danach: 56 sichtbare Kurse, 53 mit Preis, 3 ohne.
+- Tests: `test_paket14.js` 8/8 (neu P08); Stufe 1 35 PASS, 0 FAIL, 4 später an beiden Stichtagen; Stufe 2 10 PASS, 0 FAIL. `docs/` neu. Master-Nachtrag offen.

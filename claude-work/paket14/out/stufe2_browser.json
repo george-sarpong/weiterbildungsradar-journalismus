@@ -1,5 +1,5 @@
 {
- "datum": "2026-11-10T12:33:50.703Z",
+ "datum": "2026-11-10T12:55:31.252Z",
  "sichtbar": "1068 von 1068 aktuellen Angeboten",
  "karten": 1068,
  "beispiele": {
@@ -7,8 +7,8 @@
   "LI": "LI-REG-001",
   "Online": "V82-DAWAN-065",
   "AnbDE": "OFFER-DJA-008",
-  "KA": "OFFER-MEDIENCAMPUS-039",
-  "Mediencampus": "OFFER-MEDIENCAMPUS-039"
+  "KA": "OFFER-MEDIENCAMPUS-001",
+  "Mediencampus": "OFFER-MEDIENCAMPUS-001"
  },
  "laenderBadges": [
   "Ort: keine Angabe · auf Anfrage | Anbieterland: keine Angabe | CH-Zugang: keine Angabe",
@@ -221,7 +221,7 @@
    "id": "S3",
    "name": "Browser: keine Cookies; localStorage erst nach Merken, nur weiterbildungsradar:favorites:v1",
    "status": "PASS",
-   "detail": "Cookies 0 · localStorage vor Merken [] · nach Merken [\"weiterbildungsradar:favorites:v1\"] = {\"weiterbildungsradar:favorites:v1\":\"[\\\"OFFER-MEDIENCAMPUS-039\\\"]\"}"
+   "detail": "Cookies 0 · localStorage vor Merken [] · nach Merken [\"weiterbildungsradar:favorites:v1\"] = {\"weiterbildungsradar:favorites:v1\":\"[\\\"OFFER-MEDIENCAMPUS-001\\\"]\"}"
   },
   {
    "id": "F11",
