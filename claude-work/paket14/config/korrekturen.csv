@@ -1,5 +1,5 @@
 id,feld,alt,neu,register_id,quelle,bemerkung
-OFFER-MEDIENCAMPUS-039,priceDisplay,Preis nicht publiziert,CHF 1'150,E107,"https://www.mediencampus.ch/cmf04-modernes-redaktionsmanagement.html, abgerufen 10.11.2026: Kursgeld «Fr. 1'150.-, 1 Tag Privatseminar»",MWST auf der Seite nicht genannt
+OFFER-MEDIENCAMPUS-039,priceDisplay,Preis nicht publiziert,CHF 1'150,E107,"https://www.mediencampus.ch/cmf04-modernes-redaktionsmanagement.html, abgerufen 10.11.2026: Kursgeld «Fr. 1'150.-, 1 Tag Privatseminar»",ohne MWST-Hinweis gilt der Preis als inkl. MWST (E108)
 OFFER-MEDIENCAMPUS-039,priceCategory,PREIS_NICHT_PUBLIZIERT,501_2000,E107,wie oben,abgeleitet aus CHF 1'150
 OFFER-MEDIENCAMPUS-039,duration,NOT_PUBLISHED,1 Tag,E107,wie oben,
 OFFER-MEDIENCAMPUS-039,approved,2026-08-17,2026-11-10,E107,wie oben,Prüfdatum = Abruf der Anbieterseite
