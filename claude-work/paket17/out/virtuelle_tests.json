@@ -1,0 +1,1473 @@
+{
+ "fehler": [],
+ "ergebnisse": [
+  {
+   "gruppe": "Freie",
+   "q": "Ich bin freie Journalistin und suche einen Kurs zu Recherche unter 500 Franken",
+   "verstanden": "Verstanden: Thema: recherche Budget: CHF 500",
+   "status": "82 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "Einführung in agentische KI für Journalist:innen",
+     "anbieter": "fjum – forum journalismus und medien wien",
+     "badges": [
+      "EUR 60 · Journalist:innen-Tarif",
+      "Online live",
+      "3 Stunden",
+      "Ort: Online"
+     ],
+     "warum": "Passt, weil: recherche · Journalist:innen-Tarif im Budget.",
+     "budget": "Beim publizierten Journalist:innen-Tarif bleiben CHF 440. Währungen EUR/CHF/USD werden für diese Suche vereinfacht 1:1 v"
+    },
+    {
+     "titel": "MAZ-Lokaljournalismustag",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 80 · Journalist:innen-Tarif",
+      "keine Angabe",
+      "1 Tag",
+      "Ort: keine Angabe"
+     ],
+     "warum": "Passt, weil: recherche · Journalist:innen-Tarif im Budget.",
+     "budget": "Beim publizierten Journalist:innen-Tarif bleiben CHF 420."
+    },
+    {
+     "titel": "MAZ-Recherchetag",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 290",
+      "keine Angabe",
+      "1 Tag",
+      "Ort: keine Angabe"
+     ],
+     "warum": "Passt, weil: recherche · im Budget.",
+     "budget": "Bei diesem Preis bleiben CHF 210."
+    }
+   ]
+  },
+  {
+   "gruppe": "Freie",
+   "q": "günstiger Schreibkurs für Freie",
+   "verstanden": "Verstanden: Thema: schreib",
+   "status": "70 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "AI-unterstütztes Schreiben",
+     "anbieter": "Fachhochschule Nordwestschweiz FHNW",
+     "badges": [
+      "CHF 1100",
+      "Präsenz",
+      "2 Tage",
+      "Ort: Schweiz · Olten"
+     ],
+     "warum": "Passt, weil: schreib.",
+     "budget": ""
+    },
+    {
+     "titel": "CAS Texten: effizient und wirkungsvoll schreiben und gestalten",
+     "anbieter": "ZHAW – ILC Institute of Language Competence",
+     "badges": [
+      "CHF 6900",
+      "Präsenz",
+      "10 ECTS; 11 Kurstage; Mitte September bis Mitte Dezember 2027",
+      "Ort: Schweiz · ZHAW Angewandte Linguistik, Theaterstrasse 15c, 8401 Winterthur"
+     ],
+     "warum": "Passt, weil: schreib.",
+     "budget": ""
+    },
+    {
+     "titel": "Diplomlehrgang Literarisches Schreiben 2027/2028",
+     "anbieter": "SBVV – Schweizerischer Buchhändler- und Verleger-Verband",
+     "badges": [
+      "keine Angabe",
+      "Präsenz",
+      "28 Kurstage",
+      "Ort: Schweiz · Zürich"
+     ],
+     "warum": "Passt, weil: schreib.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Freie",
+   "q": "Selbstständig als Journalist, Business und Akquise",
+   "verstanden": "Verstanden: Thema: selbststandig + business + akquise",
+   "status": "Kein Angebot passt zu allen Suchwörtern. 14 Angebote passen teilweise (1 von 3 Wörtern). Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "LinkedIn Basics – eine Einführung in das Business Social Media",
+     "anbieter": "Österreichische Medienakademie",
+     "badges": [
+      "EUR 179",
+      "Online live",
+      "2 Stunden",
+      "Ort: Online"
+     ],
+     "warum": "Passt, weil: business (passt teilweise).",
+     "budget": ""
+    },
+    {
+     "titel": "CapCut Masterclass: Advanced Editing for Businesses",
+     "anbieter": "NobleProg Schweiz",
+     "badges": [
+      "ab CHF 5208",
+      "Präsenz · Online live",
+      "14 Stunden",
+      "Ort: Schweiz · Schweiz / Online"
+     ],
+     "warum": "Passt, weil: business (passt teilweise).",
+     "budget": ""
+    },
+    {
+     "titel": "Come creare e ottimizzare il tuo profilo Business su Instagram",
+     "anbieter": "DigitalStrategies Academy",
+     "badges": [
+      "keine Angabe",
+      "Präsenz · Online live",
+      "3 Stunden",
+      "Ort: Schweiz · Lugano / online / in azienda / individuale"
+     ],
+     "warum": "Passt, weil: business (passt teilweise).",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Freie",
+   "q": "Fotografie Kurs online bis 300 CHF",
+   "verstanden": "Verstanden: Thema: fotografie Budget: CHF 300 Durchführung: Online",
+   "status": "7 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "Adobe Photoshop - Grundkurs",
+     "anbieter": "PC-COLLEGE Training GmbH",
+     "badges": [
+      "Auf Anfrage",
+      "Präsenz · Online live",
+      "3 Tage",
+      "Ort: Schweiz · Basel / Bern / Zürich / Live-Online"
+     ],
+     "warum": "Passt, weil: fotografie · Durchführungsform verifiziert · Preis nicht sicher vergleichbar.",
+     "budget": "Für dieses Angebot ist keine sichere Budgetaussage möglich."
+    },
+    {
+     "titel": "Photoshop für Fotografierende – Aufbaukurs",
+     "anbieter": "cap fotoschule GmbH",
+     "badges": [
+      "keine Angabe",
+      "Online",
+      "Mehrterminiger Masterclass-Kurs",
+      "Ort: Online"
+     ],
+     "warum": "Passt, weil: fotografie · Durchführungsform verifiziert · Preis nicht sicher vergleichbar.",
+     "budget": "Für dieses Angebot ist keine sichere Budgetaussage möglich."
+    },
+    {
+     "titel": "Graphiste Adobe Initiation",
+     "anbieter": "Dawan",
+     "badges": [
+      "ab CHF 1260",
+      "Präsenz · Online live",
+      "3 Tage / 21 Stunden",
+      "Ort: Online"
+     ],
+     "warum": "Passt, weil: fotografie · Durchführungsform verifiziert · Preis nicht sicher vergleichbar.",
+     "budget": "Für dieses Angebot ist keine sichere Budgetaussage möglich."
+    }
+   ]
+  },
+  {
+   "gruppe": "Redaktion",
+   "q": "Datenjournalismus Einführung",
+   "verstanden": "Verstanden: Thema: datenjournalismus",
+   "status": "14 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "Datajournalisme / Débutant / Mettre les données au service de l'information",
+     "anbieter": "CFJM – Centre de formation au journalisme et aux médias",
+     "badges": [
+      "Mehrere Tarife",
+      "keine Angabe",
+      "2 Tage, 09:00–17:00",
+      "Ort: keine Angabe"
+     ],
+     "warum": "Passt, weil: datenjournalismus.",
+     "budget": ""
+    },
+    {
+     "titel": "Datajournalisme / Intermédiaire / Faire parler les données",
+     "anbieter": "CFJM – Centre de formation au journalisme et aux médias",
+     "badges": [
+      "Mehrere Tarife",
+      "keine Angabe",
+      "1 Tag, 09:00–17:00",
+      "Ort: keine Angabe"
+     ],
+     "warum": "Passt, weil: datenjournalismus.",
+     "budget": ""
+    },
+    {
+     "titel": "Datenjournalismus – Grundlagen",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 1300",
+      "keine Angabe",
+      "2 Tage",
+      "Ort: keine Angabe"
+     ],
+     "warum": "Passt, weil: datenjournalismus.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Redaktion",
+   "q": "Verifikation und Faktencheck",
+   "verstanden": "Verstanden: Thema: verifikation + faktencheck",
+   "status": "15 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "Fact-checking : analyser et authentifier l'information",
+     "anbieter": "ORSYS Training Schweiz",
+     "badges": [
+      "CHF 1640",
+      "Online live",
+      "3 Tage (21 Std.)",
+      "Ort: Online"
+     ],
+     "warum": "Passt, weil: verifikation + faktencheck.",
+     "budget": ""
+    },
+    {
+     "titel": "Social Media Monitoring, AI and Verification for Breaking News Research",
+     "anbieter": "EBU Academy – European Broadcasting Union",
+     "badges": [
+      "ab EUR 499",
+      "Präsenz",
+      "1 Tag",
+      "Ort: Schweiz · EBU-Hauptsitz, Genf"
+     ],
+     "warum": "Passt, weil: verifikation + faktencheck.",
+     "budget": ""
+    },
+    {
+     "titel": "The Modern Field Reporter: Verification, Live Reporting and Multi-Platform Storytelling Workshop",
+     "anbieter": "EBU Academy – European Broadcasting Union",
+     "badges": [
+      "ab EUR 499",
+      "Präsenz",
+      "1 Tag, 09:30–16:00",
+      "Ort: Schweiz · EBU-Hauptsitz, Genf"
+     ],
+     "warum": "Passt, weil: verifikation + faktencheck.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Redaktion",
+   "q": "KI im Journalismus, Zürich",
+   "verstanden": "Verstanden: Thema: ki + journalismus Ort: Zürich",
+   "status": "5 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "MAZ-Thementagung: KI im Journalismus – Was kommt 2027?",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 380",
+      "Präsenz",
+      "0.5 Tage",
+      "Ort: Schweiz · NZZ, Falkenstrasse 11, 8008 Zürich"
+     ],
+     "warum": "Passt, weil: ki + journalismus · Ort: Zürich.",
+     "budget": ""
+    },
+    {
+     "titel": "Generative AI in the Context of OSINT Investigations",
+     "anbieter": "Baumgartner Research GmbH",
+     "badges": [
+      "CHF 1700",
+      "Präsenz",
+      "3 Tage",
+      "Ort: Schweiz · Zürich / beim Auftraggeber"
+     ],
+     "warum": "Passt, weil: ki + journalismus · Ort: Zürich.",
+     "budget": ""
+    },
+    {
+     "titel": "Dreikönigstagung 2027",
+     "anbieter": "Verlegerverband SCHWEIZER MEDIEN (VSM) / MEDIENINSTITUT",
+     "badges": [
+      "ab CHF 410 zzgl. MWST",
+      "Präsenz",
+      "6 Stunden; 08:30–14:30",
+      "Ort: Schweiz · AURA Zürich"
+     ],
+     "warum": "Passt, weil: ki + journalismus · Ort: Zürich.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Redaktion",
+   "q": "Interviewtechnik",
+   "verstanden": "Verstanden: Thema: interviewtechnik",
+   "status": "2 passende Angebote im aktuellen Bestand. Hier sind 2 Optionen.",
+   "karten": [
+    {
+     "titel": "Podcast-Moderation und Interviews führen",
+     "anbieter": "APA-Campus",
+     "badges": [
+      "EUR 680",
+      "Präsenz",
+      "1 Tag",
+      "Ort: Österreich · Wien"
+     ],
+     "warum": "Passt, weil: interviewtechnik.",
+     "budget": ""
+    },
+    {
+     "titel": "Video Basiskurs 1: Dreh, Kamera, Ton, Licht",
+     "anbieter": "dpsuisse",
+     "badges": [
+      "ab CHF 400",
+      "Präsenz",
+      "1 Abend à 3 Lektionen plus 4 Kurstage à 6 Lektionen",
+      "Ort: Schweiz · visCampus, dpsuisse, Weihermattstrasse 94, 5000 Aarau"
+     ],
+     "warum": "Passt, weil: interviewtechnik.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Redaktion",
+   "q": "Lokaljournalismus Workshop",
+   "verstanden": "Verstanden: Thema: lokaljournalismus",
+   "status": "5 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "Multimedial erzählen im Lokaljournalismus",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 650",
+      "keine Angabe",
+      "1 Tag",
+      "Ort: keine Angabe"
+     ],
+     "warum": "Passt, weil: lokaljournalismus.",
+     "budget": ""
+    },
+    {
+     "titel": "Fuss fassen im Lokaljournalismus - Grundlagen",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 1300",
+      "keine Angabe",
+      "Dauer: keine Angabe",
+      "Ort: keine Angabe"
+     ],
+     "warum": "Passt, weil: lokaljournalismus.",
+     "budget": ""
+    },
+    {
+     "titel": "Lokaljournalismus",
+     "anbieter": "Deutsche Journalisten-Akademie (DJA)",
+     "badges": [
+      "EUR 480–512",
+      "On-Demand",
+      "3–6 Monate",
+      "Ort: Online"
+     ],
+     "warum": "Passt, weil: lokaljournalismus.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Redaktion",
+   "q": "Newsletter erstellen",
+   "verstanden": "Verstanden: Thema: newsletter",
+   "status": "5 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "Ecriture / Débutant / Créer une newsletter pertinente et efficace qui trouve son audience",
+     "anbieter": "CFJM – Centre de formation au journalisme et aux médias",
+     "badges": [
+      "Mehrere Tarife",
+      "keine Angabe",
+      "1 Tag, 09:00–17:00",
+      "Ort: keine Angabe"
+     ],
+     "warum": "Passt, weil: newsletter.",
+     "budget": ""
+    },
+    {
+     "titel": "Newsletter-Grundlagen kompakt",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 990",
+      "keine Angabe",
+      "1 Tag",
+      "Ort: keine Angabe"
+     ],
+     "warum": "Passt, weil: newsletter.",
+     "budget": ""
+    },
+    {
+     "titel": "Reichweite, Nähe und Wirkung mit Newslettern und Briefings",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 650",
+      "keine Angabe",
+      "1 Tag",
+      "Ort: keine Angabe"
+     ],
+     "warum": "Passt, weil: newsletter.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Redaktion",
+   "q": "Podcast produzieren",
+   "verstanden": "Verstanden: Thema: podcast + produzieren",
+   "status": "3 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "Audio / Radio– mit Audioinhalten gehört werden",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 650",
+      "keine Angabe",
+      "1 Tag",
+      "Ort: keine Angabe"
+     ],
+     "warum": "Passt, weil: podcast + produzieren.",
+     "budget": ""
+    },
+    {
+     "titel": "Podcast-Technik",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 650",
+      "keine Angabe",
+      "1 Tag",
+      "Ort: keine Angabe"
+     ],
+     "warum": "Passt, weil: podcast + produzieren.",
+     "budget": ""
+    },
+    {
+     "titel": "Créer un podcast pour son entreprise",
+     "anbieter": "ORSYS Training Schweiz",
+     "badges": [
+      "CHF 2110",
+      "Präsenz · Online live",
+      "3 Tage (21 Std.)",
+      "Ort: Schweiz · Lausanne und Genf (Ort bei Anmeldung) / Online je Kursvariante"
+     ],
+     "warum": "Passt, weil: podcast + produzieren.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Redaktion",
+   "q": "Video fürs Handy, Mobile Reporting",
+   "verstanden": "Verstanden: Thema: video + handy + mobile + reporting",
+   "status": "Kein Angebot passt zu allen Suchwörtern. 1 Angebot passt teilweise (3 von 4 Wörtern). Hier ist 1 Option.",
+   "karten": [
+    {
+     "titel": "Lehrgang Digital Media Kompakt – Herbst 2026",
+     "anbieter": "Österreichische Medienakademie",
+     "badges": [
+      "EUR 2699",
+      "Hybrid",
+      "07.10.–02.12.2026",
+      "Ort: Österreich · Wien + Online"
+     ],
+     "warum": "Passt, weil: video + mobile + reporting (passt teilweise).",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Redaktion",
+   "q": "Social Media für Redaktionen",
+   "verstanden": "Verstanden: Thema: social + media",
+   "status": "59 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "Erfolgreiche Bilder für Social Media im Unternehmen Modul 4a",
+     "anbieter": "Klubschule Pro. / Genossenschaft Migros Ostschweiz",
+     "badges": [
+      "CHF 325",
+      "Präsenz",
+      "4 Lektionen à 50 Minuten / 1 Kurstage",
+      "Ort: Schweiz · Migros Ostschweiz / Online"
+     ],
+     "warum": "Passt, weil: social + media.",
+     "budget": ""
+    },
+    {
+     "titel": "Erfolgreiche Videos für Social Media im Unternehmen Modul 4b",
+     "anbieter": "Klubschule Pro. / Genossenschaft Migros Ostschweiz",
+     "badges": [
+      "CHF 560",
+      "Präsenz",
+      "8 Lektionen à 50 Minuten / 2 Kurstage",
+      "Ort: Schweiz · Migros Ostschweiz / Online"
+     ],
+     "warum": "Passt, weil: social + media.",
+     "budget": ""
+    },
+    {
+     "titel": "Kompaktkurs Video für Web und Social Media",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 3100",
+      "keine Angabe",
+      "5 Tage",
+      "Ort: keine Angabe"
+     ],
+     "warum": "Passt, weil: social + media.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Redaktion",
+   "q": "Storytelling für Online",
+   "verstanden": "Verstanden: Thema: storytelling Durchführung: Online",
+   "status": "6 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "Storytelling",
+     "anbieter": "SAWI – Academy for Marketing and Communication SA",
+     "badges": [
+      "CHF 8900",
+      "Präsenz · Online live",
+      "85h über 4 Monate",
+      "Ort: Schweiz · Nyon / Zürich / Online"
+     ],
+     "warum": "Passt, weil: storytelling · Durchführungsform verifiziert.",
+     "budget": ""
+    },
+    {
+     "titel": "Storytelling with Data",
+     "anbieter": "NobleProg Schweiz",
+     "badges": [
+      "ab CHF 1519 zzgl. MWST",
+      "Präsenz · Online live",
+      "14 Stunden",
+      "Ort: Schweiz · Basel / Live-Online"
+     ],
+     "warum": "Passt, weil: storytelling · Durchführungsform verifiziert.",
+     "budget": ""
+    },
+    {
+     "titel": "Prompt Engineering for Storytelling and Content Generation",
+     "anbieter": "NobleProg Schweiz",
+     "badges": [
+      "ab CHF 3472",
+      "Präsenz · Online live",
+      "14 Stunden",
+      "Ort: Schweiz · Schweiz / Online"
+     ],
+     "warum": "Passt, weil: storytelling · Durchführungsform verifiziert.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Redaktion",
+   "q": "Medienrecht Grundlagen",
+   "verstanden": "Verstanden: Thema: medienrecht + grundlagen",
+   "status": "5 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "Medienrecht – Grundlagen I",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 1300",
+      "keine Angabe",
+      "2 Tage",
+      "Ort: keine Angabe"
+     ],
+     "warum": "Passt, weil: medienrecht + grundlagen.",
+     "budget": ""
+    },
+    {
+     "titel": "Medienrecht – Grundlagen II",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 1300",
+      "keine Angabe",
+      "2 Tage",
+      "Ort: keine Angabe"
+     ],
+     "warum": "Passt, weil: medienrecht + grundlagen.",
+     "budget": ""
+    },
+    {
+     "titel": "Medienethik und Medienrecht – die Basics",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 650",
+      "keine Angabe",
+      "Dauer: keine Angabe",
+      "Ort: keine Angabe"
+     ],
+     "warum": "Passt, weil: medienrecht + grundlagen.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Redaktion",
+   "q": "Schreiben lernen, 2 Tage",
+   "verstanden": "Verstanden: Thema: schreiben Zeit: 2 Tage · erkannt, nicht angewendet",
+   "status": "55 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "AI-unterstütztes Schreiben",
+     "anbieter": "Fachhochschule Nordwestschweiz FHNW",
+     "badges": [
+      "CHF 1100",
+      "Präsenz",
+      "2 Tage",
+      "Ort: Schweiz · Olten"
+     ],
+     "warum": "Passt, weil: schreiben.",
+     "budget": ""
+    },
+    {
+     "titel": "CAS Texten: effizient und wirkungsvoll schreiben und gestalten",
+     "anbieter": "ZHAW – ILC Institute of Language Competence",
+     "badges": [
+      "CHF 6900",
+      "Präsenz",
+      "10 ECTS; 11 Kurstage; Mitte September bis Mitte Dezember 2027",
+      "Ort: Schweiz · ZHAW Angewandte Linguistik, Theaterstrasse 15c, 8401 Winterthur"
+     ],
+     "warum": "Passt, weil: schreiben.",
+     "budget": ""
+    },
+    {
+     "titel": "Diplomlehrgang Literarisches Schreiben 2027/2028",
+     "anbieter": "SBVV – Schweizerischer Buchhändler- und Verleger-Verband",
+     "badges": [
+      "keine Angabe",
+      "Präsenz",
+      "28 Kurstage",
+      "Ort: Schweiz · Zürich"
+     ],
+     "warum": "Passt, weil: schreiben.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Führung",
+   "q": "Führungskurs für Chefredaktor:innen",
+   "verstanden": "Verstanden: Thema: fuhrung",
+   "status": "9 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "CAS Leadership",
+     "anbieter": "ZHAW – Institut für Angewandte Medienwissenschaft IAM",
+     "badges": [
+      "CHF 9800",
+      "Präsenz",
+      "20 Tage",
+      "Ort: Schweiz · ZHAW Angewandte Linguistik, Theaterstrasse 15c, Winterthur"
+     ],
+     "warum": "Passt, weil: fuhrung.",
+     "budget": ""
+    },
+    {
+     "titel": "Das gelungene Interview",
+     "anbieter": "Theorie & Praxis GmbH / Schreibszene",
+     "badges": [
+      "CHF 700",
+      "Präsenz",
+      "1 Tag",
+      "Ort: Schweiz · Zürich"
+     ],
+     "warum": "Passt, weil: fuhrung.",
+     "budget": ""
+    },
+    {
+     "titel": "Gérer son activité professionnelle en photographie",
+     "anbieter": "ifage – Fondation pour la formation des adultes",
+     "badges": [
+      "CHF 240",
+      "Präsenz",
+      "6 Std. / 2 Tage",
+      "Ort: Schweiz · ifage Montbrillant, Genf"
+     ],
+     "warum": "Passt, weil: fuhrung.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Führung",
+   "q": "Redaktionsmanagement für 9000 CHF",
+   "verstanden": "Verstanden: Thema: redaktionsmanagement Budget: CHF 9000",
+   "status": "2 passende Angebote im aktuellen Bestand. Hier sind 2 Optionen.",
+   "karten": [
+    {
+     "titel": "Redaktionsmanagement – Führen in den Medien",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 6480 · Journalist:innen-Tarif",
+      "keine Angabe",
+      "9 Tage",
+      "Ort: keine Angabe"
+     ],
+     "warum": "Passt, weil: redaktionsmanagement · Journalist:innen-Tarif im Budget.",
+     "budget": "Beim publizierten Journalist:innen-Tarif bleiben CHF 2520."
+    },
+    {
+     "titel": "Modernes Redaktionsmanagement",
+     "anbieter": "Mediencampus / Medienschule Nordwestschweiz",
+     "badges": [
+      "CHF 1150 · Regulärer Preis",
+      "Format auf Anfrage",
+      "1 Tag",
+      "Ort: keine Angabe · auf Anfrage"
+     ],
+     "warum": "Passt, weil: redaktionsmanagement · im Budget.",
+     "budget": "Bei diesem Preis bleiben CHF 7850."
+    }
+   ]
+  },
+  {
+   "gruppe": "Führung",
+   "q": "Medienmanagement oder Datenjournalismus für 2000 CHF",
+   "verstanden": "Verstanden: Thema: medienmanagement oder datenjournalismus Budget: CHF 2000",
+   "status": "21 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "Datenjournalismus – Grundlagen",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 1300 · Journalist:innen-Tarif",
+      "keine Angabe",
+      "2 Tage",
+      "Ort: keine Angabe"
+     ],
+     "warum": "Passt, weil: datenjournalismus · Journalist:innen-Tarif im Budget.",
+     "budget": "Beim publizierten Journalist:innen-Tarif bleiben CHF 700."
+    },
+    {
+     "titel": "Datajournalisme / Débutant / Mettre les données au service de l'information",
+     "anbieter": "CFJM – Centre de formation au journalisme et aux médias",
+     "badges": [
+      "CHF 1180 · Tarif hors médias",
+      "keine Angabe",
+      "2 Tage, 09:00–17:00",
+      "Ort: keine Angabe"
+     ],
+     "warum": "Passt, weil: datenjournalismus · im Budget.",
+     "budget": "Bei diesem Preis bleiben CHF 820."
+    },
+    {
+     "titel": "Datenjournalismus",
+     "anbieter": "Deutsche Journalisten-Akademie (DJA)",
+     "badges": [
+      "EUR 480–512 · Je nach Ratenplan",
+      "On-Demand",
+      "3–6 Monate",
+      "Ort: Online"
+     ],
+     "warum": "Passt, weil: datenjournalismus · im Budget.",
+     "budget": "Bei der Preisobergrenze bleiben CHF 1488. Währungen EUR/CHF/USD werden für diese Suche vereinfacht 1:1 verglichen; tatsä"
+    }
+   ]
+  },
+  {
+   "gruppe": "Führung",
+   "q": "Change Management in Medienunternehmen",
+   "verstanden": "Verstanden: Thema: change + management + medienunternehmen",
+   "status": "Kein Angebot passt zu allen Suchwörtern. 1 Angebot passt teilweise (2 von 3 Wörtern). Hier ist 1 Option.",
+   "karten": [
+    {
+     "titel": "Leadership – Changemanagement",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 1260",
+      "keine Angabe",
+      "2 Tage",
+      "Ort: Schweiz · Luzern"
+     ],
+     "warum": "Passt, weil: change + management (passt teilweise).",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Führung",
+   "q": "MAS oder CAS Journalismus",
+   "verstanden": "Verstanden: Thema: mas oder cas + journalismus",
+   "status": "11 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "CAS Journalismus",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 9950",
+      "keine Angabe",
+      "16.5 Tage",
+      "Ort: keine Angabe"
+     ],
+     "warum": "Passt, weil: cas + journalismus.",
+     "budget": ""
+    },
+    {
+     "titel": "CAS Innovation im Journalismus",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "keine Angabe",
+      "keine Angabe",
+      "Dauer: keine Angabe",
+      "Ort: keine Angabe"
+     ],
+     "warum": "Passt, weil: cas + journalismus.",
+     "budget": ""
+    },
+    {
+     "titel": "CAS Combating Financial Crime Through Asset Recovery",
+     "anbieter": "Basel Institute on Governance + University of Basel",
+     "badges": [
+      "CHF 5600",
+      "Hybrid",
+      "6 Monate / 300 Stunden / 10 ECTS",
+      "Ort: Schweiz · Online + 2 optionale Präsenztermine Basel"
+     ],
+     "warum": "Passt, weil: cas + journalismus.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Einstieg",
+   "q": "Journalismus Ausbildung Einstieg",
+   "verstanden": "Verstanden: Thema: journalismus + ausbildung + einstieg",
+   "status": "11 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "Berufseinstieg Journalismus mit berufsbegleitender MAZ-Diplomausbildung",
+     "anbieter": "Vaduzer Medienhaus AG / Liechtensteiner Vaterland",
+     "badges": [
+      "keine Angabe",
+      "Präsenz",
+      "2 Jahre MAZ-Diplomausbildung parallel zur Redaktion",
+      "Ort: Liechtenstein · Vaduz"
+     ],
+     "warum": "Passt, weil: journalismus + ausbildung + einstieg.",
+     "budget": ""
+    },
+    {
+     "titel": "Ausbildung Journalismus auf Basis Höhere Fachschule",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 28'800",
+      "Präsenz",
+      "2 Jahre; 90 Kurstage am MAZ + 280 Praxistage",
+      "Ort: Schweiz · Luzern + Redaktionen in der Schweiz"
+     ],
+     "warum": "Passt, weil: journalismus + ausbildung + einstieg.",
+     "budget": ""
+    },
+    {
+     "titel": "Grundkurs Journalismus",
+     "anbieter": "OÖ. Journalismusakademie",
+     "badges": [
+      "ab EUR 990",
+      "Präsenz",
+      "mehrwöchige Seminarreihe",
+      "Ort: Österreich · Oberösterreich"
+     ],
+     "warum": "Passt, weil: journalismus + ausbildung + einstieg.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Einstieg",
+   "q": "Bachelor Journalismus",
+   "verstanden": "Verstanden: Thema: bachelor + journalismus",
+   "status": "6 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "Bachelor Kommunikation und Medien – Profilschwerpunkt Journalismus",
+     "anbieter": "ZHAW – Institut für Angewandte Medienwissenschaft IAM",
+     "badges": [
+      "CHF 720 pro Semester",
+      "Präsenz",
+      "180 ECTS; Vollzeit 6 Semester, Teilzeit 8–9 Semester",
+      "Ort: Schweiz · ZHAW Angewandte Linguistik, Winterthur"
+     ],
+     "warum": "Passt, weil: bachelor + journalismus.",
+     "budget": ""
+    },
+    {
+     "titel": "BA Journalismus & Medienmanagement",
+     "anbieter": "FHWien der WKW",
+     "badges": [
+      "EUR 363,36 pro Semester",
+      "Präsenz",
+      "6 Semester / 180 ECTS",
+      "Ort: Österreich · Wien"
+     ],
+     "warum": "Passt, weil: bachelor + journalismus.",
+     "budget": ""
+    },
+    {
+     "titel": "BA Journalismus & Unternehmenskommunikation",
+     "anbieter": "FH Wiener Neustadt",
+     "badges": [
+      "EUR 363,36 pro Semester",
+      "Präsenz",
+      "6 Semester / 180 ECTS",
+      "Ort: Österreich · Wiener Neustadt"
+     ],
+     "warum": "Passt, weil: bachelor + journalismus.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Einstieg",
+   "q": "Volontariat",
+   "verstanden": "Verstanden: Thema: volontariat",
+   "status": "1 passendes Angebot im aktuellen Bestand. Hier ist 1 Option.",
+   "karten": [
+    {
+     "titel": "ENERGY JOB: VOLONTARIAT",
+     "anbieter": "ENERGY ÖSTERREICH",
+     "badges": [
+      "keine Angabe",
+      "keine Angabe",
+      "voraussichtlich 3 Monate / 10–30 h pro Woche",
+      "Ort: Österreich · Wien"
+     ],
+     "warum": "Passt, weil: volontariat.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Budget",
+   "q": "kostenlos online",
+   "verstanden": "Verstanden: Durchführung: Online Nur Angebote mit strukturierter Kostenlos-Option",
+   "status": "1 passendes Angebot im aktuellen Bestand. Hier ist 1 Option.",
+   "karten": [
+    {
+     "titel": "Open-source Intelligence",
+     "anbieter": "Basel Institute on Governance",
+     "badges": [
+      "Kostenlos",
+      "On-Demand",
+      "Dauer: keine Angabe",
+      "Ort: Online"
+     ],
+     "warum": "Passt, weil: Durchführungsform verifiziert · sicher als kostenlos strukturiert.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Budget",
+   "q": "Weiterbildung bis 1000 CHF in Bern",
+   "verstanden": "Verstanden: Ort: Bern Budget: CHF 1000",
+   "status": "72 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "Natürliches Licht – Visuelle Erzählstrategien im Dokumentarfilm",
+     "anbieter": "FOCAL – Stiftung Weiterbildung Film und Audiovision",
+     "badges": [
+      "CHF 450",
+      "Präsenz",
+      "4 Tage",
+      "Ort: Schweiz · Bern / Zürich"
+     ],
+     "warum": "Passt, weil: Ort: Bern · im Budget.",
+     "budget": "Bei diesem Preis bleiben CHF 550."
+    },
+    {
+     "titel": "Ateliers Pratique",
+     "anbieter": "Swiss Photo Club Sàrl",
+     "badges": [
+      "CHF 90",
+      "Präsenz",
+      "2 Stunden",
+      "Ort: Schweiz · Zürich / Lausanne / Genf / Bern / Basel / Waadt"
+     ],
+     "warum": "Passt, weil: Ort: Bern · im Budget.",
+     "budget": "Bei diesem Preis bleiben CHF 910."
+    },
+    {
+     "titel": "Claude für Fortgeschrittene: Content Engineering & Agentic Use Cases",
+     "anbieter": "Digicomp Academy AG",
+     "badges": [
+      "CHF 918.85",
+      "Hybrid",
+      "1 Tag",
+      "Ort: Schweiz · Zürich / Bern / Basel / Lausanne / Genf"
+     ],
+     "warum": "Passt, weil: Ort: Bern · im Budget.",
+     "budget": "Bei diesem Preis bleiben CHF 81.15."
+    }
+   ]
+  },
+  {
+   "gruppe": "Budget",
+   "q": "Webinar gratis KI",
+   "verstanden": "Verstanden: Thema: ki Durchführung: Webinar Nur Angebote mit strukturierter Kostenlos-Option",
+   "status": "Keine bestätigten Treffer. Zum Thema allein gibt es 138 Angebote. Lass Durchführung oder «kostenlos» weg, um sie zu sehen.",
+   "karten": []
+  },
+  {
+   "gruppe": "Budget",
+   "q": "Kurs in Basel",
+   "verstanden": "Verstanden: Ort: Basel",
+   "status": "52 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "Adobe After Effects - Aufbaukurs",
+     "anbieter": "PC-COLLEGE Training GmbH (DE legal provider; CH delivery surface)",
+     "badges": [
+      "ab EUR 1290",
+      "Präsenz · Online live",
+      "2 Tage",
+      "Ort: Schweiz · Basel / Bern / Zürich / Live-Online"
+     ],
+     "warum": "Passt, weil: Ort: Basel.",
+     "budget": ""
+    },
+    {
+     "titel": "Adobe After Effects - Grundkurs",
+     "anbieter": "PC-COLLEGE Training GmbH (DE legal provider; CH delivery surface)",
+     "badges": [
+      "ab EUR 1390",
+      "Präsenz · Online live",
+      "3 Tage",
+      "Ort: Schweiz · Basel / Bern / Zürich / Live-Online"
+     ],
+     "warum": "Passt, weil: Ort: Basel.",
+     "budget": ""
+    },
+    {
+     "titel": "Adobe Bridge - Kompaktkurs",
+     "anbieter": "PC-COLLEGE Training GmbH",
+     "badges": [
+      "Auf Anfrage",
+      "Präsenz · Online live",
+      "1 Tag",
+      "Ort: Schweiz · Live-Online (kein Präsenzort)"
+     ],
+     "warum": "Passt, weil: Ort: Basel.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Budget",
+   "q": "Weiterbildung in Luzern unter 2000 Franken",
+   "verstanden": "Verstanden: Ort: Luzern Budget: CHF 2000",
+   "status": "13 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "Leadership – Changemanagement",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 1260 · Journalist:innen-Tarif",
+      "keine Angabe",
+      "2 Tage",
+      "Ort: Schweiz · Luzern"
+     ],
+     "warum": "Passt, weil: Ort: Luzern · Journalist:innen-Tarif im Budget.",
+     "budget": "Beim publizierten Journalist:innen-Tarif bleiben CHF 740."
+    },
+    {
+     "titel": "Leadership – Konfliktgespräche",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 1260 · Journalist:innen-Tarif",
+      "keine Angabe",
+      "2 Tage",
+      "Ort: Schweiz · Luzern"
+     ],
+     "warum": "Passt, weil: Ort: Luzern · Journalist:innen-Tarif im Budget.",
+     "budget": "Beim publizierten Journalist:innen-Tarif bleiben CHF 740."
+    },
+    {
+     "titel": "Leadership – Zwischen Mensch, Maschine und Newsroom",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 1260 · Journalist:innen-Tarif",
+      "keine Angabe",
+      "2 Tage",
+      "Ort: Schweiz · Luzern"
+     ],
+     "warum": "Passt, weil: Ort: Luzern · Journalist:innen-Tarif im Budget.",
+     "budget": "Beim publizierten Journalist:innen-Tarif bleiben CHF 740."
+    }
+   ]
+  },
+  {
+   "gruppe": "Budget",
+   "q": "Präsenzkurs Fotojournalismus",
+   "verstanden": "Verstanden: Thema: fotojournalismus Durchführung: Präsenz",
+   "status": "Keine bestätigten Treffer. Zum Thema allein gibt es 6 Angebote. Lass Durchführung weg, um sie zu sehen.",
+   "karten": []
+  },
+  {
+   "gruppe": "Sprache",
+   "q": "formation journalisme Genève",
+   "verstanden": "Verstanden: Thema: journalisme Ort: Genf",
+   "status": "16 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "Artificial Intelligence in the Production of Journalistic Content",
+     "anbieter": "NobleProg Schweiz",
+     "badges": [
+      "ab CHF 3472",
+      "Präsenz · Online live",
+      "14 Stunden",
+      "Ort: Schweiz · Genf (Präsenzoption); Online-Durchführung je Termin"
+     ],
+     "warum": "Passt, weil: journalisme · Ort: Genf.",
+     "budget": ""
+    },
+    {
+     "titel": "Écriture inclusive et accessible",
+     "anbieter": "décadréE",
+     "badges": [
+      "CHF 400",
+      "Präsenz",
+      "1 Tag; 09:00–16:00",
+      "Ort: Schweiz · Genf"
+     ],
+     "warum": "Passt, weil: journalisme · Ort: Genf.",
+     "budget": ""
+    },
+    {
+     "titel": "Module 6 – Le texte journalistique",
+     "anbieter": "Université de Genève – Faculté des lettres",
+     "badges": [
+      "CHF 450",
+      "Präsenz",
+      "12 Stunden",
+      "Ort: Schweiz · UNIGE, Genf"
+     ],
+     "warum": "Passt, weil: journalisme · Ort: Genf.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Sprache",
+   "q": "cours de vidéo en ligne",
+   "verstanden": "Verstanden: Thema: video Durchführung: Online",
+   "status": "18 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "L’IA pour créer des contenus percutants (textes, visuels, vidéos)",
+     "anbieter": "ORSYS Training Schweiz",
+     "badges": [
+      "CHF 1530",
+      "Online live",
+      "2 Tage (14 Std.)",
+      "Ort: Online"
+     ],
+     "warum": "Passt, weil: video · Durchführungsform verifiziert.",
+     "budget": ""
+    },
+    {
+     "titel": "Generative Media with Vertex AI: Image, Video, Audio, and Music",
+     "anbieter": "NobleProg Schweiz",
+     "badges": [
+      "ab CHF 3472",
+      "Präsenz · Online live",
+      "14 Stunden",
+      "Ort: Schweiz · Schweiz / Online"
+     ],
+     "warum": "Passt, weil: video · Durchführungsform verifiziert.",
+     "budget": ""
+    },
+    {
+     "titel": "InVideo AI for Video Production",
+     "anbieter": "NobleProg Schweiz",
+     "badges": [
+      "ab CHF 3472",
+      "Präsenz · Online live",
+      "14 Stunden",
+      "Ort: Schweiz · Schweiz / Online"
+     ],
+     "warum": "Passt, weil: video · Durchführungsform verifiziert.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Sprache",
+   "q": "corso giornalismo Lugano",
+   "verstanden": "Verstanden: Thema: giornalismo Ort: Lugano",
+   "status": "Keine bestätigten Treffer. Zum Thema allein gibt es 380 Angebote. Lass Ort weg, um sie zu sehen.",
+   "karten": []
+  },
+  {
+   "gruppe": "Sprache",
+   "q": "data journalism course online English",
+   "verstanden": "Verstanden: Thema: datenjournalismus Sprache: Englisch Durchführung: Online",
+   "status": "Keine bestätigten Treffer. Zum Thema allein gibt es 14 Angebote. Lass Durchführung oder Sprache weg, um sie zu sehen.",
+   "karten": []
+  },
+  {
+   "gruppe": "Spezial",
+   "q": "Wissenschaftsjournalismus",
+   "verstanden": "Verstanden: Thema: wissenschaftsjournalismus",
+   "status": "3 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "Wissenschaftsjournalismus",
+     "anbieter": "Deutsche Journalisten-Akademie (DJA)",
+     "badges": [
+      "EUR 480–512",
+      "On-Demand",
+      "3–6 Monate",
+      "Ort: Online"
+     ],
+     "warum": "Passt, weil: wissenschaftsjournalismus.",
+     "budget": ""
+    },
+    {
+     "titel": "Wissenschaftsjournalismus am Beispiel Umwelt",
+     "anbieter": "Mediencampus / Medienschule Nordwestschweiz",
+     "badges": [
+      "CHF 1150",
+      "Format auf Anfrage",
+      "1 Tag",
+      "Ort: keine Angabe · auf Anfrage"
+     ],
+     "warum": "Passt, weil: wissenschaftsjournalismus.",
+     "budget": ""
+    },
+    {
+     "titel": "Séminaire d'automne : Un climat en mutation, une société en mutation ?",
+     "anbieter": "Schweizer Klub für Wissenschaftsjournalismus (SKWJ / SASJ)",
+     "badges": [
+      "keine Angabe",
+      "Präsenz",
+      "2 Tage (12.–13. November 2026)",
+      "Ort: Schweiz · Zürich / ETH Zürich focusTerra"
+     ],
+     "warum": "Passt, weil: wissenschaftsjournalismus.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Spezial",
+   "q": "Sportjournalismus",
+   "verstanden": "Verstanden: Thema: sportjournalismus",
+   "status": "3 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "Sportjournalismus",
+     "anbieter": "Deutsche Journalisten-Akademie (DJA)",
+     "badges": [
+      "EUR 480–512",
+      "On-Demand",
+      "3–6 Monate",
+      "Ort: Online"
+     ],
+     "warum": "Passt, weil: sportjournalismus.",
+     "budget": ""
+    },
+    {
+     "titel": "Corso di formazione in giornalismo sportivo",
+     "anbieter": "Associazione Ticinese Giornalisti Sportivi (ATGS / Sportpress.ch)",
+     "badges": [
+      "keine Angabe",
+      "keine Angabe",
+      "Dauer: keine Angabe",
+      "Ort: Schweiz · Tessin"
+     ],
+     "warum": "Passt, weil: sportjournalismus.",
+     "budget": ""
+    },
+    {
+     "titel": "Vom Live-Sportspektakel zum Sportartikel",
+     "anbieter": "Mediencampus / Medienschule Nordwestschweiz",
+     "badges": [
+      "CHF 1150",
+      "Format auf Anfrage",
+      "1 Tag",
+      "Ort: keine Angabe · auf Anfrage"
+     ],
+     "warum": "Passt, weil: sportjournalismus.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Spezial",
+   "q": "Lektorat und Korrektorat",
+   "verstanden": "Verstanden: Thema: lektorat + korrektorat",
+   "status": "2 passende Angebote im aktuellen Bestand. Hier sind 2 Optionen.",
+   "karten": [
+    {
+     "titel": "Lehrgang Lektorieren",
+     "anbieter": "HDS Haus der Sprachen AG – SAL Schule für Angewandte Linguistik",
+     "badges": [
+      "CHF 8910",
+      "Hybrid",
+      "2 Semester / 198 Lektionen / 33 Tage; 08/2026–06/2027",
+      "Ort: Schweiz · Zürich / einzelne Online-Lektionen"
+     ],
+     "warum": "Passt, weil: lektorat + korrektorat.",
+     "budget": ""
+    },
+    {
+     "titel": "Praxislehrgang dipl. Lektor/-in MNS",
+     "anbieter": "Mediencampus / Medienschule Nordwestschweiz",
+     "badges": [
+      "keine Angabe",
+      "Format auf Anfrage",
+      "Dauer: keine Angabe",
+      "Ort: keine Angabe · auf Anfrage"
+     ],
+     "warum": "Passt, weil: lektorat + korrektorat.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Spezial",
+   "q": "Barrierefreie Kommunikation",
+   "verstanden": "Verstanden: Thema: barrierefreie + kommunikation",
+   "status": "Kein Angebot passt zu allen Suchwörtern. 172 Angebote passen teilweise (1 von 2 Wörtern). Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "Barrierefreie PDF - Dokumente mit Adobe InDesign und Adobe Acrobat Professional",
+     "anbieter": "PC-COLLEGE Training GmbH (DE legal provider; CH delivery surface)",
+     "badges": [
+      "ab EUR 990",
+      "Präsenz · Online live",
+      "2 Tage",
+      "Ort: Schweiz · Basel / Bern / Zürich / Live-Online"
+     ],
+     "warum": "Passt, weil: barrierefreie (passt teilweise).",
+     "budget": ""
+    },
+    {
+     "titel": "Barrierefreie PDF - Dokumente mit MS Word und Adobe Acrobat Professional",
+     "anbieter": "PC-COLLEGE Training GmbH (DE legal provider; CH delivery surface)",
+     "badges": [
+      "ab EUR 990",
+      "Präsenz · Online live",
+      "2 Tage",
+      "Ort: Schweiz · Basel / Bern / Zürich / Live-Online"
+     ],
+     "warum": "Passt, weil: barrierefreie (passt teilweise).",
+     "budget": ""
+    },
+    {
+     "titel": "Recht in der visuellen Kommunikation",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 650",
+      "keine Angabe",
+      "1 Tag",
+      "Ort: keine Angabe"
+     ],
+     "warum": "Passt, weil: kommunikation (passt teilweise).",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Spezial",
+   "q": "Audio Storytelling, Masterclass",
+   "verstanden": "Verstanden: Thema: audio + storytelling + masterclass",
+   "status": "2 passende Angebote im aktuellen Bestand. Hier sind 2 Optionen.",
+   "karten": [
+    {
+     "titel": "Audio-Storytelling – Masterclass mit Franziska Engelhardt",
+     "anbieter": "MAZ – Institut für Journalismus und Kommunikation",
+     "badges": [
+      "CHF 1300",
+      "keine Angabe",
+      "Dauer: keine Angabe",
+      "Ort: keine Angabe"
+     ],
+     "warum": "Passt, weil: audio + storytelling + masterclass.",
+     "budget": ""
+    },
+    {
+     "titel": "Masterclass Multimedia Content Creator",
+     "anbieter": "Studio 1 GmbH / Filmschule Schweiz",
+     "badges": [
+      "CHF 21'900",
+      "Präsenz",
+      "1 Jahr; 74 Unterrichtstage + 2 Intensivwochen",
+      "Ort: Schweiz · Wallisellen (ZH)"
+     ],
+     "warum": "Passt, weil: audio + storytelling + masterclass.",
+     "budget": ""
+    }
+   ]
+  },
+  {
+   "gruppe": "Spezial",
+   "q": "Sicherheit für Journalisten, digitale Sicherheit",
+   "verstanden": "Verstanden: Thema: sicherheit + digitale",
+   "status": "3 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.",
+   "karten": [
+    {
+     "titel": "Modul 5 – Digital Organisation & Operational Excellence",
+     "anbieter": "Universität St.Gallen – Institut für Medien- und Kommunikationsmanagement (MCM-HSG)",
+     "badges": [
+      "CHF 3790",
+      "Präsenz",
+      "4 Tage",
+      "Ort: Schweiz · St. Gallen"
+     ],
+     "warum": "Passt, weil: sicherheit + digitale.",
+     "budget": ""
+    },
+    {
+     "titel": "Violences en ligne: comment s’en protéger et protéger ses sources?",
+     "anbieter": "décadréE",
+     "badges": [
+      "keine Angabe",
+      "Online live",
+      "1 Std. 45 Min.; 12:15–14:00",
+      "Ort: Online"
+     ],
+     "warum": "Passt, weil: sicherheit + digitale.",
+     "budget": ""
+    },
+    {
+     "titel": "Investigativer Journalismus",
+     "anbieter": "Deutsche Journalisten-Akademie (DJA)",
+     "badges": [
+      "EUR 480–512",
+      "On-Demand",
+      "3–6 Monate",
+      "Ort: Online"
+     ],
+     "warum": "Passt, weil: sicherheit + digitale.",
+     "budget": ""
+    }
+   ]
+  }
+ ]
+}

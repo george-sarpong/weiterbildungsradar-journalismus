@@ -29,7 +29,7 @@
       VERSCHIEDENE_NIVEAUS: "Verschiedene Niveaus",
       FORTGESCHRITTEN: "Fortgeschritten",
       VERTIEFUNG: "Vertiefung",
-      EXPERT: "Expert",
+      EXPERT: "Experte/Expertin",
       NICHT_PUBLIZIERT: "keine Angabe"
     },
     priceCategory: {
@@ -37,8 +37,8 @@
       KOSTENLOS_MIT_BEDINGUNG: "Kostenlos mit Bedingung",
       PREIS_UNBESTAETIGT: "Preis unbestätigt",
       BIS_500: "Bis 500",
-      "501_2000": "501 bis 2'000",
-      UEBER_2000: "Über 2'000",
+      "501_2000": "501 bis 2000",
+      UEBER_2000: "Über 2000",
       MEHRERE_TARIFE: "Mehrere Tarife",
       PREIS_AUF_ANFRAGE: "Preis auf Anfrage",
       PREIS_NICHT_PUBLIZIERT: "Preis: keine Angabe",
@@ -301,10 +301,21 @@
     return "Nächster Termin: keine Angabe";
   };
 
-  const compactAmount = value => String(value ?? "")
-    .replace(/’/g, "'")
-    .replace(/\.00\b/g, "")
-    .replace(/[.,](?:[-–—])?$/, "");
+  // E115: Schweizer Schreibweise – bis vier Stellen ohne Trennzeichen (1300), ab fünf Stellen mit Apostroph (13'000).
+  const swissInt = digits => digits.length > 4 ? digits.replace(/\B(?=(\d{3})+(?!\d))/g, "'") : digits;
+  const swissNumber = value => {
+    const n = Number(value);
+    if (!Number.isFinite(n)) return String(value ?? "");
+    const [int, dec] = Math.abs(n).toFixed(2).split(".");
+    return `${n < 0 ? "-" : ""}${swissInt(int)}${dec === "00" ? "" : `.${dec}`}`;
+  };
+  const swissAmountToken = token => {
+    let t = token.replace(/’/g, "'").replace(/[.,](?:[-–—])?$/, "").replace(/\.00$/, "");
+    if (/^\d{1,3}(?:[',]\d{3})+(?:\.\d{1,2})?$/.test(t)) t = t.replace(/[',](?=\d{3})/g, "");
+    const m = t.match(/^(\d+)([.,]\d{1,2})?$/);
+    return m ? `${swissInt(m[1])}${m[2] ?? ""}` : t;
+  };
+  const compactAmount = value => String(value ?? "").replace(/\d[\d'’.,]*(?:[-–—](?!\d))?/g, swissAmountToken);
 
   const compactMoneyNumber = value => {
     const cleaned = String(value ?? "")
@@ -329,7 +340,7 @@
 
   const priceHasBillingUnit = raw => /\b(?:pro|per|par|je)\s+(?:halbtag|semester|stunde|monat|modul|jahr|jour|semestre|heure|mois|module)\b|\/\s*(?:halbtag|semester|stunde|monat|modul|jahr|jour|semestre|heure|mois|module)\b/i.test(raw);
 
-  const compactPrice = offer => {
+  const compactPriceBase = offer => {
     const raw = String(offer.priceDisplay ?? "").trim();
     const normalized = normalize(raw);
 
@@ -439,6 +450,12 @@
     }
 
     return labels.priceCategory[offer.priceCategory] ?? "Preis siehe Anbieter";
+  };
+
+  const compactPrice = offer => {
+    const shown = compactPriceBase(offer);
+    const vatExcluded = /\b(?:zzgl|exkl|excl|exklusive|zuzüglich)\.?\s*(?:\d[\d.,]*\s*%\s*)?(?:MWST|MwSt|Mehrwertsteuer|TVA|VAT)\b/i.test(String(offer.priceDisplay ?? ""));
+    return vatExcluded && /^(?:ab\s+)?(?:CHF|EUR|USD)\s*\d/.test(shown) && !/MWST/i.test(shown) ? `${shown} zzgl. MWST` : shown;
   };
 
   const compactAccess = offer => {
@@ -650,7 +667,7 @@
           <span class="badge">${escapeHtml(levelBadge(offer))}</span>
           <span class="badge">${escapeHtml(languageBadge(offer))}</span>
           <span class="badge">Ort: ${escapeHtml(place)}</span>
-          <span class="badge">Anbieterland: ${escapeHtml(providerCountryLabel(offer))}</span>
+          ${providerCountryLabel(offer) !== NOT_RECORDED ? `<span class="badge">Anbieterland: ${escapeHtml(providerCountryLabel(offer))}</span>` : ""}
           <span class="badge">CH-Zugang: ${escapeHtml(chAccessLabel(offer))}</span>
         </div>
         <div class="card-footer">
@@ -1353,10 +1370,10 @@
     const unit = option.billingBasis !== "TOTAL" && !option.billingCount
       ? billingUnits[option.billingBasis] : null;
     if (option.billingBasis !== "TOTAL" && !option.billingCount && !unit) return compactPrice(offer);
-    const money = value => `${option.currency} ${Number(value).toLocaleString("de-CH")}`;
+    const money = value => `${option.currency} ${swissNumber(Number(value))}`;
     let label = "";
     if (option.amountType === "RANGE" && option.minAmount != null && option.maxAmount != null) {
-      label = `${money(option.minAmount)}–${Number(option.maxAmount).toLocaleString("de-CH")}`;
+      label = `${money(option.minAmount)}–${swissNumber(Number(option.maxAmount))}`;
     } else if (option.amountType === "FROM" && option.minAmount != null) {
       label = `ab ${money(option.minAmount)}`;
     } else if (result.amount != null && Number.isFinite(Number(result.amount))) {
@@ -1449,7 +1466,7 @@
       const rest = Math.max(0, parsed.budget.amount - item.budget.amount);
       const prefix = status === "TARGET_GROUP_FIT" ? "Beim publizierten Journalist:innen-Tarif"
         : item.budget.range ? "Bei der Preisobergrenze" : "Bei diesem Preis";
-      return withCurrencyNote(`${prefix} bleiben ${parsed.budget.currency} ${rest.toLocaleString("de-CH")}.`);
+      return withCurrencyNote(`${prefix} bleiben ${parsed.budget.currency} ${swissNumber(rest)}.`);
     }
     if (status === "CONDITIONAL_FIT") return withCurrencyNote("Der passende Preis gilt nur unter einer veröffentlichten Bedingung; persönliche Berechtigung wurde nicht geprüft.");
     if (status === "POSSIBLE_FIT") return withCurrencyNote("Der publizierte Preis könnte ins Budget passen, ist aber nicht sicher als Gesamtpreis nutzbar.");
@@ -1499,9 +1516,9 @@
     if (!el.smartPriceBands) return;
     const c = priceBandCounts(list);
     const bands = [
-      [c.free, "Kostenlos"], [c.low, "Bis 500"], [c.mid, "501–2'000"], [c.high, "Über 2'000"], [c.variable, "Tarife / offen"]
+      [c.free, "Kostenlos"], [c.low, "Bis 500"], [c.mid, "501–2000"], [c.high, "Über 2000"], [c.variable, "Tarife / offen"]
     ];
-    el.smartPriceBands.innerHTML = bands.map(([count, label]) => `<div class="price-band"><strong>${count.toLocaleString("de-CH")}</strong><span>${escapeHtml(label)}</span></div>`).join("");
+    el.smartPriceBands.innerHTML = bands.map(([count, label]) => `<div class="price-band"><strong>${swissNumber(count)}</strong><span>${escapeHtml(label)}</span></div>`).join("");
     if (el.smartPriceNote) el.smartPriceNote.textContent = `Preiskategorien des ${context}; Budgets in CHF/EUR/USD werden zur Suche vereinfacht 1:1 verglichen. Anbieterpreise bleiben in Originalwährung.`;
   };
 
@@ -1530,8 +1547,8 @@
       || parsed.deliveryIntents.length || parsed.freeOnly);
     if (!hasAppliedConstraint) {
       const notices = [];
-      if (parsed.unappliedBudget) notices.push(`Budget: EUR ${parsed.unappliedBudget.amount.toLocaleString("de-CH")} · erkannt, nicht angewendet`);
-      if (parsed.unappliedAmountBudget) notices.push(`Budget: ${parsed.unappliedAmountBudget.amount.toLocaleString("de-CH")} · Währung offen, nicht angewendet`);
+      if (parsed.unappliedBudget) notices.push(`Budget: EUR ${swissNumber(parsed.unappliedBudget.amount)} · erkannt, nicht angewendet`);
+      if (parsed.unappliedAmountBudget) notices.push(`Budget: ${swissNumber(parsed.unappliedAmountBudget.amount)} · Währung offen, nicht angewendet`);
       if (parsed.maxDays) notices.push(`Zeit: ${parsed.maxDays} ${parsed.maxDays === 1 ? "Tag" : "Tage"} · erkannt, nicht angewendet`);
       el.smartUnderstood.innerHTML = `<span class="smart-understood-label">Verstanden:</span>${notices.length ? notices.map(chip => `<span class="smart-chip">${escapeHtml(chip)}</span>`).join("") : '<span class="smart-chip">Keine Suchbedingung erkannt</span>'}`;
       el.smartSummary.innerHTML = "<p><strong>Keine anwendbare Suchbedingung erkannt.</strong> Bitte Thema oder weitere Suchbedingung angeben.</p>";
@@ -1574,9 +1591,9 @@
     if (parsed.tokens.length) chips.push(`Thema: ${topicLabel(parsed)}`);
     if (parsed.places.length) chips.push(`Ort: ${[...new Set(parsed.places.map(placeLabelOf))].join(" oder ")}`);
     if (parsed.language) chips.push(`Sprache: ${SMART_LANGUAGE_LABELS[parsed.language]}`);
-    if (parsed.budget) chips.push(`Budget: ${parsed.budget.currency} ${parsed.budget.amount.toLocaleString("de-CH")}`);
-    if (parsed.unappliedBudget) chips.push(`Budget: EUR ${parsed.unappliedBudget.amount.toLocaleString("de-CH")} · erkannt, nicht angewendet`);
-    if (parsed.unappliedAmountBudget) chips.push(`Budget: ${parsed.unappliedAmountBudget.amount.toLocaleString("de-CH")} · Währung offen, nicht angewendet`);
+    if (parsed.budget) chips.push(`Budget: ${parsed.budget.currency} ${swissNumber(parsed.budget.amount)}`);
+    if (parsed.unappliedBudget) chips.push(`Budget: EUR ${swissNumber(parsed.unappliedBudget.amount)} · erkannt, nicht angewendet`);
+    if (parsed.unappliedAmountBudget) chips.push(`Budget: ${swissNumber(parsed.unappliedAmountBudget.amount)} · Währung offen, nicht angewendet`);
     if (parsed.maxDays) chips.push(`Zeit: ${parsed.maxDays} ${parsed.maxDays === 1 ? "Tag" : "Tage"} · erkannt, nicht angewendet`);
     if (parsed.deliveryOrGroup) chips.push(`Durchführung: ${parsed.deliveryOrGroup.map(intent => DELIVERY_INTENT_LABELS[intent]).join(" oder ")}`);
     parsed.deliveryIntents.filter(intent => !parsed.deliveryOrGroup?.includes(intent))
@@ -1586,10 +1603,10 @@
     el.smartUnderstood.innerHTML = `<span class="smart-understood-label">Verstanden:</span>${chips.length ? chips.map(chip => `<span class="smart-chip">${escapeHtml(chip)}</span>`).join("") : '<span class="smart-chip">Suchbegriffe aus deinem Satz</span>'}`;
     const shown = evaluated.slice(0, 3);
     // MS-49: Einheitliche Einzahl-/Mehrzahlformen für sichtbaren und Screenreader-Status.
-    const matchLabel = `${evaluated.length.toLocaleString("de-CH")} ${evaluated.length === 1 ? "passendes Angebot" : "passende Angebote"}`;
+    const matchLabel = `${swissNumber(evaluated.length)} ${evaluated.length === 1 ? "passendes Angebot" : "passende Angebote"}`;
     const optionsLabel = shown.length === 1 ? "Hier ist 1 Option." : `Hier sind ${shown.length} Optionen.`;
     const partialLabel = partial
-      ? `Kein Angebot passt zu allen Suchwörtern. ${evaluated.length.toLocaleString("de-CH")} ${evaluated.length === 1 ? "Angebot passt" : "Angebote passen"} teilweise (${partial.best} von ${partial.of} Wörtern).`
+      ? `Kein Angebot passt zu allen Suchwörtern. ${swissNumber(evaluated.length)} ${evaluated.length === 1 ? "Angebot passt" : "Angebote passen"} teilweise (${partial.best} von ${partial.of} Wörtern).`
       : "";
     // E110 B: Nulltreffer erklären – welche Bedingung weglassen?
     let zeroHint = "Formuliere Thema oder harte Durchführungsbedingung etwas breiter oder nutze die klassischen Filter.";
@@ -1604,7 +1621,7 @@
       const topicOnly = offers.filter(offer => topicMatch(offer, parsed).match).length;
       if (dropped.length && topicOnly) {
         const list = dropped.length > 1 ? `${dropped.slice(0, -1).join(", ")} oder ${dropped.at(-1)}` : dropped[0];
-        zeroHint = `Zum Thema allein gibt es ${topicOnly.toLocaleString("de-CH")} ${topicOnly === 1 ? "Angebot" : "Angebote"}. Lass ${list} weg, um ${topicOnly === 1 ? "es" : "sie"} zu sehen.`;
+        zeroHint = `Zum Thema allein gibt es ${swissNumber(topicOnly)} ${topicOnly === 1 ? "Angebot" : "Angebote"}. Lass ${list} weg, um ${topicOnly === 1 ? "es" : "sie"} zu sehen.`;
       }
     }
     const statusMessage = partial ? `${partialLabel} ${optionsLabel}` : evaluated.length

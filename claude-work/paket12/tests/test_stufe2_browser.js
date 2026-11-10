@@ -87,7 +87,10 @@ const SEARCHES = ["Datenjournalismus, CHF 800", "Moderation, 1000 Euro", "Video,
     for (const c of cs) {
       const cb = c.getBoundingClientRect();
       const bs = [...c.querySelectorAll(".badges .badge")].filter(b => /^(Ort|Anbieterland|CH-Zugang):/.test(b.textContent.trim()));
-      if (bs.length !== 3) { bad.push(`${c.dataset.offerId}: ${bs.length} Länder-Badges`); continue; }
+      // Paket 17 (E116): Ort und CH-Zugang immer, Anbieterland nur, wenn bekannt (nie «keine Angabe»)
+      const has = p => bs.some(x => x.textContent.trim().startsWith(p + ":"));
+      const anbieterKA = bs.some(x => /^Anbieterland:\s*keine Angabe/.test(x.textContent.trim()));
+      if (!has("Ort") || !has("CH-Zugang") || bs.length > 3 || anbieterKA) { bad.push(`${c.dataset.offerId}: ${bs.length} Länder-Badges`); continue; }
       n++;
       for (const b of bs) {
         const r = b.getBoundingClientRect(), cs2 = getComputedStyle(b);
@@ -285,7 +288,7 @@ const SEARCHES = ["Datenjournalismus, CHF 800", "Moderation, 1000 Euro", "Video,
   check("T6", "Handy hoch/quer, Tablet, Desktop: keine horizontal abgeschnittenen Inhalte (Start mit Smart-Ergebnis, Methodik, Datenschutz, Impressum)", t6bad.length === 0 ? "PASS" : "FAIL",
     t6bad.length ? t6bad.map(x => `${x.name} ${x.p}: Breite ${x.sw}/${x.vw} ${x.over.join(",")}`).join(" · ") : `${t6.length} Ansichten geprüft, Screenshots in out/screenshots`);
   const allBadgeBad = bDesk.bad.concat(...badgeMobile.map(b => b.bad.map(x => `${b.name}: ${x}`)));
-  check("LB", "Länder-Badges Ort / Anbieterland / CH-Zugang: je Karte genau drei, sichtbar, nicht abgeschnitten (Desktop, Handy hoch/quer, Tablet)", allBadgeBad.length === 0 ? "PASS" : "FAIL",
+  check("LB", "Länder-Badges: Ort und CH-Zugang je Karte, Anbieterland nur wenn bekannt (E116), sichtbar, nicht abgeschnitten (Desktop, Handy hoch/quer, Tablet)", allBadgeBad.length === 0 ? "PASS" : "FAIL",
     `Desktop ${bDesk.n} Karten; ${badgeMobile.map(b => `${b.name} ${b.n}`).join(", ")} · Befunde ${allBadgeBad.length}${allBadgeBad.length ? ": " + allBadgeBad.slice(0, 6).join("; ") : ""} · Beispiele: ${distinct.slice(0, 6).join(" ‖ ")}`);
 
   // ---------- S1 ----------
