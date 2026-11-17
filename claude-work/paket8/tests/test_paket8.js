@@ -128,7 +128,7 @@ const NOT_PUB = /nicht publiziert/i;
 {
   const empty = [], raw = {}, notPub = {};
   for (const c of CARDS) {
-    // Paket 17 (E116): Badges nach Bezeichnung statt Position; «Anbieterland» fehlt, wenn unbekannt
+    // Paket 17 (E116): Badges nach Bezeichnung statt Position; «Anbieterland» fehlt, wenn unbekannt; ab Paket 20 (E122, app-v43) fehlt es immer (LB prüft das)
     const byPrefix = p => c.badges.find(x => x.startsWith(p + ":"));
     const fields = { ...c.facts, Sprache: c.badges[2], Niveau: c.badges[1], Ort: byPrefix("Ort"), ...(byPrefix("Anbieterland") ? { Anbieterland: byPrefix("Anbieterland") } : {}), "CH-Zugang": byPrefix("CH-Zugang"), Zugang: c.access, Anbieter: c.provider, Titel: c.title };
     for (const [k, v] of Object.entries(fields)) {

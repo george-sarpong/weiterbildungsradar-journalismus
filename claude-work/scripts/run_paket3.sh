@@ -18,3 +18,7 @@ python3 -I scripts/build_master_p3.py --merge $OUT --katalog $EIN/Arbeitskatalog
 python3 -I scripts/paket3_listen.py --out $OUT --r4 $EIN/R4_PUBLICATION_ROWS_20260915.json --at $EIN/AT_OWNER_DISPOSITIONS_R3_20260930.csv --stichtag $ST > /dev/null
 python3 -I scripts/test_paket3.py --base $GIT/base --live $LIVE --main $GIT/main --pr10 $GIT/pr10 --eingaben $EIN \
   --usowner $GIT/pr10/data/staging/usa-owner-evidence-crosswalk-20261107.jsonl --out $OUT --scripts scripts --owner paket3/config/owner_entscheide.csv
+# Master-Fortschreibung (Paket 20): Nachträge Paket 13 (E098, E103), 14 (E107, E109), 18 (E118)
+# Basis master_3818.csv bleibt (Paket 7 baut daraus data-p7.js); aktueller Master = master_3818_aktuell.csv, Protokoll in $OUT
+python3 -I scripts/master_nachtraege.py --out $OUT
+python3 -I scripts/test_nachtraege.py --out $OUT

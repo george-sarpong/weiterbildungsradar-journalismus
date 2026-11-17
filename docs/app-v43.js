@@ -247,8 +247,7 @@
     const region = regionDisplay(currentRegion(offer));
     return region && normalize(region) !== normalize(base) ? `${base} · ${region}` : base;
   };
-  // Anbieterland nur mit Beleg (E065); sonst sichtbar «keine Angabe» (E036, E082, Wortlaut E093).
-  const providerCountryLabel = offer => isoCodes(laender(offer).anbieterLand).map(countryName).join(" / ") || NOT_RECORDED;
+  // Anbieterland steht nur in den Daten (Zuordnung, Deduplizierung), nicht auf der Karte (E122, löst E116 ab).
   // CH-Zugang nur aus CH-Durchführungsort (E066), nie aus dem Anbieterland (E030).
   const chAccessLabel = offer => laender(offer).chZugang === "JA" ? "ja (Ort in der Schweiz)" : NOT_RECORDED;
   const placeSearchText = offer => [...isoCodes(laender(offer).ortLand), ...isoCodes(laender(offer).anbieterLand)]
@@ -667,7 +666,6 @@
           <span class="badge">${escapeHtml(levelBadge(offer))}</span>
           <span class="badge">${escapeHtml(languageBadge(offer))}</span>
           <span class="badge">Ort: ${escapeHtml(place)}</span>
-          ${providerCountryLabel(offer) !== NOT_RECORDED ? `<span class="badge">Anbieterland: ${escapeHtml(providerCountryLabel(offer))}</span>` : ""}
           <span class="badge">CH-Zugang: ${escapeHtml(chAccessLabel(offer))}</span>
         </div>
         <div class="card-footer">

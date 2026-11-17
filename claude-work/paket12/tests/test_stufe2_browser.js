@@ -9,6 +9,8 @@ const { chromium } = require("playwright-core");
 const CW = path.join(process.cwd(), "claude-work"), LIVE = path.join(CW, "live-snapshot-20261109");
 // Prüfling wählbar (Paket 13): WEBSITE=claude-work/paket13/website APP=app-v39.js DATA=claude-work/paket13/website/data-p13.js OUTDIR=claude-work/paket13/out
 const WEB = path.resolve(process.env.WEBSITE || path.join(CW, "paket10/website")), APPNAME = process.env.APP || "app-v38.js";
+// Paket 20 (E122): ab app-v43 kein Badge «Anbieterland» mehr auf der Karte (Feld nur in den Daten)
+const E122 = Number((APPNAME.match(/app-v(\d+)/) || [])[1]) >= 43;
 const DATAFILE = path.resolve(process.env.DATA || path.join(CW, "paket7/website/data-p7.js"));
 const OUT = path.resolve(process.env.OUTDIR || path.join(CW, "paket12/out")), SHOT = path.join(OUT, "screenshots");
 fs.mkdirSync(SHOT, { recursive: true });
@@ -82,7 +84,7 @@ const SEARCHES = ["Datenjournalismus, CHF 800", "Moderation, 1000 Euro", "Video,
   fs.writeFileSync(path.join(OUT, "d5_rohcodes_browser.txt"), raw.join("\n") + "\n");
 
   // Länder-Badges: drei Badges je Karte, nicht abgeschnitten, innerhalb der Karte
-  const badgeCheck = async (pg, label) => pg.$$eval("#cards .card", cs => {
+  const badgeCheck = async (pg, label) => pg.$$eval("#cards .card", (cs, e122) => {
     const bad = []; let n = 0;
     for (const c of cs) {
       const cb = c.getBoundingClientRect();
@@ -90,6 +92,8 @@ const SEARCHES = ["Datenjournalismus, CHF 800", "Moderation, 1000 Euro", "Video,
       // Paket 17 (E116): Ort und CH-Zugang immer, Anbieterland nur, wenn bekannt (nie «keine Angabe»)
       const has = p => bs.some(x => x.textContent.trim().startsWith(p + ":"));
       const anbieterKA = bs.some(x => /^Anbieterland:\s*keine Angabe/.test(x.textContent.trim()));
+      // Paket 20 (E122): ab app-v43 nie ein Badge «Anbieterland»
+      if (e122 && has("Anbieterland")) { bad.push(`${c.dataset.offerId}: Badge «Anbieterland» trotz E122`); continue; }
       if (!has("Ort") || !has("CH-Zugang") || bs.length > 3 || anbieterKA) { bad.push(`${c.dataset.offerId}: ${bs.length} Länder-Badges`); continue; }
       n++;
       for (const b of bs) {
@@ -100,7 +104,7 @@ const SEARCHES = ["Datenjournalismus, CHF 800", "Moderation, 1000 Euro", "Video,
       }
     }
     return { n, bad };
-  });
+  }, E122);
   const bDesk = await badgeCheck(page, "Desktop");
   const nb = await page.$$eval("#cards .card", cs => { const t = (c, i) => c.querySelectorAll(".badges .badge")[i].textContent.trim();
     return { bare: cs.filter(c => t(c, 1) === "keine Angabe").length, niv: cs.filter(c => t(c, 1) === "Niveau: keine Angabe").length, lang: cs.filter(c => t(c, 2) === "keine Angabe").length }; });
@@ -288,7 +292,7 @@ const SEARCHES = ["Datenjournalismus, CHF 800", "Moderation, 1000 Euro", "Video,
   check("T6", "Handy hoch/quer, Tablet, Desktop: keine horizontal abgeschnittenen Inhalte (Start mit Smart-Ergebnis, Methodik, Datenschutz, Impressum)", t6bad.length === 0 ? "PASS" : "FAIL",
     t6bad.length ? t6bad.map(x => `${x.name} ${x.p}: Breite ${x.sw}/${x.vw} ${x.over.join(",")}`).join(" · ") : `${t6.length} Ansichten geprüft, Screenshots in out/screenshots`);
   const allBadgeBad = bDesk.bad.concat(...badgeMobile.map(b => b.bad.map(x => `${b.name}: ${x}`)));
-  check("LB", "Länder-Badges: Ort und CH-Zugang je Karte, Anbieterland nur wenn bekannt (E116), sichtbar, nicht abgeschnitten (Desktop, Handy hoch/quer, Tablet)", allBadgeBad.length === 0 ? "PASS" : "FAIL",
+  check("LB", `Länder-Badges: Ort und CH-Zugang je Karte, ${E122 ? "kein Anbieterland (E122)" : "Anbieterland nur wenn bekannt (E116)"}, sichtbar, nicht abgeschnitten (Desktop, Handy hoch/quer, Tablet)`, allBadgeBad.length === 0 ? "PASS" : "FAIL",
     `Desktop ${bDesk.n} Karten; ${badgeMobile.map(b => `${b.name} ${b.n}`).join(", ")} · Befunde ${allBadgeBad.length}${allBadgeBad.length ? ": " + allBadgeBad.slice(0, 6).join("; ") : ""} · Beispiele: ${distinct.slice(0, 6).join(" ‖ ")}`);
 
   // ---------- S1 ----------
