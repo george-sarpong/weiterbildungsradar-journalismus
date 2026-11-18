@@ -86,3 +86,12 @@ Lokaler Commit auf `claude/datenharmonisierung` (Basis a8b146e), nicht gepusht. 
 - Später: Anbieterland der 24 offenen Anbieter (E123); Paket 19 GEO/LLMO (Vormerkung), inkl. Sichtbarkeits-Gate (E121).
 
 Quellen: Infomaniak FAQ 360 (https://faq.infomaniak.com/360); OpenAI Bots (https://developers.openai.com/api/docs/bots); Anthropic (https://support.claude.com/en/articles/8896518); Google Common Crawlers (https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers); Apple (https://support.apple.com/en-us/119829); Meta (https://developers.facebook.com/docs/sharing/webmasters/web-crawlers/); Amazon (https://developer.amazon.com/amazonbot); Common Crawl (https://commoncrawl.org/ccbot). Alle abgerufen 17.11.2026.
+
+## 10. Nachtrag 18.11.2026 (E126–E131) – ersetzt §8 und §9
+
+- Release live 18.11. (E126): Owner hat den Hauptordner geleert (ausser `.ftpquota`) und `mediaskills_beta_20261118.zip` hochgeladen (`paket20/scripts/build_release.py`; website/ inkl. alter Live-Dateien, rollback/ alte index.html). Auf dem Server lag vorher keine `.htaccess` (Screenshot FTP-Manager).
+- Live geprüft: securityheaders.com über https Note A (HSTS von Infomaniak, CSP, nosniff, Referrer-Policy, X-Frame-Options über frame-ancestors); fehlt nur Permissions-Policy (nicht beauftragt). Über http fehlte die Weiterleitung → E128: `.htaccess` mit RewriteRule (Infomaniak FAQ 1961), lokal `paket20/tests/test_https.sh` 7/7, live funktioniert.
+- `robots.txt` live mit Bytespider (E130), nur ASCII. MistralAI-Training und CCBot bleiben offen (E131, Owner: für Apertus und Mistral). Katalogsuche bleibt (E129, rund 300 Angebote Schweizer Anbieter ohne Ort).
+- GitHub: alle Commits gepusht auf `claude/datenharmonisierung` (zuletzt 1ad520f); kein Merge nach `main`.
+- Nachtrag Paket 20 bestätigt (E127).
+- Offen für später: Anbieterland der 24 Anbieter und fehlende Orte (E123; danach E129 neu prüfen); Paket 19 GEO/LLMO (`VORMERKUNG_GEO_LLMO_20261117.md`); optional prüfen, ob Apertus Websites ausschliesst, die andere KI-Crawler sperren (E131); Permissions-Policy optional.
