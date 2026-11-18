@@ -1,6 +1,13 @@
-# mediaskills.ch – Sicherheits-Header (E124), Stand 17.11.2026, Paket 20
+# mediaskills.ch – Sicherheits-Header (E124), Stand 18.11.2026, Paket 20 (+ HTTPS-Weiterleitung)
 # Gehört in den Hauptordner der Website (neben index.html).
 # Liegt dort schon eine .htaccess: NICHT ersetzen. Nur den Block zwischen BEGIN und END ans Ende anfügen.
+# BEGIN mediaskills HTTPS-Weiterleitung (Infomaniak FAQ 1961)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>
+# END mediaskills HTTPS-Weiterleitung
 # BEGIN mediaskills Sicherheits-Header
 <IfModule mod_headers.c>
   Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
