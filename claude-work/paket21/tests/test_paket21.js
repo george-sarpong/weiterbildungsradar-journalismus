@@ -40,7 +40,7 @@ const ids21 = new Set(K.map(k => k.id)), alt066 = A.filter(o => iso(L(o).ortLand
 check("P06", B.filter(o => ids21.has(o.id)).every(o => !iso(L(o).ortLand).includes("CH") || L(o).chZugang === "JA") && alt066.length === 2,
   `E066: jedes geänderte Angebot mit Ort Schweiz hat CH-Zugang «ja»; Altfälle MEHRERE_LAENDER unverändert (${alt066.join(", ")})`);
 const ortK = K.filter(k => k.feld === "laender.ortLand");
-check("P07", ortK.every(k => /^E13[4-7]$/.test(k.register_id) && k.quelle.length > 20) && K.every(k => /https?:\/\/|Owner/.test(k.quelle)),
+check("P07", ortK.every(k => /^E13[4-9]$/.test(k.register_id) && k.quelle.length > 20) && K.every(k => /https?:\/\/|Owner/.test(k.quelle)),
   `jeder neue Ort aus Owner-Regel oder Anbieterseite, nie aus dem Anbieterland (${ortK.length} Ortsländer); jede Korrektur mit Quelle`);
 const m8 = byB["OFFER-MAZ-008"], mz = B.filter(o => o.provider.startsWith("MAZ – ") && !iso(L(o).ortLand).length);
 check("P08", L(m8).ortLand === "nicht erfasst" && mz.every(o => o.id === "OFFER-MAZ-008" || /ONLINE$/.test(L(o).ortSicherheit) || !["", "NOT_PUBLISHED", "NICHT_PUBLIZIERT"].includes(String(o.region).toUpperCase())),
@@ -58,4 +58,8 @@ const ohne = (D, S) => D.filter(o => S.has(o.id) && L(o).anbieterLand === "CH" &
 const vor = ohne(A, Va), nach = ohne(B, V), kein = nach.filter(o => !/(?:^|_)ONLINE$/.test(L(o).ortSicherheit));
 check("P10", vor.length === 246 && nach.length < vor.length, `E129: sichtbar, Anbieter Schweiz, ohne Ort ${vor.length} → ${nach.length} (davon ohne «Online» ${kein.length})`);
 fs.writeFileSync(`${CW}/paket21/out/e129_ohne_ort_nachher.json`, JSON.stringify(nach.map(o => ({ id: o.id, provider: o.provider, region: o.region, online: /ONLINE$/.test(L(o).ortSicherheit) })), null, 1) + "\n");
+const dg = K.filter(k => k.register_id === "E139" && k.feld === "region"), fr = B.filter(o => o.provider === "Digicomp Academy AG" && o.language === "FR" && dg.some(k => k.id === o.id));
+check("P11", dg.length === 26 && dg.every(k => /EducationEvent|nicht gefunden/.test(K.find(x => x.id === k.id && x.feld === "region").quelle))
+  && fr.length === 14 && fr.every(o => o.region === "Lausanne, Genf") && !B.some(o => o.provider === "Digicomp Academy AG" && /Digicomp-Standorte \(Zürich/.test(o.region)),
+  `Digicomp (E139): 26 Angebote je Kurs aus den Termindaten; ${fr.length} französische Kurse nur Lausanne, Genf; keine pauschale Fünf-Städte-Angabe mehr`);
 console.log(`\n${res.filter(Boolean).length}/${res.length} bestanden`); process.exit(res.every(Boolean) ? 0 : 1);

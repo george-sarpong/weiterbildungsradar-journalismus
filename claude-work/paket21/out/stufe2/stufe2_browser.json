@@ -1,5 +1,5 @@
 {
- "datum": "2026-11-18T21:24:53.739Z",
+ "datum": "2026-11-18T22:02:50.733Z",
  "sichtbar": "1027 von 1027 aktuellen Angeboten",
  "karten": 1027,
  "beispiele": {
@@ -201,7 +201,7 @@
    "id": "D5",
    "name": "Browser: gerenderte Karten ohne Rohcode, ohne leeres Feld, fehlende Angaben «keine Angabe»",
    "status": "PASS",
-   "detail": "1027 Karten · Rohcodes 0 · leere Fakten 0 · alter Wortlaut 0 · Karten mit «keine Angabe» 487 · Hinweis: Beschreibungstexte mit «nicht publiziert» 1"
+   "detail": "1027 Karten · Rohcodes 0 · leere Fakten 0 · alter Wortlaut 0 · Karten mit «keine Angabe» 476 · Hinweis: Beschreibungstexte mit «nicht publiziert» 1"
   },
   {
    "id": "NB",

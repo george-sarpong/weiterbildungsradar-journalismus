@@ -10,6 +10,14 @@ C = R / "paket21/config"; O = R / "paket21/out"
 pre = "window.WEITERBILDUNGSRADAR_OFFERS = "
 D = json.loads((R / "paket20/website/data-p18.js").read_text(encoding="utf-8")[len(pre):].rstrip().rstrip(";"))
 M = {r["id"]: r for r in csv.DictReader(open(R / "paket3/out/master_3818_aktuell.csv", encoding="utf-8-sig")) if r["kohorte"] == "WEBSITE_1352"}
+# Ist der Master schon mit Paket 21 fortgeschrieben, gilt als alter Master-Wert der Wert vor Paket 21 (aus dem Protokoll),
+# damit die Korrekturliste reproduzierbar bleibt (Basis ist immer der Stand vor Paket 21).
+P21_REG = {"E118", "E123", "E132", "E133", "E134", "E135", "E136", "E137", "E139", "E066"}
+VOR = {}
+for p in csv.DictReader(open(R / "paket3/out/master_nachtraege_protokoll.csv", encoding="utf-8")):
+    if p["register_id"] in P21_REG and not p["herkunft"].startswith("DOMAIN_") and (p["id"], p["feld"]) not in VOR:
+        VOR[(p["id"], p["feld"])] = p["alt"]
+for (i, f), v in VOR.items(): M[i] = dict(M[i]); M[i][f] = v
 ABRUF = "abgerufen 18.11.2026"
 MF = {"laender.anbieterLand": "anbieter_land", "region": "ort_text", "laender.ortLand": "durchfuehrungsort_land",
       "laender.ortSicherheit": "durchfuehrungsort_sicherheit", "laender.chZugang": "ch_zugang"}
@@ -72,9 +80,20 @@ DQ = ("Digicomp-Standorte Zürich, Basel, Bern, Lausanne und Genf oder online (S
       "https://www.ausbildung-weiterbildung.ch/Detail.aspx?schoolID=384; Kursseite AP6ADV: «Basel, Berne, Geneva, Lausanne, Zürich», "
       f"https://digicomp.ch/courses-digital-media-design/content-media-production/course-adobe-premiere-pro-cc-advanced) {ABRUF}; "
       "Kursseiten selbst ohne Browser nicht lesbar")
+# E139 (löst E137 teilweise ab): Orte je Kurs aus den Termindaten der Kursseite (schema.org EducationEvent, Chrome 18.11.)
+DG = {l.split("\t")[0]: l.rstrip("\n").split("\t") for l in list(open(O / "digicomp_abruf_20261118.tsv", encoding="utf-8"))[1:]}
 for o in D:
-    if o["provider"] == "Digicomp Academy AG" and str(o.get("region", "")).strip() == "Digicomp" and not iso(L(o).get("ortLand")):
-        ort(o, "Digicomp-Standorte (Zürich, Basel, Bern, Lausanne, Genf)", "CH", "ORT_ALTERNATIV_ODER_UNSCHARF", "E137", DQ)
+    if o["provider"] != "Digicomp Academy AG" or o["id"] not in DG: continue
+    assert str(o.get("region", "")).startswith("Digicomp"), o["id"]
+    _, st, onl, belegt = DG[o["id"]]
+    if not st:   # Kursseite nicht gefunden: Land Schweiz (alle Standorte in der Schweiz, E137), keine Stadt
+        ort(o, "Digicomp-Standort in der Schweiz (Ort je Termin beim Anbieter)", "CH", "ORT_ALTERNATIV_ODER_UNSCHARF", "E139",
+            f"{belegt}; {DQ}")
+        continue
+    mehr = "," in st
+    sicher = ("MEHRERE_ORTE" if mehr else "ORT_GENANNT") + ("_MIT_ONLINE" if onl == "ja" else "")
+    ort(o, st + (" / Online" if onl == "ja" else ""), "CH", sicher, "E139",
+        f"{o['url']} im Browser {ABRUF}: Termine laut Kursseite {belegt} (schema.org EducationEvent)")
 
 with open(C / "korrekturen.csv", "w", encoding="utf-8", newline="") as f:
     w = csv.writer(f, lineterminator="\n")

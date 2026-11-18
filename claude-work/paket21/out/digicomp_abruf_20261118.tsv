@@ -1,0 +1,27 @@
+id	staedte	online	termine_laut_kursseite
+OFFER-DIGICOMP-005	Zürich, Basel, Bern, Lausanne, Genf	ja	Basel:7, Bern:7, Zürich:7, Lausanne:5, Genève:5, Online:4
+OFFER-DIGICOMP-028	Zürich, Basel, Bern, Lausanne, Genf	nein	Zürich:6, Bern:5, Basel:5, Lausanne:5, Genève:5
+OFFER-DIGICOMP-040	Zürich	ja	Zürich:4, Virtuell:3
+OFFER-DIGICOMP-046	Zürich, Basel, Bern	nein	Basel:5, Zürich:4, Bern:4
+OFFER-DIGICOMP-047	Lausanne, Genf	nein	Lausanne:4, Genève:4
+OFFER-DIGICOMP-048	Lausanne, Genf	nein	Genève:5, Lausanne:4
+OFFER-DIGICOMP-049	Lausanne, Genf	nein	Genève:5, Lausanne:4
+OFFER-DIGICOMP-050	Lausanne, Genf	nein	Lausanne:5, Genève:4
+OFFER-DIGICOMP-051	Lausanne, Genf	nein	Lausanne:6, Genève:4
+OFFER-DIGICOMP-052	Lausanne, Genf	nein	Genève:5, Lausanne:5
+OFFER-DIGICOMP-055	Lausanne, Genf	nein	Genève:5, Lausanne:4
+OFFER-DIGICOMP-057	Lausanne, Genf	nein	Genève:6, Lausanne:4
+OFFER-DIGICOMP-058	Lausanne, Genf	nein	Genève:5, Lausanne:4
+OFFER-DIGICOMP-060	Zürich, Basel, Bern	ja	Zürich:4, Bern:4, Basel:4, Online:1
+OFFER-DIGICOMP-062	Lausanne, Genf	nein	Lausanne:6, Genève:4
+OFFER-DIGICOMP-063	Zürich, Basel, Bern, Lausanne, Genf	ja	Genève:6, Zürich:4, Bern:4, Basel:4, Lausanne:4, Online:1
+OFFER-DIGICOMP-064	Lausanne, Genf	nein	Genève:6, Lausanne:4
+OFFER-DIGICOMP-066	Lausanne, Genf	nein	Lausanne:5, Genève:5
+OFFER-DIGICOMP-068	Zürich, Basel, Bern	nein	Zürich:4, Bern:3, Basel:3
+OFFER-DIGICOMP-070	Zürich, Basel, Bern, Lausanne, Genf	ja	Zürich:9, Bern:7, Basel:7, Lausanne:5, Genève:4, Online:3
+OFFER-DIGICOMP-071	Zürich, Basel, Bern, Lausanne, Genf	nein	Lausanne:5, Genève:5, Zürich:3, Bern:3, Basel:3
+OFFER-DIGICOMP-072	Zürich, Basel, Bern, Lausanne, Genf	ja	Basel:6, Zürich:5, Bern:5, Lausanne:4, Genève:4, Online:1
+OFFER-DIGICOMP-073	Lausanne, Genf	nein	Lausanne:5, Genève:4
+OFFER-DIGICOMP-074	Lausanne, Genf	nein	Genève:5, Lausanne:4
+OFFER-DIGICOMP-041		nein	Kursseite nicht gefunden; Eintrags-URL führt auf die Übersicht Adobe Premiere
+OFFER-DIGICOMP-044		nein	Kursseite nicht gefunden (Kurspaket PRAEAU); Eintrags-URL führt auf die Übersicht Adobe After Effects

@@ -76,7 +76,7 @@ def main():
     for k in csv.DictReader(open(R / "paket21/config/korrekturen.csv", encoding="utf-8")):
         mf = k["master_feld"]; reg = k["register_id"]
         herk = {"E118": "IMPRESSUM_E118", "E123": "IMPRESSUM_E123", "E132": "UID_REGISTER_E132", "E133": "IMPRESSUM_E133",
-                "E134": "OWNER_E134", "E135": "OWNER_E135", "E136": "ANBIETERSEITE_E136", "E137": "ANBIETER_STANDORTE_E137",
+                "E134": "OWNER_E134", "E135": "OWNER_E135", "E136": "ANBIETERSEITE_E136", "E137": "ANBIETER_STANDORTE_E137", "E139": "ANBIETERSEITE_E139",
                 "E066": "REGEL_E066"}[reg]
         h = {"durchfuehrungsort_sicherheit": "h_durchfuehrungsort_land"}.get(mf)  # Sicherheitsgrad teilt das h_-Feld des Ortslands
         setze(k["id"], mf, k["master_alt"], k["neu"], herk, reg, k["quelle"], h_feld=h)
