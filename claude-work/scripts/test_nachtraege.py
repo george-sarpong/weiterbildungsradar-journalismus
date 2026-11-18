@@ -36,8 +36,17 @@ t("N04 Paket 13 deckungsgleich mit paket13/out/master_3818_p13.csv (6 Felder)",
 cnt = lambda rows, v: sum(r["beta_sichtbar"] == v for r in rows)
 t("N05 Beta sichtbar JA 3'445 → 3'443, NEIN 373 → 375 (E103)", (cnt(V, "JA"), cnt(N, "JA"), cnt(V, "NEIN"), cnt(N, "NEIN")) == (3445, 3443, 373, 375))
 al = [r for r in N if r["anbieter_land"] != "nicht erfasst"]
-t("N06 Anbieterland: 22 Audit (DJA) + 934 Domain (E118), keine Überschneidung",
-  len(al) == 956 and sum(r["h_anbieter_land"] == "AUDIT" for r in al) == 22 and sum(r["h_anbieter_land"] == "DOMAIN_E118" for r in al) == 934)
+p21h = ("IMPRESSUM_E118", "IMPRESSUM_E123", "UID_REGISTER_E132", "IMPRESSUM_E133")
+t("N06 Anbieterland: 22 Audit (DJA) + 934 Domain (E118) + 377 Paket 21 (Impressum/UID), keine Überschneidung",
+  len(al) == 1333 and sum(r["h_anbieter_land"] == "AUDIT" for r in al) == 22 and sum(r["h_anbieter_land"] == "DOMAIN_E118" for r in al) == 934
+  and sum(r["h_anbieter_land"] in p21h for r in al) == 377, str(len(al)))
+# Paket 21: Master = data-p21.js für Anbieterland, Ortsland, Sicherheitsgrad und CH-Zugang
+raw21 = (R / "paket21/website/data-p21.js").read_text(encoding="utf-8")
+D21 = {o["id"]: o for o in json.loads(raw21[len("window.WEITERBILDUNGSRADAR_OFFERS = "):].rstrip().rstrip(";"))}
+K21 = list(csv.DictReader(open(R / "paket21/config/korrekturen.csv", encoding="utf-8")))
+get = lambda o, f: (o.get("laender") or {}).get(f.split(".")[1]) if f.startswith("laender.") else o.get(f)
+t("N12 Paket 21: jede Korrektur steht gleich in Master und data-p21.js",
+  all(web[k["id"]][k["master_feld"]] == k["neu"] == get(D21[k["id"]], k["feld"]) for k in K21), str(len(K21)))
 mc = [p for p in P if p["register_id"] in ("E107", "E109") and p["feld"] == "preis_text"]
 t("N07 Mediencampus: 51 Preise CHF 1'150 mit Herkunft Anbieterseite, Preisoption EXACT 1150",
   len(mc) == 51 and all(web[p["id"]]["h_preis_text"].startswith("ANBIETERSEITE_") and

@@ -1,6 +1,7 @@
 """Master-Fortschreibung: Nachträge Paket 13 (E098, E103), Paket 14 (E107, E109) und Paket 18 (E118)
 auf paket3/out/master_3818.csv (Basis aus build_master_p3.py, bleibt unverändert) → paket3/out/master_3818_aktuell.csv.
 Die Basis bleibt, weil paket7/scripts/build_daten_p7.py und die Tests der Pakete 3, 7 und 8 sie byte-genau voraussetzen.
+Paket 21 (E118, E123, E132–E137, E066) aus paket21/config/korrekturen.csv.
 Läuft in run_paket3.sh nach test_paket3.py (der den Bau aus den Quellen prüft).
 Jeder alte Wert wird geprüft (sonst Abbruch), jede Änderung bekommt eine Herkunft im h_-Feld und eine Zeile im
 Protokoll paket3/out/master_nachtraege_protokoll.csv. Keine stillen Überschreibungen (Projektregel 6).
@@ -70,6 +71,19 @@ def main():
         setze(k["id"], "anbieter_land", k["alt"], k["neu"], "DOMAIN_E118", k["register_id"], k["quelle"])
         setze(k["id"], "anbieter_land_beleg", "nicht erfasst", "Domain-Endung der Angebots-URL (E118)", "DOMAIN_E118",
               k["register_id"], k["quelle"], h_feld="-")
+
+    # Paket 21: E118/E123/E132/E133 (Anbieterland), E134–E137 (Durchführungsort), E066 (CH-Zugang)
+    for k in csv.DictReader(open(R / "paket21/config/korrekturen.csv", encoding="utf-8")):
+        mf = k["master_feld"]; reg = k["register_id"]
+        herk = {"E118": "IMPRESSUM_E118", "E123": "IMPRESSUM_E123", "E132": "UID_REGISTER_E132", "E133": "IMPRESSUM_E133",
+                "E134": "OWNER_E134", "E135": "OWNER_E135", "E136": "ANBIETERSEITE_E136", "E137": "ANBIETER_STANDORTE_E137",
+                "E066": "REGEL_E066"}[reg]
+        h = {"durchfuehrungsort_sicherheit": "h_durchfuehrungsort_land"}.get(mf)  # Sicherheitsgrad teilt das h_-Feld des Ortslands
+        setze(k["id"], mf, k["master_alt"], k["neu"], herk, reg, k["quelle"], h_feld=h)
+        if mf == "anbieter_land":
+            setze(k["id"], "anbieter_land_beleg", web[k["id"]][ix["anbieter_land_beleg"]], k["quelle"][:300], herk, reg, k["quelle"], h_feld="-")
+        if mf == "ch_zugang":
+            setze(k["id"], "ch_zugang_regel", web[k["id"]][ix["ch_zugang_regel"]], "Durchführungsort CH genannt (E066), " + k["quelle"].split(";")[0], herk, reg, k["quelle"], h_feld="-")
 
     with open(mpfad, "w", encoding="utf-8-sig", newline="") as f:
         csv.writer(f, lineterminator="\n").writerows([head] + rows)

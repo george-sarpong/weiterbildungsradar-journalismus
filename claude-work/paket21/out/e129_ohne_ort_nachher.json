@@ -1,0 +1,1046 @@
+[
+ {
+  "id": "OFFER-MAZ-008",
+  "provider": "MAZ – Institut für Journalismus und Kommunikation",
+  "region": "NOT_PUBLISHED",
+  "online": false
+ },
+ {
+  "id": "OFFER-MAZ-062",
+  "provider": "MAZ – Institut für Journalismus und Kommunikation",
+  "region": "diverse Redaktionen (gemäss Detailprogramm)",
+  "online": false
+ },
+ {
+  "id": "OFFER-MAZ-174",
+  "provider": "MAZ – Institut für Journalismus und Kommunikation",
+  "region": "TV-Studio des MAZ",
+  "online": false
+ },
+ {
+  "id": "OFFER-INVESTIGATIV-001",
+  "provider": "investigativ.ch",
+  "region": "Direkt in der anmeldenden Redaktion",
+  "online": false
+ },
+ {
+  "id": "OFFER-SFJ-001",
+  "provider": "SFJ/AJS – Schweizer Fachjournalist:innen / Association suisse des journalistes spécialisés",
+  "region": "Online via Zoom",
+  "online": true
+ },
+ {
+  "id": "OFFER-EBU-020",
+  "provider": "EBU Academy – European Broadcasting Union",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-EPFL-001",
+  "provider": "École polytechnique fédérale de Lausanne (EPFL)",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-UNIGE-011",
+  "provider": "Université de Genève – Medialab",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-SUPSI-002",
+  "provider": "Scuola universitaria professionale della Svizzera italiana (SUPSI)",
+  "region": "SUPSI Campus Mendrisio / Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-SUPSI-003",
+  "provider": "Scuola universitaria professionale della Svizzera italiana (SUPSI)",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-SUPSI-005",
+  "provider": "Scuola universitaria professionale della Svizzera italiana (SUPSI)",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-SUPSI-006",
+  "provider": "Scuola universitaria professionale della Svizzera italiana (SUPSI)",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-SUPSI-007",
+  "provider": "Scuola universitaria professionale della Svizzera italiana (SUPSI)",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-SUPSI-008",
+  "provider": "Scuola universitaria professionale della Svizzera italiana (SUPSI)",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-DIGICOMP-005",
+  "provider": "Digicomp Academy AG",
+  "region": "Digicomp-Standorte / Virtual Training",
+  "online": true
+ },
+ {
+  "id": "OFFER-DIGICOMP-028",
+  "provider": "Digicomp Academy AG",
+  "region": "Digicomp-Standorte / Virtual Training",
+  "online": true
+ },
+ {
+  "id": "OFFER-DIGICOMP-033",
+  "provider": "Digicomp Academy AG",
+  "region": "Digicomp-Standorte / virtuell wählbar",
+  "online": true
+ },
+ {
+  "id": "OFFER-DIGICOMP-040",
+  "provider": "Digicomp Academy AG",
+  "region": "Digicomp-Standorte / Virtual Training je Durchführung",
+  "online": true
+ },
+ {
+  "id": "OFFER-DIGICOMP-047",
+  "provider": "Digicomp Academy AG",
+  "region": "Digicomp-Standorte / Virtual Training je Durchführung",
+  "online": true
+ },
+ {
+  "id": "OFFER-DIGICOMP-049",
+  "provider": "Digicomp Academy AG",
+  "region": "Digicomp-Standorte / Virtual Training je Durchführung",
+  "online": true
+ },
+ {
+  "id": "OFFER-DIGICOMP-058",
+  "provider": "Digicomp Academy AG",
+  "region": "Digicomp-Standorte / Virtual Training je Durchführung",
+  "online": true
+ },
+ {
+  "id": "OFFER-DIGICOMP-060",
+  "provider": "Digicomp Academy AG",
+  "region": "Digicomp-Standorte / Virtual Training je Durchführung",
+  "online": true
+ },
+ {
+  "id": "OFFER-DIGICOMP-063",
+  "provider": "Digicomp Academy AG",
+  "region": "Digicomp-Standorte / Virtual Training je Durchführung",
+  "online": true
+ },
+ {
+  "id": "OFFER-DIGICOMP-070",
+  "provider": "Digicomp Academy AG",
+  "region": "Digicomp-Standorte / Virtual Training je Durchführung",
+  "online": true
+ },
+ {
+  "id": "OFFER-DIGICOMP-071",
+  "provider": "Digicomp Academy AG",
+  "region": "Digicomp-Standorte / Virtual Training je Durchführung",
+  "online": true
+ },
+ {
+  "id": "OFFER-DIGICOMP-072",
+  "provider": "Digicomp Academy AG",
+  "region": "Digicomp-Standorte / Virtual Training je Durchführung",
+  "online": true
+ },
+ {
+  "id": "OFFER-DIGICOMP-073",
+  "provider": "Digicomp Academy AG",
+  "region": "Digicomp-Standorte / Virtual Training je Durchführung",
+  "online": true
+ },
+ {
+  "id": "OFFER-IBAW-003",
+  "provider": "IBAW – Institut für berufliche Aus- und Weiterbildung / Miduca AG",
+  "region": "Online-Live (kein Präsenzort ausgewiesen)",
+  "online": true
+ },
+ {
+  "id": "OFFER-IBAW-005",
+  "provider": "IBAW – Institut für berufliche Aus- und Weiterbildung / Miduca AG",
+  "region": "Online-Live (kein Präsenzort ausgewiesen)",
+  "online": true
+ },
+ {
+  "id": "OFFER-IBAW-006",
+  "provider": "IBAW – Institut für berufliche Aus- und Weiterbildung / Miduca AG",
+  "region": "Online-Live (kein Präsenzort ausgewiesen)",
+  "online": true
+ },
+ {
+  "id": "OFFER-IBAW-014",
+  "provider": "IBAW – Institut für berufliche Aus- und Weiterbildung / Miduca AG",
+  "region": "Online-Live (kein Präsenzort ausgewiesen)",
+  "online": true
+ },
+ {
+  "id": "OFFER-IBAW-023",
+  "provider": "IBAW – Institut für berufliche Aus- und Weiterbildung / Miduca AG",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-IBAW-024",
+  "provider": "IBAW – Institut für berufliche Aus- und Weiterbildung / Miduca AG",
+  "region": "IBAW Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-IBAW-026",
+  "provider": "IBAW – Institut für berufliche Aus- und Weiterbildung / Miduca AG",
+  "region": "Online-Live (kein Präsenzort ausgewiesen)",
+  "online": true
+ },
+ {
+  "id": "OFFER-IBAW-027",
+  "provider": "IBAW – Institut für berufliche Aus- und Weiterbildung / Miduca AG",
+  "region": "Online-Live (kein Präsenzort ausgewiesen)",
+  "online": true
+ },
+ {
+  "id": "OFFER-IBAW-030",
+  "provider": "IBAW – Institut für berufliche Aus- und Weiterbildung / Miduca AG",
+  "region": "Online-Live (kein Präsenzort ausgewiesen)",
+  "online": true
+ },
+ {
+  "id": "OFFER-IBAW-031",
+  "provider": "IBAW – Institut für berufliche Aus- und Weiterbildung / Miduca AG",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-006",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-007",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-009",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-012",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-014",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-039",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-041",
+  "provider": "ORSYS Training Schweiz",
+  "region": "INTER: vier veröffentlichte Termine als Classe à distance (online); kein Präsenzort für diese Termine. INTRA: beim Kunden, bei ORSYS oder online, konkreter Ort nach Offerte. SUR MESURE: Ort nach Offerte; kein Durchführungsort belegt.",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-042",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-050",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-051",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-069",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-070",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Live-Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-075",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Live-Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-080",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-086",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-088",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-094",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-103",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-104",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-113",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-114",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-120",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-122",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-138",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-146",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-148",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ORSYS-149",
+  "provider": "ORSYS Training Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-DSA-001",
+  "provider": "DigitalStrategies Academy",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-DSA-002",
+  "provider": "DigitalStrategies Academy",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-GBZ-025",
+  "provider": "Geschichten-Bäckerei Zürich",
+  "region": "Vor Ort / nach Auftrag",
+  "online": false
+ },
+ {
+  "id": "OFFER-ONSPIRE-002",
+  "provider": "Onspire / Content Creator Academy Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ONSPIRE-003",
+  "provider": "Onspire / Content Creator Academy Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ONSPIRE-004",
+  "provider": "Onspire / Content Creator Academy Schweiz",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-SCA-001",
+  "provider": "Swiss Creator Academy",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-SCA-002",
+  "provider": "Swiss Creator Academy",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-SCA-003",
+  "provider": "Swiss Creator Academy",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-SCA-004",
+  "provider": "Swiss Creator Academy",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-DC-006",
+  "provider": "Digital Creators GmbH",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-SBVV-009",
+  "provider": "SBVV – Schweizerischer Buchhändler- und Verleger-Verband",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-SBVV-016",
+  "provider": "SBVV – Schweizerischer Buchhändler- und Verleger-Verband",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-SBVV-017",
+  "provider": "SBVV – Schweizerischer Buchhändler- und Verleger-Verband",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-EJC-004",
+  "provider": "École de journalisme et communication Genève",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-EJC-005",
+  "provider": "École de journalisme et communication Genève",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-EJC-006",
+  "provider": "École de journalisme et communication Genève",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-EJC-007",
+  "provider": "École de journalisme et communication Genève",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-EJC-008",
+  "provider": "École de journalisme et communication Genève",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-EJC-009",
+  "provider": "École de journalisme et communication Genève",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-EJC-010",
+  "provider": "École de journalisme et communication Genève",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-EJC-013",
+  "provider": "École de journalisme et communication Genève",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-002",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-003",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-005",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-006",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-008",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-009",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-013",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-014",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-017",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-018",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-020",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-021",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-024",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-025",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-026",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-027",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-028",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-029",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-030",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-031",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-032",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-033",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-034",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-035",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-036",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-037",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-041",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-043",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-044",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-046",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-047",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-048",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-049",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-051",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-053",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-054",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-056",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-057",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-059",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-060",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-061",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-063",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-ZB-009",
+  "provider": "zB. Zentrum Bildung – Fotografie",
+  "region": "NOT_PUBLISHED",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-001",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-007",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-010",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-012",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-016",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-022",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-023",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-040",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-055",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-019",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-038",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-039",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-045",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "OFFER-MEDIENCAMPUS-062",
+  "provider": "Mediencampus / Medienschule Nordwestschweiz",
+  "region": "ON_REQUEST",
+  "online": false
+ },
+ {
+  "id": "CH-CLEAN2-V9-D01",
+  "provider": "Junge Journalistinnen und Journalisten Schweiz (JJS)",
+  "region": "NOT_PUBLISHED",
+  "online": false
+ },
+ {
+  "id": "CH-V18-F03",
+  "provider": "Öffentlichkeitsgesetz.ch / LoiTransparence.ch",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "CH-V19-N01",
+  "provider": "Lobbywatch",
+  "region": "NOT_PUBLISHED",
+  "online": false
+ },
+ {
+  "id": "CH-V19-N02",
+  "provider": "Verein REFLEKT",
+  "region": "NOT_PUBLISHED",
+  "online": false
+ },
+ {
+  "id": "CH-V19-N03",
+  "provider": "Caritas Schweiz + nccr – on the move",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "CH-V34-A01",
+  "provider": "Association Suisse de Presse et Photographie (ASPP) / Académie ASPP",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "CH-V34-A02",
+  "provider": "Association Suisse de Presse et Photographie (ASPP) / Académie ASPP",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "CH-V34-A04",
+  "provider": "Association Suisse de Presse et Photographie (ASPP) / Académie ASPP",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "CH-V34-A07",
+  "provider": "Association Suisse de Presse et Photographie (ASPP) / Académie ASPP",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "PJ-V16-09",
+  "provider": "photojournalism.ch / Beyond Visual GmbH",
+  "region": "NOT_PUBLISHED",
+  "online": false
+ },
+ {
+  "id": "OFFER-MAZ-159",
+  "provider": "photojournalism.ch / Caroline Fink (in Kooperation mit MAZ)",
+  "region": "NOT_PUBLISHED",
+  "online": false
+ },
+ {
+  "id": "OFFER-CFJM-030",
+  "provider": "CFJM – Centre de formation au journalisme et aux médias",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-FERNUNI-001",
+  "provider": "FernUni Schweiz / UniDistance Suisse",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-FERNUNI-004",
+  "provider": "FernUni Schweiz / UniDistance Suisse",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-FERNUNI-005",
+  "provider": "FernUni Schweiz / UniDistance Suisse",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-FERNUNI-006",
+  "provider": "FernUni Schweiz / UniDistance Suisse",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-CAPFOTO-005",
+  "provider": "cap fotoschule GmbH",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-WEBEDU-001",
+  "provider": "webedu.ch ag",
+  "region": "Online / Präsenzanteile gemäss Lehrgang",
+  "online": true
+ },
+ {
+  "id": "OFFER-BIG-002",
+  "provider": "Basel Institute on Governance",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-BIG-005",
+  "provider": "Basel Institute on Governance",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-BIG-006",
+  "provider": "Basel Institute on Governance",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-BIG-007",
+  "provider": "Basel Institute on Governance",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-BIG-008",
+  "provider": "Basel Institute on Governance",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-BIG-009",
+  "provider": "Basel Institute on Governance",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "V59-SZ05",
+  "provider": "Theorie & Praxis GmbH / Schreibszene",
+  "region": "NICHT_PUBLIZIERT",
+  "online": false
+ },
+ {
+  "id": "CH-NOV-OF-036",
+  "provider": "Radio Télévision Suisse (RTS)",
+  "region": "NOT_PUBLISHED",
+  "online": false
+ },
+ {
+  "id": "OFFER-UNIGE-014",
+  "provider": "Université de Genève – Centre pour la formation continue et à distance",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ETHZ-001",
+  "provider": "ETH Zürich",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-ETHZ-002",
+  "provider": "ETH Zürich",
+  "region": "Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-PUBLICOLLEGE-002",
+  "provider": "PubliCollege GmbH / Beat Kipfer",
+  "region": "3322 Urtenen-Schönbühl / Online",
+  "online": true
+ },
+ {
+  "id": "OFFER-EDITO-005",
+  "provider": "Edito Academy",
+  "region": "Online via Zoom",
+  "online": true
+ }
+]
