@@ -1,29 +1,32 @@
-# mediaskills.ch – robots.txt, Stand 17.11.2026 (E125)
-# Suchmaschinen und Abrufe auf Anfrage von Nutzerinnen und Nutzern sind erlaubt.
-# Crawler, die Inhalte laut Betreiber für das Training von KI-Modellen sammeln, sind gesperrt.
+# mediaskills.ch - robots.txt, Stand 18.11.2026 (E125, E130)
+# Suche und Nutzerabrufe erlaubt, KI-Training gesperrt.
 
-# OpenAI: Training (Suche: OAI-SearchBot, Nutzerabruf: ChatGPT-User bleiben erlaubt)
+# OpenAI Training
 User-agent: GPTBot
 Disallow: /
 
-# Anthropic: Training (Suche: Claude-SearchBot, Nutzerabruf: Claude-User bleiben erlaubt)
+# Anthropic Training
 User-agent: ClaudeBot
 Disallow: /
 
-# Google: Training und Grounding für Gemini-Apps und Vertex AI (Google-Suche nicht betroffen)
+# Google Training und Gemini-Grounding (Google-Suche nicht betroffen)
 User-agent: Google-Extended
 Disallow: /
 
-# Apple: Training der Apple-Foundation-Modelle (Siri- und Spotlight-Suche nicht betroffen)
+# Apple Training
 User-agent: Applebot-Extended
 Disallow: /
 
-# Meta: Training von KI-Modellen (Meta-AI-Suche: meta-webindexer bleibt erlaubt)
+# Meta Training
 User-agent: meta-externalagent
 Disallow: /
 
-# Amazon: kann für das Training von Amazon-KI-Modellen genutzt werden (Suche: Amzn-SearchBot bleibt erlaubt)
+# Amazon Training
 User-agent: Amazonbot
+Disallow: /
+
+# ByteDance (E130)
+User-agent: Bytespider
 Disallow: /
 
 User-agent: *

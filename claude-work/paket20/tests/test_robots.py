@@ -3,7 +3,7 @@ Aufruf: python3 -I claude-work/paket20/tests/test_robots.py claude-work/paket20/
 import sys, urllib.robotparser
 txt = open(sys.argv[1], encoding="utf-8").read()
 rp = urllib.robotparser.RobotFileParser(); rp.parse(txt.splitlines())
-TRAINING = ["GPTBot", "ClaudeBot", "Google-Extended", "Applebot-Extended", "meta-externalagent", "Amazonbot"]
+TRAINING = ["GPTBot", "ClaudeBot", "Google-Extended", "Applebot-Extended", "meta-externalagent", "Amazonbot", "Bytespider"]
 OFFEN = ["Googlebot", "Bingbot", "OAI-SearchBot", "ChatGPT-User", "Claude-SearchBot", "Claude-User", "Applebot",
          "meta-webindexer", "Amzn-SearchBot", "PerplexityBot", "DuckDuckBot"]
 URLS = ["https://mediaskills.ch/", "https://mediaskills.ch/methodik.html", "https://mediaskills.ch/data-p18.js"]
