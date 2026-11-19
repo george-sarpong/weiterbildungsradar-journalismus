@@ -1,0 +1,18 @@
+{
+ "daten_eintraege": 3664,
+ "daten_angebote": 1317,
+ "daten_ohne_beleg": [],
+ "smart_eintraege": 51,
+ "smart_ohne_beleg": [],
+ "quellen": [
+  "paket13/config/owner_korrekturen.csv",
+  "paket14/config/korrekturen.csv",
+  "paket16/config/korrekturen.csv",
+  "paket17/config/korrekturen.csv",
+  "paket17/config/korrekturen_preis.csv",
+  "paket18/config/korrekturen.csv",
+  "paket21/config/korrekturen.csv",
+  "paket22/config/korrekturen.csv",
+  "paket22/config/neue_angebote.json"
+ ]
+}

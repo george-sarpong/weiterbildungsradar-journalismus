@@ -1,0 +1,15 @@
+# mediaskills.ch - Sicherheits-Header (E124) und HTTPS-Weiterleitung (E128), Stand 18.11.2026
+# BEGIN mediaskills HTTPS-Weiterleitung (Infomaniak FAQ 1961)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>
+# END mediaskills HTTPS-Weiterleitung
+# BEGIN mediaskills Sicherheits-Header
+<IfModule mod_headers.c>
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+# END mediaskills Sicherheits-Header

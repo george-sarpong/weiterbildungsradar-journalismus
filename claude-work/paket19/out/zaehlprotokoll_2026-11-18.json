@@ -1,0 +1,18 @@
+{
+ "stichtag": "2026-11-18",
+ "angebote": 1353,
+ "sichtbar": 1025,
+ "ausgeblendet": {
+  "gesamt": 328,
+  "HOLD": 51,
+  "nicht_aktuell_ohne_HOLD": 277
+ },
+ "ohne_link": [],
+ "liste_geaendert": true,
+ "lastmod": {
+  "/": "2026-11-18",
+  "/methodik.html": "2026-11-17"
+ },
+ "index_bytes": 300830,
+ "liste_bytes": 287282
+}
