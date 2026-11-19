@@ -110,8 +110,10 @@ print(json.dumps({x['id']:{'markt':x['market'],'beta':x['beta_sichtbar'],'grund'
   const vis = new Set(CARDS.map(c => c.id));
   const notInMaster = DATA.filter(o => !M[o.id]);
   const wrongMarket = DATA.filter(o => M[o.id] && !["CH", "AT", "LI"].includes(M[o.id].markt));
-  check("D2a", "Website-Daten = 1'352 Master-Zeilen CH/AT/LI; keine DE/USA-Zeile (E074), also auch keine E067/E068-Zeile", DATA.length === 1352 && !notInMaster.length && !wrongMarket.length
-    && Object.values(M).filter(m => ["CH", "AT", "LI"].includes(m.markt)).length === 1352, `${DATA.length} Zeilen`);
+  // Paket 22: neue Angebote (E143) stehen als eigene Master-Zeilen (Kohorte NEU_P22) im Master; Soll = 1'352 + Zahl der neuen Zeilen
+  const nNeu = Number(process.env.NEU || 0);
+  check("D2a", `Website-Daten = ${1352 + nNeu} Master-Zeilen CH/AT/LI (1'352${nNeu ? ` + ${nNeu} neu, E143` : ""}); keine DE/USA-Zeile (E074), also auch keine E067/E068-Zeile`, DATA.length === 1352 + nNeu && !notInMaster.length && !wrongMarket.length
+    && Object.values(M).filter(m => ["CH", "AT", "LI"].includes(m.markt)).length === 1352 + nNeu, `${DATA.length} Zeilen`);
   const visNo = [...vis].filter(id => M[id].beta !== "JA");
   check("D2b", "Keine sichtbare Karte mit beta_sichtbar NEIN (u. a. 46 HOLD)", visNo.length === 0, visNo.length ? list(visNo) : `${DATA.filter(o => M[o.id].beta === "NEIN").length} NEIN-Zeilen, alle unsichtbar`);
   const holdVis = [...vis].filter(id => M[id].pub === "HOLD");

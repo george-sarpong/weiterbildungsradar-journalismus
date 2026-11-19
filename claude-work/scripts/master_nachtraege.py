@@ -2,6 +2,8 @@
 auf paket3/out/master_3818.csv (Basis aus build_master_p3.py, bleibt unverändert) → paket3/out/master_3818_aktuell.csv.
 Die Basis bleibt, weil paket7/scripts/build_daten_p7.py und die Tests der Pakete 3, 7 und 8 sie byte-genau voraussetzen.
 Paket 21 (E118, E123, E132–E137, E066) aus paket21/config/korrekturen.csv.
+Paket 22 (E142 Archiv, E144 CH-Zugang) aus paket22/config/korrekturen.csv; E143 neue Angebote aus paket22/config/neue_angebote.json
+als neue Zeilen am Ende (Kohorte NEU_P22; Dateiname master_3818_aktuell.csv bleibt, Zeilenzahl jetzt 3'819).
 Läuft in run_paket3.sh nach test_paket3.py (der den Bau aus den Quellen prüft).
 Jeder alte Wert wird geprüft (sonst Abbruch), jede Änderung bekommt eine Herkunft im h_-Feld und eine Zeile im
 Protokoll paket3/out/master_nachtraege_protokoll.csv. Keine stillen Überschreibungen (Projektregel 6).
@@ -84,6 +86,48 @@ def main():
             setze(k["id"], "anbieter_land_beleg", web[k["id"]][ix["anbieter_land_beleg"]], k["quelle"][:300], herk, reg, k["quelle"], h_feld="-")
         if mf == "ch_zugang":
             setze(k["id"], "ch_zugang_regel", web[k["id"]][ix["ch_zugang_regel"]], "Durchführungsort CH genannt (E066), " + k["quelle"].split(";")[0], herk, reg, k["quelle"], h_feld="-")
+
+    # Paket 22: E142 (Archiv Digicomp 041/044/033), E144 (CH-Zugang MAZ-086/AJM-002 nach E066)
+    for k in csv.DictReader(open(R / "paket22/config/korrekturen.csv", encoding="utf-8")):
+        mf = k["master_feld"]; reg = k["register_id"]
+        if mf in ("beta_sichtbar", "beta_grund"):
+            setze(k["id"], mf, k["master_alt"], "NEIN" if mf == "beta_sichtbar" else k["neu"], "OWNER_" + reg, reg, k["quelle"], h_feld="-")
+        elif mf == "ch_zugang":
+            setze(k["id"], mf, k["master_alt"], k["neu"], "ANBIETERSEITE_" + reg, reg, k["quelle"])
+            setze(k["id"], "ch_zugang_regel", web[k["id"]][ix["ch_zugang_regel"]], "Durchführungsort CH genannt (E066), " + k["quelle"].split(":")[0] + " (" + reg + ")",
+                  "ANBIETERSEITE_" + reg, reg, k["quelle"], h_feld="-")
+        else:
+            sys.exit(f"ABBRUCH: unbekanntes Feld Paket 22 {mf}")
+
+    # Paket 22: E143 neue Angebote als eigene Zeilen (Kohorte NEU_P22), jede Zelle im Protokoll mit alt «(neu)»
+    NEU = json.loads((R / "paket22/config/neue_angebote.json").read_text(encoding="utf-8"))
+    for a in NEU["angebote"]:
+        o, s = a["offer"], a["smart"]; reg = NEU["register_id"]; herk = "ANBIETERSEITE_" + reg
+        if any(r[ix["id"]] == o["id"] for r in rows): sys.exit(f"ABBRUCH: {o['id']} schon im Master")
+        z = {c: ("LEER" if c.startswith("h_") else "nicht erfasst") for c in head}
+        L = o["laender"]
+        werte = {"market": L["markt"], "id": o["id"], "kohorte": "NEU_P22", "anbieter": o["provider"], "titel": o["title"],
+                 "beschreibung": o["description"], "url": o["url"], "sprache": o["language"], "niveau": o["level"], "fokus": o["focus"],
+                 "angebotsart_roh": o["offerType"], "format": o["format"], "dauer": o["duration"], "termin_text": o["start"],
+                 "start_datum": o["startDate"], "end_datum": o["endDate"], "durchfuehrungen": json.dumps(o["sessions"], ensure_ascii=False),
+                 "ort_text": o["region"], "preis_text": o["priceDisplay"], "preis_kategorie": o["priceCategory"], "zugang_text": o["access"],
+                 "geprueft_am": o["approved"], "pruefen_ab": o["reviewAfter"], "release_herkunft": o["release_origin"], "country_roh": o["country"],
+                 "preis_parser_status": s["parserStatus"], "preis_budgetfaehig": str(s["priceEligible"]),
+                 "preis_optionen": json.dumps(s["priceOptions"], ensure_ascii=False)}
+        for c in list(werte):
+            if "h_" + c in ix and c not in ("market", "id", "kohorte"): z["h_" + c] = herk
+        werte.update({"sammelobjekt": "NEIN", "objektklasse": "STABLE_OFFER", "objektklasse_regel": "offerType KURS", "h_objektklasse": "REGEL",
+                      "release_markt": L["markt"], "h_release_markt": "OWNER_" + reg, "anbieter_land": L["anbieterLand"], "h_anbieter_land": "DOMAIN_E118",
+                      "anbieter_land_beleg": "Domain-Endung der Angebots-URL (E118)", "durchfuehrungsort_land": L["ortLand"],
+                      "durchfuehrungsort_sicherheit": L["ortSicherheit"], "h_durchfuehrungsort_land": herk, "ch_zugang": L["chZugang"],
+                      "h_ch_zugang": "REGEL_E066", "ch_zugang_regel": f"Durchführungsort CH genannt (E066), Kursseite 19.11. ({reg})",
+                      "schutz_307": "NEIN", "owner_offen": "", "beta_sichtbar": "JA", "beta_grund": f"Neu aufgenommen 19.11.2026 ({reg})",
+                      "url_identitaet": "EINDEUTIG", "h_url_identitaet": herk, "v288_geprueft": "NEIN", "schutz_grund": "KEIN_SCHUTZ",
+                      "gold": "NEIN", "dedupe_status": "EINDEUTIG", "dedupe_referenz": ""})
+        for c, v in werte.items():
+            assert c in ix, c; z[c] = v
+        rows.append([z[c] for c in head])
+        proto.extend([o["id"], c, "(neu)", z[c], "", "", herk, reg, NEU["quelle"]] for c in head if z[c] not in ("nicht erfasst", "LEER", ""))
 
     with open(mpfad, "w", encoding="utf-8-sig", newline="") as f:
         csv.writer(f, lineterminator="\n").writerows([head] + rows)

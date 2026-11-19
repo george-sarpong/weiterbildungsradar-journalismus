@@ -1,0 +1,104 @@
+{
+ "quelle": "Kursseite Digicomp (Code BILDER) abgerufen 19.11.2026 mit Chrome: schema.org Course/EducationEvent und Terminliste; Owner-Antwort 19.11. («bitte Bilder aufnehmen»)",
+ "register_id": "E143",
+ "angebote": [
+  {
+   "offer": {
+    "id": "OFFER-DIGICOMP-075",
+    "provider": "Digicomp Academy AG",
+    "title": "Bilder für Print, Web & Social Media – Erstellung und Bearbeitung (Einsteiger/innen)",
+    "description": "Einsteigerkurs Bildbearbeitung für Print, Website und Social Media: Retusche, Freistellen, Farbkorrektur und Export, mit Affinity.",
+    "access": "Kursseite Digicomp 19.11.2026: Preis, Termine und Anmeldung publiziert; je Termin «Vor Ort» oder «Virtuell» wählbar",
+    "level": "EINSTIEG",
+    "language": "DE",
+    "country": "Schweiz",
+    "url": "https://digicomp.ch/weiterbildung-digital-marketing-design/content-media-production/affinity/kurs-bilder-fuer-print-web-social-media-erstellung-und-bearbeitung-einsteigerinnen",
+    "approved": "2026-11-19",
+    "reviewAfter": "2027-05-19",
+    "focus": "MEDIENPRAXIS",
+    "offerType": "KURS",
+    "priceDisplay": "CHF 1'200 zzgl. 8.1% MWST",
+    "priceCategory": "501_2000",
+    "format": "HYBRID",
+    "duration": "2 Tage",
+    "start": "01.–02.03.2027; weitere Termine 14.–15.06., 02.–03.09., 20.–21.12.2027",
+    "startDate": "2027-03-01",
+    "endDate": "2027-03-02",
+    "region": "Zürich, Basel, Bern",
+    "release_origin": "PAKET22_NEU_E143",
+    "laender": {
+     "markt": "CH",
+     "anbieterLand": "CH",
+     "ortLand": "CH",
+     "ortSicherheit": "MEHRERE_ORTE",
+     "chZugang": "JA"
+    },
+    "sessions": [
+     {
+      "startDate": "2027-03-01",
+      "endDate": "2027-03-02",
+      "label": "01.–02.03.2027"
+     },
+     {
+      "startDate": "2027-06-14",
+      "endDate": "2027-06-15",
+      "label": "14.–15.06.2027"
+     },
+     {
+      "startDate": "2027-09-02",
+      "endDate": "2027-09-03",
+      "label": "02.–03.09.2027"
+     },
+     {
+      "startDate": "2027-12-20",
+      "endDate": "2027-12-21",
+      "label": "20.–21.12.2027"
+     }
+    ],
+    "korrekturen": [
+     {
+      "feld": "*",
+      "alt": "",
+      "register": "E143",
+      "quelle": "Kursseite Digicomp (Code BILDER) abgerufen 19.11.2026 mit Chrome: schema.org Course/EducationEvent und Terminliste; Owner-Antwort 19.11. («bitte Bilder aufnehmen»)"
+     }
+    ]
+   },
+   "smart": {
+    "parserStatus": "AUTO_ACCEPT",
+    "priceEligible": true,
+    "priceOptions": [
+     {
+      "amountType": "EXACT",
+      "amount": 1200,
+      "minAmount": null,
+      "maxAmount": null,
+      "currency": "CHF",
+      "tariffClass": "REGULAR",
+      "tariffLabel": null,
+      "eligibilityType": "NONE",
+      "eligibilityValue": null,
+      "billingBasis": "TOTAL",
+      "billingCount": null,
+      "priceScope": "FULL_OFFER",
+      "taxMode": "EXCLUDED",
+      "taxRate": 8.1,
+      "validFrom": null,
+      "validThrough": null,
+      "components": []
+     }
+    ],
+    "delivery": {
+     "evidenceTier": "UNKNOWN",
+     "structure": "UNKNOWN",
+     "channels": [],
+     "variants": [],
+     "scheduleSummary": "",
+     "temporalSummary": "",
+     "sourceText": "",
+     "materialisationStatus": "NEEDS_DELIVERY_REVIEW"
+    }
+   }
+  }
+ ]
+}

@@ -20,12 +20,14 @@ def lade(p):
 
 V, VK = lade(OUT / "master_3818.csv"); N, NK = lade(OUT / "master_3818_aktuell.csv")
 P = list(csv.DictReader(open(OUT / "master_nachtraege_protokoll.csv", encoding="utf-8")))
-web = {r["id"]: r for r in N if r["kohorte"] == "WEBSITE_1352"}
+web = {r["id"]: r for r in N if r["kohorte"] in ("WEBSITE_1352", "NEU_P22")}
+PA = [p for p in P if p["alt"] != "(neu)"]  # Änderungen an bestehenden Zeilen; «(neu)» = neue Zeile Paket 22 (E143)
 
-t("N01 Master 3'818 Zeilen, Spalten unverändert", len(N) == len(V) == 3818 and list(N[0].keys()) == list(V[0].keys()))
+t("N01 Master 3'818 + 1 neue Zeile (Paket 22, E143), Spalten unverändert, Basis-Zeilen in gleicher Reihenfolge", len(V) == 3818 and len(N) == 3819
+  and [r["kohorte"] for r in N[3818:]] == ["NEU_P22"] and [(r["market"], r["id"]) for r in N[:3818]] == [(r["market"], r["id"]) for r in V] and list(N[0].keys()) == list(V[0].keys()))
 diff = {(k, f) for k in VK for f in V[0] if VK[k][f] != NK[k][f]}
-doku = {(web[p["id"]]["market"], p["id"], p["feld"]) for p in P} | \
-       {(web[p["id"]]["market"], p["id"], p["h_feld"]) for p in P if p["h_feld"]}
+doku = {(web[p["id"]]["market"], p["id"], p["feld"]) for p in PA} | \
+       {(web[p["id"]]["market"], p["id"], p["h_feld"]) for p in PA if p["h_feld"]}
 t("N02 jede geänderte Zelle steht im Protokoll (Wert oder Herkunft), keine sonstige Änderung",
   {(k[0], k[1], f) for k, f in diff} == doku, f"{len(diff)} geändert, {len(doku)} protokolliert")
 t("N03 Protokoll: neuer Wert steht im Master", all(web[p["id"]][p["feld"]] == p["neu"] for p in P))
@@ -34,11 +36,11 @@ t("N04 Paket 13 deckungsgleich mit paket13/out/master_3818_p13.csv (6 Felder)",
   all(web[i][f] == p13[i][f] for i in ("OFFER-HEAD-003", "AT-PROD-OFFER-040", "AT-PROD-OFFER-026")
       for f in ("url", "h_url", "beta_sichtbar", "beta_grund")))
 cnt = lambda rows, v: sum(r["beta_sichtbar"] == v for r in rows)
-t("N05 Beta sichtbar JA 3'445 → 3'443, NEIN 373 → 375 (E103)", (cnt(V, "JA"), cnt(N, "JA"), cnt(V, "NEIN"), cnt(N, "NEIN")) == (3445, 3443, 373, 375))
+t("N05 Beta sichtbar JA 3'445 → 3'441, NEIN 373 → 378 (E103: −2, E142: −3, E143: +1 neu)", (cnt(V, "JA"), cnt(N, "JA"), cnt(V, "NEIN"), cnt(N, "NEIN")) == (3445, 3441, 373, 378))
 al = [r for r in N if r["anbieter_land"] != "nicht erfasst"]
 p21h = ("IMPRESSUM_E118", "IMPRESSUM_E123", "UID_REGISTER_E132", "IMPRESSUM_E133")
-t("N06 Anbieterland: 22 Audit (DJA) + 934 Domain (E118) + 377 Paket 21 (Impressum/UID), keine Überschneidung",
-  len(al) == 1333 and sum(r["h_anbieter_land"] == "AUDIT" for r in al) == 22 and sum(r["h_anbieter_land"] == "DOMAIN_E118" for r in al) == 934
+t("N06 Anbieterland: 22 Audit (DJA) + 934 Domain (E118) + 377 Paket 21 (Impressum/UID) + 1 neue Zeile Paket 22 (Domain), keine Überschneidung",
+  len(al) == 1334 and sum(r["h_anbieter_land"] == "AUDIT" for r in al) == 22 and sum(r["h_anbieter_land"] == "DOMAIN_E118" for r in al) == 935
   and sum(r["h_anbieter_land"] in p21h for r in al) == 377, str(len(al)))
 # Paket 21: Master = data-p21.js für Anbieterland, Ortsland, Sicherheitsgrad und CH-Zugang
 raw21 = (R / "paket21/website/data-p21.js").read_text(encoding="utf-8")
@@ -47,6 +49,18 @@ K21 = list(csv.DictReader(open(R / "paket21/config/korrekturen.csv", encoding="u
 get = lambda o, f: (o.get("laender") or {}).get(f.split(".")[1]) if f.startswith("laender.") else o.get(f)
 t("N12 Paket 21: jede Korrektur steht gleich in Master und data-p21.js",
   all(web[k["id"]][k["master_feld"]] == k["neu"] == get(D21[k["id"]], k["feld"]) for k in K21), str(len(K21)))
+# Paket 22: Korrekturen und neue Zeile = data-p22.js
+raw22 = (R / "paket22/website/data-p22.js").read_text(encoding="utf-8")
+D22 = {o["id"]: o for o in json.loads(raw22[len("window.WEITERBILDUNGSRADAR_OFFERS = "):].rstrip().rstrip(";"))}
+K22 = list(csv.DictReader(open(R / "paket22/config/korrekturen.csv", encoding="utf-8")))
+t("N13 Paket 22: Archiv (E142) und CH-Zugang (E144) gleich in Master und data-p22.js",
+  all(web[k["id"]][k["master_feld"]] == ("NEIN" if k["master_feld"] == "beta_sichtbar" else k["neu"]) and get(D22[k["id"]], k["feld"]) == k["neu"] for k in K22)
+  and len(K22) == 8, str(len(K22)))
+n75 = web["OFFER-DIGICOMP-075"]; d75 = D22["OFFER-DIGICOMP-075"]
+t("N14 Paket 22: neue Zeile OFFER-DIGICOMP-075 = data-p22.js (Titel, URL, Preis, Ort, Termine), Herkunft Anbieterseite, im Protokoll",
+  (n75["titel"], n75["url"], n75["preis_text"], n75["ort_text"], n75["start_datum"], json.loads(n75["durchfuehrungen"]), n75["ch_zugang"], n75["beta_sichtbar"])
+  == (d75["title"], d75["url"], d75["priceDisplay"], d75["region"], d75["startDate"], d75["sessions"], "JA", "JA")
+  and n75["h_titel"] == n75["h_url"] == "ANBIETERSEITE_E143" and sum(p["id"] == "OFFER-DIGICOMP-075" for p in P) >= 30)
 mc = [p for p in P if p["register_id"] in ("E107", "E109") and p["feld"] == "preis_text"]
 t("N07 Mediencampus: 51 Preise CHF 1'150 mit Herkunft Anbieterseite, Preisoption EXACT 1150",
   len(mc) == 51 and all(web[p["id"]]["h_preis_text"].startswith("ANBIETERSEITE_") and

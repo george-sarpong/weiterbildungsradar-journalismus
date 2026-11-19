@@ -1,0 +1,9 @@
+id,feld,alt,neu,master_feld,master_alt,register_id,quelle
+OFFER-DIGICOMP-041,publicationStatus,,HOLD,beta_sichtbar,JA,E142,Owner-Antwort 19.11. («1. archivieren»); Nachrecherche Chrome 19.11. (paket22/out/digicomp_nachrecherche_20261119.tsv)
+OFFER-DIGICOMP-041,publicationReason,,ARCHIV: Kurs nicht mehr im Angebot (Nachrecherche 19.11.2026; E015; E142),beta_grund,Release 30.09. (E007),E142,Owner-Antwort 19.11. («1. archivieren»); Nachrecherche Chrome 19.11. (paket22/out/digicomp_nachrecherche_20261119.tsv)
+OFFER-DIGICOMP-044,publicationStatus,,HOLD,beta_sichtbar,JA,E142,Owner-Antwort 19.11. («1. archivieren»); Nachrecherche Chrome 19.11. (paket22/out/digicomp_nachrecherche_20261119.tsv)
+OFFER-DIGICOMP-044,publicationReason,,ARCHIV: Kurs nicht mehr im Angebot (Nachrecherche 19.11.2026; E015; E142),beta_grund,Release 30.09. (E007),E142,Owner-Antwort 19.11. («1. archivieren»); Nachrecherche Chrome 19.11. (paket22/out/digicomp_nachrecherche_20261119.tsv)
+OFFER-DIGICOMP-033,publicationStatus,,HOLD,beta_sichtbar,JA,E142,Owner-Antwort 19.11. («1. archivieren»); Nachrecherche Chrome 19.11. (paket22/out/digicomp_nachrecherche_20261119.tsv)
+OFFER-DIGICOMP-033,publicationReason,,ARCHIV: Kurs nicht mehr im Angebot (Nachrecherche 19.11.2026; E015; E142),beta_grund,Release 30.09. (E007),E142,Owner-Antwort 19.11. («1. archivieren»); Nachrecherche Chrome 19.11. (paket22/out/digicomp_nachrecherche_20261119.tsv)
+OFFER-MAZ-086,laender.chZugang,nicht erfasst,JA,ch_zugang,nicht erfasst,E144,"maz.ch/kurs/leadership abgerufen 19.11.: Lehrgang von Akademie für Publizistik (Hamburg), MAZ (Luzern) und HSG (St. Gallen), «16 Tage in der Schweiz und in Hamburg»; Durchführungsort CH genannt (E066)"
+OFFER-AJM-002,laender.chZugang,nicht erfasst,JA,ch_zugang,nicht erfasst,E144,"unine.ch/ajm/maji abgerufen 19.11.: erstes Studienjahr in Neuenburg, zweites in Louvain-la-Neuve (EjL); Durchführungsort CH genannt (E066)"
