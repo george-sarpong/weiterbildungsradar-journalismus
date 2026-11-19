@@ -1,7 +1,8 @@
 """Release-Paket Paket 22 (Archiv Digicomp E142, neues Angebot BILDER E143, CH-Zugang E144); nur mit Release-Freigabe (Projektregel 7).
 website/  = kompletter Hauptordner: neuer Stand Paket 22 + alte Live-Dateien (bleiben für den Rückweg auf dem Server)
-rollback/ = index.html des Live-Stands 18.11. (Paket 20: data-p18.js, smart-search-data-p14.js), nur lokal aufbewahren; beide bleiben in website/.
-Paket 21 wurde nicht hochgeladen (Owner 19.11.: Paket 22 direkt, E145); data-p21.js liegt trotzdem bei.
+rollback/ = index.html des Live-Stands seit 19.11. (Paket 21: data-p21.js, smart-search-data-p14.js), nur lokal aufbewahren.
+Daten unter neuen Dateinamen angebote-20261119.js / suche-20261119.js (Inhalt = data-p22.js / smart-search-data-p22.js):
+der Upload von data-p22.js, smart-search-data-p22.js, smart-search-data.js im Web-FTP-Manager schlug am 19.11. fehl (E147).
 Aufruf (aus claude-work/): python3 -I paket22/scripts/build_release.py <zielordner>"""
 import hashlib, pathlib, shutil, sys
 R = pathlib.Path(__file__).resolve().parents[2]
@@ -12,16 +13,17 @@ for f in LIVE.iterdir():                     # alte Live-Dateien (inkl. styles, 
     if f.name not in ("README.md", "SHA256SUMS.txt"): shutil.copy2(f, web / f.name)
 for f in W.iterdir():                        # neuer Stand überschreibt gleichnamige Dateien
     shutil.copy2(f, web / f.name)
-for n, j in (("p14", "paket14/out/smart-search-data-p14.json"), ("p22", "paket22/out/smart-search-data-p22.json")):
-    (web / f"smart-search-data-{n}.js").write_text("window.MEDIA_SKILLS_SMART_DATA = " + (R / j).read_text(encoding="utf-8") + ";\n", encoding="utf-8")
+for n, j in (("smart-search-data-p14.js", "paket14/out/smart-search-data-p14.json"), ("suche-20261119.js", "paket22/out/smart-search-data-p22.json")):
+    (web / n).write_text("window.MEDIA_SKILLS_SMART_DATA = " + (R / j).read_text(encoding="utf-8") + ";\n", encoding="utf-8")
 idx = (W / "index.html").read_text(encoding="utf-8")
-for a, b in [('src="data-a1-86ff68ddc9ac.js"', 'src="data-p22.js"'), ('src="smart-search-data-a1-a38a2a2b2391.js"', 'src="smart-search-data-p22.js"'), ('src="app-v33.js"', 'src="app-v43.js"')]:
+for a, b in [('src="data-a1-86ff68ddc9ac.js"', 'src="angebote-20261119.js"'), ('src="smart-search-data-a1-a38a2a2b2391.js"', 'src="suche-20261119.js"'), ('src="app-v33.js"', 'src="app-v43.js"')]:
     assert idx.count(a) == 1, a; idx = idx.replace(a, b)
 (web / "index.html").write_text(idx, encoding="utf-8")
 shutil.copy2(R / "paket20/website/data-p18.js", web / "data-p18.js")   # Rückweg auf den Live-Stand 18.11.
 shutil.copy2(R / "paket21/website/data-p21.js", web / "data-p21.js")   # Stand Paket 21 (nicht live), bleibt für den Vergleich
-assert idx.count('src="data-p22.js"') == 1 and idx.count('src="smart-search-data-p22.js"') == 1
-(OUT / "rollback/index.html").write_text(idx.replace('src="data-p22.js"', 'src="data-p18.js"').replace('src="smart-search-data-p22.js"', 'src="smart-search-data-p14.js"'), encoding="utf-8")
+assert idx.count('src="angebote-20261119.js"') == 1 and idx.count('src="suche-20261119.js"') == 1
+(web / "angebote-20261119.js").write_bytes((W / "data-p22.js").read_bytes()); (web / "data-p22.js").unlink()
+(OUT / "rollback/index.html").write_text(idx.replace('src="angebote-20261119.js"', 'src="data-p21.js"').replace('src="suche-20261119.js"', 'src="smart-search-data-p14.js"'), encoding="utf-8")
 sums = {f.name: hashlib.sha256(f.read_bytes()).hexdigest() for f in sorted(web.iterdir()) if f.is_file()}
 (web / "SHA256SUMS.txt").write_text("".join(f"{v}  {k}\n" for k, v in sums.items()), encoding="utf-8")
 (OUT / "rollback/SHA256SUMS.txt").write_text(f"{hashlib.sha256((OUT / 'rollback/index.html').read_bytes()).hexdigest()}  index.html\n")
