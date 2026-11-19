@@ -43,4 +43,4 @@ Belege [GEPRÜFT/GELESEN]:
 ## 5. Offen für den Owner
 
 1. Nachtrag Paket 22 bestätigen.
-2. Release-Freigabe für Paket 22 (erst nach dem Upload von Paket 21 sinnvoll; das Paket enthält alles, auch Paket 21).
+2. Release: freigegeben 19.11. (E145); Paket 21 wird nicht separat hochgeladen. `mediaskills_paket22_20261119.zip`: website/ 22 Dateien + `.htaccess`, R1 PASS, SHA256SUMS OK; `rollback/index.html` = Live-Stand 18.11. (data-p18.js).

@@ -53,7 +53,7 @@ const T = fs.mkdtempSync("/tmp/rel22-"); execFileSync("python3", ["-I", `${CW}/p
 const T21 = fs.mkdtempSync("/tmp/rel21-"); execFileSync("python3", ["-I", `${CW}/paket21/scripts/build_release.py`, T21]);
 const idx = fs.readFileSync(`${T}/website/index.html`, "utf8");
 check("P10", /src="data-p22\.js"/.test(idx) && /src="smart-search-data-p22\.js"/.test(idx) && /src="app-v43\.js"/.test(idx)
-  && fs.readFileSync(`${T}/rollback/index.html`, "utf8") === fs.readFileSync(`${T21}/website/index.html`, "utf8")
-  && sha(`${T}/website/data-p21.js`) === sha(`${T21}/website/data-p21.js`) && fs.existsSync(`${T}/website/.htaccess`),
-  "Release: index mit data-p22 und Smart-Daten p22; rollback/index.html = Live-Stand Paket 21, data-p21.js liegt bei; .htaccess dabei");
+  && fs.readFileSync(`${T}/rollback/index.html`, "utf8") === fs.readFileSync(`${T21}/rollback/index.html`, "utf8")
+  && sha(`${T}/website/data-p18.js`) === sha(`${T21}/website/data-p18.js`) && fs.existsSync(`${T}/website/.htaccess`),
+  "Release: index mit data-p22 und Smart-Daten p22; rollback/index.html = Live-Stand 18.11. (data-p18.js, Paket 21 nicht hochgeladen, E145), data-p18.js liegt bei; .htaccess dabei");
 console.log(`\n${res.filter(Boolean).length}/${res.length} bestanden`); process.exit(res.every(Boolean) ? 0 : 1);
