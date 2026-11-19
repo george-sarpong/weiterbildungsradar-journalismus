@@ -52,9 +52,10 @@ check("P09", rest066.length === 0, `E066 jetzt ohne Ausnahme: kein Angebot mit O
 const T = fs.mkdtempSync("/tmp/rel22-"); execFileSync("python3", ["-I", `${CW}/paket22/scripts/build_release.py`, T]);
 const T21 = fs.mkdtempSync("/tmp/rel21-"); execFileSync("python3", ["-I", `${CW}/paket21/scripts/build_release.py`, T21]);
 const idx = fs.readFileSync(`${T}/website/index.html`, "utf8");
-check("P10", /src="angebote-20261119\.js"/.test(idx) && /src="suche-20261119\.js"/.test(idx) && /src="app-v43\.js"/.test(idx)
-  && sha(`${T}/website/angebote-20261119.js`) === sha(`${CW}/paket22/website/data-p22.js`)
-  && fs.readFileSync(`${T}/website/suche-20261119.js`, "utf8") === "window.MEDIA_SKILLS_SMART_DATA = " + fs.readFileSync(`${CW}/paket22/out/smart-search-data-p22.json`, "utf8") + ";\n"
-  && fs.readFileSync(`${T}/rollback/index.html`, "utf8") === fs.readFileSync(`${T21}/website/index.html`, "utf8") && fs.existsSync(`${T}/website/.htaccess`),
-  "Release: index lädt angebote-20261119.js (= data-p22.js) und suche-20261119.js (= Smart-Daten p22); rollback/index.html = Live-Stand seit 19.11. (Paket 21); .htaccess dabei");
+const lst = fs.readdirSync(`${T}/website`).sort(), mb = lst.reduce((n, f) => n + fs.statSync(`${T}/website/${f}`).size, 0);
+check("P10", /src="data-p22\.js"/.test(idx) && /src="smart-search-data-p22\.js"/.test(idx) && /src="app-v43\.js"/.test(idx) && lst.length === 15 && mb <= 9 * 1048576
+  && sha(`${T}/website/data-p22.js`) === sha(`${CW}/paket22/website/data-p22.js`)
+  && fs.readFileSync(`${T}/website/smart-search-data-p22.js`, "utf8") === "window.MEDIA_SKILLS_SMART_DATA = " + fs.readFileSync(`${CW}/paket22/out/smart-search-data-p22.json`, "utf8") + ";\n"
+  && fs.readFileSync(`${T}/rollback/index.html`, "utf8") === fs.readFileSync(`${T21}/website/index.html`, "utf8"),
+  `Release: 15 Dateien, ${(mb / 1048576).toFixed(2)} MB (Starter-Hosting 10 MB, E148); index lädt data-p22.js und smart-search-data-p22.js; Rückweg = Live-Stand Paket 21 (data-p21.js, smart-search-data-p14.js im Paket)`);
 console.log(`\n${res.filter(Boolean).length}/${res.length} bestanden`); process.exit(res.every(Boolean) ? 0 : 1);
