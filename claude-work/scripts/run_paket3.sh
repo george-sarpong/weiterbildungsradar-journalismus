@@ -22,3 +22,5 @@ python3 -I scripts/test_paket3.py --base $GIT/base --live $LIVE --main $GIT/main
 # Basis master_3818.csv bleibt (Paket 7 baut daraus data-p7.js); aktueller Master = master_3818_aktuell.csv, Protokoll in $OUT
 python3 -I scripts/master_nachtraege.py --out $OUT
 python3 -I scripts/test_nachtraege.py --out $OUT
+# Paket 24: Anzeigefelder der Pakete 16/17 und Sperren im Master; Gleichheitstest Master = Website (data-p19.js)
+python3 -I scripts/test_paket24.py --out $OUT

@@ -23,14 +23,22 @@ P = list(csv.DictReader(open(OUT / "master_nachtraege_protokoll.csv", encoding="
 web = {r["id"]: r for r in N if r["kohorte"] in ("WEBSITE_1352", "NEU_P22")}
 PA = [p for p in P if p["alt"] != "(neu)"]  # Änderungen an bestehenden Zeilen; «(neu)» = neue Zeile Paket 22 (E143)
 
-t("N01 Master 3'818 + 1 neue Zeile (Paket 22, E143), Spalten unverändert, Basis-Zeilen in gleicher Reihenfolge", len(V) == 3818 and len(N) == 3819
-  and [r["kohorte"] for r in N[3818:]] == ["NEU_P22"] and [(r["market"], r["id"]) for r in N[:3818]] == [(r["market"], r["id"]) for r in V] and list(N[0].keys()) == list(V[0].keys()))
+# Paket 24 (A1): 10 Anzeigefelder am Ende; Prüfung der neuen Spalten in test_paket24.py
+ANZ_COLS = [c for x in ("termin", "ort", "dauer", "preis", "durchfuehrungen") for c in (x + "_anzeige", "h_" + x + "_anzeige")]
+t("N01 Master 3'818 + 1 neue Zeile (Paket 22, E143), Spalten der Basis + 10 Anzeigefelder (Paket 24), Basis-Zeilen in gleicher Reihenfolge", len(V) == 3818 and len(N) == 3819
+  and [r["kohorte"] for r in N[3818:]] == ["NEU_P22"] and [(r["market"], r["id"]) for r in N[:3818]] == [(r["market"], r["id"]) for r in V] and list(N[0].keys()) == list(V[0].keys()) + ANZ_COLS)
 diff = {(k, f) for k in VK for f in V[0] if VK[k][f] != NK[k][f]}
-doku = {(web[p["id"]]["market"], p["id"], p["feld"]) for p in PA} | \
-       {(web[p["id"]]["market"], p["id"], p["h_feld"]) for p in PA if p["h_feld"]}
-t("N02 jede geänderte Zelle steht im Protokoll (Wert oder Herkunft), keine sonstige Änderung",
+doku = {(web[p["id"]]["market"], p["id"], p["feld"]) for p in PA if p["feld"] in V[0]} | \
+       {(web[p["id"]]["market"], p["id"], p["h_feld"]) for p in PA if p["h_feld"] in V[0]}
+t("N02 jede geänderte Zelle der Basis-Spalten steht im Protokoll (Wert oder Herkunft), keine sonstige Änderung",
   {(k[0], k[1], f) for k, f in diff} == doku, f"{len(diff)} geändert, {len(doku)} protokolliert")
-t("N03 Protokoll: neuer Wert steht im Master", all(web[p["id"]][p["feld"]] == p["neu"] for p in P))
+letzte = {}; bruch = []
+for p in P:  # Paket 24: eine Zelle kann mehrmals geändert werden (16 → 17, 17 → 21); Kette lückenlos, die letzte Zeile zählt
+    v = letzte.get((p["id"], p["feld"]))
+    if v and p["alt"] != v["neu"]: bruch.append((p["id"], p["feld"]))
+    letzte[(p["id"], p["feld"])] = p
+t("N03 Protokoll: Zeilen je Zelle lückenlos (alt = neu der vorigen), neuer Wert der letzten Zeile steht im Master",
+  not bruch and all(web[i][f] == p["neu"] for (i, f), p in letzte.items()), str(bruch[:5]))
 p13 = {r["id"]: r for r in csv.DictReader(open(R / "paket13/out/master_3818_p13.csv", encoding="utf-8-sig"))}
 t("N04 Paket 13 deckungsgleich mit paket13/out/master_3818_p13.csv (6 Felder)",
   all(web[i][f] == p13[i][f] for i in ("OFFER-HEAD-003", "AT-PROD-OFFER-040", "AT-PROD-OFFER-026")
