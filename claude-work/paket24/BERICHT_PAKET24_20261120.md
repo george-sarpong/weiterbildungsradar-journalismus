@@ -1,6 +1,6 @@
 # BERICHT PAKET 24 «Master nachführen» – 20.11.2026
 
-Status: **umgesetzt, getestet, Zweitmeinung ChatGPT eingearbeitet (§5a), committet auf `claude/datenharmonisierung` (nur lokal, Lieferung als Git-Bundle, §7).** Register und GESAMTWISSENSSTAND nachgeführt (E183–E190).
+Status: **umgesetzt, getestet, Zweitmeinung ChatGPT eingearbeitet (§5a), committet und gepusht auf `claude/datenharmonisierung` (E191).** Register und GESAMTWISSENSSTAND nachgeführt (E183–E191); Nachtrag bestätigt (E191).
 Grundlage: `SPEZIFIKATION_PAKET24_20261120.md`, freigegeben 20.11. (E183, Entwurf). Arbeitszweig `claude/datenharmonisierung`, Basis 9fd113f.
 Beleg: [GEPRÜFT] von Claude gezählt oder getestet.
 
@@ -81,7 +81,7 @@ Quelle E183–E189: Owner-Antworten 20.11., Chat «Start nach Übergabe 20.11.»
 
 ## 7. Offen
 
-1. Lieferung: Push wurde in diesem Chat abgelehnt; Commit liegt als Git-Bundle `paket24_20261120.bundle` vor (Voraussetzung 9fd113f). Push-Recht für Claude oder Bundle einspielen (wie Paket 20, GESAMTWISSENSSTAND §10 Punkt 15).
+1. erledigt: Schreibrecht erteilt (E191), Commit gepusht; Bundle `paket24_20261120.bundle` nur noch Reserve.
 2. Projektregel 7 an E173 anpassen (Owner, Projektanweisungen; Wortlaut Übergabe §6 Schritt 1). Stand 20.11. nachmittags: Regel 7 nennt noch «mit Rollback».
 3. Wortlaut KI-Offenlegung Methodik-Seite (E188) vorlegen, Umsetzung mit einem späteren Release.
 4. Nächstes Umbaupaket P25 (Generator Master → Website), ZIELBILD §4; erst Spezifikation, dann Freigabe.
