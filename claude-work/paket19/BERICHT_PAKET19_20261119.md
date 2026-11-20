@@ -50,7 +50,7 @@ Nebenbefund: `index.html` hat seit Live-Stand A einen JSON-LD-Block «WebSite».
 | 7.4 Sitemap S01–S03 | PASS (S02: gleiche Liste → lastmod bleibt, geänderte Liste → Stichtag; `test_robots.py` 6/6) |
 | 7.5 Build, Paket R01–R06 | PASS (R01 byte-gleich; R02 R1 PASS, Rückweg = Release Paket 22 byte-gleich; R04, R05 Apache mit `.htaccess`: Status 200, Sicherheits-Header je 7/7; R06 Nu Html Checker: 2 Fehler wie Paket 22, keine neuen) |
 | 7.6 Regression X01–X04 | PASS: Stufe 1 35 PASS / 0 FAIL / 4 später an 19.11. und 01.12.; Stufe 2 10 PASS (D8 entfallen, E105); B1, B3a, B3b, S1 PASS, T1/T5 Soll offen wie live; Pakete 5, 6, 7, 9, 10 an beiden Stichtagen grün; `test_paket20.js` 11/11 (Abnahme-Stände 18/20 aus Git), `test_paket21.js` 11/11, `test_paket22.js` 10/10, `test_nachtraege.py` 14/14 |
-| 7.7 Live V01–V05 | offen, nach Upload |
+| 7.7 Live V01–V05 | PASS am 20.11.2026 nach Upload (§6, E164) |
 
 Aufrufe (Repo-Root, `NODE_PATH` mit jsdom, axe-core, vnu-jar, playwright-core; Apache 2.4):
 `bash claude-work/paket19/scripts/build_p19.sh 2026-11-19` (aus `claude-work/`) · `node claude-work/paket19/tests/test_paket19.js` · `bash claude-work/paket19/tests/test_apache_p19.sh` · `QUELLE=<website> bash claude-work/paket20/tests/test_sicherheit.sh`.
@@ -63,26 +63,22 @@ Aufrufe (Repo-Root, `NODE_PATH` mit jsdom, axe-core, vnu-jar, playwright-core; A
 4. Ortsangaben der Karten enthalten teils selbst « · » (z. B. «keine Angabe · auf Anfrage»). Die Liste übernimmt das zeichengleich.
 5. U6: Search Console prüfen (Owner).
 
-## 6. Upload-Rezept (nur nach Release-Freigabe, rund 30 Minuten)
+## 6. Upload (E163, ausgeführt 20.11.2026)
 
-1. Paket von Claude erhalten und entpacken. Ordner `website/` = Upload, `rollback/` nur lokal behalten. (2 Min.)
-2. Infomaniak Manager → Web-FTP von mediaskills.ch öffnen. (1 Min.)
-3. Im Hauptordner alles löschen **ausser** `.ftpquota` und `.htaccess` (E146). (3 Min.)
-4. Hochladen in den Hauptordner, zuerst Daten und Skripte: `data-p19.js`, `smart-search-data-p19.js`, `data-p22.js`, `smart-search-data-p22.js`, `app-v43.js`, `styles-v22.css`, `styles-v24.css`. (5 Min.)
-5. Hochladen in den Hauptordner: `404.html`, `datenschutz.html`, `impressum.html`, `methodik.html`, `robots.txt`, `sitemap.xml`, `SHA256SUMS.txt`. (3 Min.)
-6. Zuletzt hochladen in den Hauptordner: `index.html`. (1 Min.)
-7. Claude meldet: V01 (SHA-256 live = Paket), V02 (WebFetch ohne JavaScript, 1'016 Einträge am 19.11.), V03 (securityheaders.com Note A), V04 (`sitemap.xml`). (10 Min.)
-8. Nur wenn ein Muss live verletzt ist: `rollback/index.html` als `index.html` in den Hauptordner hochladen, dann V01 erneut. (2 Min.)
+1. ZIP öffnen und in den Ordner `website` gehen (nicht `rollback`, nicht `DATEILISTE.txt`). (1 Min.)
+2. Web-FTP: im Hauptordner alles löschen ausser `.ftpquota` und `.htaccess`. (3 Min.)
+3. Alle 15 Dateien aus `website` markieren und in einem Schritt per Drag and Drop in den Hauptordner ziehen. (5 Min.)
+4. Claude prüft live V01–V05. (10 Min.) Nur bei einem Fehler: `rollback/index.html` als `index.html` hochladen.
 
-Hinweis: Wird erst nach dem 19.11. hochgeladen, baut Claude das Paket am Upload-Tag neu. Die Liste und «Stand der Angaben» haben dann den neuen Stichtag (E155).
+Ergebnis 20.11.2026 (E164): V01 15 Dateien per SHA-256 = Paket; V02 Startseite ohne JavaScript mit 1'006 Kursen und «Stand der Angaben: 20.11.2026»; V03 securityheaders.com Note A (CSP, nosniff, Referrer-Policy, HSTS); V04 `sitemap.xml` mit lastmod 2026-11-20 / 2026-11-17; V05 kein Rückweg nötig. Paket 19 ist live.
 
 ## 7. Offen für den Owner
 
-1. Release-Freigabe Paket 19 (Projektregel 7, E158).
-2. Nachtrag Paket 19 im GESAMTWISSENSSTAND bestätigen (Vorschlag §8).
-3. Search Console: Schalter «Search generative AI» ansehen (U6), nur Befund.
+1. erledigt: Release freigegeben (E161), live seit 20.11. (E164).
+2. erledigt: Nachtrag bestätigt (E162); Nachtrag live (E163, E164) bestätigen.
+3. erledigt: Search Console eingerichtet, Schalter auf «berücksichtigen» (E160); offen: `sitemap.xml` dort einreichen.
 
-## 8. Vorschlag Nachtrag GESAMTWISSENSSTAND (nach Bestätigung einzutragen)
+## 8. Vorschlag Nachtrag GESAMTWISSENSSTAND (eingetragen 20.11., E162; Live-Stand E163, E164)
 
 - §4 Website-Stände: Kandidat `claude-work/paket19/website/` (`index.html` mit Kursliste und «Stand der Angaben», `data-p19.js` ohne `korrekturen`, `sitemap.xml`); Smart-Daten `paket19/out/smart-search-data-p19.json`; `app-v43.js` unverändert.
 - §9: Paket 19 am 19.11. umgesetzt und getestet: U1–U6 erledigt; 1'016 Kurse im HTML (19.11.); `data-p19.js` −36 %; 33 von 38 Muss PASS (V01–V05 erst nach Upload), Soll R06 PASS, L12 offen; Befunde Ort-Drift, halbe Breite ohne JavaScript, Reserve `index.html` ~9 KB; Release nur mit Freigabe.
