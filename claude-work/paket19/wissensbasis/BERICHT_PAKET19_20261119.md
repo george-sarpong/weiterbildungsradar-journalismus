@@ -75,8 +75,8 @@ Ergebnis 20.11.2026 (E164): V01 15 Dateien per SHA-256 = Paket; V02 Startseite o
 ## 7. Offen für den Owner
 
 1. erledigt: Release freigegeben (E161), live seit 20.11. (E164).
-2. erledigt: Nachtrag bestätigt (E162); Nachtrag live (E163, E164) bestätigen.
-3. erledigt: Search Console eingerichtet, Schalter auf «berücksichtigen» (E160); offen: `sitemap.xml` dort einreichen.
+2. erledigt: Nachtrag bestätigt (E162), Nachtrag live bestätigt (E165).
+3. erledigt: Search Console eingerichtet, Schalter auf «berücksichtigen» (E160); `sitemap.xml` eingereicht 20.11.; offen: Status dort in den Folgetagen kontrollieren.
 
 ## 8. Vorschlag Nachtrag GESAMTWISSENSSTAND (eingetragen 20.11., E162; Live-Stand E163, E164)
 
