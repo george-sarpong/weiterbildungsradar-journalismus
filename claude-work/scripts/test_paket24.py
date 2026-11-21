@@ -1,6 +1,8 @@
 """Paket 24 «Master nachführen» (SPEZIFIKATION_PAKET24_20261120.md §4, T01–T14): Master trägt jede Angabe der Website.
 Aufruf in run_paket3.sh nach test_nachtraege.py:  python3 -I scripts/test_paket24.py --out paket3/out
-Referenzwerte «vorher» = Stand Commit 9fd113f (vor Paket 24), als SHA-256 festgehalten."""
+Referenzwerte «vorher» = Stand Commit 9fd113f (vor Paket 24), als SHA-256 festgehalten.
+Paket 25 (SPEZIFIKATION_PAKET25 A10, Entscheid 8, E199): T06, T08/T09, T10, T14 um die 2 Lieferformspalten (A1) ergänzt;
+historische Sollwerte, Hashes und Prüfabsichten unverändert; die neuen Spalten prüft paket25/tests/test_paket25_master.py."""
 import argparse, collections, csv, hashlib, io, json, pathlib, re, shutil, subprocess, sys, tempfile
 
 R = pathlib.Path(__file__).resolve().parents[1]
@@ -35,6 +37,7 @@ ANZ = {"termin_text": "termin_anzeige", "ort_text": "ort_anzeige", "dauer": "dau
        "durchfuehrungen": "durchfuehrungen_anzeige"}
 ANZ_COLS = [c for x in ANZ.values() for c in (x, "h_" + x)]
 NEUE_FELDER = set(ANZ_COLS) | {"publikationsstatus", "publikationsgrund"}
+LF_COLS = ["lieferform_json", "h_lieferform_json"]  # Paket 25 A1: am Ende nach den Anzeigefeldern
 
 braw = MP.read_bytes()
 head = next(csv.reader(io.StringIO(braw.decode("utf-8-sig"))))
@@ -145,7 +148,7 @@ t("T04 Sperren: 5 IDs HOLD, Grund = Website, Herkunft OWNER_E103/E142; sonst pub
       for d in D for i in [d["id"]] if i in SPERREN), str(sorted(hold_neu)))
 cnt = collections.Counter(r["beta_sichtbar"] for r in N)
 t("T05 Sichtbarkeit Master unverändert: beta_sichtbar JA 3'441 · NEIN 378", (cnt["JA"], cnt["NEIN"]) == (3441, 378), str(cnt))
-alt_kopf = head[:-len(ANZ_COLS)]
+alt_kopf = head[:-len(ANZ_COLS) - len(LF_COLS)]  # Paket 25: Lieferformspalten ausgeklammert
 zurueck = []
 for r in N:
     z = dict(r)
@@ -154,7 +157,7 @@ for r in N:
     zurueck.append([z[c] for c in alt_kopf])
 b = io.StringIO(); csv.writer(b, lineterminator="\n").writerows([alt_kopf] + zurueck)
 t("T06 Originalfelder: alle 113 bisherigen Spalten wie vorher (9fd113f), ausser publikationsstatus/-grund der 5 IDs",
-  head[-len(ANZ_COLS):] == ANZ_COLS and len(alt_kopf) == 113 and sha(("﻿" + b.getvalue()).encode("utf-8")) == VORHER_AKTUELL)
+  head[-len(ANZ_COLS) - len(LF_COLS):] == ANZ_COLS + LF_COLS and len(alt_kopf) == 113 and sha(("﻿" + b.getvalue()).encode("utf-8")) == VORHER_AKTUELL)
 
 # ---------- T07 überholte Ortskorrekturen ----------
 ueb = [p for p in P if p["quelle"] == "überholt durch Paket 21"]
@@ -172,7 +175,7 @@ t("T07 überholte Ortskorrekturen Paket 17 → Paket 21: 93 = Sollmenge aus den 
 EIN = ["scripts/master_nachtraege.py", "scripts/build_master_p3.py", "paket3/out/master_3818.csv", "paket13/config/owner_korrekturen.csv",
        "paket14/config/korrekturen.csv", "paket16/config/korrekturen.csv", "paket17/config/korrekturen.csv",
        "paket17/config/korrekturen_preis.csv", "paket18/config/korrekturen.csv", "paket21/config/korrekturen.csv",
-       "paket22/config/korrekturen.csv", "paket22/config/neue_angebote.json"]
+       "paket22/config/korrekturen.csv", "paket22/config/neue_angebote.json", "paket25/eingang/lieferform_p19.json"]  # Paket 25 A1
 def kopie(td):
     for p in EIN:
         (td / p).parent.mkdir(parents=True, exist_ok=True); shutil.copy(R / p, td / p)
@@ -213,7 +216,7 @@ t("T09 zwei unabhängige Builds aus frischen Ordnern: Master und Protokoll byteg
 
 # ---------- T10 Protokollzeilen der Pakete 13, 14, 18, 21, 22 ----------
 alt_p = [list(p.values()) for p in P if p["feld"] not in NEUE_FELDER and p["quelle"] != "überholt durch Paket 21"
-         and p["herkunft"] not in ("ANZEIGE_E113", "ANZEIGE_E114")]
+         and p["herkunft"] not in ("ANZEIGE_E113", "ANZEIGE_E114") and p["feld"] != "lieferform_json"]  # Paket 25: 1'353 Lieferform-Zeilen ausgeklammert
 b = io.StringIO(); csv.writer(b, lineterminator="\n").writerows(alt_p)
 t("T10 Protokollzeilen der Pakete 13, 14, 18, 21, 22 identisch zu vorher (Platzhalterregel SENT)", len(alt_p) == 4118 and sha(b.getvalue().encode()) == VORHER_PROTO, str(len(alt_p)))
 
@@ -225,7 +228,7 @@ W = R / "paket19/website"
 t("T13 Website (paket19/website, alle Dateien) und Smart-Datei unverändert (SHA-256)",
   {p.name: sha(p.read_bytes()) for p in W.iterdir() if p.is_file()} == WEBSITE and sha((R / "paket19/out/smart-search-data-p19.json").read_bytes()) == SMART)
 recs = list(csv.reader(io.StringIO(braw.decode("utf-8-sig"))))
-t("T14 CSV-Form: 3'820 Zeilen inkl. Kopf, je 123 Spalten, UTF-8 mit BOM, Zeilenende LF",
-  len(recs) == 3820 and all(len(z) == 123 for z in recs) and braw.startswith(b"\xef\xbb\xbf") and b"\r\n" not in braw and braw.endswith(b"\n"))
+t("T14 CSV-Form: 3'820 Zeilen inkl. Kopf, je 125 Spalten (Paket 25: 123 + 2 Lieferform), UTF-8 mit BOM, Zeilenende LF",
+  len(recs) == 3820 and all(len(z) == 125 for z in recs) and braw.startswith(b"\xef\xbb\xbf") and b"\r\n" not in braw and braw.endswith(b"\n"))
 print(f"{ok}/{n} PASS")
 sys.exit(0 if ok == n else 1)

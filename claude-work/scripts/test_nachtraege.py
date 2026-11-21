@@ -25,8 +25,9 @@ PA = [p for p in P if p["alt"] != "(neu)"]  # Änderungen an bestehenden Zeilen;
 
 # Paket 24 (A1): 10 Anzeigefelder am Ende; Prüfung der neuen Spalten in test_paket24.py
 ANZ_COLS = [c for x in ("termin", "ort", "dauer", "preis", "durchfuehrungen") for c in (x + "_anzeige", "h_" + x + "_anzeige")]
-t("N01 Master 3'818 + 1 neue Zeile (Paket 22, E143), Spalten der Basis + 10 Anzeigefelder (Paket 24), Basis-Zeilen in gleicher Reihenfolge", len(V) == 3818 and len(N) == 3819
-  and [r["kohorte"] for r in N[3818:]] == ["NEU_P22"] and [(r["market"], r["id"]) for r in N[:3818]] == [(r["market"], r["id"]) for r in V] and list(N[0].keys()) == list(V[0].keys()) + ANZ_COLS)
+LF_COLS = ["lieferform_json", "h_lieferform_json"]  # Paket 25 A1 (E199): 2 Lieferformspalten am Ende; Prüfung in paket25/tests/test_paket25_master.py
+t("N01 Master 3'818 + 1 neue Zeile (Paket 22, E143), Spalten der Basis + 10 Anzeigefelder (Paket 24) + 2 Lieferformspalten (Paket 25), Basis-Zeilen in gleicher Reihenfolge", len(V) == 3818 and len(N) == 3819
+  and [r["kohorte"] for r in N[3818:]] == ["NEU_P22"] and [(r["market"], r["id"]) for r in N[:3818]] == [(r["market"], r["id"]) for r in V] and list(N[0].keys()) == list(V[0].keys()) + ANZ_COLS + LF_COLS)
 diff = {(k, f) for k in VK for f in V[0] if VK[k][f] != NK[k][f]}
 doku = {(web[p["id"]]["market"], p["id"], p["feld"]) for p in PA if p["feld"] in V[0]} | \
        {(web[p["id"]]["market"], p["id"], p["h_feld"]) for p in PA if p["h_feld"] in V[0]}

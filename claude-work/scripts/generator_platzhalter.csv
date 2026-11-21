@@ -1,0 +1,13 @@
+website_feld,wirkung,wert,register_id,bemerkung
+format,CODE,NICHT_PUBLIZIERT,E192,Filterwert Kursform (app-v43.js)
+level,CODE,NICHT_PUBLIZIERT,E192,Filterwert Niveau (app-v43.js)
+priceDisplay,CODE,NICHT_PUBLIZIERT,E192,einheitlich; AT-PROD-OFFER-173 vorher NICHT_VERIFIZIERT_FUER_AKTUELLEN_KATALOGTERMIN
+priceCategory,CODE,PREIS_NICHT_PUBLIZIERT,E192,Filterwert Preisklasse (app-v43.js)
+language,CODE,NOT_PUBLISHED,E192,Filterwert Sprache (app-v43.js)
+region,CODE,NOT_PUBLISHED,E192,einheitlich; V59-SZ05 vorher NICHT_PUBLIZIERT
+duration,CODE,NOT_PUBLISHED,E192,einheitlich; 5 Angebote vorher NICHT_PUBLIZIERT
+startDate,LEER,,E192,leerer Text
+endDate,LEER,,E192,leerer Text
+publicationStatus,ENTFAELLT,,E192,Feld fehlt im Datensatz
+publicationReason,ENTFAELLT,,E192,Feld fehlt im Datensatz
+sessions,ENTFAELLT,,E192,Feld fehlt im Datensatz

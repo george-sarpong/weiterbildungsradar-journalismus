@@ -6,6 +6,8 @@
 // Vergleich: derselbe Lauf auf dem Live-Snapshot (Paket A), damit neue und bestehende Befunde getrennt sind.
 // Aufruf (im Repo-Root): NODE_PATH=<ordner>/node_modules PLAYWRIGHT=<pfad>/playwright CHROME=/usr/bin/google-chrome VNU=<pfad>/vnu.jar \
 //          node claude-work/paket8/tests/test_browser_p8.js
+// Paket 25 (SPEZIFIKATION_PAKET25 §9 Entscheid 6, E197): optional DATA=<Datendatei> und SMART=<Smart-JSON>; ohne diese Parameter
+// wie bisher paket7/website/data-p7.js und paket3/out/merge_kandidat_smart.json (Name im Prüfstand bleibt data-p7.js / smart-search-data-p7.js).
 "use strict";
 const fs = require("fs"), os = require("os"), path = require("path"), http = require("http");
 const { spawnSync } = require("child_process");
@@ -14,14 +16,16 @@ const AXE = require.resolve("axe-core/axe.min.js");
 const CW = path.join(process.cwd(), "claude-work"), LIVE = path.join(CW, "live-snapshot-20261109"), W7 = path.join(CW, "paket7/website");
 const WEB = path.resolve(process.env.WEBSITE || W7), APPNAME = process.env.APP || "app-v36.js";
 const OUT = path.join(CW, "paket8/out", WEB === W7 ? "" : path.basename(path.dirname(WEB)));
+const DATAFILE = process.env.DATA ? path.resolve(process.env.DATA) : path.join(W7, "data-p7.js");
+const SMARTFILE = process.env.SMART ? path.resolve(process.env.SMART) : path.join(CW, "paket3/out/merge_kandidat_smart.json");
 
 function pruefstand() {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "p8-stand-"));
   for (const f of fs.readdirSync(LIVE)) if (!/^(SHA256SUMS|README)/.test(f)) fs.copyFileSync(path.join(LIVE, f), path.join(dir, f));
-  fs.copyFileSync(path.join(W7, "data-p7.js"), path.join(dir, "data-p7.js"));
+  fs.copyFileSync(DATAFILE, path.join(dir, "data-p7.js"));
   // Prüfling: alle Dateien des gewählten Website-Ordners ersetzen die Live-Fassung (Paket 9 auch datenschutz, impressum, 404)
   for (const f of fs.readdirSync(WEB)) if (f !== "index.html") fs.copyFileSync(path.join(WEB, f), path.join(dir, f));
-  fs.writeFileSync(path.join(dir, "smart-search-data-p7.js"), `window.MEDIA_SKILLS_SMART_DATA = ${fs.readFileSync(path.join(CW, "paket3/out/merge_kandidat_smart.json"), "utf8")};\n`);
+  fs.writeFileSync(path.join(dir, "smart-search-data-p7.js"), `window.MEDIA_SKILLS_SMART_DATA = ${fs.readFileSync(SMARTFILE, "utf8")};\n`);
   const idx = fs.readFileSync(path.join(WEB, "index.html"), "utf8")
     .replace('src="data-a1-86ff68ddc9ac.js"', 'src="data-p7.js"').replace('src="smart-search-data-a1-a38a2a2b2391.js"', 'src="smart-search-data-p7.js"').replace('src="app-v33.js"', `src="${APPNAME}"`);
   if (!idx.includes(`src="${APPNAME}"`) || !/src="data-p7\.js"/.test(idx)) throw new Error("Skript-Verweise im Prüfstand nicht ersetzt");

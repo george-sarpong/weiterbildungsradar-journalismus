@@ -8,6 +8,9 @@ Paket 24 (Spezifikation SPEZIFIKATION_PAKET24_20261120.md, Owner-Freigabe 20.11.
 und 17 (E114) in fünf Anzeigefeldern am Ende (termin_, ort_, dauer_, preis_, durchfuehrungen_anzeige, je mit h_-Feld);
 leer = Original gilt; Originalfelder bleiben (E113). Sperren E103/E142 auch in publikationsstatus/-grund. Reihenfolge
 13, 14, 16, 17, 18, 21, 22; ein späterer Nachtrag am Originalfeld leert ein früheres Anzeigefeld («überholt», A5).
+Paket 25 (SPEZIFIKATION_PAKET25_20261120.md A1, Entscheid 2 A): Lieferform als Spalte lieferform_json (+ h_lieferform_json)
+am Ende, aus dem eingefrorenen Auszug paket25/eingang/lieferform_p19.json; letzter Schritt nach Paket 22; bestehende
+Spalten bleiben unverändert (auch lieferform, lieferform_struktur).
 Läuft in run_paket3.sh nach test_paket3.py (der den Bau aus den Quellen prüft).
 Jeder alte Wert wird geprüft (sonst Abbruch), jede Änderung bekommt eine Herkunft im h_-Feld und eine Zeile im
 Protokoll paket3/out/master_nachtraege_protokoll.csv. Keine stillen Überschreibungen (Projektregel 6).
@@ -218,6 +221,43 @@ def main():
             assert c in ix, c; z[c] = v
         rows.append([z[c] for c in head])
         proto.extend([o["id"], c, "(neu)", z[c], "", "", herk, reg, NEU["quelle"]] for c in head if z[c] not in ("nicht erfasst", "LEER", ""))
+
+    # Paket 25 (A1, B05): Lieferform aus dem eingefrorenen Auszug; Abbruch vor jedem Schreiben bei fehlender, fremder
+    # oder doppelter ID und bei einem Eintrag ohne genau die 8 Teilfelder. DE/USA «nicht erfasst», Herkunft LEER
+    # (Master-Regel für «nicht erfasst», wie h_lieferform, h_durchfuehrungen). Eine Protokollzeile je gesetzter Zelle.
+    PAKET = 25
+    LF = "paket25/eingang/lieferform_p19.json"; LF_COLS = ["lieferform_json", "h_lieferform_json"]
+    if any(c in head for c in LF_COLS): sys.exit("ABBRUCH: Master enthält schon lieferform_json")
+    TF = ["channels", "evidenceTier", "materialisationStatus", "scheduleSummary", "sourceText", "structure", "temporalSummary", "variants"]
+    def paare(ps):
+        d = {}
+        for k, v in ps:
+            if k in d: sys.exit(f"ABBRUCH: {LF}: Schlüssel {k} doppelt (ID bzw. Teilfeld der Lieferform)")
+            d[k] = v
+        return d
+    # Gegenprüfung H4: Auszug eingefroren (SHA-256 festgehalten), Herkunftsangaben im Auszug geprüft
+    SHA_AUSZUG, SHA_QUELLE = "d1bd2836e0d323728fac094906e01ee6fb40fcbe5cd404ca64efe11de82fc0e8", "7ddd326a26cbaaebcf4a9382c3e97d0f6399e6022d9d93f7ef2c21b377b2a35c"
+    lfb = (R / LF).read_bytes()
+    if hashlib.sha256(lfb).hexdigest() != SHA_AUSZUG: sys.exit(f"ABBRUCH: {LF} hat nicht den festgehaltenen SHA-256 (Feld lieferform_json)")
+    try: AUS = json.loads(lfb.decode("utf-8"), object_pairs_hook=paare)
+    except ValueError as e: sys.exit(f"ABBRUCH: {LF} ungültiges JSON ({e})")
+    by = AUS.get("byId") if isinstance(AUS, dict) else None
+    if not isinstance(by, dict): sys.exit(f"ABBRUCH: {LF} ohne byId")
+    if (AUS.get("quelle"), AUS.get("sha256_quelle")) != ("paket19/out/smart-search-data-p19.json", SHA_QUELLE): sys.exit(f"ABBRUCH: {LF}: Quelle oder SHA-256 der Quelle falsch")
+    ziel = [r[ix["id"]] for r in rows if r[ix["release_markt"]] in ("CH", "AT", "LI")]
+    fehlt = [i for i in ziel if i not in by]; fremd = [i for i in by if i not in set(ziel)]
+    if fehlt: sys.exit(f"ABBRUCH: {LF}: Lieferform fehlt für {fehlt[:5]} (Feld lieferform_json)")
+    if fremd: sys.exit(f"ABBRUCH: {LF}: fremde ID {fremd[:5]} (nicht CH/AT/LI im Master)")
+    for i, d in by.items():
+        if not isinstance(d, dict) or sorted(d) != TF: sys.exit(f"ABBRUCH: {LF}: {i}.lieferform_json hat nicht genau die 8 Teilfelder")
+    head = head + LF_COLS; ix.update({c: len(head) - 2 + k for k, c in enumerate(LF_COLS)})
+    quelle = f"{LF} (Auszug aus {AUS.get('quelle')}, SHA-256 {AUS.get('sha256_quelle')})"
+    for r in rows:
+        r.extend(["nicht erfasst", "LEER"])
+        i = r[ix["id"]]
+        if r[ix["release_markt"]] in ("CH", "AT", "LI"):
+            r[ix["lieferform_json"]] = json.dumps(by[i], ensure_ascii=False); r[ix["h_lieferform_json"]] = "SMART_P19"
+            proto.append([i, "lieferform_json", "nicht erfasst", r[ix["lieferform_json"]], "h_lieferform_json", "LEER", "SMART_P19", "E193", quelle])
 
     with open(mpfad, "w", encoding="utf-8-sig", newline="") as f:
         csv.writer(f, lineterminator="\n").writerows([head] + rows)
