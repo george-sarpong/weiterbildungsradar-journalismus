@@ -1,6 +1,6 @@
 # SPEZIFIKATION PAKET 25 «Generator Master → Website», 20.11.2026
 
-Status: **vom Owner freigegeben 20.11.2026**, Entscheide 1–5 je Variante A (Code je Feld, Spalte `lieferform_json` im Master, Master-Reihenfolge, kein Release, Zweitmeinung ChatGPT parallel). **Nachtrag 20.11. (§9):** U4 entschieden, Rollen nach E033 bestätigt. **Berichtigung 20.11. (§10):** 6 statt 5 Schlüsselvarianten, Sollliste der 7 Rohwerte. **Zweitmeinung ChatGPT eingearbeitet 21.11. (§11):** B01–B05, Entscheide 8 und 9. U1–U4 erledigt (U3 PASS 20.11. 18:01 UTC). Eintrag ins Register mit dem Bericht Paket 25 (Vorschlag E192–E200).
+Status: **vom Owner freigegeben 20.11.2026**, Entscheide 1–5 je Variante A (Code je Feld, Spalte `lieferform_json` im Master, Master-Reihenfolge, kein Release, Zweitmeinung ChatGPT parallel). **Nachtrag 20.11. (§9):** U4 entschieden, Rollen nach E033 bestätigt. **Berichtigung 20.11. (§10):** 6 statt 5 Schlüsselvarianten, Sollliste der 7 Rohwerte. **Zweitmeinung ChatGPT eingearbeitet 21.11. (§11):** B01–B05, Entscheide 8 und 9. U1–U4 erledigt (U3 PASS 20.11. 18:01 UTC). **Gegenprüfung ChatGPT §11 eingearbeitet 21.11. (§12):** B06 mit Entscheid 10, B07, B08. Umgesetzt und getestet 21.11. (`BERICHT_PAKET25_20261121.md`). Eintrag ins Register mit dem Bericht Paket 25 (E192–E201).
 Auftrag: Owner 20.11. («Spezifikation P25 «Generator Master → Website» mit Testliste, Umsetzung erst nach meiner Freigabe»). Grundlage: `ZIELBILD_UNTERBAU_20261120.md` §2 B2, §3 Punkt 4, §4 Zeile P25; `BERICHT_PAKET24_20261120.md` §1, §7 Punkt 4; GESAMTWISSENSSTAND §2 (Master), §6 P24-N, §9; E031, E047, E074, E113, E114, E152, E156, E169, E172.
 Vorprüfung: Arbeitszweig `claude/datenharmonisierung`, Commit 111b0fd (E191), flach geklont 20.11.; nur gelesen, nichts geschrieben. Messskripte im Scratch, nicht im Repo.
 Beleg: [GEPRÜFT] von Claude gezählt · [GELESEN] Original gelesen · [ZU BELEGEN] vor Umsetzung prüfen.
@@ -209,3 +209,18 @@ Anlass: «Paket 25 – unabhängige Zweitmeinung zur Spezifikation» (Owner-Uplo
 
 Quelle: Owner-Antworten 21.11., Chat «Spezifikation P25» (Auswahl «Ja, so anpassen», «Neuer Vergleichstest»).
 Damit sind alle Befunde der Zweitmeinung in der Spezifikation behandelt; ob die Umsetzung sie erfüllt, zeigen die Tests im Bericht P25.
+
+## 12. Gegenprüfung ChatGPT §11, eingearbeitet 21.11.
+
+Anlass: «Paket 25 – Gegenprüfung §11» (Owner-Upload 21.11.; HOLD; B01, B03, B04, B05 erledigt, B02 offen; neu B06 blockierend, B07 sollte, B08 Hinweis; statische Prüfung gegen 11fcc70). Nachprüfung Claude am Code und durch Messung [GEPRÜFT].
+
+| Befund | Nachprüfung Claude | Einarbeitung |
+|---|---|---|
+| B06 Punktzahl nicht gesichert (blockierend) | zutreffend: `smartHaystack` (app-v43.js Z. 988–991) und die Katalogsuche (Z. 1655–1670) durchsuchen `duration`, `region`, `priceDisplay` roh; die 7 geänderten Codes ändern Suchen mit Wörtern oder Wortteilen der drei Codes («nicht», «publiziert», «not», «published», «verifiziert», «Katalogtermin»; in der Katalogsuche auch «Termin», «aktuell», «Katalog», «fuer», berichtigt nach der Gegenprüfung des getrennten Agenten, S1), nur bei den 7 Angeboten, nicht die 60 Testanfragen und nicht die Titelanfragen | G11 um Punktzahl je Kandidat und Nachweis echter Gleichstände erweitert; neuer Test **G20** mit fester Sollliste; Entscheid 10 |
+| B07 Vergleichsumgebung (sollte) | zutreffend | G11: beide Stände mit gleichem festem Stichtag, `TZ=Europe/Zurich` Pflicht, Chrome je Stand eigener Kontext gleicher Einstellung (de-CH, Europe/Zurich) |
+| B08 leere ID (Hinweis) | zutreffend | G06: bei leerer ID Zeilennummer und Feld, bei fehlender Spalte der Spaltenname |
+
+**Entscheid 10 – Codewörter in der Suche (B06)** → **annehmen, als Test** (Owner 21.11., Vorschlag E201): «Ein Code je Feld» (Entscheid 1) bleibt; G20 hält die Abweichungen als Sollliste fest (BERICHT_PAKET25 §4) und belegt gleiche Punktzahlen; die Codes verschwinden aus dem Suchtext erst mit P27 (App-Änderung). Nicht gewählt: 7 Rohwerte unverändert (Ausnahmeliste je ID), App jetzt ändern.
+
+Quelle: Owner-Antwort 21.11., Chat «P25 umsetzen» (Auswahl «Annehmen, als Test»).
+

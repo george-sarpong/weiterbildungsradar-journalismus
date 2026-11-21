@@ -1,6 +1,6 @@
 # BERICHT PAKET 25 «Generator Master → Website», 21.11.2026
 
-Status: **umgesetzt und getestet**, kein Release (Entscheid 4 A). Owner-Bestätigung des Nachtrags offen.
+Status: **umgesetzt und getestet**, Code-Commit b895b50 auf `claude/datenharmonisierung`, kein Release (Entscheid 4 A). Owner-Bestätigung des Nachtrags offen.
 Auftrag: Owner 21.11. («P25 umsetzen und testen … Nachprüfung von §11 durch ChatGPT … Befunde vor dem Commit einarbeiten. Danach Bericht, Register E192–E200 und GESAMTWISSENSSTAND nachführen»).
 Grundlage: `SPEZIFIKATION_PAKET25_20261120.md` (freigegeben, Entscheide 1–9, §9–§11; neu §12), Arbeitszweig `claude/datenharmonisierung`, Basis 11fcc70 (gegenüber 111b0fd nur die Spezifikation), Schreibrecht E191.
 Beleg: [GEPRÜFT] von Claude gezählt bzw. Test gelaufen · [OWNER] Owner-Entscheid.
