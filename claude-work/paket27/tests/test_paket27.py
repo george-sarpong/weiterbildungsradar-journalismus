@@ -110,6 +110,7 @@ zahl = collections.Counter(r["anbieter_id"] for r in M)
 klein = next(z for z in A if zahl[z["anbieter_id"]] == 1 and z["sitzland"] == "CH")      # CH-Anbieter mit genau einem Angebot (B06)
 klein_r = next(r for r in M if r["anbieter_id"] == klein["anbieter_id"])
 anders = next(z for z in A if z["anbieter_id"] != klein["anbieter_id"])
+gleich_land = next(z for z in A if z["anbieter_id"] != klein["anbieter_id"] and z["sitzland"] == klein["sitzland"])
 naechste = f"ANB-{len(A) + 1:04d}"
 vorlage = lies(R / "eingang/022_20261119_neue_angebote.csv")[0]
 NK = list(vorlage); NK.insert(NK.index("h_url_identitaet") + 1, "lieferform_json"); NK.insert(NK.index("anbieter") + 1, "anbieter_id")
@@ -158,6 +159,8 @@ FAELLE = [
     ("K15", "Korrektur anbieter_land auf ein anderes Land", kf(kz(klein_r["id"], "anbieter_land", "CH", "DE")), "028_20261122_korrekturen.csv:2:anbieter_land"),
     ("K15", "Korrektur anbieter_id auf fremden Anbieter", kf(kz(klein_r["id"], "anbieter_id", klein["anbieter_id"], anders["anbieter_id"])), "028_20261122_korrekturen.csv:2:anbieter_id"),
     ("K16", "zwei Währungen je Angebot", kf(kz("OFFER-DIGICOMP-075", "preis_optionen", MI["OFFER-DIGICOMP-075"]["preis_optionen"], json.dumps(po2, ensure_ascii=False))), "028_20261122_korrekturen.csv:2:preis_optionen"),
+    ("K16", "Betrag ohne Währung (Zweitmeinung B09)", kf(kz("OFFER-DIGICOMP-075", "preis_optionen", MI["OFFER-DIGICOMP-075"]["preis_optionen"], json.dumps([dict(po[0], currency=None)], ensure_ascii=False))), "028_20261122_korrekturen.csv:2:preis_optionen"),
+    ("K15", "Anbieter-Text auf anderen Anbieter gleichen Sitzlands, Kennung bleibt (Zweitmeinung B07)", kf(kz(klein_r["id"], "anbieter", klein_r["anbieter"], gleich_land["sw"][0])), "028_20261122_korrekturen.csv:2:anbieter"),
     ("K07", "Trennzeichen « | » (P07)", kf(kz(de["id"], "sprache", de["sprache"], "DE | FR")), "028_20261122_korrekturen.csv:2:neu"),
     ("K07", "Scope-Code ungültig (P06)", kf(kz(de["id"], "scope_code", NE, "KERN")), "028_20261122_korrekturen.csv:2:neu"),
     ("K07", "Grenzfall ohne Begründung per Korrektur (Gegenprüfung B3)", kf(kz(de["id"], "scope_code", NE, "GRENZFALL_E179")), "028_20261122_korrekturen.csv:2:id"),
@@ -254,14 +257,26 @@ if NODE_PATH:
     app = json.loads(js.stdout) if js.returncode == 0 else {}
     import datetime
     py = {d: sorted(r["id"] for r in M if SB.sichtbar(r, datetime.date.fromisoformat(d))) for d in TAGE}
-    p09 = app == py and [len(py[d]) for d in TAGE] == [1006, 998, 945, 860, 795]
+    probe = app.pop("_probe", None)
+    p09 = app == py and [len(py[d]) for d in TAGE] == [1006, 998, 945, 860, 795] and probe == {"OFFER-AJM-001": "FR|EN", "anzahl": 1353}
+    SBD = lies(R / "paket27/out/sichtbarkeit_2026-11-20.csv")   # Zweitmeinung B14: Vertrag der Sichtbarkeitsdatei
+    gruende = {"SICHTBAR", "MARKT", "HOLD", "ABGELAUFEN", "KEIN_KUENFTIGER_TERMIN"}
+    p09 = p09 and [z["id"] for z in SBD] == [r["id"] for r in M] and all(z["grund"] in gruende and (z["sichtbar"] == "JA") == (z["grund"] == "SICHTBAR") for z in SBD) \
+        and sorted(z["id"] for z in SBD if z["sichtbar"] == "JA") == py["2026-11-20"] \
+        and all((z["grund"] == "MARKT") == (MI[z["id"]]["release_markt"] not in ("CH", "AT", "LI")) for z in SBD) \
+        and all(z["grund"] != "HOLD" or MI[z["id"]]["publikationsstatus"] == "HOLD" for z in SBD)
     print("INFO P09 sichtbar: " + ", ".join(f"{d} {len(py[d])}" for d in TAGE))
-t("P09 Sichtbarkeit: scripts/sichtbarkeit.py = app-v43.js in jsdom mit data-p27.js an 20.11., 22.11., 01.12., 20.12.2026, 01.03.2027 (gleiche ID-Mengen; 1'006 / 998 / 945 / 860 / 795)",
+t("P09 Sichtbarkeit: scripts/sichtbarkeit.py = app-v43.js in jsdom mit data-p27.js an 20.11., 22.11., 01.12., 20.12.2026, 01.03.2027 (gleiche ID-Mengen; 1'006 / 998 / 945 / 860 / 795); "
+  "die App hat nachweislich data-p27.js geladen (1'353 Angebote, OFFER-AJM-001 Sprache «FR|EN»; Zweitmeinung B06); sichtbarkeit_2026-11-20.csv: jede Master-ID genau einmal in Master-Reihenfolge, "
+  "Grund aus der festen Liste, sichtbar ⇔ SICHTBAR, MARKT ⇔ ausserhalb CH/AT/LI, HOLD nur bei HOLD (Zweitmeinung B14)",
   bool(p09), "NODE_PATH fehlt" if not NODE_PATH else "")
 
 # ---------- P10 Währung ----------
 mehr = [r["id"] for r in M if r["preis_optionen"] != NE and len({o.get("currency") for o in json.loads(r["preis_optionen"]) if isinstance(o, dict)} - {None, ""}) > 1]
-t("P10 Währung (K16): am Bestand 0 Angebote mit mehr als einer Währung; Fehlfall abgelehnt (P05a K16)", not mehr and erg.get("K16 zwei Währungen je Angebot"), str(mehr[:3]))
+ohne_w = [r["id"] for r in M if r["preis_optionen"] != NE and any(not o.get("currency") and any(isinstance(o.get(k), (int, float)) and o.get(k) > 0 for k in ("amount", "minAmount", "maxAmount"))
+                                                                  for o in json.loads(r["preis_optionen"]))]
+t("P10 Währung (K16): am Bestand 0 Angebote mit mehr als einer Währung und 0 Preisoptionen mit Betrag ohne Währung; beide Fehlfälle abgelehnt (P05a K16; Zweitmeinung B09)",
+  not mehr and not ohne_w and erg.get("K16 zwei Währungen je Angebot") and erg.get("K16 Betrag ohne Währung (Zweitmeinung B09)"), str(mehr[:3] + ohne_w[:3]))
 
 # ---------- P12 Generator ----------
 def daten(p):

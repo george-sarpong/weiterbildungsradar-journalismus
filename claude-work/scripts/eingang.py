@@ -474,6 +474,16 @@ class Anbieter:
             w = csv.writer(f, lineterminator="\n"); w.writerow(["anbieter_id", "feld", "alt", "neu", "herkunft", "register_id", "quelle"]); w.writerows(self.proto)
 
 
+def betrag_ohne_waehrung(r, ix):
+    """K16 (Zweitmeinung ChatGPT B09): Preisoption mit Betrag > 0 (amount, minAmount oder maxAmount) ohne Währung."""
+    p = r[ix["preis_optionen"]]
+    if p in ("", NE): return False
+    try: opts = [o for o in json.loads(p) if isinstance(o, dict)]
+    except ValueError: return False
+    return any(not o.get("currency") and any(isinstance(o.get(k), (int, float)) and not isinstance(o.get(k), bool) and o.get(k) > 0
+                                               for k in ("amount", "minAmount", "maxAmount")) for o in opts)
+
+
 def waehrungen(r, ix):
     p = r[ix["preis_optionen"]]
     if p in ("", NE): return set()
@@ -483,7 +493,8 @@ def waehrungen(r, ix):
 
 def konsistenz(M, wo):
     """K15 (E214, E218): anbieter_id in der Tabelle, anbieter eine ihrer Schreibweisen, anbieter_land = Sitzland oder
-    «nicht erfasst» (nie ein anderes Land); K16 (E216): höchstens eine Währung je Angebot. Am ganzen Master. Die Meldung
+    «nicht erfasst» (nie ein anderes Land); K16 (E216): höchstens eine Währung je Angebot, kein Betrag > 0 ohne Währung
+    (Zweitmeinung B09; Gratis mit Betrag 0 bleibt zulässig). Am ganzen Master. Die Meldung
     nennt die verursachende Zeile des Laufs (Datei:Zeile:Spalte), sonst den Ort wo (z. B. «Schritt 026»)."""
     A, ix, fehler, Q = M.anbieter, M.ix, [], M.quellen
     def ort(rid, aid, felder, afelder, spalte):
@@ -499,6 +510,7 @@ def konsistenz(M, wo):
             fehler.append(f"{ort(rid, aid, ['anbieter_land', 'anbieter_id'], ['sitzland'], 'anbieter_land')}: K15 {rid}: «{r[ix['anbieter_land']]}» ≠ Sitzland {a['sitzland']} von {aid} (Sitzland oder «nicht erfasst», E218)")
         w = waehrungen(r, ix)
         if len(w) > 1: fehler.append(f"{ort(rid, aid, ['preis_optionen'], [], 'preis_optionen')}: K16 {rid}: mehrere Währungen {sorted(w)}")
+        if betrag_ohne_waehrung(r, ix): fehler.append(f"{ort(rid, aid, ['preis_optionen'], [], 'preis_optionen')}: K16 {rid}: Preisoption mit Betrag ohne Währung")
     if fehler: raise Abbruch(fehler)
 
 

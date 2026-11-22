@@ -1,6 +1,6 @@
 # BERICHT PAKET 27 «Modell erweitern», 22.11.2026
 
-Status: umgesetzt, getestet und gepusht, kein Release (E217). Owner-Entscheide aus diesem Chat: E213–E219; Befund E220. Nachtrag zur Bestätigung vorgelegt. Zweitmeinung ChatGPT steht noch aus.
+Status: umgesetzt, getestet und gepusht, kein Release (E217). Owner-Entscheide aus diesem Chat: E213–E219, E221, E222; Befunde E220, E223. Nachtrag zur Bestätigung vorgelegt. Zweitmeinung ChatGPT (HOLD, nur Spezifikation) abgeglichen und eingearbeitet (§6).
 Auftrag: Owner 22.11., Chat «weiter» (Spezifikation freigegeben E217; «ja schreibrecht ok»).
 Grundlage: `SPEZIFIKATION_PAKET27_20261122.md` (freigegeben, E213–E217); GESAMTWISSENSSTAND (Stand E217).
 Arbeitszweig: `claude/datenharmonisierung`, Ausgang Commit c8d390e (§9).
@@ -59,13 +59,13 @@ Festlegungen von Claude im Rahmen der Spezifikation:
 | P02 | PASS: 6'776 Zeilen bytegleich vorne; neu 3'842 |
 | P03 | PASS: 1'295 Anbieter, Kennungen fortlaufend, 6 Zusammenführungen; Erstfassung bytegleich nachgebaut |
 | P04 | PASS: Anbieterland = Sitzland, ausser genau den 2 DJA-Zeilen «nicht erfasst» (E218) |
-| P05a | PASS: 28 Fehlfälle (B01–B07, K01, K07, K15, K16, N03); Meldung mit Datei:Zeile:Spalte und Regel; nichts geschrieben |
+| P05a | PASS: 30 Fehlfälle (B01–B07, K01, K07, K15, K16, N03), darunter Anbieter-Text auf einen anderen Anbieter gleichen Sitzlands und Betrag ohne Währung (Zweitmeinung B07, B09); Meldung mit Datei:Zeile:Spalte und Regel; nichts geschrieben |
 | P05b | PASS: Gutfall Lauf 028 mit neuem Anbieter, Kernliste-Anbieter ohne Angebot (B08), neuem Angebot, Sitzland-Korrektur samt Angebot, Scope- und Marktkorrektur; Generator baut |
 | P06 | PASS: Scope wie A4 |
 | P07 | PASS: Schema-Bericht nur `url` 30 |
 | P08 | PASS: 731 Durchführungen, jeder Wert aus dem Master |
-| P09 | PASS: Sichtbarkeit = App an 5 Stichtagen |
-| P10 | PASS: 0 Angebote mit zwei Währungen; Fehlfall abgelehnt |
+| P09 | PASS: Sichtbarkeit = App an 5 Stichtagen; Ladeprobe: die App hat `data-p27.js` geladen (Zweitmeinung B06); Sichtbarkeitsdatei je ID genau einmal, Gründe widerspruchsfrei (B14) |
+| P10 | PASS: 0 Angebote mit zwei Währungen, 0 Preisoptionen mit Betrag ohne Währung; beide Fehlfälle abgelehnt |
 | P11 | PASS: CH → DE behält die Lieferform; DE → CH ohne Lieferform abgelehnt |
 | P12 | PASS: 22 Rohwerte; Smart, `index.html`, Sitemap bytegleich; Anzeige-Vergleich 12/12 |
 | P13 | PASS: zwei Läufe bytegleich |
@@ -94,11 +94,30 @@ Offen als Hinweis: H3 (Meldung bei fehlender Kennung in Schritt 026 nennt die Ta
 
 ## 6. Zweitmeinung ChatGPT
 
-Noch ausstehend (Nachricht `CHATGPT_ZWEITMEINUNG_P27_20261122.md` beim Owner). Befunde werden nachgetragen.
+Owner-Upload 22.11. Urteil **HOLD**, nur die Spezifikation geprüft (kein Zugriff auf den Code). Abgleich mit dem gebauten Stand:
+
+| Nr. | Befund ChatGPT | Stand |
+|---|---|---|
+| B01 | Scope «nicht erfasst» in 3'818 Zellen ohne Protokollzeile | gilt die Master-Regel: «nicht erfasst» mit Herkunft LEER heisst unbekannt und wird nicht protokolliert (wie die Lieferform DE/USA, E193, E202); P06 prüft Wert und Herkunft |
+| B02 | Anbieter-Korrekturen nicht revisionssicher | umgesetzt: eine Zeile = eine Zelle mit Altwert-Prüfung, je Zelle einmal je Datei, `anbieter_protokoll.csv` mit Alt, Neu, Herkunft, Register-ID, Quelle; ein Lauf schreibt nur, wenn alle Dateien gültig sind (P05a: nichts geschrieben) |
+| B03 | Sitzland-Beleg bei mehreren Belegen | `bau_anbieter.py` bricht bei zwei Ländern oder zwei Belegen ab; die Tabelle verlangt zu jedem Land einen Beleg (B04 beim Laden); alle 1'295 Anbieter bestehen |
+| B04 | Zählregel der Durchführungen | P08 rechnet mit der Vorrangregel (Anzeigefeld vor Original): 118 Einträge, 731 Zeilen; leere Liste = keine Zeile, wie in der App; jeder Wert auf das Master-Feld zurückgeführt |
+| B05 | Stichtag verfälscht Sichtbarkeit | `data-p27.js` enthält alle 1'353 Angebote (E121 bis P28); Stichtag fest 12:00 Europe/Zurich in jsdom, Datum in Python; Sollzahlen je Stichtag geprüft (P09) |
+| B06 | P12 könnte alte Daten testen | eingearbeitet: Ladeprobe in P09 (1'353 Angebote, OFFER-AJM-001 «FR\|EN» nur in `data-p27.js`); der Anzeige-Vergleich liest `data-p27.js` direkt. Die Verdrahtung in `index.html` übernimmt wie bei P25 erst der Release-Build |
+| B07 | falsche Kennung bei bestehenden Angeboten | K15 prüft schon jede Master-Zeile (Text = Schreibweise der Kennung); neu Fehlfall «anderer Anbieter, gleiches Sitzland» |
+| B08 | Suche mit wörtlichen Trennzeichen | gemessen: Unterschied nur, wenn das Trennzeichen selbst eingetippt wird («FR\|EN» +3, «DE/EN» −1, «PRÄSENZ\|ONLINE LIVE» +7, «\|» +1), mit Leerzeichen gleich; als begrenzte Ausnahme angenommen (E221) |
+| B09 | Betrag ohne Währung | eingearbeitet: K16 lehnt Preisoptionen mit Betrag > 0 ohne Währung ab (Gratis mit Betrag 0 bleibt); Bestand 0; Fehlfall |
+| B10 | Scope-Begründung unklar | umgesetzt: aus der Steuerspalte, korrigierbar, GRENZFALL nur mit Begründung (K07), Herkunft im Protokoll (Gegenprüfung B3) |
+| B11 | Kernliste ≠ Sitzland | zutreffend; Kernliste je Markt als eigene Tabelle `daten/kernliste.csv` (Markt, Anbieter-Kennung), angelegt zu Beginn der Recherche Stufe 1 (E222) |
+| B12 | B08 ist keine Verbotsregel | so umgesetzt: Gutfall in P05b, kein Fehlfall |
+| B13 | Replay-Modell der Anbieter-Tabelle | umgesetzt: `daten/anbieter.csv` bleibt Ausgangsstand, Anbieter-Dateien werden bei jedem Lauf neu angewendet, Ergebnis `anbieter_aktuell.csv` (E219); P13 baut aus frischen Kopien |
+| B14 | Vertrag der Sichtbarkeitsdatei | eingearbeitet in P09; für P28 gilt: nur eine zum Build-Stichtag berechnete Sichtbarkeit verwenden |
+
+Danach: Tests P27 15/15 (30 Fehlfälle), Master unverändert (194954d3…).
 
 ## 7. Lieferung
 
-- Commit auf `claude/datenharmonisierung`, gepusht (Schreibrecht im Chat «weiter» erteilt, wie E191); kein Merge nach `main` (E041), kein Release.
+- Commit **f014d6f** auf `claude/datenharmonisierung`, gepusht 22.11.2026 (Schreibrecht im Chat «weiter» erteilt, wie E191); kein Merge nach `main` (E041), kein Release.
 - Wissensbasis: dieser Bericht, Register E218–E220, GESAMTWISSENSSTAND; Repo-Kopien in `claude-work/paket27/wissensbasis/`, Register-Kopie `claude-work/wissensbasis/ENTSCHEIDUNGSREGISTER.csv`.
 - Testumgebung: jsdom über `NODE_PATH`; der Anzeige-Test braucht viel Speicher (rund 10 Minuten je Stichtag).
 
