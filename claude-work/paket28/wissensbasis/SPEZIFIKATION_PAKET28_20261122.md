@@ -1,6 +1,6 @@
 # SPEZIFIKATION PAKET 28 «Schlanke Auslieferung», 22.11.2026
 
-Status: **vom Owner freigegeben 22.11.2026** (E229): Entscheid 1 A, 2 A, 3 A, 4 A, 5 A (§3; Register E225–E229). Zweitmeinung ChatGPT parallel, Befunde vor dem Commit einarbeiten. Upload nur mit eigener Release-Freigabe (E227).
+Status: **vom Owner freigegeben 22.11.2026** (E229): Entscheid 1 A, 2 A, 3 A, 4 A, 5 A (§3; Register E225–E229). Zweitmeinung ChatGPT parallel, Befunde vor dem Commit einarbeiten. Upload nur mit eigener Release-Freigabe (E227). **Nachtrag 22.11.:** Zweitmeinung ChatGPT (HOLD, B01–B06) eingearbeitet (§9); Entscheid 4 (Merkliste) bestätigt (E231), B05b nicht übernommen (E232), Abgleich E233.
 Auftrag: Owner 22.11., Chat «weiter»; Plan GESAMTWISSENSSTAND §9 («Nächster Schritt: P28 … zuerst Spezifikation mit Testliste»).
 Grundlage: `ZIELBILD_UNTERBAU_20261120.md` §2 B3, B4, B6, §3 Punkt 5, §4 Zeile P28, §5; `BERICHT_PAKET27_20261122.md` §6 (B05, B06, B14), §8; E124, E125, E128, E146, E148, E150, E152, E155, E163, E172, E173, E176, E177, E195, E213.
 Vorprüfung: Arbeitszweig `claude/datenharmonisierung`, Commit f075c92 (22.11., Nachtrag P27), flach geklont 22.11.; Master SHA-256 194954d3… (= Bericht P27). Nur gelesen, nichts geschrieben. Messskripte im Scratch, nicht im Repo.
@@ -31,7 +31,7 @@ Release Paket 19 belegt 6,29 MB, davon Rückweg 3,5 MB (Bericht P19 §3). Der R�
 - Die App zeigt nur `offers` = alle Datensätze ohne HOLD und aktuell (Z. 134). Filterwerte (Z. 162–193, 1761–1770) und Suche entstehen aus `offers`, nicht aus allen Datensätzen.
 - **Nie gelesen** (0 Treffer im Code, kein generischer Zugriff ausser `offer[key]` für focus, offerType, level, format, language): `country`, `reviewAfter`, `release_origin`, `publicationReason`, `laender.markt`. Zusammen 138'178 Byte (8,7 %).
 - `publicationStatus` steht nur bei gesperrten Zeilen; bei sichtbaren fehlt es schon heute (0 von 945 am 01.12.).
-- Alle Datensätze (`allOffers`) braucht die App nur für die Merkliste (Z. 135, 143, 1749): eine gemerkte ID, die nicht mehr in der Datei steht, fällt beim Laden aus dem Browser-Speicher. Sie wäre ohnehin nicht sichtbar. Wieder sichtbar würde sie nur, wenn ein Angebot später entsperrt oder um einen Termin ergänzt wird; dann ist sie aus der Merkliste verschwunden (Entscheid 4).
+- Alle Datensätze (`allOffers`) braucht die App nur für die Merkliste (Z. 135, 143, 1749): Beim Laden filtert `loadFavorites()` gemerkte IDs, die nicht in der Datei stehen, nur im Arbeitsspeicher heraus; der Browser-Speicher (`localStorage`) bleibt unverändert. Erst wenn die Person danach einen Favoriten setzt oder entfernt, schreibt `saveFavorites()` die gefilterte Liste (Z. 149–155, 1748–1752); dann ist die nicht gelieferte ID weg. Ändert sie nichts, steht die ID beim nächsten Release wieder in der Merkliste, falls das Angebot wieder geliefert wird. Heute (alle 1'353 geliefert) bleibt eine gesperrte oder abgelaufene ID immer gespeichert. Sichtbar wird der Unterschied nur, wenn ein Angebot später entsperrt oder um einen Termin ergänzt wird (Entscheid 4; berichtigt nach Zweitmeinung B03).
 - Smart: `meta` liest die App nicht. `delivery` liest sie nur über `record?.delivery || {}` (Z. 1021) und prüft jedes Teilfeld mit Ersatzwert (`|| "UNKNOWN"`, `|| ""`, `Array.isArray`); `scheduleSummary`, `temporalSummary`, `materialisationStatus` liest sie nie. `priceOptions` liest sie mit `Array.isArray(…) ? … : []`, die Teilfelder mit `== null`, `!= null`, Wahrheitswert oder `?:` (Z. 1139–1382). Ein fehlendes Teilfeld wirkt dort wie `null`. Einzelstelle Z. 1151 (`raw.amount = option.minAmount`) prüft U3.
 
 ### 1.3 Sichtbarkeit und Messung
@@ -62,11 +62,11 @@ Praxis [GELESEN]: MDN empfiehlt für Dateien mit Version im Namen `Cache-Control
 ## 2. Soll
 
 **A1 Nur Sichtbares (E172).** Der Release-Bau liefert genau die Angebote, die `sichtbarkeit.py` am Build-Stichtag als sichtbar meldet, in Master-Reihenfolge (E194), Datendatei und Smart-Datei mit denselben IDs. Der Master bleibt unverändert (E014); der Generator `generator_website.py` bleibt unverändert und baut weiter alle 1'353 als Vergleichsstand (`data-p27.js`).
-Regel Stichtag: Build-Stichtag ≤ Tag des Builds und ≤ Upload-Tag; ein Stichtag in der Zukunft → Abbruch. Grenze: Wer mit einer Uhr vor dem Stichtag die Seite öffnet (andere Zeitzone kurz nach Mitternacht), sieht Angebote nicht, die am Vortag noch liefen; angenommen.
+Regel Stichtag: Build-Stichtag ≤ Tag des Builds und ≤ Upload-Tag, beide als Kalendertag in **Europe/Zurich** (wie `build_liste_p25.js`, Zweitmeinung B06); ein Stichtag in der Zukunft → Abbruch. Grenze: Wer mit einer Uhr vor dem Stichtag die Seite öffnet (andere Zeitzone kurz nach Mitternacht), sieht Angebote nicht, die am Vortag noch liefen; angenommen.
 
 **A2 Ungenutzte Felder weg:** `country`, `reviewAfter`, `release_origin`, `publicationReason`, `laender.markt` (§1.2). `publicationStatus` fällt mit A1 von selbst weg. Alle Felder bleiben im Master (E031). Die Liste ist fest im Release-Bau; ein Feld, das die App liest, darf nie darauf stehen (Test P04).
 
-**A3 Smart ohne Leerwerte** (Entscheid 1): In `priceOptions` und `delivery` entfallen Teilfelder mit `null`, «», `[]`, `{}`; ein leeres `priceOptions` entfällt ganz; `meta` bleibt. Ein Teilfeld wird nur weggelassen, wenn U3 belegt, dass die App es mit Ersatzwert liest; sonst bleibt es und der Bericht nennt es.
+**A3 Smart ohne Leerwerte** (Entscheid 1): In `priceOptions` und `delivery` entfallen Teilfelder mit `null`, «», `[]`, `{}`; ein leeres `priceOptions` entfällt ganz; `meta` bleibt bis auf `rosterCount` = Zahl der ausgelieferten Angebote (Zweitmeinung B01); die Gesamtzahl des Generators steht im Bauprotokoll. Ein Teilfeld wird nur weggelassen, wenn U3 belegt, dass die App es mit Ersatzwert liest; sonst bleibt es und der Bericht nennt es.
 
 **A4 Dateinamen** (Entscheid 2): Datendatei `daten-<12 Zeichen SHA-256>.js`, Smart-Datei `suche-<12 Zeichen SHA-256>.js` (wie der Live-Stand A `data-a1-86ff68ddc9ac.js`). App und CSS behalten ihre Versionsnamen; eine Datei mit Versionsnamen darf ihren Inhalt nie ändern (Test P09).
 
@@ -75,7 +75,7 @@ Regel Stichtag: Build-Stichtag ≤ Tag des Builds und ≤ Upload-Tag; ein Sticht
 - `*.html`, `robots.txt`, `sitemap.xml` und die Startseite `/`: `Cache-Control: no-cache`
 - HTTPS-Weiterleitung (E128) und Sicherheits-Header (E124) unverändert; `htaccess.txt` = Live-Inhalt (U4) + Cache-Block, nur ASCII, Zeilenende LF.
 
-**A6 Release-Bau** `paket28/scripts/build_release_p28.py <Stichtag> <Ziel>`: Generator → Auswahl A1 → A2/A3 → Dateinamen A4 → Liste, «Stand der Angaben», Sitemap mit `build_liste_p25.js` (unverändert) → `index.html` mit den neuen Namen → Ordner `website/` (nur Dateien, die eine Seite lädt, plus `robots.txt`, `sitemap.xml`, `SHA256SUMS.txt`) und `htaccess.txt` daneben. Kein Rückweg (E173). Abbruch vor dem Schreiben bei: Stichtag in der Zukunft, fehlender Verweis, mehr als 9 MB (E148), IDs von Daten- und Smart-Datei ungleich.
+**A6 Release-Bau** `paket28/scripts/build_release_p28.py <Stichtag> <Ziel>`. Der ganze Bau läuft in einem eigenen temporären Ordner; erst wenn alle Prüfungen bestanden sind, wird das fertige Release ins Ziel verschoben. Bei einem Fehler, auch nach dem ersten Schreibschritt, bleiben Ziel und Repo bytegleich und kein Zwischenordner liegt (Zweitmeinung B05). Reihenfolge: Vorlage `paket22/website/index.html` (leerer Kartencontainer, SHA-256 9de6bdab8d6f40e3b42c521da326244bff12665f8feec96497071a5a69bfad02) und übrige Seiten kopieren → Generator → Auswahl A1 → A2/A3 → Dateinamen A4 → Liste, «Stand der Angaben», Sitemap mit `build_liste_p25.js` (unverändert) → zuletzt die drei Skriptverweise in `index.html` setzen (Zweitmeinung B02) → Ordner `website/` (nur Dateien, die eine Seite lädt, plus `robots.txt`, `sitemap.xml`, `SHA256SUMS.txt`) und `htaccess.txt` daneben. Kein Rückweg (E173). Abbruch bei: Stichtag in der Zukunft, Vorlage mit anderem SHA-256, fehlender oder falscher Verweis, mehr als 9 MB (E148), IDs von Daten- und Smart-Datei ungleich, `rosterCount` ≠ Zahl der Datensätze.
 
 **A7 Bauprotokoll** je Build: Stichtag, Zahl sichtbarer Angebote, Bytes und gzip-Bytes je Datei vorher (P27) und nachher, weggelassene Felder mit Byte-Anteil, SHA-256 je Datei.
 
@@ -97,7 +97,7 @@ Regel Stichtag: Build-Stichtag ≤ Tag des Builds und ≤ Upload-Tag; ein Sticht
 - **A (gewählt):** P28 baut ein getestetes, hochladbares Paket mit Upload-Rezept; hochgeladen wird erst nach eigener Release-Freigabe und deiner Abnahme von rund 20 Minuten (E040). Grund: Die Cache-Regel wirkt erst live, und jedes weitere Paket auf ungeprüftem Live-Stand stapelt Risiko.
 - B: wie P25–P27 kein Release; der Release-Bau wartet auf P29 oder den Monatsbuild.
 
-**Entscheid 4 – Kleinere Festlegungen** → **A** (E228) (A1 Stichtag-Regel und Zeitzonen-Grenze; A2 Feldliste; Merkliste: gemerkte, nicht mehr gelieferte Angebote fallen aus dem Browser-Speicher, §1.2; `htaccess.txt` aus dem gelesenen Live-Inhalt, U4)
+**Entscheid 4 – Kleinere Festlegungen** → **A** (E228) (A1 Stichtag-Regel und Zeitzonen-Grenze; A2 Feldliste; Merkliste: gemerkte, nicht mehr gelieferte Angebote fallen aus dem Browser-Speicher, sobald die Person ihre Merkliste ändert, §1.2 berichtigt; `htaccess.txt` aus dem gelesenen Live-Inhalt, U4). Teil Merkliste nach Zweitmeinung B03 mit berichtigter Grundlage bestätigt (E231).
 - **A (gewählt):** alle so übernehmen.
 - B: einzeln besprechen.
 
@@ -119,20 +119,21 @@ U5 Lokaler Apache 2.4 mit `mod_headers` und `mod_rewrite` verfügbar (wie Paket 
 
 | Nr. | Prüfung | Erwartung |
 |---|---|---|
-| P01 | Auswahl | IDs in Daten- und Smart-Datei = sichtbar laut `sichtbarkeit.py` am Stichtag, Master-Reihenfolge; Datensätze sonst gleich wie in `data-p27.js` ausser A2 |
-| P02 | Gleichheit Anzeige | App mit Release-Daten = App mit `data-p27.js` an Stichtag, +9, +28 Tagen: gleiche Karten (Text, Reihenfolge in allen 3 Sortierungen), gleiche Filterwerte, gleiche Zähler, Merkliste gleich für sichtbare IDs |
+| P01 | Auswahl | IDs in Daten- und Smart-Datei = sichtbar laut `sichtbarkeit.py` am Stichtag, Master-Reihenfolge; Datensätze sonst gleich wie in `data-p27.js` ausser A2; `meta.rosterCount` = Zahl der Datensätze = Zahl der `byId`-Einträge (B01) |
+| P02 | Gleichheit Anzeige | App mit Release-Daten = App mit `data-p27.js` an Stichtag, +9, +28 Tagen: gleiche Karten (Text, Reihenfolge in allen 3 Sortierungen), gleiche Filterwerte, gleiche Zähler, Merkliste gleich für sichtbare IDs; Merkliste über zwei Releases (B03): gemerkte ID im ersten Release nicht geliefert, im zweiten wieder geliefert → ohne Änderung dazwischen wieder gemerkt, mit Änderung dazwischen weg; `localStorage` nach dem Laden unverändert |
 | P03 | Gleichheit Smart-Suche | 60 Anfragen (T01–T20 und 40 virtuelle, wie P25 G11) an denselben 3 Tagen: gleiche Treffer, Gruppen, Punktzahl je Kandidat, Hinweise |
 | P04 | Felder A2 | kein Feld der Liste kommt in `app-v43.js` vor (ausser als anderer Name, Liste im Bericht); Fehlfall: Liste mit `title` → Abbruch des Release-Baus |
 | P05 | Smart A3 | jedes weggelassene Teilfeld in der Leseliste U3; P03 grün |
-| P06 | Stichtag | Stichtag morgen → Abbruch, nichts geschrieben; Stichtag heute und gestern → baut |
-| P07 | Liste und Sitemap | `index.html` (Liste, «Stand der Angaben») und `sitemap.xml` gleich wie aus `data-p27.js` am selben Stichtag, bis auf die Skript-Namen |
-| P08 | Dateinamen | Name = Kürzel des Inhalts; jeder Verweis aller Seiten zeigt auf eine Datei im Paket; Fehlfall fehlender Verweis → Abbruch |
+| P06 | Stichtag und Abbruch | Stichtag morgen → Abbruch; heute und gestern → baut; Tageswechsel Europe/Zurich: Build um 23:59 und 00:01 mit Stichtag des neuen Tags → Abbruch bzw. baut, auch wenn die Systemuhr UTC zeigt (B06); Fehler nach dem ersten und nach einem späteren Schreibschritt (Generator, Liste) → Ziel und Repo bytegleich, kein Zwischenordner (B05) |
+| P07 | Liste und Sitemap | `index.html` (Liste, «Stand der Angaben») und `sitemap.xml` gleich wie aus `data-p27.js` am selben Stichtag, bis auf die Skript-Namen; genau ein Listenblock und genau ein «Stand der Angaben» (B02); Vorlage mit Liste (z. B. `paket27/website/index.html`) → Abbruch |
+| P08 | Dateinamen und Verdrahtung | Name = Kürzel des Inhalts; `index.html` lädt genau drei Skripte in dieser Reihenfolge: `daten-<hash>.js`, `suche-<hash>.js`, `app-v43.js` dieses Builds; kein Verweis auf `data-a1-…`, `smart-search-data-a1-…`, `app-v33.js` oder ältere Daten (B04); jeder Verweis aller Seiten zeigt auf eine Datei im Paket; Fehlfälle fehlender und falscher Verweis → Abbruch |
 | P09 | Versionsnamen | `app-v43.js`, `styles-v22.css`, `styles-v24.css` bytegleich mit dem Live-Stand Paket 19 (SHA256SUMS) |
 | P10 | Cache lokal | Apache mit `htaccess.txt`: Daten, Smart, App, CSS `max-age=31536000, immutable`; HTML, `/`, `robots.txt`, `sitemap.xml` `no-cache`; 304 bei Wiederholung mit ETag |
 | P11 | Sicherheit lokal | CSP, nosniff, Referrer-Policy und HTTPS-Weiterleitung wie live (T3, 7/7 wie Paket 20); `htaccess.txt` = Live-Inhalt + nur der Cache-Block, ASCII, LF |
 | P12 | Stufe 1 und 2 | Stufe 1 35 PASS / 0 FAIL / 4 später an Stichtag und +9 Tagen; Stufe 2 10 PASS; B1, B3a, B3b, S1 PASS |
 | P13 | Grösse | Bauprotokoll A7; Paket ≤ 9 MB; Daten- und Smart-Datei kleiner als P27 |
 | P14 | Reproduzierbarkeit | zwei Builds mit gleichem Stichtag aus frischen Ordnern bytegleich |
+| P16 | Ende zu Ende | das erzeugte `index.html` in jsdom mit seinen eigenen Skriptverweisen laden (keine Datei direkt einspielen): `WEITERBILDUNGSRADAR_OFFERS` hat die Datensätze von `daten-<hash>.js`, `MEDIA_SKILLS_SMART_DATA` die von `suche-<hash>.js`, Karten am Stichtag = P02 (B04) |
 | P15 | Unverändert | A8 per SHA-256 vorher = nachher; P27 15/15, Anzeige 12/12, `test_paket24.py`, `test_nachtraege.py`, P25, P26 grün |
 
 Nach einem Upload (nur bei Entscheid 3 A und Freigabe): V01 Dateien per SHA-256 live = Paket; V02 Startseite ohne JavaScript mit Liste; V03 securityheaders.com Note A (E150: von aussen prüfen); V04 `Cache-Control` je Dateityp wie P10 (Firefox oder securityheaders.com-Rohdaten); V05 Karten und Smart-Suche im Browser.
@@ -158,5 +159,19 @@ Nach einem Upload (nur bei Entscheid 3 A und Freigabe): V01 Dateien per SHA-256 
 ## 8. Bei Punkten ausserhalb dieser Spezifikation
 
 Anhalten und fragen (wie E158).
+
+## 9. Abgleich Zweitmeinung ChatGPT
+
+Owner-Upload 22.11. Urteil **HOLD**, Prüfbasis Spezifikation und Repo f075c92. Alle Befunde am Code nachgeprüft [GEPRÜFT].
+
+| Nr. | Befund ChatGPT | Prüfung Claude | Stand |
+|---|---|---|---|
+| B01 | `rosterCount` bliebe 1'353 | zutreffend: Generator setzt `len(daten)` (Z. 111) | eingearbeitet A3, A6, P01 |
+| B02 | Vorlage für den Listenbau offen | zutreffend: `build_liste_p25.js` ersetzt den leeren Kartencontainer (Z. 70); `paket22/website/index.html` hat ihn, `paket27/website/index.html` nicht | eingearbeitet A6 (Vorlage mit SHA-256, Reihenfolge), P07 |
+| B03 | Merkliste falsch beschrieben | zutreffend: `loadFavorites()` filtert nur im Speicher, `saveFavorites()` erst bei einer Änderung | §1.2 berichtigt, P02; Entscheid 4 bestätigt (E231) |
+| B04 | Verdrahtung zu schwach geprüft | zutreffend: `build_liste_p25.js` entfernt die Skriptverweise und spielt die Dateien direkt ein (Z. 22–30) | eingearbeitet P08, neu P16 |
+| B05a | Fehler kann halbes Release hinterlassen | zutreffend: Generator und Listenbau schreiben selbst | eingearbeitet A6 (temporärer Ordner), P06 |
+| B05b | Upload-Reihenfolge: zuerst Assets, dann Cache-Regel, zuletzt `index.html`; Live-App und CSS vor `immutable` prüfen | **nicht übernommen**: widerspricht E163 (einmal leeren, dann alle Dateien in einem Schritt). Weil der Ordner vorher geleert wird, stammen danach alle Dateien aus dem Paket; V01 prüft jede per SHA-256, P09 vorher die Versionsnamen gegen Paket 19 | unverändert |
+| B06 | Zeitzone des Stichtags offen | zutreffend | eingearbeitet A1 (Europe/Zurich), P06 |
 
 Quellen: MDN «Cache-Control» (developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cache-Control, abgerufen 22.11.2026); web.dev «Prevent unnecessary network requests with the HTTP Cache» (web.dev/articles/http-cache, abgerufen 22.11.2026).
