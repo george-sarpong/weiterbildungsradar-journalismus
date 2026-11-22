@@ -1,6 +1,9 @@
 """Paket 25 – Master-Nachtrag Lieferform (SPEZIFIKATION_PAKET25_20261120.md A1, §5 M01–M08).
 Aufruf (aus claude-work/): python3 -I paket25/tests/test_paket25_master.py
-Referenzwerte: Master und Protokoll auf 111b0fd (vor Paket 25), Smart-Quelle p19 und Auszug als SHA-256 festgehalten."""
+Referenzwerte: Master und Protokoll auf 111b0fd (vor Paket 25), Smart-Quelle p19 und Auszug als SHA-256 festgehalten.
+Paket 26 (SPEZIFIKATION_PAKET26 A10, E204, E207; E209): M05 prüft die Spalte quelle der 136 Zeilen «wie oben» gegen die
+Ersetzungsliste paket26/out/ersetzungsliste_wie_oben.csv und setzt sie für den bisherigen Hash zurück; M07/M08 kopieren
+den Eingang eingang/ und die Tabellen A4 statt der Altdateien (nur die Eingabeliste, Fälle und Sollwerte unverändert)."""
 import collections, csv, hashlib, io, json, pathlib, re, shutil, subprocess, sys, tempfile
 
 R = pathlib.Path(__file__).resolve().parents[2]
@@ -64,8 +67,14 @@ b = io.StringIO(); csv.writer(b, lineterminator="\n").writerows([z[:-2] for z in
 t("M04 Rückprojektion auf die 123 bisherigen Spalten = Master 111b0fd (SHA-256 e5afa29c…)", sha(("﻿" + b.getvalue()).encode("utf-8")) == VORHER_MASTER)
 
 # M05 Protokoll
-pb = PP.read_bytes().decode("utf-8").split("\n")
-alt = "\n".join(pb[:5424]) + "\n"
+# Paket 26: quelle der 136 Zeilen «wie oben» gegen die Ersetzungsliste, dann zurückgesetzt (Entscheid 2 B)
+ERS = {(e["id"], e["feld"]): e for e in csv.DictReader(open(R / "paket26/out/ersetzungsliste_wie_oben.csv", encoding="utf-8"))}
+pr_alt = [list(p.values()) for p in P[:5423]]; ersetzt = 0
+for z in pr_alt:
+    e = ERS.get((z[0], z[1]))
+    if e and z[6].startswith("ANBIETERSEITE_E10") and z[8] == e["quelle_neu"]: z[8] = e["quelle_alt"]; ersetzt += 1
+bb = io.StringIO(); csv.writer(bb, lineterminator="\n").writerows([list(P[0].keys())] + pr_alt)
+alt = bb.getvalue() if ersetzt == len(ERS) == 136 else ""
 neu = P[5423:]
 quell = json.loads(LF.read_text(encoding="utf-8"))["byId"]
 M = {r["id"]: r for r in N}
@@ -83,10 +92,10 @@ t("M06 bestehende Tests: test_paket24.py 14/14, test_nachtraege.py 14/14",
   r1.returncode == 0 and "14/14 PASS" in r1.stdout and r2.returncode == 0 and "14/14 PASS" in r2.stdout, r1.stdout[-200:] + r2.stdout[-200:])
 
 # M07 Reproduzierbarkeit, M08 Abbruch Auszug (in Kopien der Eingaben)
-EIN = ["scripts/master_nachtraege.py", "scripts/build_master_p3.py", "paket3/out/master_3818.csv", "paket13/config/owner_korrekturen.csv",
-       "paket14/config/korrekturen.csv", "paket16/config/korrekturen.csv", "paket17/config/korrekturen.csv",
-       "paket17/config/korrekturen_preis.csv", "paket18/config/korrekturen.csv", "paket21/config/korrekturen.csv",
-       "paket22/config/korrekturen.csv", "paket22/config/neue_angebote.json", "paket25/eingang/lieferform_p19.json"]
+EIN = ["scripts/master_nachtraege.py", "scripts/eingang.py", "scripts/build_master_p3.py", "paket3/out/master_3818.csv",
+       "scripts/eingang_felder.csv", "scripts/eingang_codelisten.csv", "scripts/eingang_herkunft.csv", "scripts/iso3166_alpha2.csv",
+       "wissensbasis/ENTSCHEIDUNGSREGISTER.csv", "paket25/eingang/lieferform_p19.json"]  # Paket 26 (E209): Eingang statt Altdateien
+EIN += sorted(str(p.relative_to(R)) for p in (R / "eingang").iterdir() if p.is_file())
 def kopie(td):
     for p in EIN:
         (td / p).parent.mkdir(parents=True, exist_ok=True); shutil.copy(R / p, td / p)

@@ -1,0 +1,35 @@
+code,bedeutung,register_id,zellen_master_8e1c715
+ANBIETERSEITE_E107,Angebotsseite des Anbieters abgerufen,E107,5
+ANBIETERSEITE_E109,Angebotsseite des Anbieters abgerufen,E109,233
+ANBIETERSEITE_E136,Angebotsseite des Anbieters abgerufen,E136,190
+ANBIETERSEITE_E139,Angebotsseite des Anbieters abgerufen,E139,52
+ANBIETERSEITE_E143,Angebotsseite des Anbieters abgerufen,E143,27
+ANBIETERSEITE_E144,Angebotsseite des Anbieters abgerufen,E144,2
+ANZEIGE_E113,"Anzeigetext (Pakete 16/17), Original bleibt",E113,126
+ANZEIGE_E114,"Anzeigetext (Pakete 16/17), Original bleibt",E114,937
+AUDIT,Beleg im Audit 28.10.,E043,22
+DOMAIN_E118,Domain-Endung der Angebots-URL,E118,935
+IMPRESSUM_E118,Impressum des Anbieters,E118,74
+IMPRESSUM_E123,Impressum des Anbieters,E123,236
+IMPRESSUM_E133,Impressum des Anbieters,E133,8
+KATALOG_XLSX,Arbeitskatalog 3818 V288,E034,7636
+LEER,nicht erfasst,E031,97998
+LIVE,"Live-Website Paket A, unverändert seit Basis 11.10.",E035,29028
+LIVE_GEAENDERT,"Live-Wert, nach der Basis auf live geändert (Dreiwege-Merge Paket 3)",E035,47
+LIVE_OWNER,Live-Wert per Owner-Entscheid (Paket 4),E060,36
+LIVE_OWNER_OFFEN,"Live-Wert vorläufig, Owner-Entscheid offen (build_master_p3.py; 0 Zellen)",E035,0
+MAIN,per Dreiwege-Merge aus GitHub main übernommen,E035,109
+MAIN_OWNER,main-Wert per Owner-Entscheid (Paket 4),E060,732
+OWNER_E098,Owner-Entscheid,E098,1
+OWNER_E103,Owner-Entscheid,E103,4
+OWNER_E134,Owner-Entscheid,E134,234
+OWNER_E135,Owner-Entscheid,E135,42
+OWNER_E142,Owner-Entscheid,E142,6
+OWNER_E143,Owner-Entscheid,E143,1
+R4,Owner-Publikation R4 vom 15.09. (DE/USA),E036,19894
+REGEL,"abgeleitet, Regel in der Spalte *_regel",E043,5322
+REGEL_E066,Regel E066: Durchführungsort CH = CH-Zugang,E066,217
+SMART_P19,Smart-Datei Paket 19 (Auszug lieferform_p19.json),E193,1353
+UID_REGISTER_E132,UID-Register (Zweigniederlassung),E132,59
+V41_E4_ROLLUP,"Übergabe-ZIP V4.1, E4-Rollup",E095,2704
+V41_V288_CHECKPOINTS,"Übergabe-ZIP V4.1, V288-Checkpoints",E095,829

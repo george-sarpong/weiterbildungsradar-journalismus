@@ -1,0 +1,76 @@
+PASS E01 Überführung: 5'253 Korrekturzeilen in 7 Dateien (Läufe 013, 014, 016, 017, 018, 021, 022) und 1 Angebot in 022_…_neue_angebote.csv; jede der 3'663 Altzeilen genau eine direkte Zeile (ursprung), jede überführte Zeile genau einer Altzeile; Überführung aus frischem Ordner bytegleich
+PASS E01b Kette Lauf 017 (E208, ChatGPT B02): genau 18 Angebote mit 58 Zeilen in durchfuehrungen_anzeige; jede Wiederholung hat als alt die Liste nach der vorigen Zeile (lückenlos); je Zeile eine Altzeile (sessions[i])
+INFO E02 Protokoll SHA-256 neu c82cef3df6c81045006bc1911973e01cfb88805a592d65098150a4ec3dd274b8 (vorher 44a874753197e96982c687da0a699c762f5793655b25331742aef8a9fcadf683)
+PASS E02 aus eingang/ gebaut: Master bytegleich (cf9fdb2d…); Protokoll = 44a87475… bis auf die Spalte quelle in genau den 136 Zeilen der Ersetzungsliste (Entscheid 2 B); Ersetzungsliste = Quelle der vorangehenden Zeile derselben ID in der Altdatei (Mediencampus-Adresse)
+PASS E08 Reproduzierbarkeit: zwei Läufe aus frischen Ordnern bytegleich und gleich der Repo-Ausgabe
+INFO E03 geöffnet: eingang/013_20261110_korrekturen.csv, eingang/014_20261110_korrekturen.csv, eingang/016_20261110_korrekturen.csv, eingang/017_20261110_korrekturen.csv, eingang/018_20261110_korrekturen.csv, eingang/021_20261118_korrekturen.csv, eingang/022_20261119_korrekturen.csv, eingang/022_20261119_neue_angebote.csv, paket25/eingang/lieferform_p19.json, paket3/out/master_3818.csv, paket3/out/master_3818_aktuell.csv, paket3/out/master_nachtraege_protokoll.csv, scripts/build_master_p3.py, scripts/eingang.py, scripts/eingang_codelisten.csv, scripts/eingang_felder.csv, scripts/eingang_herkunft.csv, scripts/iso3166_alpha2.csv, scripts/master_nachtraege.py, wissensbasis/ENTSCHEIDUNGSREGISTER.csv
+PASS E03 Eingaben: master_nachtraege.py läuft in einem Ordner nur mit Basis, eingang/, Tabellen A4, Register-Kopie, P25-Auszug (und dem Code inkl. build_master_p3.py für SENT); strace: keine Altdatei geöffnet, nur die zwei Ausgaben neu
+PASS E04 Prüfskript am Bestand: Rückgabecode 0, 8 Dateien OK, schreibt nichts (Ordner vorher = nachher, auch kein __pycache__)
+INFO E05 K01 Dateiname: ['FEHLER 26_20261121_korrekturen.csv:-:-: K01 Dateiname nicht nach NNN_JJJJMMTT_korrekturen.csv bzw. NNN_JJJJMMTT_neue_angebote.csv']
+INFO E05 K01 Laufnummer 024 vergeben: ['FEHLER 024_20261121_korrekturen.csv:-:-: K01 Laufnummer 024 nicht zulässig (Altbestand 013, 014, 016, 017, 018, 021, 022; neue Läufe ab 026)']
+INFO E05 K01 Laufnummer nicht aufsteigend (Datum): ['FEHLER 026_20261101_korrekturen.csv:-:-: K01 Laufnummer 026 nicht aufsteigend (Datum vor Lauf 022)']
+INFO E05 K01 Lücke im Altbestand (019, Gegenprüfung B3): ['FEHLER 019_20261118_korrekturen.csv:-:-: K01 Laufnummer 019 nicht zulässig (Altbestand 013, 014, 016, 017, 018, 021, 022; neue Läufe ab 026)']
+INFO E05 K02 BOM: ['FEHLER 026_20261121_korrekturen.csv:1:-: K02 Datei beginnt mit BOM (UTF-8 ohne BOM verlangt)']
+INFO E05 K02 CRLF: ['FEHLER 026_20261121_korrekturen.csv:-:-: K02 Zeilenende CR/CRLF (nur LF zulässig)']
+INFO E05 K02 Kopf: ['FEHLER 026_20261121_korrekturen.csv:1:-: K02 Kopf nicht genau «id,feld,alt,neu,alt_anzeige,herkunft,register_id,quelle,url_status,url_geprueft_am,ursprung»']
+INFO E05 K02 Spaltenzahl: ['FEHLER 026_20261121_korrekturen.csv:2:-: K02 9 statt 11 Spalten']
+INFO E05 K03 quelle leer: ['FEHLER 026_20261121_korrekturen.csv:2:quelle: K03 leer']
+INFO E05 K03 neu leer (kein Anzeigefeld): ['FEHLER 026_20261121_korrekturen.csv:2:neu: K03 leer (nur bei Anzeigefeldern zulässig)']
+INFO E05 K04 ID nicht im Master: ['FEHLER 026_20261121_korrekturen.csv:2:id: K04 OFFER-GIBTS-NICHT-999 nicht im Master']
+INFO E05 K05 h_-Spalte: ['FEHLER 026_20261121_korrekturen.csv:2:feld: K05 h_dauer nicht änderbar (scripts/eingang_felder.csv)']
+INFO E05 K05 Kennung gold: ['FEHLER 026_20261121_korrekturen.csv:2:feld: K05 gold nicht änderbar (scripts/eingang_felder.csv)']
+INFO E05 K05 keine Master-Spalte: ['FEHLER 026_20261121_korrekturen.csv:2:feld: K05 foo ist keine Master-Spalte']
+INFO E05 K06 alt veraltet: ['FEHLER 026_20261121_korrekturen.csv:2:alt: K06 DE-REACQ-FAM-006.dauer ist «nicht erfasst», Datei erwartet «5 Tage» (veralteter Nachtrag)']
+INFO E05 K06 alt_anzeige veraltet: ['FEHLER 026_20261121_korrekturen.csv:2:alt_anzeige: K06 DE-REACQ-FAM-006.dauer zeigt «nicht erfasst», Datei erwartet «3 Tage» (veralteter Nachtrag)']
+INFO E05 K07 Datum ungültig: ['FEHLER 026_20261121_korrekturen.csv:2:neu: K07 ungültiges Datum']
+INFO E05 K07 Land kein ISO-Code: ["FEHLER 026_20261121_korrekturen.csv:2:neu: K07 kein ISO-3166-1-alpha-2-Code ['XX'] (genau ein Land)"]
+INFO E05 K07 Sprache mit Leerzeichen: ["FEHLER 026_20261121_korrekturen.csv:2:neu: K07 nicht in Codeliste SPRACHE: ['DE ', ' FR'] (mehrere mit «|» ohne Leerzeichen)"]
+INFO E05 K07 Markt mit zwei Ländern (Gegenprüfung B1): ["FEHLER 026_20261121_korrekturen.csv:2:neu: K07 nicht in Codeliste RELEASE_MARKT: ['CH|AT']"]
+INFO E05 K07 Platzhalter-Code als neuer Wert: ['FEHLER 026_20261121_korrekturen.csv:2:neu: K07 Platzhalter «n/a» (für Unbekanntes «nicht erfasst» schreiben, E031)']
+INFO E05 K07 CH-Pflichtwert danach «nicht erfasst»: ['FEHLER 026_20261121_korrekturen.csv:2:id: K07 CAD-015: Pflichtwert fehlt nach dem Lauf (beschreibung; Pflicht laut pflicht_neu, ohne Platzhalter)']
+INFO E05 K08 Herkunft unbekannt: ['FEHLER 026_20261121_korrekturen.csv:2:herkunft: K08 ERFUNDEN_E999 nicht in der Herkunftsliste']
+INFO E05 K09 Register-ID unbekannt: ['FEHLER 026_20261121_korrekturen.csv:2:register_id: K09 Register-ID E999 nicht in der Register-Kopie (claude-work/wissensbasis/ENTSCHEIDUNGSREGISTER.csv)']
+INFO E05 K09 Register-Eintrag abgelöst (E082): ['FEHLER 026_20261121_korrekturen.csv:2:register_id: K09 Register-ID E082 ist abgelöst (durch E116)']
+INFO E05 K10 Schutz-ID ohne Beleg OWNER: ['FEHLER 026_20261121_korrekturen.csv:2:register_id: K10 Schutz-ID (schutz_307 = JA): Register-ID E144 hat Beleg GELESEN, verlangt OWNER (E035)']
+INFO E05 K11 quelle «wie oben»: ['FEHLER 026_20261121_korrekturen.csv:2:quelle: K11 «wie oben» verboten (Entscheid 2 B, E204)']
+INFO E05 K11 quelle «dito»: ['FEHLER 026_20261121_korrekturen.csv:2:quelle: K11 «Dito» verboten (Entscheid 2 B, E204)']
+INFO E05 K12 id + feld doppelt: ['FEHLER 026_20261121_korrekturen.csv:3:feld: K12 DE-REACQ-FAM-006 + dauer mehrmals in der Datei']
+INFO E05 K13 URL mit Status FEHLER: ['FEHLER 026_20261121_korrekturen.csv:2:url_status: K13 «FEHLER» (zulässig OK, WEITERLEITUNG, NICHT_GEPRUEFT)']
+INFO E05 K13 URL ohne Prüfdatum: ['FEHLER 026_20261121_korrekturen.csv:2:url_geprueft_am: K13 kein Datum JJJJ-MM-TT (Pflicht bei OK und WEITERLEITUNG)']
+INFO E05 K13 URL-Prüfdatum nach dem Laufdatum: ['FEHLER 026_20261121_korrekturen.csv:2:url_geprueft_am: K13 nach dem Laufdatum 20261121']
+INFO E05 K13 NICHT_GEPRUEFT mit Prüfdatum (ChatGPT B05): ['FEHLER 026_20261121_korrekturen.csv:2:url_geprueft_am: K13 bei NICHT_GEPRUEFT leer lassen']
+INFO E05 K14 Ort CH entfernt, CH-Zugang nach Regel E066 bleibt: ['FEHLER 026_20261121_korrekturen.csv:2:id: K14 CH-CLEAN2-V11-D01: CH-Zugang JA nach Regel E066, aber kein Durchführungsort CH (mehr)']
+INFO E05 K14 CH-Zugang JA ohne Ort CH und Regel: ['FEHLER 026_20261121_korrekturen.csv:2:id: K14 DE-REACQ-FAM-006: CH-Zugang JA ohne Durchführungsort CH und ohne Regeltext in ch_zugang_regel']
+INFO E05 N01 unbekannte Spalte: ['FEHLER 026_20261121_neue_angebote.csv:1:foo: N01 unbekannte Spalte (weder Master- noch Steuerspalte)']
+INFO E05 N01 Steuerspalte fehlt: ['FEHLER 026_20261121_neue_angebote.csv:1:scope_code: N01 Pflichtspalte fehlt im Kopf']
+INFO E05 N02 ID klein geschrieben: ['FEHLER 026_20261121_neue_angebote.csv:2:id: N02 «test-p26» nicht nach Muster [A-Z0-9][A-Z0-9-]{2,40}']
+INFO E05 N02 ID schon im Master: ['FEHLER 026_20261121_neue_angebote.csv:2:id: N02 OFFER-DIGICOMP-075 schon im Master']
+INFO E05 N02 Kohorte falsch: ['FEHLER 026_20261121_neue_angebote.csv:2:kohorte: N02 «NEU_P26», verlangt NEU_026']
+INFO E05 N03 Titel leer: ['FEHLER 026_20261121_neue_angebote.csv:2:titel: N03 Pflichtwert fehlt (Pflicht ALLE, ohne Platzhalter)']
+INFO E05 N03 CH ohne lieferform_json: ['FEHLER 026_20261121_neue_angebote.csv:2:lieferform_json: N03 Pflichtspalte fehlt (Pflicht CH/AT/LI)']
+INFO E05 N03 market passt nicht zu release_markt: ['FEHLER 026_20261121_neue_angebote.csv:2:market: N03 «USA» passt nicht zu release_markt CH']
+INFO E05 N04 Startdatum ungültig: ['FEHLER 026_20261121_neue_angebote.csv:2:start_datum: N04 kein Datum JJJJ-MM-TT']
+INFO E05 N05 Herkunft unbekannt: ['FEHLER 026_20261121_neue_angebote.csv:2:herkunft: N05 ERFUNDEN_E999 nicht in der Herkunftsliste']
+INFO E05 N05 quelle «s. o.»: ['FEHLER 026_20261121_neue_angebote.csv:2:quelle: N05 «s. o.» verboten (E204)']
+INFO E05 N06 URL nicht geprüft: ['FEHLER 026_20261121_neue_angebote.csv:2:url_status: N06 «NICHT_GEPRUEFT» (verlangt OK oder WEITERLEITUNG)']
+INFO E05 N06 Prüfdatum nach Laufdatum: ['FEHLER 026_20261121_neue_angebote.csv:2:url_geprueft_am: N06 nach dem Laufdatum 20261121']
+INFO E05 N07 Anbieter + Titel wie im Master: ['FEHLER 026_20261121_neue_angebote.csv:2:titel: N07 gleicher Anbieter und Titel wie OFFER-DIGICOMP-075 (Freigabe nur mit Owner-Entscheid in dedupe_freigabe, E206)']
+INFO E05 N07 Adresse wie im Master, ohne url_geteilt (E07): ['FEHLER 026_20261121_neue_angebote.csv:2:url: N07 gleiche Adresse wie OFFER-SBVV-001 (Übersichtsseite: url_geteilt = JA, E206)']
+INFO E05 N07 Dublettenfreigabe ohne Owner-Entscheid (REGEL E108, ChatGPT B06): ['FEHLER 026_20261121_neue_angebote.csv:2:dedupe_freigabe: N07 «E108» ist kein Owner-Entscheid im Register']
+INFO E05 N07 Dublettenfreigabe unbekannte ID: ['FEHLER 026_20261121_neue_angebote.csv:2:dedupe_freigabe: N07 «E999» ist kein Owner-Entscheid im Register']
+INFO E05 N08 Scope-Code unbekannt: ['FEHLER 026_20261121_neue_angebote.csv:2:scope_code: N08 «KERN» nicht in der Codeliste SCOPE']
+INFO E05 N08 Grenzfall ohne Begründung: ['FEHLER 026_20261121_neue_angebote.csv:2:scope_begruendung: N08 Grenzfall ohne Begründung (E179)']
+INFO E05 N09 Lieferform mit 7 Teilfeldern: ['FEHLER 026_20261121_neue_angebote.csv:2:lieferform_json: N09 Lieferform nicht genau mit den 8 Teilfeldern']
+INFO E05 N09 preis_budgetfaehig «ja»: ['FEHLER 026_20261121_neue_angebote.csv:2:preis_budgetfaehig: N09 nur True oder False']
+INFO E05 N10 CH-Zugang JA ohne Ort CH und Regel: ['FEHLER 026_20261121_neue_angebote.csv:2:ch_zugang: N10 CH-Zugang JA ohne Durchführungsort CH und ohne Regeltext in ch_zugang_regel']
+INFO E05 N10 CH-Zugang nach Regel E066 ohne Ort CH: ['FEHLER 026_20261121_neue_angebote.csv:2:ch_zugang: N10 CH-Zugang JA nach Regel E066, aber kein Durchführungsort CH (mehr)']
+INFO E05 N11 Kennung früherer Läufe (gold): ['FEHLER 026_20261121_neue_angebote.csv:1:gold: N11 Kennung früherer Läufe, nicht in Dateien neuer Angebote (A3, A4)']
+PASS E05 Fehlfälle: 59 Fälle, je Regel K01–K14 und N01–N11 mindestens einer abgelehnt (Prüfskript und Master-Fortschreibung Rückgabecode ≠ 0, Meldung mit Datei, Zeile, Spalte, Regel; Master, Protokoll und Ausgabeordner bytegleich, keine neue Datei)
+PASS E06 Gutfall (Testkopie): Korrektur an einer DE-Zeile und an OFFER-DIGICOMP-075, neues CH-Angebot in Lauf 026; genau die erwarteten Zellen und Protokollzeilen; Generator baut, das Angebot steht mit allen Schlüsseln in Datendatei und Smart-Datei; Repo-Eingang unverändert
+PASS E07 Dubletten (Entscheid 4 A): Adresse der Übersichtsseite sbvv.ch/weiterbildung ohne url_geteilt abgelehnt, mit JA angenommen und gelistet; gleicher Anbieter + Titel ohne bzw. mit ungültiger Freigabe abgelehnt, mit Owner-Entscheid E206 angenommen; URL NICHT_GEPRUEFT ohne Prüfdatum angenommen (ChatGPT B05, B06)
+PASS E06b Anzeigefeld leeren (Testkopie): Anzeigefeld und Herkunft leer, Original gilt; Protokoll ohne Herkunft (Gegenprüfung B2)
+PASS E09 bestehende Tests nach A10: test_paket24.py 14/14, test_nachtraege.py 14/14, P25 Master 8/8, Generator 13/13; data-p25.js und Smart-Datei bytegleich (ae30bf39…, 6e7ec9cd…)
+PASS E10 unverändert gegenüber 8e1c715: 9 Altdateien, paket19/, paket22/, paket25/website/, Basis master_3818.csv (Git-Blob vorher = nachher); keine neuen Dateien dort
+PASS E11 Testanpassung (A10, E209): historische Sollwerte und Hashes unverändert, gleiche Prüfungen (T01–T14, M01–M08); Diff = paket26/out/testanpassung_a10.diff
+PASS E12 Schema-Bericht: ganzer Master (125 Spalten) gegen die Feldtabelle; Abweichungen url 30, sprache 5, format 17 (Grundlage P27); Master unverändert; = paket26/out/schema_bericht.csv
+14/14 PASS

@@ -1,0 +1,126 @@
+spalte,aenderbar,h_spalte,typ,codeliste,mehrfach,leer_erlaubt,pflicht_neu,neu_zulaessig,vorgabe_neu,bemerkung
+market,NEIN,,Codeliste,MARKT,NEIN,NEIN,ALLE,JA,,Kennung: nicht änderbar; in Dateien neuer Angebote Pflicht
+id,NEIN,,Text,,NEIN,NEIN,ALLE,JA,,Kennung: nicht änderbar; in Dateien neuer Angebote Pflicht
+kohorte,NEIN,,Text,,NEIN,NEIN,ALLE,JA,,Kennung: nicht änderbar; in Dateien neuer Angebote Pflicht
+anbieter,JA,h_anbieter,Text,,NEIN,NEIN,ALLE,JA,,
+h_anbieter,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+titel,JA,h_titel,Text,,NEIN,NEIN,ALLE,JA,,
+h_titel,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+beschreibung,JA,h_beschreibung,Text,,NEIN,NEIN,CH/AT/LI,JA,,
+h_beschreibung,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+url,JA,h_url,URL,,NEIN,NEIN,ALLE,JA,,
+h_url,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+sprache,JA,h_sprache,Codeliste,SPRACHE,JA,NEIN,,JA,,
+h_sprache,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+niveau,JA,h_niveau,Codeliste,NIVEAU,NEIN,NEIN,,JA,,
+h_niveau,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+fokus,JA,h_fokus,Text,,NEIN,NEIN,CH/AT/LI,JA,,
+h_fokus,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+angebotsart_roh,JA,h_angebotsart_roh,Text,,NEIN,NEIN,CH/AT/LI,JA,,
+h_angebotsart_roh,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+format,JA,h_format,Codeliste,KURSFORM,JA,NEIN,,JA,,
+h_format,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+dauer,JA,h_dauer,Text,,NEIN,NEIN,,JA,,
+h_dauer,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+termin_text,JA,h_termin_text,Text,,NEIN,NEIN,CH/AT/LI,JA,,
+h_termin_text,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+start_datum,JA,h_start_datum,Datum,,NEIN,NEIN,,JA,,
+h_start_datum,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+end_datum,JA,h_end_datum,Datum,,NEIN,NEIN,,JA,,
+h_end_datum,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+durchfuehrungen,JA,h_durchfuehrungen,JSON-Liste,,NEIN,NEIN,,JA,,
+h_durchfuehrungen,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+ort_text,JA,h_ort_text,Text,,NEIN,NEIN,,JA,,
+h_ort_text,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+preis_text,JA,h_preis_text,Text,,NEIN,NEIN,,JA,,
+h_preis_text,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+preis_kategorie,JA,h_preis_kategorie,Codeliste,PREISKLASSE,NEIN,NEIN,,JA,,
+h_preis_kategorie,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+zugang_text,JA,h_zugang_text,Text,,NEIN,NEIN,CH/AT/LI,JA,,
+h_zugang_text,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+publikationsstatus,JA,h_publikationsstatus,Codeliste,PUBLIKATIONSSTATUS,NEIN,NEIN,,JA,,
+h_publikationsstatus,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+publikationsgrund,JA,h_publikationsgrund,Text,,NEIN,NEIN,,JA,,
+h_publikationsgrund,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+geprueft_am,JA,h_geprueft_am,Datum,,NEIN,NEIN,CH/AT/LI,JA,,
+h_geprueft_am,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+pruefen_ab,JA,h_pruefen_ab,Datum,,NEIN,NEIN,CH/AT/LI,JA,,
+h_pruefen_ab,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+release_herkunft,JA,h_release_herkunft,Text,,NEIN,NEIN,CH/AT/LI,JA,,
+h_release_herkunft,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+country_roh,JA,h_country_roh,Text,,NEIN,NEIN,CH/AT/LI,JA,,
+h_country_roh,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+preis_parser_status,JA,h_preis_parser_status,Text,,NEIN,NEIN,CH/AT/LI,JA,,
+h_preis_parser_status,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+preis_budgetfaehig,JA,h_preis_budgetfaehig,Wahrheitswert,,NEIN,NEIN,CH/AT/LI,JA,,
+h_preis_budgetfaehig,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+preis_optionen,JA,h_preis_optionen,JSON-Liste,,NEIN,NEIN,CH/AT/LI,JA,,
+h_preis_optionen,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+lieferform,JA,h_lieferform,Text,,NEIN,NEIN,,JA,,
+h_lieferform,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+lieferform_struktur,JA,,Text,,NEIN,NEIN,,JA,,
+r4_aktualitaet,NEIN,h_r4_aktualitaet,Text,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+h_r4_aktualitaet,NEIN,,Herkunft,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+r4_scope,NEIN,h_r4_scope,Text,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+h_r4_scope,NEIN,,Herkunft,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+r4_quellenebene,NEIN,h_r4_quellenebene,Text,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+h_r4_quellenebene,NEIN,,Herkunft,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+r4_publikationsklasse,NEIN,h_r4_publikationsklasse,Text,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+h_r4_publikationsklasse,NEIN,,Herkunft,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+r4_release_status,NEIN,h_r4_release_status,Text,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+h_r4_release_status,NEIN,,Herkunft,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+r4_anbieter_id,NEIN,h_r4_anbieter_id,Text,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+h_r4_anbieter_id,NEIN,,Herkunft,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+us_owner_disposition,NEIN,,Text,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+us_owner_belegklasse,NEIN,,Text,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+sammelobjekt,JA,,Codeliste,JA_NEIN,NEIN,NEIN,,JA,,
+objektklasse,JA,h_objektklasse,Codeliste,OBJEKTKLASSE,NEIN,NEIN,,JA,,
+objektklasse_regel,JA,,Text,,NEIN,NEIN,,JA,,
+h_objektklasse,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+release_markt,JA,h_release_markt,Codeliste,RELEASE_MARKT,NEIN,NEIN,ALLE,JA,,
+h_release_markt,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+anbieter_land,JA,h_anbieter_land,Land,,NEIN,NEIN,,JA,,
+h_anbieter_land,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+anbieter_land_beleg,JA,,Text,,NEIN,NEIN,,JA,,
+anbieter_land_kandidat,JA,,Land,,NEIN,NEIN,,JA,,
+anbieter_land_kandidat_quelle,JA,,Text,,NEIN,NEIN,,JA,,
+durchfuehrungsort_land,JA,h_durchfuehrungsort_land,Land,,JA,NEIN,,JA,,
+durchfuehrungsort_sicherheit,JA,h_durchfuehrungsort_land,Codeliste,SICHERHEITSGRAD,NEIN,NEIN,,JA,,
+h_durchfuehrungsort_land,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+ch_zugang,JA,h_ch_zugang,Codeliste,CH_ZUGANG,NEIN,NEIN,,JA,,
+h_ch_zugang,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+ch_zugang_regel,JA,,Text,,NEIN,NEIN,,JA,,
+ch_zugang_hinweis,JA,,Text,,NEIN,NEIN,,JA,,
+schutz_307,NEIN,,Codeliste,JA_NEIN,NEIN,NEIN,,NEIN,NEIN,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+termin_status_20261109,NEIN,,Text,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+owner_offen,JA,,Text,,NEIN,JA,,JA,,
+beta_sichtbar,JA,,Codeliste,JA_NEIN,NEIN,NEIN,,JA,,
+beta_grund,JA,,Text,,NEIN,NEIN,,JA,,
+url_identitaet,JA,h_url_identitaet,Text,,NEIN,NEIN,,JA,,
+h_url_identitaet,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+v288_geprueft,NEIN,,Codeliste,JA_NEIN,NEIN,NEIN,,NEIN,NEIN,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+v288_resultat,NEIN,,Text,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+schutz_grund,NEIN,h_schutz_grund,Text,,NEIN,NEIN,,NEIN,KEIN_SCHUTZ,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+e4_legacy_policy,NEIN,h_e4_legacy_policy,Text,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+h_schutz_grund,NEIN,,Herkunft,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+h_e4_legacy_policy,NEIN,,Herkunft,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+v288_methode,NEIN,,Text,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+v288_quelle_url,NEIN,,Text,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+v288_quelle_sha256,NEIN,,Text,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+v288_checkpoint,NEIN,,Text,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+h_v288_quelle,NEIN,,Herkunft,,NEIN,NEIN,,NEIN,,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+gold,NEIN,,Codeliste,JA_NEIN,NEIN,NEIN,,NEIN,NEIN,"Kennung früherer Läufe: nicht änderbar, nicht in Dateien neuer Angebote"
+dedupe_status,JA,,Text,,NEIN,NEIN,,JA,,
+dedupe_referenz,JA,,Text,,NEIN,JA,,JA,,
+termin_anzeige,JA,h_termin_anzeige,Text,,NEIN,JA,,JA,,Anzeigefeld (P24): leer = Original gilt
+h_termin_anzeige,NEIN,,Herkunft,,NEIN,JA,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+ort_anzeige,JA,h_ort_anzeige,Text,,NEIN,JA,,JA,,Anzeigefeld (P24): leer = Original gilt
+h_ort_anzeige,NEIN,,Herkunft,,NEIN,JA,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+dauer_anzeige,JA,h_dauer_anzeige,Text,,NEIN,JA,,JA,,Anzeigefeld (P24): leer = Original gilt
+h_dauer_anzeige,NEIN,,Herkunft,,NEIN,JA,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+preis_anzeige,JA,h_preis_anzeige,Text,,NEIN,JA,,JA,,Anzeigefeld (P24): leer = Original gilt
+h_preis_anzeige,NEIN,,Herkunft,,NEIN,JA,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+durchfuehrungen_anzeige,JA,h_durchfuehrungen_anzeige,JSON-Liste,,NEIN,JA,,JA,,Anzeigefeld (P24): leer = Original gilt
+h_durchfuehrungen_anzeige,NEIN,,Herkunft,,NEIN,JA,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+lieferform_json,JA,h_lieferform_json,JSON-Objekt,,NEIN,NEIN,CH/AT/LI,JA,,lieferform_json: genau 8 Teilfelder (P25 A7)
+h_lieferform_json,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)

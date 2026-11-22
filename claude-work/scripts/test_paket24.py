@@ -2,7 +2,12 @@
 Aufruf in run_paket3.sh nach test_nachtraege.py:  python3 -I scripts/test_paket24.py --out paket3/out
 Referenzwerte «vorher» = Stand Commit 9fd113f (vor Paket 24), als SHA-256 festgehalten.
 Paket 25 (SPEZIFIKATION_PAKET25 A10, Entscheid 8, E199): T06, T08/T09, T10, T14 um die 2 Lieferformspalten (A1) ergänzt;
-historische Sollwerte, Hashes und Prüfabsichten unverändert; die neuen Spalten prüft paket25/tests/test_paket25_master.py."""
+historische Sollwerte, Hashes und Prüfabsichten unverändert; die neuen Spalten prüft paket25/tests/test_paket25_master.py.
+Paket 26 (SPEZIFIKATION_PAKET26 A10, Entscheid 5, E207): T08/T09 mit dem Eingang eingang/ und den Tabellen A4 statt der
+Altdateien; die Abbruchfälle treffen dieselben Zeilen in den überführten Dateien (Spalte ursprung). T10 prüft weiter jede
+historische Protokollzeile: Spalte quelle in genau den 136 Zeilen der Ersetzungsliste (Entscheid 2 B, E204) gegen
+paket26/out/ersetzungsliste_wie_oben.csv, danach mit «wie oben» zurückgesetzt gegen den bisherigen Hash. T07 liest die
+Altdateien weiter als unabhängige Gegenprobe (A8)."""
 import argparse, collections, csv, hashlib, io, json, pathlib, re, shutil, subprocess, sys, tempfile
 
 R = pathlib.Path(__file__).resolve().parents[1]
@@ -172,10 +177,10 @@ t("T07 überholte Ortskorrekturen Paket 17 → Paket 21: 93 = Sollmenge aus den 
   f"{len(ueb)} / Soll {len(soll07)}")
 
 # ---------- T08 veralteter alter Wert, T09 Reproduzierbarkeit (in einer Kopie der Eingaben) ----------
-EIN = ["scripts/master_nachtraege.py", "scripts/build_master_p3.py", "paket3/out/master_3818.csv", "paket13/config/owner_korrekturen.csv",
-       "paket14/config/korrekturen.csv", "paket16/config/korrekturen.csv", "paket17/config/korrekturen.csv",
-       "paket17/config/korrekturen_preis.csv", "paket18/config/korrekturen.csv", "paket21/config/korrekturen.csv",
-       "paket22/config/korrekturen.csv", "paket22/config/neue_angebote.json", "paket25/eingang/lieferform_p19.json"]  # Paket 25 A1
+EIN = ["scripts/master_nachtraege.py", "scripts/eingang.py", "scripts/build_master_p3.py", "paket3/out/master_3818.csv",
+       "scripts/eingang_felder.csv", "scripts/eingang_codelisten.csv", "scripts/eingang_herkunft.csv", "scripts/iso3166_alpha2.csv",
+       "wissensbasis/ENTSCHEIDUNGSREGISTER.csv", "paket25/eingang/lieferform_p19.json"]  # Paket 25 A1; Paket 26 A10: Eingang statt Altdateien
+EIN += sorted(str(p.relative_to(R)) for p in (R / "eingang").iterdir() if p.is_file())
 def kopie(td):
     for p in EIN:
         (td / p).parent.mkdir(parents=True, exist_ok=True); shutil.copy(R / p, td / p)
@@ -183,6 +188,13 @@ def lauf(td):
     return subprocess.run([sys.executable, "-I", str(td / "scripts/master_nachtraege.py"), "--out", "paket3/out"], cwd=td, capture_output=True, text=True)
 k16 = list(csv.DictReader(open(R / "paket16/config/korrekturen.csv", encoding="utf-8")))
 kette = {(k["id"], k["feld"]) for k in k16}  # Paket-17-Zeilen, deren alter Wert die Anzeige aus Paket 16 ist (16 → 17)
+def ziel(pfad, spalte, wahl):
+    """Paket 26 A10: dieselbe Altzeile in der überführten Datei (Spalte ursprung); Website-Altwert Paket 21 = alt_anzeige."""
+    ln = next(i for i, z in enumerate(csv.DictReader(open(R / pfad, encoding="utf-8")), 2) if wahl(z))
+    e = next(p for p in (R / "eingang").glob("*_korrekturen.csv")
+             if any(z["ursprung"] == f"{pfad}:{ln}" for z in csv.DictReader(open(p, encoding="utf-8"))))
+    sp = {"master_alt": "alt", "alt": "alt_anzeige" if pfad.startswith("paket21/") else "alt"}[spalte]
+    return str(e.relative_to(R)), sp, lambda z: z["ursprung"] == f"{pfad}:{ln}"
 FAELLE = [("paket17/config/korrekturen.csv", "alt", lambda z: z["feld"] == "start" and (z["id"], "start") not in kette),
           ("paket17/config/korrekturen.csv", "alt", lambda z: z["feld"].startswith("sessions[")),
           ("paket17/config/korrekturen.csv", "alt", lambda z: (z["id"], z["feld"]) in kette),
@@ -190,7 +202,7 @@ FAELLE = [("paket17/config/korrekturen.csv", "alt", lambda z: z["feld"] == "star
           ("paket21/config/korrekturen.csv", "master_alt", lambda z: z["master_feld"] == "ort_text"),
           ("paket22/config/korrekturen.csv", "master_alt", lambda z: z["master_feld"] == "ch_zugang")]  # Fehler am Ende der Paketfolge
 erg = []
-for pfad, spalte, wahl in FAELLE:
+for pfad, spalte, wahl in [ziel(*f) for f in FAELLE]:
     with tempfile.TemporaryDirectory() as td:
         td = pathlib.Path(td); kopie(td)
         # bestehende Ausgaben eines früheren Laufs müssen bei Abbruch bytegleich bleiben (ZG-B05)
@@ -217,8 +229,15 @@ t("T09 zwei unabhängige Builds aus frischen Ordnern: Master und Protokoll byteg
 # ---------- T10 Protokollzeilen der Pakete 13, 14, 18, 21, 22 ----------
 alt_p = [list(p.values()) for p in P if p["feld"] not in NEUE_FELDER and p["quelle"] != "überholt durch Paket 21"
          and p["herkunft"] not in ("ANZEIGE_E113", "ANZEIGE_E114") and p["feld"] != "lieferform_json"]  # Paket 25: 1'353 Lieferform-Zeilen ausgeklammert
+# Paket 26 (Entscheid 2 B, A10): Spalte quelle der 136 Zeilen gegen die Ersetzungsliste, dann «wie oben» wie vorher
+ERS = {(e["id"], e["feld"]): e for e in csv.DictReader(open(R / "paket26/out/ersetzungsliste_wie_oben.csv", encoding="utf-8"))}
+ersetzt = 0
+for z in alt_p:
+    e = ERS.get((z[0], z[1]))
+    if e and z[6].startswith("ANBIETERSEITE_E10") and z[8] == e["quelle_neu"]: z[8] = e["quelle_alt"]; ersetzt += 1
 b = io.StringIO(); csv.writer(b, lineterminator="\n").writerows(alt_p)
-t("T10 Protokollzeilen der Pakete 13, 14, 18, 21, 22 identisch zu vorher (Platzhalterregel SENT)", len(alt_p) == 4118 and sha(b.getvalue().encode()) == VORHER_PROTO, str(len(alt_p)))
+t("T10 Protokollzeilen der Pakete 13, 14, 18, 21, 22 identisch zu vorher (Platzhalterregel SENT); Paket 26: quelle genau der 136 Zeilen = Ersetzungsliste",
+  len(alt_p) == 4118 and ersetzt == len(ERS) == 136 and sha(b.getvalue().encode()) == VORHER_PROTO, f"{len(alt_p)} Zeilen, {ersetzt} ersetzt")
 
 # ---------- T11 test_nachtraege.py, T12 Basis, T13 Website, T14 Form ----------
 pr = subprocess.run([sys.executable, "-I", str(R / "scripts/test_nachtraege.py"), "--out", a.out], cwd=R, capture_output=True, text=True)
