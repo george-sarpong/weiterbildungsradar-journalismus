@@ -1,9 +1,9 @@
 # BERICHT PAKET 26 «Eingangsformat», 21.11.2026
 
-Status: umgesetzt und getestet, kein Release (E207). Owner-Entscheide aus diesem Chat: E208–E210.
+Status: umgesetzt, getestet und gepusht (5c2b761), kein Release (E207). Owner-Entscheide aus diesem Chat: E208–E210; Befund E211. Nachtrag zur Bestätigung vorgelegt.
 Auftrag: Owner 21.11., Chat «P26 umsetzen» («P26 umsetzen und testen; Schreibrecht auf GitHub ist erteilt (wie E191)»).
 Grundlage: `SPEZIFIKATION_PAKET26_20261121.md` (freigegeben, E203–E207); GESAMTWISSENSSTAND (Stand E207); Register E207.
-Arbeitszweig: `claude/datenharmonisierung`, Ausgang Commit 8e1c715, Umsetzung Commit siehe §9.
+Arbeitszweig: `claude/datenharmonisierung`, Ausgang Commit 8e1c715, Code-Commit 5c2b761 (§9).
 Beleg: [GEPRÜFT] von Claude gezählt bzw. getestet · [OWNER] Entscheid in diesem Chat.
 
 ## 1. Ergebnis
@@ -134,7 +134,9 @@ Owner-Upload 22.11. Urteil **HOLD**, nur die Spezifikation geprüft (kein Zugrif
 
 ## 9. Lieferung
 
-(folgt mit dem Commit)
+- Code-Commit **5c2b761** auf `claude/datenharmonisierung`, gepusht 22.11.2026 (Schreibrecht wie E191); kein Merge nach `main` (E041), kein Release (E207).
+- Wissensbasis: dieser Bericht, Register E208–E211 und GESAMTWISSENSSTAND im Projektwissen; Repo-Kopien in `claude-work/paket26/wissensbasis/` (mit der Spezifikation) und Register-Kopie `claude-work/wissensbasis/ENTSCHEIDUNGSREGISTER.csv` (A9) im Folge-Commit.
+- Testumgebung: jsdom für den Generator-Test über `NODE_PATH`; die Tests brauchen Git-Verlauf bis 8e1c715 bzw. 11fcc70 (flacher Klon mit `git fetch --depth=60`).
 
 ## 10. Offen und nächster Schritt
 
