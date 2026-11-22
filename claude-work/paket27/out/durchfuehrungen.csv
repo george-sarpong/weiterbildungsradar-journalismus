@@ -1,0 +1,732 @@
+angebot_id,nr,start,ende,label,region,quellfeld
+AT-PROD-OFFER-003,1,2026-11-04,2027-01-22,"Durchführung 04.11.2026–22.01.2027: Wien-Präsenz-Kickoff 04.–06.11., Coding 18.11., Coaching Zoom 24.11./04.12./11.01., Hackathon 14.01., Abschluss 21.–22.01.; Bewerbungsfrist 01.10.2026 BEREITS ABGELAUFEN.",nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-008,1,2026-09-30,2026-10-16,"30.09., 02.10. und 16.10.2026",nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-009,1,2026-10-02,2026-10-02,Datum: keine Angabe; 09:30–13:00 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-011,1,2026-11-18,2026-11-18,"18.11.2026, 18:30–20:30",nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-012,1,2026-10-08,2026-10-08,09:30–17:00; fjum-Seminarraum; fjum catalogue booking routes to COMMIT,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-014,1,2026-10-07,2026-10-07,"18:00–20:00, Online-Workshop via Zoom",nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-015,1,2026-10-14,2026-10-14,"18:00–20:30, Online-Workshop",nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-027,1,2026-11-10,2026-11-10,Termin: keine Angabe,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-028,1,2026-11-26,2026-11-26,Termin: keine Angabe,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-029,1,2026-12-10,2026-12-10,Termin: keine Angabe,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-036,1,2026-10-06,2026-12-15,5 Module online,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-037,1,2026-10-07,2026-12-02,5 Module Wien/Online,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-038,1,2026-11-05,2026-11-07,School of Factchecking,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-039,1,2027-02-16,2027-02-16,16.02.2027,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-040,1,2026-11-09,2026-11-09,Datum: keine Angabe; 09:00–16:00 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-041,1,2026-11-17,2026-11-17,Datum: keine Angabe; 09:30–17:00 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-042,1,2026-11-12,2026-11-12,Datum: keine Angabe; 17:30–19:30 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-043,1,2026-11-26,2026-11-26,Datum: keine Angabe; 17:00–20:00 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-044,1,2026-10-15,2026-10-22,Diplomlehrgang Photojournalismus/Pressefotografie,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-047,1,2026-12-15,2026-12-16,"2 Kurstage, je 09:00–17:00",nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-049,1,2026-10-17,2026-10-23,Grundkurs,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-084,1,2026-12-10,2026-12-10,Termin: keine Angabe,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-132,1,2026-10-06,2026-10-06,Datum: keine Angabe; 09:00–16:00 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-133,1,2026-10-21,2026-10-21,Datum: keine Angabe; 09:00–16:00 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-134,1,2026-11-03,2026-11-03,Datum: keine Angabe; 09:00–16:00 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-135,1,2026-11-16,2026-11-23,"16. und 23.11.2026, jeweils 09:00–16:00",nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-136,1,2026-12-15,2026-12-15,Datum: keine Angabe; 09:00–14:00 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-137,1,2026-10-07,2026-10-07,Datum: keine Angabe; 09:30–17:00 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-138,1,2026-11-20,2026-11-20,Datum: keine Angabe; 09:30–17:00 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-139,1,2026-12-09,2026-12-09,Datum: keine Angabe; 09:30–16:30 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-140,1,2026-12-11,2026-12-11,Datum: keine Angabe; 09:30–12:30 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-141,1,2027-01-26,2027-01-26,Datum: keine Angabe; 09:30–17:00 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-142,1,2027-02-15,2027-06-12,Grundkurs Frühling 2027: 15.–20.02.; 19.–20.03.; 10.04.; 24.04.; 22.05.; 04.–05.06.; 12.06.,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-156,1,2026-10-02,2026-10-04,Termin: keine Angabe,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-157,1,2026-10-16,2026-10-18,Termin: keine Angabe,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-168,1,2026-10-13,nicht erfasst,Lehrgang 2026–2028 (seit 13.10.2026 begonnen); nachträgliche Zulassung zu diesem Jahrgang nicht bestätigt. Studienbeginn gemäss Hochschule jeweils im Oktober.,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-170,1,2026-10-03,2026-12-17,Audio Academy 2026; full programme plus separately bookable modules,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-172,1,nicht erfasst,2026-08-27,Nächste Durchführung nicht publiziert.,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-179,1,2027-01-19,2027-01-19,Datum: keine Angabe; 17:00–19:00 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-185,1,2027-01-22,2027-01-22,Datum: keine Angabe; 09:30–11:30 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-186,1,2026-09-30,2026-09-30,Termin: keine Angabe,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-187,1,2026-10-01,2026-10-01,Datum: keine Angabe; 17:30–19:30 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-188,1,2026-10-06,2026-10-06,Datum: keine Angabe; 17:00–19:00 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-189,1,2026-10-07,2026-10-08,2 days,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-190,1,2026-10-08,2026-10-08,Datum: keine Angabe; 09:00–16:00 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-191,1,2026-10-15,2026-10-15,1 day,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-192,1,2026-10-15,2026-10-16,Each 09:00–13:00,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-193,1,2026-10-21,2026-10-21,1 day,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-194,1,2026-10-21,2026-10-22,2 days,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-195,1,2026-10-22,2026-10-22,"Online, early evening",nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-196,1,2026-10-29,2026-10-29,Datum: keine Angabe; 17:30–19:30 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-197,1,2026-11-03,2026-11-04,2 days,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-198,1,2026-11-12,2026-11-12,Termin: keine Angabe,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-199,1,2026-11-16,2026-11-17,Termin: keine Angabe,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-200,1,2026-11-19,2026-11-19,Datum: keine Angabe; 09:30–16:30 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-201,1,2026-11-24,2026-11-24,Termin: keine Angabe,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-203,1,2026-12-02,2026-12-02,Termin: keine Angabe,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-204,1,2026-12-10,2026-12-11,Termin: keine Angabe,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-205,1,2026-12-15,2026-12-15,Termin: keine Angabe,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-206,1,2027-02-23,2027-02-23,Datum: keine Angabe; 09:00–16:00 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-209,1,nicht erfasst,2026-09-30,Letzte belegte Durchführung 29.–30.09.2026; Folgetermin nicht publiziert,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-210,1,2026-10-05,2026-10-05,"05.10.2026, 09:30–13:00",nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-211,1,nicht erfasst,2026-09-29,Nächste Durchführung nicht publiziert.,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-212,1,2026-10-05,2026-10-06,Datum: keine Angabe; 09:30–17:00 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-213,1,2026-10-12,2026-10-13,Datum: keine Angabe; 09:30–17:00 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-214,1,2026-10-13,2026-10-13,Datum: keine Angabe; 09:30–12:30 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-215,1,2026-10-19,2026-10-19,Datum: keine Angabe; 09:30–16:30 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-216,1,2026-10-21,2026-10-21,Datum: keine Angabe; 09:30–17:00 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-217,1,2026-10-21,2026-10-21,09:30–16:48 (provider-published unusual end time),nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-218,1,2026-10-28,2026-10-29,Datum: keine Angabe; 09:30–16:30 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-219,1,2026-10-28,2026-10-28,Datum: keine Angabe; 10:00–17:00 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-220,1,2026-11-04,2026-11-04,Datum: keine Angabe; 09:30–17:00 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-221,1,2026-11-06,2026-11-06,Datum: keine Angabe; 09:30–17:00 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-222,1,2026-11-10,2026-11-10,Datum: keine Angabe; 09:30–13:00 Uhr,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-223,1,2026-11-13,2026-11-27,13.11. 09:30–17:00 + 27.11. 09:30–13:00,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-225,1,2026-11-20,2026-11-27,20.11. 09:30–17:00 + 27.11. 09:30–15:00,nicht erfasst,start_datum/end_datum
+AT-PROD-OFFER-226,1,2026-12-01,2026-12-09,"01.12. und 09.12.2026, jeweils 09:30–17:00",nicht erfasst,start_datum/end_datum
+CAD-001,1,2026-09-24,2026-10-09,24.09.–09.10.2026 · Lausanne,nicht erfasst,durchfuehrungen
+CAD-001,2,2026-10-26,2026-11-10,26.10.–10.11.2026 · Lausanne,nicht erfasst,durchfuehrungen
+CAD-002,1,2026-10-26,2026-10-27,"26.–27.10.2026 (Lausanne, Präsenz); weitere Präsenzdurchführung kursgenau nicht bestätigt; Selbstlernvariante ohne fixen Termin",nicht erfasst,start_datum/end_datum
+CAD-003,1,2026-09-28,2026-09-29,28.–29.09.2026 · Lausanne,nicht erfasst,durchfuehrungen
+CAD-003,2,2026-10-28,2026-10-29,28.–29.10.2026 · Lausanne,nicht erfasst,durchfuehrungen
+CAD-003,3,2026-11-25,2026-11-26,25.–26.11.2026 · Lausanne,nicht erfasst,durchfuehrungen
+CAD-005,1,2026-10-02,2026-10-05,02.–05.10.2026 · Lausanne,nicht erfasst,durchfuehrungen
+CAD-005,2,2026-11-03,2026-11-04,03.–04.11.2026 · Lausanne,nicht erfasst,durchfuehrungen
+CAD-005,3,2026-12-01,2026-12-02,01.–02.12.2026 · Lausanne,nicht erfasst,durchfuehrungen
+CAD-006,1,2026-10-06,2026-10-07,Letzte belegte Präsenzdurchführung 06.–07.10.2026; neuer Präsenztermin auf der kursgenauen Seite nicht bestätigt; Selbstlernvariante ohne fixen Termin,nicht erfasst,start_datum/end_datum
+CAD-008,1,2026-10-06,2026-10-07,2026-10-06–2026-10-07 / FUTURE_BOOKABLE,nicht erfasst,start_datum/end_datum
+CAD-016,1,2026-10-15,2026-10-27,2026-10-15–2026-10-27 / FUTURE_BOOKABLE,nicht erfasst,start_datum/end_datum
+CAD-018,1,2026-11-03,2026-12-01,2026-11-03–2026-12-01 / FUTURE_BOOKABLE,nicht erfasst,start_datum/end_datum
+CAD-019,1,2026-12-15,2026-12-21,2026-12-15–2026-12-21 / FUTURE_BOOKABLE,nicht erfasst,start_datum/end_datum
+CAD-020,1,2026-09-28,2026-10-06,2026-09-28–2026-10-06 / CURRENT_BOOKABLE; second 2026-09-29–10-05,nicht erfasst,start_datum/end_datum
+CAD-023,1,2026-09-30,2026-10-23,2026-09-30–2026-10-23 / FUTURE_BOOKABLE,nicht erfasst,start_datum/end_datum
+CAD-025,1,2026-10-27,2026-11-10,27.10.–10.11.2026 · Präsenz Lausanne,"Salle LR22, Lausanne",durchfuehrungen_anzeige
+CAD-025,2,2026-11-03,2026-11-17,03.–17.11.2026 · Präsenz,Kursort: keine Angabe,durchfuehrungen_anzeige
+CAD-025,3,2026-12-02,2026-12-16,02.–16.12.2026 · Präsenz,Kursort: keine Angabe,durchfuehrungen_anzeige
+CAD-025,4,2027-02-15,2027-02-26,15.–26.02.2027 · Präsenz,Kursort: keine Angabe,durchfuehrungen_anzeige
+CAD-026,1,2026-11-25,2026-12-11,2026-11-25–2026-12-11 / FUTURE_BOOKABLE,nicht erfasst,start_datum/end_datum
+CH-CLEAN-V6-D01,1,2026-10-29,2026-10-29,29.10.2026,nicht erfasst,start_datum/end_datum
+CH-CLEAN2-V11-D01,1,2026-10-31,2026-11-28,31.10.–28.11.2026,nicht erfasst,start_datum/end_datum
+CH-CLEAN2-V12-D01,1,2026-09-29,2026-09-29,"29.09.2026, 18:30",nicht erfasst,start_datum/end_datum
+CH-NOV-OF-030,1,2027-10-18,nicht erfasst,18.10.2027 bis Oktober 2028,nicht erfasst,start_datum/end_datum
+CH-V29-P01,1,2026-10-21,2026-10-21,21.10.2026,nicht erfasst,start_datum/end_datum
+IF-G04,1,2026-10-26,2026-10-30,26.–30.10.2026 · Präsenz Genf,"ifage Montbrillant, Genf",durchfuehrungen_anzeige
+IF-G04,2,2027-03-04,2027-04-15,04.03.–15.04.2027 · fünf Abendtermine,"ifage Montbrillant, Genf",durchfuehrungen_anzeige
+IF-G06,1,2026-10-30,2026-11-27,30.10.2026–27.11.2026 · ifage Montbrillant,nicht erfasst,durchfuehrungen
+IF-G06,2,2026-11-17,2026-12-01,17.11.2026–01.12.2026 · ifage Montbrillant,nicht erfasst,durchfuehrungen
+IF-G08,1,2026-11-09,2026-11-13,09.11.2026–13.11.2026 / Anmeldung offen; weiterer Termin 2027,nicht erfasst,start_datum/end_datum
+IF-G09,1,2026-09-28,2026-10-02,28.09.2026–02.10.2026 / Anmeldung offen,nicht erfasst,start_datum/end_datum
+IF-G10,1,2027-02-04,2027-02-25,04.02.2027–25.02.2027 / Anmeldung offen,nicht erfasst,start_datum/end_datum
+IF-G11,1,2027-01-12,2027-01-28,12.01.2027–28.01.2027 / Anmeldung offen,nicht erfasst,start_datum/end_datum
+IF-G12,1,2026-11-16,2026-11-25,16.11.2026–25.11.2026 / Anmeldung offen; weiterer Termin 2027,nicht erfasst,start_datum/end_datum
+IF-P03,1,2026-11-03,2026-11-17,03.11.2026–17.11.2026 / Anmeldung offen,nicht erfasst,start_datum/end_datum
+IF-P04,1,2026-12-01,2026-12-15,01.12.2026–15.12.2026 / Anmeldung offen,nicht erfasst,start_datum/end_datum
+IF-P05,1,2027-02-06,2027-02-10,06.02.2027–10.02.2027 / Anmeldung offen,nicht erfasst,start_datum/end_datum
+IF-P06,1,2027-01-19,2027-01-26,19.01.2027–26.01.2027 / Anmeldung offen,nicht erfasst,start_datum/end_datum
+IF-P07,1,2027-02-24,2027-03-17,24.02.2027–17.03.2027 / Anmeldung offen,nicht erfasst,start_datum/end_datum
+IF-P08,1,2026-10-27,2026-11-26,27.10.2026–26.11.2026 / Anmeldung offen,nicht erfasst,start_datum/end_datum
+IF-P09,1,2027-01-12,2027-01-26,12.01.2027–26.01.2027 / Anmeldung offen,nicht erfasst,start_datum/end_datum
+IF-P10,1,2026-11-03,2027-02-23,03.11.2026–23.02.2027 (4 Abende / 12 Stunden),nicht erfasst,start_datum/end_datum
+IF-P11,1,2027-04-20,nicht erfasst,20.04.2027 / Anmeldung offen,nicht erfasst,start_datum/end_datum
+IF-P12,1,2027-03-02,2027-04-13,02.03.2027–13.04.2027 / Anmeldung offen,nicht erfasst,start_datum/end_datum
+IF-P13,1,2027-04-27,2027-05-04,27.04.2027–04.05.2027 / Anmeldung offen,nicht erfasst,start_datum/end_datum
+IF-P14,1,2027-04-29,2027-06-01,29.04.2027–01.06.2027 / Anmeldung offen,nicht erfasst,start_datum/end_datum
+IF-W03,1,2026-10-26,2026-10-30,26.–30.10.2026 · Präsenz Genf,"ifage Augustins, Genf",durchfuehrungen_anzeige
+IF-W03,2,2027-02-01,2027-02-05,01.–05.02.2027 · Präsenz Genf,"ifage Augustins, Genf",durchfuehrungen_anzeige
+IF-W03,3,2027-04-14,2027-04-28,14.–28.04.2027 · fünf Abendtermine,"ifage Augustins, Genf",durchfuehrungen_anzeige
+MW-P02,1,2026-12-15,2026-12-16,15.12.2026–16.12.2026; weitere Termine 2027,nicht erfasst,start_datum/end_datum
+MW-P03,1,2026-11-23,2026-11-25,23.11.2026–25.11.2026; weitere Termine 2027,nicht erfasst,start_datum/end_datum
+MW-P04,1,2026-12-10,2026-12-11,10.12.2026–11.12.2026; weitere Termine 2027,nicht erfasst,start_datum/end_datum
+MW-P05,1,2026-10-15,2026-10-16,2026-10-15–2026-10-16 / FUTURE_SESSION_CONFIRMED,nicht erfasst,start_datum/end_datum
+MW-P06,1,2026-12-15,2026-12-16,15.–16.12.2026 · Wallisellen oder LiveStream,nicht erfasst,durchfuehrungen
+MW-P06,2,2027-02-16,2027-02-17,16.–17.02.2027 · Wallisellen oder LiveStream,nicht erfasst,durchfuehrungen
+MW-P06,3,2027-04-15,2027-04-16,15.–16.04.2027 · Wallisellen oder LiveStream,nicht erfasst,durchfuehrungen
+MW-P07,1,2027-01-12,2027-01-13,12.–13.01.2027 · Wallisellen oder LiveStream,nicht erfasst,durchfuehrungen
+MW-P07,2,2027-04-01,2027-04-02,01.–02.04.2027 · Wallisellen oder LiveStream,nicht erfasst,durchfuehrungen
+MW-P07,3,2027-07-05,2027-07-06,05.–06.07.2027 · Wallisellen oder LiveStream,nicht erfasst,durchfuehrungen
+MW-P08,1,2026-11-11,nicht erfasst,11.11.2026; weitere Termine 2027,nicht erfasst,start_datum/end_datum
+MW-P09,1,2026-11-23,2026-11-24,23.11.2026–24.11.2026; weitere Termine 2027,nicht erfasst,start_datum/end_datum
+OFFER-BFH-003,1,2026-10-16,2027-03-19,16.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-BFH-005,1,2026-10-23,nicht erfasst,23.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-BICT-001,1,2026-11-27,nicht erfasst,27.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-BIG-001,1,2026-11-02,2026-11-05,02.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-BIG-002,1,2026-11-23,2026-11-26,23.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-BIG-003,1,2026-09-28,2027-04-04,28.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-BIG-004,1,2027-02-01,nicht erfasst,01.02.2027,nicht erfasst,start_datum/end_datum
+OFFER-CAPFOTO-003,1,2027-08-01,nicht erfasst,Nächster Studienbeginn August 2027,nicht erfasst,start_datum/end_datum
+OFFER-CFJM-004,1,2026-09-25,2026-10-02,25.09. und 02.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-CFJM-005,1,2026-09-28,2026-10-02,28.09.2026–02.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-CFJM-006,1,2026-09-28,2026-09-30,28.09.2026–30.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-CFJM-007,1,2027-10-26,2027-10-26,26.10.2027,nicht erfasst,start_datum/end_datum
+OFFER-CFJM-009,1,2026-10-08,2026-10-08,08.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-CFJM-010,1,2026-10-08,2026-10-09,08.10.2026–09.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-CFJM-011,1,2026-10-16,2026-10-23,16.10.2026 und 23.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-CFJM-012,1,2026-10-19,2026-10-23,19.10.2026–23.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-CFJM-013,1,2026-10-22,2026-10-23,22.–23.10.2026,nicht erfasst,durchfuehrungen_anzeige
+OFFER-CFJM-013,2,2027-04-15,2027-04-16,15.–16.04.2027,nicht erfasst,durchfuehrungen_anzeige
+OFFER-CFJM-014,1,2026-10-22,2026-10-22,22.10.2026,nicht erfasst,durchfuehrungen_anzeige
+OFFER-CFJM-014,2,2027-05-26,2027-05-26,26.05.2027,nicht erfasst,durchfuehrungen_anzeige
+OFFER-CFJM-015,1,2026-10-26,2026-10-30,26.–30.10.2026,nicht erfasst,durchfuehrungen_anzeige
+OFFER-CFJM-015,2,2027-05-24,2027-05-28,24.–28.05.2027,nicht erfasst,durchfuehrungen_anzeige
+OFFER-CFJM-016,1,2026-10-29,2026-10-29,29.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-CFJM-017,1,2026-11-04,2026-11-06,04.11.2026–06.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-CFJM-018,1,2026-11-06,2026-11-06,06.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-CFJM-019,1,2026-11-09,2026-11-27,09.11.2026–27.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-CFJM-020,1,2026-11-25,2026-11-26,25.11.2026–26.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-CFJM-030,1,2026-11-23,2026-12-04,23.11.–04.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-CFJM-031,1,2027-04-19,2028-06-30,Laufende Volée 26C: 07.09.2026–08.10.2027; nächste publizierte Volée: 19.04.2027–30.06.2028,nicht erfasst,start_datum/end_datum
+OFFER-DECADREE-001,1,2026-10-08,2026-10-08,08.10.2026 · Genf,nicht erfasst,durchfuehrungen
+OFFER-DECADREE-001,2,2027-03-18,2027-03-18,18.03.2027 · Genf,nicht erfasst,durchfuehrungen
+OFFER-DECADREE-002,1,2026-10-20,2026-10-20,20.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-DECADREE-003,1,2026-11-12,2026-11-12,12.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-DIGICOMP-003,1,2026-10-06,2026-10-07,06.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-DIGICOMP-010,1,2026-10-05,2026-10-05,05.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-DIGICOMP-016,1,2026-09-30,2026-10-01,30.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-DIGICOMP-020,1,2026-09-11,2026-11-06,11.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-DIGICOMP-021,1,2026-09-29,2026-09-30,29.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-DIGICOMP-022,1,2026-10-27,2026-10-28,27.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-DIGICOMP-023,1,2026-11-19,2026-11-20,19.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-DIGICOMP-025,1,2026-10-21,2026-10-21,21.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-DIGICOMP-029,1,2026-10-19,2026-10-20,19.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-DIGICOMP-034,1,2026-11-24,2026-11-25,24.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-DIGICOMP-037,1,2026-09-29,2026-09-30,29.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-DIGICOMP-038,1,2026-10-07,2026-10-08,07.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-DIGICOMP-046,1,2026-09-29,2026-09-30,29.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-DIGICOMP-055,1,2026-09-28,2026-09-29,28.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-DIGICOMP-057,1,2026-10-02,2026-10-02,02.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-DIGICOMP-062,1,2026-09-30,2026-10-02,30.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-DIGICOMP-064,1,2026-10-02,2026-10-02,02.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-DIGICOMP-066,1,2026-10-02,2026-10-02,02.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-DIGICOMP-068,1,2026-10-05,2026-10-06,05.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-DIGICOMP-069,1,2026-11-23,2026-11-25,23.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-DJA-001,1,2026-11-01,nicht erfasst,01.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-DPSUISSE-004,1,2026-12-04,2026-12-05,04.–05.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-DPSUISSE-005,1,2026-12-11,2026-12-12,11.–12.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-EBU-012,1,2026-10-01,2026-10-02,01.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-EBU-013,1,2026-10-12,2026-10-15,12.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-EBU-014,1,2026-10-12,2026-10-22,"12., 15. und 22.10.2026 (Anmeldeschluss: 09.10.2026; Frist für diese Ausgabe abgelaufen)",nicht erfasst,start_datum/end_datum
+OFFER-EBU-015,1,2026-10-12,2026-10-15,12.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-EBU-016,1,2026-10-14,2026-10-14,14.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-EBU-017,1,2026-10-15,2026-10-16,15.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-EBU-019,1,2026-10-22,2026-10-23,22.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-EBU-020,1,2026-11-30,2026-12-11,30.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-EBU-021,1,2026-12-15,2026-12-15,15.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-EBU-022,1,2026-12-16,2026-12-16,16.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-EDITO-001,1,2026-10-20,2026-10-20,"20.10.2026, 17:30",nicht erfasst,start_datum/end_datum
+OFFER-EDITO-002,1,2026-11-09,2026-11-09,"09.11.2026, 17:30",nicht erfasst,start_datum/end_datum
+OFFER-EDITO-003,1,2026-11-12,2026-11-12,"12.11.2026, 17:30",nicht erfasst,start_datum/end_datum
+OFFER-EDITO-004,1,2026-11-17,2026-11-17,17.11.2026; Uhrzeit nicht publiziert,nicht erfasst,start_datum/end_datum
+OFFER-EDITO-005,1,2026-12-15,2026-12-15,"15.12.2026, 17:30",nicht erfasst,start_datum/end_datum
+OFFER-FERNUNI-001,1,2026-09-14,2027-05-02,14.09.2026–02.05.2027; Anmeldefrist 06.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-FERNUNI-003,1,2026-10-26,nicht erfasst,Start 26.10.2026; Anmeldefrist 11.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-FERNUNI-004,1,2027-01-18,2027-02-14,18.01.2027–14.02.2027; Anmeldefrist 03.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-FERNUNI-005,1,2027-02-22,2027-03-21,22.02.2027–21.03.2027; Anmeldefrist 07.02.2027,nicht erfasst,start_datum/end_datum
+OFFER-FERNUNI-006,1,2027-03-29,nicht erfasst,Start 29.03.2027; Anmeldefrist 14.03.2027,nicht erfasst,start_datum/end_datum
+OFFER-FF-002,1,2026-09-03,2027-04-01,03.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-FF-005,1,2027-03-03,2027-03-31,03.03.2027,nicht erfasst,start_datum/end_datum
+OFFER-FF-012,1,2027-06-21,2027-06-25,21.06.2027,nicht erfasst,start_datum/end_datum
+OFFER-FF-014,1,2027-05-21,2027-05-29,21.05.2027,nicht erfasst,start_datum/end_datum
+OFFER-FF-016,1,2027-07-19,2027-07-23,19.07.2027,nicht erfasst,start_datum/end_datum
+OFFER-FF-018,1,2026-11-05,2026-11-26,05.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-FHNW-008,1,2027-03-10,2027-03-24,10.03.2027,nicht erfasst,start_datum/end_datum
+OFFER-FHNW-010,1,2026-09-28,2026-09-28,28.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-FHNW-015,1,2026-10-23,nicht erfasst,23.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-FHNW-016,1,2026-10-30,2026-11-27,30.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-FHNW-017,1,2027-10-01,nicht erfasst,01.10.2027,nicht erfasst,start_datum/end_datum
+OFFER-FOCAL-009,1,2026-12-08,2026-12-11,08.–11.12.2026 in Bern und Zürich; Anmeldefrist 08.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-FOTOMUSEUM-001,1,2026-09-12,2026-09-12,12.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-GBZ-004,1,2026-10-21,2026-10-21,21.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-GBZ-005,1,2026-10-22,2026-10-22,22.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-GBZ-006,1,2026-10-23,2026-10-23,23.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-GBZ-007,1,2026-10-24,2026-10-24,24.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-GBZ-008,1,2026-10-31,2026-10-31,31.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-GBZ-009,1,2026-10-31,2026-10-31,31.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-GBZ-010,1,2026-11-07,2026-11-07,07.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-GBZ-011,1,2026-12-05,2026-12-05,05.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-GBZ-012,1,2027-01-16,2027-01-16,16.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-GBZ-013,1,2027-02-06,2027-02-06,06.02.2027,nicht erfasst,start_datum/end_datum
+OFFER-GBZ-014,1,2027-03-06,2027-03-06,06.03.2027,nicht erfasst,start_datum/end_datum
+OFFER-GBZ-015,1,2027-04-03,2027-04-03,03.04.2027,nicht erfasst,start_datum/end_datum
+OFFER-GBZ-016,1,2027-05-08,2027-05-08,08.05.2027,nicht erfasst,start_datum/end_datum
+OFFER-GIB-001,1,2026-08-29,2026-10-17,29.08.2026,nicht erfasst,start_datum/end_datum
+OFFER-HDS-SAL-002,1,2026-08-28,2027-06-19,28.08.2026,nicht erfasst,start_datum/end_datum
+OFFER-HELIAS-005,1,2026-10-03,2026-10-03,03.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-HELIAS-006,1,2026-10-08,2026-10-08,08.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-HELIAS-007,1,2026-10-15,2026-10-15,15.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-HELIAS-008,1,2026-10-17,2026-10-17,17.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-HELIAS-011,1,2026-11-06,2026-11-06,06.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-HELIAS-012,1,2026-11-14,2026-11-14,14.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-HELIAS-014,1,2026-11-13,2026-11-13,13.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-HKB-001,1,2027-09-20,nicht erfasst,Studienbeginn 20.09.2027; Anmeldefrist 15.03.2027,nicht erfasst,start_datum/end_datum
+OFFER-HSG-003,1,2026-11-18,2026-11-21,18.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-HSG-004,1,2026-09-02,2027-06-19,02.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-HSLU-WIRTSCHAFT-009,1,2026-10-23,2026-11-21,23.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-HSLU-WIRTSCHAFT-018,1,2027-02-26,2027-03-20,26.02.2027,nicht erfasst,start_datum/end_datum
+OFFER-HWZ-018,1,2027-06-07,2027-06-08,07.06.2027,nicht erfasst,start_datum/end_datum
+OFFER-IBAW-001,1,2026-10-22,2026-11-12,22.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-IBAW-012,1,2026-09-02,2026-10-07,02.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-IBAW-013,1,2026-09-14,2026-09-28,14.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-IBAW-021,1,2026-10-05,2026-10-07,05.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-IBAW-027,1,2026-10-21,2026-12-16,21.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-IFC-001,1,2026-11-18,nicht erfasst,18.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-IFC-004,1,2026-11-15,nicht erfasst,15.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-IFC-005,1,nicht erfasst,2026-10-03,Nächster Termin nicht publiziert (bisher 03.10.2026),nicht erfasst,start_datum/end_datum
+OFFER-IFC-006,1,nicht erfasst,2026-11-12,"Kurs am 11.10.2026 begonnen, zweite Lektion 12.11.2026; Kurs ausgebucht, neue Durchführung nicht publiziert",nicht erfasst,start_datum/end_datum
+OFFER-IFC-007,1,nicht erfasst,2026-12-09,Kurs seit 07.10.2026 laufend (weitere Lektionen bis 09.12.2026); nächste Ausgabe nicht publiziert,nicht erfasst,start_datum/end_datum
+OFFER-IFC-008,1,2026-10-07,nicht erfasst,Kurscode 26/27A-CRE-088-0008: Beide offiziellen URL-Varianten nennen beim gleichzeitigen Primärquellenabruf am 18.10.2026 den Beginn 07.10.2026. Kurs bereits begonnen; keine neue buchbare Ausgabe belegt.,nicht erfasst,start_datum/end_datum
+OFFER-IFC-010,1,2026-11-17,nicht erfasst,17.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-IFC-011,1,2026-10-18,nicht erfasst,18.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-IFC-013,1,2026-10-18,nicht erfasst,18.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-IFC-014,1,nicht erfasst,2026-11-12,"Kurs am 11.10.2026 begonnen; zweite Lektion 12.11.2026, nächste Ausgabe nicht publiziert",nicht erfasst,start_datum/end_datum
+OFFER-IFC-015,1,2026-10-15,nicht erfasst,15.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-IFC-016,1,2026-11-21,nicht erfasst,21.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-IFC-018,1,2026-10-28,nicht erfasst,28.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUB-MIDUCA-002,1,2026-11-26,2026-12-03,26.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUB-MIDUCA-003,1,2026-10-22,2026-10-22,22.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUB-MIDUCA-004,1,2026-12-05,2026-12-05,05.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUB-MIDUCA-005,1,2026-11-07,2027-02-13,07.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUB-MIDUCA-006,1,2026-11-14,2027-03-20,14.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUB-MIDUCA-007,1,2026-10-31,2027-03-20,31.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUB-MIDUCA-008,1,2026-11-19,2026-11-19,19.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUB-MIDUCA-009,1,2026-08-20,2026-10-29,20.08.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUB-MIDUCA-010,1,2026-08-31,2026-12-07,31.08.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUB-MIDUCA-012,1,2026-10-17,2026-10-17,17.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUB-MIDUCA-013,1,2026-12-12,2026-12-12,12.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUB-MIDUCA-014,1,2026-09-30,2026-10-07,30.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUB-MIDUCA-016,1,2026-10-03,2026-10-03,03.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUB-MIDUCA-017,1,2026-10-15,2026-11-05,15.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUB-MIDUCA-019,1,2026-10-13,2026-11-17,13.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUB-MIDUCA-020,1,2026-10-17,2026-10-17,17.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUB-MIDUCA-021,1,2026-11-28,2026-11-28,28.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUB-MIDUCA-026,1,2026-10-10,2026-10-10,10.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-002,1,2026-09-14,2026-10-19,14.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-003,1,2026-11-10,2026-12-01,10.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-005,1,2026-11-10,2026-12-01,10.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-006,1,2026-10-26,2026-11-16,26.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-007,1,2026-11-04,2026-12-16,04.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-012,1,2026-10-30,2026-11-06,30.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-013,1,2026-10-29,2026-11-19,29.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-014,1,2026-10-30,2026-11-20,30.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-015,1,2026-10-28,2026-11-18,28.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-019,1,2026-09-02,2027-03-31,02.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-025,1,2026-11-06,2026-12-04,06.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-027,1,2027-03-09,2027-03-11,09.03.2027,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-028,1,2027-04-06,2027-04-08,06.04.2027,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-029,1,2027-05-11,2027-05-13,11.05.2027,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-031,1,2026-10-01,2026-10-01,01.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-032,1,2027-08-30,2027-09-06,30.08.2027,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-034,1,2026-09-09,2026-10-07,09.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-035,1,2026-10-10,2026-10-10,10.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-047,1,2026-11-12,2026-11-12,12.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-048,1,2026-11-19,2026-11-19,19.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-049,1,2026-10-01,2026-10-08,01.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-050,1,2026-11-26,2026-11-26,26.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-051,1,2026-12-03,2026-12-10,03.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-054,1,2026-10-09,2027-04-30,09.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-056,1,2026-11-27,nicht erfasst,27.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-057,1,2026-10-12,2026-10-14,12.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-058,1,2026-10-12,2026-10-12,12.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-059,1,2026-10-13,2026-10-13,13.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-KLUBPRO-060,1,2026-10-14,2026-10-14,14.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-001,1,2027-06-03,2027-06-04,03.06.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-002,1,2026-12-10,2026-12-10,10.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-003,1,2027-05-13,2027-05-26,13.05.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-004,1,2026-11-11,2026-11-13,11.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-005,1,2026-11-02,2026-11-04,02.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-006,1,2027-06-14,2027-06-15,14.06.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-009,1,2027-01-11,2027-01-13,11.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-010,1,2027-01-21,2027-01-21,21.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-011,1,2026-10-15,2026-10-16,15.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-012,1,2026-10-01,2026-10-01,01.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-016,1,2026-09-07,2027-03-11,07.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-026,1,2027-03-01,2027-03-02,01.03.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-027,1,2027-08-31,2027-08-31,31.08.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-028,1,2027-04-22,2027-04-23,22.04.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-033,1,2026-09-28,2026-10-01,28.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-034,1,2026-11-26,2026-11-27,26.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-038,1,2026-11-27,2026-11-27,27.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-042,1,2026-10-20,2026-10-22,20.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-044,1,2026-11-19,2026-11-19,19.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-045,1,2026-11-02,2026-11-03,02.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-056,1,2027-01-14,2027-01-15,14.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-058,1,2026-10-12,2026-10-19,12.–19.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-059,1,2026-09-29,2026-09-30,29.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-064,1,2026-10-06,2026-10-07,06.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-070,1,2026-11-05,2026-11-05,05.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-071,1,2027-04-05,2027-04-06,05.04.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-075,1,2026-11-02,2027-06-15,02.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-077,1,2026-11-09,2026-11-13,09.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-079,1,2026-11-27,2026-11-27,27.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-080,1,2026-11-13,2026-11-13,13.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-085,1,2027-02-18,2027-02-18,18.02.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-086,1,2027-05-31,2028-04-19,31.05.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-087,1,2027-04-12,2027-04-13,12.04.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-088,1,2027-01-18,2027-01-19,18.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-089,1,2026-10-19,2026-10-20,19.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-090,1,2027-05-31,2027-06-01,31.05.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-091,1,2027-03-01,2027-03-02,01.03.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-092,1,2026-11-23,2026-11-24,23.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-093,1,2027-08-30,2027-08-31,30.08.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-094,1,2027-07-05,2027-07-06,05.07.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-099,1,2027-01-28,2027-01-28,28.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-100,1,2026-11-18,2026-11-18,18.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-105,1,2027-08-16,2027-08-18,16.08.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-107,1,2026-10-27,2026-10-28,27.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-108,1,2027-02-17,2027-02-18,17.02.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-109,1,2027-04-14,2027-04-15,14.04.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-113,1,2026-11-04,2026-11-05,04.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-116,1,2027-01-18,2027-01-20,18.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-118,1,2026-11-19,2026-11-19,19.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-119,1,2026-12-01,2026-12-01,01.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-120,1,2026-11-18,2026-11-18,18.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-121,1,2027-03-23,2027-03-24,23.03.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-122,1,2027-03-18,2027-03-18,18.03.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-123,1,2027-02-03,2027-02-03,03.02.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-124,1,2027-06-10,2027-06-11,10.–11.06.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-125,1,2027-01-28,2027-02-26,28.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-128,1,2026-12-02,2026-12-03,02.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-129,1,2026-10-05,2026-10-06,05.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-130,1,2026-12-04,2026-12-04,04.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-131,1,2026-11-19,2026-11-19,19.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-132,1,2027-03-15,2027-03-15,15.03.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-134,1,2026-12-01,2026-12-02,01.–02.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-135,1,2026-11-18,2026-11-18,18.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-137,1,2026-11-10,2026-11-27,10.–27.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-139,1,2026-09-21,2026-12-02,21.09.–02.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-142,1,2026-12-02,2026-12-02,02.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-143,1,2026-11-20,2027-01-22,20.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-145,1,2026-09-28,2026-09-29,28.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-146,1,2026-11-10,2026-11-11,10.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-148,1,2027-04-29,2027-04-29,29.04.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-149,1,2026-11-16,2026-11-17,16.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-150,1,2027-02-16,2027-02-17,16.02.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-151,1,2026-11-25,2026-11-25,25.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-154,1,2026-10-15,2026-10-16,15.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-155,1,2027-01-07,2027-01-08,07.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-156,1,2026-11-23,2026-11-23,23.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-161,1,2026-10-12,2026-10-12,12.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-163,1,2026-11-19,2026-11-19,19.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-167,1,2026-10-13,2026-10-13,13.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-168,1,2026-10-28,2026-10-28,28.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-176,1,2026-10-27,2026-11-17,27.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-177,1,2026-11-25,2026-11-25,25.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-178,1,2026-11-26,2026-11-26,26.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-179,1,2027-01-27,2027-01-27,27.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-181,1,2026-10-21,2026-10-21,21.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-182,1,2026-11-02,2026-11-04,02.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-183,1,2027-03-05,2027-04-09,05.03.2027,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-185,1,2026-12-10,2026-12-10,10.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-MAZ-186,1,2027-06-07,2027-06-07,07.06.2027,nicht erfasst,start_datum/end_datum
+OFFER-NOBLE-004,1,2026-11-30,nicht erfasst,30.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-NOBLE-006,1,2026-11-30,nicht erfasst,30.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-NOBLE-008,1,2026-12-01,nicht erfasst,01.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-NOBLE-013,1,2026-11-30,nicht erfasst,30.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-NOBLE-014,1,2026-11-30,nicht erfasst,30.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-NOBLE-016,1,2026-11-27,nicht erfasst,27.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-NOBLE-020,1,2026-11-30,nicht erfasst,30.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-NOBLE-021,1,2026-11-26,nicht erfasst,26.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-NOBLE-033,1,2026-11-27,nicht erfasst,27.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-NOBLE-034,1,2026-09-29,2026-09-29,29.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-NOBLE-035,1,2026-11-30,nicht erfasst,30.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-NOBLE-037,1,2026-11-24,nicht erfasst,24.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-NOBLE-044,1,2026-11-30,nicht erfasst,30.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-NOBLE-057,1,2026-11-30,nicht erfasst,30.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-NOBLE-064,1,2026-11-30,nicht erfasst,30.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-NOBLE-067,1,2026-11-26,nicht erfasst,"26.11.2026, 09:30 · Basel oder Live-Online",Basel / Live-Online,durchfuehrungen_anzeige
+OFFER-NOBLE-067,2,2026-12-10,nicht erfasst,"10.12.2026, 09:30 · Genf oder Live-Online",Genf (angeboten) / Live-Online,durchfuehrungen_anzeige
+OFFER-NOBLE-067,3,2026-12-24,nicht erfasst,"24.12.2026, 09:30 · Lausanne oder Live-Online",Lausanne (angeboten) / Live-Online,durchfuehrungen_anzeige
+OFFER-NOBLE-067,4,2027-01-07,nicht erfasst,"07.01.2027, 09:30 · Zürich oder Live-Online",Zürich (angeboten) / Live-Online,durchfuehrungen_anzeige
+OFFER-NOMADES-003,1,2026-09-23,2026-10-01,23.09.2026–01.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-003,1,2026-11-19,nicht erfasst,19.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-005,1,2026-10-05,2026-10-05,05.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-006,1,2026-12-14,nicht erfasst,14.12.2026 (Live-Online),nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-007,1,2026-12-02,nicht erfasst,02.12.2026 (Live-Online),nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-009,1,2026-12-16,nicht erfasst,16.12.2026 (Live-Online),nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-010,1,2027-07-01,nicht erfasst,01.07.2027,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-011,1,2026-12-10,nicht erfasst,10.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-012,1,2027-03-22,nicht erfasst,22.03.2027,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-014,1,2026-12-10,nicht erfasst,10.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-018,1,2027-01-13,nicht erfasst,13.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-019,1,2026-11-23,nicht erfasst,23.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-022,1,2026-10-19,nicht erfasst,19.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-024,1,2027-11-04,nicht erfasst,04.11.2027,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-026,1,2026-10-21,nicht erfasst,21.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-030,1,2026-11-30,nicht erfasst,30.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-039,1,2027-07-05,nicht erfasst,05.07.2027,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-041,1,2027-04-01,2027-04-02,01.–02.04.2027 · Live-Online,Live-Online,durchfuehrungen_anzeige
+OFFER-ORSYS-041,2,2027-07-01,2027-07-02,01.–02.07.2027 · Live-Online,Live-Online,durchfuehrungen_anzeige
+OFFER-ORSYS-041,3,2027-09-06,2027-09-07,06.–07.09.2027 · Live-Online,Live-Online,durchfuehrungen_anzeige
+OFFER-ORSYS-041,4,2027-12-16,2027-12-17,16.–17.12.2027 · Live-Online,Live-Online,durchfuehrungen_anzeige
+OFFER-ORSYS-042,1,2026-12-07,nicht erfasst,07.12.2026 (Live-Online),nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-045,1,2026-10-29,nicht erfasst,29.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-048,1,2026-10-19,nicht erfasst,19.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-050,1,2026-11-18,nicht erfasst,18.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-051,1,2026-12-21,nicht erfasst,21.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-052,1,2027-06-14,nicht erfasst,14.06.2027,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-054,1,2026-12-03,nicht erfasst,03.12.2026 (Live-Online),nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-055,1,2027-09-16,nicht erfasst,16.09.2027,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-057,1,2026-12-09,nicht erfasst,09.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-058,1,2026-10-21,nicht erfasst,21.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-063,1,2026-11-17,2026-11-20,17.–20.11.2026 – Live-Online / Classe à distance; Kursbeginn gemäss offizieller ORSYS-Durchführung (Buchbarkeit nicht geprüft),nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-064,1,2026-11-03,nicht erfasst,03.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-066,1,2026-11-02,nicht erfasst,02.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-069,1,2026-11-23,nicht erfasst,23.11.2026 (Live-Online),nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-070,1,2027-02-22,nicht erfasst,22.02.2027 (Live-Online),nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-075,1,2026-12-10,nicht erfasst,10.12.2026 (Live-Online),nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-076,1,2026-12-03,nicht erfasst,03.12.2026 (Live-Online),nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-078,1,2026-11-18,nicht erfasst,18.11.2026 (Live-Online),nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-079,1,2026-10-07,2026-10-07,07.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-080,1,2026-12-03,nicht erfasst,03.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-082,1,2026-12-10,nicht erfasst,10.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-083,1,2026-12-02,nicht erfasst,02.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-086,1,2026-12-10,nicht erfasst,10.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-088,1,2027-03-18,nicht erfasst,18.03.2027,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-090,1,2027-11-25,nicht erfasst,25.11.2027,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-094,1,2027-03-11,nicht erfasst,11.03.2027,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-099,1,2026-12-10,nicht erfasst,10.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-103,1,2026-12-16,nicht erfasst,16.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-104,1,2026-12-16,nicht erfasst,16.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-107,1,2026-10-26,nicht erfasst,26.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-108,1,2026-10-14,nicht erfasst,14.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-113,1,2027-11-04,nicht erfasst,04.11.2027,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-114,1,2027-05-31,nicht erfasst,31.05.2027,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-116,1,2026-10-26,nicht erfasst,26.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-117,1,2026-12-09,2026-12-09,09.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-118,1,2027-05-10,nicht erfasst,10.05.2027,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-119,1,2026-10-06,2026-10-06,06.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-120,1,2026-12-08,nicht erfasst,08.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-121,1,2026-11-13,2026-11-13,13.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-122,1,2026-12-10,nicht erfasst,10.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-123,1,2026-12-01,2026-12-01,01.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-129,1,2026-10-01,2026-10-01,01.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-132,1,2027-06-21,nicht erfasst,21.06.2027,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-135,1,2026-10-15,nicht erfasst,15.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-137,1,2026-11-17,nicht erfasst,17.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-138,1,2026-12-02,nicht erfasst,02.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-139,1,2027-03-22,nicht erfasst,22.03.2027,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-141,1,2027-03-15,nicht erfasst,15.03.2027,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-143,1,2027-02-15,nicht erfasst,15.02.2027,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-144,1,2026-12-03,nicht erfasst,03.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-146,1,2026-12-14,nicht erfasst,14.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-148,1,2026-11-25,nicht erfasst,25.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-149,1,2027-09-27,2027-09-27,27.09.2027,nicht erfasst,start_datum/end_datum
+OFFER-ORSYS-151,1,2026-11-25,nicht erfasst,25.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-PUBLICOLLEGE-001,1,2027-03-02,nicht erfasst,"02.03.2027, 17:30–20:45",nicht erfasst,start_datum/end_datum
+OFFER-SAEZH-005,1,2026-10-14,2026-10-14,14.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-SAEZH-006,1,2026-10-16,2026-10-16,16.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-SAEZH-007,1,2026-10-16,2026-10-16,16.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-SAEZH-010,1,2027-01-19,2027-01-19,19.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-SAEZH-011,1,2027-01-21,2027-01-21,21.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-SASJ-001,1,2026-11-12,2026-11-13,Anmeldeschluss 11.11.2026; Seminar 12.–13.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-SAWI-002,1,2026-11-06,2027-11-12,06.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-SAWI-003,1,2026-11-09,2027-03-13,09.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-SAWI-007,1,2026-09-26,2026-12-19,26.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-SBVV-011,1,2026-09-29,2026-09-29,29.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-SBVV-012,1,2026-10-07,2026-10-07,07.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-SBVV-014,1,2026-11-06,2026-11-06,06.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-SBVV-015,1,2026-11-11,nicht erfasst,11.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-SBVV-016,1,2026-11-28,2026-11-28,28.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-SBVV-017,1,2026-12-08,2026-12-08,08.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-SBVV-018,1,2027-02-17,2027-02-17,17.02.2027,nicht erfasst,start_datum/end_datum
+OFFER-SBVV-019,1,2027-03-25,nicht erfasst,25.03.2027,nicht erfasst,start_datum/end_datum
+OFFER-SFGB-001,1,2026-11-16,2026-12-14,16.11.–14.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-SFGB-006,1,2026-10-12,2026-12-07,12.10.–07.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-SFGB-007,1,2026-08-24,2026-11-02,24.08.–02.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-SFGB-009,1,2026-08-10,2027-01-11,10.08.2026–11.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-SFGB-010,1,2026-08-24,2027-01-04,24.08.2026–04.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-SFGB-011,1,2026-08-11,2027-01-12,11.08.2026–12.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-SFGB-012,1,2026-08-12,2027-01-13,12.08.2026–13.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-SFGB-014,1,2026-09-03,2027-01-14,03.09.2026–14.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-SFGB-015,1,2026-10-17,2026-12-12,17.10.–12.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-SFGBB-001,1,2026-10-17,2026-10-25,17.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-SFGZ-004,1,2026-10-22,2027-01-21,22.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-SFGZ-005,1,2026-08-31,2027-01-25,31.08.2026,nicht erfasst,start_datum/end_datum
+OFFER-SFGZ-006,1,2026-09-21,2026-12-14,21.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-SFGZ-009,1,2026-10-23,2026-11-13,23.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-SFGZ-010,1,2026-08-26,2026-09-30,26.08.2026,nicht erfasst,start_datum/end_datum
+OFFER-SFGZ-011,1,2026-10-28,2026-12-02,28.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-SFGZ-012,1,2026-10-19,2026-11-30,19.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-SGP-001,1,2026-11-18,2026-12-09,18.11.–09.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-SGP-002,1,2027-01-13,2027-06-07,13.01.–07.06.2027,nicht erfasst,start_datum/end_datum
+OFFER-SGP-003,1,2026-10-02,2026-10-04,02.–04.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-SGP-004,1,2027-05-12,2027-05-19,12.05. und 19.05.2027,nicht erfasst,start_datum/end_datum
+OFFER-SGP-005,1,2026-10-07,2026-10-14,07. und 14.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-SGP-006,1,2026-10-28,nicht erfasst,Start 28.10.2026; weiterer Verlauf über aktuelle Buchungsoberfläche,nicht erfasst,start_datum/end_datum
+OFFER-SGP-008,1,2026-11-06,2026-11-07,06.–07.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-SGP-009,1,2026-10-13,2026-10-13,13.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-SGP-010,1,2026-10-27,2026-10-27,27.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-SUPSI-002,1,2027-02-15,2027-03-15,15.02.2027,nicht erfasst,start_datum/end_datum
+OFFER-SUPSI-003,1,2026-11-14,2027-04-24,14.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-SUPSI-004,1,2026-11-14,2026-11-14,14.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-SUPSI-005,1,2026-11-25,2026-12-12,25.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-SUPSI-006,1,2027-01-13,2027-01-23,13.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-SUPSI-007,1,2027-02-10,2027-02-20,10.02.2027,nicht erfasst,start_datum/end_datum
+OFFER-SUPSI-008,1,2027-03-03,2027-03-13,03.03.2027,nicht erfasst,start_datum/end_datum
+OFFER-UNIBE-005,1,2026-10-23,2026-12-11,23.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-UNIBE-006,1,2026-10-23,2026-12-18,23.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-UNIBE-007,1,2027-01-25,2027-01-29,25.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-UNIBE-009,1,2026-10-12,2026-10-16,12.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-UNIBE-010,1,2026-10-23,2026-11-26,23.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-UNIBE-011,1,2027-01-04,2027-01-08,04.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-UNIGE-004,1,2026-11-20,2026-11-28,20.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-UNIGE-005,1,2026-11-06,2026-12-19,06.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-UNIGE-009,1,2027-04-23,2027-05-22,23.04.2027,nicht erfasst,start_datum/end_datum
+OFFER-UNIGE-010,1,2027-06-04,2027-06-12,04.06.2027,nicht erfasst,start_datum/end_datum
+OFFER-UNIL-002,1,2026-10-30,2026-10-30,30.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-UZH-001,1,2026-09-18,2027-05-22,18.09.2026–22.05.2027; Anmeldeschluss für diesen Jahrgang war 31.07.2026,nicht erfasst,start_datum/end_datum
+OFFER-UZHDSI-001,1,2026-09-24,2026-12-03,OSINT-Wahlpflichtmodul HS 2026 – begonnen; nur zugelassene Doktorierende,nicht erfasst,start_datum/end_datum
+OFFER-VSM-001,1,2026-11-17,2026-11-17,17.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-VSM-003,1,2026-10-05,2026-10-05,05.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-VSM-004,1,2027-01-07,2027-01-07,07.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-WEKA-004,1,2026-11-11,2026-11-11,11.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-WEKA-005,1,2026-11-04,2026-11-04,04.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-WEKA-006,1,2026-12-01,2026-12-01,01.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-WISS-004,1,2026-09-28,2026-10-26,28.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-ZB-001,1,2026-09-14,2026-10-12,14.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-ZB-002,1,2026-09-28,2026-09-28,28.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-ZB-003,1,2026-11-07,2026-11-08,07.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-ZB-005,1,2026-10-17,2026-10-17,17.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-ZB-011,1,2027-03-04,2028-09-15,04.03.2027,nicht erfasst,start_datum/end_datum
+OFFER-ZB-012,1,2026-11-07,2026-11-07,07.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-ZHAW-002,1,2027-01-07,2027-03-19,07.01.2027,nicht erfasst,start_datum/end_datum
+OFFER-ZHAW-009,1,2026-11-18,2026-11-19,18.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-ZHAW-ILC-001,1,2027-09-17,nicht erfasst,17.09.2027 09:00,nicht erfasst,start_datum/end_datum
+OFFER-ZHAW-SML-WBK-001,1,2026-11-13,2026-11-14,13.11.2026; weitere Durchführung 11.12.2026,nicht erfasst,start_datum/end_datum
+OFFER-ZHDK-002,1,2026-09-04,2027-02-19,04.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-ZHDK-003,1,2027-03-19,2027-12-03,19.03.2027,nicht erfasst,start_datum/end_datum
+OFFER-ZHDK-004,1,2026-09-14,2027-02-08,14.09.2026,nicht erfasst,start_datum/end_datum
+OFFER-ZHDK-005,1,2027-03-05,2027-12-10,05.03.2027,nicht erfasst,start_datum/end_datum
+OFFER-ZHDK-014,1,2026-10-26,2026-11-26,26.10.2026,nicht erfasst,start_datum/end_datum
+OFFER-ZLI-003,1,2026-11-17,2026-11-17,17.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-ZLI-005,1,2026-11-05,2026-11-05,05.11.2026,nicht erfasst,start_datum/end_datum
+OFFER-ZLI-011,1,2026-12-14,nicht erfasst,14.12.2026,nicht erfasst,start_datum/end_datum
+PCC-P01,1,2026-11-23,2026-11-24,23.–24.11.2026,nicht erfasst,durchfuehrungen
+PCC-P01,2,2026-12-14,2026-12-15,14.–15.12.2026,nicht erfasst,durchfuehrungen
+PCC-P01,3,2027-01-04,2027-01-05,04.–05.01.2027,nicht erfasst,durchfuehrungen
+PCC-P02,1,2026-10-22,2026-10-23,22.–23.10.2026 · Live-Online,Live-Online (kein Präsenzort),durchfuehrungen_anzeige
+PCC-P02,2,2026-12-14,2026-12-15,14.–15.12.2026 · Live-Online,Live-Online (kein Präsenzort),durchfuehrungen_anzeige
+PCC-P03,1,2026-10-21,2026-10-23,21.–23.10.2026,nicht erfasst,durchfuehrungen
+PCC-P03,2,2026-11-18,2026-11-20,18.–20.11.2026,nicht erfasst,durchfuehrungen
+PCC-P03,3,2026-12-16,2026-12-18,16.–18.12.2026,nicht erfasst,durchfuehrungen
+PCC-P03,4,2027-01-06,2027-01-08,06.–08.01.2027,nicht erfasst,durchfuehrungen
+PCC-P04,1,2026-10-21,2026-10-23,21.–23.10.2026,nicht erfasst,durchfuehrungen
+PCC-P04,2,2026-10-28,2026-10-30,28.–30.10.2026,nicht erfasst,durchfuehrungen
+PCC-P04,3,2026-11-23,2026-11-25,23.–25.11.2026,nicht erfasst,durchfuehrungen
+PCC-P04,4,2026-12-21,2026-12-23,21.–23.12.2026,nicht erfasst,durchfuehrungen
+PCC-P05,1,2026-10-21,2026-10-23,21.–23.10.2026,nicht erfasst,durchfuehrungen
+PCC-P05,2,2026-10-26,2026-10-28,26.–28.10.2026 · Live-Online,nicht erfasst,durchfuehrungen
+PCC-P05,3,2026-11-18,2026-11-20,18.–20.11.2026,nicht erfasst,durchfuehrungen
+PCC-P05,4,2026-12-01,2026-12-03,01.–03.12.2026 · Live-Online,nicht erfasst,durchfuehrungen
+PCC-P05,5,2026-12-16,2026-12-18,16.–18.12.2026,nicht erfasst,durchfuehrungen
+PCC-P05,6,2027-01-06,2027-01-08,06.–08.01.2027,nicht erfasst,durchfuehrungen
+PCC-P06,1,2026-11-09,2026-11-11,09.–11.11.2026,nicht erfasst,durchfuehrungen
+PCC-P06,2,2026-11-30,2026-12-02,30.11.2026–02.12.2026,nicht erfasst,durchfuehrungen
+PCC-P06,3,2027-01-25,2027-01-27,25.–27.01.2027,nicht erfasst,durchfuehrungen
+PCC-P07,1,2026-10-27,2026-10-28,27.–28.10.2026,nicht erfasst,durchfuehrungen
+PCC-P07,2,2026-11-30,2026-12-01,30.11.2026–01.12.2026,nicht erfasst,durchfuehrungen
+PCC-P07,3,2027-01-11,2027-01-12,11.–12.01.2027,nicht erfasst,durchfuehrungen
+PCC-P08,1,2026-10-29,nicht erfasst,29.10.2026–30.10.2026; weiterer Termin im Dezember,nicht erfasst,start_datum/end_datum
+PCC-P09,1,2026-10-29,2026-10-30,29.–30.10.2026,nicht erfasst,durchfuehrungen
+PCC-P09,2,2026-11-26,2026-11-27,26.–27.11.2026,nicht erfasst,durchfuehrungen
+PCC-P09,3,2027-01-14,2027-01-15,14.–15.01.2027,nicht erfasst,durchfuehrungen
+PCC-P10,1,2026-11-05,2026-11-06,05.–06.11.2026,nicht erfasst,durchfuehrungen
+PCC-P10,2,2026-11-11,2026-11-12,11.–12.11.2026,nicht erfasst,durchfuehrungen
+PCC-P10,3,2026-11-26,2026-11-27,26.–27.11.2026,nicht erfasst,durchfuehrungen
+PCC-P10,4,2026-11-30,2026-12-01,30.11.2026–01.12.2026,nicht erfasst,durchfuehrungen
+PCC-P11,1,2026-10-26,2026-10-27,26.–27.10.2026,nicht erfasst,durchfuehrungen
+PCC-P11,2,2026-10-29,2026-10-30,29.–30.10.2026,nicht erfasst,durchfuehrungen
+PCC-P11,3,2026-11-26,2026-11-27,26.–27.11.2026,nicht erfasst,durchfuehrungen
+PCC-P12,1,2026-12-07,2026-12-08,07.–08.12.2026,nicht erfasst,durchfuehrungen
+PCC-P12,2,2026-12-09,2026-12-10,09.–10.12.2026,nicht erfasst,durchfuehrungen
+PCC-P12,3,2027-02-01,2027-02-02,01.–02.02.2027,nicht erfasst,durchfuehrungen
+PCC-P13,1,2026-11-06,nicht erfasst,06.11.2026,nicht erfasst,start_datum/end_datum
+PCC-P14,1,2026-11-02,2026-11-04,02.11.2026–04.11.2026 (gemäss PC-COLLEGE Schweiz; Stand 14.10.2026),nicht erfasst,start_datum/end_datum
+PCC-P15,1,2026-10-19,2026-10-20,19.10.2026–20.10.2026,nicht erfasst,start_datum/end_datum
+PCC-P16,1,2026-10-23,2026-10-23,23.10.2026 · Live-Online,Live-Online (kein Präsenzort),durchfuehrungen_anzeige
+PCC-P16,2,2026-11-20,2026-11-20,20.11.2026 · Live-Online,Live-Online (kein Präsenzort),durchfuehrungen_anzeige
+PCC-P16,3,2026-12-18,2026-12-18,18.12.2026 · Live-Online,Live-Online (kein Präsenzort),durchfuehrungen_anzeige
+PCC-P18,1,2026-10-15,2026-10-16,15.10.2026–16.10.2026,nicht erfasst,start_datum/end_datum
+PCC-P19,1,2026-11-06,nicht erfasst,06.11.2026; Termine auf Anfrage ebenfalls möglich,nicht erfasst,start_datum/end_datum
+PCC-P20,1,2026-11-04,2026-11-06,04.11.2026–06.11.2026,nicht erfasst,start_datum/end_datum
+PCC-P21,1,2026-10-30,2026-10-30,30.10.2026 (gemäss PC-COLLEGE Schweiz; Stand 14.10.2026),nicht erfasst,start_datum/end_datum
+PCC-P23,1,2026-10-30,2026-10-30,30.10.2026 · Live-Online,Live-Online (kein Präsenzort),durchfuehrungen_anzeige
+PCC-P23,2,2026-12-23,2026-12-23,23.12.2026 · Live-Online,Live-Online (kein Präsenzort),durchfuehrungen_anzeige
+PCC-P23,3,2027-01-15,2027-01-15,15.01.2027 · Live-Online,Live-Online (kein Präsenzort),durchfuehrungen_anzeige
+PCC-P23,4,2027-02-12,2027-02-12,12.02.2027 · Live-Online,Live-Online (kein Präsenzort),durchfuehrungen_anzeige
+PCC-P23,5,2027-03-12,2027-03-12,12.03.2027 · Live-Online,Live-Online (kein Präsenzort),durchfuehrungen_anzeige
+PCC-P23,6,2027-04-09,2027-04-09,09.04.2027 · Live-Online,Live-Online (kein Präsenzort),durchfuehrungen_anzeige
+PCC-P23,7,2027-05-07,2027-05-07,07.05.2027 · Live-Online,Live-Online (kein Präsenzort),durchfuehrungen_anzeige
+PCC-P24,1,2026-10-01,2026-10-02,2026-10-01–2026-10-02 / FUTURE_SESSION_CONFIRMED,nicht erfasst,start_datum/end_datum
+PCC-P25,1,2026-10-05,2026-10-06,2026-10-05–2026-10-06 / FUTURE_SESSION_CONFIRMED,nicht erfasst,start_datum/end_datum
+PCC-P26,1,2026-11-26,2026-11-27,26.–27.11.2026,nicht erfasst,durchfuehrungen
+PCC-P27,1,2026-11-05,2026-11-06,05.11.2026–06.11.2026,nicht erfasst,start_datum/end_datum
+PCC-P28,1,2026-10-22,2026-10-23,22.–23.10.2026,nicht erfasst,durchfuehrungen
+PCC-P28,2,2026-12-14,2026-12-15,14.–15.12.2026,nicht erfasst,durchfuehrungen
+PCC-P28,3,2027-01-04,2027-01-05,04.–05.01.2027,nicht erfasst,durchfuehrungen
+PCC-P29,1,2026-12-07,2026-12-08,07.–08.12.2026 · Live-Online,Live-Online,durchfuehrungen_anzeige
+PCC-P29,2,2026-12-09,2026-12-10,09.–10.12.2026 · Basel / Bern / Zürich,Basel / Bern / Zürich,durchfuehrungen_anzeige
+PCC-P30,1,2026-11-20,nicht erfasst,20.11.2026,nicht erfasst,start_datum/end_datum
+PCC-P31,1,2026-12-03,2026-12-04,03.–04.12.2026,nicht erfasst,durchfuehrungen
+PCC-P33,1,2026-10-29,nicht erfasst,Historisch dokumentierte Ankündigungen: 29.–30.10. und 21.–22.12.2026. Derzeit keine Durchführung angeboten; diese Daten sind keine aktuellen Kursausgaben.,nicht erfasst,start_datum/end_datum
+PCC-P38,1,2026-10-01,2026-10-02,01.10.2026–02.10.2026 next future; 23.11–24.11.2026 also published,nicht erfasst,start_datum/end_datum
+PCC-P39,1,2026-11-26,2026-11-27,26.–27.11.2026,nicht erfasst,durchfuehrungen
+PCC-P40,1,2026-11-23,2026-11-24,23.–24.11.2026,nicht erfasst,durchfuehrungen
+PCC-P41,1,2026-11-06,2026-11-06,2026-11-06 / FUTURE_SESSION_CONFIRMED,nicht erfasst,start_datum/end_datum
+PJ-V16-01,1,2027-01-11,2027-04-09,11.–12.01.2027 und 08.–09.04.2027,nicht erfasst,start_datum/end_datum
+PJ-V16-07,1,2028-03-13,2028-06-09,Angekündigte Unterrichtstage: 13.03.2028 und 09.06.2028; Verfügbarkeit beim Anbieter prüfen.,nicht erfasst,start_datum/end_datum
+UNIGE-V22-03,1,2027-02-03,2027-02-17,03.02.–17.02.2027,nicht erfasst,start_datum/end_datum
+V52-MEEL-INSTAGRAM,1,nicht erfasst,2026-10-09,Nächster Termin nicht publiziert (bisher 09.10.2026 14:00–16:30),nicht erfasst,start_datum/end_datum
+V58-S1-03,1,2027-04-05,2027-04-07,05.04.2027–07.04.2027; weiterer Termin: 08.11.–10.11.2027,nicht erfasst,start_datum/end_datum
+V58-S1-04,1,2026-11-09,2026-11-11,09.11.2026–11.11.2026 ausgebucht; next bookable 08.03.2027–10.03.2027,nicht erfasst,start_datum/end_datum
+V58-S1-06,1,2027-03-01,2027-03-15,"01.03.2027, 08.03.2027, 15.03.2027; zusätzlich 3-tägige Variante im August 2027",nicht erfasst,start_datum/end_datum
+V58-S1-07,1,2026-11-02,2026-11-04,02.–04.11.2026 · Wallisellen,nicht erfasst,durchfuehrungen
+V58-S1-07,2,2027-02-08,2027-02-10,08.–10.02.2027 · Wallisellen,nicht erfasst,durchfuehrungen
+V58-S1-07,3,2027-06-21,2027-06-23,21.–23.06.2027 · Wallisellen,nicht erfasst,durchfuehrungen
+V58-S1-07,4,2027-10-04,2027-10-06,04.–06.10.2027 · Wallisellen,nicht erfasst,durchfuehrungen
+V59-SZ01,1,2026-11-17,nicht erfasst,17.11.2026,nicht erfasst,start_datum/end_datum
+V59-SZ04,1,2026-11-10,nicht erfasst,10.11.2026,nicht erfasst,start_datum/end_datum
+V77-04,1,2026-10-15,2026-11-20,15.10.2026 and 20.11.2026 bookable,nicht erfasst,start_datum/end_datum
+V78-01,1,2026-11-02,2026-11-03,02.–03.11.2026 · Genf / virtuell,"Genf, Route des Jeunes 35 / virtuell",durchfuehrungen_anzeige
+V78-01,2,2026-12-07,2026-12-08,07.–08.12.2026 · Lausanne / virtuell,"Lausanne, Av. Mon-Repos 24 / virtuell",durchfuehrungen_anzeige
+V78-02,1,2026-11-12,2026-11-13,12.–13.11.2026 · Lausanne / virtuell,"Lausanne, Av. Mon-Repos 24 / virtuell",durchfuehrungen_anzeige
+V78-02,2,2026-12-17,2026-12-18,17.–18.12.2026 · Genf / virtuell,"Genf, Route des Jeunes 35 / virtuell",durchfuehrungen_anzeige
+V78-03,1,2026-10-19,2026-10-20,19.10.2026–20.10.2026 Genf + virtuell; 23.11.2026–24.11.2026 Lausanne + virtuell,nicht erfasst,start_datum/end_datum
+V78-04,1,2026-10-29,2026-10-30,29.–30.10.2026 · Lausanne oder Live-Online,"Lausanne, Avenue Mon-Repos 24 / Live-Online",durchfuehrungen_anzeige
+V78-04,2,2026-12-03,2026-12-04,03.–04.12.2026 · Genf oder Live-Online,"Genf, Route des Jeunes 35 / Live-Online",durchfuehrungen_anzeige
+V78-05,1,2026-11-18,2026-11-20,18.–20.11.2026 · Genf / virtuell,"Genf, Route des Jeunes 35 / virtuell",durchfuehrungen_anzeige
+V78-05,2,2027-01-04,2027-01-06,04.–06.01.2027 · Lausanne / virtuell,"Lausanne, Av. Mon-Repos 24 / virtuell",durchfuehrungen_anzeige
+V79-01,1,2026-09-22,2026-09-30,22.09.2026–30.09.2026,nicht erfasst,start_datum/end_datum
+V79-02,1,nicht erfasst,2026-10-13,Nächster Termin nicht publiziert (bisher 13.10.2026),nicht erfasst,start_datum/end_datum
+V82-DAWAN-001,1,2026-09-28,2026-09-30,2026-09-28–2026-09-30,nicht erfasst,start_datum/end_datum
+V82-DAWAN-002,1,2026-10-01,2026-10-02,2026-10-01–2026-10-02,nicht erfasst,start_datum/end_datum
+V82-DAWAN-008,1,2026-10-05,2026-10-07,2026-10-05–2026-10-07,nicht erfasst,start_datum/end_datum
+V82-DAWAN-010,1,2026-09-28,2026-09-30,2026-09-28–2026-09-30,nicht erfasst,start_datum/end_datum
+V82-DAWAN-011,1,2026-10-01,2026-10-02,2026-10-01–2026-10-02,nicht erfasst,start_datum/end_datum
+V82-DAWAN-012,1,2026-11-02,2026-11-04,2026-11-02–2026-11-04,nicht erfasst,start_datum/end_datum
+V82-DAWAN-013,1,2026-11-16,2026-11-18,2026-11-16–2026-11-18,nicht erfasst,start_datum/end_datum
+V82-DAWAN-014,1,2026-10-12,2026-10-14,2026-10-12–2026-10-14,nicht erfasst,start_datum/end_datum
+V82-DAWAN-015,1,2026-10-15,2026-10-16,2026-10-15–2026-10-16,nicht erfasst,start_datum/end_datum
+V82-DAWAN-016,1,2026-09-28,2026-10-02,2026-09-28–2026-10-02,nicht erfasst,start_datum/end_datum
+V82-DAWAN-017,1,2026-10-26,2026-10-30,2026-10-26–2026-10-30,nicht erfasst,start_datum/end_datum
+V82-DAWAN-019,1,2026-10-12,2026-10-14,2026-10-12–2026-10-14,nicht erfasst,start_datum/end_datum
+V82-DAWAN-020,1,2026-10-15,2026-10-16,2026-10-15–2026-10-16,nicht erfasst,start_datum/end_datum
+V82-DAWAN-023,1,2026-10-05,2026-10-07,2026-10-05–2026-10-07,nicht erfasst,start_datum/end_datum
+V82-DAWAN-024,1,2026-10-05,2026-10-07,2026-10-05–2026-10-07,nicht erfasst,start_datum/end_datum
+V82-DAWAN-025,1,2026-10-08,2026-10-09,2026-10-08–2026-10-09,nicht erfasst,start_datum/end_datum
+V82-DAWAN-027,1,2026-09-28,2026-10-02,2026-09-28–2026-10-02,nicht erfasst,start_datum/end_datum
+V82-DAWAN-028,1,2026-09-28,2026-09-30,2026-09-28–2026-09-30,nicht erfasst,start_datum/end_datum
+V82-DAWAN-029,1,2026-10-22,2026-10-23,2026-10-22–2026-10-23,nicht erfasst,start_datum/end_datum
+V82-DAWAN-035,1,2026-09-28,2026-09-30,2026-09-28–2026-09-30,nicht erfasst,start_datum/end_datum
+V82-DAWAN-036,1,2026-10-01,2026-10-02,2026-10-01–2026-10-02,nicht erfasst,start_datum/end_datum
+V82-DAWAN-037,1,2026-10-26,2026-10-28,26.–28.10.2026 · Live-Online,Online,durchfuehrungen_anzeige
+V82-DAWAN-037,2,2026-11-30,2026-12-02,30.11.–02.12.2026 · Live-Online,Online,durchfuehrungen_anzeige
+V82-DAWAN-038,1,2026-10-01,2026-10-02,2026-10-01–2026-10-02,nicht erfasst,start_datum/end_datum
+V82-DAWAN-039,1,2026-11-02,2026-11-03,02.–03.11.2026 · Live-Online,Online,durchfuehrungen_anzeige
+V82-DAWAN-039,2,2026-11-12,2026-11-13,12.–13.11.2026 · Live-Online,Online,durchfuehrungen_anzeige
+V82-DAWAN-042,1,2026-09-28,2026-09-30,2026-09-28–2026-09-30,nicht erfasst,start_datum/end_datum
+V82-DAWAN-043,1,2026-10-08,2026-10-09,2026-10-08–2026-10-09,nicht erfasst,start_datum/end_datum
+V82-DAWAN-046,1,2026-10-05,2026-10-07,2026-10-05–2026-10-07,nicht erfasst,start_datum/end_datum
+V82-DAWAN-049,1,2026-11-16,2026-11-18,2026-11-16–2026-11-18,nicht erfasst,start_datum/end_datum
+V82-DAWAN-050,1,2026-10-01,2026-10-02,2026-10-01–2026-10-02,nicht erfasst,start_datum/end_datum
+V82-DAWAN-065,1,2026-11-26,2026-11-27,2026-11-26–2026-11-27,nicht erfasst,start_datum/end_datum
+V82-DAWAN-066,1,2026-09-28,2026-09-30,2026-09-28–2026-09-30,nicht erfasst,start_datum/end_datum
+V82-DAWAN-070,1,2026-09-28,2026-09-30,2026-09-28–2026-09-30,nicht erfasst,start_datum/end_datum
+V82-DAWAN-094,1,2026-10-28,2026-10-28,2026-10-28,nicht erfasst,start_datum/end_datum
+V82-DAWAN-100,1,2026-09-28,2026-09-30,2026-09-28–2026-09-30,nicht erfasst,start_datum/end_datum
+LI-REG-006,1,2026-10-29,2026-10-29,"29. Oktober 2026, 17:15–19:45",nicht erfasst,start_datum/end_datum
+OFFER-DIGICOMP-075,1,2027-03-01,2027-03-02,01.–02.03.2027,nicht erfasst,durchfuehrungen
+OFFER-DIGICOMP-075,2,2027-06-14,2027-06-15,14.–15.06.2027,nicht erfasst,durchfuehrungen
+OFFER-DIGICOMP-075,3,2027-09-02,2027-09-03,02.–03.09.2027,nicht erfasst,durchfuehrungen
+OFFER-DIGICOMP-075,4,2027-12-20,2027-12-21,20.–21.12.2027,nicht erfasst,durchfuehrungen

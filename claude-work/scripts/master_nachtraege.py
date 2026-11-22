@@ -9,7 +9,10 @@ Unverändert: Basis, Anzeigefelder am Ende (Paket 24 A1: termin_, ort_, dauer_, 
 leer = Original gilt), Platzhalterregel SENT, Regeln P24 A4/A5, der Lieferform-Schritt aus Paket 25 (unten; nach den
 Läufen bis 022, vor den Läufen ab 026), die Ausgabeform. Keine stillen Überschreibungen (Projektregel 6).
 Idempotent: Eingabe ist immer die Basis.
-Aufruf (aus claude-work/): python3 -I scripts/master_nachtraege.py --out paket3/out [--eingang eingang]"""
+Paket 27 (SPEZIFIKATION_PAKET27_20261122.md A1–A3, E214): nach dem Lieferform-Schritt der Modellschritt 026 (scripts/eingang.py)
+mit der Anbieter-Tabelle daten/anbieter.csv; zusätzliche Ausgaben anbieter_aktuell.csv und anbieter_protokoll.csv.
+Aufruf (aus claude-work/): python3 -I scripts/master_nachtraege.py --out paket3/out [--eingang eingang] [--anbieter daten/anbieter.csv]
+                           [--bis 25]  (Stand Paket 26: ohne Modellschritt 026 und Läufe ab 027; nur für historische Tests)"""
 import argparse, hashlib, json, pathlib, sys
 
 sys.dont_write_bytecode = True  # kein __pycache__ im Repo
@@ -61,14 +64,19 @@ def lieferform_schritt(M):
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--out", default="paket3/out"); ap.add_argument("--eingang", default=str(R / "eingang"))
+    ap.add_argument("--anbieter", default=str(R / "daten/anbieter.csv"))
+    ap.add_argument("--bis", type=int, default=None, choices=[25], help="25 = Stand Paket 26 (ohne Schritt 026 und Läufe ab 027), nur für historische Tests")
     a = ap.parse_args()
     out = R / a.out; mpfad = out / "master_3818_aktuell.csv"
+    if a.bis is not None and any((out / f).exists() for f in ("anbieter_aktuell.csv", "anbieter_protokoll.csv")):
+        sys.exit("ABBRUCH: --bis 25 schreibt den Stand Paket 26 und darf keinen Ordner mit Ausgaben aus Paket 27 überschreiben (anbieter_aktuell.csv vorhanden)")
     try:
         M = E.Master(out / "master_3818.csv"); T = E.Tabellen()
-        E.wende_an(M, T, pathlib.Path(a.eingang), lieferform_schritt)
+        E.wende_an(M, T, pathlib.Path(a.eingang), lieferform_schritt, bis=a.bis, anbieter_basis=a.anbieter)
     except E.Abbruch as e:
         sys.exit("\n".join("ABBRUCH: " + f for f in e.fehler))
     M.schreibe(mpfad, out / "master_nachtraege_protokoll.csv")
+    if M.anbieter is not None: M.anbieter.schreibe(out / "anbieter_aktuell.csv", out / "anbieter_protokoll.csv")
     print("OK Master-Nachträge:", len(M.proto), "Felder,", len({p[0] for p in M.proto}), "Angebote,",
           hashlib.sha256(mpfad.read_bytes()).hexdigest()[:16])
 

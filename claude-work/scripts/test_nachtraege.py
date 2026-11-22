@@ -1,10 +1,12 @@
 """Tests zur Master-Fortschreibung (scripts/master_nachtraege.py). Aufruf in run_paket3.sh:
-python3 -I scripts/test_nachtraege.py --out paket3/out"""
+python3 -I scripts/test_nachtraege.py --out paket3/out
+Paket 27 (SPEZIFIKATION_PAKET27 A11, E217): Prüfungen am Stand Paket 26 (scripts/stand_p26.py), Sollwerte unverändert."""
 import argparse, csv, hashlib, json, pathlib, shutil, subprocess, sys, tempfile
 
 R = pathlib.Path(__file__).resolve().parents[1]
 ap = argparse.ArgumentParser(); ap.add_argument("--out", default="paket3/out"); a = ap.parse_args()
-OUT = R / a.out
+sys.dont_write_bytecode = True; sys.path.insert(0, str(R / "scripts")); import stand_p26  # noqa: E402  Paket 27 A11 (E217): Stand Paket 26
+OUT = stand_p26.ordner() if a.out == "paket3/out" else R / a.out
 ok = 0; n = 0
 
 

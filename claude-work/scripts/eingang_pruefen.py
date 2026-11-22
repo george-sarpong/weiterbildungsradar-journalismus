@@ -2,6 +2,7 @@
 Wendet Basis und alle Eingangsdateien der Reihe nach im Speicher an (mit dem Lieferform-Schritt P25 vor den Läufen ab 026),
 schreibt nichts. Bei einem Fehler: alle Fehler der ersten fehlerhaften Datei mit Datei, Zeile, Spalte, Regel und Grund,
 Rückgabecode 1. Regeln K01–K14, N01–N11 in scripts/eingang.py. Ohne Netzabruf.
+Paket 27: mit Modellschritt 026 und den Regeln B01–B08, K15, K16 (Anbieter-Tabelle --anbieter, Standard daten/anbieter.csv).
 Mit --schema-bericht DATEI zusätzlich (und nur dann eine Datei): der ganze Master nach allen Läufen gegen die Feldtabelle,
 Abweichungen je Spalte gezählt; nur Bericht, kein Abbruch (Altwerte wie «FR | EN» bleiben bis P27).
 Aufruf (aus claude-work/): python3 -I scripts/eingang_pruefen.py [--eingang eingang] [--basis paket3/out/master_3818.csv]
@@ -20,15 +21,17 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--eingang", default=str(R / "eingang")); ap.add_argument("--basis", default=str(R / "paket3/out/master_3818.csv"))
     ap.add_argument("--schema-bericht", default=None)
+    ap.add_argument("--anbieter", default=str(R / "daten/anbieter.csv"))
+    ap.add_argument("--bis", type=int, default=None, choices=[25])  # 25 = Stand Paket 26 (nur historische Tests)
     a = ap.parse_args()
     try:
         M = E.Master(a.basis); T = E.Tabellen()
-        erg = E.wende_an(M, T, pathlib.Path(a.eingang), MN.lieferform_schritt)
+        erg = E.wende_an(M, T, pathlib.Path(a.eingang), MN.lieferform_schritt, bis=a.bis, anbieter_basis=a.anbieter)
     except E.Abbruch as e:
         print("\n".join("FEHLER " + f for f in e.fehler)); print(f"ABBRUCH: {len(e.fehler)} Fehler, nichts geschrieben"); sys.exit(1)
     for name, n in erg: print(f"OK {name}: {n} Zeilen")
     for datei, rid, ref, url in M.geteilt: print(f"GETEILTE ADRESSE {datei}: {rid} wie {ref} ({url}), url_geteilt = JA (E206)")
-    print(f"OK Eingang: {len(erg)} Dateien, Master {len(M.rows)} Zeilen × {len(M.head)} Spalten, Protokoll {len(M.proto)} Zeilen")
+    print(f"OK Eingang: {len(erg)} Dateien, Master {len(M.rows)} Zeilen × {len(M.head)} Spalten, Protokoll {len(M.proto)} Zeilen, Anbieter {len(M.anbieter.rows) if M.anbieter else '-'}")
     if a.schema_bericht:
         z = E.schema_bericht(M, T)
         with open(a.schema_bericht, "w", encoding="utf-8", newline="") as f:

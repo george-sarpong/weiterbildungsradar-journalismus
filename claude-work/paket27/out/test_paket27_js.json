@@ -1,0 +1,346 @@
+{
+ "results": [
+  {
+   "id": "G09 2026-11-20",
+   "name": "Karten: alle sichtbaren Karten mit Text und Link gleich, gleiche Reihenfolge in allen drei Sortierungen (APPROVED, START, PROVIDER); 1'006 sichtbar",
+   "status": "PASS",
+   "detail": "1006 sichtbar; ; outerHTML abweichend 0"
+  },
+  {
+   "id": "G10 2026-11-20",
+   "name": "Filter: Optionen und Zähler aller 7 Filter gleich (u. a. Kursform, Niveau, Sprache, Preisklasse inkl. Kostenlos, Durchführungsort), 52 Optionen einzeln gewählt",
+   "status": "PASS",
+   "detail": ""
+  },
+  {
+   "id": "G11 jsdom 2026-11-20",
+   "name": "Smart-Suche: 60 Anfragen (T01–T20, 40 virtuelle), Treffermengen, Kartentexte, Budget, Begründung, Links, Chips, Status, Verstanden gleich; Reihenfolge gleich bis auf Tausch bei gleichem Titel; keine JS-Fehler",
+   "status": "PASS",
+   "detail": " "
+  },
+  {
+   "id": "G11 Punktzahl 2026-11-20",
+   "name": "Smart-Suche, ganze Kandidatenliste je Anfrage (nicht nur die 3 gezeigten): Punktzahl, Budget- und Gratis-Status je Angebot gleich; Umstellungen nur innerhalb tatsächlicher Gleichstände (Status, Punktzahl, Titel); Testkopie mit Haken liefert dieselben Ausgaben wie die Original-App",
+   "status": "PASS",
+   "detail": "; Haken-Abweichungen 0"
+  },
+  {
+   "id": "G09 2026-11-22",
+   "name": "Karten: alle sichtbaren Karten mit Text und Link gleich, gleiche Reihenfolge in allen drei Sortierungen (APPROVED, START, PROVIDER)",
+   "status": "PASS",
+   "detail": "998 sichtbar; ; outerHTML abweichend 0"
+  },
+  {
+   "id": "G10 2026-11-22",
+   "name": "Filter: Optionen und Zähler aller 7 Filter gleich (u. a. Kursform, Niveau, Sprache, Preisklasse inkl. Kostenlos, Durchführungsort), 52 Optionen einzeln gewählt",
+   "status": "PASS",
+   "detail": ""
+  },
+  {
+   "id": "G11 jsdom 2026-11-22",
+   "name": "Smart-Suche: 60 Anfragen (T01–T20, 40 virtuelle), Treffermengen, Kartentexte, Budget, Begründung, Links, Chips, Status, Verstanden gleich; Reihenfolge gleich bis auf Tausch bei gleichem Titel; keine JS-Fehler",
+   "status": "PASS",
+   "detail": " "
+  },
+  {
+   "id": "G11 Punktzahl 2026-11-22",
+   "name": "Smart-Suche, ganze Kandidatenliste je Anfrage (nicht nur die 3 gezeigten): Punktzahl, Budget- und Gratis-Status je Angebot gleich; Umstellungen nur innerhalb tatsächlicher Gleichstände (Status, Punktzahl, Titel); Testkopie mit Haken liefert dieselben Ausgaben wie die Original-App",
+   "status": "PASS",
+   "detail": "; Haken-Abweichungen 0"
+  },
+  {
+   "id": "G09 2026-12-01",
+   "name": "Karten: alle sichtbaren Karten mit Text und Link gleich, gleiche Reihenfolge in allen drei Sortierungen (APPROVED, START, PROVIDER)",
+   "status": "PASS",
+   "detail": "945 sichtbar; ; outerHTML abweichend 0"
+  },
+  {
+   "id": "G10 2026-12-01",
+   "name": "Filter: Optionen und Zähler aller 7 Filter gleich (u. a. Kursform, Niveau, Sprache, Preisklasse inkl. Kostenlos, Durchführungsort), 52 Optionen einzeln gewählt",
+   "status": "PASS",
+   "detail": ""
+  },
+  {
+   "id": "G11 jsdom 2026-12-01",
+   "name": "Smart-Suche: 60 Anfragen (T01–T20, 40 virtuelle), Treffermengen, Kartentexte, Budget, Begründung, Links, Chips, Status, Verstanden gleich; Reihenfolge gleich bis auf Tausch bei gleichem Titel; keine JS-Fehler",
+   "status": "PASS",
+   "detail": " "
+  },
+  {
+   "id": "G11 Punktzahl 2026-12-01",
+   "name": "Smart-Suche, ganze Kandidatenliste je Anfrage (nicht nur die 3 gezeigten): Punktzahl, Budget- und Gratis-Status je Angebot gleich; Umstellungen nur innerhalb tatsächlicher Gleichstände (Status, Punktzahl, Titel); Testkopie mit Haken liefert dieselben Ausgaben wie die Original-App",
+   "status": "PASS",
+   "detail": "; Haken-Abweichungen 0"
+  }
+ ],
+ "protokoll": {
+  "umgebung": {
+   "TZ": "Europe/Zurich",
+   "node": "v22.23.5",
+   "jsdom": "24.1.3",
+   "app": "ada38d5ed342572b2b3e0daa476d9e6b4186426841047fb9a1655a6663789020",
+   "stichtage_jsdom": [
+    "2026-11-20",
+    "2026-11-22",
+    "2026-12-01"
+   ],
+   "stichtag_browser": "2026-11-22 12:00 (Date fest)",
+   "browser": "Chrome kopflos, locale de-CH, timezoneId Europe/Zurich, je Stand eigener Kontext gleicher Einstellung"
+  },
+  "stichtage": {
+   "2026-11-20": {
+    "G09": {
+     "sortierungen": [
+      "APPROVED",
+      "START",
+      "PROVIDER"
+     ],
+     "sichtbar": 1006,
+     "abweichungen": [],
+     "html_abweichungen": 0
+    },
+    "G10": {
+     "optionen": 52,
+     "zaehler": {
+      "focusFilter=": "1006 von 1006 aktuellen Angeboten",
+      "focusFilter=JOURNALISMUS": "294 von 1006 aktuellen Angeboten",
+      "focusFilter=MEDIENPRAXIS": "682 von 1006 aktuellen Angeboten",
+      "focusFilter=MEDIENRECHT": "3 von 1006 aktuellen Angeboten",
+      "focusFilter=MANAGEMENT": "27 von 1006 aktuellen Angeboten",
+      "typeFilter=": "1006 von 1006 aktuellen Angeboten",
+      "typeFilter=KURS": "843 von 1006 aktuellen Angeboten",
+      "typeFilter=PROGRAMM": "90 von 1006 aktuellen Angeboten",
+      "typeFilter=EVENT": "4 von 1006 aktuellen Angeboten",
+      "typeFilter=STUDIUM": "69 von 1006 aktuellen Angeboten",
+      "priceFilter=": "1006 von 1006 aktuellen Angeboten",
+      "priceFilter=KOSTENLOS": "13 von 1006 aktuellen Angeboten",
+      "priceFilter=KOSTENLOS_MIT_BEDINGUNG": "6 von 1006 aktuellen Angeboten",
+      "priceFilter=PREIS_UNBESTAETIGT": "2 von 1006 aktuellen Angeboten",
+      "priceFilter=BIS_500": "102 von 1006 aktuellen Angeboten",
+      "priceFilter=501_2000": "368 von 1006 aktuellen Angeboten",
+      "priceFilter=UEBER_2000": "92 von 1006 aktuellen Angeboten",
+      "priceFilter=MEHRERE_TARIFE": "231 von 1006 aktuellen Angeboten",
+      "priceFilter=PREIS_AUF_ANFRAGE": "14 von 1006 aktuellen Angeboten",
+      "priceFilter=PREIS_NICHT_PUBLIZIERT": "173 von 1006 aktuellen Angeboten",
+      "priceFilter=NOT_APPLICABLE": "5 von 1006 aktuellen Angeboten",
+      "formatFilter=": "1006 von 1006 aktuellen Angeboten",
+      "formatFilter=PRÄSENZ": "578 von 1006 aktuellen Angeboten",
+      "formatFilter=HYBRID": "80 von 1006 aktuellen Angeboten",
+      "formatFilter=ONLINE LIVE": "323 von 1006 aktuellen Angeboten",
+      "formatFilter=ONLINE": "1 von 1006 aktuellen Angeboten",
+      "formatFilter=ONLINE SELBSTLERNEN": "40 von 1006 aktuellen Angeboten",
+      "formatFilter=ON_DEMAND": "26 von 1006 aktuellen Angeboten",
+      "formatFilter=ON_REQUEST_FORMAT": "57 von 1006 aktuellen Angeboten",
+      "formatFilter=NICHT_PUBLIZIERT": "155 von 1006 aktuellen Angeboten",
+      "languageFilter=": "1006 von 1006 aktuellen Angeboten",
+      "languageFilter=DE": "573 von 1006 aktuellen Angeboten",
+      "languageFilter=FR": "324 von 1006 aktuellen Angeboten",
+      "languageFilter=IT": "26 von 1006 aktuellen Angeboten",
+      "languageFilter=EN": "109 von 1006 aktuellen Angeboten",
+      "languageFilter=NOT_PUBLISHED": "24 von 1006 aktuellen Angeboten",
+      "countryFilter=": "1006 von 1006 aktuellen Angeboten",
+      "countryFilter=Schweiz": "741 von 1006 aktuellen Angeboten",
+      "countryFilter=Österreich": "55 von 1006 aktuellen Angeboten",
+      "countryFilter=Liechtenstein": "4 von 1006 aktuellen Angeboten",
+      "countryFilter=Deutschland": "5 von 1006 aktuellen Angeboten",
+      "countryFilter=Belgien": "2 von 1006 aktuellen Angeboten",
+      "countryFilter=Online": "445 von 1006 aktuellen Angeboten",
+      "countryFilter=keine Angabe": "72 von 1006 aktuellen Angeboten",
+      "levelFilter=": "1006 von 1006 aktuellen Angeboten",
+      "levelFilter=EINSTIEG": "259 von 1006 aktuellen Angeboten",
+      "levelFilter=BERUFSERFAHRUNG": "244 von 1006 aktuellen Angeboten",
+      "levelFilter=FORTGESCHRITTEN": "3 von 1006 aktuellen Angeboten",
+      "levelFilter=VERTIEFUNG": "19 von 1006 aktuellen Angeboten",
+      "levelFilter=EXPERT": "1 von 1006 aktuellen Angeboten",
+      "levelFilter=VERSCHIEDENE_NIVEAUS": "282 von 1006 aktuellen Angeboten",
+      "levelFilter=NICHT_PUBLIZIERT": "198 von 1006 aktuellen Angeboten"
+     },
+     "abweichungen": []
+    },
+    "G11": {
+     "anfragen": 60,
+     "treffer": 150,
+     "tausch": [],
+     "abweichungen": [],
+     "js_fehler": []
+    },
+    "G11_punktzahl": {
+     "kandidaten": 3749,
+     "umgestellte_gleichstaende": 0,
+     "abweichungen": [],
+     "haken_abweichungen": 0,
+     "js_fehler": []
+    }
+   },
+   "2026-11-22": {
+    "G09": {
+     "sortierungen": [
+      "APPROVED",
+      "START",
+      "PROVIDER"
+     ],
+     "sichtbar": 998,
+     "abweichungen": [],
+     "html_abweichungen": 0
+    },
+    "G10": {
+     "optionen": 52,
+     "zaehler": {
+      "focusFilter=": "998 von 998 aktuellen Angeboten",
+      "focusFilter=JOURNALISMUS": "293 von 998 aktuellen Angeboten",
+      "focusFilter=MEDIENPRAXIS": "675 von 998 aktuellen Angeboten",
+      "focusFilter=MEDIENRECHT": "3 von 998 aktuellen Angeboten",
+      "focusFilter=MANAGEMENT": "27 von 998 aktuellen Angeboten",
+      "typeFilter=": "998 von 998 aktuellen Angeboten",
+      "typeFilter=KURS": "836 von 998 aktuellen Angeboten",
+      "typeFilter=PROGRAMM": "90 von 998 aktuellen Angeboten",
+      "typeFilter=EVENT": "4 von 998 aktuellen Angeboten",
+      "typeFilter=STUDIUM": "68 von 998 aktuellen Angeboten",
+      "priceFilter=": "998 von 998 aktuellen Angeboten",
+      "priceFilter=KOSTENLOS": "13 von 998 aktuellen Angeboten",
+      "priceFilter=KOSTENLOS_MIT_BEDINGUNG": "6 von 998 aktuellen Angeboten",
+      "priceFilter=PREIS_UNBESTAETIGT": "2 von 998 aktuellen Angeboten",
+      "priceFilter=BIS_500": "101 von 998 aktuellen Angeboten",
+      "priceFilter=501_2000": "364 von 998 aktuellen Angeboten",
+      "priceFilter=UEBER_2000": "90 von 998 aktuellen Angeboten",
+      "priceFilter=MEHRERE_TARIFE": "230 von 998 aktuellen Angeboten",
+      "priceFilter=PREIS_AUF_ANFRAGE": "14 von 998 aktuellen Angeboten",
+      "priceFilter=PREIS_NICHT_PUBLIZIERT": "173 von 998 aktuellen Angeboten",
+      "priceFilter=NOT_APPLICABLE": "5 von 998 aktuellen Angeboten",
+      "formatFilter=": "998 von 998 aktuellen Angeboten",
+      "formatFilter=PRÄSENZ": "572 von 998 aktuellen Angeboten",
+      "formatFilter=HYBRID": "79 von 998 aktuellen Angeboten",
+      "formatFilter=ONLINE LIVE": "321 von 998 aktuellen Angeboten",
+      "formatFilter=ONLINE": "1 von 998 aktuellen Angeboten",
+      "formatFilter=ONLINE SELBSTLERNEN": "40 von 998 aktuellen Angeboten",
+      "formatFilter=ON_DEMAND": "26 von 998 aktuellen Angeboten",
+      "formatFilter=ON_REQUEST_FORMAT": "57 von 998 aktuellen Angeboten",
+      "formatFilter=NICHT_PUBLIZIERT": "155 von 998 aktuellen Angeboten",
+      "languageFilter=": "998 von 998 aktuellen Angeboten",
+      "languageFilter=DE": "567 von 998 aktuellen Angeboten",
+      "languageFilter=FR": "323 von 998 aktuellen Angeboten",
+      "languageFilter=IT": "25 von 998 aktuellen Angeboten",
+      "languageFilter=EN": "109 von 998 aktuellen Angeboten",
+      "languageFilter=NOT_PUBLISHED": "24 von 998 aktuellen Angeboten",
+      "countryFilter=": "998 von 998 aktuellen Angeboten",
+      "countryFilter=Schweiz": "734 von 998 aktuellen Angeboten",
+      "countryFilter=Österreich": "55 von 998 aktuellen Angeboten",
+      "countryFilter=Liechtenstein": "4 von 998 aktuellen Angeboten",
+      "countryFilter=Deutschland": "5 von 998 aktuellen Angeboten",
+      "countryFilter=Belgien": "2 von 998 aktuellen Angeboten",
+      "countryFilter=Online": "441 von 998 aktuellen Angeboten",
+      "countryFilter=keine Angabe": "72 von 998 aktuellen Angeboten",
+      "levelFilter=": "998 von 998 aktuellen Angeboten",
+      "levelFilter=EINSTIEG": "259 von 998 aktuellen Angeboten",
+      "levelFilter=BERUFSERFAHRUNG": "241 von 998 aktuellen Angeboten",
+      "levelFilter=FORTGESCHRITTEN": "3 von 998 aktuellen Angeboten",
+      "levelFilter=VERTIEFUNG": "19 von 998 aktuellen Angeboten",
+      "levelFilter=EXPERT": "1 von 998 aktuellen Angeboten",
+      "levelFilter=VERSCHIEDENE_NIVEAUS": "280 von 998 aktuellen Angeboten",
+      "levelFilter=NICHT_PUBLIZIERT": "195 von 998 aktuellen Angeboten"
+     },
+     "abweichungen": []
+    },
+    "G11": {
+     "anfragen": 60,
+     "treffer": 150,
+     "tausch": [],
+     "abweichungen": [],
+     "js_fehler": []
+    },
+    "G11_punktzahl": {
+     "kandidaten": 3718,
+     "umgestellte_gleichstaende": 0,
+     "abweichungen": [],
+     "haken_abweichungen": 0,
+     "js_fehler": []
+    }
+   },
+   "2026-12-01": {
+    "G09": {
+     "sortierungen": [
+      "APPROVED",
+      "START",
+      "PROVIDER"
+     ],
+     "sichtbar": 945,
+     "abweichungen": [],
+     "html_abweichungen": 0
+    },
+    "G10": {
+     "optionen": 52,
+     "zaehler": {
+      "focusFilter=": "945 von 945 aktuellen Angeboten",
+      "focusFilter=JOURNALISMUS": "279 von 945 aktuellen Angeboten",
+      "focusFilter=MEDIENPRAXIS": "638 von 945 aktuellen Angeboten",
+      "focusFilter=MEDIENRECHT": "3 von 945 aktuellen Angeboten",
+      "focusFilter=MANAGEMENT": "25 von 945 aktuellen Angeboten",
+      "typeFilter=": "945 von 945 aktuellen Angeboten",
+      "typeFilter=KURS": "787 von 945 aktuellen Angeboten",
+      "typeFilter=PROGRAMM": "87 von 945 aktuellen Angeboten",
+      "typeFilter=EVENT": "4 von 945 aktuellen Angeboten",
+      "typeFilter=STUDIUM": "67 von 945 aktuellen Angeboten",
+      "priceFilter=": "945 von 945 aktuellen Angeboten",
+      "priceFilter=KOSTENLOS": "12 von 945 aktuellen Angeboten",
+      "priceFilter=KOSTENLOS_MIT_BEDINGUNG": "6 von 945 aktuellen Angeboten",
+      "priceFilter=PREIS_UNBESTAETIGT": "2 von 945 aktuellen Angeboten",
+      "priceFilter=BIS_500": "96 von 945 aktuellen Angeboten",
+      "priceFilter=501_2000": "340 von 945 aktuellen Angeboten",
+      "priceFilter=UEBER_2000": "85 von 945 aktuellen Angeboten",
+      "priceFilter=MEHRERE_TARIFE": "216 von 945 aktuellen Angeboten",
+      "priceFilter=PREIS_AUF_ANFRAGE": "14 von 945 aktuellen Angeboten",
+      "priceFilter=PREIS_NICHT_PUBLIZIERT": "169 von 945 aktuellen Angeboten",
+      "priceFilter=NOT_APPLICABLE": "5 von 945 aktuellen Angeboten",
+      "formatFilter=": "945 von 945 aktuellen Angeboten",
+      "formatFilter=PRÄSENZ": "540 von 945 aktuellen Angeboten",
+      "formatFilter=HYBRID": "77 von 945 aktuellen Angeboten",
+      "formatFilter=ONLINE LIVE": "298 von 945 aktuellen Angeboten",
+      "formatFilter=ONLINE": "1 von 945 aktuellen Angeboten",
+      "formatFilter=ONLINE SELBSTLERNEN": "39 von 945 aktuellen Angeboten",
+      "formatFilter=ON_DEMAND": "26 von 945 aktuellen Angeboten",
+      "formatFilter=ON_REQUEST_FORMAT": "57 von 945 aktuellen Angeboten",
+      "formatFilter=NICHT_PUBLIZIERT": "143 von 945 aktuellen Angeboten",
+      "languageFilter=": "945 von 945 aktuellen Angeboten",
+      "languageFilter=DE": "533 von 945 aktuellen Angeboten",
+      "languageFilter=FR": "311 von 945 aktuellen Angeboten",
+      "languageFilter=IT": "25 von 945 aktuellen Angeboten",
+      "languageFilter=EN": "100 von 945 aktuellen Angeboten",
+      "languageFilter=NOT_PUBLISHED": "24 von 945 aktuellen Angeboten",
+      "countryFilter=": "945 von 945 aktuellen Angeboten",
+      "countryFilter=Schweiz": "694 von 945 aktuellen Angeboten",
+      "countryFilter=Österreich": "52 von 945 aktuellen Angeboten",
+      "countryFilter=Liechtenstein": "4 von 945 aktuellen Angeboten",
+      "countryFilter=Deutschland": "4 von 945 aktuellen Angeboten",
+      "countryFilter=Belgien": "2 von 945 aktuellen Angeboten",
+      "countryFilter=Online": "416 von 945 aktuellen Angeboten",
+      "countryFilter=keine Angabe": "71 von 945 aktuellen Angeboten",
+      "levelFilter=": "945 von 945 aktuellen Angeboten",
+      "levelFilter=EINSTIEG": "249 von 945 aktuellen Angeboten",
+      "levelFilter=BERUFSERFAHRUNG": "225 von 945 aktuellen Angeboten",
+      "levelFilter=FORTGESCHRITTEN": "3 von 945 aktuellen Angeboten",
+      "levelFilter=VERTIEFUNG": "18 von 945 aktuellen Angeboten",
+      "levelFilter=EXPERT": "1 von 945 aktuellen Angeboten",
+      "levelFilter=VERSCHIEDENE_NIVEAUS": "268 von 945 aktuellen Angeboten",
+      "levelFilter=NICHT_PUBLIZIERT": "181 von 945 aktuellen Angeboten"
+     },
+     "abweichungen": []
+    },
+    "G11": {
+     "anfragen": 60,
+     "treffer": 149,
+     "tausch": [],
+     "abweichungen": [],
+     "js_fehler": []
+    },
+    "G11_punktzahl": {
+     "kandidaten": 3522,
+     "umgestellte_gleichstaende": 0,
+     "abweichungen": [],
+     "haken_abweichungen": 0,
+     "js_fehler": []
+    }
+   }
+  },
+  "browser": {}
+ }
+}

@@ -124,3 +124,8 @@ durchfuehrungen_anzeige,JA,h_durchfuehrungen_anzeige,JSON-Liste,,NEIN,JA,,JA,,An
 h_durchfuehrungen_anzeige,NEIN,,Herkunft,,NEIN,JA,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
 lieferform_json,JA,h_lieferform_json,JSON-Objekt,,NEIN,NEIN,CH/AT/LI,JA,,lieferform_json: genau 8 Teilfelder (P25 A7)
 h_lieferform_json,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+anbieter_id,JA,h_anbieter_id,AnbieterID,,NEIN,NEIN,ALLE,JA,,P27 A2: Kennung der Anbieter-Tabelle daten/anbieter.csv; K15 prüft Tabelle und Schreibweise (E214)
+h_anbieter_id,NEIN,,Herkunft,,NEIN,NEIN,,JA,,Herkunftsspalte: nicht änderbar (schreibt das Skript); in Dateien neuer Angebote zulässig (A3)
+scope_code,JA,h_scope_code,Codeliste,SCOPE,NEIN,NEIN,,NEIN,,P27 A4: bei neuen Angeboten über die Steuerspalte scope_code (N08); bestehende Zeilen «nicht erfasst» (E216)
+scope_begruendung,JA,,Text,,NEIN,NEIN,,NEIN,,P27 A4: bei neuen Angeboten über die Steuerspalte scope_begruendung; Herkunft bei Korrekturen nur im Protokoll (h_scope_code gehört zum Code)
+h_scope_code,NEIN,,Herkunft,,NEIN,NEIN,,NEIN,,Herkunftsspalte: nicht änderbar (schreibt das Skript)

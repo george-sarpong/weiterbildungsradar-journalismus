@@ -3,11 +3,14 @@ Aufruf (aus claude-work/): python3 -I paket25/tests/test_paket25_master.py
 Referenzwerte: Master und Protokoll auf 111b0fd (vor Paket 25), Smart-Quelle p19 und Auszug als SHA-256 festgehalten.
 Paket 26 (SPEZIFIKATION_PAKET26 A10, E204, E207; E209): M05 prüft die Spalte quelle der 136 Zeilen «wie oben» gegen die
 Ersetzungsliste paket26/out/ersetzungsliste_wie_oben.csv und setzt sie für den bisherigen Hash zurück; M07/M08 kopieren
-den Eingang eingang/ und die Tabellen A4 statt der Altdateien (nur die Eingabeliste, Fälle und Sollwerte unverändert)."""
+den Eingang eingang/ und die Tabellen A4 statt der Altdateien (nur die Eingabeliste, Fälle und Sollwerte unverändert).
+Paket 27 (SPEZIFIKATION_PAKET27 A11, E217): Prüfungen am Stand Paket 26 (scripts/stand_p26.py; M07/M08 mit
+master_nachtraege.py --bis 25), Sollwerte und Hashes unverändert."""
 import collections, csv, hashlib, io, json, pathlib, re, shutil, subprocess, sys, tempfile
 
 R = pathlib.Path(__file__).resolve().parents[2]
-OUT = R / "paket3/out"; MP = OUT / "master_3818_aktuell.csv"; PP = OUT / "master_nachtraege_protokoll.csv"
+sys.dont_write_bytecode = True; sys.path.insert(0, str(R / "scripts")); import stand_p26  # noqa: E402  Paket 27 A11 (E217): Stand Paket 26
+OUT = stand_p26.ordner(); MP = OUT / "master_3818_aktuell.csv"; PP = OUT / "master_nachtraege_protokoll.csv"
 sha = lambda b: hashlib.sha256(b).hexdigest()
 ok = n = 0
 
@@ -100,7 +103,7 @@ def kopie(td):
     for p in EIN:
         (td / p).parent.mkdir(parents=True, exist_ok=True); shutil.copy(R / p, td / p)
 def lauf(td):
-    return subprocess.run([sys.executable, "-I", str(td / "scripts/master_nachtraege.py"), "--out", "paket3/out"], cwd=td, capture_output=True, text=True)
+    return subprocess.run([sys.executable, "-I", str(td / "scripts/master_nachtraege.py"), "--out", "paket3/out", "--bis", "25"], cwd=td, capture_output=True, text=True)
 h = []
 for _ in range(2):
     with tempfile.TemporaryDirectory() as td:

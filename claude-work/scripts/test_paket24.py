@@ -7,12 +7,15 @@ Paket 26 (SPEZIFIKATION_PAKET26 A10, Entscheid 5, E207): T08/T09 mit dem Eingang
 Altdateien; die Abbruchfälle treffen dieselben Zeilen in den überführten Dateien (Spalte ursprung). T10 prüft weiter jede
 historische Protokollzeile: Spalte quelle in genau den 136 Zeilen der Ersetzungsliste (Entscheid 2 B, E204) gegen
 paket26/out/ersetzungsliste_wie_oben.csv, danach mit «wie oben» zurückgesetzt gegen den bisherigen Hash. T07 liest die
-Altdateien weiter als unabhängige Gegenprobe (A8)."""
+Altdateien weiter als unabhängige Gegenprobe (A8).
+Paket 27 (SPEZIFIKATION_PAKET27 A11, E217): alle Prüfungen am Stand Paket 26 (scripts/stand_p26.py; T08/T09 mit
+master_nachtraege.py --bis 25), historische Sollwerte und Hashes unverändert; den Schritt zu P27 prüft paket27/tests/test_paket27.py."""
 import argparse, collections, csv, hashlib, io, json, pathlib, re, shutil, subprocess, sys, tempfile
 
 R = pathlib.Path(__file__).resolve().parents[1]
 ap = argparse.ArgumentParser(); ap.add_argument("--out", default="paket3/out"); a = ap.parse_args()
-OUT = R / a.out; MP = OUT / "master_3818_aktuell.csv"
+sys.dont_write_bytecode = True; sys.path.insert(0, str(R / "scripts")); import stand_p26  # noqa: E402  Paket 27 A11 (E217): Stand Paket 26
+OUT = stand_p26.ordner() if a.out == "paket3/out" else R / a.out; MP = OUT / "master_3818_aktuell.csv"
 ok = 0; n = 0
 
 
@@ -185,7 +188,7 @@ def kopie(td):
     for p in EIN:
         (td / p).parent.mkdir(parents=True, exist_ok=True); shutil.copy(R / p, td / p)
 def lauf(td):
-    return subprocess.run([sys.executable, "-I", str(td / "scripts/master_nachtraege.py"), "--out", "paket3/out"], cwd=td, capture_output=True, text=True)
+    return subprocess.run([sys.executable, "-I", str(td / "scripts/master_nachtraege.py"), "--out", "paket3/out", "--bis", "25"], cwd=td, capture_output=True, text=True)
 k16 = list(csv.DictReader(open(R / "paket16/config/korrekturen.csv", encoding="utf-8")))
 kette = {(k["id"], k["feld"]) for k in k16}  # Paket-17-Zeilen, deren alter Wert die Anzeige aus Paket 16 ist (16 → 17)
 def ziel(pfad, spalte, wahl):

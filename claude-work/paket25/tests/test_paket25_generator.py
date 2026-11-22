@@ -1,6 +1,8 @@
 """Paket 25 – Generator Master → Website (SPEZIFIKATION_PAKET25_20261120.md §5 G01–G08, G12, G13, G16, G17).
 Aufruf (aus claude-work/): NODE_PATH=<tools>/node_modules python3 -I paket25/tests/test_paket25_generator.py
-Vorher-Stand für G17: Commit 11fcc70 (git ls-tree), Live-Stand p19 als SHA-256 (U3)."""
+Vorher-Stand für G17: Commit 11fcc70 (git ls-tree), Live-Stand p19 als SHA-256 (U3).
+Paket 27 (SPEZIFIKATION_PAKET27 A11, E217): Generator-Läufe mit dem Master Stand Paket 26 (scripts/stand_p26.py), damit
+paket25/website/data-p25.js und die Smart-Datei P25 unverändert bleiben; die P27-Ausgaben prüft paket27/tests/test_paket27.py."""
 import collections, csv, hashlib, io, json, os, pathlib, re, shutil, subprocess, sys, tempfile
 
 R = pathlib.Path(__file__).resolve().parents[2]
@@ -19,7 +21,8 @@ def daten(p):
     assert raw.startswith(PRE) and raw.endswith(";\n"); return json.loads(raw[len(PRE):-2])
 
 
-MP = R / "paket3/out/master_3818_aktuell.csv"; PP = R / "paket3/out/master_nachtraege_protokoll.csv"
+sys.dont_write_bytecode = True; sys.path.insert(0, str(R / "scripts")); import stand_p26  # noqa: E402  Paket 27 A11 (E217): Stand Paket 26
+MP = stand_p26.ordner() / "master_3818_aktuell.csv"; PP = stand_p26.ordner() / "master_nachtraege_protokoll.csv"
 D25, S25 = R / "paket25/website/data-p25.js", R / "paket25/out/smart-search-data-p25.json"
 GEN = ["scripts/generator_website.py", "scripts/generator_platzhalter.csv", "paket3/out/master_3818_aktuell.csv"]
 SOLL7 = {("CH-CLEAN2-V9-D01", "duration"): ("NICHT_PUBLIZIERT", "NOT_PUBLISHED"), ("CH-V18-F03", "duration"): ("NICHT_PUBLIZIERT", "NOT_PUBLISHED"),
@@ -37,7 +40,7 @@ def gen(td, *extra):
 
 def kopie(td, dateien):
     for p in dateien:
-        (td / p).parent.mkdir(parents=True, exist_ok=True); shutil.copy(R / p, td / p)
+        (td / p).parent.mkdir(parents=True, exist_ok=True); shutil.copy(MP if p == "paket3/out/master_3818_aktuell.csv" else R / p, td / p)
 
 
 # ---------- G08 Master nur gelesen (Repo) + G01 Eingaben ----------
@@ -50,7 +53,7 @@ with tempfile.TemporaryDirectory() as td:
            and alle == sorted(GEN + ["paket25/website/data-p25.js", "paket25/out/smart-search-data-p25.json"]))
     g08a = sha((td / GEN[2]).read_bytes()) == vor[0]
 t("G01 Eingaben: Lauf in einem Ordner nur mit Master, Platzhaltertabelle und Generator ergibt dieselbe Ausgabe (bytegleich), keine weiteren Dateien", g01, pr.stdout + pr.stderr)
-pr = gen(R)  # Repo-Lauf
+pr = gen(R, "--master", str(MP))  # Repo-Lauf (Paket 27: Master Stand P26, Ausgabe paket25/ bleibt ae30bf39…)
 t("G08 Master nur gelesen: Master und Protokoll vor und nach dem Generator bytegleich (E031)",
   pr.returncode == 0 and g08a and (sha(MP.read_bytes()), sha(PP.read_bytes())) == vor)
 
