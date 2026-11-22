@@ -1,0 +1,10 @@
+# BEGIN mediaskills Cache-Regel (E176, Paket 28)
+<IfModule mod_headers.c>
+  <FilesMatch "^((daten|suche)-[0-9a-f]{12}\.js|app-v[0-9]+\.js|styles-v[0-9]+\.css)$">
+    Header set Cache-Control "max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "^([^/]+\.html|robots\.txt|sitemap\.xml)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
+# END mediaskills Cache-Regel

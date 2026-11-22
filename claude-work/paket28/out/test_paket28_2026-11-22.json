@@ -1,0 +1,74 @@
+[
+ {
+  "nr": "P01",
+  "name": "Auswahl: IDs Daten = Smart = sichtbar laut sichtbarkeit.py am 2026-11-22 (998), Master-Reihenfolge; Datensätze = data-p27.js ohne A2; rosterCount = 998; übrige meta gleich",
+  "status": "PASS",
+  "detail": "Datensätze gleich True, meta True"
+ },
+ {
+  "nr": "P04",
+  "name": "Felder A2: kein Feld der Liste wird von app-v43.js gelesen und keines steht im Release; Fehlfälle title, laender.ortLand, focus (über offer[key]) → Abbruch, kein Ziel",
+  "status": "PASS",
+  "detail": "Namen sonst in app-v43.js (anderer Name, nicht Angebotsfeld): {'country': 17, 'reviewAfter': 0, 'release_origin': 0, 'publicationReason': 0, 'laender.markt': 0}"
+ },
+ {
+  "nr": "P05",
+  "name": "Smart A3: nur leere Teilfelder aus der Leseliste U3 weggelassen, «amount» nie, übrige Werte unverändert; Gleichheit der Suche siehe P03",
+  "status": "PASS",
+  "detail": "weggelassen {'delivery.channels': 616, 'delivery.scheduleSummary': 616, 'delivery.sourceText': 900, 'delivery.structure': 14, 'delivery.temporalSummary': 617, 'delivery.variants': 617, 'priceOptions.billingCount': 838, 'priceOptions.components': 824, 'priceOptions.currency': 185, 'priceOptions.eligibilityValue': 717, 'priceOptions.maxAmount': 813, 'priceOptions.minAmount': 798, 'priceOptions.tariffLabel': 553, 'priceOptions.taxRate': 819, 'priceOptions.validFrom': 838, 'priceOptions.validThrough': 834}; priceOptions ganz weg 246"
+ },
+ {
+  "nr": "P06",
+  "name": "Stichtag: morgen (2026-11-23) Abbruch, heute und gestern baut; TZ=UTC: 23:59 Zürich mit Stichtag 23.11. Abbruch, 00:01 baut; Fehler nach Generator und nach Listenbau: Ziel und Repo bytegleich, kein Zwischenordner",
+  "status": "PASS",
+  "detail": "Codes morgen 1, heute 0, gestern 0, 23:59 1, 00:01 0; Rest []"
+ },
+ {
+  "nr": "P06b",
+  "name": "Ziel-Schutz: Repo, claude-work, paket28, Ordner darüber, fremder Ordner, Datei, fehlender Elternordner → Abbruch, nichts geändert; Abbruch durch SIGTERM räumt auf; Testoptionen ohne P28_TEST=1 → Abbruch; gesetzte Testoptionen im Bauprotokoll",
+  "status": "PASS",
+  "detail": "Repo 1; claude-work 1; paket28 1; Ordner darüber 1; fremder Ordner 1; Datei 1; fehlender Elternordner 1; SIGTERM 1, aufgeräumt True; Protokoll {'jetzt': '2026-11-22T23:01:00+00:00'}"
+ },
+ {
+  "nr": "P07",
+  "name": "Liste und Sitemap: index.html (Liste, «Stand der Angaben») und sitemap.xml gleich wie aus data-p27.js am selben Stichtag bis auf die drei Skriptnamen; genau ein Listenblock und ein «Stand der Angaben»; Vorlage mit Liste → Abbruch",
+  "status": "PASS",
+  "detail": "index True, sitemap True, einmal True"
+ },
+ {
+  "nr": "P08",
+  "name": "Dateinamen = Kürzel des Inhalts (daten-c988be9171c7.js, suche-54288fd7035f.js); index.html lädt genau ['daten-c988be9171c7.js', 'suche-54288fd7035f.js', 'app-v43.js']; keine alten Daten-/App-Verweise; jeder Verweis aller Seiten im Paket; genau 13 Dateien + SHA256SUMS stimmt; Fehlfälle fehlender und falscher Verweis → Abbruch",
+  "status": "PASS",
+  "detail": "alt []; Fehlfälle {'fehlender Verweis': True, 'falscher Verweis': True}"
+ },
+ {
+  "nr": "P09",
+  "name": "Versionsnamen: app-v43.js, styles-v22.css, styles-v24.css bytegleich mit dem Release Paket 19 (live seit 20.11., V01)",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "nr": "P11a",
+  "name": "htaccess.txt = gelesene Live-.htaccess (891 Byte, 6d8a0c14…) + Zeilenende + nur der Cache-Block; ASCII, LF",
+  "status": "PASS",
+  "detail": "1285 Byte"
+ },
+ {
+  "nr": "P13",
+  "name": "Grösse: website/ 2023031 Byte ≤ 9 MB; Daten 1049330 < 1595018, Smart 513223 < 1016445; Bauprotokoll vollständig",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "nr": "P14",
+  "name": "Reproduzierbarkeit: zweiter Bau mit gleichem Stichtag in frischem Ordner bytegleich (website/, htaccess.txt, Bauprotokoll)",
+  "status": "PASS",
+  "detail": ""
+ },
+ {
+  "nr": "P15a",
+  "name": "A8 per SHA-256 vorher = nachher (Master, Protokoll, Eingang, scripts, daten, paket19, paket22, paket25/website und scripts, paket27); git status unverändert",
+  "status": "PASS",
+  "detail": ""
+ }
+]

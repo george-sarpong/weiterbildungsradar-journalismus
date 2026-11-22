@@ -1,0 +1,51 @@
+{
+ "results": [
+  {
+   "id": "P02 Merkliste",
+   "name": "Merkliste gleich für sichtbare IDs an allen drei Tagen, localStorage nach dem Laden unverändert; zwei Releases: ohne Änderung wieder gemerkt, mit Änderung weg (E231)",
+   "status": "PASS",
+   "detail": ""
+  },
+  {
+   "id": "P16 Ende zu Ende",
+   "name": "index.html des Releases mit eigenen Skriptverweisen (daten-c988be9171c7.js, suche-54288fd7035f.js, app-v43.js) geladen: Daten und Smart = Dateien des Releases, 998 Karten am 2026-11-22 = P27",
+   "status": "PASS",
+   "detail": "Daten true, Smart true, Karten gleich true; "
+  }
+ ],
+ "protokoll": {
+  "umgebung": {
+   "TZ": "Europe/Zurich",
+   "node": "v22.23.5",
+   "jsdom": "24.1.3",
+   "app": "ada38d5ed342572b2b3e0daa476d9e6b4186426841047fb9a1655a6663789020",
+   "stichtage_jsdom": [],
+   "release": "/home/claude/scratch/rel_20261122",
+   "skripte": [
+    "daten-c988be9171c7.js",
+    "suche-54288fd7035f.js",
+    "app-v43.js"
+   ]
+  },
+  "stichtage": {},
+  "merkliste": {
+   "nicht_geliefert": "AT-PROD-OFFER-008",
+   "ohne_aenderung": [
+    "AT-PROD-OFFER-008",
+    "AT-PROD-OFFER-001"
+   ],
+   "mit_aenderung": [
+    "AT-PROD-OFFER-001",
+    "AT-PROD-OFFER-003"
+   ],
+   "abweichungen": [],
+   "js_fehler": []
+  },
+  "p16": {
+   "daten": true,
+   "smart": true,
+   "karten": 998,
+   "js_fehler": []
+  }
+ }
+}

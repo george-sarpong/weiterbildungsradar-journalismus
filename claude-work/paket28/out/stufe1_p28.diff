@@ -1,0 +1,83 @@
+--- claude-work/paket8/tests/test_paket8.js	2026-11-22 18:12:17.119398403 +0000
++++ claude-work/paket28/tests/test_paket8_p28.js	2026-11-22 18:50:07.903412921 +0000
+@@ -1,3 +1,7 @@
++// Paket 28 P12 (E234): Testkopie von paket8/tests/test_paket8.js für das schlanke Release; das Original bleibt unverändert.
++// Nur drei Anpassungen (Diff paket28/out/stufe1_p28.diff): (1) D2a Soll = am BUILD_STICHTAG sichtbare Master-Zeilen (E172);
++// (2) priceOptions darf fehlen (A3, E225; die App prüft mit Array.isArray); (3) T09 und Gegenprobe G01 nehmen gesperrte
++// Datensätze aus data-p27.js, weil das Release sie nicht ausliefert. Zusätzliche Umgebung: BUILD_STICHTAG=JJJJ-MM-TT.
+ // Paket 8 – Testsatz Stufe 1 (auto, jsdom) gemäss VORLAGE_TESTKRITERIEN_MESSUNG_20261109.md
+ // Kriterien: D2, D5, F1 (T01–T20), F4, F9, S2, S3 (Vorprüfung; Endprüfung im Browser, Stufe 2).
+ // Prüfling: claude-work/paket7/website (app-v36.js, data-p7.js, index.html) + paket3/out/merge_kandidat_smart.json.
+@@ -90,7 +94,7 @@
+ const directOk = (id, budget) => {
+   const s = SMART.byId[id];
+   if (!s || !s.priceEligible) return false;
+-  return s.priceOptions.some(p => p.eligibilityType === "NONE" && (p.amountType === "FREE"
++  return (s.priceOptions || []).some(p => p.eligibilityType === "NONE" && (p.amountType === "FREE"
+     || (NOMINAL.includes(p.currency) && ((p.amountType === "EXACT" && p.amount <= budget) || (p.amountType === "RANGE" && p.maxAmount != null && p.maxAmount <= budget)))));
+ };
+ const conditionalOk = (id, budget) => (SMART.byId[id]?.priceOptions || []).some(p => p.eligibilityType !== "NONE"
+@@ -112,7 +116,14 @@
+   const wrongMarket = DATA.filter(o => M[o.id] && !["CH", "AT", "LI"].includes(M[o.id].markt));
+   // Paket 22: neue Angebote (E143) stehen als eigene Master-Zeilen (Kohorte NEU_P22) im Master; Soll = 1'352 + Zahl der neuen Zeilen
+   const nNeu = Number(process.env.NEU || 0);
+-  check("D2a", `Website-Daten = ${1352 + nNeu} Master-Zeilen CH/AT/LI (1'352${nNeu ? ` + ${nNeu} neu, E143` : ""}); keine DE/USA-Zeile (E074), also auch keine E067/E068-Zeile`, DATA.length === 1352 + nNeu && !notInMaster.length && !wrongMarket.length
++  // P28 (E172): das Release liefert nur, was am Build-Stichtag sichtbar ist; Soll = sichtbar laut scripts/sichtbarkeit.py am BUILD_STICHTAG
++  const BS = process.env.BUILD_STICHTAG; if (!/^\d{4}-\d{2}-\d{2}$/.test(BS || "")) throw new Error("BUILD_STICHTAG fehlt");
++  const SB = JSON.parse(execFileSync("python3", ["-I", "-B", "-c", `
++import importlib.util as u, json, sys, datetime
++s = u.spec_from_file_location("sb", sys.argv[1]); m = u.module_from_spec(s); s.loader.exec_module(m)
++t = datetime.date.fromisoformat(sys.argv[3]); print(json.dumps([z["id"] for z in m.lies_master(sys.argv[2]) if m.sichtbar(z, t)]))`,
++    path.join(CW, "scripts/sichtbarkeit.py"), process.env.MASTER ? path.resolve(ROOT, process.env.MASTER) : path.join(P3, "master_3818.csv"), BS], { maxBuffer: 1 << 27 }).toString());
++  check("D2a", `Website-Daten = ${SB.length} am ${BS} sichtbare Master-Zeilen CH/AT/LI in Master-Reihenfolge (E172, P28); keine DE/USA-Zeile (E074), also auch keine E067/E068-Zeile`, JSON.stringify(DATA.map(o => o.id)) === JSON.stringify(SB) && !notInMaster.length && !wrongMarket.length
+     && Object.values(M).filter(m => ["CH", "AT", "LI"].includes(m.markt)).length === 1352 + nNeu, `${DATA.length} Zeilen`);
+   const visNo = [...vis].filter(id => M[id].beta !== "JA");
+   check("D2b", "Keine sichtbare Karte mit beta_sichtbar NEIN (u. a. 46 HOLD)", visNo.length === 0, visNo.length ? list(visNo) : `${DATA.filter(o => M[o.id].beta === "NEIN").length} NEIN-Zeilen, alle unsichtbar`);
+@@ -186,7 +197,7 @@
+ }
+ {
+   // T05 – kein GBP-Preis im Bestand; synthetischer Fall auf einer echten Karte
+-  const gbpInData = Object.values(SMART.byId).filter(s => s.priceOptions.some(p => p.currency === "GBP")).length;
++  const gbpInData = Object.values(SMART.byId).filter(s => (s.priceOptions || []).some(p => p.currency === "GBP")).length;
+   const o = byId["OFFER-DJA-009"], s = clone(SMART.byId["OFFER-DJA-009"]);
+   s.priceOptions = [{ ...s.priceOptions[0], amountType: "EXACT", amount: 300, minAmount: null, maxAmount: null, currency: "GBP" }];
+   const r = single(o, s, "Datenjournalismus, CHF 800"); F1.T05 = [r];
+@@ -205,7 +216,7 @@
+   const vis = new Set(CARDS.map(c => c.id)), seen = {}, cases = [];
+   for (const o of DATA.filter(x => vis.has(x.id))) {
+     const s = SMART.byId[o.id]; if (!s.priceEligible) continue;
+-    const ex = s.priceOptions.filter(p => p.amountType === "EXACT" && NOMINAL.includes(p.currency));
++    const ex = (s.priceOptions || []).filter(p => p.amountType === "EXACT" && NOMINAL.includes(p.currency));
+     const u = ex.filter(p => p.eligibilityType === "NONE"), c = ex.filter(p => p.eligibilityType !== "NONE");
+     if (!u.length || !c.length) continue;
+     const cMin = Math.min(...c.map(p => p.amount)), uMin = Math.min(...u.map(p => p.amount));
+@@ -234,11 +245,13 @@
+   check("F1/T08", "Vergangener Start ohne Enddatum: nicht sichtbar (E014)", shown.length === 0, `${past.length} Fälle im Bestand`);
+ }
+ {
+-  const o = byId["PCC-P08"];
++  // P28 (E172): gesperrte Angebote werden nicht ausgeliefert; Titel und Status aus data-p27.js (Vergleichsstand)
++  const P27 = JSON.parse((t => t.slice(t.indexOf("["), t.lastIndexOf("]") + 1))(read(path.join(CW, "paket27/website/data-p27.js"))));
++  const o = P27.find(x => x.id === "PCC-P08"), nichtGeliefert = !byId["PCC-P08"];
+   const w = load(); w.document.querySelector("#searchInput").value = o.title; w.document.querySelector("#searchInput").dispatchEvent(new w.Event("input", { bubbles: true }));
+   const classic = cards(w).some(c => c.id === "PCC-P08");
+   const r = run("T09", o.title);
+-  check("F1/T09", "PCC-P08 (HOLD): weder im Katalog noch in der Smart-Suche auffindbar (E017, E050, E063)", o.publicationStatus === "HOLD" && !classic && !r.res.some(c => c.ids.includes("PCC-P08")));
++  check("F1/T09", "PCC-P08 (HOLD): weder im Katalog noch in der Smart-Suche auffindbar (E017, E050, E063)", o.publicationStatus === "HOLD" && nichtGeliefert && !classic && !r.res.some(c => c.ids.includes("PCC-P08")));
+ }
+ check("F1/T10", "DE-Kurs ohne CH-Durchführungsort: CH-Zugang offen", "SPÄTER", "mit D6 nach der Beta (E074)");
+ check("F1/T11", "Merkliste mit unbestätigtem Preis", "SPÄTER", "mit F10 nach der Beta (E074)");
+@@ -350,8 +363,11 @@
+ 
+ // ======== Gegenproben: eingebaute Fehler müssen erkannt werden ========
+ {
+-  const holdOpen = DATA.filter(o => o.publicationStatus === "HOLD" && dateVisible(o)).map(o => o.id);
+-  const d = clone(DATA); d.filter(o => holdOpen.includes(o.id)).forEach(o => { o.publicationStatus = ""; });
++  // P28 (E172): gesperrte Angebote stehen nicht im Release; die Gegenprobe hängt die terminlich sichtbaren HOLD-Angebote aus
++  // data-p27.js (Vergleichsstand) ohne Sperre an die Release-Daten an → sie würden sichtbar
++  const P27g = JSON.parse((t => t.slice(t.indexOf("["), t.lastIndexOf("]") + 1))(read(path.join(CW, "paket27/website/data-p27.js"))));
++  const holdOpen = P27g.filter(o => o.publicationStatus === "HOLD" && dateVisible(o) && !byId[o.id]).map(o => o.id);
++  const d = [...clone(DATA), ...clone(P27g.filter(o => holdOpen.includes(o.id)))]; d.filter(o => holdOpen.includes(o.id)).forEach(o => { o.publicationStatus = ""; });
+   const leaked = holdOpen.length > 0 && cards(load(dataJs(d))).filter(c => holdOpen.includes(c.id)).length === holdOpen.length;
+   const a1 = APP.replace('if (option.eligibilityType === "PROFESSION" && option.eligibilityValue === "JOURNALIST") return "TARGET_GROUP_FIT";', 'if (option.eligibilityType === "PROFESSION" && option.eligibilityValue === "JOURNALIST") return "DIRECT_FIT";');
+   const m2 = a1 !== APP ? directViolations(smart(load(DATA_JS, SMART_JS, { app: a1 }), "500 Euro"), 500).length : 0;
