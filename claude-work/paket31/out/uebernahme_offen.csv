@@ -1,0 +1,291 @@
+datei,zeile,id,feld,grund
+ergebnis_01.jsonl,8,OFFER-MAZ-012,,UEBERSICHT: Weiterleitung auf Kursfinder Kommunikation (maz.ch/kommunikation/kurse); Kurs «Bessere Texte dank KI-Agents» steht auf der gelesenen Listenseite nicht.
+ergebnis_01.jsonl,15,OFFER-MAZ-033,preis,nicht übernommen: kein regulärer Tarif
+ergebnis_01.jsonl,16,OFFER-MAZ-035,,UEBERSICHT: Weiterleitung auf Kursfinder Journalismus (maz.ch/journalismus/kurse); Kurs «Food-Journalismus» steht auf der gelesenen Listenseite nicht.
+ergebnis_01.jsonl,31,OFFER-MAZ-065,,UEBERSICHT: Weiterleitung auf Kursfinder Journalismus (maz.ch/journalismus/kurse); Kurs «KI im Video» steht auf der gelesenen Listenseite nicht.
+ergebnis_01.jsonl,41,OFFER-MAZ-100,,UEBERSICHT: Weiterleitung auf Kursfinder Journalismus (maz.ch/journalismus/kurse); «MAZ-Thementagung KI im Journalismus» steht auf der gelesenen Listenseite nicht.
+ergebnis_02.jsonl,6,OFFER-MAZ-126,,UEBERSICHT: Weiterleitung auf die Übersicht https://www.maz.ch/journalismus/kurse; Kurs «Post Production - Grundlagen» steht im gelesenen Ausschnitt der Liste nicht.
+ergebnis_02.jsonl,7,OFFER-MAZ-127,,UEBERSICHT: Weiterleitung auf die Übersicht https://www.maz.ch/journalismus/kurse; Kurs «Post Production - Vertiefung» steht im gelesenen Ausschnitt der Liste nicht.
+ergebnis_02.jsonl,13,OFFER-MAZ-140,,UEBERSICHT: Weiterleitung auf die Übersicht https://www.maz.ch/kommunikation/kurse; Kurs «Redeangst überwinden» steht im gelesenen Ausschnitt der Liste nicht.
+ergebnis_02.jsonl,14,OFFER-MAZ-141,,UEBERSICHT: Weiterleitung auf die Übersicht https://www.maz.ch/journalismus/kurse; Kurs «Redigieren – Grundlagen» steht im gelesenen Ausschnitt der Liste nicht.
+ergebnis_02.jsonl,18,OFFER-MAZ-153,,UEBERSICHT: Weiterleitung auf die Übersicht https://www.maz.ch/journalismus/kurse; Kurs «Social-Media-Videowerkstatt» steht im gelesenen Ausschnitt der Liste nicht.
+ergebnis_02.jsonl,22,OFFER-MAZ-163,,UEBERSICHT: Weiterleitung auf die Übersicht https://www.maz.ch/kommunikation/kurse; Kurs «TikTok – junge Zielgruppen professionell erreichen» steht im gelesenen Ausschnitt der Liste nicht.
+ergebnis_02.jsonl,28,OFFER-MAZ-175,,UEBERSICHT: Weiterleitung auf die Übersicht https://www.maz.ch/journalismus/kurse; Kurs «Video-Reportage – Grundlagen» steht im gelesenen Ausschnitt der Liste nicht.
+ergebnis_02.jsonl,32,OFFER-MAZ-191,,UEBERSICHT: Weiterleitung auf die Übersicht https://www.maz.ch/kommunikation/kurse; Kurs «Kundenmagazin – visuelle Inszenierung mit Strategie» steht im gelesenen Ausschnitt der Liste nicht.
+ergebnis_02.jsonl,33,OFFER-MAZ-192,,UEBERSICHT: Weiterleitung auf die Übersicht https://www.maz.ch/kommunikation/kurse; Kurs «Kompaktkurs Digitales Storytelling» steht im gelesenen Ausschnitt der Liste nicht.
+ergebnis_02.jsonl,34,OFFER-MAZ-193,,"UEBERSICHT: Weiterleitung auf die Übersicht https://www.maz.ch/kommunikation/kurse; Kurs «Storys, die wirken» steht im gelesenen Ausschnitt der Liste nicht."
+ergebnis_02.jsonl,35,OFFER-MAZ-194,,UEBERSICHT: Weiterleitung auf die Übersicht https://www.maz.ch/kommunikation/kurse; Kurs «In 15 Sekunden überzeugen» steht im gelesenen Ausschnitt der Liste nicht.
+ergebnis_02.jsonl,36,OFFER-MAZ-LEG-005,,"UEBERSICHT: Allgemeine Seite zu Kooperationen des MAZ; «CAS Innovation im Journalismus» wird dort nicht genannt, keine Kursangaben."
+ergebnis_03.jsonl,2,OFFER-MAZ-155,kursform,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_04.jsonl,11,V82-DAWAN-022,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_04.jsonl,15,V82-DAWAN-026,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_04.jsonl,15,V82-DAWAN-026,niveau,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_04.jsonl,18,V82-DAWAN-029,niveau,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_04.jsonl,21,V82-DAWAN-032,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_04.jsonl,21,V82-DAWAN-032,niveau,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_04.jsonl,22,V82-DAWAN-033,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_04.jsonl,22,V82-DAWAN-033,niveau,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_04.jsonl,27,V82-DAWAN-040,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_04.jsonl,28,V82-DAWAN-041,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_04.jsonl,32,V82-DAWAN-045,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_04.jsonl,38,V82-DAWAN-052,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_04.jsonl,39,V82-DAWAN-053,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_04.jsonl,40,V82-DAWAN-054,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_04.jsonl,41,V82-DAWAN-055,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_04.jsonl,42,V82-DAWAN-056,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_04.jsonl,43,V82-DAWAN-057,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_04.jsonl,44,V82-DAWAN-058,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_04.jsonl,45,V82-DAWAN-059,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_05.jsonl,32,V82-DAWAN-049,,"NICHT_LESBAR: PDF-Datei, kein Seitentext vorhanden (fehler TYP)"
+ergebnis_05.jsonl,33,V82-DAWAN-076,,"NICHT_LESBAR: PDF-Datei, kein Seitentext vorhanden (fehler TYP)"
+ergebnis_05.jsonl,34,V82-DAWAN-065,,"NICHT_LESBAR: PDF-Datei, kein Seitentext vorhanden (fehler TYP)"
+ergebnis_07.jsonl,9,OFFER-MEDIENCAMPUS-007,niveau,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_07.jsonl,18,OFFER-MEDIENCAMPUS-018,niveau,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_08.jsonl,31,OFFER-DIGICOMP-023,,DEFEKT: HTTP 404
+ergebnis_08.jsonl,32,OFFER-DIGICOMP-024,,DEFEKT: HTTP 404
+ergebnis_09.jsonl,19,OFFER-DIGICOMP-069,,UEBERSICHT: Weiterleitung auf Übersichtsseite Business-Analyse & Requirements Engineering; Kurs «Digitales Produkt Design» dort nicht genannt; keine Werte übernommen
+ergebnis_11.jsonl,13,AT-PROD-OFFER-038,,DEFEKT: HTTP 404
+ergebnis_11.jsonl,14,AT-PROD-OFFER-042,,DEFEKT: HTTP 404
+ergebnis_11.jsonl,15,AT-PROD-OFFER-134,,DEFEKT: HTTP 404
+ergebnis_11.jsonl,16,AT-PROD-OFFER-172,,DEFEKT: HTTP 404
+ergebnis_11.jsonl,17,AT-PROD-OFFER-173,,DEFEKT: HTTP 404
+ergebnis_11.jsonl,18,AT-PROD-OFFER-186,,DEFEKT: HTTP 404
+ergebnis_11.jsonl,19,AT-PROD-OFFER-187,,DEFEKT: HTTP 404
+ergebnis_11.jsonl,20,AT-PROD-OFFER-191,,DEFEKT: HTTP 404
+ergebnis_11.jsonl,21,AT-PROD-OFFER-192,,DEFEKT: HTTP 404
+ergebnis_11.jsonl,22,AT-PROD-OFFER-193,,DEFEKT: HTTP 404
+ergebnis_11.jsonl,24,AT-PROD-OFFER-198,,DEFEKT: HTTP 404
+ergebnis_11.jsonl,25,AT-PROD-OFFER-200,,DEFEKT: HTTP 404
+ergebnis_12.jsonl,25,OFFER-KLUBPRO-033,,"DEFEKT: HTTP 404, kein Seitentext"
+ergebnis_12.jsonl,26,OFFER-KLUBPRO-038,,"DEFEKT: HTTP 404, kein Seitentext"
+ergebnis_12.jsonl,27,OFFER-KLUBPRO-039,,"DEFEKT: HTTP 404, kein Seitentext"
+ergebnis_12.jsonl,28,OFFER-KLUBPRO-040,,"DEFEKT: HTTP 404, kein Seitentext"
+ergebnis_12.jsonl,29,OFFER-KLUBPRO-041,,"DEFEKT: HTTP 404, kein Seitentext"
+ergebnis_12.jsonl,30,OFFER-KLUBPRO-042,,"DEFEKT: HTTP 404, kein Seitentext"
+ergebnis_12.jsonl,32,OFFER-KLUBPRO-044,,"DEFEKT: HTTP 404, kein Seitentext"
+ergebnis_12.jsonl,33,OFFER-KLUBPRO-045,,"DEFEKT: HTTP 404, kein Seitentext"
+ergebnis_13.jsonl,6,AT-PROD-OFFER-213,niveau,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_13.jsonl,8,AT-PROD-OFFER-216,niveau,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_13.jsonl,12,AT-PROD-OFFER-009,,"DEFEKT: HTTP 404, kein Seitentext."
+ergebnis_13.jsonl,13,AT-PROD-OFFER-207,niveau,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_13.jsonl,15,AT-PROD-OFFER-209,,"DEFEKT: HTTP 404, kein Seitentext."
+ergebnis_13.jsonl,16,AT-PROD-OFFER-210,,"DEFEKT: HTTP 404, kein Seitentext."
+ergebnis_13.jsonl,17,AT-PROD-OFFER-211,,"DEFEKT: HTTP 404, kein Seitentext."
+ergebnis_13.jsonl,18,AT-PROD-OFFER-215,,"UEBERSICHT: Übersichtsseite (Text ggf. gekürzt, Liste bis 15.04.2027). Von den 6 gesuchten Kursen steht nur «Veranstaltungsmoderation für Journalist:innen» darin (01.12.+09.12.2026, fjum-Seminarraum), ohne Preis. Die übrigen 5 sind nicht gelistet. Nebenbefund für andere Pakete (nicht als Wert überno"
+ergebnis_13.jsonl,18,AT-PROD-OFFER-217,,"UEBERSICHT: Übersichtsseite (Text ggf. gekürzt, Liste bis 15.04.2027). Von den 6 gesuchten Kursen steht nur «Veranstaltungsmoderation für Journalist:innen» darin (01.12.+09.12.2026, fjum-Seminarraum), ohne Preis. Die übrigen 5 sind nicht gelistet. Nebenbefund für andere Pakete (nicht als Wert überno"
+ergebnis_13.jsonl,18,AT-PROD-OFFER-220,,"UEBERSICHT: Übersichtsseite (Text ggf. gekürzt, Liste bis 15.04.2027). Von den 6 gesuchten Kursen steht nur «Veranstaltungsmoderation für Journalist:innen» darin (01.12.+09.12.2026, fjum-Seminarraum), ohne Preis. Die übrigen 5 sind nicht gelistet. Nebenbefund für andere Pakete (nicht als Wert überno"
+ergebnis_13.jsonl,18,AT-PROD-OFFER-221,,"UEBERSICHT: Übersichtsseite (Text ggf. gekürzt, Liste bis 15.04.2027). Von den 6 gesuchten Kursen steht nur «Veranstaltungsmoderation für Journalist:innen» darin (01.12.+09.12.2026, fjum-Seminarraum), ohne Preis. Die übrigen 5 sind nicht gelistet. Nebenbefund für andere Pakete (nicht als Wert überno"
+ergebnis_13.jsonl,18,AT-PROD-OFFER-224,,"UEBERSICHT: Übersichtsseite (Text ggf. gekürzt, Liste bis 15.04.2027). Von den 6 gesuchten Kursen steht nur «Veranstaltungsmoderation für Journalist:innen» darin (01.12.+09.12.2026, fjum-Seminarraum), ohne Preis. Die übrigen 5 sind nicht gelistet. Nebenbefund für andere Pakete (nicht als Wert überno"
+ergebnis_13.jsonl,18,AT-PROD-OFFER-226,,"UEBERSICHT: Übersichtsseite (Text ggf. gekürzt, Liste bis 15.04.2027). Von den 6 gesuchten Kursen steht nur «Veranstaltungsmoderation für Journalist:innen» darin (01.12.+09.12.2026, fjum-Seminarraum), ohne Preis. Die übrigen 5 sind nicht gelistet. Nebenbefund für andere Pakete (nicht als Wert überno"
+ergebnis_13.jsonl,19,AT-PROD-OFFER-141,,"UEBERSICHT: Übersichtsseite mit Zeitraumfilter ab 24.03.2026 (Text gekürzt, endet bei Juni 2026); Kurs «Freie:r Journalist:in sein und davon leben können» im lesbaren Teil nicht gelistet."
+ergebnis_13.jsonl,23,AT-PROD-OFFER-223,niveau,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_13.jsonl,24,AT-PROD-OFFER-225,,"DEFEKT: HTTP 404, kein Seitentext."
+ergebnis_14.jsonl,23,OFFER-IBAW-030,termin,nicht übernommen: '<' not supported between instances of 'NoneType' and 'datetime.date'
+ergebnis_15.jsonl,2,PCC-P18,,"UEBERSICHT: Weiterleitung auf Kategorieübersicht Adobe Creative Cloud; Kurs dort mit Kurzbeschrieb gelistet, keine Termine."
+ergebnis_15.jsonl,4,PCC-P20,,"UEBERSICHT: Weiterleitung auf Kategorieübersicht Adobe Creative Cloud; Kurs dort mit Kurzbeschrieb gelistet (Dauer 3 Tage), keine Termine, kein Niveau."
+ergebnis_15.jsonl,6,PCC-P27,niveau,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_15.jsonl,10,PCC-P13,,"UEBERSICHT: Weiterleitung auf Kategorieübersicht Acrobat; Kurs dort mit Kurzbeschrieb (Dauer 1 Tag) gelistet, ohne Termin; einziger Garantietermin gehört zu anderem Kurs (ACF)."
+ergebnis_15.jsonl,11,PCC-P15,,KURS_WEG: Weiterleitung auf leere Kategorie Animate: «Leider haben wir zur Zeit keine Schulungen in dieser Kategorie.»
+ergebnis_15.jsonl,12,PCC-P22,,"UEBERSICHT: Weiterleitung auf Kategorieübersicht InCopy; Kurs dort mit Kurzbeschrieb (Dauer 2 Tage) gelistet, ohne Termine und ohne Niveauangabe."
+ergebnis_15.jsonl,13,PCC-P41,,"UEBERSICHT: Schlagwortübersicht PDF; Kurs dort nur mit Kurzbeschrieb gelistet, ohne Termin und ohne Niveau; einziger Garantietermin gehört zu anderem Kurs (ACF)."
+ergebnis_15.jsonl,19,PCC-P02,,KURS_WEG: Weiterleitung auf leere Kategorie FrameMaker: «Leider haben wir zur Zeit keine Schulungen in dieser Kategorie.»
+ergebnis_15.jsonl,23,PCC-P26,,UEBERSICHT: Weiterleitung auf Kategorieübersicht InDesign; Kurs «Umstieg von QuarkXPress» dort nicht gelistet (vermutlich nicht mehr im Angebot).
+ergebnis_15.jsonl,24,PCC-P31,,UEBERSICHT: Weiterleitung auf Kategorieübersicht Photoshop; Kurs «Komplexe Freisteller und Masken» dort nicht gelistet (vermutlich nicht mehr im Angebot).
+ergebnis_16.jsonl,27,CAD-007,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_16.jsonl,35,CAD-009,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_16.jsonl,35,CAD-010,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_16.jsonl,35,CAD-011,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_17.jsonl,1,OFFER-CFJM-002,,"DEFEKT: HTTP 404, keine Werte"
+ergebnis_17.jsonl,2,OFFER-CFJM-003,,"DEFEKT: HTTP 404, keine Werte"
+ergebnis_17.jsonl,3,OFFER-CFJM-004,,"DEFEKT: HTTP 404, keine Werte"
+ergebnis_17.jsonl,4,OFFER-CFJM-005,,"DEFEKT: HTTP 404, keine Werte"
+ergebnis_17.jsonl,5,OFFER-CFJM-006,,"DEFEKT: HTTP 404, keine Werte"
+ergebnis_17.jsonl,6,OFFER-CFJM-009,,"DEFEKT: HTTP 404, keine Werte"
+ergebnis_17.jsonl,7,OFFER-CFJM-010,,"DEFEKT: HTTP 404, keine Werte"
+ergebnis_17.jsonl,8,OFFER-CFJM-011,,"DEFEKT: HTTP 404, keine Werte"
+ergebnis_17.jsonl,9,OFFER-CFJM-012,,"DEFEKT: HTTP 404, keine Werte"
+ergebnis_17.jsonl,10,OFFER-CFJM-016,,"DEFEKT: HTTP 404, keine Werte"
+ergebnis_17.jsonl,11,OFFER-CFJM-017,,"DEFEKT: HTTP 404, keine Werte"
+ergebnis_17.jsonl,12,OFFER-CFJM-018,,"DEFEKT: HTTP 404, keine Werte"
+ergebnis_17.jsonl,14,OFFER-CFJM-019,,"DEFEKT: HTTP 404, keine Werte"
+ergebnis_17.jsonl,15,OFFER-CFJM-020,,"DEFEKT: HTTP 404, keine Werte"
+ergebnis_17.jsonl,16,OFFER-CFJM-030,,"DEFEKT: HTTP 404, keine Werte"
+ergebnis_17.jsonl,17,OFFER-CFJM-007,,"DEFEKT: HTTP 404, keine Werte"
+ergebnis_17.jsonl,18,OFFER-CFJM-013,,"DEFEKT: HTTP 404, keine Werte"
+ergebnis_17.jsonl,19,OFFER-CFJM-014,,"DEFEKT: HTTP 404, keine Werte"
+ergebnis_17.jsonl,20,OFFER-CFJM-015,,"DEFEKT: HTTP 404, keine Werte"
+ergebnis_18.jsonl,12,OFFER-KLUB-MIDUCA-008,,DEFEKT: HTTP 404
+ergebnis_18.jsonl,13,OFFER-KLUB-MIDUCA-020,,DEFEKT: HTTP 404
+ergebnis_18.jsonl,16,OFFER-IFC-001,,DEFEKT: HTTP 404
+ergebnis_18.jsonl,21,OFFER-IFC-010,,DEFEKT: HTTP 404
+ergebnis_18.jsonl,22,OFFER-IFC-011,,DEFEKT: HTTP 404
+ergebnis_18.jsonl,29,OFFER-MARS-002,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_18.jsonl,30,OFFER-MARS-005,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_18.jsonl,31,OFFER-MARS-008,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_19.jsonl,12,OFFER-ZB-001,,DEFEKT: HTTP 404
+ergebnis_19.jsonl,13,OFFER-ZB-002,,DEFEKT: HTTP 404
+ergebnis_19.jsonl,14,OFFER-ZB-003,,DEFEKT: HTTP 404
+ergebnis_19.jsonl,15,OFFER-ZB-005,,DEFEKT: HTTP 404
+ergebnis_19.jsonl,16,OFFER-ZB-006,,DEFEKT: HTTP 404
+ergebnis_19.jsonl,17,OFFER-ZB-009,,DEFEKT: HTTP 404
+ergebnis_19.jsonl,20,OFFER-SAEZH-001,,DEFEKT: HTTP 404
+ergebnis_19.jsonl,22,OFFER-SAEZH-005,,"DEFEKT: HTTP 404 (auf /che/events/ steht 'Fotografie – Basics' am 21.01.2027 18:30-21:30 Zürich, nicht übernommen, da andere URL)"
+ergebnis_19.jsonl,28,AT-PROD-OFFER-146,niveau,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_19.jsonl,33,AT-PROD-OFFER-151,niveau,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_19.jsonl,45,OFFER-ONSPIRE-002,,"UEBERSICHT: Weiterleitung auf Personenseite /daniela-isik/ (Biografie); YouTube Masterclass und Storytelling Masterclass im gelesenen Text nicht als Kurse beschrieben, keine Werte."
+ergebnis_19.jsonl,45,OFFER-ONSPIRE-003,,"UEBERSICHT: Weiterleitung auf Personenseite /daniela-isik/ (Biografie); YouTube Masterclass und Storytelling Masterclass im gelesenen Text nicht als Kurse beschrieben, keine Werte."
+ergebnis_20.jsonl,2,OFFER-SFGZ-007,,UEBERSICHT: Kursübersicht; gesuchte Kurse stehen nicht im gelesenen Textausschnitt (gekürzt)
+ergebnis_20.jsonl,2,OFFER-SFGZ-010,,UEBERSICHT: Kursübersicht; gesuchte Kurse stehen nicht im gelesenen Textausschnitt (gekürzt)
+ergebnis_20.jsonl,2,OFFER-SFGZ-011,,UEBERSICHT: Kursübersicht; gesuchte Kurse stehen nicht im gelesenen Textausschnitt (gekürzt)
+ergebnis_20.jsonl,4,OFFER-SFGZ-004,,"NICHT_LESBAR: Detailseite leer, kein Kursinhalt (Kurs evtl. nicht mehr ausgeschrieben)"
+ergebnis_20.jsonl,7,IF-G03,,"UEBERSICHT: Übersichtsseite mit Sessions je Kurs; Ort aus Gebäudeangabe ifage Montbrillant (Genf); Text gekürzt, IF-G12 nicht im Ausschnitt; kein kursbezogenes Niveau angegeben"
+ergebnis_20.jsonl,7,IF-G05,,"UEBERSICHT: Übersichtsseite mit Sessions je Kurs; Ort aus Gebäudeangabe ifage Montbrillant (Genf); Text gekürzt, IF-G12 nicht im Ausschnitt; kein kursbezogenes Niveau angegeben"
+ergebnis_20.jsonl,7,IF-G06,,"UEBERSICHT: Übersichtsseite mit Sessions je Kurs; Ort aus Gebäudeangabe ifage Montbrillant (Genf); Text gekürzt, IF-G12 nicht im Ausschnitt; kein kursbezogenes Niveau angegeben"
+ergebnis_20.jsonl,7,IF-G07,,"UEBERSICHT: Übersichtsseite mit Sessions je Kurs; Ort aus Gebäudeangabe ifage Montbrillant (Genf); Text gekürzt, IF-G12 nicht im Ausschnitt; kein kursbezogenes Niveau angegeben"
+ergebnis_20.jsonl,7,IF-G08,,"UEBERSICHT: Übersichtsseite mit Sessions je Kurs; Ort aus Gebäudeangabe ifage Montbrillant (Genf); Text gekürzt, IF-G12 nicht im Ausschnitt; kein kursbezogenes Niveau angegeben"
+ergebnis_20.jsonl,7,IF-G09,,"UEBERSICHT: Übersichtsseite mit Sessions je Kurs; Ort aus Gebäudeangabe ifage Montbrillant (Genf); Text gekürzt, IF-G12 nicht im Ausschnitt; kein kursbezogenes Niveau angegeben"
+ergebnis_20.jsonl,7,IF-G10,,"UEBERSICHT: Übersichtsseite mit Sessions je Kurs; Ort aus Gebäudeangabe ifage Montbrillant (Genf); Text gekürzt, IF-G12 nicht im Ausschnitt; kein kursbezogenes Niveau angegeben"
+ergebnis_20.jsonl,7,IF-G11,,"UEBERSICHT: Übersichtsseite mit Sessions je Kurs; Ort aus Gebäudeangabe ifage Montbrillant (Genf); Text gekürzt, IF-G12 nicht im Ausschnitt; kein kursbezogenes Niveau angegeben"
+ergebnis_20.jsonl,7,IF-G12,,"UEBERSICHT: Übersichtsseite mit Sessions je Kurs; Ort aus Gebäudeangabe ifage Montbrillant (Genf); Text gekürzt, IF-G12 nicht im Ausschnitt; kein kursbezogenes Niveau angegeben"
+ergebnis_20.jsonl,8,IF-P03,,UEBERSICHT: Übersichtsseite mit Sessions je Kurs; keine kursbezogene Niveau-Angabe (nur allgemein «adaptée à tous les niveaux»)
+ergebnis_20.jsonl,8,IF-P04,,UEBERSICHT: Übersichtsseite mit Sessions je Kurs; keine kursbezogene Niveau-Angabe (nur allgemein «adaptée à tous les niveaux»)
+ergebnis_20.jsonl,8,IF-P05,,UEBERSICHT: Übersichtsseite mit Sessions je Kurs; keine kursbezogene Niveau-Angabe (nur allgemein «adaptée à tous les niveaux»)
+ergebnis_20.jsonl,8,IF-P06,,UEBERSICHT: Übersichtsseite mit Sessions je Kurs; keine kursbezogene Niveau-Angabe (nur allgemein «adaptée à tous les niveaux»)
+ergebnis_20.jsonl,8,IF-P07,,UEBERSICHT: Übersichtsseite mit Sessions je Kurs; keine kursbezogene Niveau-Angabe (nur allgemein «adaptée à tous les niveaux»)
+ergebnis_20.jsonl,8,IF-P09,,UEBERSICHT: Übersichtsseite mit Sessions je Kurs; keine kursbezogene Niveau-Angabe (nur allgemein «adaptée à tous les niveaux»)
+ergebnis_20.jsonl,8,IF-P11,,UEBERSICHT: Übersichtsseite mit Sessions je Kurs; keine kursbezogene Niveau-Angabe (nur allgemein «adaptée à tous les niveaux»)
+ergebnis_20.jsonl,8,IF-P12,,UEBERSICHT: Übersichtsseite mit Sessions je Kurs; keine kursbezogene Niveau-Angabe (nur allgemein «adaptée à tous les niveaux»)
+ergebnis_20.jsonl,8,IF-P13,,UEBERSICHT: Übersichtsseite mit Sessions je Kurs; keine kursbezogene Niveau-Angabe (nur allgemein «adaptée à tous les niveaux»)
+ergebnis_20.jsonl,8,IF-P14,,UEBERSICHT: Übersichtsseite mit Sessions je Kurs; keine kursbezogene Niveau-Angabe (nur allgemein «adaptée à tous les niveaux»)
+ergebnis_20.jsonl,9,IF-W04,,"UEBERSICHT: Übersichtsseite; Text gekürzt, IF-W05 (SEO) nicht im Ausschnitt; Ort ifage Augustins (Genf)"
+ergebnis_20.jsonl,9,IF-W05,,"UEBERSICHT: Übersichtsseite; Text gekürzt, IF-W05 (SEO) nicht im Ausschnitt; Ort ifage Augustins (Genf)"
+ergebnis_20.jsonl,21,OFFER-FHNW-010,,DEFEKT: HTTP 404
+ergebnis_20.jsonl,22,OFFER-FHNW-011,,DEFEKT: HTTP 404; Weiterleitung auf Archiv-URL (…/archiv/cas-visual-literacy) – Hinweis auf eingestelltes Angebot
+ergebnis_20.jsonl,23,OFFER-FHNW-012,,DEFEKT: HTTP 404; Weiterleitung auf Archiv-URL (…/archiv/cas-digital-literacy) – Hinweis auf eingestelltes Angebot
+ergebnis_20.jsonl,25,OFFER-ZHAW-009,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_20.jsonl,30,OFFER-ZHDK-008,,DEFEKT: HTTP 404
+ergebnis_20.jsonl,31,OFFER-ZHDK-011,,DEFEKT: HTTP 404
+ergebnis_20.jsonl,32,OFFER-ZHDK-013,,DEFEKT: HTTP 404
+ergebnis_20.jsonl,34,OFFER-ZLI-002,,UEBERSICHT: Übersicht mit Anmeldeliste; Ort auf Seite nicht genannt; Grundlagen der Fotografie und Low Key ohne Datum in der Liste
+ergebnis_20.jsonl,34,OFFER-ZLI-003,,UEBERSICHT: Übersicht mit Anmeldeliste; Ort auf Seite nicht genannt; Grundlagen der Fotografie und Low Key ohne Datum in der Liste
+ergebnis_20.jsonl,34,OFFER-ZLI-004,,UEBERSICHT: Übersicht mit Anmeldeliste; Ort auf Seite nicht genannt; Grundlagen der Fotografie und Low Key ohne Datum in der Liste
+ergebnis_20.jsonl,34,OFFER-ZLI-005,,UEBERSICHT: Übersicht mit Anmeldeliste; Ort auf Seite nicht genannt; Grundlagen der Fotografie und Low Key ohne Datum in der Liste
+ergebnis_20.jsonl,34,OFFER-ZLI-006,,UEBERSICHT: Übersicht mit Anmeldeliste; Ort auf Seite nicht genannt; Grundlagen der Fotografie und Low Key ohne Datum in der Liste
+ergebnis_20.jsonl,34,OFFER-ZLI-007,,UEBERSICHT: Übersicht mit Anmeldeliste; Ort auf Seite nicht genannt; Grundlagen der Fotografie und Low Key ohne Datum in der Liste
+ergebnis_20.jsonl,35,OFFER-ZLI-012,,UEBERSICHT: Kein Datum für beide Kurse; nur «Interessiert? Wir beraten Sie gerne – melden Sie sich direkt bei uns!» (nicht ausdrücklich auf Anfrage)
+ergebnis_20.jsonl,35,OFFER-ZLI-013,,UEBERSICHT: Kein Datum für beide Kurse; nur «Interessiert? Wir beraten Sie gerne – melden Sie sich direkt bei uns!» (nicht ausdrücklich auf Anfrage)
+ergebnis_20.jsonl,37,OFFER-ZLI-008,,UEBERSICHT: Nur Interviewaufnahmen mit Datum; übrige Kurse nur «Interessiert? Wir beraten Sie gerne» (nicht ausdrücklich auf Anfrage); Ort nicht genannt
+ergebnis_20.jsonl,37,OFFER-ZLI-009,,UEBERSICHT: Nur Interviewaufnahmen mit Datum; übrige Kurse nur «Interessiert? Wir beraten Sie gerne» (nicht ausdrücklich auf Anfrage); Ort nicht genannt
+ergebnis_20.jsonl,37,OFFER-ZLI-010,,UEBERSICHT: Nur Interviewaufnahmen mit Datum; übrige Kurse nur «Interessiert? Wir beraten Sie gerne» (nicht ausdrücklich auf Anfrage); Ort nicht genannt
+ergebnis_20.jsonl,38,OFFER-ZLI-016,,UEBERSICHT: Suchfunktion als Hilfsmittel ohne Datum; nur «Interessiert? Wir beraten Sie gerne» (nicht ausdrücklich auf Anfrage)
+ergebnis_20.jsonl,39,OFFER-EBU-012,,"NICHT_LESBAR: HTTP 403 (Zugriff gesperrt), kein Seitentext"
+ergebnis_20.jsonl,40,OFFER-EBU-013,,"NICHT_LESBAR: HTTP 403 (Zugriff gesperrt), kein Seitentext"
+ergebnis_20.jsonl,41,OFFER-EBU-015,,"NICHT_LESBAR: HTTP 403 (Zugriff gesperrt), kein Seitentext"
+ergebnis_20.jsonl,42,OFFER-EBU-016,,"NICHT_LESBAR: HTTP 403 (Zugriff gesperrt), kein Seitentext"
+ergebnis_20.jsonl,43,OFFER-EBU-017,,"NICHT_LESBAR: HTTP 403 (Zugriff gesperrt), kein Seitentext"
+ergebnis_21.jsonl,14,OFFER-HEAD-005,,UEBERSICHT: Weiterleitung auf allgemeine Übersicht Formation continue; Kurs ComfyUI dort nicht genannt.
+ergebnis_21.jsonl,21,OFFER-SGP-003,,DEFEKT: HTTP 404.
+ergebnis_21.jsonl,22,OFFER-SGP-005,,UEBERSICHT: Übersichtsseite Masterclass; Affinity Photo Module 1/2 und Etudes visuelles dort nicht mehr aufgeführt.
+ergebnis_21.jsonl,22,OFFER-SGP-006,,UEBERSICHT: Übersichtsseite Masterclass; Affinity Photo Module 1/2 und Etudes visuelles dort nicht mehr aufgeführt.
+ergebnis_21.jsonl,22,OFFER-SGP-007,,UEBERSICHT: Übersichtsseite Masterclass; Affinity Photo Module 1/2 und Etudes visuelles dort nicht mehr aufgeführt.
+ergebnis_21.jsonl,23,OFFER-SGP-009,,UEBERSICHT: Übersichtsseite Workshops; Workshops zu Droit à l'image und Droit d'auteur dort nicht mehr aufgeführt.
+ergebnis_21.jsonl,23,OFFER-SGP-010,,UEBERSICHT: Übersichtsseite Workshops; Workshops zu Droit à l'image und Droit d'auteur dort nicht mehr aufgeführt.
+ergebnis_21.jsonl,26,OFFER-WEKA-004,,"DEFEKT: HTTP 200, aber Fehlerseite «Seite nicht gefunden» (404-Page-not-found)."
+ergebnis_21.jsonl,33,OFFER-BAUM-002,,"NICHT_LESBAR: HTTP 200, aber leerer Seitentext."
+ergebnis_21.jsonl,40,V78-03,,"DEFEKT: HTTP 403, Seite nicht gelesen."
+ergebnis_21.jsonl,41,V78-01,,"DEFEKT: HTTP 403, Seite nicht gelesen."
+ergebnis_21.jsonl,42,V78-02,,"DEFEKT: HTTP 403, Seite nicht gelesen."
+ergebnis_21.jsonl,43,V78-05,,"DEFEKT: HTTP 403, Seite nicht gelesen."
+ergebnis_22.jsonl,1,OFFER-JM-001,,DEFEKT: HTTP 404
+ergebnis_22.jsonl,2,OFFER-JM-002,,DEFEKT: HTTP 404
+ergebnis_22.jsonl,3,OFFER-JM-003,,DEFEKT: HTTP 404
+ergebnis_22.jsonl,4,OFFER-JM-004,,DEFEKT: HTTP 404
+ergebnis_22.jsonl,11,AT-PROD-OFFER-028,niveau,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_22.jsonl,23,V59-SZ05,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_22.jsonl,24,OFFER-SBVV-005,termin,nicht übernommen: Termin nicht auf der Seite (Gegenprobe)
+ergebnis_22.jsonl,25,OFFER-SBVV-008,,"DEFEKT: HTTP 200, aber Fehlerseite «Seite nicht vorhanden»"
+ergebnis_22.jsonl,26,OFFER-SBVV-012,,"DEFEKT: HTTP 200, aber Fehlerseite «Seite nicht vorhanden»"
+ergebnis_22.jsonl,29,AT-PROD-OFFER-015,termin,nicht übernommen: Termin nicht auf der Seite (Gegenprobe)
+ergebnis_22.jsonl,31,OFFER-DPSUISSE-002,,DEFEKT: HTTP 404
+ergebnis_22.jsonl,34,OFFER-FFHS-002,,KURS_WEG: Weiterleitung auf FFHS-Startseite; Kursseite nicht mehr vorhanden
+ergebnis_22.jsonl,36,OFFER-FOCAL-010,,"NICHT_LESBAR: Seite enthält nur Verweis auf /de/seminare/schreiben-im-dokumentarfilm, kein Kursinhalt gelesen"
+ergebnis_22.jsonl,37,OFFER-FOCAL-015,,DEFEKT: HTTP 404
+ergebnis_22.jsonl,38,OFFER-FOCAL-018,,DEFEKT: HTTP 404
+ergebnis_22.jsonl,42,OFFER-HWZ-004,,"KURS_WEG: Weiterleitung auf «CAS Digital Publishing & Brand Journalism» (mit Text Akademie; Start April & Dezember, ohne Datum; CHF 7'950); ob Nachfolger des Kurses, auf der Seite nicht gesagt"
+ergebnis_22.jsonl,43,OFFER-HWZ-013,,DEFEKT: HTTP 404
+ergebnis_22.jsonl,44,OFFER-HWZ-015,,DEFEKT: HTTP 404
+ergebnis_23.jsonl,7,OFFER-SCA-001,,"NICHT_LESBAR: Seite nicht gelesen (TLS-Fehler), keine Werte."
+ergebnis_23.jsonl,8,OFFER-SCA-002,,"NICHT_LESBAR: Seite nicht gelesen (TLS-Fehler), keine Werte."
+ergebnis_23.jsonl,9,OFFER-SCA-003,,"NICHT_LESBAR: Seite nicht gelesen (TLS-Fehler), keine Werte."
+ergebnis_23.jsonl,9,OFFER-SCA-004,,"NICHT_LESBAR: Seite nicht gelesen (TLS-Fehler), keine Werte."
+ergebnis_23.jsonl,13,OFFER-UNIGE-014,,"NICHT_LESBAR: Nur Sicherheitsprüfung (Captcha) statt Kursseite, keine Werte."
+ergebnis_23.jsonl,14,OFFER-UNIGE-012,,"NICHT_LESBAR: Nur Sicherheitsprüfung (Captcha) statt Kursseite, keine Werte."
+ergebnis_23.jsonl,15,OFFER-UNIGE-013,,"NICHT_LESBAR: Nur Sicherheitsprüfung (Captcha) statt Kursseite, keine Werte."
+ergebnis_23.jsonl,19,OFFER-EJC-001,,"NICHT_LESBAR: Seite nicht gelesen (robots.txt-Sperre), keine Werte."
+ergebnis_23.jsonl,20,OFFER-EJC-002,,"NICHT_LESBAR: Seite nicht gelesen (robots.txt-Sperre), keine Werte."
+ergebnis_23.jsonl,21,OFFER-EJC-004,,"NICHT_LESBAR: Seite nicht gelesen (robots.txt-Sperre), keine Werte."
+ergebnis_23.jsonl,21,OFFER-EJC-005,,"NICHT_LESBAR: Seite nicht gelesen (robots.txt-Sperre), keine Werte."
+ergebnis_23.jsonl,21,OFFER-EJC-006,,"NICHT_LESBAR: Seite nicht gelesen (robots.txt-Sperre), keine Werte."
+ergebnis_23.jsonl,21,OFFER-EJC-007,,"NICHT_LESBAR: Seite nicht gelesen (robots.txt-Sperre), keine Werte."
+ergebnis_23.jsonl,21,OFFER-EJC-008,,"NICHT_LESBAR: Seite nicht gelesen (robots.txt-Sperre), keine Werte."
+ergebnis_23.jsonl,21,OFFER-EJC-009,,"NICHT_LESBAR: Seite nicht gelesen (robots.txt-Sperre), keine Werte."
+ergebnis_23.jsonl,21,OFFER-EJC-010,,"NICHT_LESBAR: Seite nicht gelesen (robots.txt-Sperre), keine Werte."
+ergebnis_23.jsonl,21,OFFER-EJC-013,,"NICHT_LESBAR: Seite nicht gelesen (robots.txt-Sperre), keine Werte."
+ergebnis_23.jsonl,28,AT-PROD-OFFER-021,preis,nicht übernommen: kein regulärer Tarif
+ergebnis_23.jsonl,31,AT-PROD-OFFER-166,,UEBERSICHT: Startseite; Kurs «Journalistisches Schreiben» dort nicht einzeln aufgeführt.
+ergebnis_23.jsonl,41,CH-CLEAN2-V9-D01,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_23.jsonl,44,OFFER-AJM-001,preis,nicht übernommen: kein regulärer Tarif
+ergebnis_23.jsonl,45,OFFER-AJM-002,preis,nicht übernommen: kein regulärer Tarif
+ergebnis_24.jsonl,3,OFFER-FF-004,,DEFEKT: HTTP 404
+ergebnis_24.jsonl,4,OFFER-FF-005,,DEFEKT: HTTP 404
+ergebnis_24.jsonl,9,CH-V29-P01,,DEFEKT: HTTP 404
+ergebnis_24.jsonl,10,CH-V29-P02,,DEFEKT: HTTP 404
+ergebnis_24.jsonl,11,PJ-V16-09,,DEFEKT: HTTP 404
+ergebnis_24.jsonl,17,CH-CLEAN-V6-D01,,DEFEKT: HTTP 404
+ergebnis_24.jsonl,19,OFFER-USI-001,,DEFEKT: HTTP 403
+ergebnis_24.jsonl,20,OFFER-USI-002,,DEFEKT: HTTP 403
+ergebnis_24.jsonl,21,AT-PROD-OFFER-097,,NICHT_LESBAR: Nicht gelesen (robots.txt-Sperre).
+ergebnis_24.jsonl,22,AT-PROD-OFFER-098,,NICHT_LESBAR: Nicht gelesen (robots.txt-Sperre).
+ergebnis_24.jsonl,24,OFFER-WEBEDU-003,,UEBERSICHT: Startseite; WordPress Developer Crashkurs wird dort nicht aufgeführt (nur MCC und Creative Media & AI Producer).
+ergebnis_24.jsonl,31,OFFER-LAUDIUS-001,preis,nicht übernommen: Betrag nicht auf der Seite (Gegenprobe)
+ergebnis_24.jsonl,43,CH-V34-A01,,"UEBERSICHT: Startseite des Verbands; nennt nur Ausbildungsthemen allgemein (storytelling visuel, sécurité numérique, IA générative dans l'image …), keine der sieben Kurse mit Titel, Termin oder Preis. CHF 200/60 sind Mitgliederbeiträge."
+ergebnis_24.jsonl,43,CH-V34-A02,,"UEBERSICHT: Startseite des Verbands; nennt nur Ausbildungsthemen allgemein (storytelling visuel, sécurité numérique, IA générative dans l'image …), keine der sieben Kurse mit Titel, Termin oder Preis. CHF 200/60 sind Mitgliederbeiträge."
+ergebnis_24.jsonl,43,CH-V34-A03,,"UEBERSICHT: Startseite des Verbands; nennt nur Ausbildungsthemen allgemein (storytelling visuel, sécurité numérique, IA générative dans l'image …), keine der sieben Kurse mit Titel, Termin oder Preis. CHF 200/60 sind Mitgliederbeiträge."
+ergebnis_24.jsonl,43,CH-V34-A04,,"UEBERSICHT: Startseite des Verbands; nennt nur Ausbildungsthemen allgemein (storytelling visuel, sécurité numérique, IA générative dans l'image …), keine der sieben Kurse mit Titel, Termin oder Preis. CHF 200/60 sind Mitgliederbeiträge."
+ergebnis_24.jsonl,43,CH-V34-A05,,"UEBERSICHT: Startseite des Verbands; nennt nur Ausbildungsthemen allgemein (storytelling visuel, sécurité numérique, IA générative dans l'image …), keine der sieben Kurse mit Titel, Termin oder Preis. CHF 200/60 sind Mitgliederbeiträge."
+ergebnis_24.jsonl,43,CH-V34-A06,,"UEBERSICHT: Startseite des Verbands; nennt nur Ausbildungsthemen allgemein (storytelling visuel, sécurité numérique, IA générative dans l'image …), keine der sieben Kurse mit Titel, Termin oder Preis. CHF 200/60 sind Mitgliederbeiträge."
+ergebnis_24.jsonl,43,CH-V34-A07,,"UEBERSICHT: Startseite des Verbands; nennt nur Ausbildungsthemen allgemein (storytelling visuel, sécurité numérique, IA générative dans l'image …), keine der sieben Kurse mit Titel, Termin oder Preis. CHF 200/60 sind Mitgliederbeiträge."
+ergebnis_25.jsonl,7,CH-V18-R01,termin,nicht übernommen: kein gültiger künftiger Termin
+ergebnis_25.jsonl,12,OFFER-CYBERIADE-001,,"UEBERSICHT: Weiterleitung auf die Startseite cyberiade.ch; Kurse Illustrator, InDesign, Photoshop dort nicht aufgeführt."
+ergebnis_25.jsonl,12,OFFER-CYBERIADE-002,,"UEBERSICHT: Weiterleitung auf die Startseite cyberiade.ch; Kurse Illustrator, InDesign, Photoshop dort nicht aufgeführt."
+ergebnis_25.jsonl,12,OFFER-CYBERIADE-003,,"UEBERSICHT: Weiterleitung auf die Startseite cyberiade.ch; Kurse Illustrator, InDesign, Photoshop dort nicht aufgeführt."
+ergebnis_25.jsonl,14,AT-PROD-OFFER-020,termin,nicht übernommen: kein gültiger künftiger Termin
+ergebnis_25.jsonl,15,OFFER-HEVS-001,,"DEFEKT: HTTP 404, kein Seitentext."
+ergebnis_25.jsonl,15,OFFER-HEVS-002,,"DEFEKT: HTTP 404, kein Seitentext."
+ergebnis_25.jsonl,15,OFFER-HEVS-003,,"DEFEKT: HTTP 404, kein Seitentext."
+ergebnis_25.jsonl,15,OFFER-HEVS-004,,"DEFEKT: HTTP 404, kein Seitentext."
+ergebnis_25.jsonl,15,OFFER-HEVS-005,,"DEFEKT: HTTP 404, kein Seitentext."
+ergebnis_25.jsonl,17,OFFER-INVESTIGATIV-001,termin,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_25.jsonl,19,OFFER-GIB-001,,"DEFEKT: HTTP 404, kein Seitentext."
+ergebnis_25.jsonl,20,CH-NOV-OF-022,,"NICHT_LESBAR: Seitentext enthält nur Navigation und Kontakt, keine Kursinhalte (vermutlich dynamisch geladen)."
+ergebnis_25.jsonl,20,CH-NOV-OF-023,,"NICHT_LESBAR: Seitentext enthält nur Navigation und Kontakt, keine Kursinhalte (vermutlich dynamisch geladen)."
+ergebnis_25.jsonl,20,CH-NOV-OF-024,,"NICHT_LESBAR: Seitentext enthält nur Navigation und Kontakt, keine Kursinhalte (vermutlich dynamisch geladen)."
+ergebnis_25.jsonl,20,CH-NOV-OF-025,,"NICHT_LESBAR: Seitentext enthält nur Navigation und Kontakt, keine Kursinhalte (vermutlich dynamisch geladen)."
+ergebnis_25.jsonl,20,CH-NOV-OF-026,,"NICHT_LESBAR: Seitentext enthält nur Navigation und Kontakt, keine Kursinhalte (vermutlich dynamisch geladen)."
+ergebnis_25.jsonl,21,AT-PROD-OFFER-001,termin,nicht übernommen: kein gültiger künftiger Termin
+ergebnis_25.jsonl,25,AT-PROD-OFFER-160,niveau,nicht übernommen: Zitat nicht wörtlich auf der Seite (Gegenprobe)
+ergebnis_25.jsonl,28,OFFER-ONSPIRE-004,,"DEFEKT: HTTP 403, kein Seitentext."
+ergebnis_25.jsonl,29,CH-NOV-OF-020,,"NICHT_LESBAR: Nicht abgerufen (robots.txt), kein Seitentext."
+ergebnis_25.jsonl,30,CH-NOV-OF-036,,"DEFEKT: HTTP 403, kein Seitentext."
+ergebnis_25.jsonl,31,OFFER-SASJ-001,,"NICHT_LESBAR: HTTP 200, aber leerer Seitentext."
+ergebnis_25.jsonl,32,OFFER-TEXTAK-001,,"DEFEKT: HTTP 404, kein Seitentext."
+ergebnis_25.jsonl,33,LI-REG-006,,"UEBERSICHT: Allgemeine Kursliste (620 Kurse, ab 23.11.2026); Kurs «Videomarketing: Filme mit dem iPhone erstellen» im gelesenen Text nicht aufgeführt."
+ergebnis_25.jsonl,34,OFFER-FOTOMUSEUM-001,,"DEFEKT: HTTP 403, kein Seitentext."
+ergebnis_25.jsonl,37,AT-PROD-OFFER-093,,"DEFEKT: HTTP 404, kein Seitentext."
+ergebnis_25.jsonl,39,OFFER-UNIGE-011,,NICHT_LESBAR: Sicherheitsprüfung (Captcha) statt Seiteninhalt.
+ergebnis_25.jsonl,40,AT-PROD-OFFER-023,termin,nicht übernommen: kein gültiger künftiger Termin
+ergebnis_25.jsonl,41,LI-REG-002,,"NICHT_LESBAR: Dokument nicht gelesen (Fehler TYP), kein Seitentext."
+ergebnis_25.jsonl,42,CH-V19-N02,,"DEFEKT: HTTP 404, kein Seitentext."
+ergebnis_25.jsonl,45,AT-PROD-OFFER-170,preis,nicht übernommen: kein regulärer Tarif
+ergebnis_26.jsonl,1,OFFER-DPSUISSE-004,,"UEBERSICHT: Kursportal-Übersicht; die Kurse «Video Vertiefung 1» und «Video Vertiefung 2» stehen nicht in der Liste, keine Preise auf der Seite."
+ergebnis_26.jsonl,1,OFFER-DPSUISSE-005,,"UEBERSICHT: Kursportal-Übersicht; die Kurse «Video Vertiefung 1» und «Video Vertiefung 2» stehen nicht in der Liste, keine Preise auf der Seite."

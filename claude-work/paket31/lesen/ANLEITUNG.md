@@ -6,10 +6,11 @@ Du liest Anbieterseiten von Weiterbildungskursen und trägst fehlende Angaben zu
 `paket_NN.jsonl`: eine Zeile je Seite: `url`, `angebote` (ID → `titel`, `anbieter`, `luecken`: Feld → heutiger Katalogwert). Nur die Felder unter `luecken` sind gesucht.
 
 ## Vorgehen je Seite
-1. Seite mit **WebFetch** lesen (keine anderen Abrufwege, nichts Kostenpflichtiges, kein Firecrawl). Prompt sinngemäss: «Gib für den Kurs ‹Titel› genau an, was auf der Seite steht: alle künftigen Termine (Start, Ende, Ort), Preise mit Währung und Tarif (regulär, Mitglieder, Journalist:innen …, inkl./zzgl. MWST), Dauer, Durchführungsort, Kursform (Präsenz/online live/selbstlernend/hybrid), Kurssprache, Niveau; je Angabe ein kurzes wörtliches Zitat. Steht etwas nicht da, schreibe ‹fehlt›. Ist der Kurs nicht mehr im Angebot oder ist es eine Übersichtsseite mit vielen Kursen, sage das.»
+1. **Keine Web-Abrufe.** Der Text jeder Seite liegt schon lokal in `texte/texte_NN.jsonl` (gleiche Reihenfolge wie das Paket): `http`, `ziel` (nach Weiterleitung), `fehler`, `volltext` mit `titel`, `h1`, `text` (Haupttext, höchstens 9000 Zeichen), `strukturiert` (schema.org-Werte wie startDate, price) und `quelltext_daten` (Datumsangaben aus dem Quelltext, z. B. Terminlisten). `volltext` = null heisst: Seite nicht gelesen (defekt, gesperrt, Zeitüberschreitung) → `seite` NICHT_LESBAR bzw. DEFEKT (http 4xx). Lies die Datei mit dem Read-Werkzeug.
+   Frage dich je Kurs: alle künftigen Termine (Start, Ende, Ort), Preise mit Währung und Tarif (regulär, Mitglieder, Journalist:innen …, inkl./zzgl. MWST), Dauer, Durchführungsort, Kursform, Kurssprache, Niveau – je Angabe ein kurzes wörtliches Zitat. Steht etwas nicht da: NICHT_AUF_SEITE. Ist der Kurs nicht mehr im Angebot oder führt der Link auf eine Übersicht, ohne dass der Kurs dort steht: `seite` KURS_WEG bzw. UEBERSICHT.
 2. Bei mehreren Angeboten auf derselben Seite (Übersichtsseite): Werte nur übernehmen, wenn sie eindeutig zu genau diesem Kurs gehören.
-3. Fehlerseite, 404, Login, leere Seite, Zeitüberschreitung: `seite` = `NICHT_LESBAR` oder `DEFEKT`, keine Werte. Höchstens ein zweiter Versuch.
-4. Nur Angaben der Seite selbst (oder direkt verlinkte Terminliste derselben Website, dann `quelle_url` angeben). Kein Wissen aus dem Gedächtnis.
+3. Fehlerseite, 404, Login, leere Seite: `seite` = `NICHT_LESBAR` oder `DEFEKT`, keine Werte.
+4. Nur Angaben aus dem lokalen Seitentext. Kein Wissen aus dem Gedächtnis. Die Seitentexte nicht kopieren oder weitergeben; nur Werte und kurze Zitate ins Ergebnis.
 
 ## Werte (nur diese Formen)
 - `termin`: `status` GEFUNDEN | AUF_ANFRAGE (Seite sagt ausdrücklich auf Anfrage/jederzeit/nach Vereinbarung/laufend, E268) | NICHT_AUF_SEITE | NUR_VERGANGEN; `termine`: Liste `{"start":"JJJJ-MM-TT","ende":"JJJJ-MM-TT" oder null,"ort":"…" oder null}`, nur Start ≥ 2026-11-23, höchstens 8, aufsteigend.
