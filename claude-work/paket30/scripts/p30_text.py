@@ -36,6 +36,9 @@ class _P(html.parser.HTMLParser):
         if tag == "script":
             t = (a.get("type") or "").lower()
             self._ld = [] if "ld+json" in t else ("skript" if t in ("", "text/javascript", "application/json", "module") or "json" in t else None)
+        for k, v in attrs:   # Termindaten in Attributen (data-*, datetime, content, value, x-data, :bind) zählen als Quelltext
+            if v and (k.startswith("data-") or k in ("datetime", "content", "value", "x-data", "x-init") or k.startswith(":") or k.startswith("v-bind")):
+                if re.search(r"\d", v): self.skript.append(v[:5000])
         if tag in LEER_TAGS:
             if tag == "br": self._add(" ")
             return
@@ -65,6 +68,9 @@ class _P(html.parser.HTMLParser):
         if self._in_title: self.titel.append(data)
         if isinstance(self._ld, list): self.ld.append(data); return
         if self._ld == "skript": self.skript.append(data); return
+        if self._skip():   # verdeckter Inhalt (hidden, Auswahllisten u. a.): nicht Text, aber Quelltext für Termine und Preise
+            if not any(t in ("style", "head") for t, _, _ in self.stack): self.skript.append(data)
+            return
         self._add(data)
 
 

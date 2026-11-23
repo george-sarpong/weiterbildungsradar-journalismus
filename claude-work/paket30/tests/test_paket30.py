@@ -227,6 +227,8 @@ def q04():
     check("Q04 fehlendes </head> und Cookie-Klasse am body: Text bleibt", "Kurs Y" in o.text and len(o.text) > 300, f"{len(o.text)} Zeichen")
     o2 = T.bereinige("<html><body><div id='app'><template x-if='true'><main><h1>Kurs Z</h1><p>" + FUELL + "</p></main></template></div></body></html>")
     check("Q04 Inhalt in <template> (Termine nach JavaScript) bleibt", "Kurs Z" in o2.text, f"{len(o2.text)} Zeichen")
+    o3 = T.bereinige("<main><h1>Kurs</h1><p>" + FUELL + "</p><div hidden><span>01.03.2027</span></div><button data-start='2027-06-14'>Termin</button></main>")
+    check("Q04 Datum in verdecktem Element und Attribut: Quelltext, nicht Text", T.finde_datum(D(2027, 3, 1), o3)[0] == "quelltext" and T.finde_datum(D(2027, 6, 14), o3)[0] == "quelltext" and "01.03.2027" not in o3.text)
 
 
 # ---------------- Q05 Höflichkeit ----------------
