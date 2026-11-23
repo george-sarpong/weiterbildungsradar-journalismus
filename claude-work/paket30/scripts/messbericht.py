@@ -46,7 +46,8 @@ def kennzahlen(rows, t, n, abruf, abgleich_zeilen, nachpruefung=None, entscheide
         elif a["einordnung"] == "ZWEIFEL" and not entscheide.get(r["id"]): offen.append((r["id"], "Owner-Entscheid offen"))
         elif a["einordnung"] == "CHROME" and a["url"] not in nachpruefung: offen.append((r["id"], "Nachprüfung im Chat offen"))
     zweifel = [r for r in abgleich_zeilen if r["einordnung"] == "ZWEIFEL"]
-    aufwand = len(zweifel) * MIN_JE_ZWEIFEL + MIN_STICHPROBE_10 + MIN_UPLOAD
+    zweifel_seiten = len({r["url"] for r in zweifel})
+    aufwand = zweifel_seiten * MIN_JE_ZWEIFEL + MIN_STICHPROBE_10 + MIN_UPLOAD
     q = (er["maschinell"] + er["nachpruefung"]) / len(links) if links else 0.0
     qm = er["maschinell"] / len(links) if links else 0.0
     return {"stichtag": t.isoformat(), "naechster_build": n.isoformat(), "sichtbar": len(vis),
@@ -56,7 +57,7 @@ def kennzahlen(rows, t, n, abruf, abgleich_zeilen, nachpruefung=None, entscheide
             "b3_pruefliste": len(pl), "b3_offen": len(offen), "b3_offen_liste": offen,
             "status": dict(sorted(Counter(r["status"] for r in abgleich_zeilen).items())),
             "einordnung": dict(sorted(Counter(r["einordnung"] for r in abgleich_zeilen).items())),
-            "zweifel": len(zweifel), "aufwand_min_schaetzung": aufwand, "aufwand_ueber_budget": aufwand > BUDGET_MIN}
+            "zweifel": len(zweifel), "zweifel_seiten": zweifel_seiten, "aufwand_min_schaetzung": aufwand, "aufwand_ueber_budget": aufwand > BUDGET_MIN}
 
 
 def als_md(k, lauf):
@@ -69,8 +70,8 @@ def als_md(k, lauf):
               f"| B3 Prüfliste abgearbeitet | 0 offen | {k['b3_offen']} offen von {k['b3_pruefliste']} | {j(k['b3_offen'] == 0)} |", "",
               "Status je Angebot: " + ", ".join(f"{a} {b}" for a, b in k["status"].items()) + ".",
               "Einordnung: " + ", ".join(f"{a} {b}" for a, b in k["einordnung"].items()) + ".", "",
-              f"Zweifelsfälle für den Owner: {k['zweifel']}. Aufwand [SCHÄTZUNG]: {k['aufwand_min_schaetzung']} Min. "
-              f"({MIN_JE_ZWEIFEL} Min. je Zweifelsfall, Stichprobe {MIN_STICHPROBE_10} Min., Upload {MIN_UPLOAD} Min.); "
+              f"Zweifelsfälle für den Owner: {k['zweifel']} Angebote auf {k['zweifel_seiten']} Seiten. Aufwand [SCHÄTZUNG]: {k['aufwand_min_schaetzung']} Min. "
+              f"({MIN_JE_ZWEIFEL} Min. je Seite, Stichprobe {MIN_STICHPROBE_10} Min., Upload {MIN_UPLOAD} Min.); "
               + ("über dem Budget von 1,5 Std. (E186): Owner fragen." if k["aufwand_ueber_budget"] else "im Budget von 1,5 Std. (E186)."), ""]
     if k["b1_ids"]: zeilen += ["B1 betroffen: " + ", ".join(k["b1_ids"]), ""]
     if k["b2_nicht_erreichbar"]: zeilen += [f"B2 nicht erreichbar ({len(k['b2_nicht_erreichbar'])}): siehe abgleich-Datei, Status LINK_DEFEKT und NICHT_LESBAR.", ""]

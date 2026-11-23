@@ -27,7 +27,7 @@ NICHT_LESBAR_FEHLER = {"ROBOTS", "TIMEOUT", "HOST_RUHT", "TYP", "GROESSE", "KODI
 DEFEKT_FEHLER = {"DNS", "VERBINDUNG_ABGELEHNT", "TLS", "KEINE_ADRESSE"}
 KOPF = ["id", "market", "anbieter", "titel", "url", "sichtbar", "pruefliste", "status", "merkmale", "einordnung", "http_erst", "http",
         "ziel", "fehler", "titel_fund", "datum_katalog", "datum_fund", "preis_katalog", "preis_fehlt", "kandidaten_daten", "kandidaten_preise",
-        "hash", "hash_vormonat", "vorschlag"]
+        "hash", "hash_vormonat", "seitentitel", "vorschlag"]
 
 
 def url_norm(u):
@@ -115,6 +115,7 @@ def abgleich(rows, t, n, abruf, vormonat=None, nachpruefung=None):
                         "preis_katalog": " / ".join(f"{b:g}" for b in K.betraege(z)), "preis_fehlt": d.get("preis_fehlt", ""),
                         "kandidaten_daten": " ".join((e.get("kandidaten") or {}).get("daten") or []),
                         "kandidaten_preise": " | ".join((e.get("kandidaten") or {}).get("preise") or []),
+                        "seitentitel": " | ".join(x for x in dict.fromkeys([e.get("seitentitel") or "", e.get("h1") or ""]) if x),
                         "hash": e.get("hash") or "", "hash_vormonat": (vormonat.get(u) or {}).get("hash") or "", "vorschlag": vorschlag})
     aus.sort(key=lambda r: (VORRANG.index(r["status"]), r["anbieter"].casefold(), r["titel"].casefold(), r["id"]))
     return aus
@@ -126,7 +127,25 @@ def schreibe(p, kopf, zeilen):
         w = csv.DictWriter(f, kopf, lineterminator="\n", extrasaction="ignore"); w.writeheader(); w.writerows(zeilen)
 
 
-OWNER_KOPF = ["id", "anbieter", "titel", "url", "status", "http", "ziel", "vorschlag", "entscheid_owner"]
+OWNER_KOPF = ["nr", "url", "anzahl", "ids", "anbieter", "titel", "status", "http", "ziel", "seitentitel", "vorschlag", "entscheid_owner"]
+
+
+def owner_liste(aus):
+    """Zweifelsfälle je Kurslink zusammengefasst (ein Entscheid je Seite), Reihenfolge Status, Anbieter, Link."""
+    g = {}
+    for r in aus:
+        if r["einordnung"] != "ZWEIFEL": continue
+        g.setdefault(r["url"], []).append(r)
+    zeilen = []
+    for u, rs in sorted(g.items(), key=lambda kv: (A_VOR(kv[1][0]["status"]), kv[1][0]["anbieter"].casefold(), kv[0])):
+        zeilen.append({"url": u, "anzahl": len(rs), "ids": " ".join(r["id"] for r in rs), "anbieter": rs[0]["anbieter"],
+                       "titel": " | ".join(r["titel"] for r in rs), "status": rs[0]["status"], "http": rs[0]["http"], "ziel": rs[0]["ziel"],
+                       "seitentitel": rs[0]["seitentitel"], "vorschlag": rs[0]["vorschlag"], "entscheid_owner": ""})
+    for i, z in enumerate(zeilen, 1): z["nr"] = i
+    return zeilen
+
+
+def A_VOR(s): return VORRANG.index(s)
 
 
 def main():
@@ -142,7 +161,7 @@ def main():
     except ValueError as e: sys.exit(f"ABBRUCH: {e}")
     o = pathlib.Path(a.out)
     schreibe(o / f"abgleich_{a.stichtag}.csv", KOPF, aus)
-    schreibe(o / f"owner_liste_{a.stichtag}.csv", OWNER_KOPF, [r for r in aus if r["einordnung"] == "ZWEIFEL"])
+    schreibe(o / f"owner_liste_{a.stichtag}.csv", OWNER_KOPF, owner_liste(aus))
     schreibe(o / f"chrome_liste_{a.stichtag}.csv", KOPF, [r for r in aus if r["einordnung"] == "CHROME"])
     schreibe(o / f"routine_{a.stichtag}.csv", KOPF, [r for r in aus if r["einordnung"] == "ROUTINE"])
     from collections import Counter

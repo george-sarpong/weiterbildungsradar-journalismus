@@ -26,6 +26,7 @@ class _P(html.parser.HTMLParser):
         self.text, self.haupt, self.skript, self.ld, self.titel = [], [], [], [], []
         self._in_title = False
         self._ld = None
+        self.h1, self._in_h1 = [], False
 
     def _skip(self): return any(s for _, s, _ in self.stack)
     def _haupt(self): return any(h for _, _, h in self.stack)
@@ -33,6 +34,7 @@ class _P(html.parser.HTMLParser):
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
         if tag == "title": self._in_title = True
+        if tag == "h1" and not self.h1: self._in_h1 = True
         if tag == "script":
             t = (a.get("type") or "").lower()
             self._ld = [] if "ld+json" in t else ("skript" if t in ("", "text/javascript", "application/json", "module") or "json" in t else None)
@@ -53,6 +55,7 @@ class _P(html.parser.HTMLParser):
 
     def handle_endtag(self, tag):
         if tag == "title": self._in_title = False
+        if tag == "h1": self._in_h1 = False
         if tag == "script": self._ld = None
         for i in range(len(self.stack) - 1, -1, -1):   # tolerant gegen fehlende Endtags
             if self.stack[i][0] == tag:
@@ -66,6 +69,7 @@ class _P(html.parser.HTMLParser):
 
     def handle_data(self, data):
         if self._in_title: self.titel.append(data)
+        if self._in_h1: self.h1.append(data)
         if isinstance(self._ld, list): self.ld.append(data); return
         if self._ld == "skript": self.skript.append(data); return
         if self._skip():   # verdeckter Inhalt (hidden, Auswahllisten u. a.): nicht Text, aber Quelltext für Termine und Preise
@@ -97,10 +101,10 @@ def _ld_werte(teile):
 
 
 class Seite:
-    __slots__ = ("text", "haupttext", "quelltext_daten", "ld_werte", "titel_tag")
+    __slots__ = ("text", "haupttext", "quelltext_daten", "ld_werte", "titel_tag", "h1")
 
-    def __init__(self, text, haupttext, quelltext_daten, ld_werte, titel_tag):
-        self.text, self.haupttext, self.quelltext_daten, self.ld_werte, self.titel_tag = text, haupttext, quelltext_daten, ld_werte, titel_tag
+    def __init__(self, text, haupttext, quelltext_daten, ld_werte, titel_tag, h1=""):
+        self.text, self.haupttext, self.quelltext_daten, self.ld_werte, self.titel_tag, self.h1 = text, haupttext, quelltext_daten, ld_werte, titel_tag, h1
 
 
 def bereinige(roh):
@@ -115,7 +119,7 @@ def bereinige(roh):
         if len(t2) > len(text) + 500: text = haupt = t2
     if len(haupt) < 200: haupt = text
     skript = _ws(" ".join(p.skript))[:2_000_000]
-    return Seite(text, haupt, skript, _ld_werte(p.ld), _ws("".join(p.titel)))
+    return Seite(text, haupt, skript, _ld_werte(p.ld), _ws(html.unescape("".join(p.titel))), _ws(html.unescape("".join(p.h1))))
 
 
 # ---- Hash: wechselnde Werte vor dem Hash entfernen (Q04) ----

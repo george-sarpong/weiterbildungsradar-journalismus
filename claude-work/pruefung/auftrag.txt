@@ -1,5 +1,5 @@
 # P30 Auftrag für den Prüfabruf (E260). Push dieser Datei startet .github/workflows/p30-pruefung.yml
-# Vollauf Q09: alle am Stichtag sichtbaren Angebote
+# Vollauf 2 (Q09): mit Seitentitel; zugleich Messung Hash-Rauschen gegen Vollauf 45214509069
 stichtag=2026-11-23
 ids=
 nur_ids=nein

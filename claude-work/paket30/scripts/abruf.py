@@ -26,7 +26,7 @@ MAX_BYTES = 4_000_000
 MAX_REDIRECTS = 8
 MAX_DELAY = 10.0
 FOLGEFEHLER_RUHE = 3
-VERSION = "p30-abruf-1"
+VERSION = "p30-abruf-2"
 
 
 class _KeinRedirect(urllib.request.HTTPRedirectHandler):
@@ -227,6 +227,7 @@ def hole(url, timeout, abstand):
         erg["roh_bytes"] = len(body); erg["kodierung"] = (hdr.get("Content-Encoding") or "") if hdr else ""
         seite = T.bereinige(roh) if erg["typ"] != "text/plain" else T.Seite(T._ws(roh), T._ws(roh), "", [], "")
         erg["laenge"] = len(seite.text)
+        erg["seitentitel"] = seite.titel_tag[:200]; erg["h1"] = seite.h1[:200]   # zur Einordnung durch den Owner (Q14)
         if not seite.text: erg["roh_anfang"] = re.sub(r"\s+", " ", roh[:160])   # nur Markup-Anfang zur Fehlersuche, kein Seitentext
         if len(seite.text) < 300 and re.search(r"<script", roh, re.I):
             erg["nur_js"] = True
