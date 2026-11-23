@@ -224,8 +224,10 @@ def hole(url, timeout, abstand):
         if erg["typ"] not in ("text/html", "application/xhtml+xml", "text/plain", ""):
             erg["fehler"] = "TYP"; return erg, None
         roh = _text(hdr, body)
+        erg["roh_bytes"] = len(body); erg["kodierung"] = (hdr.get("Content-Encoding") or "") if hdr else ""
         seite = T.bereinige(roh) if erg["typ"] != "text/plain" else T.Seite(T._ws(roh), T._ws(roh), "", [], "")
         erg["laenge"] = len(seite.text)
+        if not seite.text: erg["roh_anfang"] = re.sub(r"\s+", " ", roh[:160])   # nur Markup-Anfang zur Fehlersuche, kein Seitentext
         if len(seite.text) < 300 and re.search(r"<script", roh, re.I):
             erg["nur_js"] = True
         erg["hash"] = T.hash_text(seite)
