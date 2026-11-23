@@ -1,0 +1,77 @@
+{
+ "2026-11-23": {
+  "sichtbar": 998,
+  "geaendert_q60": {
+   "katalog": [
+    "katalog T06",
+    "katalog T08",
+    "katalog V14 Redaktion",
+    "katalog V21 Führung",
+    "katalog V22 Einstieg",
+    "katalog V23 Einstieg",
+    "katalog V25 Budget",
+    "katalog V28 Budget",
+    "katalog V31 Sprache"
+   ],
+   "smart": []
+  },
+  "geaendert_e221": [
+   "katalog E221a",
+   "katalog E221c",
+   "katalog E221d"
+  ],
+  "sollzeilen_q60_e221": 594,
+  "wortprobe": 2025,
+  "wortprobe_anfragen_geaendert_beide_sucharten": 2063
+ },
+ "2026-12-01": {
+  "sichtbar": 945,
+  "geaendert_q60": {
+   "katalog": [
+    "katalog T06",
+    "katalog T08",
+    "katalog V14 Redaktion",
+    "katalog V21 Führung",
+    "katalog V22 Einstieg",
+    "katalog V23 Einstieg",
+    "katalog V25 Budget",
+    "katalog V28 Budget",
+    "katalog V31 Sprache"
+   ],
+   "smart": []
+  },
+  "geaendert_e221": [
+   "katalog E221a",
+   "katalog E221c",
+   "katalog E221d"
+  ],
+  "sollzeilen_q60_e221": 559,
+  "wortprobe": 1992,
+  "wortprobe_anfragen_geaendert_beide_sucharten": 2030
+ },
+ "2026-12-20": {
+  "sichtbar": 860,
+  "geaendert_q60": {
+   "katalog": [
+    "katalog T06",
+    "katalog T08",
+    "katalog V14 Redaktion",
+    "katalog V21 Führung",
+    "katalog V22 Einstieg",
+    "katalog V23 Einstieg",
+    "katalog V25 Budget",
+    "katalog V28 Budget",
+    "katalog V31 Sprache"
+   ],
+   "smart": []
+  },
+  "geaendert_e221": [
+   "katalog E221a",
+   "katalog E221c",
+   "katalog E221d"
+  ],
+  "sollzeilen_q60_e221": 527,
+  "wortprobe": 1915,
+  "wortprobe_anfragen_geaendert_beide_sucharten": 1935
+ }
+}

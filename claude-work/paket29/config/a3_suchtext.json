@@ -1,0 +1,17 @@
+{
+ "zweck": "Paket 29 A3 (E243, SPEZIFIKATION_PAKET29 §7 V3): Suchtext aus den Funktionen der Karte statt Rohwerten. Gleiche Ersetzung für die Messung U2 (paket29/tests/messung_u2.js) und für app-v44.js (paket29/scripts/port_p29.py). Ersetzt wird nur, was in app-v43.js schon Suchtext ist; placeSearchText (E129) und strukturierte Bedingungen bleiben.",
+ "ersetzungen": [
+  {
+   "name": "Smart-Suche (smartHaystack)",
+   "felder": ["format", "duration", "start", "region"],
+   "alt": "  const smartHaystack = offer => normalize([\n    offer.title, offer.description, offer.provider, offer.focus, offer.format, offer.duration, offer.start,\n    offer.region, placeSearchText(offer), labels.focus[offer.focus], labels.level[offer.level], labels.offerType[offer.offerType]\n  ].join(\" \"));",
+   "neu": "  // P29 A3 (E243): suchbar ist, was die Karte zeigt (Matrix SPEZIFIKATION_PAKET29 §7 V3); Anbieterland bleibt (E129).\n  const smartHaystack = offer => normalize([\n    offer.title, offer.description, offer.provider, offer.focus, humanizeTokens(offer.format, labels.format),\n    neutralMissing(readableCodes(offer.duration), \"Dauer\"), neutralMissing(readableCodes(publicStart(offer)), \"Start\"),\n    placeLabel(offer), placeSearchText(offer), labels.focus[offer.focus], labels.level[offer.level], labels.offerType[offer.offerType]\n  ].join(\" \"));"
+  },
+  {
+   "name": "Katalogsuche (matches)",
+   "felder": ["access", "priceDisplay", "format", "duration", "start", "language", "region"],
+   "alt": "    const haystack = normalize([\n      offer.provider,\n      offer.title,\n      offer.description,\n      offer.access,\n      offer.priceDisplay,\n      offer.format,\n      offer.duration,\n      offer.start,\n      offer.language,\n      placeSearchText(offer),\n      currentRegion(offer),\n      labels.level[offer.level],\n      labels.focus[offer.focus],\n      labels.offerType[offer.offerType]\n    ].join(\" \"));",
+   "neu": "    // P29 A3 (E243): suchbar ist, was die Karte zeigt (Matrix SPEZIFIKATION_PAKET29 §7 V3); Anbieterland bleibt (E129).\n    const haystack = normalize([\n      offer.provider,\n      offer.title,\n      offer.description,\n      compactAccess(offer),\n      compactPrice(offer),\n      humanizeTokens(offer.format, labels.format),\n      neutralMissing(readableCodes(offer.duration), \"Dauer\"),\n      neutralMissing(readableCodes(publicStart(offer)), \"Start\"),\n      languageBadge(offer),\n      placeSearchText(offer),\n      placeLabel(offer),\n      labels.level[offer.level],\n      labels.focus[offer.focus],\n      labels.offerType[offer.offerType]\n    ].join(\" \"));"
+  }
+ ]
+}
