@@ -32,12 +32,13 @@ def vorschlag(abgleich_zeilen, rows, abruf, lauf):
     for r in abgleich_zeilen:
         if r["einordnung"] != "ROUTINE": continue
         z = by[r["id"]]; q = f"{r['url']} (abgerufen {abruf.isoformat()}, P30-Lauf {lauf or 'ohne Kennung'})"
-        if r["status"] in ("OK", "GEAENDERT") and "FAELLIG" in r["pruefliste"]:
+        if r["status"] == "OK" and "FAELLIG" in r["pruefliste"]:   # GEAENDERT erst nach Sichtung durch Claude (Gegenprüfung H6)
             pd = S.datum(r["datum_katalog"])
             for feld, neu in (("geprueft_am", abruf.isoformat()), ("pruefen_ab", neues_pruefen_ab(abruf, pd).isoformat())):
                 if z[feld] != neu:
+                    qf = q + ("; pruefen_ab nach Regel-Vorschlag Claude (Abruf + 180 Tage, höchstens Termin − 21 Tage), Owner-Entscheid offen" if feld == "pruefen_ab" else "")
                     aus.append({"id": r["id"], "feld": feld, "alt": z[feld], "neu": neu, "alt_anzeige": "", "herkunft": HERKUNFT,
-                                "register_id": REGISTER, "quelle": q, "url_status": "", "url_geprueft_am": "", "ursprung": f"P30 {r['status']}"})
+                                "register_id": REGISTER, "quelle": qf, "url_status": "", "url_geprueft_am": "", "ursprung": f"P30 {r['status']}"})
         if r["status"] == "WEITERLEITUNG" and r["titel_fund"] == "ja" and r["ziel"] and r["ziel"] != z["url"]:
             aus.append({"id": r["id"], "feld": "url", "alt": z["url"], "neu": r["ziel"], "alt_anzeige": "", "herkunft": HERKUNFT,
                         "register_id": REGISTER, "quelle": q, "url_status": "WEITERLEITUNG", "url_geprueft_am": abruf.isoformat(),

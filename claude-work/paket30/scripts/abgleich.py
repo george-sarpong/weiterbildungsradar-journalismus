@@ -63,6 +63,7 @@ def bewerte(z, e, vor, t):
     w = (e.get("werte") or {}).get(z["id"])
     if w is not None and "NICHT_LESBAR" not in m:
         d["titel_fund"] = "ja" if w.get("titel") else "nein"
+        d["titel_ort"] = (w.get("titel") or [""])[0]
         dfund = w.get("datum") or {}
         d["datum_fund"] = "" if not dfund else ("ja" if all(dfund.values()) else "nein")
         pf = [b for b, x in (w.get("preis") or {}).items() if not x]
@@ -73,7 +74,14 @@ def bewerte(z, e, vor, t):
     return status, m, d
 
 
-def einordnen(status, m, d, e):
+def _uebergeordnet(url, ziel):
+    """Ziel ist ein übergeordneter Pfad oder die Startseite des Kurslinks (Übersicht statt Kursseite)."""
+    a, b = urllib.parse.urlsplit(url), urllib.parse.urlsplit(ziel or "")
+    pa, pb = (a.path or "/").rstrip("/"), (b.path or "/").rstrip("/")
+    return pb == "" or (pa != pb and pa.startswith(pb + "/"))
+
+
+def einordnen(status, m, d, e, ziel_mehrfach=False):
     kd = (e.get("kandidaten") or {}).get("daten") or []
     if "LINK_DEFEKT" in m:
         return "ZWEIFEL", "Link defekt: Nachfolgeseite suchen; ohne Nachfolger Archiv nach E015 (Owner)"
@@ -82,6 +90,14 @@ def einordnen(status, m, d, e):
     if d.get("titel_fund") == "nein":
         return "ZWEIFEL", ("Weiterleitung, Titel am Ziel nicht gefunden" if "WEITERLEITUNG" in m else "Titel nicht auf der Seite") + \
             ": Kurs nicht mehr im Angebot? (Owner, Archiv nach E015)"
+    if "WEITERLEITUNG" in m:   # Gegenprüfung B1: Weiterleitung auf Übersicht, Sammel- oder Entwurfsseite entscheidet der Owner (E262)
+        grund = []
+        if d.get("titel_ort") not in ("seitentitel", "h1"): grund.append("Titel nur im Fliesstext")
+        if _uebergeordnet(e.get("url"), e.get("ziel")): grund.append("Ziel ist übergeordnete Seite")
+        if ziel_mehrfach: grund.append("mehrere Kurslinks führen auf dieses Ziel")
+        if d.get("datum_fund") == "nein": grund.append("Termin am Ziel nicht gefunden")
+        if grund:
+            return "ZWEIFEL", f"Weiterleitung auf {e.get('ziel')} ({'; '.join(grund)}): Kursseite verschoben oder Kurs nicht mehr im Angebot? (Owner, E015)"
     teile = []
     if "WEITERLEITUNG" in m: teile.append(f"neue Adresse {e.get('ziel')}")
     if d.get("datum_fund") == "nein":
@@ -97,13 +113,16 @@ def abgleich(rows, t, n, abruf, vormonat=None, nachpruefung=None):
     vormonat = vormonat or {}; nachpruefung = nachpruefung or {}
     pl = {r["id"]: r["grund"] for r in PL.pruefliste(rows, t, n)}
     by = {z["id"]: z for z in rows}
+    from collections import Counter
+    zielzahl = Counter(url_norm(e.get("ziel")) for e in abruf.values() if url_norm(e.get("ziel")) != url_norm(e.get("url")))
     aus = []
     for u, e in sorted(abruf.items()):
         for i in e.get("ids", []):
             z = by.get(i)
             if z is None: raise ValueError(f"ID {i} aus dem Abruf fehlt im Master")
             status, m, d = bewerte(z, e, vormonat.get(u), t)
-            einord, vorschlag = einordnen(status, m, d, e)
+            mehrfach = zielzahl[url_norm(e.get("ziel"))] > 1 or len({by[x]["titel"] for x in e.get("ids", []) if x in by}) > 1
+            einord, vorschlag = einordnen(status, m, d, e, mehrfach and "WEITERLEITUNG" in m)
             np = nachpruefung.get(u)
             if np and status == "NICHT_LESBAR": vorschlag += f"; Nachprüfung: {np.get('erreichbar')} {np.get('bemerkung', '')}".rstrip()
             pd = K.pruefdatum(z, t)

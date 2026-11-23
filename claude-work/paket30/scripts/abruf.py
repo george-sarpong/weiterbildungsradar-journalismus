@@ -26,7 +26,7 @@ MAX_BYTES = 4_000_000
 MAX_REDIRECTS = 8
 MAX_DELAY = 10.0
 FOLGEFEHLER_RUHE = 3
-VERSION = "p30-abruf-2"
+VERSION = "p30-abruf-3"
 
 
 class _KeinRedirect(urllib.request.HTTPRedirectHandler):
@@ -104,9 +104,10 @@ HOSTS, HOSTS_LOCK = {}, threading.Lock()
 
 def host_von(url, abstand):
     p = urllib.parse.urlsplit(url); basis = f"{p.scheme}://{p.netloc}".lower()
+    schluessel = (p.hostname or "").lower()   # http und https desselben Hosts teilen Sperre und Abstand (Gegenprüfung H4)
     with HOSTS_LOCK:
-        if basis not in HOSTS: HOSTS[basis] = Host(basis, abstand)
-        return HOSTS[basis]
+        if schluessel not in HOSTS: HOSTS[schluessel] = Host(basis, abstand)
+        return HOSTS[schluessel]
 
 
 def _anfrage(url, timeout):
@@ -162,9 +163,16 @@ def hoeflich(host, url, timeout):
 
 def robots_laden(host, timeout):
     if host.robots is not None: return
-    st, hdr, body, f = hoeflich(host, host.basis + "/robots.txt", timeout)
+    ziel = host.basis + "/robots.txt"
+    st, hdr, body, f = hoeflich(host, ziel, timeout)
     if f in ("TIMEOUT", "VERBINDUNG") or (st is not None and 500 <= st < 600):
-        time.sleep(3); st, hdr, body, f = hoeflich(host, host.basis + "/robots.txt", timeout)   # ein zweiter Versuch
+        time.sleep(3); st, hdr, body, f = hoeflich(host, ziel, timeout)   # ein zweiter Versuch
+    for _ in range(5):   # Weiterleitungen der robots.txt folgen, höchstens 5 (RFC 9309 2.3.1.2)
+        if f is None and st is not None and 300 <= st < 400 and hdr and hdr.get("Location"):
+            ziel = urllib.parse.urljoin(ziel, hdr["Location"])
+            if not ziel.startswith(("http://", "https://")): break
+            st, hdr, body, f = hoeflich(host, ziel, timeout)
+        else: break
     host.robots_status = st if st is not None else f
     if f is None and st is not None and 200 <= st < 300:
         host.robots = robots_parse(body.decode("utf-8", "replace"))
@@ -215,6 +223,7 @@ def hole(url, timeout, abstand):
         if f: erg["fehler"] = f; return erg, None
         if 300 <= st < 400 and hdr and hdr.get("Location"):
             neu = urllib.parse.urljoin(aktuell, hdr["Location"])
+            if not neu.startswith(("http://", "https://")): erg["fehler"] = "KEINE_ADRESSE"; return erg, None
             if neu in besucht: erg["fehler"] = "SCHLEIFE"; return erg, None
             besucht.add(aktuell); aktuell = neu; erg["ziel"] = neu; continue
         erg["ziel"] = aktuell

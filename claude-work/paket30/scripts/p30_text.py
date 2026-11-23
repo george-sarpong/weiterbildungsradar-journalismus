@@ -186,14 +186,16 @@ def finde_titel(titel, seite):
     nt = norm(titel)
     if not nt: return None
     ntext = norm(seite.text)
-    for quelle, nq in (("seitentitel", norm(seite.titel_tag)), ("text", ntext)):
+    h1 = getattr(seite, "h1", "") or ""
+    for quelle, nq in (("seitentitel", norm(seite.titel_tag)), ("h1", norm(h1)), ("text", ntext)):
         if nt and f" {nt} " in f" {nq} ":
             return (quelle, _orig_auszug(titel, seite) or seite.titel_tag[:AUSZUG])
     ws = list(dict.fromkeys(woerter(titel)))
     if len(ws) < 2: return None
     need = max(2, -(-len(ws) * 3 // 4))
-    for quelle, nq in (("seitentitel", norm(seite.titel_tag)),):
-        if sum(1 for w in ws if f" {w} " in f" {nq} ") >= need: return (quelle, seite.titel_tag[:AUSZUG])
+    for quelle, roh_q in (("seitentitel", seite.titel_tag), ("h1", h1)):
+        nq = norm(roh_q)
+        if sum(1 for w in ws if f" {w} " in f" {nq} ") >= need: return (quelle, roh_q[:AUSZUG])
     toks = ntext.split()
     pos = {}
     for i, w in enumerate(toks): pos.setdefault(w, []).append(i)
@@ -287,9 +289,20 @@ def _preis_rx(betrag):
     return re.compile(rf"(?<![\d’'.,]){gz}{nach}(?!\d)(?![’'.,\u00a0\u202f]\d{{3}}(?!\d))")
 
 
+_WAEHR_NAH = re.compile(r"CHF|SFr|Fr\.|EUR|€|Euro|USD|US\$|\$|francs?|franchi|[.,]\s?[–—-](?!\d)|Preis|Prix|Prezzo|Price|Kosten|Gebühr|tarif|costo|frais", re.I)
+
+
 def finde_preis(betrag, seite):
+    """Betrag mit Währung oder Preiswort höchstens 25 Zeichen davor oder danach (nicht Postleitzahl, Telefon, Dauer);
+    in strukturierten Daten genügt ein reiner Zahlwert (Feld price)."""
     if betrag in (None, "") or float(betrag) <= 0: return None
-    return _such(_preis_rx(betrag), seite)
+    rx = _preis_rx(betrag)
+    for ort, q in (("text", seite.text), ("quelltext", seite.quelltext_daten)):
+        for m in rx.finditer(q):
+            if _WAEHR_NAH.search(q[max(0, m.start() - 25):m.end() + 25]): return (ort, auszug(q, m.start(), m.end()))
+    for v in seite.ld_werte:
+        if re.fullmatch(r"\s*[\d.,’' ]+\s*", v) and rx.fullmatch(v.strip()): return ("strukturiert", v[:AUSZUG])
+    return None
 
 
 def finde_wort(wert, seite):

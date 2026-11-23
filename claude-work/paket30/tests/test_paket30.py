@@ -201,8 +201,18 @@ def q03(srv):
     zaehl = {s: sum(1 for *_, soll in f if soll == s) for s in A.VORRANG}
     check("Q03 Abgleich am Testserver: Status = Soll", not abw, f"{len(f)} Fälle, je Status {zaehl}" + (f"; Abweichungen {abw}" if abw else ""))
     ein = {i: aus[i]["einordnung"] for i in aus}
-    soll_e = {"T-LD-1": "ZWEIFEL", "T-WL-3": "ZWEIFEL", "T-WF-3": "ZWEIFEL", "T-WL-1": "ROUTINE", "T-NL-1": "CHROME", "T-WF-1": "ROUTINE", "T-OK-1": "ROUTINE"}
-    check("Q03 Einordnung Owner/Chrome/Routine", all(ein[k] == v for k, v in soll_e.items()), str({k: ein[k] for k in soll_e}))
+    soll_e = {"T-OK-1": "ROUTINE", "T-OK-2": "ROUTINE", "T-WF-1": "ROUTINE", "T-WF-2": "ROUTINE", "T-WF-3": "ZWEIFEL", "T-AE-1": "ROUTINE",
+              "T-AE-2": "ROUTINE", "T-LD-1": "ZWEIFEL", "T-LD-2": "ZWEIFEL", "T-LD-3": "ZWEIFEL", "T-LD-4": "ZWEIFEL", "T-WL-1": "ROUTINE",
+              "T-WL-2": "ROUTINE", "T-WL-3": "ZWEIFEL", "T-NL-1": "CHROME", "T-NL-2": "CHROME", "T-NL-3": "CHROME", "T-NL-4": "CHROME",
+              "T-NL-5": "CHROME", "T-NL-6": "CHROME"}
+    check("Q03 Einordnung Owner/Chrome/Routine (alle 20 Fälle)", all(ein[k] == v for k, v in soll_e.items()), str({k: ein[k] for k in soll_e if ein[k] != soll_e[k]}))
+    e = {"url": "https://a.ch/kurse/x", "ziel": "https://a.ch/kurse", "kandidaten": {}}
+    z1 = A.einordnen("WEITERLEITUNG", ["WEITERLEITUNG"], {"titel_fund": "ja", "titel_ort": "h1"}, e)[0]
+    z2 = A.einordnen("WEITERLEITUNG", ["WEITERLEITUNG"], {"titel_fund": "ja", "titel_ort": "text"}, {**e, "ziel": "https://a.ch/neu/x"})[0]
+    z3 = A.einordnen("WEITERLEITUNG", ["WEITERLEITUNG"], {"titel_fund": "ja", "titel_ort": "h1"}, {**e, "ziel": "https://a.ch/neu/x"}, True)[0]
+    z4 = A.einordnen("WEITERLEITUNG", ["WEITERLEITUNG"], {"titel_fund": "ja", "titel_ort": "h1"}, {**e, "ziel": "https://a.ch/neu/x"})[0]
+    check("Q03 Weiterleitung auf Übersicht, Titel nur im Fliesstext, Sammelziel → Owner; sonst Routine (Gegenprüfung B1)",
+          (z1, z2, z3, z4) == ("ZWEIFEL", "ZWEIFEL", "ZWEIFEL", "ROUTINE"), str((z1, z2, z3, z4)))
     check("Q03 Weiterleitung Ziel erfasst", aus["T-WL-1"]["ziel"].endswith("/ziel/a") and aus["T-WL-1"]["http_erst"] == "301")
     check("Q03 Kandidat neues Datum", "2027-04-20" in aus["T-WF-1"]["kandidaten_daten"], aus["T-WF-1"]["kandidaten_daten"])
     # Erster Lauf ohne Vormonat: GEAENDERT unmöglich (Spezifikation §1.1)
@@ -266,8 +276,9 @@ def q06():
     p_ok = [x for x in pos if not T.finde_datum(d, s(x))]; n_ok = [x for x in neg if T.finde_datum(d, s(x))]
     check("Q06 Datumsformate erkannt", not p_ok, f"{len(pos)} Formate" + (f"; nicht erkannt {p_ok}" if p_ok else ""))
     check("Q06 Datums-Gegenproben nicht erkannt", not n_ok, f"{len(neg)} Gegenproben" + (f"; fälschlich {n_ok}" if n_ok else ""))
-    ppos = ["1150", "1'150", "1.150", "CHF 1150.–", "Fr. 1'150.-", "1’150.00", "CHF 1 150", "1150 CHF H.T.", "€ 1.150,00"]
-    pneg = ["11150", "1151", "1150.50", "1'150'000", "21150", "1.1500"]
+    ppos = ["Preis 1150", "CHF 1'150", "1.150 €", "CHF 1150.–", "Fr. 1'150.-", "Kosten: 1’150.00", "CHF 1 150", "1150 CHF H.T.", "€ 1.150,00"]
+    pneg = ["CHF 11150", "CHF 1151", "CHF 1150.50", "CHF 1'150'000", "CHF 21150", "CHF 1.1500", "1150 Wien Hauptstrasse", "Tel. 044 1150 22 33 Montag",
+            "Kurs-Nr. 1150 Anmeldung", "Dauer 1150 Minuten Lernzeit"]   # Gegenproben Postleitzahl, Telefon, Kursnummer, Dauer (Gegenprüfung H2)
     pp = [x for x in ppos if not T.finde_preis(1150, s(x))]; pn = [x for x in pneg if T.finde_preis(1150, s(x))]
     check("Q06 Preisformate erkannt", not pp, f"{len(ppos)} Formate" + (f"; nicht erkannt {pp}" if pp else ""))
     check("Q06 Preis-Gegenproben nicht erkannt", not pn, f"{len(pneg)} Gegenproben" + (f"; fälschlich {pn}" if pn else ""))
@@ -346,7 +357,11 @@ def q12(tmp):
     check("Q12 Eingang-Entwurf: eingang_pruefen.py ohne Fehler, Herkunft und Register-ID je Zeile", r.returncode == 0 and herk and len(ev) == 11,
           f"{len(ev)} Zeilen; " + (r.stdout.strip().splitlines() or [""])[-1][:160] + (r.stderr[-300:] if r.returncode else ""))
     pa = [x for x in ev if x["feld"] == "pruefen_ab"]
-    check("Q12 pruefen_ab nach der Regel (≤ Abruf + 180, ≤ Start − 21, > Abruf)", all(t < D.fromisoformat(x["neu"]) <= t + datetime.timedelta(days=180) for x in pa))
+    def regel_ok(x):
+        n = D.fromisoformat(x["neu"]); pd = K.pruefdatum(by[x["id"]], t)
+        oben = min([t + datetime.timedelta(days=180)] + ([pd - datetime.timedelta(days=21)] if pd and pd >= t else []))
+        return n == max(oben, t + datetime.timedelta(days=1))
+    check("Q12 pruefen_ab nach der Regel (min(Abruf + 180, Termin − 21), frühestens Abruf + 1)", pa and all(regel_ok(x) for x in pa), f"{len(pa)} Zeilen")
 
 
 # ---------------- Q07 Workflow ----------------
