@@ -256,6 +256,9 @@ def werte_fuer(z, seite, t):
     return w
 
 
+EXTRAKT = False
+
+
 def lauf(rows, t, timeout, abstand, max_hosts, ersatz=None, log=print):
     nach_url = {}
     for z in rows: nach_url.setdefault(z["url"].strip(), []).append(z)
@@ -276,6 +279,7 @@ def lauf(rows, t, timeout, abstand, max_hosts, ersatz=None, log=print):
             if seite is not None:
                 e["werte"] = {z["id"]: werte_fuer(z, seite, t) for z in nach_url[u]}
                 e["kandidaten"] = {"daten": T.daten_auf_seite(seite, t), "preise": T.preise_auf_seite(seite)}
+                if EXTRAKT: e["extrakt"] = T.extrakt(seite, t)
             ergebnisse[u] = e
 
     with cf.ThreadPoolExecutor(max_workers=max_hosts) as ex:
@@ -288,6 +292,7 @@ def lauf(rows, t, timeout, abstand, max_hosts, ersatz=None, log=print):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("stichtag"); ap.add_argument("--out", required=True)
     ap.add_argument("--ids", default=""); ap.add_argument("--nur-ids", action="store_true")
+    ap.add_argument("--umfang", default="sichtbar", choices=["sichtbar", "luecken"])   # luecken: CH/AT/LI ohne HOLD, mit Auslese (P31, E266)
     ap.add_argument("--master", default=str(R / "paket3/out/master_3818_aktuell.csv"))
     ap.add_argument("--max-hosts", type=int, default=6); ap.add_argument("--abstand", type=float, default=2.0)
     ap.add_argument("--timeout", type=float, default=30.0); ap.add_argument("--basis-url-ersatz", default="")
@@ -295,14 +300,20 @@ def main():
     if t is None: sys.exit("ABBRUCH: Stichtag JJJJ-MM-TT")
     if a.abstand < 2.0 and not a.basis_url_ersatz: sys.exit("ABBRUCH: Abstand mindestens 2 s")
     ids = [x for x in a.ids.replace("\n", ",").split(",") if x.strip()]
-    try: rows = K.abrufmenge(S.lies_master(a.master), t, [x.strip() for x in ids], a.nur_ids)
+    global EXTRAKT
+    try:
+        alle = S.lies_master(a.master)
+        if a.umfang == "luecken":
+            EXTRAKT = True
+            rows = [z for z in alle if z["release_markt"] in ("CH", "AT", "LI") and z["publikationsstatus"] != "HOLD"]
+        else: rows = K.abrufmenge(alle, t, [x.strip() for x in ids], a.nur_ids)
     except ValueError as e: sys.exit(f"ABBRUCH: {e}")
     ersatz = tuple(a.basis_url_ersatz.split("=", 1)) if a.basis_url_ersatz else None
     beginn = datetime.datetime.now(datetime.timezone.utc)
     erg = lauf(rows, t, a.timeout, a.abstand, a.max_hosts, ersatz)
     meta = {"meta": {"version": VERSION, "stichtag": a.stichtag, "beginn": beginn.isoformat(timespec="seconds"),
                      "ende": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"), "angebote": len(rows),
-                     "adressen": len(erg), "user_agent": UA, "abstand_s": a.abstand, "nur_ids": a.nur_ids, "ids": sorted(set(ids)),
+                     "adressen": len(erg), "user_agent": UA, "abstand_s": a.abstand, "nur_ids": a.nur_ids, "umfang": a.umfang, "ids": sorted(set(ids)),
                      "robots": {b: str(h.robots_status) for b, h in sorted(HOSTS.items())}}}
     p = pathlib.Path(a.out); p.parent.mkdir(parents=True, exist_ok=True)
     with open(p, "w", encoding="utf-8", newline="\n") as f:

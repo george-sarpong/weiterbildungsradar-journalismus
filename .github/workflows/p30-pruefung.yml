@@ -37,6 +37,7 @@ jobs:
           cmd = [sys.executable, "-I", "paket30/scripts/abruf.py", st, "--out", "/tmp/p30/abruf.jsonl"]
           if a.get("ids", "").strip(): cmd += ["--ids", a["ids"].strip()]
           if a.get("nur_ids", "").strip().lower() == "ja": cmd.append("--nur-ids")
+          if a.get("umfang", "").strip() == "luecken": cmd += ["--umfang", "luecken"]
           print("Auftrag:", a); sys.exit(subprocess.call(cmd))
           PY
       - name: Ergebnis ins Protokoll

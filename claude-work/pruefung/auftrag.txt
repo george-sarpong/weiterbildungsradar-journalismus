@@ -1,5 +1,6 @@
 # P30 Auftrag für den Prüfabruf (E260). Push dieser Datei startet .github/workflows/p30-pruefung.yml
-# Vollauf 3 (Q09) nach Gegenprüfung; Grundlage des ersten Zyklus (E181)
+# P31 Lücken füllen: alle 1302 Angebote CH/AT/LI ohne HOLD, mit Auslese der Feldkandidaten (E266–E268)
 stichtag=2026-11-23
+umfang=luecken
 ids=
 nur_ids=nein

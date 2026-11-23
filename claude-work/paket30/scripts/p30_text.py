@@ -360,3 +360,80 @@ def preise_auf_seite(seite, n=10):
         if v > 0 and k not in gef: gef.append(k)
         if len(gef) >= n: break
     return [f"{w} {v:g}" for w, v in gef]
+
+
+# ---------------- Paket 31: Auslese von Kandidaten für fehlende Felder (E266–E268) ----------------
+_KONTEXT_TERMIN = re.compile(r"termin|datum|daten|durchf|kursbeginn|beginn|start|dates?|session|du |le |dal |il |kursdaten|zeitraum|when|quand|quando", re.I)
+_DAUER = re.compile(r"(?<![\d.,])(\d{1,3}(?:[.,]\d)?(?:\s?[–-]\s?\d{1,3})?)\s?(halbe?\s)?(Tage?n?|Kurstage?|Halbtage?|jours?|demi-journées?|giorni|giornate|days?|Stunden|Std\.?|Lektionen|heures|ore|hours?|h\b|Wochen|semaines|settimane|weeks?|Monate|mois|mesi|months?|Semester|semestres?|ECTS)", re.I)
+_FORM = {"PRÄSENZ": r"präsenz|praesenz|vor ort|präsenzunterricht|en présentiel|présentiel|presentiel|in presenza|classroom|in person|kursraum|salle de cours",
+         "ONLINE LIVE": r"online[- ]?live|live[- ]?online|virtuell|virtual classroom|webinar|zoom|teams|à distance|a distanza|classe à distance|remote",
+         "ONLINE SELBSTLERNEN": r"e-learning|elearning|selbstlern|self[- ]paced|mooc|on[- ]demand|à votre rythme|in autonomia",
+         "HYBRID": r"hybrid|blended"}
+_SPRACHE = {"DE": r"\b(?:deutsch|german|allemand|tedesco)\b", "FR": r"\b(?:französisch|franzoesisch|french|français|francais|francese)\b",
+            "IT": r"\b(?:italienisch|italian|italien|italiano)\b", "EN": r"\b(?:englisch|english|anglais|inglese)\b"}
+_SPRACH_KONTEXT = re.compile(r"sprache|langue|lingua|language|kurssprache|unterrichtssprache", re.I)
+_NIVEAU = {"EINSTIEG": r"einsteiger|einstieg|anfänger|grundlagen|grundkurs|basis|débutant|debutant|initiation|introduction|principiant|base\b|beginner|basics",
+           "VERTIEFUNG": r"vertiefung|aufbau|fortgeschritten|perfectionnement|approfondissement|avancé|intermédiaire|avanzato|intermediate|advanced",
+           "BERUFSERFAHRUNG": r"berufserfahrung|praxiserfahrung|erfahrene|expérience professionnelle|esperienza professionale|professionals with experience",
+           "VERSCHIEDENE_NIVEAUS": r"alle niveaus|alle stufen|tous niveaux|tutti i livelli|all levels"}
+_ANFRAGE = re.compile(r"auf anfrage|nach vereinbarung|jederzeit|laufend(?:er)? einstieg|on demand|sur demande|à la demande|sur rendez-vous|su richiesta|in qualsiasi momento|anytime|self-paced|individuell vereinbar", re.I)
+ORTE = ["Zürich", "Zurich", "Basel", "Bern", "Luzern", "Lucerne", "Genf", "Genève", "Geneva", "Lausanne", "St. Gallen", "Winterthur", "Lugano", "Bellinzona",
+        "Biel", "Bienne", "Freiburg", "Fribourg", "Neuenburg", "Neuchâtel", "Sion", "Sitten", "Chur", "Aarau", "Olten", "Zug", "Baar", "Thun", "Solothurn",
+        "Schaffhausen", "Frauenfeld", "Wil", "Sierre", "Delémont", "Yverdon", "Montreux", "Vevey", "Locarno", "Mendrisio", "Vaduz", "Schaan", "Wien", "Graz",
+        "Linz", "Salzburg", "Innsbruck", "Klagenfurt", "Krems", "St. Pölten", "Dornbirn", "Bregenz", "Liebefeld", "Online"]
+_ORT_RX = re.compile(r"\b(" + "|".join(re.escape(o) for o in ORTE) + r")\b")
+_ORT_KONTEXT = re.compile(r"\bort\b|kursort|durchführungsort|lieu|luogo|location|adresse|standort|venue", re.I)
+
+
+def _treffer(rx, text, n, breite=60):
+    out = []
+    for m in rx.finditer(text):
+        out.append((m, auszug_kurz(text, m.start(), m.end(), breite)))
+        if len(out) >= n: break
+    return out
+
+
+def auszug_kurz(text, a, b, breite=60):
+    return text[max(0, a - breite):min(len(text), b + breite)].strip()[:AUSZUG]
+
+
+def extrakt(seite, ab):
+    """Kandidaten je Feld mit Auszug (≤ 200 Zeichen). Nur Vorschläge: Claude prüft, bevor etwas über eingang/ in den Master geht."""
+    ns = _NormSeite(seite); tx = seite.text; gleich = len(ns.text) == len(tx)
+    termine = []
+    for v in seite.ld_werte:   # strukturierte Daten zuerst
+        m = re.match(r"(\d{4}-\d{2}-\d{2})", v)
+        if m:
+            try: x = datetime.date.fromisoformat(m.group(1))
+            except ValueError: continue
+            if x >= ab and all(e["datum"] != x.isoformat() for e in termine): termine.append({"datum": x.isoformat(), "quelle": "strukturiert", "auszug": v[:60], "kontext": True})
+    for rx, f in _ALLE_DATEN:
+        for m in rx.finditer(ns.text):
+            try:
+                y, mo, d = f(m)
+                if not mo: continue
+                x = datetime.date(y, mo, d)
+            except (ValueError, TypeError): continue
+            if not (ab <= x <= ab.replace(year=ab.year + 3)) or any(e["datum"] == x.isoformat() and e["quelle"] == "text" for e in termine): continue
+            az = auszug_kurz(tx if gleich else ns.text, m.start(), m.end())
+            termine.append({"datum": x.isoformat(), "quelle": "text", "auszug": az, "kontext": bool(_KONTEXT_TERMIN.search(az))})
+            if len(termine) >= 16: break
+    termine.sort(key=lambda e: (e["datum"], e["quelle"]))
+    preise = []
+    for m in _PREIS_ALLE.finditer(tx):
+        g = m.group(1) or m.group(3); dz = m.group(2) or m.group(4)
+        w = re.search(_WAEHR, m.group(0)).group(0)
+        try: v = float(re.sub(r"\D", "", g) + ("." + dz if dz and dz.isdigit() else ""))
+        except ValueError: continue
+        w = {"Fr.": "CHF", "SFr.": "CHF", "SFr": "CHF", "€": "EUR", "US$": "USD", "$": "USD"}.get(w, w)
+        if v > 0 and not any(p["betrag"] == v and p["waehrung"] == w for p in preise):
+            preise.append({"betrag": v, "waehrung": w, "auszug": auszug_kurz(tx, m.start(), m.end())})
+        if len(preise) >= 8: break
+    dauer = [{"wert": _ws(m.group(0)), "auszug": a} for m, a in _treffer(_DAUER, tx, 6)]
+    form = {k: [a for _, a in _treffer(re.compile(v, re.I), tx, 2)] for k, v in _FORM.items()}
+    sprache = {k: [a for m, a in _treffer(re.compile(v, re.I), tx, 3) if _SPRACH_KONTEXT.search(a)][:2] for k, v in _SPRACHE.items()}
+    niveau = {k: [a for _, a in _treffer(re.compile(v, re.I), tx, 2)] for k, v in _NIVEAU.items()}
+    orte = [{"ort": m.group(1), "auszug": a, "kontext": bool(_ORT_KONTEXT.search(a))} for m, a in _treffer(_ORT_RX, tx, 8)]
+    anfrage = [a for _, a in _treffer(_ANFRAGE, tx, 3)]
+    return {"termine": termine, "preise": preise, "dauer": dauer, "kursform": {k: v for k, v in form.items() if v},
+            "sprache": {k: v for k, v in sprache.items() if v}, "niveau": {k: v for k, v in niveau.items() if v}, "orte": orte, "anfrage": anfrage}
