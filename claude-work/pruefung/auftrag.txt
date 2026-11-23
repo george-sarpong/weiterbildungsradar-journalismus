@@ -1,6 +1,7 @@
 # P30 Auftrag für den Prüfabruf (E260). Push dieser Datei startet .github/workflows/p30-pruefung.yml
-# P31 Lücken füllen: alle 1302 Angebote CH/AT/LI ohne HOLD, mit Auslese der Feldkandidaten (E266–E268)
+# P31 Lücken füllen: Kurstexte (verschlüsselt) zum Lesen, 1302 Angebote CH/AT/LI (E266–E268)
 stichtag=2026-11-23
 umfang=luecken
+volltext=ja
 ids=
 nur_ids=nein

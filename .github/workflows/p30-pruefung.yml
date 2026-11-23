@@ -24,6 +24,7 @@ jobs:
           sparse-checkout: |
             claude-work/pruefung/auftrag.txt
             claude-work/paket30/scripts/*.py
+            claude-work/paket31/schluessel/p31_lesen_pub.pem
             claude-work/scripts/sichtbarkeit.py
             claude-work/paket3/out/master_3818_aktuell.csv
       - name: Abruf
@@ -38,8 +39,19 @@ jobs:
           if a.get("ids", "").strip(): cmd += ["--ids", a["ids"].strip()]
           if a.get("nur_ids", "").strip().lower() == "ja": cmd.append("--nur-ids")
           if a.get("umfang", "").strip() == "luecken": cmd += ["--umfang", "luecken"]
+          if a.get("volltext", "").strip().lower() == "ja": cmd.append("--volltext")
           print("Auftrag:", a); sys.exit(subprocess.call(cmd))
           PY
-      - name: Ergebnis ins Protokoll
+      - name: Ergebnis ins Protokoll (mit Kurstext nur verschlüsselt)
         working-directory: claude-work
-        run: python3 -I paket30/scripts/uebergabe.py drucke /tmp/p30/abruf.jsonl
+        run: |
+          if grep -q '^volltext=ja' pruefung/auftrag.txt; then
+            openssl rand -out /tmp/p30/k.bin 32
+            openssl enc -aes-256-cbc -pbkdf2 -salt -pass file:/tmp/p30/k.bin -in /tmp/p30/abruf.jsonl -out /tmp/p30/abruf.enc
+            openssl pkeyutl -encrypt -pubin -inkey paket31/schluessel/p31_lesen_pub.pem -pkeyopt rsa_padding_mode:oaep -in /tmp/p30/k.bin -out /tmp/p30/k.enc
+            echo "P30KEY $(base64 -w0 /tmp/p30/k.enc)"
+            rm -f /tmp/p30/k.bin /tmp/p30/abruf.jsonl
+            python3 -I paket30/scripts/uebergabe.py drucke /tmp/p30/abruf.enc
+          else
+            python3 -I paket30/scripts/uebergabe.py drucke /tmp/p30/abruf.jsonl
+          fi

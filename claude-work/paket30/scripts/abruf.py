@@ -257,6 +257,7 @@ def werte_fuer(z, seite, t):
 
 
 EXTRAKT = False
+VOLLTEXT = False
 
 
 def lauf(rows, t, timeout, abstand, max_hosts, ersatz=None, log=print):
@@ -280,6 +281,9 @@ def lauf(rows, t, timeout, abstand, max_hosts, ersatz=None, log=print):
                 e["werte"] = {z["id"]: werte_fuer(z, seite, t) for z in nach_url[u]}
                 e["kandidaten"] = {"daten": T.daten_auf_seite(seite, t), "preise": T.preise_auf_seite(seite)}
                 if EXTRAKT: e["extrakt"] = T.extrakt(seite, t)
+                if VOLLTEXT:   # P31: Kurstext zum Lesen durch Claude; nur verschlüsselt übergeben (Workflow), nie ins Repo
+                    q = [T.auszug_kurz(seite.quelltext_daten, m.start(), m.end(), 60) for m in re.finditer(r"\b\d{1,2}\.\d{1,2}\.\d{4}\b|\b\d{4}-\d{2}-\d{2}\b", seite.quelltext_daten)][:20]
+                    e["volltext"] = {"titel": seite.titel_tag[:300], "h1": seite.h1[:300], "text": seite.haupttext[:9000], "strukturiert": seite.ld_werte[:30], "quelltext_daten": q}
             ergebnisse[u] = e
 
     with cf.ThreadPoolExecutor(max_workers=max_hosts) as ex:
@@ -292,7 +296,8 @@ def lauf(rows, t, timeout, abstand, max_hosts, ersatz=None, log=print):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("stichtag"); ap.add_argument("--out", required=True)
     ap.add_argument("--ids", default=""); ap.add_argument("--nur-ids", action="store_true")
-    ap.add_argument("--umfang", default="sichtbar", choices=["sichtbar", "luecken"])   # luecken: CH/AT/LI ohne HOLD, mit Auslese (P31, E266)
+    ap.add_argument("--umfang", default="sichtbar", choices=["sichtbar", "luecken"])
+    ap.add_argument("--volltext", action="store_true")   # luecken: CH/AT/LI ohne HOLD, mit Auslese (P31, E266)
     ap.add_argument("--master", default=str(R / "paket3/out/master_3818_aktuell.csv"))
     ap.add_argument("--max-hosts", type=int, default=6); ap.add_argument("--abstand", type=float, default=2.0)
     ap.add_argument("--timeout", type=float, default=30.0); ap.add_argument("--basis-url-ersatz", default="")
@@ -300,7 +305,8 @@ def main():
     if t is None: sys.exit("ABBRUCH: Stichtag JJJJ-MM-TT")
     if a.abstand < 2.0 and not a.basis_url_ersatz: sys.exit("ABBRUCH: Abstand mindestens 2 s")
     ids = [x for x in a.ids.replace("\n", ",").split(",") if x.strip()]
-    global EXTRAKT
+    global EXTRAKT, VOLLTEXT
+    VOLLTEXT = a.volltext
     try:
         alle = S.lies_master(a.master)
         if a.umfang == "luecken":
