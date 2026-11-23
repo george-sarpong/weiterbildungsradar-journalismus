@@ -1,7 +1,7 @@
 # BERICHT PAKET 29 «Website-Architektur», 23.11.2026
 
 Grundlage: `SPEZIFIKATION_PAKET29_20261123.md` (§7 geht §4/§5 vor), Owner-Entscheide E241–E248, neu E250, E251 (23.11.); Befund E252.
-Arbeitszweig `claude/datenharmonisierung`: Commits 65a4b27 (Sollliste U2, vor dem Code nach V5), b27985c (Code), 6a6411e (Gegenprüfung, Testergebnisse); lokal, Push offen (§8).
+Arbeitszweig `claude/datenharmonisierung`: Commits ed6f49a (Sollliste U2, vor dem Code nach V5), b7b09f7 (Code), 58de7b6 (Gegenprüfung, Testergebnisse); am 23.11. gepusht.
 Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 
 ## 1. Ergebnis in Kürze
@@ -27,7 +27,7 @@ Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 Katalog 23.11.: T06 «kostenlos» 26 → 24, T08 «Journalismus» 352 → 350, V14 14 → 11, V21 «MAS oder CAS Journalismus» 5 → 1, V22 17 → 11, V23 «Bachelor Journalismus» 17 → 6, V25 «kostenlos online» 10 → 8, V28 «Kurs in Basel» 103 → 99, V31 «formation journalisme Genève» 8 → 1; Ursache fast nur `access`, sonst `priceDisplay`. Trennzeichen: «PRÄSENZ|ONLINE LIVE» 242 → 0, «FR|EN» 6 → 0, «|» 307 → 8, «DE/EN» gleich.
 Zwei Befunde dem Owner vorgelegt und entschieden: **E250** (Regel gilt auch für echte Angaben in Zugang/Preistext; Orte aus dem Zugangstext später über `eingang/`), **E251** (Ausnahme E221 entfällt; P04 «Trennzeichen unverändert» widersprach E243).
 Zusätzlich, nicht verbindlich: Wortprobe (jedes Wort nur roh / nur Anzeige als Einwort-Anfrage), `paket29/out/wortprobe_u2.csv`; grösste Wirkungen Katalog 23.11. z. B. «Schweiz» 997 → 898, «Preis» 240 → 3, «Zugang» 195 → 13, «online» 493 → 466, «publiziert» 495 → 3, «official» 303 → 0.
-Dateien: `paket29/out/sollliste_u2.csv` (verbindlich, vor dem Code committet 65a4b27), `messliste_u2.csv` (je Angebot und Feld Roh- und Anzeigetext), `sollliste_u2_info.json`.
+Dateien: `paket29/out/sollliste_u2.csv` (verbindlich, vor dem Code committet ed6f49a), `messliste_u2.csv` (je Angebot und Feld Roh- und Anzeigetext), `sollliste_u2_info.json`.
 
 ## 3. Umsetzung
 
@@ -67,7 +67,7 @@ Urteil FAIL allein wegen P12 (B1); Code ohne Blocker; eigener Bau bytegleich, E2
 
 1. P12: +4'000 Byte Erstbesuch (rund +1,6 %, Ladezeit gemessen gleich) annehmen oder Aufteilung ändern.
 2. Release P29 freigeben (E227), danach Paket und Upload-Rezept.
-3. Push der Commits 65a4b27, b27985c, 6a6411e: Einbinden mit Schreibrecht wurde in diesem Chat blockiert.
+3. Push: erledigt 23.11. nach erneuter Owner-Freigabe (ed6f49a, b7b09f7, 58de7b6, 46435c4).
 
 ## 7. Nicht Teil von P29
 

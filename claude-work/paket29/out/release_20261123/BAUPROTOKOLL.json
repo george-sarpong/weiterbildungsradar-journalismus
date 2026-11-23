@@ -1,0 +1,188 @@
+{
+ "stichtag": "2026-11-23",
+ "generator_angebote": 1353,
+ "sichtbar_ausgeliefert": 998,
+ "dateien": {
+  "404.html": {
+   "byte": 1773,
+   "gzip": 810,
+   "sha256": "236b2168513ba2fe2901f374102ee462833a78b44b68351c3d2c2ce7442a2c7d"
+  },
+  "app-v44.js": {
+   "byte": 96705,
+   "gzip": 27670,
+   "sha256": "a417dff1c571c3081e77b9268c0407f3a06aaba741230c151fbdeffaec226519"
+  },
+  "daten-2d5368a5da7b.js": {
+   "byte": 67718,
+   "gzip": 10588,
+   "sha256": "2d5368a5da7b7ca624da2757ff5a5b23c434265db67137c5bb625edf1644853b",
+   "markt": "AT",
+   "angebote": 71
+  },
+  "daten-2e0abcdbab75.js": {
+   "byte": 5154,
+   "gzip": 1992,
+   "sha256": "2e0abcdbab756d831149258c2a27d9d50983f9915e8ad379068c88cff1c24b1e",
+   "markt": "LI",
+   "angebote": 4
+  },
+  "daten-70cdc217c78b.js": {
+   "byte": 977350,
+   "gzip": 136416,
+   "sha256": "70cdc217c78b10f143a5999990cd913b6ad8b913a1038041f5d0148c9264be2e",
+   "markt": "CH",
+   "angebote": 923
+  },
+  "datenschutz.html": {
+   "byte": 9102,
+   "gzip": 3319,
+   "sha256": "4c2482e4bb710b92a4eaf51d2c362ba767a2148ee907ac969662149968e3b06d"
+  },
+  "impressum.html": {
+   "byte": 4482,
+   "gzip": 1749,
+   "sha256": "595fe7e87a43f60fcac8a02b62f9b7749dcd39b2c8a707136b3bd42ae01efb8c"
+  },
+  "index.html": {
+   "byte": 293041,
+   "gzip": 45537,
+   "sha256": "f948cb8bc0bc29f6aa8d3574f2c92fea1671bf91ba3920b3f9c0cdc36b101aec"
+  },
+  "methodik.html": {
+   "byte": 9857,
+   "gzip": 3777,
+   "sha256": "4fb97b26b8735864e772c91015b3426009ec5b566dfd7ff0156363f07d9fd763"
+  },
+  "robots.txt": {
+   "byte": 631,
+   "gzip": 322,
+   "sha256": "4d5160c370c864f9493561f0ab02f0149d8e07e589b12b8c29b20eda95aaa396"
+  },
+  "sitemap.xml": {
+   "byte": 277,
+   "gzip": 185,
+   "sha256": "430249742d2fc43067411f5d4e602861c35f1aab22a3dad1dc0357c04159db1d"
+  },
+  "styles-v22.css": {
+   "byte": 22451,
+   "gzip": 5339,
+   "sha256": "a64f96337d2d411561719efbb5911c7e57bb3e873d5a4af4ca6c77cd708c5c52"
+  },
+  "styles-v24.css": {
+   "byte": 23210,
+   "gzip": 5568,
+   "sha256": "a957516ccc2d22ba2a343cb37b58d855e0c0a9b85ac6dbd59b7f6dea709e8308"
+  },
+  "suche-9ba59081937d.js": {
+   "byte": 36438,
+   "gzip": 2234,
+   "sha256": "9ba59081937db491f028376763d089cfd651dbb48bb5999450601e2a6a675b3f",
+   "markt": "AT",
+   "angebote": 71
+  },
+  "suche-d9eb25b87f64.js": {
+   "byte": 476044,
+   "gzip": 16522,
+   "sha256": "d9eb25b87f64363b00e3cd3ea76fa7d468225ba0c2db54dd54ee6f0240367f3d",
+   "markt": "CH",
+   "angebote": 923
+  },
+  "suche-ede7aa8393ce.js": {
+   "byte": 2198,
+   "gzip": 746,
+   "sha256": "ede7aa8393ce1c972cdf7528b4f9ee14c38c63b270098161b38b1ca9f93e3808",
+   "markt": "LI",
+   "angebote": 4
+  }
+ },
+ "htaccess.txt": {
+  "byte": 1285,
+  "sha256": "a4ed18a2dbf912604d874ee13ce81bee07cd7629de78620f29c39bd78e9e9392",
+  "gleich_p28": true
+ },
+ "maerkte": {
+  "CH": {
+   "angebote": 923,
+   "daten": "daten-70cdc217c78b.js",
+   "suche": "suche-d9eb25b87f64.js"
+  },
+  "AT": {
+   "angebote": 71,
+   "daten": "daten-2d5368a5da7b.js",
+   "suche": "suche-9ba59081937d.js"
+  },
+  "LI": {
+   "angebote": 4,
+   "daten": "daten-2e0abcdbab75.js",
+   "suche": "suche-ede7aa8393ce.js"
+  }
+ },
+ "ladereihenfolge": [
+  "daten-70cdc217c78b.js",
+  "daten-2d5368a5da7b.js",
+  "daten-2e0abcdbab75.js",
+  "suche-d9eb25b87f64.js",
+  "suche-9ba59081937d.js",
+  "suche-ede7aa8393ce.js",
+  "app-v44.js"
+ ],
+ "soll": {
+  "CH": 923,
+  "AT": 71,
+  "LI": 4
+ },
+ "vergleich_eine_datei_p28": {
+  "daten": {
+   "byte": 1049330,
+   "gzip": 147445,
+   "sha256": "c988be9171c73f0273800041fcbdd8fb86b062a0d0f220958c714e5fa8c0a7b1"
+  },
+  "suche": {
+   "byte": 513223,
+   "gzip": 17869,
+   "sha256": "54288fd7035f751c37ffe1da69c9a3fa2749e1f87c5c7fbd9460ec465da1949a"
+  }
+ },
+ "erstbesuch_gzip": {
+  "daten_und_suche_p29": 168498,
+  "daten_und_suche_eine_datei": 165314,
+  "app_v44": 27670
+ },
+ "p07_laender_ohne_deutschen_namen": [],
+ "felder_weg": [
+  "country",
+  "reviewAfter",
+  "release_origin",
+  "publicationReason",
+  "laender.markt"
+ ],
+ "smart_teilfelder_weg": {
+  "delivery.channels": 616,
+  "delivery.scheduleSummary": 616,
+  "delivery.sourceText": 900,
+  "delivery.structure": 14,
+  "delivery.temporalSummary": 617,
+  "delivery.variants": 617,
+  "priceOptions (leer)": 246,
+  "priceOptions.billingCount": 838,
+  "priceOptions.components": 824,
+  "priceOptions.currency": 185,
+  "priceOptions.eligibilityValue": 717,
+  "priceOptions.maxAmount": 813,
+  "priceOptions.minAmount": 798,
+  "priceOptions.tariffLabel": 553,
+  "priceOptions.taxRate": 819,
+  "priceOptions.validFrom": 838,
+  "priceOptions.validThrough": 834
+ },
+ "testoptionen": {},
+ "website_byte": 2027749,
+ "liste": {
+  "index_bytes": 292866,
+  "lastmod": {
+   "/": "2026-11-23",
+   "/methodik.html": "2026-11-17"
+  }
+ }
+}
