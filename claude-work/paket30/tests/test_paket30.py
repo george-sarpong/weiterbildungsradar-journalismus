@@ -225,6 +225,8 @@ def q04():
     # Befund Testlauf 45212354429: Seitentext leer (Digicomp, SGP); Ursache fehlendes </head> bzw. Klasse am body
     o = T.bereinige("<html><head><title>X</title><body class='home cookies-not-set'><main><h1>Kurs Y</h1><p>" + FUELL + "</p></main>")
     check("Q04 fehlendes </head> und Cookie-Klasse am body: Text bleibt", "Kurs Y" in o.text and len(o.text) > 300, f"{len(o.text)} Zeichen")
+    o2 = T.bereinige("<html><body><div id='app'><template x-if='true'><main><h1>Kurs Z</h1><p>" + FUELL + "</p></main></template></div></body></html>")
+    check("Q04 Inhalt in <template> (Termine nach JavaScript) bleibt", "Kurs Z" in o2.text, f"{len(o2.text)} Zeichen")
 
 
 # ---------------- Q05 Höflichkeit ----------------

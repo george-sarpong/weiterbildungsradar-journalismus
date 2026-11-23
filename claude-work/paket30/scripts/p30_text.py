@@ -7,7 +7,7 @@ finde_titel / finde_datum / finde_preis / finde_wort → Fundstelle (Ort, Auszug
 daten_auf_seite / preise_auf_seite → Kandidaten für neue Werte (Vorschlag, nie direkt in den Master)"""
 import datetime, hashlib, html, html.parser, json, re, unicodedata
 
-SKIP_TAGS = {"script", "style", "noscript", "template", "svg", "iframe", "head", "object", "canvas"}
+SKIP_TAGS = {"script", "style", "noscript", "svg", "iframe", "head", "object", "canvas"}   # <template> bleibt: Inhalt erscheint nach JavaScript (Befund digicomp.ch)
 LEER_TAGS = {"br", "hr", "img", "input", "meta", "link", "area", "base", "col", "embed", "source", "track", "wbr", "param"}
 BLOCK_TAGS = {"p", "div", "li", "tr", "td", "th", "h1", "h2", "h3", "h4", "h5", "h6", "section", "article", "main", "header",
               "footer", "nav", "aside", "ul", "ol", "table", "dd", "dt", "dl", "form", "label", "option", "button", "span", "a"}
@@ -104,7 +104,7 @@ def bereinige(roh):
     text = _ws(html.unescape("".join(p.text)))
     haupt = _ws(html.unescape("".join(p.haupt)))
     if len(text) < 300:   # Rückfall bei unüblichem Aufbau: Tags grob entfernen (wie Handprobe U3)
-        t2 = re.sub(r"(?is)<(script|style|noscript|template|svg)\b.*?</\1\s*>", " ", roh)
+        t2 = re.sub(r"(?is)<(script|style|noscript|svg)\b.*?</\1\s*>", " ", roh)
         t2 = _ws(html.unescape(re.sub(r"(?s)<[^>]+>", " ", re.sub(r"(?s)<!--.*?-->", " ", t2))))
         if len(t2) > len(text) + 500: text = haupt = t2
     if len(haupt) < 200: haupt = text
