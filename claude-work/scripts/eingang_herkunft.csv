@@ -36,3 +36,4 @@ V41_V288_CHECKPOINTS,"Übergabe-ZIP V4.1, V288-Checkpoints",E095,829
 ANBIETER_TABELLE_P27,Kennung aus der Anbieter-Tabelle daten/anbieter.csv über die Schreibweise (Modellschritt 026),E214,0
 MASTER_P27,Erstfassung der Anbieter-Tabelle maschinell aus dem Master (paket27/scripts/bau_anbieter.py),E214,0
 NORMIERUNG_P27,Trennzeichen vereinheitlicht (« | » bzw. «/» → «|»); Werte sonst unverändert,E216,0
+ANBIETERSEITE_P30,"Angebotsseite des Anbieters im P30-Prüflauf abgerufen (Routinefall nach E262: geprueft_am, pruefen_ab, url nach Weiterleitung; Termin, Preis, Dauer, Ort nach Bestätigung durch Claude)",E262,0

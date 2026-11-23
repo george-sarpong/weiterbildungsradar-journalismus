@@ -1,0 +1,44 @@
+# Paket 30 (SPEZIFIKATION_PAKET30_20261123.md, E260): Abruf der Kurslinks für die monatliche Prüfliste.
+# Läuft nur, wenn auf dem Arbeitszweig die Auftragsdatei claude-work/pruefung/auftrag.txt gepusht wird.
+# Kein Zeitplan, nicht auf main, nur Leserechte, keine Geheimnisse; Ergebnis nur im Laufprotokoll (kein Write ins Repo).
+name: P30 Prüfung Kurslinks
+on:
+  push:
+    branches: [claude/datenharmonisierung]
+    paths: [claude-work/pruefung/auftrag.txt]
+permissions:
+  contents: read
+concurrency:
+  group: p30-pruefung
+  cancel-in-progress: false
+jobs:
+  abruf:
+    if: github.ref == 'refs/heads/claude/datenharmonisierung'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            claude-work/pruefung/auftrag.txt
+            claude-work/paket30/scripts/*.py
+            claude-work/scripts/sichtbarkeit.py
+            claude-work/paket3/out/master_3818_aktuell.csv
+      - name: Abruf
+        working-directory: claude-work
+        run: |
+          python3 -I - <<'PY'
+          import pathlib, re, subprocess, sys
+          a = dict(l.split("=", 1) for l in pathlib.Path("pruefung/auftrag.txt").read_text(encoding="utf-8").splitlines() if "=" in l and not l.startswith("#"))
+          st = a.get("stichtag", "").strip()
+          if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", st): sys.exit("ABBRUCH: stichtag fehlt")
+          cmd = [sys.executable, "-I", "paket30/scripts/abruf.py", st, "--out", "/tmp/p30/abruf.jsonl"]
+          if a.get("ids", "").strip(): cmd += ["--ids", a["ids"].strip()]
+          if a.get("nur_ids", "").strip().lower() == "ja": cmd.append("--nur-ids")
+          print("Auftrag:", a); sys.exit(subprocess.call(cmd))
+          PY
+      - name: Ergebnis ins Protokoll
+        working-directory: claude-work
+        run: python3 -I paket30/scripts/uebergabe.py drucke /tmp/p30/abruf.jsonl
