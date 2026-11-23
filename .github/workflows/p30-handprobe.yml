@@ -2,7 +2,7 @@ name: P30 U3 Handprobe (wird wieder entfernt)
 on:
   push:
     branches: [claude/datenharmonisierung]
-    paths: [claude-work/pruefung/handprobe_suche.tsv]
+    paths: [claude-work/pruefung/handprobe_suche.tsv, .github/workflows/p30-handprobe.yml]
 permissions:
   contents: read
 jobs:
@@ -14,6 +14,7 @@ jobs:
         with:
           sparse-checkout: claude-work/pruefung
       - name: Fundstellen (Auszug höchstens 60 Zeichen je Seite und Begriff)
+        shell: bash {0}
         run: |
           mkdir -p hp
           UA="mediaskills-pruefung/0.1 (+https://mediaskills.ch/methodik.html)"
@@ -32,12 +33,13 @@ jobs:
             python3 strip.py < "hp/$id.html" > "hp/$id.txt"
             echo "## $id roh=$(wc -c < hp/$id.html) text=$(wc -c < hp/$id.txt) js_hinweis=$(grep -ci 'enable javascript\|javascript aktivieren\|activer javascript' hp/$id.html)"
             grep -P "^$id\t" claude-work/pruefung/handprobe_suche.tsv | while IFS=$'\t' read -r i art begriff; do
-              t=$(grep -o -i -P ".{0,60}\Q$begriff\E.{0,60}" "hp/$id.txt" | head -1)
+              t=$(grep -o -i -P ".{0,60}\Q$begriff\E.{0,60}" "hp/$id.txt" | head -1 | tr -d "\n")
               r=$(grep -c -i -F -- "$begriff" "hp/$id.html")
               [ -n "$t" ] && echo "FUND $id $art [$begriff] text: $t" || echo "KEIN $id $art [$begriff] roh_zeilen=$r"
             done
             sleep 3
           done < claude-work/pruefung/handprobe_urls.txt
+          echo "## Ende Seiten"
           echo "## robots.txt (Gruppe User-agent: *)"
           for h in $(awk '{print $2}' claude-work/pruefung/handprobe_urls.txt | awk -F/ '{print $1"//"$3}' | sort -u); do
             echo "-- $h"; curl -sS -A "$UA" --max-time 20 "$h/robots.txt" | tr -d '\r' | awk 'BEGIN{IGNORECASE=1} /^user-agent:/{g=($2=="*")} g && /^(user-agent|disallow|allow|crawl-delay):/' | head -30 || true
