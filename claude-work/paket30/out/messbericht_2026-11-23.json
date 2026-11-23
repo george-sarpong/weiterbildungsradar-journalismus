@@ -1,5 +1,5 @@
 {
- "aufwand_min_schaetzung": 293,
+ "aufwand_min_schaetzung": 305,
  "aufwand_ueber_budget": true,
  "b1_ids": [],
  "b1_vergangenes_ende": 0,
@@ -195,7 +195,7 @@
   ],
   [
    "OFFER-DIGICOMP-034",
-   "Nachprüfung im Chat offen"
+   "Owner-Entscheid offen"
   ],
   [
    "OFFER-DIGICOMP-069",
@@ -496,20 +496,20 @@
  ],
  "b3_pruefliste": 307,
  "einordnung": {
-  "CHROME": 150,
-  "ROUTINE": 689,
-  "ZWEIFEL": 159
+  "CHROME": 148,
+  "ROUTINE": 685,
+  "ZWEIFEL": 165
  },
  "naechster_build": "2026-12-23",
  "sichtbar": 998,
  "status": {
   "LINK_DEFEKT": 66,
   "NICHT_LESBAR": 82,
-  "OK": 571,
+  "OK": 570,
   "WEITERLEITUNG": 62,
-  "WERT_FEHLT": 217
+  "WERT_FEHLT": 218
  },
  "stichtag": "2026-11-23",
- "zweifel": 159,
- "zweifel_seiten": 129
+ "zweifel": 165,
+ "zweifel_seiten": 135
 }
