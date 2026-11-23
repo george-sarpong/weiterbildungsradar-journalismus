@@ -36,6 +36,7 @@ APP = R / "paket29/website/app-v44.js"
 APP_SHA = "a417dff1c571c3081e77b9268c0407f3a06aaba741230c151fbdeffaec226519"   # = Ausgabe von paket29/scripts/port_p29.py
 CSS = (R / "live-snapshot-20261109/styles-v22.css", R / "live-snapshot-20261109/styles-v24.css")
 HTACCESS_P28 = R / "paket28/out/release_20261123/htaccess.txt"
+HTACCESS_P28_SHA = "a4ed18a2dbf912604d874ee13ce81bee07cd7629de78620f29c39bd78e9e9392"   # = htaccess.txt P28 = Live-.htaccess (E239)
 MASTER = R / "paket3/out/master_3818_aktuell.csv"
 ISO = R / "scripts/iso3166_alpha2.csv"
 VERWEISE = ('<script src="data-a1-86ff68ddc9ac.js"></script>', '<script src="smart-search-data-a1-a38a2a2b2391.js"></script>',
@@ -157,7 +158,7 @@ def baue(stichtag, tmp, a):
     # 5 Aufteilung je Markt (A1, E247, V1)
     teile = aufteilen(master, sichtbar, auswahl2, by, meta, iso)
     soll = {m: len(s) for m, s, _ in teile}
-    dateien_markt, daten_namen, such_namen = {}, [], []
+    dateien_markt, daten_namen, such_namen, metas = {}, [], [], set()
     for m, s, e in teile:
         db, sbt = datendatei(m, s, soll), smartdatei(m, meta, e)
         nd, ns = f"daten-{sha(db)[:12]}.js", f"suche-{sha(sbt)[:12]}.js"
@@ -166,8 +167,8 @@ def baue(stichtag, tmp, a):
         dateien_markt[nd] = {"markt": m, "art": "daten", "angebote": len(s)}
         dateien_markt[ns] = {"markt": m, "art": "suche", "angebote": len(e)}
         daten_namen.append(nd); such_namen.append(ns)
-    metas = {js(meta)}
-    if len(metas) != 1: raise Abbruch("V1: meta ungleich")
+        metas.add(sbt.decode("utf-8").split('{"meta": ', 1)[1].split(', "byId": {}}', 1)[0])   # meta, wie es in der Datei steht
+    if len(metas) != 1: raise Abbruch("V1: meta in den Smart-Dateien ungleich")
     if a.fehler_nach == "aufteilung": raise Abbruch("künstlicher Fehler nach der Marktaufteilung (Test P09)")
     # P07: Durchführungsland ohne deutschen Namen
     namen = re.search(r"const COUNTRY_NAMES = \{([^}]*)\}", app_text)
@@ -201,8 +202,7 @@ def baue(stichtag, tmp, a):
             if not (web / ref).is_file(): raise Abbruch(f"{h.name}: Verweis {ref} fehlt im Paket")
     # 8 htaccess.txt bytegleich mit P28 (E246)
     hta = HTACCESS_P28.read_bytes()
-    p28prot = json.loads((HTACCESS_P28.parent / "BAUPROTOKOLL.json").read_text(encoding="utf-8"))
-    if sha(hta) != p28prot["htaccess.txt"]["sha256"]: raise Abbruch("htaccess.txt P28: SHA-256 ≠ Bauprotokoll P28")
+    if sha(hta) != HTACCESS_P28_SHA: raise Abbruch(f"htaccess.txt P28: SHA-256 ≠ {HTACCESS_P28_SHA[:12]}… (E246)")
     muster = re.findall(r'<FilesMatch "([^"]+)">\s*\n\s*Header set Cache-Control "max-age=31536000, immutable"', hta.decode("ascii"))
     if len(muster) != 1: raise Abbruch("htaccess.txt: Cache-Regel «immutable» nicht genau einmal")
     for n in daten_namen + such_namen + ["app-v44.js"]:

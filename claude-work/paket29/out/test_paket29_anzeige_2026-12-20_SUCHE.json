@@ -1,0 +1,34 @@
+{
+ "results": [
+  {
+   "id": "P04 2026-12-20",
+   "name": "Smart- (60) und Katalogsuche (60 + 4 Trennzeichen): Änderungen gegenüber P28 = Sollliste U2 (527 Zeilen), Reihenfolge sonst gleich, Gleichstände nach E247 einzeln aufgeführt; keine JS-Fehler",
+   "status": "PASS",
+   "detail": "Ist 527, Soll 527; nur Ist ; nur Soll ; ; Gleichstände 0"
+  }
+ ],
+ "proto": {
+  "stichtag": "2026-12-20",
+  "jsdom": "24.1.3",
+  "p28": [
+   "daten-01b513465300.js",
+   "suche-d5905f241141.js"
+  ],
+  "p29": [
+   "daten-2a85bcee57b4.js",
+   "daten-eacea2bc25b5.js",
+   "daten-ffc6782f9066.js",
+   "suche-d83a31a70484.js",
+   "suche-7c69017f658f.js",
+   "suche-4991c21cc418.js"
+  ],
+  "P04": {
+   "ist": 527,
+   "soll": 527,
+   "nur_ist": [],
+   "nur_soll": [],
+   "gleichstaende": [],
+   "fehl": []
+  }
+ }
+}

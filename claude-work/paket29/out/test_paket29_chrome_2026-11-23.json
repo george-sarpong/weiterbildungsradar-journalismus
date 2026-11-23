@@ -1,0 +1,126 @@
+{
+ "results": [
+  {
+   "id": "P15 2026-11-23",
+   "name": "Ende zu Ende in Chrome headless: alle Anfragen 200, alle 7 Skripte der index.html je einmal geladen, 0 JS-Fehler; Karten = P28 (jsdom); Filter «Österreich», Katalogsuche «Basel», Smart-Suche «Journalismus» = jsdom; kein Ladehinweis",
+   "status": "PASS",
+   "detail": "Teile: Skripte true, Karten true, Filter true, Katalog true, Smart true; 998 Karten; Anfragen 9 (200); Filter 55 von 998 aktuellen Angeboten; Katalog 104 von 998 aktuellen Angeboten; Smart 3 Karten; Fehler "
+  }
+ ],
+ "proto": {
+  "stichtag": "2026-11-23",
+  "chrome": "153.0.8010.12",
+  "ladezeit_ms": {
+   "p28": {
+    "laeufe": [
+     {
+      "karten_ms": 1583,
+      "dcl": 1462,
+      "load": 1474
+     },
+     {
+      "karten_ms": 1548,
+      "dcl": 1446,
+      "load": 1455
+     },
+     {
+      "karten_ms": 1427,
+      "dcl": 1317,
+      "load": 1326
+     },
+     {
+      "karten_ms": 1487,
+      "dcl": 1376,
+      "load": 1391
+     },
+     {
+      "karten_ms": 1438,
+      "dcl": 1333,
+      "load": 1342
+     }
+    ],
+    "median_load": 1391,
+    "median_dcl": 1376,
+    "median_karten": 1487
+   },
+   "p29": {
+    "laeufe": [
+     {
+      "karten_ms": 1415,
+      "dcl": 1323,
+      "load": 1332
+     },
+     {
+      "karten_ms": 1580,
+      "dcl": 1457,
+      "load": 1469
+     },
+     {
+      "karten_ms": 1454,
+      "dcl": 1358,
+      "load": 1367
+     },
+     {
+      "karten_ms": 1512,
+      "dcl": 1378,
+      "load": 1387
+     },
+     {
+      "karten_ms": 1508,
+      "dcl": 1375,
+      "load": 1397
+     }
+    ],
+    "median_load": 1387,
+    "median_dcl": 1375,
+    "median_karten": 1508
+   }
+  },
+  "p15": {
+   "anfragen": [
+    [
+     200,
+     "/"
+    ],
+    [
+     200,
+     "/styles-v24.css"
+    ],
+    [
+     200,
+     "/app-v44.js"
+    ],
+    [
+     200,
+     "/daten-2d5368a5da7b.js"
+    ],
+    [
+     200,
+     "/daten-2e0abcdbab75.js"
+    ],
+    [
+     200,
+     "/suche-9ba59081937d.js"
+    ],
+    [
+     200,
+     "/suche-ede7aa8393ce.js"
+    ],
+    [
+     200,
+     "/daten-70cdc217c78b.js"
+    ],
+    [
+     200,
+     "/suche-d9eb25b87f64.js"
+    ]
+   ],
+   "fehler": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+   ],
+   "karten": 998,
+   "filter": "55 von 998 aktuellen Angeboten",
+   "katalog": "104 von 998 aktuellen Angeboten"
+  }
+ }
+}

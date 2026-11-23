@@ -1,0 +1,85 @@
+{
+ "stichtag": "2026-11-23",
+ "ergebnisse": [
+  {
+   "nr": "P02a",
+   "name": "Marktzuordnung: jede Datei nur ihr Markt, Daten = Smart je Markt, 0 doppelt, 0 fehlend gegenüber P28",
+   "status": "PASS",
+   "detail": " 998 / P28 998"
+  },
+  {
+   "nr": "P02b",
+   "name": "Ladereihenfolge der Märkte CH, dann übrige alphabetisch (E247); index.html lädt Daten, Smart, app-v44.js",
+   "status": "PASS",
+   "detail": "['CH', 'AT', 'LI']"
+  },
+  {
+   "nr": "V1",
+   "name": "Vertrag: Soll {Markt: Anzahl} in jeder Datendatei gleich und = gezählte Datensätze; Daten und Smart melden Markt und Anzahl; meta in allen Smart-Dateien gleich, erste gesetzte bleibt",
+   "status": "PASS",
+   "detail": "{\"soll\": {\"CH\": 923, \"AT\": 71, \"LI\": 4}, \"daten\": {\"CH\": 923, \"AT\": 71, \"LI\": 4}, \"suche\": {\"CH\": 923, \"AT\": 71, \"LI\": 4}}"
+  },
+  {
+   "nr": "P02c",
+   "name": "Fehlfälle Marktzuordnung: doppelte id, release_markt leer, unbekannter ISO-Code, Smart ohne Angebot, Angebot ohne Smart → Abbruch, nichts geschrieben",
+   "status": "PASS",
+   "detail": ""
+  },
+  {
+   "nr": "P07",
+   "name": "Land ohne deutschen Namen (Testkopie Master, ein sichtbares CH-Angebot mit Durchführungsland NZ): Build meldet es, Filter zeigt «NZ»",
+   "status": "PASS",
+   "detail": "Optionen ['Alle Orte', 'Schweiz', 'Belgien', 'Deutschland', 'Liechtenstein', 'NZ', 'Österreich', 'Online', 'keine Angabe']"
+  },
+  {
+   "nr": "P09",
+   "name": "Fehlfälle Build (8): Abbruch, früheres Release im Ziel bytegleich, kein Zwischenordner",
+   "status": "PASS",
+   "detail": ""
+  },
+  {
+   "nr": "P12",
+   "name": "Paket ≤ 9 MB; Erstbesuch (gzip: index.html, CSS, App, Daten, Smart) höchstens +2 KB gegenüber P28",
+   "status": "FAIL",
+   "detail": "website/ 2027749 Byte; Erstbesuch P28 243273, P29 247273, Differenz +4000 Byte (Daten+Smart +3184, App +766, index.html +50)"
+  },
+  {
+   "nr": "P13",
+   "name": "Zwei Bauten: gesamtes Release samt Bauprotokoll und SHA256SUMS.txt bytegleich",
+   "status": "PASS",
+   "detail": "19 Dateien"
+  },
+  {
+   "nr": "A5",
+   "name": "Übrige Dateien bytegleich mit P28 (4 Seiten, robots.txt, sitemap.xml, 2 CSS); index.html gleich ausser Skriptzeilen (Kursliste bytegleich); htaccess.txt bytegleich (E246)",
+   "status": "PASS",
+   "detail": "abweichend []; index ohne Skripte gleich True; htaccess True"
+  },
+  {
+   "nr": "REPO",
+   "name": "Repo nach allen Tests unverändert (git status)",
+   "status": "PASS",
+   "detail": ""
+  }
+ ],
+ "erstbesuch": {
+  "p28": {
+   "index.html": 45487,
+   "daten-c988be9171c7.js": 147445,
+   "suche-54288fd7035f.js": 17869,
+   "app-v43.js": 26904,
+   "styles-v24.css": 5568
+  },
+  "p29": {
+   "index.html": 45537,
+   "daten-70cdc217c78b.js": 136416,
+   "daten-2d5368a5da7b.js": 10588,
+   "daten-2e0abcdbab75.js": 1992,
+   "suche-d9eb25b87f64.js": 16522,
+   "suche-9ba59081937d.js": 2234,
+   "suche-ede7aa8393ce.js": 746,
+   "app-v44.js": 27670,
+   "styles-v24.css": 5568
+  }
+ }
+}

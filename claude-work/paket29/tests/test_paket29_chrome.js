@@ -60,12 +60,13 @@ function aktionen(d, w) {
     const chrome = await page.evaluate(`(${aktionen.toString()})(document, window)`);
     const j29 = jsdomWerte(path.join(REL.p29, "website")), j28 = jsdomWerte(path.join(REL.p28, "website"));
     const skr = [...read(path.join(REL.p29, "website/index.html")).matchAll(/<script src="([^"]+)"><\/script>/g)].map(m => m[1]);
-    const geladen = anfragen.filter(([, p]) => p.endsWith(".js")).map(([, p]) => p.slice(1));
+    // Antworten kommen parallel in beliebiger Reihenfolge; die Ausführungsreihenfolge klassischer Skripte folgt der index.html
+    const geladen = anfragen.filter(([, p]) => p.endsWith(".js")).map(([, p]) => p.slice(1)).sort();
     const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
-    check(`P15 ${S}`, `Ende zu Ende in Chrome headless: alle Anfragen 200, ${skr.length} Skripte in der Reihenfolge der index.html geladen, 0 JS-Fehler; Karten = P28 (jsdom); Filter «Österreich», Katalogsuche «Basel», Smart-Suche «Journalismus» = jsdom; kein Ladehinweis`,
-      anfragen.every(([s]) => s === 200) && same(geladen, skr) && !fehler.length && same(chrome.karten, j28.karten) && chrome.karten.length > 0
+    check(`P15 ${S}`, `Ende zu Ende in Chrome headless: alle Anfragen 200, alle ${skr.length} Skripte der index.html je einmal geladen, 0 JS-Fehler; Karten = P28 (jsdom); Filter «Österreich», Katalogsuche «Basel», Smart-Suche «Journalismus» = jsdom; kein Ladehinweis`,
+      anfragen.every(([s]) => s === 200) && same(geladen, [...skr].sort()) && !fehler.length && same(chrome.karten, j28.karten) && chrome.karten.length > 0
       && same(chrome.filter, j29.filter) && same(chrome.katalog, j29.katalog) && same(chrome.smart, j29.smart) && !chrome.hinweis,
-      `${chrome.karten.length} Karten; Anfragen ${anfragen.length} (${[...new Set(anfragen.map(a => a[0]))]}); Filter ${chrome.filter[0]}; Katalog ${chrome.katalog[0]}; Smart ${chrome.smart.length} Karten; Fehler ${fehler.slice(0, 2)}`);
+      `Teile: Skripte ${same(geladen, [...skr].sort())}, Karten ${same(chrome.karten, j28.karten)}, Filter ${same(chrome.filter, j29.filter)}, Katalog ${same(chrome.katalog, j29.katalog)}, Smart ${same(chrome.smart, j29.smart)}; ${chrome.karten.length} Karten; Anfragen ${anfragen.length} (${[...new Set(anfragen.map(a => a[0]))]}); Filter ${chrome.filter[0]}; Katalog ${chrome.katalog[0]}; Smart ${chrome.smart.length} Karten; Fehler ${fehler.slice(0, 2)}`);
     proto.p15 = { anfragen, fehler, karten: chrome.karten.length, filter: chrome.filter[0], katalog: chrome.katalog[0] };
     await ctx.close();
   }

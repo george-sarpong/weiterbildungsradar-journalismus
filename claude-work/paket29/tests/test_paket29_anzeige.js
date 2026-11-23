@@ -26,7 +26,8 @@ const HAKEN = "    evaluated.sort((a, b) => {", ENDE = "  applyUrlState();\n  re
 const HAY = "    return (!favoritesOnly || favorites.has(offer.id))";
 const ein = (t, a, b) => { if (t.split(a).length !== 2) throw new Error("Haken nicht eindeutig: " + a.slice(0, 50)); return t.replace(a, () => b); };
 const mitHaken = t => ein(ein(ein(t, HAKEN, "    window.__P25_EVAL = evaluated;\n" + HAKEN), HAY, "    (window.__P29_HAY = window.__P29_HAY || {})[offer.id] = haystack;\n" + HAY),
-  ENDE, "  window.__P29 = { smartHaystack, placeSearchText, normalize, offers };\n" + ENDE);
+  ENDE, "  window.__P29 = { smartHaystack, placeSearchText, normalize, offers, labels, humanizeTokens, neutralMissing, readableCodes, publicStart,\n"
+  + "    placeLabel, currentRegion, languageBadge, compactPrice, compactAccess };\n" + ENDE);
 for (const s of [P28, P29]) s.appH = mitHaken(s.app);
 const DATEFIX = s => `(() => { const R = Date; const F = new R("${s}T12:00:00").getTime();
   class D extends R { constructor(...a) { a.length ? super(...a) : super(F); } static now() { return F; } }
@@ -37,7 +38,8 @@ function load(st, { app = st.app, ohne = null, fav = null, fehler = [] } = {}) {
   const dom = new JSDOM(INDEX, { url: "https://mediaskills.ch/", runScripts: "outside-only", pretendToBeVisual: true, virtualConsole: vc });
   const w = dom.window; w.addEventListener("error", e => fehler.push(e.message));
   w.eval(DATEFIX(S)); if (fav !== null) w.localStorage.setItem(FAV_KEY, fav);
-  for (const f of st.files) if (f !== ohne) w.eval(read(path.join(st.web, f)));
+  const weg = [].concat(ohne || []);
+  for (const f of st.files) if (!weg.includes(f)) w.eval(read(path.join(st.web, f)));
   w.eval(app); return w;
 }
 const txt = n => (n ? n.textContent.replace(/\s+/g, " ").trim() : "");
@@ -113,21 +115,35 @@ if (NUR === "" || NUR === "REST") {
     const fe = [], w = load(st, { app: st.appH, fehler: fe }), P = w.__P29;
     const wo = s => new Set(P.normalize(s).split(/[^a-z0-9ß]+/).filter(Boolean));
     const kt = Object.fromEntries(karten(w).map(c => [c.id, c.text]));
-    let verstoss = 0; const bsp = [];
+    // (a) feldweise (§7.3 P05, Gegenprüfung B4): ein Wort, das nur im Rohwert eines der sieben Felder steht, darf im Suchtext nur
+    // stehen, wenn es aus einem Anzeigetext oder einem anderen gezeigten Teil kommt (Titel, Beschreibung, Anbieter, Labels, Anbieterland E129)
+    const FELDER = {
+      smart: { format: [o => o.format, o => P.humanizeTokens(o.format, P.labels.format)], duration: [o => o.duration, o => P.neutralMissing(P.readableCodes(o.duration), "Dauer")],
+        start: [o => o.start, o => P.neutralMissing(P.readableCodes(P.publicStart(o)), "Start")], region: [o => o.region, o => P.placeLabel(o)] },
+      katalog: { access: [o => o.access, o => P.compactAccess(o)], priceDisplay: [o => o.priceDisplay, o => P.compactPrice(o)],
+        format: [o => o.format, o => P.humanizeTokens(o.format, P.labels.format)], duration: [o => o.duration, o => P.neutralMissing(P.readableCodes(o.duration), "Dauer")],
+        start: [o => o.start, o => P.neutralMissing(P.readableCodes(P.publicStart(o)), "Start")], language: [o => o.language, o => P.languageBadge(o)],
+        region: [o => P.currentRegion(o), o => P.placeLabel(o)] } };
+    let verstoss = 0, karte = 0; const bsp = [];
     for (const o of P.offers) {
-      const erlaubt = new Set([...wo(kt[o.id] || ""), ...wo(P.placeSearchText(o)), ...wo(o.focus)]);   // E129: Anbieterland; focus-Code = Label
+      const gezeigt = [o.title, o.description, o.provider, o.focus, P.labels.focus[o.focus], P.labels.level[o.level], P.labels.offerType[o.offerType], P.placeSearchText(o)].join(" ");
+      const erlaubtKarte = new Set([...wo(kt[o.id] || ""), ...wo(P.placeSearchText(o)), ...wo(o.focus)]);   // (b) ganzer Kartentext
       for (const [art, hay] of [["smart", P.smartHaystack(o)], ["katalog", (w.__P29_HAY || {})[o.id] || ""]]) {
-        const x = [...wo(hay)].filter(t => !erlaubt.has(t));
+        const h = wo(hay), anz = Object.values(FELDER[art]).map(([, a]) => String(a(o) ?? "")).join(" ");
+        const erlaubt = new Set([...wo(gezeigt), ...wo(anz)]);
+        const x = [...new Set(Object.values(FELDER[art]).flatMap(([r, a]) => { const wa = wo(String(a(o) ?? "")); return [...wo(String(r(o) ?? ""))].filter(t => !wa.has(t)); }))]
+          .filter(t => h.has(t) && !erlaubt.has(t));
         if (x.length) { verstoss++; if (bsp.length < 4) bsp.push(`${o.id} ${art}: ${x.slice(0, 4).join(" ")}`); }
+        if ([...h].some(t => !erlaubtKarte.has(t))) karte++;
       }
     }
-    p5[k] = { angebote: P.offers.length, verstoesse: verstoss, beispiele: bsp, katalog_hay: Object.keys(w.__P29_HAY || {}).length, js: fe };
+    p5[k] = { angebote: P.offers.length, verstoesse: verstoss, verstoesse_kartentext: karte, beispiele: bsp, katalog_hay: Object.keys(w.__P29_HAY || {}).length, js: fe };
     w.close();
   }
   const v44 = p5["P29 app-v44"], v43 = p5["P28 app-v43 (Kontrolle)"];
-  check(`P05 ${S}`, "Suchtext (Smart und Katalog) enthält kein Wort, das nicht auf der Karte steht (Ausnahme Anbieterland E129); Kontrolle: app-v43.js hat solche Wörter",
-    v44.verstoesse === 0 && v44.katalog_hay === v44.angebote && v43.verstoesse > 0 && !v44.js.length,
-    `app-v44 ${v44.verstoesse} Verstösse bei ${v44.angebote} Angeboten; app-v43 ${v43.verstoesse} (z. B. ${v43.beispiele[0]}); ${v44.beispiele.join("; ")}`);
+  check(`P05 ${S}`, "Suchtext (Smart und Katalog), feldweise für die sieben Felder V3: kein Wort, das nur aus dem Rohwert stammt; zusätzlich kein Wort, das nicht im Kartentext steht (Ausnahme Anbieterland E129); Kontrolle: app-v43.js hat solche Wörter",
+    v44.verstoesse === 0 && v44.verstoesse_kartentext === 0 && v44.katalog_hay === v44.angebote && v43.verstoesse > 0 && !v44.js.length,
+    `app-v44 ${v44.verstoesse} feldweise / ${v44.verstoesse_kartentext} Kartentext bei ${v44.angebote} Angeboten; app-v43 ${v43.verstoesse} / ${v43.verstoesse_kartentext} (z. B. ${v43.beispiele[0]}); ${v44.beispiele.join("; ")}`);
   proto.P05 = p5;
 
   // ---------- P06 Merkliste P28 → P29 ----------
@@ -165,7 +181,17 @@ if (NUR === "" || NUR === "P08") {
     w.close();
     if (global.gc) global.gc();
   }
-  check(`P08 ${S}`, `Ladefehler: je Markt Daten- oder Smart-Datei weggelassen (${p8.length} Fälle): kein JS-Fehler, Hinweis nach E248, übrige Märkte nutzbar (Karten, Smart-Suche), gemerkte IDs des fehlenden Markts nach Merken eines anderen Angebots weiter gespeichert; ohne Fehler kein Hinweis`,
+  // Gegenprüfung B5: alle Datendateien, alle Smart-Dateien, alles fehlt (keine Soll-Angabe)
+  const alleD = Object.values(P29.prot.maerkte).map(v => v.daten), alleS = Object.values(P29.prot.maerkte).map(v => v.suche);
+  for (const [name, weg] of [["alle Daten", alleD], ["alle Smart", alleS], ["nichts (Soll fehlt)", [...alleD, ...alleS]]]) {
+    const fe = [], fav = JSON.stringify(Object.values(ids)), w = load(P29, { ohne: weg, fav, fehler: fe });
+    const hinweis = txt(w.document.querySelector("[data-load-warning]")), n8 = karten(w).length, erwartet = weg === alleS ? nVoll : 0;
+    w.document.querySelector("#smartInput").value = "Journalismus"; w.document.querySelector("#smartSearchForm").dispatchEvent(new w.Event("submit", { cancelable: true }));
+    const ok = !fe.length && hinweis === "Ein Teil des Katalogs konnte nicht geladen werden. Bitte Seite neu laden." && n8 === erwartet && w.localStorage.getItem(FAV_KEY) === fav;
+    p8.push({ markt: "alle", datei: name, ok, karten: n8, erwartet, gespeichert: JSON.parse(w.localStorage.getItem(FAV_KEY)), js: fe.slice(0, 2) });
+    w.close(); if (global.gc) global.gc();
+  }
+  check(`P08 ${S}`, `Ladefehler: je Markt Daten- oder Smart-Datei weggelassen, dazu alle Daten, alle Smart, nichts geladen (${p8.length} Fälle): kein JS-Fehler, Hinweis nach E248, übrige Märkte nutzbar (Karten, Smart-Suche), gemerkte IDs des fehlenden Markts nach Merken eines anderen Angebots weiter gespeichert; ohne Fehler kein Hinweis`,
     p8.every(x => x.ok) && !hinweisVoll && !f8.length, p8.filter(x => !x.ok).map(x => `${x.markt} ${x.datei}: ${x.karten}/${x.erwartet} ${x.js}`).join("; "));
   proto.P08 = p8;
 }
