@@ -304,6 +304,12 @@ def q02_q10_q11_q12(srv, rows_t, ab1, ab2):
             if r.returncode: print(r.stdout, r.stderr)
         outs.append({p.name: p.read_bytes() for p in sorted(o.iterdir())})
     check("Q10 Auswertung zweimal → bytegleich", outs[0] == outs[1] and len(outs[0]) >= 9, ", ".join(outs[0]))
+    o = tmp / "out1"; ag = list(csv.DictReader(open(o / "abgleich_2026-11-23.csv", encoding="utf-8")))
+    ol = list(csv.DictReader(open(o / "owner_liste_2026-11-23.csv", encoding="utf-8")))
+    zw = [r for r in ag if r["einordnung"] == "ZWEIFEL"]
+    check("Q14 Owner-Liste je Seite: eine Zeile je Kurslink, alle Zweifelsfälle enthalten, Aufwand im Messbericht",
+          len(ol) == len({r["url"] for r in zw}) and sorted(i for r in ol for i in r["ids"].split()) == sorted(r["id"] for r in zw)
+          and "Aufwand [SCHÄTZUNG]" in (o / "messbericht_2026-11-23.md").read_text(encoding="utf-8"), f"{len(zw)} Zweifelsfälle auf {len(ol)} Seiten")
     # Q11 Prüfblatt
     rows = S.lies_master(MASTER)
     a = SP.pruefblatt(rows, D(2026, 11, 23), 30, 20261123); b = SP.pruefblatt(rows, D(2026, 11, 23), 30, 20261123)

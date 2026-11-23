@@ -26,7 +26,15 @@ BUDGET_MIN = 90             # E186
 def kennzahlen(rows, t, n, abruf, abgleich_zeilen, nachpruefung=None, entscheide=None):
     nachpruefung = nachpruefung or {}; entscheide = entscheide or {}
     vis = [z for z in rows if S.sichtbar(z, t)]
-    b1 = [z["id"] for z in vis if S.datum(z["end_datum"]) and S.datum(z["end_datum"]) < t]
+    def ende(z):
+        """Spätestes Ende: bei Durchführungen deren letztes Ende (sonst Start), sonst end_datum."""
+        du = K.durchfuehrungen(z)
+        if du:
+            xs = [S.datum(e.get("endDate")) or S.datum(e.get("startDate")) for e in du]
+            xs = [x for x in xs if x]
+            return max(xs) if xs else None
+        return S.datum(z["end_datum"])
+    b1 = [z["id"] for z in vis if ende(z) and ende(z) < t]
     links = sorted({z["url"].strip() for z in vis})
     def erreichbar(u):
         e = abruf.get(u) or {}

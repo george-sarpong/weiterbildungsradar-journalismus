@@ -56,6 +56,18 @@ def q09(p):
     return ok
 
 
+def rauschen(p1, p2):
+    """Zwei Vollläufe kurz nacheinander: Anteil Seiten mit anderem Hash = Fehlalarm-Rate von GEAENDERT (Information, kein Soll)."""
+    _, a = A.lies_abruf(p1); _, b = A.lies_abruf(p2)
+    beide = [u for u in a if a[u].get("hash") and (b.get(u) or {}).get("hash")]
+    anders = [u for u in beide if a[u]["hash"] != b[u]["hash"]]
+    import collections, urllib.parse as up
+    print(f"Rauschen: {len(anders)} von {len(beide)} Seiten mit anderem Hash ({len(anders) / max(1, len(beide)) * 100:.1f} %); "
+          f"Hosts {collections.Counter(up.urlsplit(u).hostname for u in anders).most_common(8)}")
+    return True
+
+
 if __name__ == "__main__":
+    if sys.argv[1] == "rauschen": sys.exit(0 if rauschen(sys.argv[2], sys.argv[3]) else 1)
     f = {"q08": q08, "q09": q09}[sys.argv[1]]
     sys.exit(0 if f(sys.argv[2]) else 1)
