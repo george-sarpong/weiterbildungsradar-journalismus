@@ -1,6 +1,6 @@
 # SPEZIFIKATION PAKET 30 «Aktualisierung», 23.11.2026
 
-Status: **Entwurf zur Freigabe.** Nichts gebaut, kein Write in Master, Eingang oder Website.
+Status: **Freigegeben 23.11.2026** (E260–E263: Entscheide 1–4 je A, ohne Zweitmeinung). U1 erledigt (E260).
 Auftrag: Owner 23.11., Chat «weiter» (GESAMTWISSENSSTAND §9: «P30 (Aktualisierung, E175, E177) mit Beta-Messkriterien vorher (E187)»); Messkriterien entschieden (E258, E259).
 Grundlage: `ZIELBILD_UNTERBAU_20261120.md` §3 Punkt 6, §4 Zeile P30; E175 (Abruf ausserhalb des Chats, nur Hash, nur Prüfliste, nie Write in den Master), E177/E186 (Monatsbuild mit Prüfliste, Owner rund 1,5 Std.), E181 (ein Aktualisierungszyklus vor Beta-Ausstieg), E258 B (Linkquote ≥ 95 %), E259 (Prüfblatt Stichprobe), E031, E041, E027/E166.
 Vorprüfung: Arbeitszweig `claude/datenharmonisierung` auf 81fbafe; Master `paket3/out/master_3818_aktuell.csv`; Sichtbarkeit mit `scripts/sichtbarkeit.py`.
