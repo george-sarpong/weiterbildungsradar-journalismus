@@ -2,7 +2,7 @@ name: P30 U3 Handprobe (wird wieder entfernt)
 on:
   push:
     branches: [claude/datenharmonisierung]
-    paths: [claude-work/pruefung/handprobe_suche.tsv, .github/workflows/p30-handprobe.yml]
+    paths: [.github/workflows/p30-handprobe.yml]
 permissions:
   contents: read
 jobs:
@@ -13,35 +13,30 @@ jobs:
       - uses: actions/checkout@v4
         with:
           sparse-checkout: claude-work/pruefung
-      - name: Fundstellen (Auszug höchstens 60 Zeichen je Seite und Begriff)
+      - name: Titel, Überschrift und Datumsangaben (je Seite höchstens 15 Auszüge zu 70 Zeichen)
         shell: bash {0}
         run: |
-          mkdir -p hp
           UA="mediaskills-pruefung/0.1 (+https://mediaskills.ch/methodik.html)"
-          cat > strip.py <<'PY'
+          cat > probe.py <<'PY'
           import sys, html, re
-          t = sys.stdin.buffer.read().decode("utf-8", "replace")
-          t = re.sub(r"(?is)<(script|style|noscript)\b.*?</\1\s*>", " ", t)
-          t = re.sub(r"(?s)<!--.*?-->", " ", t)
-          t = re.sub(r"(?s)<[^>]+>", " ", t)
-          print(re.sub(r"\s+", " ", html.unescape(t)).strip())
+          roh = sys.stdin.buffer.read().decode("utf-8", "replace")
+          def m(p): x = re.search(p, roh, re.I | re.S); return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", x.group(1)))).strip()[:120] if x else "-"
+          print("title:", m(r"<title[^>]*>(.*?)</title>")); print("h1:", m(r"<h1[^>]*>(.*?)</h1>"))
+          ld = re.findall(r'"(?:startDate|endDate|price)"\s*:\s*"?([^",}]{1,40})', roh)
+          print("jsonld:", sorted(set(ld))[:15])
+          t = re.sub(r"(?is)<(script|style|noscript)\b.*?</\1\s*>", " ", roh); t = re.sub(r"(?s)<[^>]+>", " ", t); t = re.sub(r"\s+", " ", html.unescape(t))
+          MON = r"(?:janv|févr|fevr|mars|avr|mai|juin|juil|août|aout|sept|oct|nov|déc|dec|jan|feb|mär|mar|apr|may|jun|jul|aug|sep|okt|dez|gen|giu|lug|ago|set|ott|dic)[a-zéûä]*\.?"
+          pat = r"\b\d{1,2}\.\s?\d{1,2}\.(?:\s?\d{2,4})?|\b\d{4}-\d{2}-\d{2}\b|\b\d{1,2}\.?\s(?:au\s|-\s|–\s)?(?:\d{1,2}\s)?" + MON + r"\s?\d{0,4}|\b" + MON + r"\s\d{1,2},?\s\d{4}"
+          n = 0
+          for x in re.finditer(pat, t, re.I):
+              a = max(0, x.start() - 30); print("  datum:", t[a:x.end() + 30].strip()); n += 1
+              if n >= 15: break
           PY
-          while read -r id url; do
-            [ -z "$id" ] && continue
-            [ "$id" = "V82-DAWAN-037" ] && { echo "## $id übersprungen (Zeitüberschreitung im ersten Lauf)"; continue; }
-            curl -sS -L -A "$UA" --max-time 30 -o "hp/$id.html" "$url" || true
-            python3 strip.py < "hp/$id.html" > "hp/$id.txt"
-            echo "## $id roh=$(wc -c < hp/$id.html) text=$(wc -c < hp/$id.txt) js_hinweis=$(grep -ci 'enable javascript\|javascript aktivieren\|activer javascript' hp/$id.html)"
-            grep -P "^$id\t" claude-work/pruefung/handprobe_suche.tsv | while IFS=$'\t' read -r i art begriff; do
-              t=$(grep -o -i -P ".{0,60}\Q$begriff\E.{0,60}" "hp/$id.txt" | head -1 | tr -d "\n")
-              r=$(grep -c -i -F -- "$begriff" "hp/$id.html")
-              [ -n "$t" ] && echo "FUND $id $art [$begriff] text: $t" || echo "KEIN $id $art [$begriff] roh_zeilen=$r"
-            done
+          for id in OFFER-MAZ-001 OFFER-MAZ-002 OFFER-ORSYS-006 OFFER-ORSYS-002 OFFER-DIGICOMP-034 OFFER-DIGICOMP-075 OFFER-DIGICOMP-041 OFFER-MEDIENCAMPUS-001 OFFER-NOBLE-016 AT-PROD-OFFER-028 AT-PROD-OFFER-026 OFFER-CFJM-007 OFFER-SGP-001 OFFER-HEAD-003 OFFER-SAEZH-011; do
+            url=$(awk -v i="$id" '$1==i{print $2}' claude-work/pruefung/handprobe_urls.txt)
+            echo "## $id"
+            curl -sS -L -A "$UA" --max-time 30 "$url" | python3 probe.py
             sleep 3
-          done < claude-work/pruefung/handprobe_urls.txt
-          echo "## Ende Seiten"
-          echo "## robots.txt (Gruppe User-agent: *)"
-          for h in $(awk '{print $2}' claude-work/pruefung/handprobe_urls.txt | awk -F/ '{print $1"//"$3}' | sort -u); do
-            echo "-- $h"; curl -sS -A "$UA" --max-time 20 "$h/robots.txt" | tr -d '\r' | awk 'BEGIN{IGNORECASE=1} /^user-agent:/{g=($2=="*")} g && /^(user-agent|disallow|allow|crawl-delay):/' | head -30 || true
-            sleep 2
           done
+          echo "## dawan erneut, 60 s"; curl -sS -o /dev/null -A "$UA" --max-time 60 -w "%{http_code} %{time_total}\n" https://www.dawan.ch/ || true
+          echo "## Ende"
