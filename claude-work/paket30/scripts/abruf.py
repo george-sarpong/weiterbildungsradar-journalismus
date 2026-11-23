@@ -163,6 +163,8 @@ def hoeflich(host, url, timeout):
 def robots_laden(host, timeout):
     if host.robots is not None: return
     st, hdr, body, f = hoeflich(host, host.basis + "/robots.txt", timeout)
+    if f in ("TIMEOUT", "VERBINDUNG") or (st is not None and 500 <= st < 600):
+        time.sleep(3); st, hdr, body, f = hoeflich(host, host.basis + "/robots.txt", timeout)   # ein zweiter Versuch
     host.robots_status = st if st is not None else f
     if f is None and st is not None and 200 <= st < 300:
         host.robots = robots_parse(body.decode("utf-8", "replace"))

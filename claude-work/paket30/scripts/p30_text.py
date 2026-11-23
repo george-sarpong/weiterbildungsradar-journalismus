@@ -11,7 +11,10 @@ SKIP_TAGS = {"script", "style", "noscript", "template", "svg", "iframe", "head",
 LEER_TAGS = {"br", "hr", "img", "input", "meta", "link", "area", "base", "col", "embed", "source", "track", "wbr", "param"}
 BLOCK_TAGS = {"p", "div", "li", "tr", "td", "th", "h1", "h2", "h3", "h4", "h5", "h6", "section", "article", "main", "header",
               "footer", "nav", "aside", "ul", "ol", "table", "dd", "dt", "dl", "form", "label", "option", "button", "span", "a"}
-CONSENT = re.compile(r"cookie|consent|gdpr|onetrust|didomi|usercentrics|cookiebot|borlabs|klaro|tarteaucitron|cmp-|iubenda", re.I)
+CONSENT = re.compile(r"^(?:cookie[-_]?(?:banner|consent|notice|bar|law|hinweis|popup|modal|overlay|layer|box|wrapper|container|info|message)s?|cookieconsent|cookie-?notice|cc-(?:window|banner)|"
+                     r"onetrust.*|ot-sdk.*|didomi.*|usercentrics.*|uc-banner.*|cybotcookiebot.*|cookiebot.*|borlabs-cookie.*|klaro.*|tarteaucitron.*|iubenda.*|"
+                     r"cmplz-.*|moove_gdpr.*|gdpr-cookie.*|consent-(?:banner|manager|layer|modal)|cmp-(?:banner|container|wrapper))$", re.I)
+NIE_UEBERSPRINGEN = {"html", "body", "main", "article"}
 HAUPT = ("main", "article")
 AUSZUG = 200
 
@@ -36,8 +39,11 @@ class _P(html.parser.HTMLParser):
         if tag in LEER_TAGS:
             if tag == "br": self._add(" ")
             return
-        merk = " ".join(str(a.get(k) or "") for k in ("id", "class", "aria-label", "data-nosnippet"))
-        skip = tag in SKIP_TAGS or bool(CONSENT.search(merk)) or ("hidden" in a and tag not in ("input",)) or a.get("aria-hidden") == "true"
+        if tag == "body":   # </head> darf fehlen (HTML5): offenen head-Bereich schliessen
+            while self.stack and self.stack[-1][0] != "html": self.stack.pop()
+        merk = (str(a.get("id") or "") + " " + str(a.get("class") or "")).split()
+        verdeckt = any(CONSENT.match(x) for x in merk) or "hidden" in a or a.get("aria-hidden") == "true"
+        skip = tag in SKIP_TAGS or (verdeckt and tag not in NIE_UEBERSPRINGEN and tag != "input")
         haupt = tag in HAUPT or a.get("role") == "main"
         self.stack.append((tag, skip, haupt))
         if tag in BLOCK_TAGS: self._add(" ")
@@ -97,6 +103,10 @@ def bereinige(roh):
     except Exception: pass   # kaputtes HTML: verwerten, was gelesen wurde
     text = _ws(html.unescape("".join(p.text)))
     haupt = _ws(html.unescape("".join(p.haupt)))
+    if len(text) < 300:   # Rückfall bei unüblichem Aufbau: Tags grob entfernen (wie Handprobe U3)
+        t2 = re.sub(r"(?is)<(script|style|noscript|template|svg)\b.*?</\1\s*>", " ", roh)
+        t2 = _ws(html.unescape(re.sub(r"(?s)<[^>]+>", " ", re.sub(r"(?s)<!--.*?-->", " ", t2))))
+        if len(t2) > len(text) + 500: text = haupt = t2
     if len(haupt) < 200: haupt = text
     skript = _ws(" ".join(p.skript))[:2_000_000]
     return Seite(text, haupt, skript, _ld_werte(p.ld), _ws("".join(p.titel)))

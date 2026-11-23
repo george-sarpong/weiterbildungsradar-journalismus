@@ -222,6 +222,9 @@ def q04():
     check("Q04 Zeitstempel, Cookie-Banner, Sitzungskennung → gleicher Hash", h(a) == h(b) and h(c) == h(c2), f"{h(a)[:8]} {h(b)[:8]} / {h(c)[:8]} {h(c2)[:8]}")
     check("Q04 echte Änderung Datum/Preis → anderer Hash", len({h(a), h(d1), h(d2)}) == 3)
     check("Q04 Cookie-Text nicht im Text, Skript/Stil entfernt", "Cookies" not in b.text and "Akzeptieren" not in b.text)
+    # Befund Testlauf 45212354429: Seitentext leer (Digicomp, SGP); Ursache fehlendes </head> bzw. Klasse am body
+    o = T.bereinige("<html><head><title>X</title><body class='home cookies-not-set'><main><h1>Kurs Y</h1><p>" + FUELL + "</p></main>")
+    check("Q04 fehlendes </head> und Cookie-Klasse am body: Text bleibt", "Kurs Y" in o.text and len(o.text) > 300, f"{len(o.text)} Zeichen")
 
 
 # ---------------- Q05 Höflichkeit ----------------
