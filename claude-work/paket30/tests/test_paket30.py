@@ -92,10 +92,10 @@ class Server:
             def log_message(self, *a): pass
             def do_GET(self):
                 h = self.headers.get("Host", "").split(":")[0]
-                t0 = time.monotonic(); srv.log.append([h, self.path, t0, None, self.headers.get("User-Agent")])
+                eintrag = [h, self.path, time.monotonic(), None, self.headers.get("User-Agent")]; srv.log.append(eintrag)
                 try: srv.antwort(self, h)
                 except (BrokenPipeError, ConnectionResetError): pass
-                finally: srv.log[-1][3] = time.monotonic()
+                finally: eintrag[3] = time.monotonic()
 
         class TS(socketserver.ThreadingMixIn, http.server.HTTPServer): daemon_threads = True
         self.httpd = TS(("127.0.0.1", 0), H); self.port = self.httpd.server_address[1]
