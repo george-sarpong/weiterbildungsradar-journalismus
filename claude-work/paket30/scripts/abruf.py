@@ -26,7 +26,7 @@ MAX_BYTES = 4_000_000
 MAX_REDIRECTS = 8
 MAX_DELAY = 10.0
 FOLGEFEHLER_RUHE = 3
-VERSION = "p30-abruf-4"
+VERSION = "p30-abruf-5"
 
 
 class _KeinRedirect(urllib.request.HTTPRedirectHandler):
@@ -195,7 +195,7 @@ def _text(hdr, body):
     except LookupError: return body.decode("utf-8", "replace")
 
 
-def hole(url, timeout, abstand):
+def hole(url, timeout, abstand, xml=False):
     """Folgt Weiterleitungen selbst (jede Stufe höflich). Liefert dict ohne Seitentext und die Seite (oder None)."""
     erg = {"url": url, "erst_status": None, "status": None, "ziel": url, "kette": [], "fehler": None, "typ": None, "nur_js": False}
     aktuell, besucht = url, set()
@@ -230,6 +230,9 @@ def hole(url, timeout, abstand):
         ct = (hdr.get("Content-Type") or "").lower() if hdr else ""
         erg["typ"] = ct.split(";")[0].strip()
         if st >= 400: return erg, None
+        if xml and (erg["typ"] in ("application/xml", "text/xml") or url.endswith(".xml")):   # P31b: Sitemap, nur Adressen (<loc>)
+            roh = _text(hdr, body); erg["_locs"] = [T.html.unescape(x.strip()) for x in re.findall(r"<loc>\s*([^<]+?)\s*</loc>", roh)][:20000]
+            return erg, None
         if erg["typ"] not in ("text/html", "application/xhtml+xml", "text/plain", ""):
             erg["fehler"] = "TYP"; return erg, None
         roh = _text(hdr, body)
@@ -241,7 +244,7 @@ def hole(url, timeout, abstand):
         if len(seite.text) < 300 and re.search(r"<script", roh, re.I):
             erg["nur_js"] = True
         erg["hash"] = T.hash_text(seite)
-        if LINKS: erg["_links"] = links_von(roh, aktuell)   # P31b: nur im verschlüsselten Volltext weitergegeben
+        if LINKS: erg["_links"] = links_von(roh, aktuell); erg["_quell"] = quell_urls(roh, aktuell)   # P31b: nur im verschlüsselten Volltext
         return erg, seite
     erg["fehler"] = "ZU_VIELE_WEITERLEITUNGEN"; return erg, None
 
@@ -277,6 +280,21 @@ def links_von(roh, basis, n=400):
     return aus
 
 
+QUELL_RE = re.compile(r"""(?:src|action|data-[\w-]+)\s*=\s*["']([^"']{4,400})["']|["'](https?:\\?/\\?/[^"'\s<>]{4,400})["']""", re.I)
+
+
+def quell_urls(roh, basis, n=200):
+    """P31b: Adressen ausserhalb von <a> (Skripte, data-Attribute, JSON), z. B. Termin-Schnittstellen; je einmal, höchstens n."""
+    aus = []
+    for m in QUELL_RE.finditer(roh):
+        x = (m.group(1) or m.group(2) or "").replace("\\/", "/")
+        if not (x.startswith(("http", "/")) or "/" in x): continue
+        u = urllib.parse.urljoin(basis, T.html.unescape(x))
+        if re.match(r"https?://", u) and u not in aus: aus.append(u)
+        if len(aus) >= n: break
+    return aus
+
+
 def eltern_von(u):
     """Übergeordnete Pfade (höchstens 2) und Startseite, z. B. /a/b/c → /a/b/, /a/, /."""
     sp = urllib.parse.urlsplit(u); teile = [x for x in sp.path.split("/") if x]
@@ -301,11 +319,11 @@ def lauf(rows, t, timeout, abstand, max_hosts, ersatz=None, log=print):
             e["url"] = u
             if ersatz: e["ziel"] = e["ziel"].replace(ersatz[1], ersatz[0], 1); e["kette"] = [[s, x.replace(ersatz[1], ersatz[0], 1)] for s, x in e["kette"]]
             e["ids"] = sorted(z["id"] for z in nach_url[u])
-            lk = e.pop("_links", None)
+            lk = e.pop("_links", None); e.pop("_quell", None)
             if seite is None and VOLLTEXT and ELTERN and (e.get("fehler") or (e.get("status") or 0) >= 400):
                 el = []
                 for eu in eltern_von(e["ziel"] or u):
-                    ee, es = hole(eu, timeout, abstand)
+                    ee, es = hole(eu, timeout, abstand); ee.pop("_quell", None)
                     el.append({"url": eu, "status": ee.get("status"), "ziel": ee.get("ziel"), "fehler": ee.get("fehler"), "links": ee.pop("_links", None) or []})
                 e["volltext"] = {"eltern": el}
             if seite is not None:
@@ -336,10 +354,15 @@ def lauf_zusatz(datei, timeout, abstand, max_hosts, log=print):
     for u in paare: gruppen.setdefault(urllib.parse.urlsplit(u).netloc.lower(), []).append(u)
     def arbeite(urls):
         for u in sorted(urls):
-            e, seite = hole(u, timeout, abstand); lk = e.pop("_links", None)
+            e, seite = hole(u, timeout, abstand, xml=True); lk = e.pop("_links", None); qu = e.pop("_quell", None); locs = e.pop("_locs", None)
             e.update(url=u, ids=sorted(paare[u]), zusatz=True)
+            if locs is not None and VOLLTEXT:   # Sitemap; bei Sitemap-Index höchstens 30 Teil-Sitemaps
+                alle, teil = [], [x for x in locs if x.endswith(".xml") or "sitemap" in x.lower()]
+                for tu in teil[:30]:
+                    te, _ = hole(tu, timeout, abstand, xml=True); alle += te.pop("_locs", None) or []
+                e["volltext"] = {"locs": (alle or [x for x in locs if x not in teil])[:20000]}
             if seite is not None and VOLLTEXT:
-                e["volltext"] = {"titel": seite.titel_tag[:300], "h1": seite.h1[:300], "text": seite.haupttext[:TEXTGRENZE], "strukturiert": seite.ld_werte[:30], "links": lk or []}
+                e["volltext"] = {"titel": seite.titel_tag[:300], "h1": seite.h1[:300], "text": seite.haupttext[:TEXTGRENZE], "strukturiert": seite.ld_werte[:30], "links": lk or [], "quell_urls": qu or []}
             erg[u] = e
     with cf.ThreadPoolExecutor(max_workers=max_hosts) as ex:
         futs = {ex.submit(arbeite, us): h for h, us in gruppen.items()}
