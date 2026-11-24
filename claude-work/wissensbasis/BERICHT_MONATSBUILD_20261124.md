@@ -78,7 +78,7 @@ Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 
 ## 4. Offen für den Owner
 
-1. Release-Freigabe für `mediaskills_monatsbuild_20261124_v4.zip`, Upload nach E163 (v2 ist live).
+1. erledigt: Paket v4 freigegeben (E300), live seit 24.11.2026 (E301; V05 Owner).
 2. erledigt: Testanpassung Q12 (E295), `test_paket30.py` 34/34.
 3. Nach dem Release: Zweifelsfälle 95 (E291), danach Routine-Eingang des Monats (geprueft_am, pruefen_ab nach E292).
 
