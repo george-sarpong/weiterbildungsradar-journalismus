@@ -1,6 +1,6 @@
 # BERICHT PAKET 31 «Lücken füllen», zweiter Durchgang, 24.11.2026
 
-Grundlage: Owner-Entscheide E266–E268, E271, E272; Befunde E269, E270 (erster Durchgang), E273 (dieser Durchgang); Nachtrag MAZ und «Privatkurs»: E274–E276; Restfälle: E277–E279; dritter Durchgang: E280–E286 (Nachbau der Läufe 033–035 in neuer Sitzung).
+Grundlage: Owner-Entscheide E266–E268, E271, E272; Befunde E269, E270 (erster Durchgang), E273 (dieser Durchgang); Nachtrag MAZ und «Privatkurs»: E274–E276; Restfälle: E277–E279; dritter Durchgang: E280–E287 (Nachbau der Läufe 033–035 in neuer Sitzung, Lauf 036).
 Arbeitszweig `claude/datenharmonisierung`, gepusht. Kein Release, kein Merge.
 Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 
@@ -59,7 +59,7 @@ Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
   - Kurslinks IF-G08, AT-PROD-OFFER-166, OFFER-KLUB-MIDUCA-008 (E284). Die Berner Standortseite der Klubschule nennt im Seitentext keine Termine, daher keine zweite Durchführung.
 - **Abweichungen zur ersten Fassung (E285):**
   - OFFER-USI-002: Kurslink **nicht** ersetzt. usi.ch antwortet dem Runner nur mit HTTP 403 (Sperre); das belegt keinen toten Link. Unterseiten des Programms stehen im Suchindex.
-  - Mediencampus-030 und -043: **nicht** nachgetragen. Die Lehrgangsseiten verlinken die PDF (`lehrgang_medienkorrektorat.pdf`, `lehrgang_lektorat.pdf`), aber der Abruf liest keine PDF, und WebFetch blieb ohne deine Freigabe.
+  - Mediencampus-030 und -043: nicht im Nachbau, sondern als **Lauf 036** (12 Zellen, E287) aus den PDF, die du hochgeladen hast: Termin «Einstieg jederzeit möglich» (E268), Dauer 9 Seminare / ca. 1 Jahr bzw. 15 Seminare / ca. 1½ Jahre, Preis ca. CHF 10'350 bzw. CHF 17'250 und 17'940 (mit Abschlussprojekt). Nicht budgetfähig, weil «ca.» bzw. «je nach Seminarauswahl» (E010).
 - **Stand am 24.11.:**
 
 | | vor Lauf 033 | jetzt |
@@ -68,9 +68,9 @@ Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 | Bestand CH/AT/LI ohne HOLD | 1'197 | 1'165 |
 | Sichtbar | 1'080 | 1'062 |
 
-- **Ergebnis aller 85 Restfälle:** `paket31/out/restfaelle_ergebnis_2026-11-24.csv` (Archiv 35, unverändert 26, «keine Angabe» 15, HEVS 3, Kurslink 3, offen 2, Termin 1).
+- **Ergebnis aller 85 Restfälle:** `paket31/out/restfaelle_ergebnis_2026-11-24.csv` (Archiv 35, unverändert 26, «keine Angabe» 15, HEVS 3, Kurslink 3, PDF 2, Termin 1).
 - **Grenzen:** klubschule-pro.ch ist für die Browser-Werkzeuge nicht lesbar, nur als Bildschirm. Der Kursbereich von ffzh.ch leitet auch bei aktuellen Kursen auf die Startseite. «Termin vollständig» wurde nicht neu gezählt, weil dafür ein neuer Abruf nötig ist.
-- **Tests:** `eingang_pruefen.py` 18 Dateien ohne Fehler; P24 14/14, Nachträge 14/14, P30 34/34. [GEPRÜFT]
+- **Tests:** `eingang_pruefen.py` 19 Dateien ohne Fehler (mit Lauf 036); P24 14/14, Nachträge 14/14, P30 34/34. [GEPRÜFT]
 
 ## 2. Vorgehen
 
@@ -97,7 +97,7 @@ Code: `paket30/scripts/abruf.py` (Version p30-abruf-6) mit den neuen Optionen `-
 
 ## 4. Offen für den Owner
 
-1. erledigt: Owner-Liste Restfälle (E277–E284, Ergebnis `paket31/out/restfaelle_ergebnis_2026-11-24.csv`); offen E281 im nächsten Monatsbuild und **Mediencampus-030/-043 aus PDF** (WebFetch mit deiner Freigabe).
+1. erledigt: Owner-Liste Restfälle (E277–E284, Ergebnis `paket31/out/restfaelle_ergebnis_2026-11-24.csv`); offen nur E281 im nächsten Monatsbuild.
 2. erledigt: MAZ-Termine über Chrome (E275, E276); 29 MAZ-Kurse ohne publizierte Durchführung bleiben mit Termin-Lücke.
 3. erledigt: «Privatkurs» bestätigt (E274).
 4. **Dawan** bleibt nach RFC 9309 gesperrt (40 Kurse mit Termin-Lücke).
