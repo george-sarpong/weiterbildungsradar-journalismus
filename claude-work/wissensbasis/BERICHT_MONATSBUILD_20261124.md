@@ -1,6 +1,6 @@
 # BERICHT Monatsbuild 24.11.2026 (erster Monatsbuild nach E177/E258)
 
-Grundlage: GESAMTWISSENSSTAND §9 (E281 und Dawan im nächsten Monatsbuild, danach Monatsbuild und Release nur mit Freigabe); Owner-Entscheide E289–E292, E294 (Release-Freigabe), E295 (Test Q12); Befund E293.
+Grundlage: GESAMTWISSENSSTAND §9 (E281 und Dawan im nächsten Monatsbuild, danach Monatsbuild und Release nur mit Freigabe); Owner-Entscheide E289–E292, E294 (Release-Freigabe), E295 (Test Q12), E296 (Paket optimiert); Befund E293.
 Arbeitszweig `claude/datenharmonisierung`, gepusht. Kein Upload, kein Merge.
 Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 
@@ -31,6 +31,17 @@ Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
   - Bauprotokoll und Prüfsummen: `paket29/out/release_20261124/`. Vorschau: `paket29/out/abnahme_20261124/`.
   - Live seit 23.11. sind 998 Angebote.
 
+## 1b. Optimiertes Paket (E296)
+
+- `mediaskills_monatsbuild_20261124_v2.zip` ersetzt das erste Paket: 15 statt 17 Dateien in website/, 2,31 MB.
+  - Die vier Unterseiten laden `styles-v24.css` statt `styles-v22.css`; `styles-v22.css` entfällt. `styles-v24.css` = `styles-v22.css` + Block MS-48, dessen Regeln nur Startseiten-Elemente treffen (Karten, Ergebnisleiste, Titelbereich).
+  - `SHA256SUMS.txt` liegt neben `website/`, nicht mehr darin; es wird nicht hochgeladen.
+  - Alle übrigen Dateien, Bauprotokoll und `htaccess.txt` bytegleich mit dem getesteten Bau.
+- Skript `paket29/scripts/optimiere_release.py` (bricht ab, wenn eine Annahme nicht stimmt), Nachweis `paket29/out/release_20261124/OPTIMIERUNG.json`.
+- Test `paket29/tests/test_optimierung.js`: 16/16 PASS, die vier Unterseiten in 375, 800, 1100 und 1440 px pixelgleich, 0 Ladefehler. [GEPRÜFT]
+- Nicht geändert: Fusszeile «Datenstand: 30. September 2026» der Unterseiten (Befund Paket 19 U5); folgt mit dem Methodik-Wortlaut.
+- Für künftige Releases: den Schritt in den Release-Bau übernehmen.
+
 ## 2. Tests [GEPRÜFT]
 
 | Test | Ergebnis |
@@ -50,7 +61,7 @@ Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 
 ## 4. Offen für den Owner
 
-1. Release-Freigabe und Abnahme (E040, E227) für `mediaskills_monatsbuild_20261124.zip`, Upload nach E163.
+1. Release-Freigabe für das optimierte Paket `mediaskills_monatsbuild_20261124_v2.zip` (E294 galt für das erste Paket), Upload nach E163.
 2. erledigt: Testanpassung Q12 (E295), `test_paket30.py` 34/34.
 3. Nach dem Release: Zweifelsfälle 95 (E291), danach Routine-Eingang des Monats (geprueft_am, pruefen_ab nach E292).
 
