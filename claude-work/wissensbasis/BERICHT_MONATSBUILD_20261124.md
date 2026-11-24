@@ -70,7 +70,7 @@ Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 | belegt, keine Änderung (Titel auf der Seite anders geschrieben, z. B. französisch oder mit Präfix) | 30 |
 | Routine nach E262 (Kurslink nach Weiterleitung oder Nachfolgeseite, neuer Termin) | 11 |
 | Website derzeit nicht lesbar, wie E281 (E306) | 9 |
-| UNIGE hinter Sicherheitsprüfung, später in Chrome | 5 |
+| UNIGE hinter Sicherheitsprüfung, in Chrome belegt (E308) | 5 |
 | Owner: Archiv (E303) 11, jährlich ohne Ausschreibung (E304) 5, umbenannt (E305) 5 | 21 |
 | Owner offen: OFFER-SPC-011 | 1 |
 
@@ -103,10 +103,10 @@ Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 
 ## 4. Offen für den Owner
 
-1. erledigt: Paket v4 freigegeben (E300), live seit 24.11.2026 (E301; V05 Owner).
+1. erledigt: Paket v4 freigegeben (E300), live seit 24.11.2026 (E301), V05 bestätigt (E307).
 2. erledigt: Testanpassung Q12 (E295), `test_paket30.py` 34/34.
 3. erledigt: Zweifelsfälle 95 (E291) verkleinert und entschieden (E302–E306, Lauf 041), §1e.
-4. Offen: OFFER-SPC-011 (Katalog «Master Ateliers Pratique», CHF 250; Seite «Ateliers Pratique» CHF 90, «Ateliers Signature» CHF 250); UNIGE-V22-03, -004, -005, -009, -010 in Chrome lesen (Freigabe je Website).
+4. Offen: OFFER-SPC-011 (Katalog «Master Ateliers Pratique», CHF 250; Seite «Ateliers Pratique» CHF 90, «Ateliers Signature» CHF 250), Link an den Owner 24.11. erledigt: V05 für v4 bestätigt (E307); UNIGE-V22-03, -004, -005, -009, -010 in Chrome belegt, keine Änderung (E308).
 5. Nächster Schritt: Routine-Eingang des Monats (geprueft_am, pruefen_ab nach E292) für die Routinefälle des Vollaufs und der 30 belegten Zweifelsfälle; danach Release mit Freigabe.
 
 ## 5. Nicht Teil dieses Monatsbuilds

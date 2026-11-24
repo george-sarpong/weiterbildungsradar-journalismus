@@ -82,9 +82,12 @@ for i in "OFFER-KLUBPRO-005 OFFER-KLUBPRO-003 OFFER-KLUBPRO-054".split():
             "wie E281 unverändert, nächster Monatsbuild (Owner)", L1 + ", " + L2)
 R["OFFER-MSSG-001"] = ("WIE_E281", "medienschule-ost.ch: robots.txt Zeitüberschreitung, nach RFC 9309 nicht abgerufen",
                        "wie E281 unverändert, nächster Monatsbuild (Owner)", L1)
-for i in "UNIGE-V22-03 OFFER-UNIGE-004 OFFER-UNIGE-005 OFFER-UNIGE-009 OFFER-UNIGE-010".split():
-    R[i] = ("CHROME", "unige.ch zeigt dem Abruf «Vérification de sécurité / Security Check»",
-            "in Chrome lesen wie E278 (UNIGE-013, -014 waren in Chrome lesbar)", L1)
+# Chrome 24.11. abends (Owner-Freigabe im Chat, E308): unige.ch zeigt dem Abruf eine Sicherheitsprüfung, in Chrome lesbar
+R["UNIGE-V22-03"] = ("BELEGT_CHROME", "Chrome: CAS Techniques de la communication écrite 2026-2027, Programm «Le texte journalistique», «Inscriptions par module possible»",
+                     "keine Master-Änderung (E308)", "Chrome 2026-11-24")
+for i, m in (("OFFER-UNIGE-004", "UX /UI Design"), ("OFFER-UNIGE-005", "Gestion de projet numérique / Création de site web"),
+             ("OFFER-UNIGE-009", "Création de contenus et stratégies d’influence"), ("OFFER-UNIGE-010", "IA Générative: pratiques et enjeux")):
+    R[i] = ("BELEGT_CHROME", f"Chrome: DAS Communication digitale 2026-2027, Modul «{m}», «CHF 1’700.- par module»", "keine Master-Änderung (E308)", "Chrome 2026-11-24")
 
 ARCHIV = [
     ("OFFER-BICT-001", "Kurslink 404, bict.ch/ausbildung/ 404, Sitemap ohne Ausbildungsseiten", L1),
