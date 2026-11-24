@@ -26,7 +26,7 @@ MAX_BYTES = 4_000_000
 MAX_REDIRECTS = 8
 MAX_DELAY = 10.0
 FOLGEFEHLER_RUHE = 3
-VERSION = "p30-abruf-5"
+VERSION = "p30-abruf-6"
 
 
 class _KeinRedirect(urllib.request.HTTPRedirectHandler):
@@ -264,6 +264,7 @@ EXTRAKT = False
 VOLLTEXT = False
 LINKS = False        # P31b (E272): Linkliste je Seite (Ziel, Linktext ≤ 120) für Nachfolgesuche und my.maz.ch
 ELTERN = False       # P31b: bei toter Seite die übergeordneten Pfade (höchstens 2 und Startseite) holen, nur Linklisten
+FOLGE = None        # P31b: Muster für eingebettete Folgeadressen (Zusatzadressen)
 TEXTGRENZE = 9000    # P31b: Länge des Haupttexts im Volltext (ORSYS-Terminlisten, E272)
 LINK_RE = re.compile(r"<a\b[^>]*?href\s*=\s*[\"']([^\"'#]+)[\"'][^>]*>(.*?)</a>", re.I | re.S)
 
@@ -363,6 +364,13 @@ def lauf_zusatz(datei, timeout, abstand, max_hosts, log=print):
                 e["volltext"] = {"locs": (alle or [x for x in locs if x not in teil])[:20000]}
             if seite is not None and VOLLTEXT:
                 e["volltext"] = {"titel": seite.titel_tag[:300], "h1": seite.h1[:300], "text": seite.haupttext[:TEXTGRENZE], "strukturiert": seite.ld_werte[:30], "links": lk or [], "quell_urls": qu or []}
+                if FOLGE:   # P31b: eingebettete Terminquelle (z. B. my.maz.ch/public/Ereignis/PublicList) gleich mitholen, höchstens 3
+                    fl = []
+                    for fu in [x for x in dict.fromkeys((qu or []) + [x[0] for x in (lk or [])]) if FOLGE.search(x)][:3]:
+                        fe, fs = hole(fu, timeout, abstand); fe.pop("_links", None); fe.pop("_quell", None)
+                        fl.append({"url": fu, "status": fe.get("status"), "fehler": fe.get("fehler"), "text": fs.haupttext[:TEXTGRENZE] if fs else None,
+                                   "strukturiert": fs.ld_werte[:30] if fs else []})
+                    e["volltext"]["folge"] = fl
             erg[u] = e
     with cf.ThreadPoolExecutor(max_workers=max_hosts) as ex:
         futs = {ex.submit(arbeite, us): h for h, us in gruppen.items()}
@@ -376,7 +384,7 @@ def main():
     ap.add_argument("--umfang", default="sichtbar", choices=["sichtbar", "luecken"])
     ap.add_argument("--volltext", action="store_true")   # luecken: CH/AT/LI ohne HOLD, mit Auslese (P31, E266)
     ap.add_argument("--links", action="store_true"); ap.add_argument("--eltern", action="store_true")   # P31b (E272)
-    ap.add_argument("--textgrenze", type=int, default=9000); ap.add_argument("--zusatz", default="")   # Zusatzadressen: Zeilen «ID<TAB>URL»
+    ap.add_argument("--textgrenze", type=int, default=9000); ap.add_argument("--zusatz", default=""); ap.add_argument("--folge", default="")   # Zusatzadressen: Zeilen «ID<TAB>URL»
     ap.add_argument("--master", default=str(R / "paket3/out/master_3818_aktuell.csv"))
     ap.add_argument("--max-hosts", type=int, default=6); ap.add_argument("--abstand", type=float, default=2.0)
     ap.add_argument("--timeout", type=float, default=30.0); ap.add_argument("--basis-url-ersatz", default="")
@@ -384,7 +392,8 @@ def main():
     if t is None: sys.exit("ABBRUCH: Stichtag JJJJ-MM-TT")
     if a.abstand < 2.0 and not a.basis_url_ersatz: sys.exit("ABBRUCH: Abstand mindestens 2 s")
     ids = [x for x in a.ids.replace("\n", ",").split(",") if x.strip()]
-    global EXTRAKT, VOLLTEXT, LINKS, ELTERN, TEXTGRENZE
+    global EXTRAKT, VOLLTEXT, LINKS, ELTERN, TEXTGRENZE, FOLGE
+    FOLGE = re.compile(a.folge) if a.folge else None
     VOLLTEXT = a.volltext; LINKS = a.links; ELTERN = a.eltern; TEXTGRENZE = max(1000, min(a.textgrenze, 200000))
     try:
         alle = S.lies_master(a.master)

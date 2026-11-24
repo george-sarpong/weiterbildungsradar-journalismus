@@ -44,6 +44,7 @@ jobs:
           if a.get("links", "").strip().lower() == "ja": cmd.append("--links")      # P31b (E272)
           if a.get("eltern", "").strip().lower() == "ja": cmd.append("--eltern")
           if re.fullmatch(r"\d{4,6}", a.get("textgrenze", "").strip()): cmd += ["--textgrenze", a["textgrenze"].strip()]
+          if a.get("folge", "").strip(): cmd += ["--folge", a["folge"].strip()]
           if a.get("zusatz", "").strip().lower() == "ja" and pathlib.Path("pruefung/zusatz.txt").exists(): cmd += ["--zusatz", "pruefung/zusatz.txt"]
           print("Auftrag:", a); sys.exit(subprocess.call(cmd))
           PY
