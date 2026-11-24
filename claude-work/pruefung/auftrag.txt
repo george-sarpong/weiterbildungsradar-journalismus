@@ -1,12 +1,12 @@
 # P30 Auftrag für den Prüfabruf (E260). Push dieser Datei startet .github/workflows/p30-pruefung.yml
-# P31 Nachbau Läufe 033–035 (E277, E280, E282–E284): Belege der Restfälle; Kurstexte nur verschlüsselt (neues Schlüsselpaar 24.11.)
+# Monatsbuild 24.11.: erneuter Abruf der 21 Angebote auf derzeit nicht lesbaren Websites (E281); Kurstexte nur verschlüsselt (neues Schlüsselpaar 24.11., Sitzung 3)
 stichtag=2026-11-24
 umfang=luecken
 volltext=ja
 links=ja
 eltern=nein
 textgrenze=40000
-zusatz=ja
+zusatz=nein
 folge=
-ids=KEINE-ID
+ids=OFFER-EJC-001,OFFER-EJC-002,OFFER-EJC-004,OFFER-EJC-005,OFFER-EJC-006,OFFER-EJC-007,OFFER-EJC-008,OFFER-EJC-009,OFFER-EJC-010,OFFER-EJC-013,OFFER-SCA-001,OFFER-SCA-002,OFFER-SCA-003,OFFER-SCA-004,OFFER-FF-004,OFFER-FF-005,OFFER-KLUBPRO-033,OFFER-KLUBPRO-039,OFFER-KLUBPRO-042,OFFER-KLUBPRO-044,OFFER-KLUBPRO-045
 nur_ids=nein
