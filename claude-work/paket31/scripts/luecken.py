@@ -26,10 +26,16 @@ KOPF = ["id", "market", "anbieter", "titel", "url", "sichtbar", "status", "feld"
 def leer(z, *f): return not any((z.get(x) or "").strip() not in P for x in f)
 
 
+OHNE_DATUM = {"Termin auf Anfrage", "Termin nach Vereinbarung"}   # E268, E271
+BELEG_P31 = "ANBIETERSEITE_P31"
+
+
 def luecke(z, feld, t):
     if feld == "termin":   # Lücke, wenn kein Termin und kein Kursende ab Stichtag (laufende Kurse sind vollständig)
         pd, ende = K.pruefdatum(z, t), S.datum(z["end_datum"])
-        return not ((pd and pd >= t) or (ende and ende >= t))
+        if (pd and pd >= t) or (ende and ende >= t): return False
+        # E268/E271: «auf Anfrage» / «nach Vereinbarung» ist vollständig, wenn die Anbieterseite es bestätigt (Beleg P31 am Text oder am Prüfdatum)
+        return not (z["termin_text"] in OHNE_DATUM and BELEG_P31 in (z["h_termin_text"], z["h_geprueft_am"]))
     if feld == "preis": return not K.betraege(z) and not K.preis_kostenlos(z)
     if feld == "dauer": return leer(z, "dauer_anzeige", "dauer") or "nicht publiz" in (z["dauer_anzeige"] or z["dauer"]).lower()
     if feld == "ort": return leer(z, "ort_anzeige", "ort_text") and (z["ort_anzeige"] or z["ort_text"]) != "Online"
