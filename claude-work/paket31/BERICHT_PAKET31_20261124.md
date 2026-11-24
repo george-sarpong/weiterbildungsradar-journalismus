@@ -1,6 +1,6 @@
 # BERICHT PAKET 31 «Lücken füllen», zweiter Durchgang, 24.11.2026
 
-Grundlage: Owner-Entscheide E266–E268, E271, E272; Befunde E269, E270 (erster Durchgang), E273 (dieser Durchgang); Nachtrag MAZ und «Privatkurs»: E274–E276; Restfälle: E277–E279; dritter Durchgang: E280–E287 (Nachbau der Läufe 033–035 in neuer Sitzung, Lauf 036).
+Grundlage: Owner-Entscheide E266–E268, E271, E272; Befunde E269, E270 (erster Durchgang), E273 (dieser Durchgang); Nachtrag MAZ und «Privatkurs»: E274–E276; Restfälle: E277–E279; dritter Durchgang: E280–E288 (Nachbau der Läufe 033–035 in neuer Sitzung, Läufe 036, 037).
 Arbeitszweig `claude/datenharmonisierung`, gepusht. Kein Release, kein Merge.
 Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 
@@ -59,7 +59,7 @@ Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
   - Kurslinks IF-G08, AT-PROD-OFFER-166, OFFER-KLUB-MIDUCA-008 (E284). Die Berner Standortseite der Klubschule nennt im Seitentext keine Termine, daher keine zweite Durchführung.
 - **Abweichungen zur ersten Fassung (E285):**
   - OFFER-USI-002: Kurslink **nicht** ersetzt. usi.ch antwortet dem Runner nur mit HTTP 403 (Sperre); das belegt keinen toten Link. Unterseiten des Programms stehen im Suchindex.
-  - Mediencampus-030 und -043: nicht im Nachbau, sondern als **Lauf 036** (12 Zellen, E287) aus den PDF, die du hochgeladen hast: Termin «Einstieg jederzeit möglich» (E268), Dauer 9 Seminare / ca. 1 Jahr bzw. 15 Seminare / ca. 1½ Jahre, Preis ca. CHF 10'350 bzw. CHF 17'250 und 17'940 (mit Abschlussprojekt). Nicht budgetfähig, weil «ca.» bzw. «je nach Seminarauswahl» (E010).
+  - Mediencampus-030 und -043: nicht im Nachbau, sondern als **Lauf 036** (12 Zellen, E287) aus den PDF, die du hochgeladen hast: Termin «Einstieg jederzeit möglich» (E268), Dauer 9 Seminare / ca. 1 Jahr bzw. 15 Seminare / ca. 1½ Jahre, Preis ca. CHF 10'350 bzw. CHF 17'250 und 17'940 (mit Abschlussprojekt). Auf deinen Entscheid E288 gilt der Preis als **Mindestpreis** (Lauf 037): ab CHF 10'350 (mindestens 9 Seminare à CHF 1'150) bzw. ab CHF 17'250 (mindestens 15 Seminare), mit Abschlussprojekt ab CHF 17'940; die Budgetsuche zeigt die Lehrgänge als «möglich», solange der Mindestpreis im Budget liegt (E051).
 - **Stand am 24.11.:**
 
 | | vor Lauf 033 | jetzt |
@@ -70,7 +70,7 @@ Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 
 - **Ergebnis aller 85 Restfälle:** `paket31/out/restfaelle_ergebnis_2026-11-24.csv` (Archiv 35, unverändert 26, «keine Angabe» 15, HEVS 3, Kurslink 3, PDF 2, Termin 1).
 - **Grenzen:** klubschule-pro.ch ist für die Browser-Werkzeuge nicht lesbar, nur als Bildschirm. Der Kursbereich von ffzh.ch leitet auch bei aktuellen Kursen auf die Startseite. «Termin vollständig» wurde nicht neu gezählt, weil dafür ein neuer Abruf nötig ist.
-- **Tests:** `eingang_pruefen.py` 19 Dateien ohne Fehler (mit Lauf 036); P24 14/14, Nachträge 14/14, P30 34/34. [GEPRÜFT]
+- **Tests:** `eingang_pruefen.py` 20 Dateien ohne Fehler (mit Läufen 036, 037); P24 14/14, Nachträge 14/14, P30 34/34. [GEPRÜFT]
 
 ## 2. Vorgehen
 
