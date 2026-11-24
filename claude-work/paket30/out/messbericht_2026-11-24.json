@@ -1,0 +1,430 @@
+{
+ "aufwand_min_schaetzung": 191,
+ "aufwand_ueber_budget": true,
+ "b1_ids": [],
+ "b1_vergangenes_ende": 0,
+ "b2_erreichbar_maschinell": 912,
+ "b2_erreichbar_nachpruefung": 0,
+ "b2_links": 954,
+ "b2_nicht_erreichbar": [
+  "https://academy.ebu.ch/preparing-your-move-to-live-ip-production",
+  "https://academy.ebu.ch/social-media-monitoring-ai-and-verification-for-breaking-news-research",
+  "https://academy.ebu.ch/the-modern-field-reporter-verification-live-reporting-and-multi-platform-storytelling-workshop",
+  "https://bict.ch/ausbildung/fachausweis-multimedia-content-creator-2/",
+  "https://ecole-journalisme.ch/formation-de-journaliste-presse-ecrite/",
+  "https://ecole-journalisme.ch/formation-de-journaliste-reporter-dimages/",
+  "https://ecole-journalisme.ch/formation-en-ligne/",
+  "https://ffzh.ch/Weiterbildungskurse/",
+  "https://ffzh.ch/Weiterbildungskurse/?KursId=8486",
+  "https://ffzh.ch/Weiterbildungskurse/?KursId=9007",
+  "https://ffzh.ch/Weiterbildungskurse/?KursId=9012",
+  "https://oema.at/seminare/magazinkritik/",
+  "https://rabe.ch/praktikum",
+  "https://traineeship.at/",
+  "https://www.aau.at/studien/master-kreatives-schreiben-und-schreibkulturen/",
+  "https://www.aau.at/studien/master-media-and-convergence-management/",
+  "https://www.dawan.ch/formations/pao/affinity-suite-pao/affinity-designer-approfondissement.pdf",
+  "https://www.dawan.ch/formations/pao/creation-graphique/procreate-initiation.pdf",
+  "https://www.dawan.ch/formations/pao/indesign/indesign-initiation.pdf",
+  "https://www.dawan.ch/formations/pao/premiers-pas-en-creation-graphique/graphiste-adobe-initiation.pdf",
+  "https://www.fhnw.ch/de/informatik/weiterbildung/angebot/weiterbildungen/digital-product-experience",
+  "https://www.itta.net/formations/multimedia/video-et-son/adobe-after-effects-avance/",
+  "https://www.itta.net/formations/multimedia/video-et-son/adobe-premiere-pro-avance/",
+  "https://www.itta.net/formations/multimedia/video-et-son/adobe-premiere-pro-fondamentaux/",
+  "https://www.itta.net/formations/multimedia/video-et-son/final-cut-pro-fondamentaux/",
+  "https://www.klubschule-pro.ch/de/it-multimedia/kuenstliche-intelligenz/ai-booster-series-compact-program/business/",
+  "https://www.klubschule-pro.ch/kurs/Modul-23-KI-kreatives-Schreiben-Neue-Wege-der-Inspiration--D_102717_1016_313",
+  "https://www.klubschule-pro.ch/kurs/adobe-indesign-aufbau-online--D_100853_1020_1388",
+  "https://www.klubschule-pro.ch/kurs/adobe-photoshop-aufbau-online--D_100854_1020_1388",
+  "https://www.klubschule-pro.ch/kurs/chatgpt-advanced-individuelle-losungen-online--D_102172_1020_1388",
+  "https://www.klubschule-pro.ch/kurs/fotografin-fotograf-mit-diplom-grundmodul--D_103273_1013_306",
+  "https://www.klubschule-pro.ch/kurs/ki-video-kreation-vom-text-zur-animation--D_102731_1014_422",
+  "https://www.klubschule-pro.ch/kurs/modul-20-ki-werkzeuge-im-kreativen-entwurfsprozess--D_102729_1014_422",
+  "https://www.klubschule.ch/kurs/fotografie-aufbau--D_92831_2668_1210",
+  "https://www.klubschule.ch/kurs/fotografie-grundmodul-intensivklasse--D_91937_2661_951",
+  "https://www.kma.at/",
+  "https://www.sfgbasel.ch/oeffentliche-weiterbildungskurse/uebersicht/bewegtes-bild",
+  "https://www.swisscreatoracademy.com/anmeldung-lehrgang-2",
+  "https://www.swisscreatoracademy.com/kauf-content-creation-mit-ai",
+  "https://www.swisscreatoracademy.com/kauf-lehrgang-1-3",
+  "https://www.usi.ch/en/education/master/media-management",
+  "https://www.vaterland.li/storage/epapage/5/0/0/539005_pdf_trQhngvUhH.pdf"
+ ],
+ "b2_ohne_abruf": 0,
+ "b2_quote": 0.956,
+ "b2_quote_maschinell": 0.956,
+ "b3_offen": 88,
+ "b3_offen_liste": [
+  [
+   "OFFER-BICT-001",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "CAD-018",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "CAD-026",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-CFJM-015",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "OFFER-CFJM-019",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "OFFER-CFJM-020",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "V82-DAWAN-065",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "V82-DAWAN-037",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "V82-DAWAN-049",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-DIGICOMP-003",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "OFFER-DIGICOMP-052",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "OFFER-EBU-020",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-EBU-021",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-EBU-022",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-FF-018",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "OFFER-FHNW-016",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "IF-P10",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "IF-P08",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "IF-G12",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "V78-04",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "V78-02",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "V78-01",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "V78-05",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "AT-PROD-OFFER-001",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-KLUB-MIDUCA-010",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "OFFER-KLUB-MIDUCA-021",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-KLUBPRO-005",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "OFFER-KLUBPRO-003",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "OFFER-MAZ-002",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-009",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-034",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-038",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-042",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-044",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-045",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-055",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-056",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-059",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-075",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-077",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-079",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-080",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-092",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-119",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-128",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-129",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-130",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-134",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-135",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-137",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-139",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-142",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-143",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-145",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-146",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-149",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-151",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-154",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-155",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-161",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-167",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-168",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-176",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-177",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-178",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MAZ-185",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "AT-PROD-OFFER-153",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-MEDIENCAMPUS-010",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "OFFER-NOBLE-057",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "OFFER-NOMADES-003",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-SBVV-016",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "OFFER-SFGB-001",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "OFFER-UNIBE-010",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "OFFER-UNIBE-003",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "OFFER-UNIBE-004",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "AT-PROD-OFFER-098",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "AT-PROD-OFFER-097",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-HSG-005",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "OFFER-UNIGE-004",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "OFFER-UNIGE-005",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "AT-PROD-OFFER-023",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "LI-REG-002",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "OFFER-WEKA-006",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "OFFER-ZHDK-014",
+   "Nachprüfung im Chat offen"
+  ],
+  [
+   "AT-PROD-OFFER-037",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "AT-PROD-OFFER-201",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "AT-PROD-OFFER-035",
+   "Owner-Entscheid offen"
+  ],
+  [
+   "AT-PROD-OFFER-034",
+   "Owner-Entscheid offen"
+  ]
+ ],
+ "b3_pruefliste": 370,
+ "einordnung": {
+  "CHROME": 133,
+  "ROUTINE": 834,
+  "ZWEIFEL": 95
+ },
+ "naechster_build": "2026-12-24",
+ "sichtbar": 1062,
+ "status": {
+  "GEAENDERT": 125,
+  "LINK_DEFEKT": 25,
+  "NICHT_LESBAR": 30,
+  "OK": 546,
+  "WEITERLEITUNG": 63,
+  "WERT_FEHLT": 273
+ },
+ "stichtag": "2026-11-24",
+ "zweifel": 95,
+ "zweifel_seiten": 78
+}

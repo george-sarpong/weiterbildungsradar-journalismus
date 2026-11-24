@@ -1,0 +1,145 @@
+{
+ "results": [
+  {
+   "id": "P08 2026-11-24",
+   "name": "Ladefehler: je Markt Daten- oder Smart-Datei weggelassen, dazu alle Daten, alle Smart, nichts geladen (9 Fälle): kein JS-Fehler, Hinweis nach E248, übrige Märkte nutzbar (Karten, Smart-Suche), gemerkte IDs des fehlenden Markts nach Merken eines anderen Angebots weiter gespeichert; ohne Fehler kein Hinweis",
+   "status": "PASS",
+   "detail": ""
+  }
+ ],
+ "proto": {
+  "stichtag": "2026-11-24",
+  "jsdom": "24.1.3",
+  "p28": [
+   "daten-0e78f965e931.js",
+   "suche-8bcdc0ee71ab.js"
+  ],
+  "p29": [
+   "daten-71e38f565a42.js",
+   "daten-97e90b0ff268.js",
+   "daten-3a0bbf3f941c.js",
+   "suche-2d217938616a.js",
+   "suche-a6571cc032c6.js",
+   "suche-ef2f0a8b6583.js"
+  ],
+  "P08": [
+   {
+    "markt": "CH",
+    "datei": "daten",
+    "ok": true,
+    "karten": 84,
+    "erwartet": 84,
+    "gespeichert": [
+     "AT-PROD-OFFER-001",
+     "AT-PROD-OFFER-208",
+     "CAD-001"
+    ],
+    "js": []
+   },
+   {
+    "markt": "CH",
+    "datei": "suche",
+    "ok": true,
+    "karten": 1062,
+    "erwartet": 1062,
+    "gespeichert": [
+     "CAD-001",
+     "AT-PROD-OFFER-001",
+     "OFFER-HEVS-008"
+    ],
+    "js": []
+   },
+   {
+    "markt": "AT",
+    "datei": "daten",
+    "ok": true,
+    "karten": 982,
+    "erwartet": 982,
+    "gespeichert": [
+     "CAD-001",
+     "OFFER-HEVS-008",
+     "AT-PROD-OFFER-001"
+    ],
+    "js": []
+   },
+   {
+    "markt": "AT",
+    "datei": "suche",
+    "ok": true,
+    "karten": 1062,
+    "erwartet": 1062,
+    "gespeichert": [
+     "AT-PROD-OFFER-001",
+     "CAD-001",
+     "OFFER-HEVS-008"
+    ],
+    "js": []
+   },
+   {
+    "markt": "LI",
+    "datei": "daten",
+    "ok": true,
+    "karten": 1058,
+    "erwartet": 1058,
+    "gespeichert": [
+     "CAD-001",
+     "OFFER-HEVS-008",
+     "LI-REG-001"
+    ],
+    "js": []
+   },
+   {
+    "markt": "LI",
+    "datei": "suche",
+    "ok": true,
+    "karten": 1062,
+    "erwartet": 1062,
+    "gespeichert": [
+     "LI-REG-001",
+     "CAD-001",
+     "OFFER-HEVS-008"
+    ],
+    "js": []
+   },
+   {
+    "markt": "alle",
+    "datei": "alle Daten",
+    "ok": true,
+    "karten": 0,
+    "erwartet": 0,
+    "gespeichert": [
+     "CAD-001",
+     "AT-PROD-OFFER-001",
+     "LI-REG-001"
+    ],
+    "js": []
+   },
+   {
+    "markt": "alle",
+    "datei": "alle Smart",
+    "ok": true,
+    "karten": 1062,
+    "erwartet": 1062,
+    "gespeichert": [
+     "CAD-001",
+     "AT-PROD-OFFER-001",
+     "LI-REG-001"
+    ],
+    "js": []
+   },
+   {
+    "markt": "alle",
+    "datei": "nichts (Soll fehlt)",
+    "ok": true,
+    "karten": 0,
+    "erwartet": 0,
+    "gespeichert": [
+     "CAD-001",
+     "AT-PROD-OFFER-001",
+     "LI-REG-001"
+    ],
+    "js": []
+   }
+  ]
+ }
+}

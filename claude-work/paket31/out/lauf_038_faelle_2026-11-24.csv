@@ -1,0 +1,202 @@
+id,anbieter,ergebnis,grund,preis_text
+AT-PROD-OFFER-017,FHWien der WKW,AUTO_ACCEPT,,EUR 363.36
+AT-PROD-OFFER-018,FHWien der WKW,AUTO_ACCEPT,,EUR 363.36
+AT-PROD-OFFER-019,FHWien der WKW,AUTO_ACCEPT,,EUR 363.36
+AT-PROD-OFFER-020,FH Wiener Neustadt,BLEIBT_NEEDS_REVIEW,"Einheit im Preistext; Einheit in Bezeichnung «pro Semester, Drittstaatenangehörige»","EUR 363.36 (EUR 850 pro Semester, Drittstaatenangehörige)"
+AT-PROD-OFFER-023,USTP – University of Applied Sciences St. Pölten,BLEIBT_NEEDS_REVIEW,"Einheit im Preistext; Einheit in Bezeichnung «pro Semester, Studierende aus Drittstaaten»","EUR 363.36 (EUR 1500 pro Semester, Studierende aus Drittstaaten)"
+AT-PROD-OFFER-033,fjum – forum journalismus und medien wien,AUTO_ACCEPT,,EUR 5000 (EUR 3300 Vollpreis Einzelperson)
+AT-PROD-OFFER-037,Österreichische Medienakademie,AUTO_ACCEPT,«Journalist:innen» → PROFESSION JOURNALIST,EUR 3699 (EUR 2699 Journalist:innen)
+AT-PROD-OFFER-054,Internationale Donauakademie,AUTO_ACCEPT,,EUR 3000 (EUR 2400 Aktionspreis (bis 30. November))
+AT-PROD-OFFER-084,BFI Wien,AUTO_ACCEPT,,EUR 420 (EUR 120 Förderpreis)
+AT-PROD-OFFER-087,Hochschule Burgenland,AUTO_ACCEPT,,Kostenlos
+AT-PROD-OFFER-142,OÖ. Journalismusakademie,AUTO_ACCEPT,,EUR 990 (EUR 1300 Kostenübernahme durch Unternehmen)
+AT-PROD-OFFER-189,Österreichische Medienakademie,AUTO_ACCEPT,«Journalist:innen» → PROFESSION JOURNALIST,EUR 820 (EUR 620 Journalist:innen)
+AT-PROD-OFFER-190,Österreichische Medienakademie,AUTO_ACCEPT,«Journalist:innen» → PROFESSION JOURNALIST,EUR 349 (EUR 299 Journalist:innen)
+AT-PROD-OFFER-197,Österreichische Medienakademie,AUTO_ACCEPT,«Journalist:innen» → PROFESSION JOURNALIST,EUR 820 (EUR 620 Journalist:innen)
+CAD-003,Cadschool,AUTO_ACCEPT,,"CHF 500 (CHF 250 E-Learning autonom, ohne Zertifizierung)"
+CAD-004,Cadschool,AUTO_ACCEPT,,"CHF 500 (CHF 250 E-Learning autonom, ohne Zertifizierung)"
+CAD-005,Cadschool,AUTO_ACCEPT,,"CHF 500 (CHF 250 E-Learning autonom, ohne Zertifizierung)"
+CAD-006,Cadschool,AUTO_ACCEPT,,"CHF 500 (CHF 250 E-Learning autonom, ohne Zertifizierung)"
+CAD-019,Cadschool,AUTO_ACCEPT,,CHF 1560 (CHF 590 E-Learning)
+CH-CLEAN2-V12-D02,ASF – Apprentissages sans frontières Genève,AUTO_ACCEPT,,CHF 550
+CH-CLEAN2-V9-D01,Junge Journalistinnen und Journalisten Schweiz (JJS),AUTO_ACCEPT,,Kostenlos
+CH-NOV-OF-009,Canal9 | Kanal9,AUTO_ACCEPT,"«Studierende, Lernende» → STUDENT_STATUS","CHF 600 (CHF 400 Studierende, Lernende)"
+CH-NOV-OF-030,Studio 1 GmbH / Filmschule Schweiz,AUTO_ACCEPT,,CHF 21'900
+CH-V18-F03,Öffentlichkeitsgesetz.ch / LoiTransparence.ch,BLEIBT_NEEDS_REVIEW,Betrag 5.5 nicht im Preistext,CHF 5.50
+CH-V31-AF05,Zürcher Hochschule der Künste (ZHdK),BLEIBT_NEEDS_REVIEW,"Einheit im Preistext; Einheit in Bezeichnung «pro Semester, non CH»","CHF 720 (CHF 1220 pro Semester, non CH)"
+OFFER-CFJM-002,CFJM – Centre de formation au journalisme et aux médias,AUTO_ACCEPT,«Journalistes libres membres impressum» → MEMBERSHIP IMPRESSUM,CHF 590 (CHF 400 Médias non-partenaires) (CHF 300 Médias partenaires non-cotisants (RTS/RRR)) (CHF 130 Journalistes libres membres impressum)
+OFFER-CFJM-031,CFJM – Centre de formation au journalisme et aux médias,AUTO_ACCEPT,«Journalistes-stagiaires libres» → PROFESSION FREELANCE_JOURNALIST,CHF 30'500 (CHF 17'000 Médias non-partenaires) (CHF 10'000 Médias partenaires (MS/SSR/RRR)) (CHF 7100 Journalistes-stagiaires libres)
+OFFER-CFMS-002,Fondation CFMS – Centre de Formation aux Métiers du Son et de l’Image,AUTO_ACCEPT,,CHF 5250
+OFFER-CFMS-004,Fondation CFMS – Centre de Formation aux Métiers du Son et de l’Image,AUTO_ACCEPT,,CHF 7200
+OFFER-CFMS-005,Fondation CFMS – Centre de Formation aux Métiers du Son et de l’Image,AUTO_ACCEPT,,CHF 7200
+OFFER-CFPOCST-002,CFP-OCST,AUTO_ACCEPT,,CHF 300
+OFFER-DIGICOMP-021,Digicomp Academy AG,AUTO_ACCEPT,,CHF 1990 zzgl. MWST
+OFFER-DIGICOMP-046,Digicomp Academy AG,AUTO_ACCEPT,,CHF 1200 zzgl. MWST
+OFFER-DIGICOMP-047,Digicomp Academy AG,AUTO_ACCEPT,,CHF 700 zzgl. MWST
+OFFER-DIGICOMP-048,Digicomp Academy AG,AUTO_ACCEPT,,CHF 700 zzgl. MWST
+OFFER-DIGICOMP-049,Digicomp Academy AG,AUTO_ACCEPT,,CHF 1400 zzgl. MWST
+OFFER-DIGICOMP-050,Digicomp Academy AG,AUTO_ACCEPT,,CHF 800 zzgl. MWST
+OFFER-DIGICOMP-051,Digicomp Academy AG,AUTO_ACCEPT,,CHF 1600 zzgl. MWST
+OFFER-DIGICOMP-052,Digicomp Academy AG,AUTO_ACCEPT,,CHF 1400 zzgl. MWST
+OFFER-DIGICOMP-055,Digicomp Academy AG,AUTO_ACCEPT,,CHF 1300 zzgl. MWST
+OFFER-DIGICOMP-057,Digicomp Academy AG,AUTO_ACCEPT,,CHF 700 zzgl. MWST
+OFFER-DIGICOMP-058,Digicomp Academy AG,AUTO_ACCEPT,,CHF 1600 zzgl. MWST
+OFFER-DIGICOMP-060,Digicomp Academy AG,AUTO_ACCEPT,,CHF 850 zzgl. MWST
+OFFER-DIGICOMP-062,Digicomp Academy AG,AUTO_ACCEPT,,CHF 1800 zzgl. MWST
+OFFER-DIGICOMP-063,Digicomp Academy AG,AUTO_ACCEPT,,CHF 850 zzgl. MWST
+OFFER-DIGICOMP-064,Digicomp Academy AG,AUTO_ACCEPT,,CHF 750 zzgl. MWST
+OFFER-DIGICOMP-066,Digicomp Academy AG,AUTO_ACCEPT,,CHF 850 zzgl. MWST
+OFFER-DIGICOMP-068,Digicomp Academy AG,AUTO_ACCEPT,,CHF 1850 zzgl. MWST
+OFFER-DIGICOMP-070,Digicomp Academy AG,AUTO_ACCEPT,,CHF 850 zzgl. MWST
+OFFER-DIGICOMP-071,Digicomp Academy AG,AUTO_ACCEPT,,CHF 850 zzgl. MWST
+OFFER-DIGICOMP-072,Digicomp Academy AG,AUTO_ACCEPT,,CHF 850 zzgl. MWST
+OFFER-DIGICOMP-073,Digicomp Academy AG,AUTO_ACCEPT,,CHF 900 zzgl. MWST
+OFFER-DIGICOMP-074,Digicomp Academy AG,AUTO_ACCEPT,,CHF 900 zzgl. MWST
+OFFER-DPSUISSE-003,dpsuisse,AUTO_ACCEPT,"«viscom-, dpsuisse- und VSD-Mitglieder» → MEMBERSHIP, «Lernende» → STUDENT_STATUS","CHF 550 (CHF 500 viscom-, dpsuisse- und VSD-Mitglieder) (CHF 300 Lernende)"
+OFFER-EPFL-002,École polytechnique fédérale de Lausanne (EPFL),AUTO_ACCEPT,,CHF 2100
+OFFER-FERNUNI-001,FernUni Schweiz / UniDistance Suisse,AUTO_ACCEPT,,CHF 6000
+OFFER-FERNUNI-004,FernUni Schweiz / UniDistance Suisse,AUTO_ACCEPT,,CHF 1300
+OFFER-FERNUNI-005,FernUni Schweiz / UniDistance Suisse,AUTO_ACCEPT,,CHF 1300
+OFFER-FERNUNI-006,FernUni Schweiz / UniDistance Suisse,AUTO_ACCEPT,,CHF 1300
+OFFER-HDS-SAL-002,HDS Haus der Sprachen AG – SAL Schule für Angewandte Linguistik,AUTO_ACCEPT,,CHF 8910
+OFFER-HSG-005,Universität St.Gallen – Institut für Medien- und Kommunikationsmanagement (MCM-HSG),AUTO_ACCEPT,,CHF 550
+OFFER-HSLU-WIRTSCHAFT-006,Hochschule Luzern – Wirtschaft,BLEIBT_NEEDS_REVIEW,Einheit im Preistext; Einheit in Bezeichnung «je Modul (SAS)»,CHF 9900 (CHF 3300 je Modul (SAS))
+OFFER-MAZ-016,MAZ – Institut für Journalismus und Kommunikation,AUTO_ACCEPT,«Kurspreis Journalist:innen» → PROFESSION JOURNALIST,CHF 9950 (CHF 9653 Kurspreis Journalist:innen)
+OFFER-MAZ-017,MAZ – Institut für Journalismus und Kommunikation,AUTO_ACCEPT,,CHF 9920
+OFFER-MAZ-018,MAZ – Institut für Journalismus und Kommunikation,AUTO_ACCEPT,,CHF 9950
+OFFER-MAZ-077,MAZ – Institut für Journalismus und Kommunikation,AUTO_ACCEPT,«Journalist:innen» → PROFESSION JOURNALIST,CHF 4250 (CHF 3100 Journalist:innen)
+OFFER-MAZ-080,MAZ – Institut für Journalismus und Kommunikation,AUTO_ACCEPT,«Journalist:innen» → PROFESSION JOURNALIST,CHF 999 (CHF 650 Journalist:innen)
+OFFER-MAZ-151,MAZ – Institut für Journalismus und Kommunikation,AUTO_ACCEPT,«Kurspreis Journalist:innen» → PROFESSION JOURNALIST,CHF 990 (CHF 650 Kurspreis Journalist:innen)
+OFFER-NICEPHORE-001,Nicéphore / Acadis,AUTO_ACCEPT,,CHF 215
+OFFER-NOBLE-001,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-003,NobleProg Schweiz,AUTO_ACCEPT,,CHF 9930 zzgl. MWST (CHF 8680 Online)
+OFFER-NOBLE-005,NobleProg Schweiz,AUTO_ACCEPT,,CHF 1986 zzgl. MWST (CHF 1736 Online)
+OFFER-NOBLE-007,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-009,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-010,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-011,NobleProg Schweiz,AUTO_ACCEPT,,CHF 9930 zzgl. MWST (CHF 8680 Online)
+OFFER-NOBLE-015,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-023,NobleProg Schweiz,AUTO_ACCEPT,,CHF 1986 zzgl. MWST (CHF 1736 Online)
+OFFER-NOBLE-025,NobleProg Schweiz,AUTO_ACCEPT,,CHF 5958 zzgl. MWST (CHF 5208 Online)
+OFFER-NOBLE-026,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-028,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-029,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-030,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-032,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-034,NobleProg Schweiz,AUTO_ACCEPT,,CHF 1986 zzgl. MWST (CHF 1736 Online)
+OFFER-NOBLE-036,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-038,NobleProg Schweiz,AUTO_ACCEPT,,CHF 5958 zzgl. MWST (CHF 5208 Online)
+OFFER-NOBLE-039,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-041,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-042,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-043,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-045,NobleProg Schweiz,AUTO_ACCEPT,,CHF 9930 zzgl. MWST (CHF 8680 Online)
+OFFER-NOBLE-046,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-048,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-049,NobleProg Schweiz,AUTO_ACCEPT,,CHF 5958 zzgl. MWST (CHF 5208 Online)
+OFFER-NOBLE-050,NobleProg Schweiz,AUTO_ACCEPT,,CHF 1986 zzgl. MWST (CHF 1736 Online)
+OFFER-NOBLE-051,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-052,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-053,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-054,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-055,NobleProg Schweiz,AUTO_ACCEPT,,CHF 5958 zzgl. MWST (CHF 5208 Online)
+OFFER-NOBLE-056,NobleProg Schweiz,AUTO_ACCEPT,,CHF 1986 zzgl. MWST (CHF 1736 Online)
+OFFER-NOBLE-058,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-059,NobleProg Schweiz,AUTO_ACCEPT,,CHF 2226 zzgl. MWST (CHF 1976 Online)
+OFFER-NOBLE-060,NobleProg Schweiz,AUTO_ACCEPT,,CHF 6678 zzgl. MWST (CHF 5928 Online)
+OFFER-NOBLE-062,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-063,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-066,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-067,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-069,NobleProg Schweiz,AUTO_ACCEPT,,CHF 5958 zzgl. MWST (CHF 5208 Online)
+OFFER-NOBLE-070,NobleProg Schweiz,AUTO_ACCEPT,,CHF 7944 zzgl. MWST (CHF 6944 Online)
+OFFER-NOBLE-071,NobleProg Schweiz,AUTO_ACCEPT,,CHF 1986 zzgl. MWST (CHF 1736 Online)
+OFFER-NOBLE-072,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-NOBLE-073,NobleProg Schweiz,AUTO_ACCEPT,,CHF 3972 zzgl. MWST (CHF 3472 Online)
+OFFER-RSS-001,RSS Medienschule,AUTO_ACCEPT,,CHF 5900 (CHF 5200 2. Lehrgang) (CHF 4800 3. Lehrgang)
+OFFER-RSS-002,RSS Medienschule,AUTO_ACCEPT,,CHF 5900 (CHF 5200 2. Lehrgang) (CHF 4800 3. Lehrgang)
+OFFER-RSS-003,RSS Medienschule,AUTO_ACCEPT,,CHF 5900 (CHF 5200 2. Lehrgang) (CHF 4800 3. Lehrgang)
+OFFER-SAEZH-013,SAE Institute Zürich,BLEIBT_NEEDS_REVIEW,Einheit im Preistext; Einheit in Bezeichnung «Ratenzahlung total (6x CHF 730 plus CHF 400)»,CHF 4300 (CHF 4780 Ratenzahlung total (6x CHF 730 plus CHF 400))
+OFFER-SFGBB-001,Schule für Gestaltung Bern und Biel,AUTO_ACCEPT,«Lernende» → STUDENT_STATUS,CHF 490 (CHF 40 Lernende)
+OFFER-SFGZ-005,Schule für Gestaltung Zürich (SfGZ),AUTO_ACCEPT,«Lernende SfGZ» → STUDENT_STATUS,CHF 1070 (CHF 750 Wohnsitz Kanton ZH) (CHF 375 Lernende SfGZ)
+OFFER-SFGZ-006,Schule für Gestaltung Zürich (SfGZ),AUTO_ACCEPT,«Lernende SfGZ» → STUDENT_STATUS,CHF 970 (CHF 740 Wohnsitz Kanton ZH) (CHF 370 Lernende SfGZ)
+OFFER-SFGZ-009,Schule für Gestaltung Zürich (SfGZ),AUTO_ACCEPT,«Lernende SfGZ» → STUDENT_STATUS,CHF 700 (CHF 530 Wohnsitz Kanton ZH) (CHF 265 Lernende SfGZ)
+OFFER-SFGZ-012,Schule für Gestaltung Zürich (SfGZ),AUTO_ACCEPT,«Lernende SfGZ» → STUDENT_STATUS,CHF 520 (CHF 390 Wohnsitz Kanton ZH) (CHF 195 Lernende SfGZ)
+OFFER-UNIGE-013,Université de Genève – Faculté des lettres,AUTO_ACCEPT,,CHF 7900 (CHF 3950 Titulaires du CAS TCE)
+OFFER-UNIL-001,Université de Lausanne (UNIL),AUTO_ACCEPT,,CHF 600
+OFFER-VSM-003,Verlegerverband SCHWEIZER MEDIEN (VSM) / MEDIENINSTITUT,AUTO_ACCEPT,,Kostenlos
+OFFER-VSM-004,Verlegerverband SCHWEIZER MEDIEN (VSM) / MEDIENINSTITUT,AUTO_ACCEPT,«VSM-Mitglieder» → MEMBERSHIP,CHF 550 zzgl. MWST (CHF 410 VSM-Mitglieder)
+OFFER-ZB-011,zB. Zentrum Bildung – Fotografie,AUTO_ACCEPT,,CHF 4500
+OFFER-ZHDK-016,Zürcher Hochschule der Künste ZHdK,BLEIBT_NEEDS_REVIEW,"Einheit im Preistext; Einheit in Bezeichnung «pro Semester, non CH»","CHF 720 (CHF 1220 pro Semester, non CH)"
+PCC-P03,PC-COLLEGE Training GmbH,AUTO_ACCEPT,,EUR 990 zzgl. MWST
+PCC-P05,PC-COLLEGE Training GmbH,AUTO_ACCEPT,,EUR 990 zzgl. MWST
+PCC-P16,PC-COLLEGE Training GmbH,AUTO_ACCEPT,,EUR 590 zzgl. MWST
+PCC-P23,PC-COLLEGE Training GmbH,AUTO_ACCEPT,,EUR 590 zzgl. MWST
+PCC-P28,PC-COLLEGE Training GmbH,AUTO_ACCEPT,,EUR 790 zzgl. MWST
+V79-02,MiTech,AUTO_ACCEPT,,EUR 850 zzgl. MWST (EUR 680 reduzierter Preis (Aktion))
+V82-DAWAN-001,Dawan,AUTO_ACCEPT,,CHF 1450 zzgl. MWST (CHF 1160 Distanz)
+V82-DAWAN-002,Dawan,AUTO_ACCEPT,,CHF 1150 zzgl. MWST (CHF 920 Distanz)
+V82-DAWAN-003,Dawan,AUTO_ACCEPT,,CHF 2975 zzgl. MWST (CHF 2380 Distanz)
+V82-DAWAN-009,Dawan,AUTO_ACCEPT,,CHF 975 zzgl. MWST (CHF 780 Distanz)
+V82-DAWAN-011,Dawan,AUTO_ACCEPT,,CHF 875 zzgl. MWST (CHF 700 Distanz)
+V82-DAWAN-018,Dawan,AUTO_ACCEPT,,CHF 1125 zzgl. MWST (CHF 900 Distanz)
+V82-DAWAN-022,Dawan,AUTO_ACCEPT,,CHF 1575 zzgl. MWST (CHF 1260 Distanz)
+V82-DAWAN-024,Dawan,AUTO_ACCEPT,,CHF 1275 zzgl. MWST (CHF 1020 Distanz)
+V82-DAWAN-025,Dawan,AUTO_ACCEPT,,CHF 1175 zzgl. MWST (CHF 940 Distanz)
+V82-DAWAN-026,Dawan,AUTO_ACCEPT,,CHF 1375 zzgl. MWST (CHF 1100 Distanz)
+V82-DAWAN-030,Dawan,AUTO_ACCEPT,,CHF 1475 zzgl. MWST (CHF 1180 Distanz)
+V82-DAWAN-031,Dawan,AUTO_ACCEPT,,CHF 975 zzgl. MWST (CHF 780 Distanz)
+V82-DAWAN-032,Dawan,AUTO_ACCEPT,,CHF 2175 zzgl. MWST (CHF 1740 Distanz)
+V82-DAWAN-033,Dawan,AUTO_ACCEPT,,CHF 1795 zzgl. MWST (CHF 1436 Distanz)
+V82-DAWAN-034,Dawan,AUTO_ACCEPT,,CHF 1275 zzgl. MWST (CHF 1020 Distanz)
+V82-DAWAN-036,Dawan,AUTO_ACCEPT,,CHF 1175 zzgl. MWST (CHF 940 Distanz)
+V82-DAWAN-038,Dawan,AUTO_ACCEPT,,CHF 1175 zzgl. MWST (CHF 940 Distanz)
+V82-DAWAN-039,Dawan,AUTO_ACCEPT,,CHF 1475 zzgl. MWST (CHF 1180 Distanz)
+V82-DAWAN-040,Dawan,AUTO_ACCEPT,,CHF 775 zzgl. MWST (CHF 620 Distanz)
+V82-DAWAN-041,Dawan,AUTO_ACCEPT,,CHF 1875 zzgl. MWST (CHF 1500 Distanz)
+V82-DAWAN-044,Dawan,AUTO_ACCEPT,,CHF 1875 zzgl. MWST (CHF 1500 Distanz)
+V82-DAWAN-045,Dawan,AUTO_ACCEPT,,CHF 1625 zzgl. MWST (CHF 1300 Distanz)
+V82-DAWAN-046,Dawan,AUTO_ACCEPT,,CHF 1125 zzgl. MWST (CHF 900 Distanz)
+V82-DAWAN-047,Dawan,AUTO_ACCEPT,,CHF 875 zzgl. MWST (CHF 700 Distanz)
+V82-DAWAN-048,Dawan,AUTO_ACCEPT,,CHF 2250 zzgl. MWST (CHF 1800 Distanz)
+V82-DAWAN-049,Dawan,AUTO_ACCEPT,,CHF 1125 zzgl. MWST (CHF 900 Distanz (online))
+V82-DAWAN-050,Dawan,AUTO_ACCEPT,,CHF 875 zzgl. MWST (CHF 700 Distanz)
+V82-DAWAN-051,Dawan,AUTO_ACCEPT,,CHF 2250 zzgl. MWST (CHF 1800 Distanz)
+V82-DAWAN-052,Dawan,AUTO_ACCEPT,,CHF 1495 zzgl. MWST (CHF 1196 Distanz)
+V82-DAWAN-053,Dawan,AUTO_ACCEPT,,CHF 1995 zzgl. MWST (CHF 1596 Distanz)
+V82-DAWAN-054,Dawan,AUTO_ACCEPT,,CHF 1495 zzgl. MWST (CHF 1196 Distanz)
+V82-DAWAN-055,Dawan,AUTO_ACCEPT,,CHF 1125 zzgl. MWST (CHF 900 Distanz)
+V82-DAWAN-056,Dawan,AUTO_ACCEPT,,CHF 1575 zzgl. MWST (CHF 1260 Distanz)
+V82-DAWAN-057,Dawan,AUTO_ACCEPT,,CHF 1200 zzgl. MWST (CHF 960 Distanz)
+V82-DAWAN-058,Dawan,AUTO_ACCEPT,,CHF 1475 zzgl. MWST (CHF 1180 Distanz)
+V82-DAWAN-059,Dawan,AUTO_ACCEPT,,CHF 995 zzgl. MWST (CHF 796 Distanz)
+V82-DAWAN-060,Dawan,AUTO_ACCEPT,,CHF 1475 zzgl. MWST (CHF 1180 Distanz)
+V82-DAWAN-061,Dawan,AUTO_ACCEPT,,CHF 1175 zzgl. MWST (CHF 940 Distanz)
+V82-DAWAN-062,Dawan,AUTO_ACCEPT,,CHF 1275 zzgl. MWST (CHF 1020 Distanz)
+V82-DAWAN-063,Dawan,AUTO_ACCEPT,,CHF 875 zzgl. MWST (CHF 700 Distanz)
+V82-DAWAN-064,Dawan,AUTO_ACCEPT,,CHF 1125 zzgl. MWST (CHF 900 Distanz)
+V82-DAWAN-065,Dawan,AUTO_ACCEPT,,CHF 875 zzgl. MWST (CHF 700 Distanz (online))
+V82-DAWAN-067,Dawan,AUTO_ACCEPT,,CHF 950 zzgl. MWST (CHF 760 Distanz)
+V82-DAWAN-068,Dawan,AUTO_ACCEPT,,CHF 1495 zzgl. MWST (CHF 1196 Distanz)
+V82-DAWAN-069,Dawan,AUTO_ACCEPT,,CHF 1125 zzgl. MWST (CHF 900 Distanz)
+V82-DAWAN-070,Dawan,AUTO_ACCEPT,,CHF 1475 zzgl. MWST (CHF 1180 Distanz)
+V82-DAWAN-071,Dawan,AUTO_ACCEPT,,CHF 1075 zzgl. MWST (CHF 860 Distanz)
+V82-DAWAN-072,Dawan,AUTO_ACCEPT,,CHF 1495 zzgl. MWST (CHF 1196 Distanz)
+V82-DAWAN-073,Dawan,AUTO_ACCEPT,,CHF 1125 zzgl. MWST (CHF 900 Distanz)
+V82-DAWAN-074,Dawan,AUTO_ACCEPT,,CHF 1495 zzgl. MWST (CHF 1196 Distanz)
+V82-DAWAN-075,Dawan,AUTO_ACCEPT,,CHF 1125 zzgl. MWST (CHF 900 Distanz)
+V82-DAWAN-076,Dawan,AUTO_ACCEPT,,CHF 1625 zzgl. MWST (CHF 1300 Distanz (online))
+V82-DAWAN-077,Dawan,AUTO_ACCEPT,,CHF 975 zzgl. MWST (CHF 780 Distanz)
+V82-DAWAN-078,Dawan,AUTO_ACCEPT,,CHF 1625 zzgl. MWST (CHF 1300 Distanz)
+V82-DAWAN-079,Dawan,AUTO_ACCEPT,,CHF 975 zzgl. MWST (CHF 780 Distanz)
+V82-DAWAN-080,Dawan,AUTO_ACCEPT,,CHF 2245 zzgl. MWST (CHF 1796 Distanz)
+V82-DAWAN-081,Dawan,AUTO_ACCEPT,,CHF 1625 zzgl. MWST (CHF 1300 Distanz)
+V82-DAWAN-082,Dawan,AUTO_ACCEPT,,CHF 995 zzgl. MWST (CHF 796 Distanz)
+V82-DAWAN-083,Dawan,AUTO_ACCEPT,,CHF 2875 zzgl. MWST (CHF 2300 Distanz)
+V82-DAWAN-091,Dawan,AUTO_ACCEPT,,CHF 2175 zzgl. MWST (CHF 1740 Distanz)
+V82-DAWAN-100,Dawan,AUTO_ACCEPT,,CHF 1275 zzgl. MWST (CHF 1020 Distanz)
+V82-DAWAN-102,Dawan,AUTO_ACCEPT,,CHF 575 zzgl. MWST (CHF 460 Distanz)
+V82-DAWAN-105,Dawan,AUTO_ACCEPT,,CHF 2125 zzgl. MWST (CHF 1700 Distanz)
+V82-DAWAN-107,Dawan,AUTO_ACCEPT,,CHF 625 zzgl. MWST (CHF 500 Distanz)
+V82-DAWAN-108,Dawan,AUTO_ACCEPT,,CHF 625 zzgl. MWST (CHF 500 Distanz)
+V82-DAWAN-109,Dawan,AUTO_ACCEPT,,CHF 1275 zzgl. MWST (CHF 1020 Distanz)
