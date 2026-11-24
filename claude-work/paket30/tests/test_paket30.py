@@ -351,8 +351,9 @@ def q12(tmp):
     zeilen.append({"id": z["id"], "status": "WEITERLEITUNG", "einordnung": "ROUTINE", "pruefliste": "", "url": z["url"], "ziel": z["url"].rstrip("/") + "-neu",
                    "titel_fund": "ja", "datum_katalog": ""})
     ev = EV.vorschlag(zeilen, rows, t, "TEST")
-    e = tmp / "eingang"; shutil.copytree(R / "eingang", e)
-    with open(e / "028_20261123_korrekturen.csv", "w", encoding="utf-8", newline="") as f:
+    e = tmp / "eingang"; shutil.copytree(R / "eingang", e)   # Entwurf unter freier Laufnummer 999 (E295), überschreibt keine echte Datei
+    letzt = max(re.match(r"\d{3}_(\d{8})_", f.name).group(1) for f in e.glob("[0-9][0-9][0-9]_*.csv"))   # Datum des jüngsten echten Laufs (K01)
+    with open(e / f"999_{letzt}_korrekturen.csv", "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, EV.KOPF, lineterminator="\n"); w.writeheader(); w.writerows(ev)
     r = py(R / "scripts/eingang_pruefen.py", "--eingang", e)
     herk = all(x["herkunft"] == "ANBIETERSEITE_P30" and x["register_id"] == "E262" and x["quelle"] for x in ev)

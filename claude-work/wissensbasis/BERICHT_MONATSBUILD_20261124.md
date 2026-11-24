@@ -1,6 +1,6 @@
 # BERICHT Monatsbuild 24.11.2026 (erster Monatsbuild nach E177/E258)
 
-Grundlage: GESAMTWISSENSSTAND §9 (E281 und Dawan im nächsten Monatsbuild, danach Monatsbuild und Release nur mit Freigabe); Owner-Entscheide E289–E292, Befund E293.
+Grundlage: GESAMTWISSENSSTAND §9 (E281 und Dawan im nächsten Monatsbuild, danach Monatsbuild und Release nur mit Freigabe); Owner-Entscheide E289–E292, E294 (Release-Freigabe), E295 (Test Q12); Befund E293.
 Arbeitszweig `claude/datenharmonisierung`, gepusht. Kein Upload, kein Merge.
 Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 
@@ -40,7 +40,7 @@ Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 | `test_paket29.py` (24.11.) | 9 PASS, 1 FAIL = P12: Erstbesuch +4'045 Byte statt höchstens +2'048, gleiche Art wie die mit E253 angenommenen +4'000 |
 | `test_paket29_anzeige.js` (24.11.) | P01, P03, P05, P06, P08 PASS; P04 PASS mit nachgemessener Sollliste 24.11. (644 Änderungen nach E243, `messung_u2.js` auf dem P28-Bau 24.11., 0 Abweichungen, 0 JS-Fehler; Messung in `paket29/out/u2/*_2026-11-24*`). Die verbindliche `sollliste_u2.csv` ist nicht geändert; für den Lauf wurden die Zeilen vom 24.11. nur vorübergehend angehängt |
 | Stufe 1 (`paket28/tests/test_paket8_p28.js` auf dem P28-Bau 24.11., `MASTER=…aktuell.csv`, `NEU=4`) | 35 PASS / 0 FAIL / 4 später an 24.11. und 03.12. Vor Lauf 038 waren es 33 / 2 / 4: D2b (HEVS `beta_sichtbar`) und F1/T07 (bedingter Tarif in der Smart-Suche wegen NEEDS_REVIEW nicht bezeichnet) |
-| `test_paket30.py` | 33/34: Q12 FAIL nur wegen des Testaufbaus. Der Test legt seinen Entwurf in der Kopie des Eingangs unter dem Namen der echten Datei 028 ab; Lauf 038 baut auf Werten aus 028 auf. Mit freier Laufnummer (999) PASS. Anpassung des Tests offen (Owner) |
+| `test_paket30.py` | 34/34 nach Testanpassung E295 (vorher 33/34: Q12 FAIL nur wegen des Testaufbaus). Der Test legt seinen Entwurf in der Kopie des Eingangs unter dem Namen der echten Datei 028 ab; Lauf 038 baut auf Werten aus 028 auf. Mit freier Laufnummer (999) PASS. Anpassung des Tests offen (Owner) |
 | Apache (P10) | nicht gelaufen (kein Apache in dieser Umgebung); `htaccess.txt` ist bytegleich mit P28/P29 (A5 PASS) |
 
 ## 3. Annahmen ohne Owner-Antwort (E293)
@@ -51,7 +51,7 @@ Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 ## 4. Offen für den Owner
 
 1. Release-Freigabe und Abnahme (E040, E227) für `mediaskills_monatsbuild_20261124.zip`, Upload nach E163.
-2. Testanpassung `paket30/tests/test_paket30.py` Q12: Entwurf unter freier Laufnummer statt `028_20261123_korrekturen.csv`.
+2. erledigt: Testanpassung Q12 (E295), `test_paket30.py` 34/34.
 3. Nach dem Release: Zweifelsfälle 95 (E291), danach Routine-Eingang des Monats (geprueft_am, pruefen_ab nach E292).
 
 ## 5. Nicht Teil dieses Monatsbuilds
