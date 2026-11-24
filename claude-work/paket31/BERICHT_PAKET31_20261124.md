@@ -1,6 +1,6 @@
 # BERICHT PAKET 31 «Lücken füllen», zweiter Durchgang, 24.11.2026
 
-Grundlage: Owner-Entscheide E266–E268, E271, E272; Befunde E269, E270 (erster Durchgang), E273 (dieser Durchgang); Nachtrag MAZ und «Privatkurs»: E274–E276.
+Grundlage: Owner-Entscheide E266–E268, E271, E272; Befunde E269, E270 (erster Durchgang), E273 (dieser Durchgang); Nachtrag MAZ und «Privatkurs»: E274–E276; Restfälle: E277–E279.
 Arbeitszweig `claude/datenharmonisierung`, gepusht. Kein Release, kein Merge.
 Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 
@@ -23,6 +23,27 @@ Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 - **Restfälle:** 201 Angebote bei 56 Anbietern, davon 141 sichtbar, in `paket31/out/owner_liste_restfaelle_2026-11-24.csv`:
   - DEFEKT 91, UEBERSICHT 60, NICHT_LESBAR 36, KURS_WEG 4, ZWEIFEL 10
   - Die grössten Blöcke: CFJM 19, MAZ 16, ZLI 12, ÖMA 11, EJC 10
+
+## 1b. Nachtrag Restfälle (E277–E279), Lauf 032
+
+- **Websuche:** Je Kurs wurde für die 151 Fälle mit totem Link oder Übersicht im Web gesucht (E277). Bei 6 Fällen ist die Suche unvollständig, weil das Suchbudget aufgebraucht war. 50 Fälle hatten einen Kandidaten. Von 58 Kandidatenseiten waren 26 lesbar.
+- **Lauf 032**, 243 Zellen:
+  - 11 neue Kurslinks (CFJM 7, fjum 2, FOCAL, SAE), dazu Termine, Preise und Niveau.
+  - Ausgeschlossen: CFJM-005 Preis (Angabe pro Tag widersprüchlich), CFJM-020 Preis (Beträge ohne Währung), ZLI-005, -007 und -008 (Kandidat nur eine Übersicht).
+- **Archiviert nach E015/E277:** 105 Angebote, davon 65 vorher sichtbar. Sie sind auf HOLD gesetzt und bleiben im Master. Der Schritt ist umkehrbar. Liste zur Kenntnis in `paket31/out/archiv_e277_2026-11-24.csv`.
+- **Chrome (E278):**
+  - Eingetragen: RaBe Termin 06.02.–30.06.2027, UNIGE-013 Preis CHF 7900, UNIGE-014 Termin laufend.
+  - Auch in Chrome nicht lesbar: EJC (Website in Wartung), Swiss Creator Academy (TLS-Fehler), AAU-097 (Sicherheitsprüfung), SFGZ-004.
+  - Lesbar, aber ohne Termin: EBU, Kanal K, SASJ.
+- **Stand am 24.11.:**
+
+| | vorher | jetzt |
+|---|---|---|
+| Bestand CH/AT/LI ohne HOLD | 1'302 | 1'197 |
+| Sichtbar | 1'143 | 1'080 |
+| Termin vollständig | – | 734 von 1'197 |
+
+- **Owner-Liste Restfälle:** 201 → 85: NICHT_LESBAR 36, DEFEKT 24, UEBERSICHT 11, ZWEIFEL 10, KURS_WEG 4.
 
 ## 2. Vorgehen
 

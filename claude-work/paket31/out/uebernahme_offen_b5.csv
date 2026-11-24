@@ -1,0 +1,6 @@
+id,feld,grund
+OFFER-CFJM-005,preis,Widerspruch: «par jour de formation» bei gleichen Beträgen wie ein fünftägiger Kurs «pour les 5 jours» (E262 Zweifelsfall)
+OFFER-CFJM-020,preis,Beträge ohne Währung auf der Seite (CHF nur bei Annullationskosten)
+OFFER-ZLI-005,url,"Kandidat ist eine Übersichtsseite (h1 «Fotokurse»), Kurstitel nur als Abschnitt; Regel verlangt Titel in Seitentitel oder h1"
+OFFER-ZLI-007,url,"Kandidat ist eine Übersichtsseite (h1 «Fotokurse»), Kurstitel nur als Abschnitt; Regel verlangt Titel in Seitentitel oder h1"
+OFFER-ZLI-008,url,"Kandidat ist eine Übersichtsseite (h1 «Videokurse»), Kurstitel nur als Abschnitt; Regel verlangt Titel in Seitentitel oder h1"

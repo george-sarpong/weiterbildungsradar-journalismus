@@ -35,8 +35,10 @@ def lade_texte(d):
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("laufnummer"); ap.add_argument("lesedir"); ap.add_argument("--orsys", required=True)
-    ap.add_argument("--ausschluss", default=str(R / "paket31/config/ausschluss_b.csv"))
+    ap.add_argument("--laeufe", default=""); ap.add_argument("--ausschluss", default=str(R / "paket31/config/ausschluss_b.csv"))
     ap.add_argument("--out", default=str(R / "paket31/out")); a = ap.parse_args()
+    global LAEUFE
+    if a.laeufe: LAEUFE = a.laeufe
     AUS.update({(r["id"], r["feld"]): r["grund"] for r in csv.DictReader(open(a.ausschluss, encoding="utf-8"))} if pathlib.Path(a.ausschluss).exists() else {})
     master = {z["id"]: z for z in U.S.lies_master(R / "paket3/out/master_3818_aktuell.csv")}
     lade_texte(a.lesedir)
