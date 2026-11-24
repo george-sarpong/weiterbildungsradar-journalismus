@@ -11269,6 +11269,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W bedingung,bedingung,treffer,CH-V27-F03,ja,nein,access
 2026-11-24,katalog,W bedingung,bedingung,treffer,OFFER-SAWI-002,ja,nein,priceDisplay
 2026-11-24,katalog,W bedingung,bedingung,treffer,OFFER-FHNW-008,ja,nein,access
+2026-11-24,katalog,W bedingung,bedingung,treffer,OFFER-VSM-003,nein,ja,priceDisplay
 2026-11-24,katalog,W bedingung,bedingung,treffer,OFFER-CORSO-002,nein,ja,priceDisplay
 2026-11-24,katalog,W bedingungen,bedingungen,treffer,OFFER-MOSALE-005,ja,nein,access
 2026-11-24,katalog,W bedingungen,bedingungen,treffer,OFFER-MOSALE-002,ja,nein,access
@@ -15385,7 +15386,6 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W der,der,treffer,OFFER-NOMADES-004,ja,nein,access
 2026-11-24,katalog,W der,der,treffer,OFFER-PUBLICOLLEGE-001,ja,nein,access
 2026-11-24,katalog,W der,der,treffer,OFFER-UNIGE-014,ja,nein,access
-2026-11-24,katalog,W der,der,treffer,OFFER-VSM-003,ja,nein,access
 2026-11-24,katalog,W der,der,treffer,MW-P03,ja,nein,access
 2026-11-24,katalog,W der,der,treffer,MW-P08,ja,nein,access
 2026-11-24,katalog,W der,der,treffer,MW-P04,ja,nein,access
@@ -19698,14 +19698,14 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W excel,excel,treffer,OFFER-MAZ-056,ja,nein,access
 2026-11-24,katalog,W excl,excl,treffer,OFFER-EBU-021,ja,nein,priceDisplay
 2026-11-24,katalog,W excl,excl,treffer,OFFER-EBU-022,ja,nein,priceDisplay
-2026-11-24,katalog,W exkl,exkl,treffer,OFFER-VSM-003,ja,nein,access
+2026-11-24,katalog,W exkl,exkl,treffer,OFFER-VSM-003,ja,nein,access|priceDisplay
 2026-11-24,katalog,W exkl,exkl,treffer,OFFER-NOBLE-057,ja,nein,priceDisplay
 2026-11-24,katalog,W exkl,exkl,treffer,OFFER-ORSYS-041,ja,nein,priceDisplay
 2026-11-24,katalog,W exkl,exkl,treffer,OFFER-ORSYS-012,ja,nein,priceDisplay
 2026-11-24,katalog,W exkl,exkl,treffer,OFFER-ORSYS-020,ja,nein,priceDisplay
 2026-11-24,katalog,W exkl,exkl,treffer,OFFER-ORSYS-039,ja,nein,priceDisplay
 2026-11-24,katalog,W exkl,exkl,treffer,OFFER-VSM-002,ja,nein,priceDisplay
-2026-11-24,katalog,W exklusiv,exklusiv,treffer,OFFER-VSM-003,ja,nein,access
+2026-11-24,katalog,W exklusiv,exklusiv,treffer,OFFER-VSM-003,ja,nein,access|priceDisplay
 2026-11-24,katalog,W exkursionen,exkursionen,treffer,OFFER-HKB-001,ja,nein,priceDisplay
 2026-11-24,katalog,W experience,experience,treffer,OFFER-NOBLE-006,ja,nein,access
 2026-11-24,katalog,W experience,experience,treffer,OFFER-NOBLE-009,ja,nein,access
@@ -26293,7 +26293,6 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W mit,mit,treffer,OFFER-CPNV-001,ja,nein,priceDisplay
 2026-11-24,katalog,W mit,mit,treffer,OFFER-UNIGE-014,ja,nein,access
 2026-11-24,katalog,W mit,mit,treffer,OFFER-VSM-004,ja,nein,access|priceDisplay
-2026-11-24,katalog,W mit,mit,treffer,OFFER-VSM-003,ja,nein,access
 2026-11-24,katalog,W mit,mit,treffer,OFFER-BIG-003,ja,nein,access
 2026-11-24,katalog,W mit,mit,treffer,OFFER-CAPFOTO-008,ja,nein,access
 2026-11-24,katalog,W mit,mit,treffer,OFFER-CAPFOTO-007,ja,nein,access
@@ -26390,7 +26389,6 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W mitgeteilt,mitgeteilt,treffer,OFFER-CORSO-002,ja,nein,priceDisplay
 2026-11-24,katalog,W mitglieder,mitglieder,treffer,OFFER-EDITO-005,ja,nein,access|priceDisplay
 2026-11-24,katalog,W mitglieder,mitglieder,treffer,OFFER-VSM-004,ja,nein,access|priceDisplay
-2026-11-24,katalog,W mitglieder,mitglieder,treffer,OFFER-VSM-003,ja,nein,access
 2026-11-24,katalog,W mitglieder,mitglieder,treffer,OFFER-DPSUISSE-003,ja,nein,priceDisplay
 2026-11-24,katalog,W mitglieder,mitglieder,treffer,OFFER-MDN-001,ja,nein,access|priceDisplay
 2026-11-24,katalog,W mitglieder,mitglieder,treffer,OFFER-MDN-002,ja,nein,access|priceDisplay
@@ -37277,7 +37275,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W uses,uses,treffer,OFFER-ZHDK-014,ja,nein,access
 2026-11-24,katalog,W uses,uses,treffer,OFFER-ZHDK-003,ja,nein,access
 2026-11-24,katalog,W uses,uses,treffer,OFFER-ZHDK-005,ja,nein,access
-2026-11-24,katalog,W usi,usi,treffer,OFFER-VSM-003,ja,nein,access
+2026-11-24,katalog,W usi,usi,treffer,OFFER-VSM-003,ja,nein,access|priceDisplay
 2026-11-24,katalog,W usi,usi,treffer,OFFER-NOBLE-009,ja,nein,access
 2026-11-24,katalog,W usi,usi,treffer,OFFER-NOBLE-010,ja,nein,access
 2026-11-24,katalog,W using,using,treffer,OFFER-NOBLE-010,ja,nein,access

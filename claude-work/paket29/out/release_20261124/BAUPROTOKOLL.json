@@ -20,19 +20,19 @@
    "markt": "LI",
    "angebote": 4
   },
-  "daten-71e38f565a42.js": {
-   "byte": 1139082,
-   "gzip": 158953,
-   "sha256": "71e38f565a42230449fffc1ccc8c768e4059878568be09a1f24a9c58608f9e85",
-   "markt": "CH",
-   "angebote": 978
-  },
   "daten-97e90b0ff268.js": {
    "byte": 74963,
    "gzip": 11769,
    "sha256": "97e90b0ff26871659d4d3dfa145c7c4ac0e994de181570471ffa92ebabdf76c0",
    "markt": "AT",
    "angebote": 80
+  },
+  "daten-c5d39acb1537.js": {
+   "byte": 1139112,
+   "gzip": 158956,
+   "sha256": "c5d39acb1537119967ac0a62402ecf4192a6884910a89d6888fb3fd296971827",
+   "markt": "CH",
+   "angebote": 978
   },
   "datenschutz.html": {
    "byte": 9102,
@@ -45,9 +45,9 @@
    "sha256": "595fe7e87a43f60fcac8a02b62f9b7749dcd39b2c8a707136b3bd42ae01efb8c"
   },
   "index.html": {
-   "byte": 314581,
-   "gzip": 48260,
-   "sha256": "06bfe3be7aeea07d9bfdc687d36acdae0b62fadf1d9b7746f3c410d6806c3cc4"
+   "byte": 314612,
+   "gzip": 48275,
+   "sha256": "3db2fabfbc604dd3af7f03bcee8ce82ffc197277bf51ee629df5adc12bb14cb7"
   },
   "methodik.html": {
    "byte": 9857,
@@ -74,19 +74,19 @@
    "gzip": 5568,
    "sha256": "a957516ccc2d22ba2a343cb37b58d855e0c0a9b85ac6dbd59b7f6dea709e8308"
   },
-  "suche-2d217938616a.js": {
-   "byte": 580598,
-   "gzip": 19514,
-   "sha256": "2d217938616ab190788b0d537aedf123cdac4248c19e5855e7784cef6199d027",
-   "markt": "CH",
-   "angebote": 978
-  },
   "suche-a6571cc032c6.js": {
    "byte": 48519,
    "gzip": 2617,
    "sha256": "a6571cc032c6514fc3800aabadd36d64be8cdfd5dae62dd3ccbf0df5daa81241",
    "markt": "AT",
    "angebote": 80
+  },
+  "suche-d3a4d204eb44.js": {
+   "byte": 580633,
+   "gzip": 19525,
+   "sha256": "d3a4d204eb4406095d458db0c1469cf564907a34f63e0896587935aab5d71feb",
+   "markt": "CH",
+   "angebote": 978
   },
   "suche-ef2f0a8b6583.js": {
    "byte": 2199,
@@ -104,8 +104,8 @@
  "maerkte": {
   "CH": {
    "angebote": 978,
-   "daten": "daten-71e38f565a42.js",
-   "suche": "suche-2d217938616a.js"
+   "daten": "daten-c5d39acb1537.js",
+   "suche": "suche-d3a4d204eb44.js"
   },
   "AT": {
    "angebote": 80,
@@ -119,10 +119,10 @@
   }
  },
  "ladereihenfolge": [
-  "daten-71e38f565a42.js",
+  "daten-c5d39acb1537.js",
   "daten-97e90b0ff268.js",
   "daten-3a0bbf3f941c.js",
-  "suche-2d217938616a.js",
+  "suche-d3a4d204eb44.js",
   "suche-a6571cc032c6.js",
   "suche-ef2f0a8b6583.js",
   "app-v44.js"
@@ -134,19 +134,19 @@
  },
  "vergleich_eine_datei_p28": {
   "daten": {
-   "byte": 1218292,
-   "gzip": 171080,
-   "sha256": "0e78f965e93149f42ad0136958c4368ccbe35f298746552a96de00dcee49185c"
+   "byte": 1218322,
+   "gzip": 171083,
+   "sha256": "43f880d4b28bc787a12920b498b3440a9025335fec5be8e23ae036ccc2c9ef9e"
   },
   "suche": {
-   "byte": 629857,
-   "gzip": 21279,
-   "sha256": "8bcdc0ee71ab3192efde7eb8cf12e9623dc61aab1faf6545bea47891f1281eaf"
+   "byte": 629892,
+   "gzip": 21290,
+   "sha256": "b18c0cd40f95b1a5a881ce4e8e8c4ae10f19b3eab05a1728122aae76146f99a5"
   }
  },
  "erstbesuch_gzip": {
-  "daten_und_suche_p29": 195582,
-  "daten_und_suche_eine_datei": 192359,
+  "daten_und_suche_p29": 195596,
+  "daten_und_suche_eine_datei": 192373,
   "app_v44": 27670
  },
  "p07_laender_ohne_deutschen_namen": [],
@@ -168,7 +168,7 @@
   "priceOptions.billingCount": 1272,
   "priceOptions.components": 1259,
   "priceOptions.currency": 159,
-  "priceOptions.eligibilityValue": 1143,
+  "priceOptions.eligibilityValue": 1142,
   "priceOptions.maxAmount": 1248,
   "priceOptions.minAmount": 1223,
   "priceOptions.tariffLabel": 587,
@@ -177,9 +177,9 @@
   "priceOptions.validThrough": 1268
  },
  "testoptionen": {},
- "website_byte": 2334887,
+ "website_byte": 2334983,
  "liste": {
-  "index_bytes": 314406,
+  "index_bytes": 314437,
   "lastmod": {
    "/": "2026-11-24",
    "/methodik.html": "2026-11-17"

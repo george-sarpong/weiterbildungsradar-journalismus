@@ -1,6 +1,6 @@
 # BERICHT Monatsbuild 24.11.2026 (erster Monatsbuild nach E177/E258)
 
-Grundlage: GESAMTWISSENSSTAND §9 (E281 und Dawan im nächsten Monatsbuild, danach Monatsbuild und Release nur mit Freigabe); Owner-Entscheide E289–E292, E294 (Release-Freigabe), E295 (Test Q12), E296 (Paket optimiert); Befund E293.
+Grundlage: GESAMTWISSENSSTAND §9 (E281 und Dawan im nächsten Monatsbuild, danach Monatsbuild und Release nur mit Freigabe); Owner-Entscheide E289–E292, E294 (Release-Freigabe), E295 (Test Q12), E296 (Paket optimiert), E297 (VSM-003 nur für Mitglieder); Befund E293.
 Arbeitszweig `claude/datenharmonisierung`, gepusht. Kein Upload, kein Merge.
 Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 
@@ -42,6 +42,15 @@ Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 - Nicht geändert: Fusszeile «Datenstand: 30. September 2026» der Unterseiten (Befund Paket 19 U5); folgt mit dem Methodik-Wortlaut.
 - Für künftige Releases: den Schritt in den Release-Bau übernehmen.
 
+## 1c. Korrektur VSM-Webinar (E297), Paket v3
+
+- OFFER-VSM-003 «KI-Tools & Prompts für den Redaktionsalltag» war als unbedingt kostenlos erfasst (P31 Lauf 028), obwohl der Zugangstext im Master «exklusiv für VSM-Mitglieder» nennt. Owner-Hinweis 24.11.
+- Lauf 039 (2 Zellen, Herkunft OWNER_E297): Preistext «Kostenlos, exklusiv für VSM-Mitglieder», Tarif mit Bedingung MEMBERSHIP VSM. Karte und Smart-Suche zeigen «Kostenlos mit Bedingung: für Mitglieder». Bei «KI Nur kostenlos» zählt die Preisübersicht jetzt 1 statt 2 kostenlose Angebote.
+- Suche nach demselben Widerspruch (Gratis-Tarif ohne Bedingung, Text nennt Mitglieder, Abo, exklusiv) bei allen sichtbaren Angeboten: nur dieser Fall; OFFER-SFJ-001 ist ausdrücklich öffentlich.
+- Paket `mediaskills_monatsbuild_20261124_v3.zip` (ersetzt v2, Upload offen): 15 Dateien, 2,31 MB; gegenüber v2 geändert nur `index.html` (Kursliste), CH-Daten- und CH-Suchdatei.
+- Tests [GEPRÜFT]: Eingang 22 Dateien ohne Fehler, P24 14/14, Nachträge 14/14, P30 34/34, `test_paket29.py` 9/1 (P12 +4'0xx Byte wie E253), Anzeige P01/P03/P05/P06/P08 PASS, P04 PASS (Sollliste 24.11. neu gemessen, 644), Stufe 1 35/0/4 an 24.11. und 03.12., Unterseiten pixelgleich 16/16.
+- Befund für später: Bei null Treffern zählt die Preisübersicht nur nach Thema (ohne Ort/Budget), und der Hinweis nennt alle Bedingungen statt der entscheidenden; beides App-Änderung, Owner-Entscheid offen.
+
 ## 2. Tests [GEPRÜFT]
 
 | Test | Ergebnis |
@@ -61,7 +70,7 @@ Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 
 ## 4. Offen für den Owner
 
-1. Release-Freigabe für das optimierte Paket `mediaskills_monatsbuild_20261124_v2.zip` (E294 galt für das erste Paket), Upload nach E163.
+1. Release-Freigabe für `mediaskills_monatsbuild_20261124_v3.zip`, Upload nach E163 (Hinweis: v2 ist bereits live).
 2. erledigt: Testanpassung Q12 (E295), `test_paket30.py` 34/34.
 3. Nach dem Release: Zweifelsfälle 95 (E291), danach Routine-Eingang des Monats (geprueft_am, pruefen_ab nach E292).
 

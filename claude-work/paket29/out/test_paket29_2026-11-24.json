@@ -41,7 +41,7 @@
    "nr": "P12",
    "name": "Paket ≤ 9 MB; Erstbesuch (gzip: index.html, CSS, App, Daten, Smart) höchstens +2 KB gegenüber P28",
    "status": "FAIL",
-   "detail": "website/ 2334887 Byte; Erstbesuch P28 273035, P29 277080, Differenz +4045 Byte (Daten+Smart +3223, App +766, index.html +56)"
+   "detail": "website/ 2334983 Byte; Erstbesuch P28 273068, P29 277109, Differenz +4041 Byte (Daten+Smart +3223, App +766, index.html +52)"
   },
   {
    "nr": "P13",
@@ -64,18 +64,18 @@
  ],
  "erstbesuch": {
   "p28": {
-   "index.html": 48204,
-   "daten-0e78f965e931.js": 171080,
-   "suche-8bcdc0ee71ab.js": 21279,
+   "index.html": 48223,
+   "daten-43f880d4b28b.js": 171083,
+   "suche-b18c0cd40f95.js": 21290,
    "app-v43.js": 26904,
    "styles-v24.css": 5568
   },
   "p29": {
-   "index.html": 48260,
-   "daten-71e38f565a42.js": 158953,
+   "index.html": 48275,
+   "daten-c5d39acb1537.js": 158956,
    "daten-97e90b0ff268.js": 11769,
    "daten-3a0bbf3f941c.js": 1981,
-   "suche-2d217938616a.js": 19514,
+   "suche-d3a4d204eb44.js": 19525,
    "suche-a6571cc032c6.js": 2617,
    "suche-ef2f0a8b6583.js": 748,
    "app-v44.js": 27670,

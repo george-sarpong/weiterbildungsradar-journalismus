@@ -1,6 +1,6 @@
 {
  "stichtag": "2026-11-24",
- "release": "p28_1124b",
+ "release": "p28_1124d",
  "app": "app-v43.js ada38d5e…",
  "jsdom": "24.1.3",
  "sichtbar": 1062,
@@ -32,8 +32,8 @@
   },
   "katalog.priceDisplay": {
    "angebote": 1062,
-   "verschieden": 853,
-   "mit_nur_roh": 851
+   "verschieden": 854,
+   "mit_nur_roh": 852
   },
   "katalog.format": {
    "angebote": 1062,
@@ -85,7 +85,7 @@
   "katalog E221c",
   "katalog E221d"
  ],
- "sollzeilen": 42679,
+ "sollzeilen": 42677,
  "haken_abweichungen": 0,
  "js_fehler": [],
  "je_anfrage": {
@@ -3494,8 +3494,8 @@
   "katalog W bedingung": {
    "anfrage": "bedingung",
    "vorher": 19,
-   "nachher": 8,
-   "aenderungen": 13
+   "nachher": 9,
+   "aenderungen": 14
   },
   "katalog W bedingungen": {
    "anfrage": "bedingungen",
@@ -4682,8 +4682,8 @@
   "katalog W der": {
    "anfrage": "der",
    "vorher": 682,
-   "nachher": 444,
-   "aenderungen": 312
+   "nachher": 445,
+   "aenderungen": 311
   },
   "katalog W des": {
    "anfrage": "des",
@@ -8360,8 +8360,8 @@
   "katalog W mit": {
    "anfrage": "mit",
    "vorher": 521,
-   "nachher": 429,
-   "aenderungen": 92
+   "nachher": 430,
+   "aenderungen": 91
   },
   "katalog W mitarbeitende": {
    "anfrage": "mitarbeitende",
@@ -8396,8 +8396,8 @@
   "katalog W mitglieder": {
    "anfrage": "mitglieder",
    "vorher": 12,
-   "nachher": 2,
-   "aenderungen": 10
+   "nachher": 3,
+   "aenderungen": 9
   },
   "katalog W mitgliederrabatt": {
    "anfrage": "mitgliederrabatt",
