@@ -2002,6 +2002,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W 1,1,treffer,OFFER-SCA-003,ja,nein,access
 2026-11-24,katalog,W 1,1,treffer,OFFER-CFJM-019,ja,nein,start
 2026-11-24,katalog,W 1,1,treffer,PCC-P04,nein,ja,start
+2026-11-24,katalog,W 10,10,treffer,OFFER-SFJ-002,ja,nein,priceDisplay
 2026-11-24,katalog,W 10,10,treffer,OFFER-CFJM-005,ja,nein,priceDisplay
 2026-11-24,katalog,W 10,10,treffer,OFFER-DPSUISSE-001,ja,nein,priceDisplay
 2026-11-24,katalog,W 10,10,treffer,V82-DAWAN-064,ja,nein,start
@@ -7656,6 +7657,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W agb,agb,treffer,OFFER-SFGZ-009,ja,nein,access
 2026-11-24,katalog,W agb,agb,treffer,OFFER-SFGZ-004,ja,nein,access
 2026-11-24,katalog,W agb,agb,treffer,OFFER-SFGZ-006,ja,nein,access
+2026-11-24,katalog,W ai,ai,treffer,OFFER-SFJ-002,ja,nein,access
 2026-11-24,katalog,W ai,ai,treffer,OFFER-MAZ-031,ja,nein,priceDisplay
 2026-11-24,katalog,W ai,ai,treffer,OFFER-UNIGE-013,ja,nein,priceDisplay
 2026-11-24,katalog,W ai,ai,treffer,AT-PROD-OFFER-170,ja,nein,priceDisplay
@@ -10025,6 +10027,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W anmeldung,anmeldung,treffer,OFFER-HEVS-008,ja,nein,access
 2026-11-24,katalog,W anmeldung,anmeldung,treffer,OFFER-HEVS-007,ja,nein,access
 2026-11-24,katalog,W anmeldung,anmeldung,treffer,OFFER-HEVS-006,ja,nein,access
+2026-11-24,katalog,W anmeldung,anmeldung,treffer,OFFER-SFJ-002,ja,nein,access
 2026-11-24,katalog,W anmeldung,anmeldung,treffer,OFFER-MEDIENCAMPUS-001,ja,nein,access
 2026-11-24,katalog,W anmeldung,anmeldung,treffer,OFFER-MEDIENCAMPUS-002,ja,nein,access
 2026-11-24,katalog,W anmeldung,anmeldung,treffer,OFFER-MEDIENCAMPUS-003,ja,nein,access
@@ -12931,6 +12934,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W buchbar,buchbar,treffer,OFFER-HEVS-008,nein,ja,access
 2026-11-24,katalog,W buchbar,buchbar,treffer,OFFER-HEVS-007,nein,ja,access
 2026-11-24,katalog,W buchbar,buchbar,treffer,OFFER-HEVS-006,nein,ja,access
+2026-11-24,katalog,W buchbar,buchbar,treffer,OFFER-SFJ-002,nein,ja,access
 2026-11-24,katalog,W buchbar,buchbar,treffer,OFFER-MEDIENCAMPUS-001,nein,ja,access
 2026-11-24,katalog,W buchbar,buchbar,treffer,OFFER-MEDIENCAMPUS-002,nein,ja,access
 2026-11-24,katalog,W buchbar,buchbar,treffer,OFFER-MEDIENCAMPUS-003,nein,ja,access
@@ -14043,6 +14047,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W checks,checks,treffer,OFFER-DSA-001,ja,nein,access
 2026-11-24,katalog,W checks,checks,treffer,OFFER-DSA-002,ja,nein,access
 2026-11-24,katalog,W checks,checks,treffer,OFFER-DSA-006,ja,nein,access
+2026-11-24,katalog,W chf,chf,treffer,OFFER-SFJ-002,ja,nein,priceDisplay
 2026-11-24,katalog,W chf,chf,treffer,OFFER-CFJM-005,ja,nein,priceDisplay
 2026-11-24,katalog,W chf,chf,treffer,OFFER-DPSUISSE-001,ja,nein,priceDisplay
 2026-11-24,katalog,W chf,chf,treffer,LI-REG-001,ja,nein,start
@@ -16138,6 +16143,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W details,details,treffer,OFFER-UNIL-001,nein,ja,access
 2026-11-24,katalog,W details,details,treffer,OFFER-INVESTIGATIV-001,nein,ja,access
 2026-11-24,katalog,W detailstand,detailstand,treffer,OFFER-MAZ-031,ja,nein,priceDisplay
+2026-11-24,katalog,W deutsch,deutsch,treffer,OFFER-SFJ-002,nein,ja,language
 2026-11-24,katalog,W deutsch,deutsch,treffer,OFFER-MEDIENCAMPUS-001,nein,ja,language
 2026-11-24,katalog,W deutsch,deutsch,treffer,OFFER-MEDIENCAMPUS-002,nein,ja,language
 2026-11-24,katalog,W deutsch,deutsch,treffer,OFFER-MEDIENCAMPUS-003,nein,ja,language
@@ -17193,6 +17199,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W dsa,dsa,treffer,OFFER-DSA-001,ja,nein,access
 2026-11-24,katalog,W dsa,dsa,treffer,OFFER-DSA-002,ja,nein,access
 2026-11-24,katalog,W dsa,dsa,treffer,OFFER-DSA-006,ja,nein,access
+2026-11-24,katalog,W du,du,treffer,OFFER-SFJ-002,ja,nein,access
 2026-11-24,katalog,W du,du,treffer,OFFER-MEDIENCAMPUS-001,ja,nein,access
 2026-11-24,katalog,W du,du,treffer,OFFER-MEDIENCAMPUS-002,ja,nein,access
 2026-11-24,katalog,W du,du,treffer,OFFER-MEDIENCAMPUS-003,ja,nein,access
@@ -20188,6 +20195,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W fix,fix,treffer,OFFER-ORSYS-041,ja,nein,start
 2026-11-24,katalog,W fixtermine,fixtermine,treffer,OFFER-ORSYS-041,ja,nein,start
 2026-11-24,katalog,W folders,folders,treffer,OFFER-NOBLE-010,ja,nein,access
+2026-11-24,katalog,W folgt,folgt,treffer,OFFER-SFJ-002,ja,nein,access
 2026-11-24,katalog,W fondamentaux,fondamentaux,treffer,OFFER-DIGICOMP-066,ja,nein,access
 2026-11-24,katalog,W for,for,treffer,OFFER-HEVS-008,ja,nein,access
 2026-11-24,katalog,W for,for,treffer,OFFER-HEVS-007,ja,nein,access
@@ -20656,6 +20664,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W fotoapparat,fotoapparat,treffer,OFFER-SGP-002,ja,nein,access
 2026-11-24,katalog,W fotoapparat,fotoapparat,treffer,OFFER-SGP-001,ja,nein,access
 2026-11-24,katalog,W fotomedienfachperson,fotomedienfachperson,treffer,OFFER-ZB-011,ja,nein,access
+2026-11-24,katalog,W fr,fr,treffer,OFFER-SFJ-002,ja,nein,priceDisplay
 2026-11-24,katalog,W fr,fr,treffer,OFFER-FOCAL-009,ja,nein,start
 2026-11-24,katalog,W fr,fr,treffer,V79-02,ja,nein,access
 2026-11-24,katalog,W fr,fr,treffer,OFFER-CAPFOTO-002,ja,nein,priceDisplay
@@ -21067,6 +21076,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W franzosischkenntnisse,franzosischkenntnisse,treffer,OFFER-EJC-002,ja,nein,access
 2026-11-24,katalog,W frauenfeld,frauenfeld,treffer,OFFER-KLUBPRO-022,nein,ja,start
 2026-11-24,katalog,W free,free,treffer,V59-SZ05,ja,nein,start
+2026-11-24,katalog,W frei,frei,treffer,OFFER-SFJ-002,ja,nein,priceDisplay
 2026-11-24,katalog,W frei,frei,treffer,OFFER-CAPFOTO-002,ja,nein,priceDisplay
 2026-11-24,katalog,W frei,frei,treffer,OFFER-MAZ-136,ja,nein,access
 2026-11-24,katalog,W frei,frei,treffer,PJ-V16-07,ja,nein,access
@@ -21078,6 +21088,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W freie,freie,treffer,AT-PROD-OFFER-003,ja,nein,priceDisplay
 2026-11-24,katalog,W freie,freie,treffer,OFFER-UNIBE-008,ja,nein,access
 2026-11-24,katalog,W freien,freien,treffer,OFFER-UNIBE-008,ja,nein,access
+2026-11-24,katalog,W freiwilliger,freiwilliger,treffer,OFFER-SFJ-002,ja,nein,priceDisplay
 2026-11-24,katalog,W freude,freude,treffer,OFFER-ZB-012,ja,nein,access
 2026-11-24,katalog,W frist,frist,treffer,OFFER-FOCAL-009,ja,nein,start
 2026-11-24,katalog,W frist,frist,treffer,OFFER-FERNUNI-001,ja,nein,start
@@ -21614,6 +21625,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W hes,hes,treffer,OFFER-FOCAL-018,ja,nein,access
 2026-11-24,katalog,W hes,hes,treffer,OFFER-AJM-001,ja,nein,access|priceDisplay
 2026-11-24,katalog,W hes,hes,treffer,OFFER-AJM-002,ja,nein,access|priceDisplay
+2026-11-24,katalog,W hf,hf,treffer,OFFER-SFJ-002,ja,nein,priceDisplay
 2026-11-24,katalog,W hf,hf,treffer,OFFER-CFJM-005,ja,nein,priceDisplay
 2026-11-24,katalog,W hf,hf,treffer,OFFER-DPSUISSE-001,ja,nein,priceDisplay
 2026-11-24,katalog,W hf,hf,treffer,LI-REG-001,ja,nein,start
@@ -22782,6 +22794,66 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W individuelle,individuelle,treffer,AT-PROD-OFFER-003,ja,nein,access
 2026-11-24,katalog,W individuelle,individuelle,treffer,OFFER-ORSYS-041,ja,nein,priceDisplay
 2026-11-24,katalog,W industrie,industrie,treffer,OFFER-HSG-005,ja,nein,access
+2026-11-24,katalog,W info,info,treffer,OFFER-SFJ-002,ja,nein,access
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-042,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-154,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-CPNV-001,ja,nein,access
+2026-11-24,katalog,W info,info,treffer,OFFER-CFPOCST-002,ja,nein,access
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-129,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-085,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-145,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-161,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-DIGICOMP-066,ja,nein,access
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-086,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-087,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-088,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-089,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-090,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-091,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-092,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-093,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-094,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-001,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-002,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-003,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-006,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-007,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-009,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-010,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-026,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-028,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-030,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-034,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-036,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-043,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-046,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-062,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-063,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-068,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-071,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-084,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-095,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-097,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-105,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-104,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-108,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-109,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-116,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-121,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-122,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-123,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-125,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-143,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-146,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-148,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-150,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-155,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-162,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-183,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-184,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-174,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-176,ja,nein,priceDisplay
+2026-11-24,katalog,W info,info,treffer,OFFER-MAZ-178,ja,nein,priceDisplay
 2026-11-24,katalog,W informatiker,informatiker,treffer,OFFER-CPNV-001,ja,nein,access
 2026-11-24,katalog,W informatikkenntnisse,informatikkenntnisse,treffer,OFFER-CFPOCST-002,ja,nein,access
 2026-11-24,katalog,W informations,informations,treffer,OFFER-DIGICOMP-066,ja,nein,access
@@ -25360,7 +25432,9 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W kursunterlagen,kursunterlagen,treffer,OFFER-MEDIENCAMPUS-030,ja,nein,priceDisplay
 2026-11-24,katalog,W kursunterlagen,kursunterlagen,treffer,OFFER-MEDIENCAMPUS-043,ja,nein,priceDisplay
 2026-11-24,katalog,W kursunterlagen,kursunterlagen,treffer,OFFER-ZB-005,ja,nein,priceDisplay
+2026-11-24,katalog,W kurz,kurz,treffer,OFFER-SFJ-002,ja,nein,access
 2026-11-24,katalog,W kv,kv,treffer,AT-PROD-OFFER-153,ja,nein,priceDisplay
+2026-11-24,katalog,W la,la,treffer,OFFER-SFJ-002,ja,nein,priceDisplay
 2026-11-24,katalog,W la,la,treffer,V82-DAWAN-065,ja,nein,access
 2026-11-24,katalog,W la,la,treffer,V82-DAWAN-049,ja,nein,access
 2026-11-24,katalog,W la,la,treffer,OFFER-WISS-004,ja,nein,access
@@ -25988,6 +26062,15 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W limited,limited,treffer,OFFER-DSA-001,ja,nein,access
 2026-11-24,katalog,W limited,limited,treffer,OFFER-DSA-002,ja,nein,access
 2026-11-24,katalog,W limited,limited,treffer,OFFER-DSA-006,ja,nein,access
+2026-11-24,katalog,W link,link,treffer,OFFER-SFJ-002,ja,nein,access
+2026-11-24,katalog,W link,link,treffer,OFFER-UNIBE-010,ja,nein,access
+2026-11-24,katalog,W link,link,treffer,OFFER-UNIBE-011,ja,nein,access
+2026-11-24,katalog,W link,link,treffer,OFFER-UNIBE-002,ja,nein,access
+2026-11-24,katalog,W link,link,treffer,OFFER-UNIBE-003,ja,nein,access
+2026-11-24,katalog,W link,link,treffer,OFFER-UNIBE-004,ja,nein,access
+2026-11-24,katalog,W link,link,treffer,OFFER-UNIBE-005,ja,nein,access
+2026-11-24,katalog,W link,link,treffer,OFFER-UNIBE-006,ja,nein,access
+2026-11-24,katalog,W link,link,treffer,OFFER-UNIBE-007,ja,nein,access
 2026-11-24,katalog,W links,links,treffer,OFFER-UNIBE-010,ja,nein,access
 2026-11-24,katalog,W links,links,treffer,OFFER-UNIBE-011,ja,nein,access
 2026-11-24,katalog,W links,links,treffer,OFFER-UNIBE-002,ja,nein,access
@@ -26016,6 +26099,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W mac,mac,treffer,OFFER-SFGB-014,ja,nein,access
 2026-11-24,katalog,W mac,mac,treffer,CH-NOV-OF-020,ja,nein,access
 2026-11-24,katalog,W mahlzeiten,mahlzeiten,treffer,CH-CLEAN2-V9-D02,ja,nein,priceDisplay
+2026-11-24,katalog,W mail,mail,treffer,OFFER-SFJ-002,ja,nein,access
 2026-11-24,katalog,W mail,mail,treffer,OFFER-IBAW-001,ja,nein,access
 2026-11-24,katalog,W mail,mail,treffer,OFFER-IBAW-003,ja,nein,access
 2026-11-24,katalog,W mail,mail,treffer,OFFER-IBAW-004,ja,nein,access
@@ -31098,6 +31182,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W payment,payment,treffer,OFFER-NOBLE-073,ja,nein,access
 2026-11-24,katalog,W pc,pc,treffer,OFFER-SFGB-006,ja,nein,access
 2026-11-24,katalog,W pc,pc,treffer,OFFER-WEBEDU-001,ja,nein,access
+2026-11-24,katalog,W per,per,treffer,OFFER-SFJ-002,ja,nein,access|priceDisplay
 2026-11-24,katalog,W per,per,treffer,LI-REG-002,ja,nein,access
 2026-11-24,katalog,W per,per,treffer,OFFER-FOCAL-009,ja,nein,access
 2026-11-24,katalog,W per,per,treffer,OFFER-MAZ-031,ja,nein,access
@@ -36661,6 +36746,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W tv,tv,treffer,OFFER-CFJM-031,ja,nein,access
 2026-11-24,katalog,W tv,tv,treffer,CH-V33-A04,ja,nein,access
 2026-11-24,katalog,W tv,tv,treffer,OFFER-BFH-001,ja,nein,access
+2026-11-24,katalog,W twint,twint,treffer,OFFER-SFJ-002,ja,nein,priceDisplay
 2026-11-24,katalog,W uber,uber,treffer,OFFER-MEDIENCAMPUS-001,ja,nein,access
 2026-11-24,katalog,W uber,uber,treffer,OFFER-MEDIENCAMPUS-002,ja,nein,access
 2026-11-24,katalog,W uber,uber,treffer,OFFER-MEDIENCAMPUS-005,ja,nein,access
@@ -37210,10 +37296,12 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W university,university,treffer,OFFER-UNIBE-005,ja,nein,access
 2026-11-24,katalog,W university,university,treffer,OFFER-UNIBE-006,ja,nein,access
 2026-11-24,katalog,W university,university,treffer,OFFER-UNIBE-007,ja,nein,access
+2026-11-24,katalog,W unkostenbeitrag,unkostenbeitrag,treffer,OFFER-SFJ-002,ja,nein,priceDisplay
 2026-11-24,katalog,W unmittelbar,unmittelbar,treffer,OFFER-MAZ-139,ja,nein,access
 2026-11-24,katalog,W unter,unter,treffer,OFFER-HEVS-008,ja,nein,priceDisplay
 2026-11-24,katalog,W unter,unter,treffer,OFFER-HEVS-007,ja,nein,priceDisplay
 2026-11-24,katalog,W unter,unter,treffer,OFFER-HEVS-006,ja,nein,priceDisplay
+2026-11-24,katalog,W unter,unter,treffer,OFFER-SFJ-002,ja,nein,priceDisplay
 2026-11-24,katalog,W unter,unter,treffer,LI-REG-001,ja,nein,priceDisplay
 2026-11-24,katalog,W unter,unter,treffer,LI-REG-002,ja,nein,access
 2026-11-24,katalog,W unter,unter,treffer,IF-W03,ja,nein,start
@@ -37237,6 +37325,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W unterlagen,unterlagen,treffer,OFFER-HEVS-008,ja,nein,priceDisplay
 2026-11-24,katalog,W unterlagen,unterlagen,treffer,OFFER-HEVS-007,ja,nein,priceDisplay
 2026-11-24,katalog,W unterlagen,unterlagen,treffer,OFFER-HEVS-006,ja,nein,priceDisplay
+2026-11-24,katalog,W unterlagen,unterlagen,treffer,OFFER-SFJ-002,ja,nein,priceDisplay
 2026-11-24,katalog,W unterlagen,unterlagen,treffer,OFFER-BIG-003,ja,nein,access
 2026-11-24,katalog,W unterlagen,unterlagen,treffer,OFFER-BICT-001,ja,nein,access
 2026-11-24,katalog,W unterlagen,unterlagen,treffer,OFFER-HEVS-003,ja,nein,priceDisplay
@@ -37402,6 +37491,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W vat,vat,treffer,OFFER-EBU-021,ja,nein,priceDisplay
 2026-11-24,katalog,W vat,vat,treffer,OFFER-EBU-022,ja,nein,priceDisplay
 2026-11-24,katalog,W vat,vat,treffer,OFFER-ZHDK-002,ja,nein,access
+2026-11-24,katalog,W veranstaltung,veranstaltung,treffer,OFFER-SFJ-002,ja,nein,access
 2026-11-24,katalog,W veranstaltung,veranstaltung,treffer,CH-CLEAN2-V9-D02,ja,nein,access
 2026-11-24,katalog,W verantwortlicher,verantwortlicher,treffer,OFFER-MAZ-086,ja,nein,access
 2026-11-24,katalog,W verantwortlicher,verantwortlicher,treffer,OFFER-MAZ-087,ja,nein,access
@@ -37530,6 +37620,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,katalog,W von,von,treffer,OFFER-EPFL-001,ja,nein,access
 2026-11-24,katalog,W von,von,treffer,OFFER-ZHAW-002,ja,nein,access
 2026-11-24,katalog,W von,von,treffer,OFFER-MAZ-056,ja,nein,access
+2026-11-24,katalog,W vor,vor,treffer,OFFER-SFJ-002,ja,nein,access
 2026-11-24,katalog,W vor,vor,treffer,OFFER-DIGICOMP-075,ja,nein,access
 2026-11-24,katalog,W vor,vor,treffer,OFFER-HDS-SAL-002,ja,nein,access
 2026-11-24,katalog,W vor,vor,treffer,LI-REG-003,ja,nein,access
@@ -39926,7 +40017,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,smart,W angabe,angabe,kandidat,OFFER-MEDIENCAMPUS-063,nein,ja (2),region
 2026-11-24,smart,W angabe,angabe,gezeigt,PCC-P16,ja,nein,nicht zuzuordnen
 2026-11-24,smart,W angabe,angabe,gezeigt,OFFER-HEVS-003,nein,ja,format
-2026-11-24,smart,W angabe,angabe,status,-,210 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,494 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,-
+2026-11-24,smart,W angabe,angabe,status,-,211 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,495 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,-
 2026-11-24,smart,W angeboten,angeboten,kandidat,OFFER-NOBLE-067,ja (3),nein,region
 2026-11-24,smart,W angeboten,angeboten,gezeigt,OFFER-NOBLE-067,ja,nein,region
 2026-11-24,smart,W angeboten,angeboten,gezeigt,OFFER-MEDIENCAMPUS-009,nein,ja,nicht zuzuordnen
@@ -41744,7 +41835,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,smart,W rund,rund,kandidat,CH-V28-U04,ja (2),nein,start
 2026-11-24,smart,W rund,rund,status,-,176 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,175 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,-
 2026-11-24,smart,W schweizer,schweizer,kandidat,OFFER-NOBLE-067,ja (3),nein,start
-2026-11-24,smart,W schweizer,schweizer,status,-,30 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,29 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,-
+2026-11-24,smart,W schweizer,schweizer,status,-,31 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,30 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,-
 2026-11-24,smart,W seit,seit,kandidat,OFFER-NOBLE-067,ja (3),nein,start
 2026-11-24,smart,W seit,seit,status,-,33 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,32 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,-
 2026-11-24,smart,W seite,seite,kandidat,OFFER-NOBLE-067,ja (3),nein,start
@@ -41797,7 +41888,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,smart,W sowie,sowie,status,-,87 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,86 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,-
 2026-11-24,smart,W stand,stand,kandidat,PCC-P23,ja (3),nein,start
 2026-11-24,smart,W stand,stand,kandidat,OFFER-NOBLE-067,ja (3),nein,region
-2026-11-24,smart,W stand,stand,status,-,90 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,88 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,-
+2026-11-24,smart,W stand,stand,status,-,91 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,89 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,-
 2026-11-24,smart,W standort,standort,kandidat,PCC-P23,ja (3),nein,start
 2026-11-24,smart,W standort,standort,kandidat,OFFER-NOBLE-067,ja (3),nein,region
 2026-11-24,smart,W standort,standort,status,-,26 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,24 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,-
@@ -42368,7 +42459,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,smart,W ubrige,ubrige,gezeigt,CAD-025,ja,nein,start
 2026-11-24,smart,W ubrige,ubrige,status,-,1 passendes Angebot im aktuellen Bestand. Hier ist 1 Option.,Keine bestätigten Treffer. Formuliere Thema oder harte Durchführungsbedingung etwas breiter oder nutze die klassischen Filter.,-
 2026-11-24,smart,W uhr,uhr,kandidat,OFFER-NOBLE-067,ja (3),nein,start|region
-2026-11-24,smart,W uhr,uhr,status,-,21 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,20 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,-
+2026-11-24,smart,W uhr,uhr,status,-,22 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,21 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,-
 2026-11-24,smart,W unterricht,unterricht,kandidat,OFFER-NOBLE-067,ja (3),nein,start
 2026-11-24,smart,W unterricht,unterricht,kandidat,IF-W03,ja (3),nein,start
 2026-11-24,smart,W unterricht,unterricht,status,-,69 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,67 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,-
@@ -42670,7 +42761,7 @@ stichtag,suchart,anfrage_id,anfrage,ebene,angebot_id,vorher,nachher,feld
 2026-11-24,smart,W wiederholt,wiederholt,status,-,3 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,1 passendes Angebot im aktuellen Bestand. Hier ist 1 Option.,-
 2026-11-24,smart,W wird,wird,kandidat,OFFER-CAPFOTO-005,ja (2),nein,start
 2026-11-24,smart,W wird,wird,kandidat,OFFER-CAPFOTO-004,ja (2),nein,start
-2026-11-24,smart,W wird,wird,status,-,11 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,9 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,-
+2026-11-24,smart,W wird,wird,status,-,12 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,10 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,-
 2026-11-24,smart,W zwei,zwei,kandidat,OFFER-HEAD-009,ja (2),nein,start
 2026-11-24,smart,W zwei,zwei,status,-,69 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,68 passende Angebote im aktuellen Bestand. Hier sind 3 Optionen.,-
 2026-11-24,smart,W zyklus,zyklus,kandidat,OFFER-CAPFOTO-005,ja (2),nein,start

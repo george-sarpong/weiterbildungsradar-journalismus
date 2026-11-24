@@ -6909,3 +6909,8 @@ stichtag,angebot_id,suchart,feld,rohtext,anzeigetext,woerter_nur_roh,woerter_nur
 2026-11-24,OFFER-HEVS-008,katalog,format,NICHT_PUBLIZIERT,keine Angabe,nicht publiziert,keine angabe
 2026-11-24,OFFER-HEVS-008,katalog,language,NOT_PUBLISHED,Sprache: keine Angabe,not published,sprache keine angabe
 2026-11-24,OFFER-HEVS-008,katalog,region,"Sierre, HES-SO Valais (Rte de la Plaine 2 oder TechnoArk, Techno-Pôle 3)","Schweiz · Sierre, HES-SO Valais (Rte de la Plaine 2 oder TechnoArk, Techno-Pôle 3)",,schweiz
+2026-11-24,OFFER-SFJ-002,smart,region,Online via Zoom,Online · Online via Zoom,,
+2026-11-24,OFFER-SFJ-002,katalog,access,"Öffentlich; Anmeldung per E-Mail an info@sfj-ajs.ch, der Zoom-Link folgt kurz vor der Veranstaltung.",Öffentlich buchbar,anmeldung per e mail an info sfj ajs ch der zoom link folgt kurz vor veranstaltung,buchbar
+2026-11-24,OFFER-SFJ-002,katalog,priceDisplay,"Kostenlos; freiwilliger Unkostenbeitrag (z. B. CHF 10 per Twint) für Aufzeichnung und Unterlagen",Kostenlos,freiwilliger unkostenbeitrag z b chf 10 per twint fur aufzeichnung und unterlagen,
+2026-11-24,OFFER-SFJ-002,katalog,language,DE,Deutsch,de,deutsch
+2026-11-24,OFFER-SFJ-002,katalog,region,Online via Zoom,Online · Online via Zoom,,

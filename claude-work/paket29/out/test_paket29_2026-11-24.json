@@ -5,7 +5,7 @@
    "nr": "P02a",
    "name": "Marktzuordnung: jede Datei nur ihr Markt, Daten = Smart je Markt, 0 doppelt, 0 fehlend gegenüber P28",
    "status": "PASS",
-   "detail": " 1062 / P28 1062"
+   "detail": " 1063 / P28 1063"
   },
   {
    "nr": "P02b",
@@ -17,7 +17,7 @@
    "nr": "V1",
    "name": "Vertrag: Soll {Markt: Anzahl} in jeder Datendatei gleich und = gezählte Datensätze; Daten und Smart melden Markt und Anzahl; meta in allen Smart-Dateien gleich, erste gesetzte bleibt",
    "status": "PASS",
-   "detail": "{\"soll\": {\"CH\": 978, \"AT\": 80, \"LI\": 4}, \"daten\": {\"CH\": 978, \"AT\": 80, \"LI\": 4}, \"suche\": {\"CH\": 978, \"AT\": 80, \"LI\": 4}}"
+   "detail": "{\"soll\": {\"CH\": 979, \"AT\": 80, \"LI\": 4}, \"daten\": {\"CH\": 979, \"AT\": 80, \"LI\": 4}, \"suche\": {\"CH\": 979, \"AT\": 80, \"LI\": 4}}"
   },
   {
    "nr": "P02c",
@@ -41,7 +41,7 @@
    "nr": "P12",
    "name": "Paket ≤ 9 MB; Erstbesuch (gzip: index.html, CSS, App, Daten, Smart) höchstens +2 KB gegenüber P28",
    "status": "FAIL",
-   "detail": "website/ 2334983 Byte; Erstbesuch P28 273068, P29 277109, Differenz +4041 Byte (Daten+Smart +3223, App +766, index.html +52)"
+   "detail": "website/ 2337165 Byte; Erstbesuch P28 273633, P29 277710, Differenz +4077 Byte (Daten+Smart +3252, App +766, index.html +59)"
   },
   {
    "nr": "P13",
@@ -64,20 +64,20 @@
  ],
  "erstbesuch": {
   "p28": {
-   "index.html": 48223,
-   "daten-43f880d4b28b.js": 171083,
-   "suche-b18c0cd40f95.js": 21290,
+   "index.html": 48355,
+   "daten-27514f26001d.js": 171477,
+   "suche-6922e196293d.js": 21329,
    "app-v43.js": 26904,
    "styles-v24.css": 5568
   },
   "p29": {
-   "index.html": 48275,
-   "daten-c5d39acb1537.js": 158956,
-   "daten-97e90b0ff268.js": 11769,
-   "daten-3a0bbf3f941c.js": 1981,
-   "suche-d3a4d204eb44.js": 19525,
-   "suche-a6571cc032c6.js": 2617,
-   "suche-ef2f0a8b6583.js": 748,
+   "index.html": 48414,
+   "daten-b50d7e16bb33.js": 159371,
+   "daten-b8cb0f6135a5.js": 11769,
+   "daten-355a84023605.js": 1981,
+   "suche-ed887ef97bd3.js": 19571,
+   "suche-b221b0b7444d.js": 2617,
+   "suche-c43d9f18543c.js": 749,
    "app-v44.js": 27670,
    "styles-v24.css": 5568
   }

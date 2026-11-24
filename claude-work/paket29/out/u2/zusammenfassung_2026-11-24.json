@@ -1,70 +1,70 @@
 {
  "stichtag": "2026-11-24",
- "release": "p28_1124d",
+ "release": "p28_1124e",
  "app": "app-v43.js ada38d5e…",
  "jsdom": "24.1.3",
- "sichtbar": 1062,
+ "sichtbar": 1063,
  "felder": {
   "smart.format": {
-   "angebote": 1062,
+   "angebote": 1063,
    "verschieden": 502,
    "mit_nur_roh": 195
   },
   "smart.duration": {
-   "angebote": 1062,
+   "angebote": 1063,
    "verschieden": 86,
    "mit_nur_roh": 86
   },
   "smart.start": {
-   "angebote": 1062,
+   "angebote": 1063,
    "verschieden": 455,
    "mit_nur_roh": 454
   },
   "smart.region": {
-   "angebote": 1062,
-   "verschieden": 923,
+   "angebote": 1063,
+   "verschieden": 924,
    "mit_nur_roh": 83
   },
   "katalog.access": {
-   "angebote": 1062,
-   "verschieden": 1062,
-   "mit_nur_roh": 1054
+   "angebote": 1063,
+   "verschieden": 1063,
+   "mit_nur_roh": 1055
   },
   "katalog.priceDisplay": {
-   "angebote": 1062,
-   "verschieden": 854,
-   "mit_nur_roh": 852
+   "angebote": 1063,
+   "verschieden": 855,
+   "mit_nur_roh": 853
   },
   "katalog.format": {
-   "angebote": 1062,
+   "angebote": 1063,
    "verschieden": 502,
    "mit_nur_roh": 195
   },
   "katalog.duration": {
-   "angebote": 1062,
+   "angebote": 1063,
    "verschieden": 86,
    "mit_nur_roh": 86
   },
   "katalog.start": {
-   "angebote": 1062,
+   "angebote": 1063,
    "verschieden": 455,
    "mit_nur_roh": 454
   },
   "katalog.language": {
-   "angebote": 1062,
-   "verschieden": 1062,
-   "mit_nur_roh": 1062
+   "angebote": 1063,
+   "verschieden": 1063,
+   "mit_nur_roh": 1063
   },
   "katalog.region": {
-   "angebote": 1062,
-   "verschieden": 923,
+   "angebote": 1063,
+   "verschieden": 924,
    "mit_nur_roh": 73
   }
  },
- "wortprobe": 2010,
+ "wortprobe": 2019,
  "anfragen": {
-  "smart": 2070,
-  "katalog": 2074
+  "smart": 2079,
+  "katalog": 2083
  },
  "geaendert_q60": {
   "katalog": [
@@ -85,7 +85,7 @@
   "katalog E221c",
   "katalog E221d"
  ],
- "sollzeilen": 42677,
+ "sollzeilen": 42768,
  "haken_abweichungen": 0,
  "js_fehler": [],
  "je_anfrage": {
@@ -121,8 +121,8 @@
   },
   "katalog T06": {
    "anfrage": "kostenlos",
-   "vorher": 27,
-   "nachher": 25,
+   "vorher": 28,
+   "nachher": 26,
    "aenderungen": 6
   },
   "katalog T07": {
@@ -355,8 +355,8 @@
   },
   "katalog V25 Budget": {
    "anfrage": "kostenlos online",
-   "vorher": 11,
-   "nachher": 10,
+   "vorher": 12,
+   "nachher": 11,
    "aenderungen": 3
   },
   "katalog V26 Budget": {
@@ -475,14 +475,14 @@
   },
   "katalog W 0": {
    "anfrage": "0",
-   "vorher": 960,
-   "nachher": 926,
+   "vorher": 961,
+   "nachher": 927,
    "aenderungen": 34
   },
   "katalog W 00": {
    "anfrage": "00",
-   "vorher": 437,
-   "nachher": 294,
+   "vorher": 438,
+   "nachher": 295,
    "aenderungen": 143
   },
   "katalog W 000": {
@@ -499,8 +499,8 @@
   },
   "katalog W 02": {
    "anfrage": "02",
-   "vorher": 736,
-   "nachher": 627,
+   "vorher": 737,
+   "nachher": 628,
    "aenderungen": 109
   },
   "katalog W 020": {
@@ -607,15 +607,15 @@
   },
   "katalog W 1": {
    "anfrage": "1",
-   "vorher": 906,
-   "nachher": 878,
+   "vorher": 907,
+   "nachher": 879,
    "aenderungen": 30
   },
   "katalog W 10": {
    "anfrage": "10",
-   "vorher": 246,
+   "vorher": 247,
    "nachher": 156,
-   "aenderungen": 106
+   "aenderungen": 107
   },
   "katalog W 100": {
    "anfrage": "100",
@@ -661,8 +661,8 @@
   },
   "katalog W 11": {
    "anfrage": "11",
-   "vorher": 239,
-   "nachher": 192,
+   "vorher": 240,
+   "nachher": 193,
    "aenderungen": 167
   },
   "katalog W 110": {
@@ -1021,8 +1021,8 @@
   },
   "katalog W 17": {
    "anfrage": "17",
-   "vorher": 100,
-   "nachher": 77,
+   "vorher": 101,
+   "nachher": 78,
    "aenderungen": 47
   },
   "katalog W 170": {
@@ -1051,8 +1051,8 @@
   },
   "katalog W 18": {
    "anfrage": "18",
-   "vorher": 119,
-   "nachher": 73,
+   "vorher": 120,
+   "nachher": 74,
    "aenderungen": 66
   },
   "katalog W 180": {
@@ -1147,14 +1147,14 @@
   },
   "katalog W 2": {
    "anfrage": "2",
-   "vorher": 895,
-   "nachher": 805,
+   "vorher": 896,
+   "nachher": 806,
    "aenderungen": 90
   },
   "katalog W 20": {
    "anfrage": "20",
-   "vorher": 780,
-   "nachher": 667,
+   "vorher": 781,
+   "nachher": 668,
    "aenderungen": 113
   },
   "katalog W 200": {
@@ -1177,8 +1177,8 @@
   },
   "katalog W 2026": {
    "anfrage": "2026",
-   "vorher": 567,
-   "nachher": 285,
+   "vorher": 568,
+   "nachher": 286,
    "aenderungen": 282
   },
   "katalog W 2027": {
@@ -1405,8 +1405,8 @@
   },
   "katalog W 26": {
    "anfrage": "26",
-   "vorher": 594,
-   "nachher": 321,
+   "vorher": 595,
+   "nachher": 322,
    "aenderungen": 273
   },
   "katalog W 260": {
@@ -1945,8 +1945,8 @@
   },
   "katalog W 6": {
    "anfrage": "6",
-   "vorher": 757,
-   "nachher": 592,
+   "vorher": 758,
+   "nachher": 593,
    "aenderungen": 165
   },
   "katalog W 60": {
@@ -2077,8 +2077,8 @@
   },
   "katalog W 7": {
    "anfrage": "7",
-   "vorher": 607,
-   "nachher": 528,
+   "vorher": 608,
+   "nachher": 529,
    "aenderungen": 93
   },
   "katalog W 700": {
@@ -2155,8 +2155,8 @@
   },
   "katalog W 8": {
    "anfrage": "8",
-   "vorher": 438,
-   "nachher": 322,
+   "vorher": 439,
+   "nachher": 323,
    "aenderungen": 122
   },
   "katalog W 80": {
@@ -2353,8 +2353,8 @@
   },
   "katalog W a": {
    "anfrage": "a",
-   "vorher": 1062,
-   "nachher": 1062,
+   "vorher": 1063,
+   "nachher": 1063,
    "aenderungen": 0
   },
   "katalog W aarau": {
@@ -2365,8 +2365,8 @@
   },
   "katalog W ab": {
    "anfrage": "ab",
-   "vorher": 492,
-   "nachher": 798,
+   "vorher": 493,
+   "nachher": 799,
    "aenderungen": 352
   },
   "katalog W abende": {
@@ -2575,9 +2575,9 @@
   },
   "katalog W ai": {
    "anfrage": "ai",
-   "vorher": 332,
+   "vorher": 333,
    "nachher": 506,
-   "aenderungen": 202
+   "aenderungen": 203
   },
   "katalog W aise": {
    "anfrage": "aise",
@@ -2591,10 +2591,16 @@
    "nachher": 2,
    "aenderungen": 0
   },
+  "katalog W ajs": {
+   "anfrage": "ajs",
+   "vorher": 2,
+   "nachher": 2,
+   "aenderungen": 0
+  },
   "katalog W aktion": {
    "anfrage": "aktion",
-   "vorher": 78,
-   "nachher": 69,
+   "vorher": 79,
+   "nachher": 70,
    "aenderungen": 9
   },
   "katalog W aktionspreis": {
@@ -2725,8 +2731,8 @@
   },
   "katalog W an": {
    "anfrage": "an",
-   "vorher": 972,
-   "nachher": 1046,
+   "vorher": 973,
+   "nachher": 1047,
    "aenderungen": 102
   },
   "katalog W analoger": {
@@ -2755,8 +2761,8 @@
   },
   "katalog W and": {
    "anfrage": "and",
-   "vorher": 437,
-   "nachher": 331,
+   "vorher": 438,
+   "nachher": 332,
    "aenderungen": 106
   },
   "katalog W andere": {
@@ -2833,8 +2839,8 @@
   },
   "katalog W angabe": {
    "anfrage": "angabe",
-   "vorher": 211,
-   "nachher": 612,
+   "vorher": 212,
+   "nachher": 613,
    "aenderungen": 403
   },
   "katalog W angebot": {
@@ -2947,9 +2953,9 @@
   },
   "katalog W anmeldung": {
    "anfrage": "anmeldung",
-   "vorher": 283,
+   "vorher": 284,
    "nachher": 70,
-   "aenderungen": 213
+   "aenderungen": 214
   },
   "katalog W anmeldungen": {
    "anfrage": "anmeldungen",
@@ -3097,8 +3103,8 @@
   },
   "katalog W at": {
    "anfrage": "at",
-   "vorher": 1000,
-   "nachher": 839,
+   "vorher": 1001,
+   "nachher": 840,
    "aenderungen": 161
   },
   "katalog W atelier": {
@@ -3115,8 +3121,8 @@
   },
   "katalog W au": {
    "anfrage": "au",
-   "vorher": 909,
-   "nachher": 869,
+   "vorher": 910,
+   "nachher": 870,
    "aenderungen": 86
   },
   "katalog W auch": {
@@ -3157,8 +3163,8 @@
   },
   "katalog W auf": {
    "anfrage": "auf",
-   "vorher": 453,
-   "nachher": 410,
+   "vorher": 454,
+   "nachher": 411,
    "aenderungen": 111
   },
   "katalog W aufenthaltszweck": {
@@ -3220,6 +3226,12 @@
    "vorher": 1,
    "nachher": 0,
    "aenderungen": 1
+  },
+  "katalog W aufzeichnung": {
+   "anfrage": "aufzeichnung",
+   "vorher": 2,
+   "nachher": 2,
+   "aenderungen": 0
   },
   "katalog W aus": {
    "anfrage": "aus",
@@ -3421,8 +3433,8 @@
   },
   "katalog W b": {
    "anfrage": "b",
-   "vorher": 1060,
-   "nachher": 1062,
+   "vorher": 1061,
+   "nachher": 1063,
    "aenderungen": 2
   },
   "katalog W b2": {
@@ -3475,8 +3487,8 @@
   },
   "katalog W be": {
    "anfrage": "be",
-   "vorher": 923,
-   "nachher": 1022,
+   "vorher": 924,
+   "nachher": 1023,
    "aenderungen": 151
   },
   "katalog W become": {
@@ -3553,8 +3565,8 @@
   },
   "katalog W bei": {
    "anfrage": "bei",
-   "vorher": 337,
-   "nachher": 509,
+   "vorher": 338,
+   "nachher": 510,
    "aenderungen": 270
   },
   "katalog W beim": {
@@ -3571,14 +3583,14 @@
   },
   "katalog W beitrag": {
    "anfrage": "beitrag",
-   "vorher": 26,
-   "nachher": 18,
+   "vorher": 27,
+   "nachher": 19,
    "aenderungen": 8
   },
   "katalog W beitragen": {
    "anfrage": "beitragen",
-   "vorher": 5,
-   "nachher": 3,
+   "vorher": 6,
+   "nachher": 4,
    "aenderungen": 2
   },
   "katalog W belastbarer": {
@@ -4082,8 +4094,8 @@
   "katalog W buchbar": {
    "anfrage": "buchbar",
    "vorher": 126,
-   "nachher": 564,
-   "aenderungen": 442
+   "nachher": 565,
+   "aenderungen": 443
   },
   "katalog W buchbarkeit": {
    "anfrage": "buchbarkeit",
@@ -4225,8 +4237,8 @@
   },
   "katalog W ch": {
    "anfrage": "ch",
-   "vorher": 1062,
-   "nachher": 1062,
+   "vorher": 1063,
+   "nachher": 1063,
    "aenderungen": 0
   },
   "katalog W che": {
@@ -4243,9 +4255,9 @@
   },
   "katalog W chf": {
    "anfrage": "chf",
-   "vorher": 843,
+   "vorher": 844,
    "nachher": 818,
-   "aenderungen": 25
+   "aenderungen": 26
   },
   "katalog W chf13": {
    "anfrage": "chf13",
@@ -4519,8 +4531,8 @@
   },
   "katalog W d": {
    "anfrage": "d",
-   "vorher": 1062,
-   "nachher": 1062,
+   "vorher": 1063,
+   "nachher": 1063,
    "aenderungen": 0
   },
   "katalog W d3": {
@@ -4555,8 +4567,8 @@
   },
   "katalog W das": {
    "anfrage": "das",
-   "vorher": 50,
-   "nachher": 49,
+   "vorher": 51,
+   "nachher": 50,
    "aenderungen": 1
   },
   "katalog W data": {
@@ -4609,8 +4621,8 @@
   },
   "katalog W de": {
    "anfrage": "de",
-   "vorher": 1035,
-   "nachher": 1031,
+   "vorher": 1036,
+   "nachher": 1032,
    "aenderungen": 14
   },
   "katalog W deadlines": {
@@ -4681,14 +4693,14 @@
   },
   "katalog W der": {
    "anfrage": "der",
-   "vorher": 682,
-   "nachher": 445,
+   "vorher": 683,
+   "nachher": 446,
    "aenderungen": 311
   },
   "katalog W des": {
    "anfrage": "des",
-   "vorher": 452,
-   "nachher": 317,
+   "vorher": 453,
+   "nachher": 318,
    "aenderungen": 135
   },
   "katalog W design": {
@@ -4736,8 +4748,8 @@
   "katalog W deutsch": {
    "anfrage": "deutsch",
    "vorher": 60,
-   "nachher": 604,
-   "aenderungen": 544
+   "nachher": 605,
+   "aenderungen": 545
   },
   "katalog W deutschkenntnisse": {
    "anfrage": "deutschkenntnisse",
@@ -4771,8 +4783,8 @@
   },
   "katalog W die": {
    "anfrage": "die",
-   "vorher": 977,
-   "nachher": 933,
+   "vorher": 978,
+   "nachher": 934,
    "aenderungen": 44
   },
   "katalog W diese": {
@@ -4969,9 +4981,9 @@
   },
   "katalog W du": {
    "anfrage": "du",
-   "vorher": 818,
+   "vorher": 819,
    "nachher": 530,
-   "aenderungen": 288
+   "aenderungen": 289
   },
   "katalog W durch": {
    "anfrage": "durch",
@@ -4999,8 +5011,8 @@
   },
   "katalog W e": {
    "anfrage": "e",
-   "vorher": 1062,
-   "nachher": 1062,
+   "vorher": 1063,
+   "nachher": 1063,
    "aenderungen": 0
   },
   "katalog W early": {
@@ -5167,14 +5179,14 @@
   },
   "katalog W ein": {
    "anfrage": "ein",
-   "vorher": 686,
-   "nachher": 820,
+   "vorher": 687,
+   "nachher": 821,
    "aenderungen": 168
   },
   "katalog W eine": {
    "anfrage": "eine",
-   "vorher": 355,
-   "nachher": 635,
+   "vorher": 356,
+   "nachher": 636,
    "aenderungen": 326
   },
   "katalog W einem": {
@@ -5371,8 +5383,8 @@
   },
   "katalog W en": {
    "anfrage": "en",
-   "vorher": 1062,
-   "nachher": 1058,
+   "vorher": 1063,
+   "nachher": 1059,
    "aenderungen": 4
   },
   "katalog W enddatum": {
@@ -5599,8 +5611,8 @@
   },
   "katalog W et": {
    "anfrage": "et",
-   "vorher": 592,
-   "nachher": 624,
+   "vorher": 593,
+   "nachher": 625,
    "aenderungen": 292
   },
   "katalog W eth": {
@@ -5635,8 +5647,8 @@
   },
   "katalog W event": {
    "anfrage": "event",
-   "vorher": 13,
-   "nachher": 9,
+   "vorher": 14,
+   "nachher": 10,
    "aenderungen": 4
   },
   "katalog W eventabhangig": {
@@ -5743,14 +5755,14 @@
   },
   "katalog W f": {
    "anfrage": "f",
-   "vorher": 1059,
-   "nachher": 1056,
+   "vorher": 1060,
+   "nachher": 1057,
    "aenderungen": 3
   },
   "katalog W fach": {
    "anfrage": "fach",
-   "vorher": 61,
-   "nachher": 48,
+   "vorher": 62,
+   "nachher": 49,
    "aenderungen": 13
   },
   "katalog W fachausweis": {
@@ -5957,6 +5969,12 @@
    "nachher": 0,
    "aenderungen": 1
   },
+  "katalog W folgt": {
+   "anfrage": "folgt",
+   "vorher": 2,
+   "nachher": 1,
+   "aenderungen": 1
+  },
   "katalog W fondamentaux": {
    "anfrage": "fondamentaux",
    "vorher": 11,
@@ -6073,9 +6091,9 @@
   },
   "katalog W fr": {
    "anfrage": "fr",
-   "vorher": 499,
+   "vorher": 500,
    "nachher": 539,
-   "aenderungen": 60
+   "aenderungen": 61
   },
   "katalog W frais": {
    "anfrage": "frais",
@@ -6109,9 +6127,9 @@
   },
   "katalog W frei": {
    "anfrage": "frei",
-   "vorher": 40,
+   "vorher": 41,
    "nachher": 34,
-   "aenderungen": 6
+   "aenderungen": 7
   },
   "katalog W freie": {
    "anfrage": "freie",
@@ -6123,6 +6141,12 @@
    "anfrage": "freien",
    "vorher": 4,
    "nachher": 3,
+   "aenderungen": 1
+  },
+  "katalog W freiwilliger": {
+   "anfrage": "freiwilliger",
+   "vorher": 1,
+   "nachher": 0,
    "aenderungen": 1
   },
   "katalog W freude": {
@@ -6199,8 +6223,8 @@
   },
   "katalog W fur": {
    "anfrage": "fur",
-   "vorher": 589,
-   "nachher": 541,
+   "vorher": 590,
+   "nachher": 542,
    "aenderungen": 48
   },
   "katalog W further": {
@@ -6577,8 +6601,8 @@
   },
   "katalog W h": {
    "anfrage": "h",
-   "vorher": 1062,
-   "nachher": 1062,
+   "vorher": 1063,
+   "nachher": 1063,
    "aenderungen": 0
   },
   "katalog W hackathon": {
@@ -6643,9 +6667,9 @@
   },
   "katalog W hf": {
    "anfrage": "hf",
-   "vorher": 843,
+   "vorher": 844,
    "nachher": 818,
-   "aenderungen": 25
+   "aenderungen": 26
   },
   "katalog W hilfreich": {
    "anfrage": "hilfreich",
@@ -6763,8 +6787,8 @@
   },
   "katalog W i": {
    "anfrage": "i",
-   "vorher": 1062,
-   "nachher": 1062,
+   "vorher": 1063,
+   "nachher": 1063,
    "aenderungen": 0
   },
   "katalog W ibaw": {
@@ -6781,8 +6805,8 @@
   },
   "katalog W iel": {
    "anfrage": "iel",
-   "vorher": 131,
-   "nachher": 98,
+   "vorher": 132,
+   "nachher": 99,
    "aenderungen": 33
   },
   "katalog W ifc": {
@@ -6841,8 +6865,8 @@
   },
   "katalog W in": {
    "anfrage": "in",
-   "vorher": 1056,
-   "nachher": 1049,
+   "vorher": 1057,
+   "nachher": 1050,
    "aenderungen": 11
   },
   "katalog W including": {
@@ -6893,6 +6917,12 @@
    "nachher": 2,
    "aenderungen": 1
   },
+  "katalog W info": {
+   "anfrage": "info",
+   "vorher": 99,
+   "nachher": 39,
+   "aenderungen": 60
+  },
   "katalog W informatiker": {
    "anfrage": "informatiker",
    "vorher": 1,
@@ -6931,8 +6961,8 @@
   },
   "katalog W innen": {
    "anfrage": "innen",
-   "vorher": 195,
-   "nachher": 81,
+   "vorher": 196,
+   "nachher": 82,
    "aenderungen": 114
   },
   "katalog W inquiry": {
@@ -7051,8 +7081,8 @@
   },
   "katalog W is": {
    "anfrage": "is",
-   "vorher": 1060,
-   "nachher": 1060,
+   "vorher": 1061,
+   "nachher": 1061,
    "aenderungen": 2
   },
   "katalog W iscriviti": {
@@ -7069,14 +7099,14 @@
   },
   "katalog W ist": {
    "anfrage": "ist",
-   "vorher": 551,
-   "nachher": 253,
+   "vorher": 552,
+   "nachher": 254,
    "aenderungen": 298
   },
   "katalog W it": {
    "anfrage": "it",
-   "vorher": 1009,
-   "nachher": 945,
+   "vorher": 1010,
+   "nachher": 946,
    "aenderungen": 72
   },
   "katalog W italiana": {
@@ -7183,8 +7213,8 @@
   },
   "katalog W jour": {
    "anfrage": "jour",
-   "vorher": 401,
-   "nachher": 394,
+   "vorher": 402,
+   "nachher": 395,
    "aenderungen": 7
   },
   "katalog W journalism": {
@@ -7207,14 +7237,14 @@
   },
   "katalog W journalist": {
    "anfrage": "journalist",
-   "vorher": 249,
-   "nachher": 160,
+   "vorher": 250,
+   "nachher": 161,
    "aenderungen": 89
   },
   "katalog W journaliste": {
    "anfrage": "journaliste",
-   "vorher": 48,
-   "nachher": 39,
+   "vorher": 49,
+   "nachher": 40,
    "aenderungen": 9
   },
   "katalog W journalisten": {
@@ -7225,8 +7255,8 @@
   },
   "katalog W journalistes": {
    "anfrage": "journalistes",
-   "vorher": 10,
-   "nachher": 3,
+   "vorher": 11,
+   "nachher": 4,
    "aenderungen": 7
   },
   "katalog W journalistinnen": {
@@ -7357,14 +7387,14 @@
   },
   "katalog W kein": {
    "anfrage": "kein",
-   "vorher": 292,
-   "nachher": 619,
+   "vorher": 293,
+   "nachher": 620,
    "aenderungen": 359
   },
   "katalog W keine": {
    "anfrage": "keine",
-   "vorher": 277,
-   "nachher": 612,
+   "vorher": 278,
+   "nachher": 613,
    "aenderungen": 365
   },
   "katalog W kennenlerngesprach": {
@@ -7501,8 +7531,8 @@
   },
   "katalog W konnen": {
    "anfrage": "konnen",
-   "vorher": 61,
-   "nachher": 56,
+   "vorher": 62,
+   "nachher": 57,
    "aenderungen": 5
   },
   "katalog W kontakt": {
@@ -7525,8 +7555,8 @@
   },
   "katalog W kostenlos": {
    "anfrage": "kostenlos",
-   "vorher": 27,
-   "nachher": 25,
+   "vorher": 28,
+   "nachher": 26,
    "aenderungen": 6
   },
   "katalog W kostenubernahme": {
@@ -7733,6 +7763,12 @@
    "nachher": 0,
    "aenderungen": 9
   },
+  "katalog W kurz": {
+   "anfrage": "kurz",
+   "vorher": 24,
+   "nachher": 23,
+   "aenderungen": 1
+  },
   "katalog W kv": {
    "anfrage": "kv",
    "vorher": 4,
@@ -7741,15 +7777,15 @@
   },
   "katalog W l": {
    "anfrage": "l",
-   "vorher": 1062,
-   "nachher": 1062,
+   "vorher": 1063,
+   "nachher": 1063,
    "aenderungen": 0
   },
   "katalog W la": {
    "anfrage": "la",
-   "vorher": 800,
+   "vorher": 801,
    "nachher": 666,
-   "aenderungen": 190
+   "aenderungen": 191
   },
   "katalog W langfilm": {
    "anfrage": "langfilm",
@@ -7813,8 +7849,8 @@
   },
   "katalog W le": {
    "anfrage": "le",
-   "vorher": 996,
-   "nachher": 879,
+   "vorher": 997,
+   "nachher": 880,
    "aenderungen": 117
   },
   "katalog W lead": {
@@ -7915,8 +7951,8 @@
   },
   "katalog W li": {
    "anfrage": "li",
-   "vorher": 1036,
-   "nachher": 1017,
+   "vorher": 1037,
+   "nachher": 1018,
    "aenderungen": 31
   },
   "katalog W libona": {
@@ -7973,6 +8009,12 @@
    "nachher": 0,
    "aenderungen": 10
   },
+  "katalog W link": {
+   "anfrage": "link",
+   "vorher": 20,
+   "nachher": 11,
+   "aenderungen": 9
+  },
   "katalog W links": {
    "anfrage": "links",
    "vorher": 13,
@@ -7987,8 +8029,8 @@
   },
   "katalog W live": {
    "anfrage": "live",
-   "vorher": 382,
-   "nachher": 383,
+   "vorher": 383,
+   "nachher": 384,
    "aenderungen": 1
   },
   "katalog W livestream": {
@@ -8035,9 +8077,9 @@
   },
   "katalog W mail": {
    "anfrage": "mail",
-   "vorher": 51,
+   "vorher": 52,
    "nachher": 6,
-   "aenderungen": 45
+   "aenderungen": 46
   },
   "katalog W mais": {
    "anfrage": "mais",
@@ -8185,8 +8227,8 @@
   },
   "katalog W medien": {
    "anfrage": "medien",
-   "vorher": 911,
-   "nachher": 879,
+   "vorher": 912,
+   "nachher": 880,
    "aenderungen": 32
   },
   "katalog W medienberufserfahrung": {
@@ -8239,8 +8281,8 @@
   },
   "katalog W medienschaffende": {
    "anfrage": "medienschaffende",
-   "vorher": 15,
-   "nachher": 10,
+   "vorher": 16,
+   "nachher": 11,
    "aenderungen": 5
   },
   "katalog W mediensektor": {
@@ -8359,8 +8401,8 @@
   },
   "katalog W mit": {
    "anfrage": "mit",
-   "vorher": 521,
-   "nachher": 430,
+   "vorher": 522,
+   "nachher": 431,
    "aenderungen": 91
   },
   "katalog W mitarbeitende": {
@@ -8539,8 +8581,8 @@
   },
   "katalog W n": {
    "anfrage": "n",
-   "vorher": 1062,
-   "nachher": 1062,
+   "vorher": 1063,
+   "nachher": 1063,
    "aenderungen": 0
   },
   "katalog W nach": {
@@ -8599,8 +8641,8 @@
   },
   "katalog W ne": {
    "anfrage": "ne",
-   "vorher": 1041,
-   "nachher": 1037,
+   "vorher": 1042,
+   "nachher": 1038,
    "aenderungen": 22
   },
   "katalog W nennt": {
@@ -8779,14 +8821,14 @@
   },
   "katalog W of": {
    "anfrage": "of",
-   "vorher": 883,
-   "nachher": 681,
+   "vorher": 884,
+   "nachher": 682,
    "aenderungen": 322
   },
   "katalog W offen": {
    "anfrage": "offen",
-   "vorher": 461,
-   "nachher": 581,
+   "vorher": 462,
+   "nachher": 582,
    "aenderungen": 340
   },
   "katalog W offene": {
@@ -8803,8 +8845,8 @@
   },
   "katalog W offentlich": {
    "anfrage": "offentlich",
-   "vorher": 416,
-   "nachher": 576,
+   "vorher": 417,
+   "nachher": 577,
    "aenderungen": 300
   },
   "katalog W offentliche": {
@@ -8905,8 +8947,8 @@
   },
   "katalog W on": {
    "anfrage": "on",
-   "vorher": 1012,
-   "nachher": 978,
+   "vorher": 1013,
+   "nachher": 979,
    "aenderungen": 38
   },
   "katalog W onla": {
@@ -8917,8 +8959,8 @@
   },
   "katalog W online": {
    "anfrage": "online",
-   "vorher": 561,
-   "nachher": 536,
+   "vorher": 562,
+   "nachher": 537,
    "aenderungen": 25
   },
   "katalog W open": {
@@ -8935,14 +8977,14 @@
   },
   "katalog W or": {
    "anfrage": "or",
-   "vorher": 927,
-   "nachher": 836,
+   "vorher": 928,
+   "nachher": 837,
    "aenderungen": 119
   },
   "katalog W ora": {
    "anfrage": "ora",
-   "vorher": 157,
-   "nachher": 35,
+   "vorher": 158,
+   "nachher": 36,
    "aenderungen": 122
   },
   "katalog W order": {
@@ -9001,8 +9043,8 @@
   },
   "katalog W ou": {
    "anfrage": "ou",
-   "vorher": 757,
-   "nachher": 577,
+   "vorher": 758,
+   "nachher": 578,
    "aenderungen": 180
   },
   "katalog W outil": {
@@ -9157,9 +9199,9 @@
   },
   "katalog W per": {
    "anfrage": "per",
-   "vorher": 137,
+   "vorher": 138,
    "nachher": 123,
-   "aenderungen": 14
+   "aenderungen": 15
   },
   "katalog W person": {
    "anfrage": "person",
@@ -9409,8 +9451,8 @@
   },
   "katalog W praxis": {
    "anfrage": "praxis",
-   "vorher": 812,
-   "nachher": 808,
+   "vorher": 813,
+   "nachher": 809,
    "aenderungen": 4
   },
   "katalog W praxiserfahrung": {
@@ -9913,8 +9955,8 @@
   },
   "katalog W redaktion": {
    "anfrage": "redaktion",
-   "vorher": 74,
-   "nachher": 67,
+   "vorher": 75,
+   "nachher": 68,
    "aenderungen": 7
   },
   "katalog W redaktionelle": {
@@ -9931,8 +9973,8 @@
   },
   "katalog W redaktionen": {
    "anfrage": "redaktionen",
-   "vorher": 11,
-   "nachher": 11,
+   "vorher": 12,
+   "nachher": 12,
    "aenderungen": 0
   },
   "katalog W redaktions": {
@@ -10183,8 +10225,8 @@
   },
   "katalog W s": {
    "anfrage": "s",
-   "vorher": 1062,
-   "nachher": 1062,
+   "vorher": 1063,
+   "nachher": 1063,
    "aenderungen": 0
   },
   "katalog W sae": {
@@ -10297,14 +10339,14 @@
   },
   "katalog W schweiz": {
    "anfrage": "schweiz",
-   "vorher": 1058,
-   "nachher": 938,
+   "vorher": 1059,
+   "nachher": 939,
    "aenderungen": 120
   },
   "katalog W schweizer": {
    "anfrage": "schweizer",
-   "vorher": 182,
-   "nachher": 29,
+   "vorher": 183,
+   "nachher": 30,
    "aenderungen": 153
   },
   "katalog W sehr": {
@@ -10435,8 +10477,8 @@
   },
   "katalog W sfj": {
    "anfrage": "sfj",
-   "vorher": 1,
-   "nachher": 1,
+   "vorher": 2,
+   "nachher": 2,
    "aenderungen": 0
   },
   "katalog W sgp": {
@@ -10531,8 +10573,8 @@
   },
   "katalog W so": {
    "anfrage": "so",
-   "vorher": 458,
-   "nachher": 357,
+   "vorher": 459,
+   "nachher": 358,
    "aenderungen": 101
   },
   "katalog W sobald": {
@@ -10609,8 +10651,8 @@
   },
   "katalog W special": {
    "anfrage": "special",
-   "vorher": 5,
-   "nachher": 3,
+   "vorher": 6,
+   "nachher": 4,
    "aenderungen": 2
   },
   "katalog W specific": {
@@ -10687,8 +10729,8 @@
   },
   "katalog W st": {
    "anfrage": "st",
-   "vorher": 1040,
-   "nachher": 999,
+   "vorher": 1041,
+   "nachher": 1000,
    "aenderungen": 43
   },
   "katalog W staatsangehorige": {
@@ -10723,8 +10765,8 @@
   },
   "katalog W stand": {
    "anfrage": "stand",
-   "vorher": 104,
-   "nachher": 88,
+   "vorher": 105,
+   "nachher": 89,
    "aenderungen": 16
   },
   "katalog W standard": {
@@ -10885,8 +10927,8 @@
   },
   "katalog W suisse": {
    "anfrage": "suisse",
-   "vorher": 122,
-   "nachher": 29,
+   "vorher": 123,
+   "nachher": 30,
    "aenderungen": 93
   },
   "katalog W suisses": {
@@ -10957,8 +10999,8 @@
   },
   "katalog W t": {
    "anfrage": "t",
-   "vorher": 1062,
-   "nachher": 1062,
+   "vorher": 1063,
+   "nachher": 1063,
    "aenderungen": 0
   },
   "katalog W tablet": {
@@ -11191,8 +11233,8 @@
   },
   "katalog W ti": {
    "anfrage": "ti",
-   "vorher": 1013,
-   "nachher": 952,
+   "vorher": 1014,
+   "nachher": 953,
    "aenderungen": 61
   },
   "katalog W ticket": {
@@ -11249,10 +11291,16 @@
    "nachher": 34,
    "aenderungen": 4
   },
+  "katalog W twint": {
+   "anfrage": "twint",
+   "vorher": 1,
+   "nachher": 0,
+   "aenderungen": 1
+  },
   "katalog W u": {
    "anfrage": "u",
-   "vorher": 1062,
-   "nachher": 1062,
+   "vorher": 1063,
+   "nachher": 1063,
    "aenderungen": 0
   },
   "katalog W uber": {
@@ -11329,14 +11377,14 @@
   },
   "katalog W uhr": {
    "anfrage": "uhr",
-   "vorher": 273,
-   "nachher": 159,
+   "vorher": 274,
+   "nachher": 160,
    "aenderungen": 114
   },
   "katalog W ui": {
    "anfrage": "ui",
-   "vorher": 236,
-   "nachher": 87,
+   "vorher": 237,
+   "nachher": 88,
    "aenderungen": 149
   },
   "katalog W um": {
@@ -11383,8 +11431,8 @@
   },
   "katalog W un": {
    "anfrage": "un",
-   "vorher": 1052,
-   "nachher": 1050,
+   "vorher": 1053,
+   "nachher": 1051,
    "aenderungen": 8
   },
   "katalog W unbestatigt": {
@@ -11395,8 +11443,8 @@
   },
   "katalog W und": {
    "anfrage": "und",
-   "vorher": 1000,
-   "nachher": 977,
+   "vorher": 1001,
+   "nachher": 978,
    "aenderungen": 23
   },
   "katalog W understanding": {
@@ -11465,6 +11513,12 @@
    "nachher": 5,
    "aenderungen": 8
   },
+  "katalog W unkostenbeitrag": {
+   "anfrage": "unkostenbeitrag",
+   "vorher": 1,
+   "nachher": 0,
+   "aenderungen": 1
+  },
   "katalog W unmittelbar": {
    "anfrage": "unmittelbar",
    "vorher": 1,
@@ -11473,9 +11527,9 @@
   },
   "katalog W unter": {
    "anfrage": "unter",
-   "vorher": 154,
+   "vorher": 155,
    "nachher": 132,
-   "aenderungen": 22
+   "aenderungen": 23
   },
   "katalog W unterkunft": {
    "anfrage": "unterkunft",
@@ -11485,9 +11539,9 @@
   },
   "katalog W unterlagen": {
    "anfrage": "unterlagen",
-   "vorher": 12,
+   "vorher": 13,
    "nachher": 0,
-   "aenderungen": 12
+   "aenderungen": 13
   },
   "katalog W unterliegt": {
    "anfrage": "unterliegt",
@@ -11617,9 +11671,9 @@
   },
   "katalog W veranstaltung": {
    "anfrage": "veranstaltung",
-   "vorher": 5,
+   "vorher": 6,
    "nachher": 4,
-   "aenderungen": 1
+   "aenderungen": 2
   },
   "katalog W verantwortlicher": {
    "anfrage": "verantwortlicher",
@@ -11785,8 +11839,8 @@
   },
   "katalog W via": {
    "anfrage": "via",
-   "vorher": 19,
-   "nachher": 2,
+   "vorher": 20,
+   "nachher": 3,
    "aenderungen": 17
   },
   "katalog W video": {
@@ -11893,9 +11947,9 @@
   },
   "katalog W vor": {
    "anfrage": "vor",
-   "vorher": 205,
+   "vorher": 206,
    "nachher": 67,
-   "aenderungen": 138
+   "aenderungen": 139
   },
   "katalog W vorausgesetzt": {
    "anfrage": "vorausgesetzt",
@@ -12181,8 +12235,8 @@
   },
   "katalog W wird": {
    "anfrage": "wird",
-   "vorher": 18,
-   "nachher": 9,
+   "vorher": 19,
+   "nachher": 10,
    "aenderungen": 9
   },
   "katalog W wirtschaft": {
@@ -12265,8 +12319,8 @@
   },
   "katalog W x": {
    "anfrage": "x",
-   "vorher": 898,
-   "nachher": 875,
+   "vorher": 899,
+   "nachher": 876,
    "aenderungen": 23
   },
   "katalog W you": {
@@ -12283,8 +12337,8 @@
   },
   "katalog W z": {
    "anfrage": "z",
-   "vorher": 1062,
-   "nachher": 1054,
+   "vorher": 1063,
+   "nachher": 1055,
    "aenderungen": 8
   },
   "katalog W zeigt": {
@@ -12331,14 +12385,14 @@
   },
   "katalog W zoom": {
    "anfrage": "zoom",
-   "vorher": 5,
-   "nachher": 5,
+   "vorher": 6,
+   "nachher": 6,
    "aenderungen": 0
   },
   "katalog W zu": {
    "anfrage": "zu",
-   "vorher": 671,
-   "nachher": 623,
+   "vorher": 672,
+   "nachher": 624,
    "aenderungen": 122
   },
   "katalog W zudem": {
@@ -12553,8 +12607,8 @@
   },
   "smart T04": {
    "anfrage": "500 Euro",
-   "vorher": 1062,
-   "nachher": 1062,
+   "vorher": 1063,
+   "nachher": 1063,
    "aenderungen": 0
   },
   "smart T05": {
@@ -12565,14 +12619,14 @@
   },
   "smart T06": {
    "anfrage": "kostenlos",
-   "vorher": 24,
-   "nachher": 24,
+   "vorher": 25,
+   "nachher": 25,
    "aenderungen": 0
   },
   "smart T07": {
    "anfrage": "Kurs für Journalistinnen, CHF 500",
-   "vorher": 1062,
-   "nachher": 1062,
+   "vorher": 1063,
+   "nachher": 1063,
    "aenderungen": 0
   },
   "smart T08": {
@@ -15011,10 +15065,16 @@
    "nachher": 2,
    "aenderungen": 0
   },
+  "smart W ajs": {
+   "anfrage": "ajs",
+   "vorher": 2,
+   "nachher": 2,
+   "aenderungen": 0
+  },
   "smart W aktion": {
    "anfrage": "aktion",
-   "vorher": 69,
-   "nachher": 69,
+   "vorher": 70,
+   "nachher": 70,
    "aenderungen": 0
   },
   "smart W aktionspreis": {
@@ -15253,8 +15313,8 @@
   },
   "smart W angabe": {
    "anfrage": "angabe",
-   "vorher": 210,
-   "nachher": 494,
+   "vorher": 211,
+   "nachher": 495,
    "aenderungen": 287
   },
   "smart W angebot": {
@@ -15641,6 +15701,12 @@
    "nachher": 0,
    "aenderungen": 0
   },
+  "smart W aufzeichnung": {
+   "anfrage": "aufzeichnung",
+   "vorher": 2,
+   "nachher": 2,
+   "aenderungen": 0
+  },
   "smart W aus": {
    "anfrage": "aus",
    "vorher": 48,
@@ -15991,14 +16057,14 @@
   },
   "smart W beitrag": {
    "anfrage": "beitrag",
-   "vorher": 18,
-   "nachher": 18,
+   "vorher": 19,
+   "nachher": 19,
    "aenderungen": 0
   },
   "smart W beitragen": {
    "anfrage": "beitragen",
-   "vorher": 3,
-   "nachher": 3,
+   "vorher": 4,
+   "nachher": 4,
    "aenderungen": 0
   },
   "smart W belastbarer": {
@@ -16669,8 +16735,8 @@
   },
   "smart W chf13": {
    "anfrage": "chf13",
-   "vorher": 1062,
-   "nachher": 1062,
+   "vorher": 1063,
+   "nachher": 1063,
    "aenderungen": 0
   },
   "smart W chur": {
@@ -18055,8 +18121,8 @@
   },
   "smart W event": {
    "anfrage": "event",
-   "vorher": 9,
-   "nachher": 9,
+   "vorher": 10,
+   "nachher": 10,
    "aenderungen": 0
   },
   "smart W eventabhangig": {
@@ -18169,8 +18235,8 @@
   },
   "smart W fach": {
    "anfrage": "fach",
-   "vorher": 48,
-   "nachher": 48,
+   "vorher": 49,
+   "nachher": 49,
    "aenderungen": 0
   },
   "smart W fachausweis": {
@@ -18377,6 +18443,12 @@
    "nachher": 0,
    "aenderungen": 0
   },
+  "smart W folgt": {
+   "anfrage": "folgt",
+   "vorher": 1,
+   "nachher": 1,
+   "aenderungen": 0
+  },
   "smart W fondamentaux": {
    "anfrage": "fondamentaux",
    "vorher": 10,
@@ -18523,8 +18595,8 @@
   },
   "smart W free": {
    "anfrage": "free",
-   "vorher": 24,
-   "nachher": 24,
+   "vorher": 25,
+   "nachher": 25,
    "aenderungen": 0
   },
   "smart W frei": {
@@ -18541,6 +18613,12 @@
   },
   "smart W freien": {
    "anfrage": "freien",
+   "vorher": 0,
+   "nachher": 0,
+   "aenderungen": 0
+  },
+  "smart W freiwilliger": {
+   "anfrage": "freiwilliger",
    "vorher": 0,
    "nachher": 0,
    "aenderungen": 0
@@ -18919,8 +18997,8 @@
   },
   "smart W gratis": {
    "anfrage": "gratis",
-   "vorher": 24,
-   "nachher": 24,
+   "vorher": 25,
+   "nachher": 25,
    "aenderungen": 0
   },
   "smart W grenzgangerregime": {
@@ -19313,6 +19391,12 @@
    "nachher": 2,
    "aenderungen": 0
   },
+  "smart W info": {
+   "anfrage": "info",
+   "vorher": 39,
+   "nachher": 39,
+   "aenderungen": 0
+  },
   "smart W informatiker": {
    "anfrage": "informatiker",
    "vorher": 0,
@@ -19603,8 +19687,8 @@
   },
   "smart W jour": {
    "anfrage": "jour",
-   "vorher": 394,
-   "nachher": 394,
+   "vorher": 395,
+   "nachher": 395,
    "aenderungen": 0
   },
   "smart W journalism": {
@@ -19633,8 +19717,8 @@
   },
   "smart W journaliste": {
    "anfrage": "journaliste",
-   "vorher": 39,
-   "nachher": 39,
+   "vorher": 40,
+   "nachher": 40,
    "aenderungen": 0
   },
   "smart W journalisten": {
@@ -19645,8 +19729,8 @@
   },
   "smart W journalistes": {
    "anfrage": "journalistes",
-   "vorher": 3,
-   "nachher": 3,
+   "vorher": 4,
+   "nachher": 4,
    "aenderungen": 0
   },
   "smart W journalistinnen": {
@@ -19921,8 +20005,8 @@
   },
   "smart W konnen": {
    "anfrage": "konnen",
-   "vorher": 56,
-   "nachher": 56,
+   "vorher": 57,
+   "nachher": 57,
    "aenderungen": 0
   },
   "smart W kontakt": {
@@ -19945,8 +20029,8 @@
   },
   "smart W kostenlos": {
    "anfrage": "kostenlos",
-   "vorher": 24,
-   "nachher": 24,
+   "vorher": 25,
+   "nachher": 25,
    "aenderungen": 0
   },
   "smart W kostenubernahme": {
@@ -20151,6 +20235,12 @@
    "anfrage": "kursunterlagen",
    "vorher": 0,
    "nachher": 0,
+   "aenderungen": 0
+  },
+  "smart W kurz": {
+   "anfrage": "kurz",
+   "vorher": 23,
+   "nachher": 23,
    "aenderungen": 0
   },
   "smart W kv": {
@@ -20393,6 +20483,12 @@
    "nachher": 0,
    "aenderungen": 0
   },
+  "smart W link": {
+   "anfrage": "link",
+   "vorher": 11,
+   "nachher": 11,
+   "aenderungen": 0
+  },
   "smart W links": {
    "anfrage": "links",
    "vorher": 5,
@@ -20605,8 +20701,8 @@
   },
   "smart W medien": {
    "anfrage": "medien",
-   "vorher": 879,
-   "nachher": 879,
+   "vorher": 880,
+   "nachher": 880,
    "aenderungen": 0
   },
   "smart W medienberufserfahrung": {
@@ -21829,8 +21925,8 @@
   },
   "smart W praxis": {
    "anfrage": "praxis",
-   "vorher": 808,
-   "nachher": 808,
+   "vorher": 809,
+   "nachher": 809,
    "aenderungen": 0
   },
   "smart W praxiserfahrung": {
@@ -22333,8 +22429,8 @@
   },
   "smart W redaktion": {
    "anfrage": "redaktion",
-   "vorher": 67,
-   "nachher": 67,
+   "vorher": 68,
+   "nachher": 68,
    "aenderungen": 0
   },
   "smart W redaktionelle": {
@@ -22717,14 +22813,14 @@
   },
   "smart W schweiz": {
    "anfrage": "schweiz",
-   "vorher": 938,
-   "nachher": 938,
+   "vorher": 939,
+   "nachher": 939,
    "aenderungen": 0
   },
   "smart W schweizer": {
    "anfrage": "schweizer",
-   "vorher": 30,
-   "nachher": 29,
+   "vorher": 31,
+   "nachher": 30,
    "aenderungen": 2
   },
   "smart W sehr": {
@@ -22855,8 +22951,8 @@
   },
   "smart W sfj": {
    "anfrage": "sfj",
-   "vorher": 1,
-   "nachher": 1,
+   "vorher": 2,
+   "nachher": 2,
    "aenderungen": 0
   },
   "smart W sgp": {
@@ -23029,8 +23125,8 @@
   },
   "smart W special": {
    "anfrage": "special",
-   "vorher": 3,
-   "nachher": 3,
+   "vorher": 4,
+   "nachher": 4,
    "aenderungen": 0
   },
   "smart W specific": {
@@ -23143,8 +23239,8 @@
   },
   "smart W stand": {
    "anfrage": "stand",
-   "vorher": 90,
-   "nachher": 88,
+   "vorher": 91,
+   "nachher": 89,
    "aenderungen": 3
   },
   "smart W standard": {
@@ -23305,8 +23401,8 @@
   },
   "smart W suisse": {
    "anfrage": "suisse",
-   "vorher": 29,
-   "nachher": 29,
+   "vorher": 30,
+   "nachher": 30,
    "aenderungen": 0
   },
   "smart W suisses": {
@@ -23669,6 +23765,12 @@
    "nachher": 24,
    "aenderungen": 0
   },
+  "smart W twint": {
+   "anfrage": "twint",
+   "vorher": 0,
+   "nachher": 0,
+   "aenderungen": 0
+  },
   "smart W u": {
    "anfrage": "u",
    "vorher": 0,
@@ -23749,8 +23851,8 @@
   },
   "smart W uhr": {
    "anfrage": "uhr",
-   "vorher": 21,
-   "nachher": 20,
+   "vorher": 22,
+   "nachher": 21,
    "aenderungen": 2
   },
   "smart W ui": {
@@ -23883,6 +23985,12 @@
    "anfrage": "university",
    "vorher": 5,
    "nachher": 5,
+   "aenderungen": 0
+  },
+  "smart W unkostenbeitrag": {
+   "anfrage": "unkostenbeitrag",
+   "vorher": 0,
+   "nachher": 0,
    "aenderungen": 0
   },
   "smart W unmittelbar": {
@@ -24205,8 +24313,8 @@
   },
   "smart W via": {
    "anfrage": "via",
-   "vorher": 2,
-   "nachher": 2,
+   "vorher": 3,
+   "nachher": 3,
    "aenderungen": 0
   },
   "smart W video": {
@@ -24601,8 +24709,8 @@
   },
   "smart W wird": {
    "anfrage": "wird",
-   "vorher": 11,
-   "nachher": 9,
+   "vorher": 12,
+   "nachher": 10,
    "aenderungen": 3
   },
   "smart W wirtschaft": {
@@ -24751,8 +24859,8 @@
   },
   "smart W zoom": {
    "anfrage": "zoom",
-   "vorher": 5,
-   "nachher": 5,
+   "vorher": 6,
+   "nachher": 6,
    "aenderungen": 0
   },
   "smart W zu": {

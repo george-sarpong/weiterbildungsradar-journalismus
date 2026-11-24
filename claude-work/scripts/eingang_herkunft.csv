@@ -43,3 +43,4 @@ OWNER_E280,"Archiviert nach E015 auf Owner-Entscheid E280: Kurs nicht mehr auf d
 REGEL_E289,Preisstatus und Bedingungsart nach Owner-Regel E289 aus dem in P31 belegten Preis (Monatsbuild 24.11.),E289,0
 OWNER_E290,Historisches Feld beta_sichtbar für neue Angebote nach Owner-Entscheid E290,E290,0
 OWNER_E297,Owner-Hinweis zu Preis und Bedingung eines Angebots (E297),E297,0
+ANBIETERSEITE_E298,"Angebotsseite des Anbieters im Chat abgerufen (WebFetch) und von Claude gelesen, neues Angebot nach Owner-Entscheid E298",E298,0

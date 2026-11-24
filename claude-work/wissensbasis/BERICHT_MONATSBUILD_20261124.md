@@ -1,6 +1,6 @@
 # BERICHT Monatsbuild 24.11.2026 (erster Monatsbuild nach E177/E258)
 
-Grundlage: GESAMTWISSENSSTAND §9 (E281 und Dawan im nächsten Monatsbuild, danach Monatsbuild und Release nur mit Freigabe); Owner-Entscheide E289–E292, E294 (Release-Freigabe), E295 (Test Q12), E296 (Paket optimiert), E297 (VSM-003 nur für Mitglieder); Befund E293.
+Grundlage: GESAMTWISSENSSTAND §9 (E281 und Dawan im nächsten Monatsbuild, danach Monatsbuild und Release nur mit Freigabe); Owner-Entscheide E289–E292, E294 (Release-Freigabe), E295 (Test Q12), E296 (Paket optimiert), E297 (VSM-003 nur für Mitglieder), E298 (SFJ-Meetup Resilienz), E299 (keine Offenlegung); Befund E293.
 Arbeitszweig `claude/datenharmonisierung`, gepusht. Kein Upload, kein Merge.
 Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 
@@ -51,6 +51,14 @@ Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 - Tests [GEPRÜFT]: Eingang 22 Dateien ohne Fehler, P24 14/14, Nachträge 14/14, P30 34/34, `test_paket29.py` 9/1 (P12 +4'0xx Byte wie E253), Anzeige P01/P03/P05/P06/P08 PASS, P04 PASS (Sollliste 24.11. neu gemessen, 644), Stufe 1 35/0/4 an 24.11. und 03.12., Unterseiten pixelgleich 16/16.
 - Befund für später: Bei null Treffern zählt die Preisübersicht nur nach Thema (ohne Ort/Budget), und der Hinweis nennt alle Bedingungen statt der entscheidenden; beides App-Änderung, Owner-Entscheid offen.
 
+## 1d. Neues Angebot SFJ-Meetup Resilienz (E298), Paket v4
+
+- OFFER-SFJ-002 «Stark bleiben: SFJ-Meetup zu Resilienz und Mental Health»: 26.11.2026, 17.00–18.00 Uhr, online via Zoom, kostenlos (freiwilliger Unkostenbeitrag), Deutsch; eigenes Angebot nach Owner-Entscheid E298, Angaben nach der Anbieterseite (abgerufen im Chat 24.11.).
+- Lauf 040 (neues Angebot, Herkunft ANBIETERSEITE_E298): Scope GRENZFALL_E179 mit Begründung, Fokus Medienpraxis, Angebotsart Event, `beta_sichtbar` JA wie E290. Die Reihe OFFER-SFJ-001 bleibt unverändert.
+- E299: keine Offenlegung der SFJ-Rolle des Owners auf der Methodik-Seite.
+- Paket `mediaskills_monatsbuild_20261124_v4.zip` (ersetzt v3, Upload offen): 1'063 Angebote (CH 979, AT 80, LI 4), 15 Dateien, 2,31 MB; gegenüber v3 geändert `index.html`, CH-Daten- und CH-Suchdatei.
+- Tests [GEPRÜFT]: Eingang 23 Dateien ohne Fehler, P24 14/14, Nachträge 14/14, P30 34/34, `test_paket29.py` 9/1 (P12 wie E253), Anzeige P01/P03/P05/P06/P08 PASS, P04 PASS (Sollliste 24.11. neu gemessen, 644), Stufe 1 35/0/4 an 24.11. und 03.12. (`NEU=5`), Unterseiten pixelgleich 16/16.
+
 ## 2. Tests [GEPRÜFT]
 
 | Test | Ergebnis |
@@ -70,7 +78,7 @@ Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 
 ## 4. Offen für den Owner
 
-1. Release-Freigabe für `mediaskills_monatsbuild_20261124_v3.zip`, Upload nach E163 (Hinweis: v2 ist bereits live).
+1. Release-Freigabe für `mediaskills_monatsbuild_20261124_v4.zip`, Upload nach E163 (v2 ist live).
 2. erledigt: Testanpassung Q12 (E295), `test_paket30.py` 34/34.
 3. Nach dem Release: Zweifelsfälle 95 (E291), danach Routine-Eingang des Monats (geprueft_am, pruefen_ab nach E292).
 
