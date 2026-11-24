@@ -39,3 +39,4 @@ NORMIERUNG_P27,Trennzeichen vereinheitlicht (« | » bzw. «/» → «|»); Wert
 ANBIETERSEITE_P30,"Angebotsseite des Anbieters im P30-Prüflauf abgerufen (Routinefall nach E262: geprueft_am, pruefen_ab, url nach Weiterleitung; Termin, Preis, Dauer, Ort nach Bestätigung durch Claude)",E262,0
 ANBIETERSEITE_P31,"Angebotsseite des Anbieters im P31-Lückenlauf abgerufen und von Claude gelesen (E266–E268: Termin, Preis, Dauer, Ort, Kursform, Sprache, Niveau; CH-Zugang und Land aus belegtem Ort nach E066)",E267,0
 ARCHIV_E277,"Archiviert nach E015 und Owner-Regel E277: toter Link oder Übersicht, keine Nachfolgeseite in Linklisten, Elternseiten, Sitemap und Websuche (P31)",E277,0
+OWNER_E280,"Archiviert nach E015 auf Owner-Entscheid E280: Kurs nicht mehr auf der Anbieterseite oder Seite ohne aktuelle Durchführung (P31 Restfälle)",E280,0

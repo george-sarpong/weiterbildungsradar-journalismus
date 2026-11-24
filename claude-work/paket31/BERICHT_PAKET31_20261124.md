@@ -1,6 +1,6 @@
 # BERICHT PAKET 31 «Lücken füllen», zweiter Durchgang, 24.11.2026
 
-Grundlage: Owner-Entscheide E266–E268, E271, E272; Befunde E269, E270 (erster Durchgang), E273 (dieser Durchgang); Nachtrag MAZ und «Privatkurs»: E274–E276; Restfälle: E277–E279.
+Grundlage: Owner-Entscheide E266–E268, E271, E272; Befunde E269, E270 (erster Durchgang), E273 (dieser Durchgang); Nachtrag MAZ und «Privatkurs»: E274–E276; Restfälle: E277–E279; dritter Durchgang: E280–E286 (Nachbau der Läufe 033–035 in neuer Sitzung).
 Arbeitszweig `claude/datenharmonisierung`, gepusht. Kein Release, kein Merge.
 Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 
@@ -45,6 +45,33 @@ Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 
 - **Owner-Liste Restfälle:** 201 → 85: NICHT_LESBAR 36, DEFEKT 24, UEBERSICHT 11, ZWEIFEL 10, KURS_WEG 4.
 
+## 1c. Restfälle, dritter Durchgang (E280–E286), Läufe 033–035
+
+- **Owner-Entscheide 24.11.:** E280 15 Angebote ohne Durchführung archivieren (FFHS, HWZ-004, PC-College 2, EBU 5, Kanal K 5, SASJ); E281 21 Angebote auf derzeit nicht lesbaren Websites bleiben, nächster Monatsbuild; E282 Rest bleibt «keine Angabe», Mediencampus-PDFs lesen, zB.-Termin; E283 HES-SO VS Tages- und Abendkurs als zwei Angebote; E284 drei Kurslinks.
+- **Nachbau:** Die erste Fassung der Läufe 033–035 (E285) lag nur im Git-Bundle der Vorsitzung, der Push war abgelehnt worden; sie ist verloren. Auf Owner-Antwort «neu machen» habe ich die Läufe in einer neuen Sitzung nachgebaut (E286): neues Schlüsselpaar, Abruf der Belege auf dem Runner (Lauf 45415385968, 73 Adressen), Websuche. Skript `paket31/scripts/nachbau_033_035.py`, Abrufdaten ohne Kurstext `paket31/out/abruf/abruf_2026-11-24_nachbau_45415385968.jsonl.gz`. [GEPRÜFT]
+- **Lauf 033** (40 Zellen, E277): 20 Angebote archiviert, davon 14 vorher sichtbar: dpsuisse 3, Digicomp 2, FHNW 2, HEAD-005, HES-SO VS 004/005, HWZ 013/015, ifage W05, Keystone-SDA, SGP 3, webedu, zB. 001/002. Belege je Fall in der Spalte `quelle`: HTTP 404 oder Übersicht ohne den Kurs.
+- **Lauf 034** (33 Zellen):
+  - 15 Archivierungen nach E280 (Herkunft `OWNER_E280`, neu in `scripts/eingang_herkunft.csv`). FFHS, HWZ-004 und PC-College 2 neu belegt (Weiterleitung auf Startseite, Nachfolgekurs bzw. leere Kategorie); EBU, Kanal K und SASJ nach den Chrome-Befunden der Vorsitzung in der Owner-Liste (für den Runner HTTP 403 bzw. Seite nur per Skript).
+  - OFFER-ZB-005: Termin 28.08.2027 nach Kopfzeile und schema.org (E282). Der Fliesstext der Seite nennt weiter «28. August 2026»; der Widerspruch besteht also noch.
+- **Lauf 035** (29 Zellen, 3 neue Angebote):
+  - HEVS-001 bis -003 (Tageskurse): Kurslink, Termin, Preis, Ort.
+  - Neu: OFFER-HEVS-006 bis -008 (Abendkurse «Soirée»), Termin, Preis, Dauer, Ort nach Kursseite. Beschreibung, Fokus und Lieferform vom Tageskurs, Niveau «nicht erfasst».
+  - Kurslinks IF-G08, AT-PROD-OFFER-166, OFFER-KLUB-MIDUCA-008 (E284). Die Berner Standortseite der Klubschule nennt im Seitentext keine Termine, daher keine zweite Durchführung.
+- **Abweichungen zur ersten Fassung (E285):**
+  - OFFER-USI-002: Kurslink **nicht** ersetzt. usi.ch antwortet dem Runner nur mit HTTP 403 (Sperre); das belegt keinen toten Link. Unterseiten des Programms stehen im Suchindex.
+  - Mediencampus-030 und -043: **nicht** nachgetragen. Die Lehrgangsseiten verlinken die PDF (`lehrgang_medienkorrektorat.pdf`, `lehrgang_lektorat.pdf`), aber der Abruf liest keine PDF, und WebFetch blieb ohne deine Freigabe.
+- **Stand am 24.11.:**
+
+| | vor Lauf 033 | jetzt |
+|---|---|---|
+| Master | 3'819 | 3'822 |
+| Bestand CH/AT/LI ohne HOLD | 1'197 | 1'165 |
+| Sichtbar | 1'080 | 1'062 |
+
+- **Ergebnis aller 85 Restfälle:** `paket31/out/restfaelle_ergebnis_2026-11-24.csv` (Archiv 35, unverändert 26, «keine Angabe» 15, HEVS 3, Kurslink 3, offen 2, Termin 1).
+- **Grenzen:** klubschule-pro.ch ist für die Browser-Werkzeuge nicht lesbar, nur als Bildschirm. Der Kursbereich von ffzh.ch leitet auch bei aktuellen Kursen auf die Startseite. «Termin vollständig» wurde nicht neu gezählt, weil dafür ein neuer Abruf nötig ist.
+- **Tests:** `eingang_pruefen.py` 18 Dateien ohne Fehler; P24 14/14, Nachträge 14/14, P30 34/34. [GEPRÜFT]
+
 ## 2. Vorgehen
 
 1. **Stufe 1, Lauf 45339148257:** 358 Angebote abgerufen (ORSYS und MAZ mit Termin-Lücke, alle offenen Fälle aus dem ersten Durchgang). Ganze Seiten bis 40'000 Zeichen, Linklisten, bei toten Seiten die übergeordneten Pfade.
@@ -70,7 +97,7 @@ Code: `paket30/scripts/abruf.py` (Version p30-abruf-6) mit den neuen Optionen `-
 
 ## 4. Offen für den Owner
 
-1. **Owner-Liste Restfälle** (201): je Fall archivieren nach E015, eine neue Adresse nennen oder so lassen. Die Liste ist nach Anbieter geordnet.
+1. erledigt: Owner-Liste Restfälle (E277–E284, Ergebnis `paket31/out/restfaelle_ergebnis_2026-11-24.csv`); offen E281 im nächsten Monatsbuild und **Mediencampus-030/-043 aus PDF** (WebFetch mit deiner Freigabe).
 2. erledigt: MAZ-Termine über Chrome (E275, E276); 29 MAZ-Kurse ohne publizierte Durchführung bleiben mit Termin-Lücke.
 3. erledigt: «Privatkurs» bestätigt (E274).
 4. **Dawan** bleibt nach RFC 9309 gesperrt (40 Kurse mit Termin-Lücke).
