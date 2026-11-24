@@ -1,0 +1,37 @@
+{"id":"LI-REG-006","kandidat":null,"titel_treffer":null,"grund":"Nur Übersichts-/Listenseiten (tblid/6/steps) und Programmheft-PDFs, keine Einzelkursseite gefunden"}
+{"id":"OFFER-FOTOMUSEUM-001","kandidat":null,"titel_treffer":null,"grund":"Nur EN-Variante des alten Links und Event-Übersicht; keine neue Kursseite"}
+{"id":"OFFER-USI-001","kandidat":null,"titel_treffer":null,"grund":"Nur News/Feeds und UZH-News; keine USI-Kursseite zu REAL 2026"}
+{"id":"OFFER-USI-002","kandidat":["https://search.usi.ch/en/educations/64/master-of-science-in-communication-in-media-management","https://www.usi.ch/en/education/master/media-management/structure-and-contents"],"titel_treffer":"Master of Science in Communication in Media Management","grund":"USI-Studienkatalog nennt genau diesen Master; zweiter Kandidat Unterseite Studienplan (Pfad des alten Links, evtl. ebenfalls defekt)"}
+{"id":"CH-V19-N02","kandidat":null,"titel_treffer":null,"grund":"Auf reflekt.ch nur Newsletter/Recherchen, keine Workshop-Seite"}
+{"id":"OFFER-WEBEDU-003","kandidat":["https://webedu.ch/de/kurseworkshops/?kursid=2824","https://webedu.ch/wordpress-developer-crashkurs"],"titel_treffer":"WordPress Developer Crashkurs - Bern","grund":"webedu.ch Kursseite mit exaktem Titel; zweiter Kandidat Slug-URL mit gleichem Kursnamen"}
+{"id":"OFFER-WEKA-004","kandidat":"https://www.praxisseminare.ch/seminare/marketing/event/2325-midjourney-masterclass-bildgenerierung-mit-ki/","titel_treffer":"Midjourney Masterclass - Bildgenerierung mit KI - praxisseminare.ch","grund":"Gleicher Anbieter, exakter Titel, neuer Pfad unter /seminare/marketing/"}
+{"id":"OFFER-ZB-001","kandidat":["https://www.fotografie-weiterbildung.ch/angebot-zb-foto/analoge-werkstatt-filmentwicklung","https://www.fotografie-weiterbildung.ch/angebot-zb-foto/analoge-dunkelkammer-werkstatt-filmentwicklungjuni-zzb85-4efnf"],"titel_treffer":"analoge Fotografie Werkstatt - Filmentwicklung - Dunkelkammer-Werkstatt — zBFoto","grund":"Gleicher Anbieter, Dunkelkammer-Werkstatt Filmentwicklung; zweiter Kandidat Folgedurchführung (Slug -4efnf, Titel 'fotokurs analoge dunkelkammer filmlabor')"}
+{"id":"OFFER-ZB-002","kandidat":"https://www.fotografie-weiterbildung.ch/angebot-zb-foto/analoge-dunkelkammervergroessernentwickeln","titel_treffer":"Analoge Dunkelkammer-Werkstatt zbfoto fotokurs gerd pilz — zBFoto","grund":"Gleicher Anbieter, Slug vergroessern-entwickeln ohne Suffix -d8jht"}
+{"id":"OFFER-ZB-003","kandidat":null,"titel_treffer":null,"grund":"Nur alter Link und Blogbeitrag gefunden"}
+{"id":"OFFER-ZB-009","kandidat":null,"titel_treffer":null,"grund":"Nur alter Link selbst gefunden"}
+{"id":"OFFER-ZHDK-008","kandidat":null,"titel_treffer":null,"grund":"Nur alter Link und CAS UI/UX-Seiten (anderes Angebot), keine neue Baustein-Seite"}
+{"id":"OFFER-ZHDK-011","kandidat":null,"titel_treffer":null,"grund":"Nur alter Link; andere Bausteine 07/03/08 sind andere Kurse"}
+{"id":"OFFER-ZHDK-013","kandidat":null,"titel_treffer":null,"grund":"Baustein 20 nur mit anderem Thema (Narrative Räume), CAS AI for Creative Practices ist anderes Angebot"}
+{"id":"OFFER-ZLI-002","kandidat":null,"titel_treffer":null,"grund":"Nur Übersicht Fotokurse und andere Einzelkurse, keine Einzelseite Grundlagen der Fotografie"}
+{"id":"OFFER-ZLI-003","kandidat":null,"titel_treffer":null,"grund":"Keine Einzelseite auf zli.ch, nur Übersicht und andere Kurse"}
+{"id":"OFFER-ZLI-004","kandidat":null,"titel_treffer":null,"grund":"Keine Einzelseite auf zli.ch, nur Übersicht und andere Kurse"}
+{"id":"OFFER-ZLI-005","kandidat":"https://www.zli.ch/ausbildungszentrum/ict-academy/double-exposure-fotografie","titel_treffer":"Double Exposure Fotografie","grund":"Einzelkursseite ZLI ICT Academy mit exaktem Titel"}
+{"id":"OFFER-ZLI-006","kandidat":null,"titel_treffer":null,"grund":"Keine Einzelseite auf zli.ch, nur Übersicht und andere Kurse"}
+{"id":"OFFER-ZLI-007","kandidat":"https://www.zli.ch/ausbildungszentrum/ict-academy/low-key-fotografie","titel_treffer":"Low Key Fotografie","grund":"Einzelkursseite ZLI ICT Academy mit exaktem Titel"}
+{"id":"OFFER-ZLI-008","kandidat":"https://www.zli.ch/ausbildungszentrum/ict-academy/animierte-erklaerfilme-realisieren","titel_treffer":"Videoproduktion","grund":"Einzelseite ZLI, Slug 'animierte-erklaerfilme-realisieren' passt; Seitentitel generisch, Titel leicht abweichend (Erklärfilme statt Erklärvideos) – prüfen"}
+{"id":"OFFER-ZLI-009","kandidat":null,"titel_treffer":null,"grund":"Nur Übersicht Videoproduktion gefunden"}
+{"id":"OFFER-ZLI-010","kandidat":null,"titel_treffer":null,"grund":"Nur Übersicht Videoproduktion gefunden"}
+{"id":"OFFER-ZLI-012","kandidat":null,"titel_treffer":null,"grund":"Nur Übersicht Gestaltungskurse gefunden"}
+{"id":"OFFER-ZLI-013","kandidat":null,"titel_treffer":null,"grund":"Nur Übersicht Gestaltungskurse gefunden"}
+{"id":"OFFER-ZLI-016","kandidat":null,"titel_treffer":null,"grund":"Nur Übersicht IT Kurse gefunden"}
+{"id":"AT-PROD-OFFER-042","kandidat":null,"titel_treffer":null,"grund":"Nur alter Link selbst; übrige Treffer andere Module der Reihe für Freie"}
+{"id":"AT-PROD-OFFER-172","kandidat":null,"titel_treffer":null,"grund":"Keine Seite mit diesem Titel auf oema.at; nur Startseite und Lehrgang Gesundheitsjournalismus"}
+{"id":"AT-PROD-OFFER-038","kandidat":null,"titel_treffer":null,"grund":"Nur Seiten der Ausgabe 2025 (School of Factchecking - Badener Medientage 2025), keine Seite für 2026"}
+{"id":"AT-PROD-OFFER-134","kandidat":null,"titel_treffer":null,"grund":"Nur andere KI-kompakt-Module (Texten mit KI, Medienrecht & KI) und Lehrgang KI kompakt, keine Seite Social Media & KI"}
+{"id":"AT-PROD-OFFER-173","kandidat":null,"titel_treffer":null,"grund":"Nur alter Link selbst gefunden"}
+{"id":"AT-PROD-OFFER-186","kandidat":null,"titel_treffer":null,"grund":"Keine TikTok-Seminarseite auf oema.at, nur Übersichten und andere Seminare"}
+{"id":"AT-PROD-OFFER-187","kandidat":null,"titel_treffer":null,"grund":"Nur alter Link selbst gefunden"}
+{"id":"AT-PROD-OFFER-191","kandidat":null,"titel_treffer":null,"grund":"Nur alter Link selbst gefunden"}
+{"id":"AT-PROD-OFFER-193","kandidat":null,"titel_treffer":null,"grund":"Nur alter Link selbst; 'Texten für Online' (ohne Advanced) ist anderer Kurs"}
+{"id":"AT-PROD-OFFER-198","kandidat":null,"titel_treffer":null,"grund":"Keine Seite mit diesem Titel; nur Kategorie Moderation/Stimme und andere Seminare"}
+{"id":"AT-PROD-OFFER-200","kandidat":null,"titel_treffer":null,"grund":"Nur alter Link selbst; 'Das österreichische Gesundheitssystem entschlüsselt' hat anderen Titel"}

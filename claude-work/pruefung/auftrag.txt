@@ -1,5 +1,5 @@
 # P30 Auftrag für den Prüfabruf (E260). Push dieser Datei startet .github/workflows/p30-pruefung.yml
-# P31 zweiter Durchgang, Stufe 3 (E272): MAZ-Kursseiten mit Terminquelle my.maz.ch, Kandidaten aus Sitemaps; Kurstexte nur verschlüsselt
+# P31 zweiter Durchgang, Stufe 5 (E277): Kandidaten aus der Websuche; Kurstexte nur verschlüsselt
 stichtag=2026-11-24
 umfang=luecken
 volltext=ja
@@ -7,6 +7,6 @@ links=ja
 eltern=nein
 textgrenze=40000
 zusatz=ja
-folge=my\.maz\.ch/public/Ereignis/PublicList
+folge=
 ids=KEINE-ID
 nur_ids=nein
