@@ -26,7 +26,7 @@ MAX_BYTES = 4_000_000
 MAX_REDIRECTS = 8
 MAX_DELAY = 10.0
 FOLGEFEHLER_RUHE = 3
-VERSION = "p30-abruf-3"
+VERSION = "p30-abruf-4"
 
 
 class _KeinRedirect(urllib.request.HTTPRedirectHandler):
@@ -241,6 +241,7 @@ def hole(url, timeout, abstand):
         if len(seite.text) < 300 and re.search(r"<script", roh, re.I):
             erg["nur_js"] = True
         erg["hash"] = T.hash_text(seite)
+        if LINKS: erg["_links"] = links_von(roh, aktuell)   # P31b: nur im verschlüsselten Volltext weitergegeben
         return erg, seite
     erg["fehler"] = "ZU_VIELE_WEITERLEITUNGEN"; return erg, None
 
@@ -258,6 +259,29 @@ def werte_fuer(z, seite, t):
 
 EXTRAKT = False
 VOLLTEXT = False
+LINKS = False        # P31b (E272): Linkliste je Seite (Ziel, Linktext ≤ 120) für Nachfolgesuche und my.maz.ch
+ELTERN = False       # P31b: bei toter Seite die übergeordneten Pfade (höchstens 2 und Startseite) holen, nur Linklisten
+TEXTGRENZE = 9000    # P31b: Länge des Haupttexts im Volltext (ORSYS-Terminlisten, E272)
+LINK_RE = re.compile(r"<a\b[^>]*?href\s*=\s*[\"']([^\"'#]+)[\"'][^>]*>(.*?)</a>", re.I | re.S)
+
+
+def links_von(roh, basis, n=400):
+    """Absolute http(s)-Ziele mit Linktext (ohne Markup, ≤ 120 Zeichen), je Ziel einmal, höchstens n."""
+    aus, gesehen = [], set()
+    for m in LINK_RE.finditer(roh):
+        u = urllib.parse.urljoin(basis, m.group(1).strip())
+        if not re.match(r"https?://", u) or u in gesehen: continue
+        gesehen.add(u); txt = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", m.group(2))).strip()
+        aus.append([u, T.html.unescape(txt)[:120]])
+        if len(aus) >= n: break
+    return aus
+
+
+def eltern_von(u):
+    """Übergeordnete Pfade (höchstens 2) und Startseite, z. B. /a/b/c → /a/b/, /a/, /."""
+    sp = urllib.parse.urlsplit(u); teile = [x for x in sp.path.split("/") if x]
+    pf = ["/".join(teile[:k]) + "/" for k in range(len(teile) - 1, 0, -1)][:2] + [""]
+    return [f"{sp.scheme}://{sp.netloc}/{x}" for x in pf]
 
 
 def lauf(rows, t, timeout, abstand, max_hosts, ersatz=None, log=print):
@@ -277,13 +301,21 @@ def lauf(rows, t, timeout, abstand, max_hosts, ersatz=None, log=print):
             e["url"] = u
             if ersatz: e["ziel"] = e["ziel"].replace(ersatz[1], ersatz[0], 1); e["kette"] = [[s, x.replace(ersatz[1], ersatz[0], 1)] for s, x in e["kette"]]
             e["ids"] = sorted(z["id"] for z in nach_url[u])
+            lk = e.pop("_links", None)
+            if seite is None and VOLLTEXT and ELTERN and (e.get("fehler") or (e.get("status") or 0) >= 400):
+                el = []
+                for eu in eltern_von(e["ziel"] or u):
+                    ee, es = hole(eu, timeout, abstand)
+                    el.append({"url": eu, "status": ee.get("status"), "ziel": ee.get("ziel"), "fehler": ee.get("fehler"), "links": ee.pop("_links", None) or []})
+                e["volltext"] = {"eltern": el}
             if seite is not None:
                 e["werte"] = {z["id"]: werte_fuer(z, seite, t) for z in nach_url[u]}
                 e["kandidaten"] = {"daten": T.daten_auf_seite(seite, t), "preise": T.preise_auf_seite(seite)}
                 if EXTRAKT: e["extrakt"] = T.extrakt(seite, t)
                 if VOLLTEXT:   # P31: Kurstext zum Lesen durch Claude; nur verschlüsselt übergeben (Workflow), nie ins Repo
                     q = [T.auszug_kurz(seite.quelltext_daten, m.start(), m.end(), 60) for m in re.finditer(r"\b\d{1,2}\.\d{1,2}\.\d{4}\b|\b\d{4}-\d{2}-\d{2}\b", seite.quelltext_daten)][:20]
-                    e["volltext"] = {"titel": seite.titel_tag[:300], "h1": seite.h1[:300], "text": seite.haupttext[:9000], "strukturiert": seite.ld_werte[:30], "quelltext_daten": q}
+                    e["volltext"] = {"titel": seite.titel_tag[:300], "h1": seite.h1[:300], "text": seite.haupttext[:TEXTGRENZE], "strukturiert": seite.ld_werte[:30], "quelltext_daten": q}
+                    if LINKS: e["volltext"]["links"] = lk or []
             ergebnisse[u] = e
 
     with cf.ThreadPoolExecutor(max_workers=max_hosts) as ex:
@@ -293,11 +325,35 @@ def lauf(rows, t, timeout, abstand, max_hosts, ersatz=None, log=print):
     return [ergebnisse[u] for u in sorted(ergebnisse)]
 
 
+def lauf_zusatz(datei, timeout, abstand, max_hosts, log=print):
+    """P31b: Zusatzadressen (Kandidaten für Nachfolgeseiten, my.maz.ch); Ergebnis wie oben mit «zusatz»: true, ohne Abgleich."""
+    paare = {}
+    for l in pathlib.Path(datei).read_text(encoding="utf-8").splitlines():
+        if not l.strip() or l.startswith("#"): continue
+        i, _, u = l.partition("\t"); u = u.strip()
+        if re.match(r"https?://", u): paare.setdefault(u, set()).add(i.strip())
+    gruppen, erg = {}, {}
+    for u in paare: gruppen.setdefault(urllib.parse.urlsplit(u).netloc.lower(), []).append(u)
+    def arbeite(urls):
+        for u in sorted(urls):
+            e, seite = hole(u, timeout, abstand); lk = e.pop("_links", None)
+            e.update(url=u, ids=sorted(paare[u]), zusatz=True)
+            if seite is not None and VOLLTEXT:
+                e["volltext"] = {"titel": seite.titel_tag[:300], "h1": seite.h1[:300], "text": seite.haupttext[:TEXTGRENZE], "strukturiert": seite.ld_werte[:30], "links": lk or []}
+            erg[u] = e
+    with cf.ThreadPoolExecutor(max_workers=max_hosts) as ex:
+        futs = {ex.submit(arbeite, us): h for h, us in gruppen.items()}
+        for fu in cf.as_completed(futs): fu.result(); log(f"Zusatz fertig: {futs[fu]} ({len(gruppen[futs[fu]])} Adressen)")
+    return [erg[u] for u in sorted(erg)]
+
+
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("stichtag"); ap.add_argument("--out", required=True)
     ap.add_argument("--ids", default=""); ap.add_argument("--nur-ids", action="store_true")
     ap.add_argument("--umfang", default="sichtbar", choices=["sichtbar", "luecken"])
     ap.add_argument("--volltext", action="store_true")   # luecken: CH/AT/LI ohne HOLD, mit Auslese (P31, E266)
+    ap.add_argument("--links", action="store_true"); ap.add_argument("--eltern", action="store_true")   # P31b (E272)
+    ap.add_argument("--textgrenze", type=int, default=9000); ap.add_argument("--zusatz", default="")   # Zusatzadressen: Zeilen «ID<TAB>URL»
     ap.add_argument("--master", default=str(R / "paket3/out/master_3818_aktuell.csv"))
     ap.add_argument("--max-hosts", type=int, default=6); ap.add_argument("--abstand", type=float, default=2.0)
     ap.add_argument("--timeout", type=float, default=30.0); ap.add_argument("--basis-url-ersatz", default="")
@@ -305,18 +361,20 @@ def main():
     if t is None: sys.exit("ABBRUCH: Stichtag JJJJ-MM-TT")
     if a.abstand < 2.0 and not a.basis_url_ersatz: sys.exit("ABBRUCH: Abstand mindestens 2 s")
     ids = [x for x in a.ids.replace("\n", ",").split(",") if x.strip()]
-    global EXTRAKT, VOLLTEXT
-    VOLLTEXT = a.volltext
+    global EXTRAKT, VOLLTEXT, LINKS, ELTERN, TEXTGRENZE
+    VOLLTEXT = a.volltext; LINKS = a.links; ELTERN = a.eltern; TEXTGRENZE = max(1000, min(a.textgrenze, 200000))
     try:
         alle = S.lies_master(a.master)
         if a.umfang == "luecken":
             EXTRAKT = True
             rows = [z for z in alle if z["release_markt"] in ("CH", "AT", "LI") and z["publikationsstatus"] != "HOLD"]
+            if ids: rows = [z for z in rows if z["id"] in {x.strip() for x in ids}]   # P31b: nur ausgewählte Angebote
         else: rows = K.abrufmenge(alle, t, [x.strip() for x in ids], a.nur_ids)
     except ValueError as e: sys.exit(f"ABBRUCH: {e}")
     ersatz = tuple(a.basis_url_ersatz.split("=", 1)) if a.basis_url_ersatz else None
     beginn = datetime.datetime.now(datetime.timezone.utc)
     erg = lauf(rows, t, a.timeout, a.abstand, a.max_hosts, ersatz)
+    if a.zusatz: erg += lauf_zusatz(a.zusatz, a.timeout, a.abstand, a.max_hosts)
     meta = {"meta": {"version": VERSION, "stichtag": a.stichtag, "beginn": beginn.isoformat(timespec="seconds"),
                      "ende": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"), "angebote": len(rows),
                      "adressen": len(erg), "user_agent": UA, "abstand_s": a.abstand, "nur_ids": a.nur_ids, "umfang": a.umfang, "ids": sorted(set(ids)),
