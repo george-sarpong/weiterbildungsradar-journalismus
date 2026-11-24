@@ -1,16 +1,13 @@
-# Zweifelsfälle 24.11. (E291): Sitemaps und Übersichten für die Nachfolgesuche
-OFFER-BICT-001	https://bict.ch/sitemap.xml
-OFFER-BICT-001	https://bict.ch/sitemap_index.xml
-OFFER-FF-002	https://ffzh.ch/
-OFFER-FF-002	https://ffzh.ch/sitemap.xml
-OFFER-SFGB-001	https://www.sfgbasel.ch/sitemap.xml
-OFFER-SFGB-001	https://www.sfgbasel.ch/oeffentliche-weiterbildungskurse/
-AT-PROD-OFFER-201	https://oema.at/sitemap_index.xml
+# Zweifelsfälle 24.11. (E291), zweiter Abruf: Kandidaten für Nachfolgeseiten
+OFFER-SFGB-001	https://www.sfgbasel.ch/oeffentliche-weiterbildungskurse/uebersicht/video--animation/video-filmen-und-schneiden-2741
+OFFER-SFGB-001	https://www.sfgbasel.ch/oeffentliche-weiterbildungskurse/uebersicht/video--animation
+OFFER-KLUB-MIDUCA-006	https://www.klubschule.ch/kreativitaet/fotografie-und-film/fotografie/
+OFFER-KLUB-MIDUCA-010	https://www.klubschule.ch/kreativitaet/fotografie-und-film/fotografie/
+OFFER-KLUBPRO-005	https://www.klubschule-pro.ch/it-multimedia/grafikdesign/adobe-indesign/
+OFFER-KLUBPRO-003	https://www.klubschule-pro.ch/it-multimedia/grafikdesign/adobe-photoshop/
+OFFER-KLUBPRO-054	https://www.klubschule-pro.ch/it-multimedia/fotografie-film/
+OFFER-FHNW-016	https://www.fhnw.ch/de/informatik/weiterbildung/angebot/weiterbildungen
 AT-PROD-OFFER-201	https://oema.at/seminare/
-OFFER-FHNW-016	https://www.fhnw.ch/de/weiterbildung/informatik
-OFFER-KLUB-MIDUCA-006	https://www.klubschule.ch/kurse/kreativitaet-gestalten/fotografie
-OFFER-ATED-004	https://ated.ch/corsi-di-formazione-ict/digital-collaboration-specialist
-OFFER-ATED-004	https://ated.ch/corsi-di-formazione-ict/
-OFFER-CFPOCST-001	https://www.cfp-ocst.ch/it_CH/corsi/informatica/web-e-grafica
-OFFER-SAEZH-007	https://www.sae.edu/che/sitemap.xml
-OFFER-UNIGE-004	https://www.unige.ch/formcont/cours/das-comm-digitale
+OFFER-CORSO-002	https://www.corsodigiornalismo.ch/
+LI-REG-001	https://medienakademie.li/
+OFFER-UNIBE-003	https://www.unibe.ch/continuing_education_programs/cas_natural_language_processing/index_ger.html
