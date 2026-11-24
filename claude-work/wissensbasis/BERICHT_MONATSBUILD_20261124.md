@@ -72,7 +72,7 @@ Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 | Website derzeit nicht lesbar, wie E281 (E306) | 9 |
 | UNIGE hinter Sicherheitsprüfung, in Chrome belegt (E308) | 5 |
 | Owner: Archiv (E303) 11, jährlich ohne Ausschreibung (E304) 5, umbenannt (E305) 5 | 21 |
-| Owner offen: OFFER-SPC-011 | 1 |
+| Owner: OFFER-SPC-011 archiviert (E309, Lauf 042) | 1 |
 
 - **Lauf 041** (74 Zellen bei 28 Angeboten, Skript `paket30/scripts/lauf_041_zweifel.py`):
   - Archiv nach E015 (E303, Herkunft OWNER_E303): BICT-001, FHNW-016, KLUB-MIDUCA-006, -010, AT-PROD-OFFER-201, SBVV-009, -010, -016, FOCAL-018, CFPOCST-002, ATGS-001.
@@ -106,7 +106,7 @@ Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 1. erledigt: Paket v4 freigegeben (E300), live seit 24.11.2026 (E301), V05 bestätigt (E307).
 2. erledigt: Testanpassung Q12 (E295), `test_paket30.py` 34/34.
 3. erledigt: Zweifelsfälle 95 (E291) verkleinert und entschieden (E302–E306, Lauf 041), §1e.
-4. Offen: OFFER-SPC-011 (Katalog «Master Ateliers Pratique», CHF 250; Seite «Ateliers Pratique» CHF 90, «Ateliers Signature» CHF 250), Link an den Owner 24.11. erledigt: V05 für v4 bestätigt (E307); UNIGE-V22-03, -004, -005, -009, -010 in Chrome belegt, keine Änderung (E308).
+4. erledigt: OFFER-SPC-011 archiviert (E309, Lauf 042; Eintrag passte zu keinem Kurs der Seite), sichtbar am 24.11. jetzt 1'051; V05 für v4 bestätigt (E307); UNIGE-V22-03, -004, -005, -009, -010 in Chrome belegt, keine Änderung (E308).
 5. Nächster Schritt: Routine-Eingang des Monats (geprueft_am, pruefen_ab nach E292) für die Routinefälle des Vollaufs und der 30 belegten Zweifelsfälle; danach Release mit Freigabe.
 
 ## 5. Nicht Teil dieses Monatsbuilds
