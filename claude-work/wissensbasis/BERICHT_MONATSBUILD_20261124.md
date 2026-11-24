@@ -59,6 +59,31 @@ Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 - Paket `mediaskills_monatsbuild_20261124_v4.zip` (ersetzt v3, Upload offen): 1'063 Angebote (CH 979, AT 80, LI 4), 15 Dateien, 2,31 MB; gegenüber v3 geändert `index.html`, CH-Daten- und CH-Suchdatei.
 - Tests [GEPRÜFT]: Eingang 23 Dateien ohne Fehler, P24 14/14, Nachträge 14/14, P30 34/34, `test_paket29.py` 9/1 (P12 wie E253), Anzeige P01/P03/P05/P06/P08 PASS, P04 PASS (Sollliste 24.11. neu gemessen, 644), Stufe 1 35/0/4 an 24.11. und 03.12. (`NEU=5`), Unterseiten pixelgleich 16/16.
 
+## 1e. Zweifelsfälle verkleinert (E291, E302–E306), Lauf 041
+
+- **Abruf:** Die 95 Zweifelsfälle des Vollaufs neu auf dem Runner geholt (WebFetch im Chat war ohne Freigabe nicht möglich). Lauf 45496574482: Volltext von 62 Seiten, Linklisten, Elternseiten toter Links, Sitemaps. Lauf 45497656026: Kandidatenseiten für Nachfolger. Kurstexte verschlüsselt, nur lokal gelesen, neues Schlüsselpaar 24.11. abends. [GEPRÜFT]
+- **Ergebnis je Angebot:** `paket30/out/zweifel_ergebnis_2026-11-24.csv` (Skript `paket30/scripts/zweifel_ergebnis.py`, Abrufdaten ohne Kurstext in `paket30/out/abruf/`).
+
+| Ergebnis | Angebote |
+|---|---|
+| schon entschieden (E281 11, E282 7) | 18 |
+| belegt, keine Änderung (Titel auf der Seite anders geschrieben, z. B. französisch oder mit Präfix) | 30 |
+| Routine nach E262 (Kurslink nach Weiterleitung oder Nachfolgeseite, neuer Termin) | 11 |
+| Website derzeit nicht lesbar, wie E281 (E306) | 9 |
+| UNIGE hinter Sicherheitsprüfung, später in Chrome | 5 |
+| Owner: Archiv (E303) 11, jährlich ohne Ausschreibung (E304) 5, umbenannt (E305) 5 | 21 |
+| Owner offen: OFFER-SPC-011 | 1 |
+
+- **Lauf 041** (74 Zellen bei 28 Angeboten, Skript `paket30/scripts/lauf_041_zweifel.py`):
+  - Archiv nach E015 (E303, Herkunft OWNER_E303): BICT-001, FHNW-016, KLUB-MIDUCA-006, -010, AT-PROD-OFFER-201, SBVV-009, -010, -016, FOCAL-018, CFPOCST-002, ATGS-001.
+  - Kurslinks nach Weiterleitung (ANBIETERSEITE_P30): Digicomp 003, 007, 049, 052, 063 (Rubrik «digital-media-design» heisst jetzt «digital-marketing-design»), AT-PROD-OFFER-035, -037; Nachfolgeseite SFGB-001.
+  - Neue Termine: CFJM-019 (01.–19.03.2027), CFJM-020 (26.–27.04.2027), NOBLE-057 (ab 29.12.2026, vier Städte), SFGB-001 (05.04.–03.05.2027), AT-PROD-OFFER-037 (17.02.–14.04.2027), WEKA-006 (15.06.2027).
+  - E304: SAWI-003 Kurslink nach Weiterleitung, Termin «keine Angabe» (Seite: «Dates coming soon»). CORSO-002, LI-REG-001, UNIBE-003, -004 waren schon ohne Datum.
+  - E305: Titel nach Seite bei KLUBPRO-031, KLUBPRO-043 (dazu CHF 585), WEKA-006, HSG-005, AT-PROD-OFFER-035, -037; DIGICOMP-020 als Nachfolgelehrgang «User Experience gestalten und KI sinnvoll einsetzen» (5 Tage, CHF 4'650 zzgl. MWST, Termin «keine Angabe», weil Digicomp die Daten nur per Skript zeigt).
+  - Nicht übernommen: Preis und Termine von KLUBPRO-031, weil sich die Seite widerspricht (schema.org CHF 380 und 2 Termine in Winterthur, Seitentext CHF 385); Master-Wert bleibt.
+- **Stand:** Master 3'823 Zeilen, Protokoll 13'979. Sichtbar am 24.11. 1'063 → 1'052 (CH 969, AT 79, LI 4), am 03.12. 998 → 996: 7 archivierte fallen weg, 5 bleiben dank neuem Termin sichtbar. [GEPRÜFT]
+- **Tests** [GEPRÜFT]: Eingang 24 Dateien ohne Fehler, P24 14/14, Nachträge 14/14, P30 34/34. Kein neues Release gebaut.
+
 ## 2. Tests [GEPRÜFT]
 
 | Test | Ergebnis |
@@ -80,7 +105,9 @@ Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 
 1. erledigt: Paket v4 freigegeben (E300), live seit 24.11.2026 (E301; V05 Owner).
 2. erledigt: Testanpassung Q12 (E295), `test_paket30.py` 34/34.
-3. Nach dem Release: Zweifelsfälle 95 (E291), danach Routine-Eingang des Monats (geprueft_am, pruefen_ab nach E292).
+3. erledigt: Zweifelsfälle 95 (E291) verkleinert und entschieden (E302–E306, Lauf 041), §1e.
+4. Offen: OFFER-SPC-011 (Katalog «Master Ateliers Pratique», CHF 250; Seite «Ateliers Pratique» CHF 90, «Ateliers Signature» CHF 250); UNIGE-V22-03, -004, -005, -009, -010 in Chrome lesen (Freigabe je Website).
+5. Nächster Schritt: Routine-Eingang des Monats (geprueft_am, pruefen_ab nach E292) für die Routinefälle des Vollaufs und der 30 belegten Zweifelsfälle; danach Release mit Freigabe.
 
 ## 5. Nicht Teil dieses Monatsbuilds
 
