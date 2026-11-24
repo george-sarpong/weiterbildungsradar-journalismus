@@ -1,6 +1,6 @@
 # BERICHT PAKET 31 «Lücken füllen», zweiter Durchgang, 24.11.2026
 
-Grundlage: Owner-Entscheide E266–E268, E271, E272; Befunde E269, E270 (erster Durchgang), E273 (dieser Durchgang).
+Grundlage: Owner-Entscheide E266–E268, E271, E272; Befunde E269, E270 (erster Durchgang), E273 (dieser Durchgang); Nachtrag MAZ und «Privatkurs»: E274–E276.
 Arbeitszweig `claude/datenharmonisierung`, gepusht. Kein Release, kein Merge.
 Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
 
@@ -14,6 +14,12 @@ Beleg: [GEPRÜFT] von Claude gemessen oder getestet.
   - Dazu Termine, Preise und Niveau von den neuen bzw. jetzt lesbaren Seiten.
 - **Termin vollständig:** 657 am 23.11. → 706 am 24.11. von 1'302. Sichtbar am 24.11.: 1'103 → 1'126. [GEPRÜFT]
 - **MAZ-Termine nicht erreicht:** Die Kursseiten verweisen je Kurs auf `my.maz.ch/public/Ereignis/PublicList?angebote=…`. Diese Seite lädt die Termine nur per JavaScript, der Abruf liefert leeren Text. Den Weg über die interne Schnittstelle von my.maz.ch habe ich nicht verfolgt.
+- **Nachtrag MAZ (E275, E276), Lauf 031:** In Chrome sind die öffentlichen Terminlisten von my.maz.ch lesbar; das sind dieselben Listen, die maz.ch je Kurs einbindet. 67 Listen gelesen:
+  - 35 Kurse mit künftigen Terminen, 114 Zellen. Übernommen nur Zeilen, deren Titel dem Katalogtitel entspricht.
+  - 29 Listen «Keine Daten»: MAZ publiziert derzeit keine Durchführung.
+  - Nicht verwendet: 2 Listen ohne Kursfilter, MAZ-031 (nur Bewerbungsfenster), MAZ-175 (Liste eines anderen Kurses).
+  - Rohdaten `paket31/out/maz_terminlisten_chrome_2026-11-24.txt`.
+- **Nach Lauf 031:** Termin vollständig 741, sichtbar am 24.11. 1'143. «Privatkurs» bestätigt (E274). [GEPRÜFT]
 - **Restfälle:** 201 Angebote bei 56 Anbietern, davon 141 sichtbar, in `paket31/out/owner_liste_restfaelle_2026-11-24.csv`:
   - DEFEKT 91, UEBERSICHT 60, NICHT_LESBAR 36, KURS_WEG 4, ZWEIFEL 10
   - Die grössten Blöcke: CFJM 19, MAZ 16, ZLI 12, ÖMA 11, EJC 10
@@ -44,8 +50,8 @@ Code: `paket30/scripts/abruf.py` (Version p30-abruf-6) mit den neuen Optionen `-
 ## 4. Offen für den Owner
 
 1. **Owner-Liste Restfälle** (201): je Fall archivieren nach E015, eine neue Adresse nennen oder so lassen. Die Liste ist nach Anbieter geordnet.
-2. **MAZ-Termine** (81 Kurse mit Lücke): im Chat mit Claude in Chrome prüfen (vgl. Bericht P30 §7.3) oder offen lassen.
-3. **«Privatkurs»** (5 Kurse) wie «Privatseminar» nach E271 behandelt: bestätigen.
+2. erledigt: MAZ-Termine über Chrome (E275, E276); 29 MAZ-Kurse ohne publizierte Durchführung bleiben mit Termin-Lücke.
+3. erledigt: «Privatkurs» bestätigt (E274).
 4. **Dawan** bleibt nach RFC 9309 gesperrt (40 Kurse mit Termin-Lücke).
 
 ## 5. Nicht Teil dieses Durchgangs
