@@ -1,0 +1,21 @@
+id,feld,grund
+CH-NOV-OF-022,,"NICHT_LESBAR: Seite NICHT_LESBAR Haupttext enthält nur Navigation und Fusszeile, keine Kursangaben."
+CH-NOV-OF-023,,"NICHT_LESBAR: Seite NICHT_LESBAR Haupttext enthält nur Navigation und Fusszeile, keine Kursangaben."
+CH-NOV-OF-024,,"NICHT_LESBAR: Seite NICHT_LESBAR Haupttext enthält nur Navigation und Fusszeile, keine Kursangaben."
+CH-NOV-OF-025,,"NICHT_LESBAR: Seite NICHT_LESBAR Haupttext enthält nur Navigation und Fusszeile, keine Kursangaben."
+CH-NOV-OF-026,,"NICHT_LESBAR: Seite NICHT_LESBAR Haupttext enthält nur Navigation und Fusszeile, keine Kursangaben."
+OFFER-SFGZ-004,,"NICHT_LESBAR: Seite NICHT_LESBAR Seitentext enthält nur Navigation, keine Kursangaben."
+OFFER-UNIGE-011,,NICHT_LESBAR: Seite NICHT_LESBAR Sicherheitsprüfung (Captcha) statt Seiteninhalt.
+OFFER-UNIGE-012,,NICHT_LESBAR: Seite NICHT_LESBAR Sicherheitsprüfung (Captcha) statt Seiteninhalt.
+OFFER-UNIGE-013,,NICHT_LESBAR: Seite NICHT_LESBAR Sicherheitsprüfung (Captcha) statt Seiteninhalt.
+OFFER-UNIGE-014,,NICHT_LESBAR: Seite NICHT_LESBAR Sicherheitsprüfung (Captcha) statt Seiteninhalt.
+V82-DAWAN-049,,NICHT_LESBAR: Seite zeigt einen anderen Kurs (https://www.dawan.ch/formations/pao/indesign/indesign-initiation-approfondissement)
+V82-DAWAN-065,,NICHT_LESBAR: Seite zeigt einen anderen Kurs (https://www.dawan.ch/formations/pao/affinity-suite-pao/affinity-designer-initiation-approfondissement)
+V82-DAWAN-076,,NICHT_LESBAR: Seite zeigt einen anderen Kurs (https://www.dawan.ch/formations/pao/creation-graphique/procreate-initiation-approfondissement)
+AT-PROD-OFFER-166,url,mehrere Seiten als gleicher Kurs bestätigt: https://donauakademie.at/kurse/journalistisches-schreiben/ | https://donauakademie.at/kursmodule/journalistisches-schreiben/
+IF-G08,url,mehrere Seiten als gleicher Kurs bestätigt: https://www.ifage.ch/formation/tic/formations-cao-dao-pao/indesign-niveau-1/?attribute_pa_session=s-03280 | https://www.ifage.ch/formation/tic/formations-cao-dao-pao/indesign-niveau-1/?attribute_pa_session=s-06315
+OFFER-HEVS-001,url,mehrere Seiten als gleicher Kurs bestätigt: https://www.hevs.ch/fr/autres-formations/adobe-photoshop--soiree-200686 | https://www.hevs.ch/fr/autres-formations/adobe-photoshop-9191
+OFFER-HEVS-002,url,mehrere Seiten als gleicher Kurs bestätigt: https://www.hevs.ch/fr/autres-formations/adobe-illustrator--soiree-3878 | https://www.hevs.ch/fr/autres-formations/adobe-illustrator-9190
+OFFER-HEVS-003,url,mehrere Seiten als gleicher Kurs bestätigt: https://www.hevs.ch/fr/autres-formations/adobe--techniques-d-animation-animate-after-effect--soiree-4326 | https://www.hevs.ch/fr/autres-formations/adobe--techniques-d-animation-animate-after-effect-9182
+OFFER-KLUB-MIDUCA-008,url,mehrere Seiten als gleicher Kurs bestätigt: https://www.klubschule.ch/kurs/fotografie-atelier-expert--D_91939_2659_1003 | https://www.klubschule.ch/kurs/fotografie-atelier-expert--D_91939_2661_951
+OFFER-ZB-005,termin,"Widerspruch auf der Seite: Kopfzeile und schema.org 28.08.2027, Fliesstext 28.08.2026 (E262 Zweifelsfall)"
