@@ -1,5 +1,5 @@
 # P30 Auftrag für den Prüfabruf (E260). Push dieser Datei startet .github/workflows/p30-pruefung.yml
-# P31 zweiter Durchgang, Stufe 5 (E277): Kandidaten aus der Websuche; Kurstexte nur verschlüsselt
+# P31 Nachbau Läufe 033–035 (E277, E280, E282–E284): Belege der Restfälle; Kurstexte nur verschlüsselt (neues Schlüsselpaar 24.11.)
 stichtag=2026-11-24
 umfang=luecken
 volltext=ja
